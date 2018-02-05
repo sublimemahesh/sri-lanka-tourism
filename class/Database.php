@@ -17,7 +17,7 @@ class Database {
 //    private $password = 'Masal@903430';
      
     private $host = 'localhost';
-    private $name = 'admin-tour';
+    private $name = 'tourism';
     private $user = 'root';
     private $password = '';
 
