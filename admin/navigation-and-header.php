@@ -275,207 +275,6 @@
                         <span>Home</span>
                     </a>
                 </li>
-                <!--                <li class="qqq">
-                                    <a href="create-slider.php" class="">
-                                        <i class="material-icons">chevron_right</i>
-                                        <span>Slider</span>
-                                    </a>
-                
-                                </li>
-                                <li class="qqq">
-                                    <a href="create-banner.php" class="">
-                                        <i class="material-icons">chevron_right</i>
-                                        <span>Banner</span>
-                                    </a>
-                
-                                </li>
-                                <li class="qqq">
-                                    <a href="javascript:void(0);" class="menu-toggle">
-                                        <i class="material-icons">chevron_right</i>
-                                        <span>Attraction</span>
-                                    </a>
-                                    <ul class="ml-menu">
-                                        <li>
-                                            <a href="create-attraction.php">
-                                                <i class="material-icons">add</i>
-                                                <span>Add New</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="manage-attraction.php">
-                                                <i class="material-icons">list</i>
-                                                <span>Manage</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="arrange-attraction.php">
-                                                <i class="material-icons">compare_arrows</i>
-                                                <span>Arrange</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="qqq">
-                                    <a href="javascript:void(0);" class="menu-toggle">
-                                        <i class="material-icons">chevron_right</i>
-                                        <span>Activity</span>
-                                    </a>
-                                    <ul class="ml-menu">
-                                        <li>
-                                            <a href="create-activity.php">
-                                                <i class="material-icons">add</i>
-                                                <span>Add New</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="manage-activity.php">
-                                                <i class="material-icons">list</i>
-                                                <span>Manage</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="arrange-activity.php">
-                                                <i class="material-icons">compare_arrows</i>
-                                                <span>Arrange</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="qqq">
-                                    <a href="javascript:void(0);" class="menu-toggle">
-                                        <i class="material-icons">chevron_right</i>
-                                        <span>Pages</span>
-                                    </a>
-                                    <ul class="ml-menu">
-                                        <li>
-                                            <a href="create-pages.php">
-                                                <i class="material-icons">add</i>
-                                                <span>Add new</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="manage-pages.php">
-                                                <i class="material-icons">list</i>
-                                                <span>Manage</span>
-                                            </a>
-                                        </li>
-                
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);" class="menu-toggle">
-                                        <i class="material-icons">chevron_right</i>
-                                        <span>Tour Package</span>
-                                    </a>
-                                    <ul class="ml-menu">
-                                        <li>
-                                            <a href="create-tour-package.php">
-                                                <i class="material-icons">add</i>
-                                                <span>Add New</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="manage-tour-package.php">
-                                                <i class="material-icons">list</i>
-                                                <span>Manage</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="arrange-tour-package.php">
-                                                <i class="material-icons">compare_arrows</i>
-                                                <span>Arrange</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                 <li>
-                                    <a href="javascript:void(0);" class="menu-toggle">
-                                        <i class="material-icons">chevron_right</i>
-                                        <span>Tour Package-Normal</span>
-                                    </a>
-                                    <ul class="ml-menu">
-                                        <li>
-                                            <a href="create-tour-package-normal.php">
-                                                <i class="material-icons">add</i>
-                                                <span>Add New</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="manage-tour-package-normal.php">
-                                                <i class="material-icons">list</i>
-                                                <span>Manage</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="arrange-tour-package.php">
-                                                <i class="material-icons">compare_arrows</i>
-                                                <span>Arrange</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                 </li>
-                                <li>
-                                    <a href="javascript:void(0);" class="menu-toggle">
-                                        <i class="material-icons">chevron_right</i>
-                                        <span>Service</span>
-                                    </a>
-                                    <ul class="ml-menu">
-                                        <li>
-                                            <a href="create-service.php">
-                                                <i class="material-icons">add</i>
-                                                <span>Add New</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="manage-service.php">
-                                                <i class="material-icons">list</i>
-                                                <span>Manage</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="arrange-services.php">
-                                                <i class="material-icons">compare_arrows</i>
-                                                <span>Arrange</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>-->
-                <!--                     <li>
-                                    <a href="view-album-photos.php?id=1" class="menu-toggle">
-                                        <i class="material-icons">chevron_right</i>
-                                        <span>Gallery</span>
-                                    </a>
-                                 
-                                </li>-->
-
-                <!--                <li>
-                                    <a href="javascript:void(0);" class="menu-toggle">
-                                        <i class="material-icons">chevron_right</i>
-                                        <span>Photo Album</span>
-                                    </a>
-                                    <ul class="ml-menu">
-                                        <li>
-                                            <a href="create-photo-album.php">
-                                                <i class="material-icons">add</i>
-                                                <span>Add New</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="manage-photo-album.php">
-                                                <i class="material-icons">list</i>
-                                                <span>Manage</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="arrange-photo-album.php">
-                                                <i class="material-icons">compare_arrows</i>
-                                                <span>Arrange</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                
-                -->
 
                 <li>
                     <a href="javascript:void(0);" class="menu-toggle">
@@ -544,6 +343,27 @@
                         </li>
                         <li>
                             <a href="manage-accommodation-type.php">
+                                <i class="material-icons">list</i>
+                                <span>Manage</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript:void(0);" class="menu-toggle">
+                        <i class="material-icons">chevron_right</i>
+                        <span>Tour Package</span>
+                    </a>
+                    <ul class="ml-menu">
+                        <li>
+                            <a href="create-tour-package.php">
+                                <i class="material-icons">add</i>
+                                <span>Add New</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="manage-tour-package.php">
                                 <i class="material-icons">list</i>
                                 <span>Manage</span>
                             </a>
