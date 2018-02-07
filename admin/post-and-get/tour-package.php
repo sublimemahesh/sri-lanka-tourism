@@ -10,12 +10,12 @@ if (isset($_POST['add-tour-package'])) {
     $VALID = new Validator();
 
     $TOUR_PACKAGE->name = filter_input(INPUT_POST, 'name');
+    $TOUR_PACKAGE->price = filter_input(INPUT_POST, 'price');
     $TOUR_PACKAGE->description = filter_input(INPUT_POST, 'description');
 
+    $dir_dest = '../../upload/tour-package/';
 
-    $dir_dest = '../upload/tour-package/';
-
-    $handle = new Upload($_FILES['image']);
+    $handle = new Upload($_FILES['picture_name']);
 
     $imgName = null;
 
@@ -73,9 +73,9 @@ if (isset($_POST['add-tour-package'])) {
 }
 
 if (isset($_POST['update'])) {
-    $dir_dest = '../upload/tour-package/';
+    $dir_dest = '../../upload/tour-package/';
 
-    $handle = new Upload($_FILES['image']);
+    $handle = new Upload($_FILES['picture_name']);
 
     $imgName = null;
 
@@ -101,6 +101,7 @@ if (isset($_POST['update'])) {
 
     $TOUR_PACKAGE->picture_name = $_POST['oldImageName'];
     $TOUR_PACKAGE->name = filter_input(INPUT_POST, 'name');
+    $TOUR_PACKAGE->price = filter_input(INPUT_POST, 'price');
     $TOUR_PACKAGE->description = filter_input(INPUT_POST, 'description');
 
     $VALID = new Validator();

@@ -10,13 +10,14 @@ class TourPackage {
     public $id;
     public $name;
     public $picture_name;
+    public $price;
     public $description;
     public $sort;
 
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`,`name`,`picture_name`,`description`,`sort` FROM `tour_package` WHERE `id`=" . $id;
+            $query = "SELECT `id`,`name`,`picture_name`,`price`,`description`,`sort` FROM `tour_package` WHERE `id`=" . $id;
 
             $db = new Database();
 
@@ -25,6 +26,7 @@ class TourPackage {
             $this->id = $result['id'];
             $this->name = $result['name'];
             $this->picture_name = $result['picture_name'];
+            $this->price = $result['price'];
             $this->description = $result['description'];
             $this->sort = $result['sort'];
 
@@ -37,6 +39,7 @@ class TourPackage {
         $query = "INSERT INTO `tour_package` (`name`,`picture_name`,`price`,`description`,`sort`) VALUES  ('"
                 . $this->name . "', '"
                 . $this->picture_name . "', '"
+                . $this->price . "', '"
                 . $this->description . "', '"
                 . $this->sort . "')";
 
@@ -72,6 +75,7 @@ class TourPackage {
         $query = "UPDATE  `tour_package` SET "
                 . "`name` ='" . $this->name . "', "
                 . "`picture_name` ='" . $this->picture_name . "', "
+                . "`price` ='" . $this->price . "', "
                 . "`description` ='" . $this->description . "', "
                 . "`sort` ='" . $this->sort . "' "
                 . "WHERE `id` = '" . $this->id . "'";
@@ -89,32 +93,11 @@ class TourPackage {
 
     public function delete() {
 
-        $this->deleteTourDates();
-
-        unlink(Helper::getSitePath() . "upload/tour-package/" . $this->picture_name);
-
         $query = 'DELETE FROM `tour_package` WHERE id="' . $this->id . '"';
 
         $db = new Database();
 
         return $db->readQuery($query);
-    }
-
-    public function deleteTourDates() {
-
-        $TOUR_DATE = new TourDate(NULL);
-
-        $alldates = $TOUR_DATE->getTourDatesById($this->id);
-
-        foreach ($alldates as $date) {
-
-            $IMG = $TOUR_DATE->picture_name = $date["picture_name"];
-            unlink(Helper::getSitePath() . "upload/tour-package/date/" . $IMG);
-            unlink(Helper::getSitePath() . "upload/tour-package/date/thumb/" . $IMG);
-
-            $TOUR_DATE->id = $date["id"];
-            $TOUR_DATE->delete();
-        }
     }
 
     public function arrange($key, $img) {

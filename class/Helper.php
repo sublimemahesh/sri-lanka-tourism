@@ -23,8 +23,8 @@ class Helper {
     }
 
     public function getSitePath() {
-//        return substr_replace(dirname(__FILE__), '', 26);
-        $path = str_replace('class', '', dirname(__FILE__));
+//      return substr_replace(dirname(__FILE__), '', 70);
+      $path = str_replace('class', '', dirname(__FILE__));
         return $path;
     }
 

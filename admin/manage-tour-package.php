@@ -43,6 +43,11 @@ $TOURP = new TourPackage(NULL)
         ?>
         <section class="content">
             <div class="container-fluid"> 
+                <?php
+                $vali = new Validator();
+
+                $vali->show_message();
+                ?>
                 <!-- Manage Tour Package -->
                 <div class="row clearfix">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -60,39 +65,40 @@ $TOURP = new TourPackage(NULL)
                                 </ul>
                             </div>
                             <div class="body">
-
-                                <div class="row clearfix">
-                                    <?php
-                                    $TOUR_PACKAGE = new TourPackage(NULL);
-                                    foreach ($TOUR_PACKAGE->all() as $key => $tour) {
-                                        ?>
-                                        <div class="col-md-3 col-sm-6 col-xs-12 center-block" id="row_<?php echo $tour['id']; ?>">
-                                            <p class="maxlinetitle"><?php echo $tour['sort']; ?></p>
-                                            <img class="img-responsive" src="../upload/tour-package/<?php echo $tour["image_name"]; ?>" alt="">
-                                            <p class="maxlinetitle ti-top"><b>Tour Name </b>: <?php echo $tour['name']; ?></p>
-
-                                            <div class="d">
-                                                <a href="edit-tour-package.php?id=<?php echo $tour['id']; ?>" class="op-link btn btn-sm btn-default">
-                                                    <i class="glyphicon glyphicon-pencil"></i>
-                                                </a>  
-                                                <a href="#" class="delete-tour-package btn btn-sm btn-danger" data-id="<?php echo $tour['id']; ?>">
-                                                    <i class="waves-effect glyphicon glyphicon-trash" data-type="cancel"></i>
-                                                </a>  
-        <!--                                        <a title="Tour day" href="view-tour-date.php?id=<?php echo $tour['id']; ?>" class="op-link btn btn-sm btn-default"><i class="glyphicon glyphicon-calendar">
-                                                    </i> 
-                                                </a> 
-                                                <a title="Tour plan" href="view-add-tour-plan.php?id=<?php echo $tour['id']; ?>" class="op-link btn btn-sm btn-default"><i class="glyphicon glyphicon-list-alt"></i>
-                                                </a> -->
-                                            </div>
-                                            <hr>
-                                        </div>
+                                <!--                                <div class="table-responsive">-->
+                                <div>
+                                    <div class="row clearfix">
                                         <?php
-                                    }
-                                    ?>  
+                                        $TOUR_PACKAGE = TourPackage::all();
+                                        if (count($TOUR_PACKAGE) > 0) {
+                                            foreach ($TOUR_PACKAGE as $key => $tour_package) {
+                                                ?>
+                                                <div class="col-md-3"  id="div<?php echo $tour_package['id']; ?>">
+                                                    <div class="photo-img-container">
+                                                        <img src="../upload/tour-package/<?php echo $tour_package['picture_name']; ?>" class="img-responsive ">
+                                                    </div>
+                                                    <div class="img-caption">
+                                                        <p class="maxlinetitle">Name : <?php echo $tour_package['name']; ?></p>  
+                                                        <p class="maxlinetitle">Price : <?php echo $tour_package['price']; ?></p>  
+                                                        <div class="d">
+                                                            <a href="#"  class="delete-tour-package" data-id="<?php echo $tour_package['id']; ?>"> <button class="glyphicon glyphicon-trash delete-btn"></button></a>
+                                                            <a href="edit-tour-package.php?id=<?php echo $tour_package['id']; ?>"> <button class="glyphicon glyphicon-pencil edit-btn"></button></a>
+                                                            <a href="arrange-tour-package.php?id=<?php echo $tour_package['id']; ?>">  <button class="glyphicon glyphicon-random arrange-btn"></button></a>
+                                                            <a href="view-tour-date.php?id=<?php echo $tour_package['id']; ?>">  <button class="glyphicon glyphicon-time arrange-btn"></button></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <?php
+                                            }
+                                        } else {
+                                            ?> 
+                                            <b style="padding-left: 15px;">No packages in the database.</b> 
+                                        <?php } ?> 
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- #END# Manage District -->
                     </div>
                 </div>
             </div>
@@ -131,7 +137,7 @@ $TOURP = new TourPackage(NULL)
 
         <!-- Demo Js -->
         <script src="js/demo.js"></script>
-        <script src="delete/js/district.js" type="text/javascript"></script>
+        <script src="delete/js/tour-package.js" type="text/javascript"></script>
     </body>
 
 </html> 
