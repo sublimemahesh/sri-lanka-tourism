@@ -1,14 +1,20 @@
-<?php
+﻿<?php
 include_once(dirname(__FILE__) . '/../class/include.php');
-include_once(dirname(__FILE__) . './auth.php');
-?>
+include_once(dirname(__FILE__) . '/auth.php');
 
-<!DOCTYPE html>
+$id = '';
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+}
+$MEMBER = new Member($id);
+?> 
+﻿<!DOCTYPE html>
 <html> 
     <head>
         <meta charset="UTF-8">
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <title>Add New Member - www.srilankatourism.travel</title>
+        <title>Edit Member - www.srilankatourism.travel</title>
+
         <!-- Favicon-->
         <link rel="icon" href="favicon.ico" type="image/x-icon">
 
@@ -25,9 +31,6 @@ include_once(dirname(__FILE__) . './auth.php');
         <!-- Animation Css -->
         <link href="plugins/animate-css/animate.css" rel="stylesheet" />
 
-        <!-- Sweet Alert Css -->
-        <link href="plugins/sweetalert/sweetalert.css" rel="stylesheet" />
-
         <!-- Custom Css -->
         <link href="css/style.css" rel="stylesheet">
 
@@ -38,30 +41,27 @@ include_once(dirname(__FILE__) . './auth.php');
     <body class="theme-red">
         <?php
         include './navigation-and-header.php';
-        ?> 
+        ?>
+
         <section class="content">
             <div class="container-fluid"> 
+                <!-- Body Copy -->
                 <?php
                 $vali = new Validator();
 
                 $vali->show_message();
                 ?>
-                <!-- Vertical Layout -->
                 <div class="row clearfix">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="card">
                             <div class="header">
-                                <h2>Add New Member</h2>
-                                <ul class="header-dropdown">
-                                    <li class="">
-                                        <a href="manage-member.php">
-                                            <i class="material-icons">list</i> 
-                                        </a>
-                                    </li>
-                                </ul>
+                                <h2>
+                                    Edit Member
+                                </h2>
+
                             </div>
-                            <div class="body">
-                                <form class="form-horizontal"  method="post" action="post-and-get/member.php" enctype="multipart/form-data"> 
+                            <div class="body row">
+                                <form class="form-horizontal" method="post" action="post-and-get/member.php" enctype="multipart/form-data"> 
                                     <div class="row clearfix">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                             <label for="name">Name</label>
@@ -69,7 +69,7 @@ include_once(dirname(__FILE__) . './auth.php');
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <input type="text" id="name" class="form-control" placeholder="Enter Member name" autocomplete="off" name="name" required="TRUE">
+                                                    <input type="text" id="name" class="form-control" placeholder="Enter Member name" autocomplete="off" name="name" required="TRUE" value="<?php echo $MEMBER->name; ?>">
                                                 </div>
                                             </div>
                                         </div>
@@ -81,7 +81,7 @@ include_once(dirname(__FILE__) . './auth.php');
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <input type="email" id="email" class="form-control" placeholder="Enter Email" autocomplete="off" name="email" required="TRUE">
+                                                    <input type="email" id="email" class="form-control" placeholder="Enter Email" autocomplete="off" name="email" required="TRUE" value="<?php echo $MEMBER->email; ?>">
                                                 </div>
                                             </div>
                                         </div>
@@ -93,19 +93,20 @@ include_once(dirname(__FILE__) . './auth.php');
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <input type="text" id="contact_number" class="form-control" placeholder="Enter contact number" autocomplete="off" name="contact_number" required="TRUE">
+                                                    <input type="text" id="contact_number" class="form-control" placeholder="Enter contact number" autocomplete="off" name="contact_number" required="TRUE" value="<?php echo $MEMBER->contact_number; ?>">
                                                 </div>
                                             </div>
                                         </div>
                                     </div> 
                                     <div class="row clearfix">
-                                     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                             <label for="image">Profile Picture</label>
                                         </div>
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <input type="file" id="image" class="form-control" name="image" required="true">
+                                                    <input type="file" id="image" class="form-control" name="image" value="<?php echo $MEMBER->profile_picture; ?>">
+                                                    <img src="../upload/member/<?php echo $MEMBER->profile_picture; ?>" id="image" class="view-edit-img img img-responsive img-thumbnail" name="image" alt="old image">
                                                 </div>
                                             </div>
                                         </div>
@@ -117,35 +118,36 @@ include_once(dirname(__FILE__) . './auth.php');
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <input type="text" id="username" class="form-control" placeholder="Enter username" autocomplete="off" name="username" required="TRUE">
+                                                    <input type="text" id="username" class="form-control" placeholder="Enter username" autocomplete="off" name="username" required="TRUE" value="<?php echo $MEMBER->username; ?>">
                                                 </div>
                                             </div>
                                         </div>
                                     </div> 
-                                      <div class="row clearfix">
-                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                            <label for="name">Password</label>
-                                        </div>
-                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                                            <div class="form-group">
-                                                <div class="form-line">
-                                                    <input type="password" id="password" class="form-control" placeholder="Enter password" autocomplete="off" name="password" required="TRUE">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div> 
+                                    
+                                    <div class="col-md-12">
+                                        <div class="col-md-2"></div>  
+                                        <div class="form-group">
+                                            <input class="filled-in chk-col-pink" type="checkbox" <?php
+                                            if ($MEMBER->status == 1) {
+                                                echo 'checked';
+                                            }
+                                            ?> name="active" value="1" id="rememberme" />
+                                            <label for="rememberme">Active</label>
+                                        
+                                    </div>
                                     <div class="row clearfix">
-                                        <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5"> 
-                                            <input type="submit" name="create" class="btn btn-primary m-t-15 waves-effect" value="Add Member"/>
+                                        <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
+                                            <input type="hidden" id="oldImageName" value="<?php echo $MEMBER->profile_picture; ?>" name="oldImageName"/>
+                                            <input type="hidden" id="id" value="<?php echo $MEMBER->id; ?>" name="id"/>
+    <!--                                            <input type="hidden" id="authToken" value="<?php echo $_SESSION["authToken"]; ?>" name="authToken"/>-->
+                                            <button type="submit" class="btn btn-primary m-t-15 waves-effect" name="update" value="update">Save Changes</button>
                                         </div>
                                     </div>
-                                    <hr/>
                                 </form>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- #END# Vertical Layout -->
 
             </div>
         </section>

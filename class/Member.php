@@ -21,11 +21,12 @@ class Member {
     public $username;
     public $password;
     public $rank;
+    public $status;
 
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`,`name`,`email`,`contact_number`,`profile_picture`,`username`,`password`,`rank` FROM `member` WHERE `id`=" . $id;
+            $query = "SELECT `id`,`name`,`email`,`contact_number`,`profile_picture`,`username`,`password`,`status`,`rank` FROM `member` WHERE `id`=" . $id;
 
             $db = new Database();
 
@@ -39,6 +40,7 @@ class Member {
             $this->username = $result['username'];
             $this->password = $result['password'];
             $this->rank = $result['rank'];
+            $this->status = $result['status'];
 
             return $this;
         }
@@ -46,13 +48,14 @@ class Member {
 
     public function create() {
 
-        $query = "INSERT INTO `member` (`name`,`email`,`contact_number`,`profile_picture`,`username`,`password`,`rank`) VALUES  ('"
+        $query = "INSERT INTO `member` (`name`,`email`,`contact_number`,`profile_picture`,`username`,`password`,`status`,`rank`) VALUES  ('"
                 . $this->name . "','"
                 . $this->email . "','"
                 . $this->contact_number . "','"
                 . $this->profile_picture . "','"
                 . $this->username . "','"
                 . $this->password . "','"
+                . $this->status . "','"
                 . $this->rank . "')";
 
         $db = new Database();
@@ -91,7 +94,8 @@ class Member {
                 . "`profile_picture` ='" . $this->profile_picture . "', "
                 . "`username` ='" . $this->username . "', "
                 . "`password` ='" . $this->password . "', "
-                . "`profile_picture` ='" . $this->rank . "' "
+                . "`status` ='" . $this->status . "', "
+                . "`rank` ='" . $this->rank . "' "
                 . "WHERE `id` = '" . $this->id . "'";
 
         $db = new Database();
@@ -104,9 +108,9 @@ class Member {
             return FALSE;
         }
     }
-    
-     public function delete() {
-      
+
+    public function delete() {
+
         $query = 'DELETE FROM `member` WHERE id="' . $this->id . '"';
 
         $db = new Database();
