@@ -10,6 +10,7 @@ include_once(dirname(__FILE__) . '/Validator.php');
 include_once(dirname(__FILE__) . '/District.php');
 include_once(dirname(__FILE__) . '/City.php');
 include_once(dirname(__FILE__) . '/AccommodationType.php');
+include_once(dirname(__FILE__) . '/Member.php');
 
 function dd($data) {
     var_dump($data);
