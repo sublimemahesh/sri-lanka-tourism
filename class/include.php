@@ -12,6 +12,7 @@ include_once(dirname(__FILE__) . '/City.php');
 include_once(dirname(__FILE__) . '/AccommodationType.php'); 
 include_once(dirname(__FILE__) . '/Member.php'); 
 include_once(dirname(__FILE__) . '/TourPackage.php');
+include_once(dirname(__FILE__) . '/ArticleType.php');
  
 function dd($data) {
     var_dump($data);
