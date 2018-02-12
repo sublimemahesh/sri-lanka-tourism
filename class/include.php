@@ -10,11 +10,13 @@ include_once(dirname(__FILE__) . '/Validator.php');
 include_once(dirname(__FILE__) . '/District.php');
 include_once(dirname(__FILE__) . '/City.php');
 include_once(dirname(__FILE__) . '/AccommodationType.php'); 
+include_once(dirname(__FILE__) . '/Accommodation.php');
 include_once(dirname(__FILE__) . '/Member.php'); 
 include_once(dirname(__FILE__) . '/TourPackage.php');
 include_once(dirname(__FILE__) . '/ArticleType.php');
 include_once(dirname(__FILE__) . '/Article.php');
- 
+
+
 function dd($data) {
     var_dump($data);
     exit();
