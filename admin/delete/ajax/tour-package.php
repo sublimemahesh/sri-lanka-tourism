@@ -7,9 +7,6 @@ if ($_POST['option'] == 'delete') {
 
     $TOUR_PACKAGE = new TourPackage($_POST['id']);
 
-    unlink(Helper::getSitePath() . "upload/tour-package/" . $TOUR_PACKAGE->picture_name);
-
-
     $result = $TOUR_PACKAGE->delete();
 
     if ($result) {
@@ -19,3 +16,5 @@ if ($_POST['option'] == 'delete') {
         echo json_encode($data);
     }
 }
+
+
