@@ -14,6 +14,8 @@ include_once(dirname(__FILE__) . '/Member.php');
 include_once(dirname(__FILE__) . '/TourPackage.php');
 include_once(dirname(__FILE__) . '/ArticleType.php');
 include_once(dirname(__FILE__) . '/Article.php');
+include_once(dirname(__FILE__) . '/TourSubSection.php');
+
  
 function dd($data) {
     var_dump($data);
