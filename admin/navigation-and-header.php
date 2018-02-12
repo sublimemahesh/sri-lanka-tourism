@@ -352,6 +352,26 @@
                 <li>
                     <a href="javascript:void(0);" class="menu-toggle">
                         <i class="material-icons">chevron_right</i>
+                        <span>Accommodation</span>
+                    </a>
+                    <ul class="ml-menu">
+                        <li>
+                            <a href="create-accommodation.php">
+                                <i class="material-icons">add</i>
+                                <span>Add New</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="manage-accommodation.php">
+                                <i class="material-icons">list</i>
+                                <span>Manage</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" class="menu-toggle">
+                        <i class="material-icons">chevron_right</i>
                         <span>Member</span>
                     </a>
                     <ul class="ml-menu">
