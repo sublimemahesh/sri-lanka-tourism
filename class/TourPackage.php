@@ -93,11 +93,45 @@ class TourPackage {
 
     public function delete() {
 
+        $this->deletePhotos();
+        $this->deleteSubSection();
+        unlink(Helper::getSitePath() . "upload/tour-package/" . $this->picture_name);
+
         $query = 'DELETE FROM `tour_package` WHERE id="' . $this->id . '"';
 
         $db = new Database();
 
         return $db->readQuery($query);
+    }
+
+    public function deletePhotos() {
+
+        $TOUR_SUB_PHOTO = new TourSubSectionPhoto(NULL);
+
+        $allPhotos = $TOUR_SUB_PHOTO->getTourSubSectionPhotosById($this->id);
+
+        foreach ($allPhotos as $photo) {
+
+            $IMG = $TOUR_SUB_PHOTO->image_name = $photo["image_name"];
+            unlink(Helper::getSitePath() . "upload/tour-package/sub-section/gallery/" . $IMG);
+            unlink(Helper::getSitePath() . "upload/tour-package/sub-section/gallery/thumb/" . $IMG);
+
+            $TOUR_SUB_PHOTO->id = $photo["id"];
+            $TOUR_SUB_PHOTO->delete();
+        }
+    }
+
+    public function deleteSubSection() {
+
+        $TOUR_SUB = new TourSubSection(NULL);
+
+        $allPhotos = $TOUR_SUB->GetTourSubSectionByTourPackage($this->id);
+
+        foreach ($allPhotos as $photo) {
+
+            $TOUR_SUB->id = $photo["id"];
+            $TOUR_SUB->delete();
+        }
     }
 
     public function arrange($key, $img) {
