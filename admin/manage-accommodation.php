@@ -72,7 +72,7 @@ $ACCOMODATION = new Accommodation(NULL)
                                             <tr>
                                                 <th>ID</th>
                                                 <th>Name</th> 
-                                                <th>Email</th>
+<!--                                                <th>Email</th>-->
                                                 <th>Website</th>
                                                 <th>Type</th>
                                                 <th>City</th>
@@ -85,7 +85,7 @@ $ACCOMODATION = new Accommodation(NULL)
                                             <tr>
                                                 <th>ID</th>
                                                 <th>Name</th> 
-                                                <th>Email</th>
+<!--                                                <th>Email</th>-->
                                                 <th>Website</th>
                                                 <th>Type</th>
                                                 <th>City</th>
@@ -106,18 +106,19 @@ $ACCOMODATION = new Accommodation(NULL)
 
                                                     <td><?php echo $accommodation['id']; ?></td> 
                                                     <td><?php echo substr($accommodation['name'], 0, 30); ?></td> 
-                                                    <td><?php echo substr($accommodation['email'], 0, 30); ?></td> 
-                                                    <td><?php echo substr($accommodation['website'], 0, 30); ?></td> 
+<!--                                                    <td><?php echo substr($accommodation['email'], 0, 15); ?></td> -->
+                                                    <td><?php echo substr($accommodation['website'], 0, 15); ?></td> 
                                                     <td><?php echo substr($accommodation_type->name, 0, 30); ?></td> 
                                                     <td><?php echo substr($city->name, 0, 30); ?></td>
                                                     <td><?php echo substr($member->name, 0, 30); ?></td>
                                                     <td><?php echo substr($accommodation['rank'], 0, 30); ?></td>
                                                     <td> 
-                                                        <a href="edit-accommodation.php?id=<?php echo $accommodation['id']; ?>" class="op-link"><i class="glyphicon glyphicon-pencil"></i></a>  |  
+                                                        <a href="edit-accommodation.php?id=<?php echo $accommodation['id']; ?>" class="op-link btn btn-sm btn-default"><i class="glyphicon glyphicon-pencil"></i></a>  
 
-                                                        <a href="#" class="delete-accommodation" data-id="<?php echo $accommodation['id']; ?>">
-                                                            <button class="glyphicon glyphicon-trash" data-type="cancel"></button>
+                                                        <a href="#" class="delete-accommodation btn btn-sm btn-danger" data-id="<?php echo $accommodation['id']; ?>">
+                                                            <i class="glyphicon glyphicon-trash" data-type="cancel"></i>
                                                         </a>
+                                                        <a href="view-accommodation-photos.php?id=<?php echo $accommodation['id']; ?>" class="op-link btn btn-sm btn-default"><i class="glyphicon glyphicon-picture"></i></a> 
                                                     </td>
                                                 </tr>
                                                 <?php
