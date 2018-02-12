@@ -108,11 +108,30 @@ class Accommodation {
 
     public function delete() {
 
+         $this->deletePhotos();
+         
         $query = 'DELETE FROM `accommodation` WHERE id="' . $this->id . '"';
 
         $db = new Database();
 
         return $db->readQuery($query);
+    }
+
+    public function deletePhotos() {
+
+        $ACCMMODATION_PHOTO = new AccommodationPhoto(NULL);
+
+        $allPhotos = $ACCMMODATION_PHOTO->getAccommodationPhotosById($this->id);
+
+        foreach ($allPhotos as $photo) {
+
+            $IMG = $ACCMMODATION_PHOTO->image_name = $photo["image_name"];
+            unlink(Helper::getSitePath() . "upload/accommodation/" . $IMG);
+            unlink(Helper::getSitePath() . "upload/accommodation/thumb/" . $IMG);
+
+            $ACCMMODATION_PHOTO->id = $photo["id"];
+            $ACCMMODATION_PHOTO->delete();
+        }
     }
 
 }
