@@ -1,19 +1,20 @@
 <?php
 include_once(dirname(__FILE__) . '/../class/include.php');
-include_once(dirname(__FILE__) . './auth.php');
+include_once(dirname(__FILE__) . '/auth.php');
+
 $id = '';
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 }
-$TOUR_SS_PHOTO = new TourPackage($id);
+$TRANSPORT_PHOTO = new TransportPhoto($id);
 ?> 
-<!DOCTYPE html>
 
+<!DOCTYPE html>
 <html> 
     <head>
         <meta charset="UTF-8">
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <title>Add Tour Section Photo - www.srilankatourism.travel</title>
+        <title>Edit Transport Photo - www.srilankatourism.travel</title>
         <!-- Favicon-->
         <link rel="icon" href="favicon.ico" type="image/x-icon">
         <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
@@ -32,9 +33,10 @@ $TOUR_SS_PHOTO = new TourPackage($id);
         ?>
 
         <section class="content">
-            <div class="container-fluid">
+            <div class="container-fluid">  
                 <?php
                 $vali = new Validator();
+
                 $vali->show_message();
                 ?>
                 <!-- Vertical Layout -->
@@ -42,81 +44,52 @@ $TOUR_SS_PHOTO = new TourPackage($id);
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="card">
                             <div class="header">
-                                <h2>Create Tour Section Photo</h2>
-                                <ul class="header-dropdown">
-                                    <li class="">
-                                        <a href="manage-tour-package.php">
-                                            <i class="material-icons">list</i> 
-                                        </a>
-                                    </li>
-                                </ul>
+                                <h2>
+                                    Edit Transport Photo
+                                </h2>
+
                             </div>
-                            <div class="body">
-                                <form class="form-horizontal"  method="post" action="post-and-get/tour-sub-section-photo.php" enctype="multipart/form-data"> 
+                            <div class="body row">
+                                <form class="form-horizontal" method="post" action="post-and-get/transport_photo.php" enctype="multipart/form-data"> 
                                     <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="caption">caption</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    <input type="text" id="caption" class="form-control"  value="<?php echo $TRANSPORT_PHOTO->caption; ?>"  name="caption"  required="TRUE">
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                             <label for="image">Image</label>
                                         </div>
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <input type="file" id="image" class="form-control" name="image" required="true">
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                            <label for="short_description">Caption</label>
-                                        </div>
-                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                                            <div class="form-group">
-                                                <div class="form-line">
-                                                    <input type="text" id="caption" class="form-control" placeholder="Enter Image Caption" autocomplete="off" name="caption" required="true">
+                                                    <input type="file" id="image" class="form-control" value="<?php echo $TRANSPORT_PHOTO->image_name; ?>"  name="image">
+                                                    <img src="../upload/transport/transport-photo/gallery/<?php echo $TRANSPORT_PHOTO->image_name; ?>" id="image" class="view-edit-img img img-responsive img-thumbnail" name="image" alt="old image">
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+
+
                                     <div class="row clearfix">
-                                        <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5"> 
-                                            <input type="hidden" id="id" value="<?php echo $TOUR_SS_PHOTO->id; ?>" name="id"/>
-                                            <input type="submit" name="create" class="btn btn-primary m-t-15 waves-effect" value="create"/>
+                                        <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
+                                            <input type="hidden" id="oldImageName" value="<?php echo $TRANSPORT_PHOTO->image_name; ?>" name="oldImageName"/>
+                                            <input type="hidden" id="id" value="<?php echo $TRANSPORT_PHOTO->id; ?>" name="id"/>
+                                            <input type="hidden" id="authToken" value="<?php echo $_SESSION["authToken"]; ?>" name="authToken"/>
+                                            <button type="submit" class="btn btn-primary m-t-15 waves-effect" name="update" value="update">Save Changes</button>
                                         </div>
                                     </div>
-                                    <hr/>
                                 </form>
-
-                                <div class="row clearfix">
-                                    <?php
-                                    $TOUR_SUB_PHOTO = TourSubSectionPhoto::getTourSubSectionPhotosById($id);
-                                    if (count($TOUR_SUB_PHOTO) > 0) {
-                                        foreach ($TOUR_SUB_PHOTO as $key => $tour_sub_photo) {
-                                            ?>
-                                            <div class="col-md-3"  id="div_<?php echo $tour_sub_photo['id']; ?>">
-                                                <div class="photo-img-container">
-                                                    <img src="../upload/tour-package/sub-section/gallery/<?php echo $tour_sub_photo['image_name']; ?>" class="img-responsive ">
-                                                </div>
-                                                <div class="img-caption">
-                                                    <p class="maxlinetitle"><?php echo $tour_sub_photo['caption']; ?></p>
-                                                    <div class="d">
-                                                        <a href="#" class="delete-tour-sub-photo" data-id="<?php echo $tour_sub_photo['id']; ?>"> <button class="glyphicon glyphicon-trash delete-btn"></button></a>
-                                                        <a href="edit-tour-section-photo.php?id=<?php echo $tour_sub_photo['id']; ?>"> <button class="glyphicon glyphicon-pencil edit-btn"></button></a>
-                                                        <a href="arrange-tour-section-photos.php?id=<?php echo $id; ?>">  <button class="glyphicon glyphicon-random arrange-btn"></button></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <?php
-                                        }
-                                    } else {
-                                        ?> 
-                                        <b style="padding-left: 15px;">No Offer photos in the database.</b> 
-                                    <?php } ?> 
-
-                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
+                <!-- #END# Vertical Layout -->
             </div>
         </section>
 
@@ -128,13 +101,9 @@ $TOUR_SS_PHOTO = new TourPackage($id);
         <script src="js/admin.js"></script>
         <script src="js/demo.js"></script>
         <script src="js/add-new-ad.js" type="text/javascript"></script>
-        <script src="tinymce/js/tinymce/tinymce.min.js"></script>
 
-        <script src="plugins/sweetalert/sweetalert.min.js"></script>
-        <script src="plugins/bootstrap-notify/bootstrap-notify.js"></script>
-        <script src="js/pages/ui/dialogs.js"></script>
-        <script src="js/demo.js"></script>
-        <script src="delete/js/tour-sub-section-photo.js" type="text/javascript"></script>
+
+        <script src="tinymce/js/tinymce/tinymce.min.js"></script>
         <script>
             tinymce.init({
                 selector: "#description",
