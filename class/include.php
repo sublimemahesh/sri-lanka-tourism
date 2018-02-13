@@ -20,6 +20,7 @@ include_once(dirname(__FILE__) . '/TourSubSectionPhoto.php');
 include_once(dirname(__FILE__) . '/AccommodationPhoto.php');
 include_once(dirname(__FILE__) . '/VehicleType.php');
 include_once(dirname(__FILE__) . '/Transports.php');
+include_once(dirname(__FILE__) . '/AccommodationGeneralFacilities.php');
 
 function dd($data) {
     var_dump($data);
