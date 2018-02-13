@@ -18,7 +18,7 @@ include_once(dirname(__FILE__) . '/Article.php');
 include_once(dirname(__FILE__) . '/TourSubSection.php');
 include_once(dirname(__FILE__) . '/TourSubSectionPhoto.php');
 include_once(dirname(__FILE__) . '/AccommodationPhoto.php');
- #35 Manage Accommodation Photos
+include_once(dirname(__FILE__) . '/VehicleType.php');
 
 function dd($data) {
     var_dump($data);

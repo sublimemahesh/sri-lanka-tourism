@@ -1,10 +1,11 @@
 <?php
+
 /**
- * Description of ArticleType
+ * Description of VehicleType
  *
  * @author official
  */
-class ArticleType {
+class VehicleType {
 
     public $id;
     public $name;
@@ -13,7 +14,7 @@ class ArticleType {
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`,`name`,`sort` FROM `article_type` WHERE `id`=" . $id;
+            $query = "SELECT `id`,`name`,`sort` FROM `vehicle_type` WHERE `id`=" . $id;
 
             $db = new Database();
 
@@ -28,7 +29,7 @@ class ArticleType {
 
     public function create() {
 
-        $query = "INSERT INTO `article_type` (`name`,`sort`) VALUES  ('"
+        $query = "INSERT INTO `vehicle_type` (`name`,`sort`) VALUES  ('"
                 . $this->name . "','"
                 . $this->sort . "')";
 
@@ -47,7 +48,7 @@ class ArticleType {
 
     public function all() {
 
-        $query = "SELECT * FROM `article_type`";
+        $query = "SELECT * FROM `vehicle_type`";
         $db = new Database();
         $result = $db->readQuery($query);
         $array_res = array();
@@ -61,7 +62,7 @@ class ArticleType {
 
     public function update() {
 
-        $query = "UPDATE  `article_type` SET "
+        $query = "UPDATE  `vehicle_type` SET "
                 . "`name` ='" . $this->name . "', "
                 . "`sort` ='" . $this->sort . "' "
                 . "WHERE `id` = '" . $this->id . "'";
@@ -79,11 +80,34 @@ class ArticleType {
 
     public function delete() {
 
-        $query = 'DELETE FROM `article_type` WHERE id="' . $this->id . '"';
+        $query = 'DELETE FROM `vehicle_type` WHERE id="' . $this->id . '"';
 
         $db = new Database();
 
         return $db->readQuery($query);
+    }
+
+    public function GetVehicleTypeById($id) {
+
+        $query = "SELECT * FROM `vehicle_type` WHERE `id` = '" . $id . "' ORDER BY `sort` ASC";
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+
+        return $array_res;
+    }
+
+    public function arrange($key, $img) {
+        $query = "UPDATE `vehicle_type` SET `sort` = '" . $key . "'  WHERE id = '" . $img . "'";
+        $db = new Database();
+        $result = $db->readQuery($query);
+        return $result;
     }
 
 }

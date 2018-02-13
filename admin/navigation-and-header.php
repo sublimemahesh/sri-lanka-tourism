@@ -329,6 +329,33 @@
                         </li>
                     </ul>
                 </li>
+
+                <li>
+                    <a href="javascript:void(0);" class="menu-toggle">
+                        <i class="material-icons">chevron_right</i>
+                        <span>Vehicle Type</span>
+                    </a>
+                    <ul class="ml-menu">
+                        <li>
+                            <a href="create-vehicle-type.php">
+                                <i class="material-icons">add</i>
+                                <span>Add New</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="manage-vehicle-type.php">
+                                <i class="material-icons">list</i>
+                                <span>Manage</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="arrange-vehicle-type.php">
+                                <i class="material-icons">compare_arrows</i>
+                                <span>Arrange</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 <li>
                     <a href="javascript:void(0);" class="menu-toggle">
                         <i class="material-icons">chevron_right</i>
