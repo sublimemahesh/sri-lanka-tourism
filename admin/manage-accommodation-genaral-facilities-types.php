@@ -2,7 +2,8 @@
 include_once(dirname(__FILE__) . '/../class/include.php');
 include_once(dirname(__FILE__) . '/auth.php');
 
-$ACCOMODATION_TYPE = new AccommodationType(NULL)
+$ACCOMODATION_GENERAL_FACILITY = new AccommodationGeneralFacilities(NULL);
+
 ?> 
 ﻿<!DOCTYPE html>
 <html>
@@ -10,7 +11,7 @@ $ACCOMODATION_TYPE = new AccommodationType(NULL)
     <head>
         <meta charset="UTF-8">
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <title>Manage Accommodation Type - www.srilankatourism.travel</title>
+        <title>Manage Accommodation Genaral Facilities - www.srilankatourism.travel</title>
         <!-- Favicon-->
         <link rel="icon" href="favicon.ico" type="image/x-icon">
 
@@ -43,7 +44,7 @@ $ACCOMODATION_TYPE = new AccommodationType(NULL)
         ?>
         <section class="content">
             <div class="container-fluid"> 
-                  <?php
+                <?php
                 $vali = new Validator();
 
                 $vali->show_message();
@@ -54,11 +55,11 @@ $ACCOMODATION_TYPE = new AccommodationType(NULL)
                         <div class="card">
                             <div class="header">
                                 <h2>
-                                    Manage Accommodation type
+                                    Manage Accommodation Genaral Facilities
                                 </h2>
                                 <ul class="header-dropdown">
                                     <li>
-                                        <a href="create-accommodation-type.php">
+                                        <a href="create-accommodation-general-facilities-types.php">
                                             <i class="material-icons">add</i> 
                                         </a>
                                     </li>
@@ -85,14 +86,14 @@ $ACCOMODATION_TYPE = new AccommodationType(NULL)
                                         <tbody>
 
                                             <?php
-                                            foreach ($ACCOMODATION_TYPE->all() as $key => $accommodation_type) {
+                                            foreach ($ACCOMODATION_GENERAL_FACILITY->all() as $key => $accommodation_general_facility) {
                                                 ?>
-                                                <tr id="row_<?php echo $accommodation_type['id']; ?>">
-                                                    <td><?php echo $accommodation_type['id']; ?></td> 
-                                                    <td><?php echo $accommodation_type['name']; ?></td> 
+                                                <tr id="row_<?php echo $accommodation_general_facility['id']; ?>">
+                                                    <td><?php echo $accommodation_general_facility['id']; ?></td> 
+                                                    <td><?php echo $accommodation_general_facility['name']; ?></td> 
                                                     <td> 
-                                                        <a href="edit-accommodation-type.php?id=<?php echo $accommodation_type['id']; ?>" class="op-link btn btn-sm btn-default"><i class="glyphicon glyphicon-pencil"></i></a>  |  
-                                                        <a href="#" class="delete-accommodation-type btn btn-sm btn-danger" data-id="<?php echo $accommodation_type['id']; ?>">
+                                                        <a href="edit-accommodation-genaral-facilities-types.php?id=<?php echo $accommodation_general_facility['id']; ?>" class="op-link btn btn-sm btn-default"><i class="glyphicon glyphicon-pencil"></i></a>  |  
+                                                        <a href="#" class="delete-accommodation-genaral-facility-type btn btn-sm btn-danger" data-id="<?php echo $accommodation_general_facility['id']; ?>">
                                                             <i class="glyphicon glyphicon-trash" data-type="cancel"></i>
                                                         </a>
                                                     </td>
@@ -145,7 +146,7 @@ $ACCOMODATION_TYPE = new AccommodationType(NULL)
 
         <!-- Demo Js -->
         <script src="js/demo.js"></script>
-        <script src="delete/js/accommodation-type.js" type="text/javascript"></script>
+        <script src="delete/js/accommodation-genaral-facility-type.js" type="text/javascript"></script>
     </body>
 
 </html> 
