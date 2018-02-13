@@ -92,10 +92,7 @@ include_once(dirname(__FILE__) . './auth.php');
                                                             </a>
 
                                                             |
-
-                                                            <a href="arrange-vehicle-type.php"> 
-                                                                <button class="glyphicon glyphicon-random arrange-btn"></button>
-                                                            </a>
+                                                            <a href="view-transport-photo.php?id=<?php echo $vehicle_t['id']; ?>">  <button class="glyphicon glyphicon-picture arrange-btn"></button></a>
                                                         </td>
                                                     </tr>
                                                     <?php

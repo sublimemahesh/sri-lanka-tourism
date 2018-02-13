@@ -90,11 +90,30 @@ class Transports {
 
     public function delete() {
 
+        $this->deletePhotos();
+
         $query = 'DELETE FROM `transports` WHERE id="' . $this->id . '"';
 
         $db = new Database();
 
         return $db->readQuery($query);
+    }
+
+    public function deletePhotos() {
+
+        $TRANSPORT_PHOTO = new TransportPhoto(NULL);
+
+        $allPhotos = $TRANSPORT_PHOTO->getTransportPhotosById($this->id);
+
+        foreach ($allPhotos as $photo) {
+
+            $IMG = $TRANSPORT_PHOTO->image_name = $photo["image_name"];
+            unlink(Helper::getSitePath() . "upload/transport/transport-photo/gallery/" . $IMG);
+            unlink(Helper::getSitePath() . "upload/transport/transport-photo/gallery/thumb/" . $IMG);
+
+            $TRANSPORT_PHOTO->id = $photo["id"];
+            $TRANSPORT_PHOTO->delete();
+        }
     }
 
 }
