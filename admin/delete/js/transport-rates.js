@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $('.delete-tour-sub-section').click(function () {
+    $('.delete-transport-rates').click(function () {
 
         var id = $(this).attr("data-id");
 
@@ -14,7 +14,7 @@ $(document).ready(function () {
         }, function () {
 
             $.ajax({
-                url: "delete/ajax/tour-sub-section.php",
+                url: "delete/ajax/transport-rates.php",
                 type: "POST",
                 data: {id: id, option: 'delete'},
                 dataType: "JSON",
@@ -23,7 +23,7 @@ $(document).ready(function () {
 
                         swal({
                             title: "Deleted!",
-                            text: "Tour Sub Section has been deleted.",
+                            text: "Transport rates has been deleted.",
                             type: 'success',
                             timer: 2000,
                             showConfirmButton: false

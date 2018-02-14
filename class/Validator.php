@@ -94,7 +94,8 @@ class Validator {
             foreach ($_SESSION['ERRORS'] as $error) {
                 ?>
                 <div class="alert alert-<?php echo $error["status"]; ?>">
-                    <strong><?php echo ucfirst($error["status"]); ?> : </strong> <?php echo ucfirst($error["message"]); ?>!.
+                    <strong><?php echo ucfirst($error["status"]); ?> : </strong> 
+                <?php echo ucfirst($error["message"]); ?>!.
                 </div>
                 <?php
             }

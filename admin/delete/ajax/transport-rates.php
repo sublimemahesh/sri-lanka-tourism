@@ -3,10 +3,11 @@
 include_once(dirname(__FILE__) . '/../../../class/include.php');
 include_once(dirname(__FILE__) . '/../../auth.php');
 
-if ($_POST['option'] == 'delete') {
-    $TOUR_PACKAGE = new TourPackage($_POST['id']);
 
-    $result = $TOUR_PACKAGE->delete();
+if ($_POST['option'] == 'delete') {
+    $TRANSPORT_RATES = new TransportRates($_POST['id']);
+
+    $result = $TRANSPORT_RATES->delete();
 
     if ($result) {
         $data = array("status" => TRUE);
@@ -14,5 +15,3 @@ if ($_POST['option'] == 'delete') {
         echo json_encode($data);
     }
 }
-
-
