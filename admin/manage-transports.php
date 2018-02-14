@@ -83,14 +83,14 @@ include_once(dirname(__FILE__) . './auth.php');
                                                         <td>  
 
                                                             <a href="edit-transports.php?id=<?php echo $vehicle_t['id']; ?>" <button class="glyphicon glyphicon-pencil edit-btn"></button></a>
-
-
                                                             |  
-
                                                             <a href="#" > 
-                                                                <button class="glyphicon glyphicon-trash delete-btn delete-transports" data-id="<?php echo $vehicle_t['id']; ?>"></button>
+                                                                <button class="glyphicon glyphicon-trash delete-btn delete-transports" data-id="<?php echo $vehicle_t['id']; ?>"></button> 
+                                                            </a>  
+                                                            |  
+                                                            <a href="view-transport-rates.php?id=<?php echo $vehicle_t['id']; ?>">
+                                                                <button class="glyphicon glyphicon-indent-left arrange-btn"></button>
                                                             </a>
-
                                                             |
                                                             <a href="view-transport-photo.php?id=<?php echo $vehicle_t['id']; ?>">  <button class="glyphicon glyphicon-picture arrange-btn"></button></a>
                                                         </td>

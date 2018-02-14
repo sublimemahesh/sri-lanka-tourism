@@ -22,6 +22,8 @@ include_once(dirname(__FILE__) . '/VehicleType.php');
 include_once(dirname(__FILE__) . '/Transports.php');
 include_once(dirname(__FILE__) . '/AccommodationGeneralFacilities.php');
 include_once(dirname(__FILE__) . '/TransportPhoto.php');
+include_once(dirname(__FILE__) . '/TransportRates.php');
+
 
 function dd($data) {
     var_dump($data);

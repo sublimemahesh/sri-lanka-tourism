@@ -3,14 +3,14 @@ include_once(dirname(__FILE__) . '/../class/include.php');
 include_once(dirname(__FILE__) . './auth.php');
 $id = $_GET['id'];
 
-$TOUR_SUB = TourSubSection::GetTourSubSectionByTourPackage($id);
+$TRANSPORT_RATES = TransportRates::GetTransportRatesByTransportId($id);
 ?>
 <!DOCTYPE html>
 <html> 
     <head>
         <meta charset="UTF-8">
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <title>Arrange Tour Sub Section - www.srilankatourism.travel</title>
+        <title>Arrange Transport Rates - www.srilankatourism.travel</title>
         <!-- Favicon-->
         <link rel="icon" href="favicon.ico" type="image/x-icon">
         <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
@@ -36,31 +36,42 @@ $TOUR_SUB = TourSubSection::GetTourSubSectionByTourPackage($id);
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="card">
                             <div class="header">
-                                <h2>Arrange Tour Dates</h2>
+                                <h2>Arrange Transport Rates</h2>
                                 <ul class="header-dropdown">
                                     <li class="">
-                                        <a href="view-tour-sub-section.php?id=<?php echo $id ?>">
+                                        <a href="view-transport-rates.php?id=<?php echo $id ?>">
                                             <i class="material-icons">list</i> 
                                         </a>
                                     </li>
                                 </ul>
                             </div>
                             <div class="body">
-                                <form method="post" action="post-and-get/tour-sub-section.php" class="form-horizontal" >
+                                <form method="post" action="post-and-get/transport-rates.php" class="form-horizontal" >
                                     <div class="panel-body">
                                         <div class="row">
                                             <div class="col-md-12 arrange-container">
                                                 <ul id="sortable">
                                                     <?php
-                                                    if (count($TOUR_SUB) > 0) {
-                                                        foreach ($TOUR_SUB as $key => $img) {
+                                                    if (count($TRANSPORT_RATES) > 0) {
+                                                        foreach ($TRANSPORT_RATES as $key => $rates) {
                                                             ?>
                                                             <div class="col-md-3" style="list-style: none;">
                                                                 <li class="ui-state-default">
                                                                     <span class="number-class">(<?php echo $key + 1; ?>)</span>
-                                                                    <div><?php echo $img["title"]; ?></div>
-                                                                    <div><?php echo $img["duration"]; ?></div>
-                                                                    <input type="hidden" name="sort[]"  value="<?php echo $img["id"]; ?>" class="sort-input"/>
+                                                                    <p class="maxlinetitle"><b>From :</b>
+                                                                        <?php
+                                                                        $city = new City($rates['location_from']);
+                                                                        echo $city->name;
+                                                                        ?>
+                                                                    </p>
+                                                                    <p class="maxlinetitle"><b>To :</b>
+                                                                        <?php
+                                                                        $CITY = new City($rates['location_to']);
+                                                                        echo $CITY->name;
+                                                                        ?>
+                                                                    </p>
+                                                                    <div> <b>Price :</b><?php echo $rates["price"]; ?></div>
+                                                                    <input type="hidden" name="sort[]"  value="<?php echo $rates["id"]; ?>" class="sort-input"/>
 
                                                                 </li>
                                                             </div>
@@ -75,7 +86,7 @@ $TOUR_SUB = TourSubSection::GetTourSubSectionByTourPackage($id);
                                                 </ul>  
                                                 <div class="row">
                                                     <div class="col-sm-12 text-center" style="margin-top: 19px;">
-                                                        <input type="submit" class="btn btn-info" id="btn-submit" value="Save Images" name="save-data">
+                                                        <input type="submit" class="btn btn-info" id="btn-submit" value="Save Images" name="arrange-data">
                                                     </div>
                                                 </div>
                                             </div>

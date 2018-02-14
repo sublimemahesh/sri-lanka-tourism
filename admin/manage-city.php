@@ -81,7 +81,7 @@ include_once(dirname(__FILE__) . './auth.php');
                                                         <td><?php echo $dis['name']; ?></td>
                                                         <td> 
                                                             <a href="edit-city.php?id=<?php echo $dis['id']; ?>" class="op-link"><button class="glyphicon glyphicon-pencil"></button></a>  |  
-                                                           
+
                                                             <a href="#" class="delete-city" data-id="<?php echo $dis['id']; ?>">
                                                                 <button class="glyphicon glyphicon-trash" data-type="cancel"></button>
                                                             </a>

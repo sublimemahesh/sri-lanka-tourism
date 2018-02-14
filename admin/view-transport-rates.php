@@ -5,7 +5,7 @@ $id = '';
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 }
-$TOUR_PACKAGE = new TourPackage($id)
+$TRANSPORTS = new Transports($id);
 ?> 
 <!DOCTYPE html>
 <html>
@@ -13,7 +13,7 @@ $TOUR_PACKAGE = new TourPackage($id)
     <head>
         <meta charset="UTF-8">
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <title>Add New Tour Sub Section - www.srilankatourism.travel</title>
+        <title>Add New Transports Rates - www.srilankatourism.travel</title>
         <!-- Favicon-->
         <link rel="icon" href="favicon.ico" type="image/x-icon">
         <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
@@ -44,57 +44,76 @@ $TOUR_PACKAGE = new TourPackage($id)
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="card">
                             <div class="header">
-                                <h2>Create Tour Sub Section</h2>
+                                <h2>Create Transports Rates</h2>
                                 <ul class="header-dropdown">
                                     <li class="">
-                                        <a href="manage-tour-package.php">
+                                        <a href="manage-transports.php">
                                             <i class="material-icons">list</i> 
                                         </a>
                                     </li>
                                 </ul>
                             </div>
                             <div class="body">
-                                <form class="form-horizontal"  method="post" action="post-and-get/tour-sub-section.php" enctype="multipart/form-data"> 
+                                <form class="form-horizontal"  method="post" action="post-and-get/transport-rates.php" enctype="multipart/form-data"> 
                                     <div class="row clearfix">
-                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                            <label for="title">Title</label>
+
+                                        <div class="row clearfix">
+                                            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                                <label for="location_from">Location From</label>
+                                            </div>
+                                            <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                                <div class="form-group place-select">
+                                                    <div class="form-line">
+                                                        <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="location_from" autocomplete="off" name="location_from" required="TRUE">
+                                                            <option value=""> -- Please Select -- </option>
+                                                            <?php foreach (City::all() as $key => $location_from) {
+                                                                ?>
+                                                                <option value="<?php echo $location_from['id']; ?>"><?php echo $location_from['name']; ?></option><?php
+                                                            }
+                                                            ?>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                                            <div class="form-group">
-                                                <div class="form-line">
-                                                    <input type="text" id="title" class="form-control" placeholder="Enter Tour Sub Section" autocomplete="off" name="title" required="true">
+
+                                        <div class="row clearfix">
+                                            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                                <label for="location_to">Location To</label>
+                                            </div>
+                                            <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                                <div class="form-group place-select">
+                                                    <div class="form-line">
+                                                        <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="location_to" autocomplete="off" name="location_to" required="TRUE">
+                                                            <option value=""> -- Please Select -- </option>
+                                                            <?php foreach (City::all() as $key => $location_to) {
+                                                                ?>
+                                                                <option value="<?php echo $location_to['id']; ?>"><?php echo $location_to['name']; ?></option><?php
+                                                            }
+                                                            ?>
+                                                        </select>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                            <label for="duration">Duration</label>
+                                            <label for="price">Price</label>
                                         </div>
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <input type="text" id="duration" class="form-control" placeholder="Enter Tour Sub Section Duration" autocomplete="off" name="duration" required="true">
+                                                    <input type="text" id="price" class="form-control" placeholder="Enter Price" autocomplete="off" name="price" required="true">
                                                 </div>
                                             </div>
                                         </div>
 
 
-
-                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                            <label for="description">Description</label>
-                                        </div>
-                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                                            <div class="form-group">
-                                                <div class="form-line">
-                                                    <textarea id="description" name="description" class="form-control" rows="5"></textarea>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
                                     <div class="row clearfix">
                                         <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5"> 
-                                            <input type="hidden" id="id" value="<?php echo $TOUR_PACKAGE->id; ?>" name="id"/>
-                                            <input type="submit" name="add-tour-sub-section" class="btn btn-primary m-t-15 waves-effect" value="create"/>
+                                            <input type="hidden" id="id" value="<?php echo $TRANSPORTS->id; ?>" name="id"/>
+                                            <input type="submit" name="add-transport-rates" class="btn btn-primary m-t-15 waves-effect" value="create"/>
                                         </div>
                                     </div>
                                     <hr/>
@@ -108,47 +127,54 @@ $TOUR_PACKAGE = new TourPackage($id)
                                                 <thead>
                                                     <tr>
                                                         <th>ID</th>
-                                                        <th>Title</th>
-                                                        <th>Duration</th> 
+                                                        <th>From</th>
+                                                        <th>To</th> 
+                                                        <th>Price</th>
                                                         <th>Option</th>
-
                                                     </tr>
                                                 </thead>
                                                 <tfoot>
                                                     <tr>
                                                         <th>ID</th>
-                                                        <th>Title</th>
-                                                        <th>Duration</th> 
+                                                        <th>From</th>
+                                                        <th>To</th> 
+                                                        <th>Price</th>
                                                         <th>Option</th>
                                                     </tr>
                                                 </tfoot>
                                                 <tbody>
                                                     <?php
-                                                    $TOUR_SUB = TourSubSection::GetTourSubSectionByTourPackage($id);
-                                                    if (count($TOUR_SUB) > 0) {
-                                                        foreach ($TOUR_SUB as $key => $tour_s) {
+                                                    $TRANSPORT_RATES = TransportRates::GetTransportRatesByTransportId($id);
+                                                    if (count($TRANSPORT_RATES) > 0) {
+                                                        foreach ($TRANSPORT_RATES as $key => $transport_rates) {
                                                             ?>
-                                                            <tr id="row_<?php echo $tour_s['id']; ?>">
-                                                                <td><?php echo $tour_s['sort']; ?></td> 
-                                                                <td><?php echo $tour_s['title']; ?></td>
-                                                                <td><?php echo $tour_s['duration']; ?></td>
+                                                            <tr id="row_<?php echo $transport_rates['id']; ?>">
+                                                                <td><?php echo $transport_rates['sort']; ?></td> 
+                                                                <td>
+                                                                    <?php
+                                                                    $city = new City($transport_rates['location_from']);
+                                                                    echo $city->name;
+                                                                    ?>
+                                                                </td>
+                                                                <td>
+                                                                    <?php
+                                                                    $CITY = new City($transport_rates['location_to']);
+                                                                    echo $CITY->name;
+                                                                    ?>
+                                                                </td>
+                                                                <td> $<?php echo $transport_rates['price']; ?></td>
                                                                 <td> 
-                                                                    <a href="#"> 
-                                                                        <button class="glyphicon glyphicon-trash delete-btn delete-tour-sub-section" data-id="<?php echo $tour_s['id']; ?>"></button>
-                                                                    </a>
-                                                                    <a href="edit-tour-sub-section.php?id=<?php echo $tour_s['id']; ?>">
-                                                                        <button class="glyphicon glyphicon-pencil edit-btn"></button>
-                                                                    </a>
-                                                                    <a href="arrange-tour-sub-section.php?id=<?php echo $id; ?>"> 
-                                                                        <button class="glyphicon glyphicon-random arrange-btn"></button>
-                                                                    </a>
+                                                                    <a href="#"> <button class="glyphicon glyphicon-trash delete-btn delete-transport-rates" data-id="<?php echo $transport_rates['id']; ?>"></button></a>
+                                                                    <a href="edit-transport-rates.php?id=<?php echo $transport_rates['id']; ?>"> <button class="glyphicon glyphicon-pencil edit-btn"></button></a>
+                                                                    <a href="arrange-transport-rates.php?id=<?php echo $id; ?>">  <button class="glyphicon glyphicon-random arrange-btn"></button></a>
+
                                                                 </td>
                                                             </tr>
                                                             <?php
                                                         }
                                                     } else {
                                                         ?> 
-                                                    <b style="padding-left: 15px;">No Tour Dates in the database.</b> 
+                                                    <b style="padding-left: 15px;">No Transports Rates in the database.</b> 
                                                 <?php } ?> 
                                                 </tbody>
                                             </table>
@@ -158,13 +184,11 @@ $TOUR_PACKAGE = new TourPackage($id)
 
 
 
+
                             </div>
                         </div>
                     </div>
                 </div>
-
-
-                <!-- #END# Vertical Layout -->
 
             </div>
         </section>
@@ -183,8 +207,8 @@ $TOUR_PACKAGE = new TourPackage($id)
         <script src="plugins/bootstrap-notify/bootstrap-notify.js"></script>
         <script src="js/pages/ui/dialogs.js"></script>
         <script src="js/demo.js"></script>
-        <script src="delete/js/tour-sub-section.js" type="text/javascript"></script>
         <script src="tinymce/js/tinymce/tinymce.min.js"></script>
+        <script src="delete/js/transport-rates.js" type="text/javascript"></script>
         <script>
             tinymce.init({
                 selector: "#description",

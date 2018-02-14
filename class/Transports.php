@@ -91,6 +91,7 @@ class Transports {
     public function delete() {
 
         $this->deletePhotos();
+        $this->deleteTransportRates();
 
         $query = 'DELETE FROM `transports` WHERE id="' . $this->id . '"';
 
@@ -113,6 +114,19 @@ class Transports {
 
             $TRANSPORT_PHOTO->id = $photo["id"];
             $TRANSPORT_PHOTO->delete();
+        }
+    }
+
+    public function deleteTransportRates() {
+
+        $TRANSPORT_RATES = new TransportRates(NULL);
+
+        $Rates = $TRANSPORT_RATES->GetTransportRatesByTransportId($this->id);
+
+        foreach ($Rates as $Rate) {
+
+            $TRANSPORT_RATES->id = $Rate["id"];
+            $TRANSPORT_RATES->delete();
         }
     }
 
