@@ -1,8 +1,8 @@
-﻿<?php
+<?php
 include_once(dirname(__FILE__) . '/../class/include.php');
 include_once(dirname(__FILE__) . '/auth.php');
 
-$VEHICLE_TYPE = new VehicleType(NULL)
+$OFFER = new Offer(NULL)
 ?> 
 ﻿<!DOCTYPE html>
 <html>
@@ -10,7 +10,7 @@ $VEHICLE_TYPE = new VehicleType(NULL)
     <head>
         <meta charset="UTF-8">
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <title>Manage Vehicle Type - www.srilankatourism.travel</title>
+        <title>Manage Offer - www.srilankatourism.travel</title>
         <!-- Favicon-->
         <link rel="icon" href="favicon.ico" type="image/x-icon">
 
@@ -48,79 +48,71 @@ $VEHICLE_TYPE = new VehicleType(NULL)
 
                 $vali->show_message();
                 ?>
-                <!-- Manage vehicle -->
+                <!-- Manage Districts -->
                 <div class="row clearfix">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="card">
                             <div class="header">
                                 <h2>
-                                    Manage Vehicle type
+                                    Manage Offer
                                 </h2>
                                 <ul class="header-dropdown">
                                     <li>
-                                        <a href="create-vehicle-type.php">
+                                        <a href="create-offer.php">
                                             <i class="material-icons">add</i> 
                                         </a>
                                     </li>
                                 </ul>
                             </div>
                             <div class="body">
-                                <!-- <div class="table-responsive">-->
+                                <!--                                <div class="table-responsive">-->
                                 <div>
-                                    <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
-                                        <thead>
-                                            <tr>
-                                                <th>ID</th>
-                                                <th>Name</th> 
-                                                <th>Options</th>
-                                            </tr>
-                                        </thead>
-                                        <tfoot>
-                                            <tr>
-                                                <th>ID</th>
-                                                <th>Name</th> 
-                                                <th>Options</th>
-                                            </tr>
-                                        </tfoot>
-                                        <tbody>
-
-                                            <?php
-                                            foreach ($VEHICLE_TYPE->all() as $key => $vehicle) {
-                                                ?>
-                                                <tr id="row_<?php echo $vehicle['id']; ?>">
-                                                    <td><?php echo $vehicle['sort']; ?></td> 
-                                                    <td><?php echo $vehicle['name']; ?></td> 
-                                                    <td>  
-
-                                                        <a href="edit-vehicle-type.php?id=<?php echo $vehicle['id']; ?>"> <button class="glyphicon glyphicon-pencil edit-btn"></button></a>
-
-
-                                                        |  
-
-                                                        <a href="#" > 
-                                                            <button class="glyphicon glyphicon-trash delete-btn delete-vehicle-type" data-id="<?php echo $vehicle['id']; ?>"></button>
+                                    <div class="row clearfix">
+                                        <?php
+                                        foreach ($OFFER->all() as $key => $offer) {
+                                            ?>
+                                            <div class="col-md-3"  id="div_<?php echo $offer['id']; ?>">
+                                                <p class="maxlinetitle"><?php echo $offer['sort']; ?></p>  
+                                                <div class="photo-img-container">
+                                                    <img src="../upload/offer/<?php echo $offer['image_name']; ?>" class="img-responsive ">
+                                                </div>
+                                                <div class="img-caption">
+                                                    <p class="maxlinetitle"><b>Title : </b><?php echo $offer['title']; ?></p>  
+                                                    <p class="maxlinetitle">
+                                                        <b>Type :</b> <?php
+                                                        if ($offer['type'] == 1) {
+                                                            echo "Tours";
+                                                        } elseif ($offer['type'] == 2) {
+                                                            echo "Accommodation";
+                                                        } elseif ($offer['type'] == 3) {
+                                                            echo "Transport";
+                                                        }
+                                                        ?>
+                                                    </p>  
+                                                    <div class="d">
+                                                        <a href="#"  class="delete-offer" data-id="<?php echo $offer['id']; ?>"> <button class="glyphicon glyphicon-trash delete-btn"></button></a>
+                                                        <a href="edit-offer.php?id=<?php echo $offer['id']; ?>"> 
+                                                            <button class="glyphicon glyphicon-pencil edit-btn"></button>
                                                         </a>
-
-                                                        |
-
-                                                        <a href="arrange-vehicle-type.php?id="> 
+                                                        <a href="arrange-offer.php?id=">  
                                                             <button class="glyphicon glyphicon-random arrange-btn"></button>
                                                         </a>
-                                                    </td>
-                                                </tr>
-                                                <?php
-                                            }
-                                            ?>   
-                                        </tbody>
-                                    </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <?php
+                                        }
+                                        ?>  
+
+                                    </div>
                                 </div>
                             </div>
+
+
                         </div>
                     </div>
-                </div>
-                <!-- #END# Manage District -->
 
-            </div>
+                </div>
         </section>
 
         <!-- Jquery Core Js -->
@@ -156,7 +148,7 @@ $VEHICLE_TYPE = new VehicleType(NULL)
 
         <!-- Demo Js -->
         <script src="js/demo.js"></script>
-        <script src="delete/js/vehicle-type.js" type="text/javascript"></script>
+        <script src="delete/js/offer.js" type="text/javascript"></script>
     </body>
 
 </html> 

@@ -2,14 +2,15 @@
 include_once(dirname(__FILE__) . '/../class/include.php');
 include_once(dirname(__FILE__) . './auth.php');
 $id = $_GET['id'];
-$VEHICLE_TYPE = VehicleType::all();
+
+$OFFER = Offer::all();
 ?>
 <!DOCTYPE html>
 <html> 
     <head>
         <meta charset="UTF-8">
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <title>Arrange Vehicle Type - www.srilankatourism.travel</title>
+        <title>Arrange Offer Type - www.srilankatourism.travel</title>
         <!-- Favicon-->
         <link rel="icon" href="favicon.ico" type="image/x-icon">
         <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
@@ -35,29 +36,43 @@ $VEHICLE_TYPE = VehicleType::all();
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="card">
                             <div class="header">
-                                <h2>Arrange Vehicle Type</h2>
+                                <h2>Arrange Offer Type</h2>
                                 <ul class="header-dropdown">
                                     <li class="">
-                                        <a href="manage-vehicle-type.php?id=<?php echo $id ?>">
+                                        <a href="manage-offer.php?id=<?php echo $id; ?>">
                                             <i class="material-icons">list</i> 
                                         </a>
                                     </li>
                                 </ul>
                             </div>
                             <div class="body">
-                                <form method="post" action="post-and-get/vehicle-type.php" class="form-horizontal" >
+                                <form method="post" action="post-and-get/offer.php" class="form-horizontal" >
                                     <div class="panel-body">
                                         <div class="row">
                                             <div class="col-md-12 arrange-container">
                                                 <ul id="sortable">
                                                     <?php
-                                                    if (count($VEHICLE_TYPE) > 0) {
-                                                        foreach ($VEHICLE_TYPE as $key => $img) {
+                                                    if (count($OFFER) > 0) {
+                                                        foreach ($OFFER as $key => $img) {
                                                             ?>
                                                             <div class="col-md-3" style="list-style: none;">
                                                                 <li class="ui-state-default">
                                                                     <span class="number-class">(<?php echo $key + 1; ?>)</span>
-                                                                    <div><?php echo $img["name"]; ?></div>
+                                                                    <div class="photo-img-container">
+                                                                        <img src="../upload/offer/<?php echo $img['image_name']; ?>" class="img-responsive ">
+                                                                    </div>
+                                                                    <div> <b>Title :</b><?php echo $img["title"]; ?></div>
+                                                                    <p class="maxlinetitle">
+                                                                        <b>Type :</b> <?php
+                                                                        if ($img['type'] == 1) {
+                                                                            echo "Tours";
+                                                                        } elseif ($img['type'] == 2) {
+                                                                            echo "Accommodation";
+                                                                        } elseif ($img['type'] == 3) {
+                                                                            echo "Transport";
+                                                                        }
+                                                                        ?>
+                                                                    </p>  
                                                                     <input type="hidden" name="sort[]"  value="<?php echo $img["id"]; ?>" class="sort-input"/>
 
                                                                 </li>
@@ -73,7 +88,7 @@ $VEHICLE_TYPE = VehicleType::all();
                                                 </ul>  
                                                 <div class="row">
                                                     <div class="col-sm-12 text-center" style="margin-top: 19px;">
-                                                        <input type="submit" class="btn btn-info" id="btn-submit" value="Save Images" name="save-data">
+                                                        <input type="submit" class="btn btn-info" id="btn-submit" value="Save Images" name="arrange-data">
                                                     </div>
                                                 </div>
                                             </div>
@@ -111,6 +126,7 @@ $VEHICLE_TYPE = VehicleType::all();
                 // ===========================================
                 // INCLUDE THE PLUGIN
                 // ===========================================
+
                 plugins: [
                     "advlist autolink lists link image charmap print preview anchor",
                     "searchreplace visualblocks code fullscreen",
@@ -119,12 +135,17 @@ $VEHICLE_TYPE = VehicleType::all();
                 // ===========================================
                 // PUT PLUGIN'S BUTTON on the toolbar
                 // ===========================================
+
                 toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image jbimages",
                 // ===========================================
                 // SET RELATIVE_URLS to FALSE (This is required for images to display properly)
                 // ===========================================
+
                 relative_urls: false
+
             });
+
+
         </script>
 
         <script>
@@ -136,3 +157,4 @@ $VEHICLE_TYPE = VehicleType::all();
     </body>
 
 </html>
+

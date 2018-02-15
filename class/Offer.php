@@ -1,37 +1,50 @@
 <?php
 
 /**
- * Description of VehicleType
+ * Description of Offer
  *
  * @author official
  */
-class VehicleType {
+class Offer {
 
     public $id;
-    public $name;
+    public $title;
+    public $image_name;
+    public $description;
+    public $type;
+    public $url;
     public $sort;
 
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`,`name`,`sort` FROM `vehicle_type` WHERE `id`=" . $id;
+            $query = "SELECT `id`,`title`,`image_name`,`description`,`type`,`sort`,`url` FROM `offer` WHERE `id`=" . $id;
 
             $db = new Database();
 
             $result = mysql_fetch_array($db->readQuery($query));
 
             $this->id = $result['id'];
-            $this->name = $result['name'];
+            $this->title = $result['title'];
+            $this->image_name = $result['image_name'];
+            $this->description = $result['description'];
+            $this->type = $result['type'];
+            $this->url = $result['url'];
             $this->sort = $result['sort'];
+
             return $this;
         }
     }
 
     public function create() {
 
-        $query = "INSERT INTO `vehicle_type` (`name`,`sort`) VALUES  ('"
-                . $this->name . "','"
-                . $this->sort . "')";
+        $query = "INSERT INTO `offer` (`title`,`image_name`,`description`,`type`,`sort`,`url`) VALUES  ('"
+                . $this->title . "','"
+                . $this->image_name . "','"
+                . $this->description . "','"
+                . $this->type . "','"
+                . $this->sort . "','"
+                . $this->url . "')";
 
         $db = new Database();
 
@@ -48,7 +61,7 @@ class VehicleType {
 
     public function all() {
 
-        $query = "SELECT * FROM `vehicle_type` ORDER BY sort ASC";
+        $query = "SELECT * FROM `offer` ORDER BY sort ASC";
         $db = new Database();
         $result = $db->readQuery($query);
         $array_res = array();
@@ -62,9 +75,13 @@ class VehicleType {
 
     public function update() {
 
-        $query = "UPDATE  `vehicle_type` SET "
-                . "`name` ='" . $this->name . "', "
-                . "`sort` ='" . $this->sort . "' "
+        $query = "UPDATE  `offer` SET "
+                . "`title` ='" . $this->title . "', "
+                . "`image_name` ='" . $this->image_name . "', "
+                . "`description` ='" . $this->description . "', "
+                . "`type` ='" . $this->type . "', "
+                . "`sort` ='" . $this->sort . "', "
+                . "`url` ='" . $this->url . "' "
                 . "WHERE `id` = '" . $this->id . "'";
 
         $db = new Database();
@@ -80,16 +97,16 @@ class VehicleType {
 
     public function delete() {
 
-        $query = 'DELETE FROM `vehicle_type` WHERE id="' . $this->id . '"';
+        $query = 'DELETE FROM `offer` WHERE id="' . $this->id . '"';
 
         $db = new Database();
 
         return $db->readQuery($query);
     }
 
-    public function GetVehicleTypeById($id) {
+    public function GetOfferById($id) {
 
-        $query = "SELECT * FROM `vehicle_type` WHERE `id` = '" . $id . "' ORDER BY `sort` ASC";
+        $query = "SELECT * FROM `offer` WHERE `id` = '" . $id . "' ORDER BY `sort` ASC";
 
         $db = new Database();
 
@@ -104,7 +121,7 @@ class VehicleType {
     }
 
     public function arrange($key, $img) {
-        $query = "UPDATE `vehicle_type` SET `sort` = '" . $key . "'  WHERE id = '" . $img . "'";
+        $query = "UPDATE `offer` SET `sort` = '" . $key . "'  WHERE id = '" . $img . "'";
         $db = new Database();
         $result = $db->readQuery($query);
         return $result;
