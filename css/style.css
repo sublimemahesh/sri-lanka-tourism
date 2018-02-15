@@ -1,0 +1,783 @@
+/***************************************************************************************************************
+||||||||||||||||||||||||||||       MASTER STYLESHEET FOR RESORT       ||||||||||||||||||||||||||||||||||||
+****************************************************************************************************************
+||||||||||||||||||||||||||||              TABLE OF CONTENT                  ||||||||||||||||||||||||||||||||||||
+****************************************************************************************************************
+****************************************************************************************************************
+
+1 Imported styles
+2 Global styles
+3 header top styles
+4 header top right section
+5 Home two main menu
+6 Stricky header Styles
+7 hidden bar Styles
+8 banner styles
+9 Search styles
+10 Welcome to Lake Resort styles
+11 Rooms And Suits styles
+12 Know About Us styles
+13 Our Resort Values styles
+14 satisfied with the Resort styles
+15 Testimonials styles
+16 News and Events styles
+17 Green Band ads style
+18 footer style
+19 Top right search field Styles
+20 Top right Search results Styles
+21 Inner page - about us
+22 accrodion - about us
+23 Take a tour video - about us
+24 Room1 style
+25 Room2 style
+26 News page styles
+27 News Details Comments
+28 gallery filter Styles
+29 image-gallery Styles
+30 pop up single gallery item Styles
+31 Booking Styles 
+32 Single room Styles
+33 Home Two Styles
+34 Home Two main menu Styles
+35 Home Two banner Styles
+36 Search Home Two Styles
+37 Counter Home Two Styles
+38 Activities of Resort Home Two Styles
+39 Our Offers Home Two Styles
+40 Our Gallery Home Two Styles
+41 Testimonials & Our Events Home Two Styles
+42 Get in Touch & Drop a Message Home Two Styles
+43 Rooms And Suits Home Two Styles
+44 Rooms Amenities Styles
+45 Resort Activities Styles
+46 Offers & Deals Styles
+47 Family Fun Styles
+48 hidden-bar Home Two Styles
+49 tracking styles
+50 our Restaurant Styles
+
+
+****************************************************************************************************************
+||||||||||||||||||||||||||||            End TABLE OF CONTENT                ||||||||||||||||||||||||||||||||||||
+****************************************************************************************************************/
+/* ==============================
+   1 Imported styles
+   ============================== */
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic);
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,800,700,900);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700);
+@import url(https://fonts.googleapis.com/css?family=Playball&amp;subset=latin,latin-ext);
+@import url(https://fonts.googleapis.com/css?family=PT+Serif:400italic,400);
+
+/*change css file name to change date picker style */
+
+/* ==============================
+   2 Global styles
+   ============================== */
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic);
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,800,700,900);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700);
+@import url(https://fonts.googleapis.com/css?family=Playball&amp;subset=latin,latin-ext);
+@import url(https://fonts.googleapis.com/css?family=PT+Serif:400italic,400);
+@import 'https://fonts.googleapis.com/css?family=Alegreya:400,400i,700,700i,900,900i';
+
+
+
+/* ==============================
+  3. header top and main menu styles
+============================== */
+
+
+/* ==============================
+  4. header top right section
+============================== */
+
+/* ==============================
+  5.Home two main menu
+============================== */
+
+
+
+/* ==============================
+  6. Stricky header Styles 
+============================== */
+
+
+/* ==============================
+  7. hidden bar Styles
+============================== */
+
+
+/* ==============================
+  8. Banner styles
+============================== */
+
+/* ==============================
+  9. Search styles
+============================== */
+
+/* ==============================
+  10. Welcome to Lake Resort styles
+============================== */
+
+
+/* ==============================
+  11. Rooms And Suits styles
+============================== */
+body {
+    font-family: "Open Sans", sans-serif;
+    height: 100%;
+    overflow-x: hidden;
+    letter-spacing: 0.2px;
+    color: #aaa;
+    background-color: #2740DA;
+    text-decoration: none;
+}
+.room-suite {
+    position: relative;
+}
+
+.common-pad {
+    padding-top: 2em;
+    /*  padding-bottom: 7em;*/
+}
+
+.sec-header {
+    position: relative;
+    display: table;
+    width: 100%;
+}
+
+.sec-header h2 {
+    color: #0e1322;
+    font: 2.43em/1em "Playball", sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.sec-header h3 {
+    color: #FFFFFF;
+    font: 400 1.15em/1.8em "Open Sans", sans-serif;
+    margin: -26px 0 -1.1em;
+    padding: 0;
+    font-style: italic;
+    position: relative;
+}
+
+.sec-header h3:after {
+    content: '';
+    position: absolute;
+    bottom: 7px;
+    width: 60px;
+    display: inline-block;
+    background: #FFFFFF;
+    margin: 0 0 0 12px;
+}
+
+.sec-header3 {
+    position: relative;
+}
+
+.sec-header3 h2 {
+    color: #0e1322;
+    font: 2.43em/1em "Playball", sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.sec-header3 h3 {
+    color: #aaaaaa;
+    font: 400 1.15em/1.8em "Open Sans", sans-serif;
+    margin: 0 0 2.1em;
+    padding: 0;
+    font-style: italic;
+    position: relative;
+}
+
+.sec-header3 h3:after {
+    content: '';
+    position: absolute;
+    bottom: 7px;
+    width: 60px;
+    height: 2px;
+    display: inline-block;
+    background: #a7cc38;
+    margin: 0 0 0 12px;
+}
+
+/* ==============================
+  12. Know About Us styles
+============================== */
+
+/* ==============================
+  13. Our Resort Values styles
+============================== */
+
+
+.tour-fa-text{
+    color: #FFFFFF;
+}
+.fa:hover {
+    opacity: 0.7;
+}
+
+.fa-facebook {
+    background: #3B5998;
+    color: white;
+    padding-top: 10px;
+    padding-right: 16px;
+    padding-left: 16px;
+    padding-bottom: 10px;
+    font-size: 30px;
+    text-align: center;
+
+}
+.fa-twitter {
+    background: #55ACEE;
+    color: white;
+    padding-top: 10px;
+    padding-right: 11px;
+    padding-left: 11px;
+    padding-bottom: 10px;
+    font-size: 30px;
+    text-align: center;
+
+}
+.fa-instagram {
+    background: #125688;
+    color: white;
+    padding-top: 10px;
+    padding-right: 11px;
+    padding-left: 11px;
+    padding-bottom: 10px;
+    font-size: 30px;
+    text-align: center;
+
+}
+.fa-linkedin {
+    background: #007bb5;
+    color: white;
+    padding-top: 10px;
+    padding-right: 11px;
+    padding-left: 11px;
+    padding-bottom: 10px;
+    font-size: 30px;
+    text-align: center;
+}
+
+
+.sec-header h4 {
+    color: #FFFFFF;
+    font: 400 1.15em/1.8em "Open Sans", sans-serif;
+    margin: -26px 0 -0.1em;
+    padding: 0;
+    font-style: italic;
+    position: relative;
+
+}
+
+.sec-header h4:after {
+    content: '';
+    position: absolute;
+    bottom: 7px;
+    width: 60px;
+    height: 2px;
+    display: inline-block;
+    background: #FFFFFF;
+    margin: 0 0 0 12px;
+}
+.sec-header3 h4 {
+    color: #aaaaaa;
+    font: 400 1.15em/1.8em "Open Sans", sans-serif;
+    margin: 0 0 2.1em;
+    padding: 0;
+    font-style: italic;
+    position: relative;
+}
+
+.sec-header3 h4:after {
+    content: '';
+    position: absolute;
+    bottom: 7px;
+    width: 60px;
+    height: 2px;
+    display: inline-block;
+    background: #a7cc38;
+    margin: 0 0 0 12px;
+}
+
+
+
+.sec-header h2 {
+    color: #FFFFFF;
+    font: 400 1.15em/1.8em "Open Sans", sans-serif;
+    margin: 37px 0 0.9em;
+    padding: 0;
+    position: relative;
+    color: #FFFFFF;
+    font: 2.43em/1em "Playball", sans-serif;
+
+}
+
+.sec-header h2:after {
+    content: '';
+    position: absolute;
+    bottom: 7px;
+    width: 60px;
+    height: 2px;
+    display: inline-block;
+    background: #FFFFFF;
+    margin: 0 0 0 12px;
+}
+.sec-header3 h2 {
+    color: #FFFFFF;
+    font: 400 1.15em/1.8em "Open Sans", sans-serif;
+    margin: 0 0 2.1em;
+    padding: 0;
+    font-style: italic;
+    position: relative;
+}
+
+.sec-header3 h2:after {
+    content: '';
+    position: absolute;
+    bottom: 7px;
+    width: 60px;
+    height: 2px;
+    display: inline-block;
+    background: #a7cc38;
+    margin: 0 0 0 12px;}
+
+.logo{
+
+    margin-bottom: -35px;
+    margin-top: 22px;
+    width: 66%;
+    height: 66%;
+
+}
+
+#footer-link{
+    color: #FFFFFF;
+    text-align: center;
+    margin-top:10px;
+    font-family: FreeMono, monospace
+}
+.footer-includes{
+    margin-top: 20px;
+}
+.footer-logo{
+    margin-top: 10px;
+}
+
+.fa-phone{
+    color: #FFFFFF;
+    font-size: 14px;
+    margin-right: 70px;
+    padding: 8px;
+    width: 44px;
+}
+.fa-mobile{
+    color: #FFFFFF;
+    font-size: 14px;
+    margin-right: 70px;
+    padding: 8px;
+    width: 44px;
+}
+.fa-envelope-o{
+    color: #FFFFFF;
+    font-size: 14px;
+    margin-right: 70px;
+    width: 44px;
+
+}
+.contact-info h5{
+    text-align: center;
+    color: #FFFFFF;
+    padding-top: 15px;
+    padding: 8px;
+
+}
+.contact-info fa{
+    text-align: center;
+}
+
+.dropdown-img{
+
+    position: absolute;
+    top: 3px;
+    margin-top: 20px;
+    margin-left: 1120px;
+    background-position: 0 0;
+}
+.contact-footer{
+    margin-left: -16px;
+    margin-right: -36px;
+}
+.content{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: justify;
+}
+
+input[type=text] {
+    width: 100%;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: white;
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding:5px 19px 6px 11px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+    margin-bottom: 18px;
+    color: #76767C;
+}
+.btn-search{
+    margin-bottom: 41px;;
+}
+
+
+input[type=text]:focus {
+    width: 100%;
+}
+
+
+
+.add-user{
+
+    /*    border-radius:  30px;
+        background-color: #2E8BC0;*/
+    float: right;
+    padding-top: 0px;
+    margin-left: 9px;
+    /*    padding: 4px;*/
+    width: 31px;
+    height: 31px;
+    margin-top: 2px;
+}
+.index{
+
+    /*    border-radius:  30px;*/
+    /*    background-color: #2E8BC0;*/
+    float: right;
+    padding-top: 2px;
+    margin-left: 9px;
+    /*    padding: 4px;*/
+    width: 32px;
+    height: 32px; 
+    margin-top: 2px;
+}
+
+
+.search-form .form-group {
+    float: right !important;
+    transition: all 0.35s, border-radius 0s;
+    width: 32px;
+    height: 32px;
+    background-color: #fff;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+
+}
+.search-form .form-group input.form-control {
+    padding-right: 20px;
+    border: 0 none;
+    background: transparent;
+    box-shadow: none;
+    display:block;
+}
+.search-form .form-group input.form-control::-webkit-input-placeholder {
+    display: none;
+}
+.search-form .form-group input.form-control:-moz-placeholder {
+    /* Firefox 18- */
+    display: none;
+}
+.search-form .form-group input.form-control::-moz-placeholder {
+    /* Firefox 19+ */
+    display: none;
+}
+.search-form .form-group input.form-control:-ms-input-placeholder {
+    display: none;
+}
+.search-form .form-group:hover,
+.search-form .form-group.hover {
+    width: 50%;
+    border-radius: 25px 25px 25px 25px;
+    height: 30px;
+}
+.search-form .form-group span.form-control-feedback {
+    position: absolute;
+    top: -1px;
+    right: -2px;
+    z-index: 2;
+    display: block;
+    width: 34px;
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
+    color: #3596e0;
+    left: initial;
+    font-size: 14px;
+}
+
+.taxi-title{
+    padding-top: 20px;
+    color: #FFFFFF;
+}
+.btn-search{
+    text-align: center;
+}
+.btn-style{
+    background-color: #003366;
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    padding: 14px 60px;
+}
+.btn-style:hover{
+    color: #003366;
+    background-color: #2E8BC0;
+}
+.body-style{
+    background-color: rgba(0,0,0,.60);
+    height: 460px; 
+    margin-top: 65px; 
+    margin-bottom: 65px;
+    border-radius: 10px;
+    height: auto;
+}
+
+.tab-pane h3{
+    color: #FFFFFF;
+}
+.background-image{
+    background-size: cover; 
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+}
+.btn-nav{
+    width: 105px;
+    padding-left: 5px;
+}
+.input-text{
+    color: #000;
+}
+.footer-title{
+    text-align: center;
+    font-size: 14px;
+    margin-top: 10px;
+    color: #FFFFFF;
+    /*    font-family: FreeMono, monospace;*/
+}
+.details{
+    padding-left: 10px; 
+    /*    font-family: FreeMono, monospace;*/
+}
+.taxi-content{
+    margin-bottom: 27px;
+}
+.bullets{
+    margin-bottom: 30px;
+    font-size: 20px;
+    list-style: none;
+    padding-left: 5px;
+    color: #FFFFFF;
+}
+.bullets span{
+    color: #FFFFFF;
+    padding-left: 10px;
+    font-size: 14px
+}
+.tour-details{
+    margin-bottom: 0px;
+    font-size: 20px;
+    list-style: none;
+    padding-left: 5px;
+    color: #70A0FF;
+    padding-top: 10px;
+    line-height: 4;
+}
+.tour-details span{
+    color: #70A0FF;
+    padding-left: 10px;
+    font-size: 14px
+}
+.btn-hotel{
+    background-color: #003366;
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 14px 80px;
+    cursor: pointer;
+    border-radius: 4px;
+    padding: 8px 10px;
+}
+.btn-hotel:hover{
+    color: #003366;
+    background-color: #2E8BC0;
+}
+.hotel-content{
+    text-align: justify;
+    margin-bottom: 6px;
+    color: #FFFFFF;
+}
+.hotel-body2{
+    margin-top: 35px;
+}
+.image-list{
+    max-height: 100%; 
+    max-width: 100%; 
+
+}
+.short-desc{
+    border: 3px solid #fff;
+    border-radius: 5px;
+}
+.offer-content{
+    color: #000;
+    margin-bottom: 40px;
+    margin-top: 19px;
+}
+.main-img{
+    margin-bottom: 15px;
+}
+.component-title{
+    color: #FFF;
+    font-size: 16px;
+
+}
+.underline {
+    padding-bottom: 2px;
+    border-bottom: #fff 1px solid;
+}
+.component-img{
+    margin-top: 20px;
+}
+#book-searchbar{
+    background-position: 5px 4px;
+    padding: 5px 19px 5px 42px;
+}
+
+.separate{
+    margin-left: -10px;
+    margin-right: 12px;
+    font-size: 20px;
+    font-family: Arial Narrow, sans-serif;
+}
+.fbottom{
+    font-family: FreeMono, monospace;
+    color: #aaaaaa;
+    padding-bottom: 20px;
+}
+hr{
+    color: grey;
+}
+
+.main-header{
+    height: 200px; 
+    background-color: #003366;
+}
+.social-icon{
+    float: right;
+}
+/*  .contact-row{
+     margin-top: -10px;
+  }
+*/  .user-section{
+    margin-bottom: -21px;
+    
+}
+.tour-image{
+    max-height: 100%;
+    max-width: 100%;
+}
+.contact-head{
+    margin-top: -24px;
+}
+.offer-content {
+    color: #000;
+    margin-bottom: 41px;
+    margin-top: 19px;
+}
+.hotel-body{
+    margin-bottom: 41px;
+}
+.tour-section{
+    margin-bottom: 41px;
+}
+.taxi-middle{
+    margin-bottom: 41px;
+}
+.input-search[type="submit"] {
+    margin-top: -5px !important;
+}
+
+#datepicker > span:hover{
+    cursor: pointer;
+}
+.top-border{
+    height: 50px;
+    background-color:#1F34B7;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding-left: 7px;
+     padding-top: 7px;
+}
+.bottom-border{
+    height: 55px;
+    background-color:#fff;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    color: #000;
+    padding-left: 7px;
+    padding-top: 3px;
+    padding-bottom: 8px;
+    margin-bottom: 40px;
+}
+.right{
+    float: right;
+    padding-right: 3px;
+}
+.star-rating {
+  line-height:32px;
+  font-size:1.25em;
+}
+
+.star-rating .fa-star{
+    color: #1F34B7;
+}
+.custom-search-form{
+    padding-top: 25px;
+    padding-bottom: 50px;
+}
+.search{
+    padding-top: 50px;
+    padding-left: 25px;
+}
+
+.search-que{
+    color: #fff;
+}
+.facts{
+    color: #fff;
+}
+.fact-title{
+    padding-top: 5px;
+}
