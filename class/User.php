@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Description of User
  *
@@ -291,10 +290,10 @@ class User {
             return $result;
         }
     }
-    
-     public function SelectResetCode($code) {
 
-      $query = "SELECT `id` FROM `user` WHERE `resetcode`= '" . $code . "'";
+    public function SelectResetCode($code) {
+
+        $query = "SELECT `id` FROM `user` WHERE `resetcode`= '" . $code . "'";
 
         $db = new Database();
 
@@ -307,10 +306,9 @@ class User {
             return TRUE;
         }
     }
-    
-    
-     public function updatePassword($password,$code) {
-  
+
+    public function updatePassword($password, $code) {
+
         $enPass = md5($password);
 
         $query = "UPDATE  `user` SET "
