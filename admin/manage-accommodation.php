@@ -106,7 +106,7 @@ $ACCOMODATION = new Accommodation(NULL)
 
                                                     <td><?php echo $accommodation['id']; ?></td> 
                                                     <td><?php echo substr($accommodation['name'], 0, 30); ?></td> 
-<!--                                                    <td><?php echo substr($accommodation['email'], 0, 15); ?></td> -->
+    <!--                                                    <td><?php echo substr($accommodation['email'], 0, 15); ?></td> -->
                                                     <td><?php echo substr($accommodation['website'], 0, 15); ?></td> 
                                                     <td><?php echo substr($accommodation_type->name, 0, 30); ?></td> 
                                                     <td><?php echo substr($city->name, 0, 30); ?></td>
@@ -118,7 +118,8 @@ $ACCOMODATION = new Accommodation(NULL)
                                                         <a href="#" class="delete-accommodation btn btn-sm btn-danger" data-id="<?php echo $accommodation['id']; ?>">
                                                             <i class="glyphicon glyphicon-trash" data-type="cancel"></i>
                                                         </a>
-                                                        <a href="view-accommodation-photos.php?id=<?php echo $accommodation['id']; ?>" class="op-link btn btn-sm btn-default"><i class="glyphicon glyphicon-picture"></i></a> 
+                                                        <a href="view-accommodation-photos.php?id=<?php echo $accommodation['id']; ?>" class="op-link btn btn-sm btn-default"><i class="glyphicon glyphicon-picture"></i></a>
+                                                        <a href="create-accommodation-rooms.php?id=<?php echo $accommodation['id']; ?>" class="op-link btn btn-sm btn-default"><i class="glyphicon glyphicon-bed"></i></a> 
                                                     </td>
                                                 </tr>
                                                 <?php
