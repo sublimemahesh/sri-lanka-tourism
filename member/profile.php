@@ -1,7 +1,9 @@
+<?php
+include_once(dirname(__FILE__) . '/../class/include.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 
-    <!-- Mirrored from www.blacktie.co/demo/dashgum/form_component.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 15 Feb 2018 07:15:01 GMT -->
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,6 +38,15 @@
                 <div class="wrapper">
                     <div class="container-fluid">
                         <div class="row">
+                            <?php
+                            if (isset($_GET['message'])) {
+                                $message = new Message($_GET['message']);
+                                ?>
+                                <div class="alert alert-success"><b>Well done!</b><?php echo $message->description; ?></div>
+
+                                <?php
+                            }
+                            ?>
                             <div class="top-bott20">
                                 <h2><i class="fa fa-user"></i>   My Profile</h2>
                             </div>
