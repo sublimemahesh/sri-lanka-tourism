@@ -26,6 +26,7 @@ include_once(dirname(__FILE__) . '/TransportRates.php');
 include_once(dirname(__FILE__) . '/offer.php');
 include_once(dirname(__FILE__) . '/Visitor.php');
 include_once(dirname(__FILE__) . '/Room.php');
+include_once(dirname(__FILE__) . '/RoomFacility.php');
 
 function dd($data) {
     var_dump($data);

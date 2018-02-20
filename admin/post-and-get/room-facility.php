@@ -5,18 +5,18 @@ include_once(dirname(__FILE__) . '/../../class/include.php');
 include_once(dirname(__FILE__) . '/../auth.php');
 
 if (isset($_POST['create'])) {
-    $ACCOMODATION_GENERAL_FACILITY = new AccommodationGeneralFacilities(NULL);
+    $ROOM_FACILITY = new RoomFacility(NULL);
     $VALID = new Validator();
 
-    $ACCOMODATION_GENERAL_FACILITY->accommodation = $_POST['id'];
-    $ACCOMODATION_GENERAL_FACILITY->name = filter_input(INPUT_POST, 'name');
+    $ROOM_FACILITY->room = $_POST['id'];
+    $ROOM_FACILITY->name = filter_input(INPUT_POST, 'name');
 
-    $VALID->check($ACCOMODATION_GENERAL_FACILITY, ['name' =>
+    $VALID->check($ROOM_FACILITY, ['name' =>
             ['required' => TRUE]
     ]);
 
     if ($VALID->passed()) {
-        $ACCOMODATION_GENERAL_FACILITY->create();
+        $ROOM_FACILITY->create();
 
         if (!isset($_SESSION)) {
             session_start();
@@ -38,18 +38,18 @@ if (isset($_POST['create'])) {
 }
 
 if (isset($_POST['update'])) {
-    
-    $ACCOMODATION_GENERAL_FACILITY = new AccommodationGeneralFacilities($_POST['id']);
-    $ACCOMODATION_GENERAL_FACILITY->id = $_POST['id'];
-    $ACCOMODATION_GENERAL_FACILITY->name = $_POST['name'];
+    $ROOM_FACILITY = new RoomFacility($_POST['id']);
+
+    $ROOM_FACILITY->id = $_POST['id'];
+    $ROOM_FACILITY->name = $_POST['name'];
 
     $VALID = new Validator();
-    $VALID->check($ACCOMODATION_GENERAL_FACILITY, ['name' =>
+    $VALID->check($ROOM_FACILITY, ['name' =>
             ['required' => TRUE]
     ]);
 
     if ($VALID->passed()) {
-        $ACCOMODATION_GENERAL_FACILITY->update();
+        $ROOM_FACILITY->update();
 
         if (!isset($_SESSION)) {
             session_start();
@@ -75,7 +75,7 @@ if (isset($_POST['save-data'])) {
     foreach ($_POST['sort'] as $key => $img) {
         $key = $key + 1;
 
-        $ACCOMODATION_GENERAL_FACILITY = AccommodationGeneralFacilities::arrange($key, $img);
+        $ACCOMODATION_ROOM_FACILITY = RoomFacility::arrange($key, $img);
 
         header('Location: ' . $_SERVER['HTTP_REFERER']);
     }
