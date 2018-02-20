@@ -6,12 +6,12 @@ $id = '';
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 }
-$AId = '';
+$RId = '';
 if (isset($_GET['aid'])) {
-    $AId = $_GET['aid'];
+    $RId = $_GET['aid'];
 }
 
-$ACCOMODATION_GENERAL_FACILITY = new AccommodationGeneralFacilities($id);
+$ROOM_FACILITY = new RoomFacility($id);
 
 
 ?> 
@@ -20,7 +20,7 @@ $ACCOMODATION_GENERAL_FACILITY = new AccommodationGeneralFacilities($id);
     <head>
         <meta charset="UTF-8">
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <title>Edit Accommodation General Facilities - www.srilankatourism.travel</title>
+        <title>Edit Room Facilities - www.srilankatourism.travel</title>
 
         <!-- Favicon-->
         <link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -63,18 +63,18 @@ $ACCOMODATION_GENERAL_FACILITY = new AccommodationGeneralFacilities($id);
                         <div class="card">
                             <div class="header">
                                 <h2>
-                                  Edit Accommodation General Facilities
+                                  Edit Room Facilities
                                 </h2>
                                 <ul class="header-dropdown">
                                     <li class="">
-                                        <a href="create-accommodation-general-facilities-types.php?id=<?php echo $AId;?>">
+                                        <a href="create-room-facility.php?id=<?php echo $RId;?>">
                                             <i class="material-icons">list</i> 
                                         </a>
                                     </li>
                                 </ul>
                             </div>
                             <div class="body row">
-                                <form class="form-horizontal col-sm-9 col-md-9" method="post" action="post-and-get/accommodation-general-facility.php" enctype="multipart/form-data"> 
+                                <form class="form-horizontal col-sm-9 col-md-9" method="post" action="post-and-get/room-facility.php" enctype="multipart/form-data"> 
 
                                     <div class="row clearfix">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
@@ -83,7 +83,7 @@ $ACCOMODATION_GENERAL_FACILITY = new AccommodationGeneralFacilities($id);
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <input type="text" id="name" class="form-control" placeholder="Enter name" value="<?php echo $ACCOMODATION_GENERAL_FACILITY->name; ?>"  name="name"  required="TRUE">
+                                                    <input type="text" id="name" class="form-control" placeholder="Enter name" value="<?php echo $ROOM_FACILITY->name; ?>"  name="name"  required="TRUE">
                                                 </div>
                                             </div>
                                         </div>
@@ -92,7 +92,7 @@ $ACCOMODATION_GENERAL_FACILITY = new AccommodationGeneralFacilities($id);
                                     <div class="row clearfix">
                                         <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
 
-                                            <input type="hidden" id="id" value="<?php echo $ACCOMODATION_GENERAL_FACILITY->id; ?>" name="id"/>
+                                            <input type="hidden" id="id" value="<?php echo $ROOM_FACILITY->id; ?>" name="id"/>
                                             <input type="hidden" id="authToken" value="<?php echo $_SESSION["authToken"]; ?>" name="authToken"/>
 
                                             <button type="submit" class="btn btn-primary m-t-15 waves-effect" name="update" value="submit">Save Changes</button>

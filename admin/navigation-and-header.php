@@ -398,7 +398,7 @@
                         </li>
                     </ul>
                 </li>
-                <li>
+<!--                <li>
                     <a href="javascript:void(0);" class="menu-toggle">
                         <i class="material-icons">chevron_right</i>
                         <span>Accommodation General Facility</span>
@@ -417,7 +417,7 @@
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li>-->
                 <li>
                     <a href="javascript:void(0);" class="menu-toggle">
                         <i class="material-icons">chevron_right</i>

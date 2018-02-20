@@ -5,14 +5,15 @@ $id = '';
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 }
-$ACCOMODATION = new Accommodation($id)
+$ACCOMODATION_ROOM = new Room($id)
 ?> 
+
 <!DOCTYPE html>
 <html> 
     <head>
         <meta charset="UTF-8">
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <title>Add New Accommodation General Facility - www.srilankatourism.travel</title>
+        <title>Add Room Facility - www.srilankatourism.travel</title>
         <!-- Favicon-->
         <link rel="icon" href="favicon.ico" type="image/x-icon">
 
@@ -58,7 +59,7 @@ $ACCOMODATION = new Accommodation($id)
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="card">
                             <div class="header">
-                                <h2>Add New General Facility</h2>
+                                <h2>Add Room Facility</h2>
                                 <ul class="header-dropdown">
                                     <li class="">
                                         <a href="manage-accommodation.php">
@@ -68,7 +69,7 @@ $ACCOMODATION = new Accommodation($id)
                                 </ul>
                             </div>
                             <div class="body">
-                                <form class="form-horizontal"  method="post" action="post-and-get/accommodation-general-facility.php" enctype="multipart/form-data"> 
+                                <form class="form-horizontal"  method="post" action="post-and-get/room-facility.php" enctype="multipart/form-data"> 
                                     <div class="row clearfix">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                             <label for="name">Name</label>
@@ -76,7 +77,7 @@ $ACCOMODATION = new Accommodation($id)
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <input type="text" id="name" class="form-control" placeholder="Enter Accommodation General Facility" autocomplete="off" name="name" required="TRUE">
+                                                    <input type="text" id="name" class="form-control" placeholder="Enter Room Facility" autocomplete="off" name="name" required="TRUE">
                                                 </div>
                                             </div>
                                         </div>
@@ -84,7 +85,7 @@ $ACCOMODATION = new Accommodation($id)
 
                                     <div class="row clearfix">
                                         <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5"> 
-                                            <input type="hidden" id="id" value="<?php echo $ACCOMODATION->id; ?>" name="id"/>
+                                            <input type="hidden" id="id" value="<?php echo $ACCOMODATION_ROOM->id; ?>" name="id"/>
                                             <input type="submit" name="create" class="btn btn-primary m-t-15 waves-effect" value="Create"/>
                                         </div>
                                     </div>
@@ -110,18 +111,18 @@ $ACCOMODATION = new Accommodation($id)
                                         <tbody>
 
                                             <?php
-                                            $ACCOMODATION_GENERAL_FACILITY = AccommodationGeneralFacilities::getAccommodationFacilityById($id);
-                                            foreach ($ACCOMODATION_GENERAL_FACILITY as $key => $accommodation_general_facility) {
+                                            $ROOM_FACILITY = RoomFacility::getRoomFacilityById($id);
+                                            foreach ($ROOM_FACILITY as $key => $room_facility) {
                                                 ?>
-                                                <tr id="row_<?php echo $accommodation_general_facility['id']; ?>">
-                                                    <td><?php echo $accommodation_general_facility['id']; ?></td> 
-                                                    <td><?php echo $accommodation_general_facility['name']; ?></td> 
+                                                <tr id="row_<?php echo $room_facility['id']; ?>">
+                                                    <td><?php echo $room_facility['id']; ?></td> 
+                                                    <td><?php echo $room_facility['name']; ?></td> 
                                                     <td> 
-                                                        <a href="edit-accommodation-genaral-facilities-types.php?id=<?php echo $accommodation_general_facility['id']; ?>&aid=<?php echo $id; ?>" class="op-link btn btn-sm btn-default"><i class="glyphicon glyphicon-pencil"></i></a>   
-                                                        <a href="#" class="delete-accommodation-genaral-facility-type btn btn-sm btn-danger" data-id="<?php echo $accommodation_general_facility['id']; ?>">
+                                                        <a href="edit-room-facilities.php?id=<?php echo $room_facility['id']; ?>&Rid=<?php echo $id; ?>" class="op-link btn btn-sm btn-default"><i class="glyphicon glyphicon-pencil"></i></a>  
+                                                        <a href="#" class="delete-room-facility btn btn-sm btn-danger" data-id="<?php echo $room_facility['id']; ?>">
                                                             <i class="glyphicon glyphicon-trash" data-type="cancel"></i>
                                                         </a>
-                                                        <a href="arrange-general-facilities.php?id=<?php echo $id; ?>&aid=<?php echo $id; ?>" class="op-link btn btn-sm btn-default"><i class="glyphicon glyphicon-random"></i></a>  
+                                                        <a href="arrange-room-facilities.php?id=<?php echo $id; ?>&Rid=<?php echo $id; ?>" class="op-link btn btn-sm btn-default"><i class="glyphicon glyphicon-random"></i></a>  
                                                     </td>
                                                 </tr>
                                                 <?php
@@ -176,8 +177,8 @@ $ACCOMODATION = new Accommodation($id)
         <script src="js/pages/ui/dialogs.js"></script>
         <script src="js/demo.js"></script>
         <script src="js/pages/tables/jquery-datatable.js"></script>
+        <script src="delete/js/room-facility.js" type="text/javascript"></script>
 
-        <script src="delete/js/accommodation-genaral-facility-type.js" type="text/javascript"></script>
     </body>
 
 </html>
