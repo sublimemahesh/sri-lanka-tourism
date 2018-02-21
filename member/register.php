@@ -92,7 +92,6 @@ include_once(dirname(__FILE__) . '/../class/include.php');
 
                             </div>
                             <div class="modal-footer">
-                                <a href="login.php"><button class="btn btn-default" type="button">Cancel</button></a>
                                 <input class="btn btn-theme" type="submit" value="Register" name="register">
                             </div>
                         </div>

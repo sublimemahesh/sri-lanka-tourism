@@ -7,8 +7,9 @@ if (isset($_POST['register'])) {
     $MEMBER = new Member(NULL);
     $VALID = new Validator();
 
-    $pw = $_POST['password'];
-    $cpw = $_POST['confirm_password'];
+
+    $pw = md5($_POST['password']);
+    $cpw = md5($_POST['confirm_password']);
     $email = $_POST['email'];
     $cemail = $_POST['cnfemail'];
 
@@ -18,10 +19,10 @@ if (isset($_POST['register'])) {
         if ($email == $cemail) {
 
             $MEMBER->name = filter_input(INPUT_POST, 'name');
-            $MEMBER->email = filter_input(INPUT_POST, 'email');
+            $MEMBER->email = $email;
             $MEMBER->contact_number = filter_input(INPUT_POST, 'contact_number');
             $MEMBER->username = filter_input(INPUT_POST, 'username');
-            $MEMBER->password = filter_input(INPUT_POST, 'password');
+            $MEMBER->password = $cpw;
 
 
             $VALID->check($MEMBER, [
@@ -129,7 +130,9 @@ if (isset($_POST['login'])) {
     $MEMBER = new Member(NULL);
 
     $username = filter_var($_POST['username'], FILTER_SANITIZE_STRING);
-    $password = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
+    $password = md5(filter_var($_POST['password'], FILTER_SANITIZE_STRING));
+
+
 
     if ($MEMBER->login($username, $password)) {
         header('Location: ../profile.php?message=5');
