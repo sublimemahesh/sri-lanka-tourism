@@ -14,6 +14,7 @@ class Member {
     public $profile_picture;
     public $username;
     public $password;
+    public $resetcode;
     public $rank;
     public $status;
 
@@ -40,6 +41,8 @@ class Member {
     }
 
     public function create() {
+
+
 
         $query = "INSERT INTO `member` (`name`,`email`,`contact_number`,`profile_picture`,`username`,`password`,`status`,`rank`) VALUES  ('"
                 . $this->name . "','"
@@ -189,6 +192,129 @@ class Member {
         $db = new Database();
 
         return $db->readQuery($query);
+    }
+
+    public function checkOldPass($id, $password) {
+
+        $enPass = md5($password);
+
+        $query = "SELECT `id` FROM `member` WHERE `id`= '" . $id . "' AND `password`= '" . $enPass . "'";
+
+        $db = new Database();
+
+        $result = mysql_fetch_array($db->readQuery($query));
+
+        if (!$result) {
+            return FALSE;
+        } else {
+            return TRUE;
+        }
+    }
+
+    public function changePassword($id, $password) {
+
+        $enPass = md5($password);
+
+        $query = "UPDATE  `member` SET "
+                . "`password` ='" . $enPass . "' "
+                . "WHERE `id` = '" . $id . "'";
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+
+        if ($result) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
+
+    public function checkEmail($email) {
+
+        $query = "SELECT `email`,`username` FROM `member` WHERE `email`= '" . $email . "'";
+
+        $db = new Database();
+
+        $result = mysql_fetch_array($db->readQuery($query));
+
+        if (!$result) {
+            return FALSE;
+        } else {
+            return $result;
+        }
+    }
+
+    public function GenarateCode($email) {
+
+        $rand = rand(10000, 99999);
+
+        $query = "UPDATE  `member` SET "
+                . "`resetcode` ='" . $rand . "' "
+                . "WHERE `email` = '" . $email . "'";
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+
+        if ($result) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
+
+    public function SelectForgetMember($email) {
+
+        if ($email) {
+
+            $query = "SELECT `email`,`username`,`resetcode` FROM `member` WHERE `email`= '" . $email . "'";
+
+            $db = new Database();
+
+            $result = mysql_fetch_array($db->readQuery($query));
+
+            $this->username = $result['username'];
+            $this->email = $result['email'];
+            $this->restCode = $result['resetcode'];
+
+            return $result;
+        }
+    }
+
+    public function SelectResetCode($code) {
+
+        $query = "SELECT `id` FROM `member` WHERE `resetcode`= '" . $code . "'";
+
+        $db = new Database();
+
+        $result = mysql_fetch_array($db->readQuery($query));
+
+        if (!$result) {
+            return FALSE;
+        } else {
+
+            return TRUE;
+        }
+    }
+
+    public function updatePassword($password, $code) {
+
+        $enPass = md5($password);
+
+        $query = "UPDATE  `member` SET "
+                . "`password` ='" . $enPass . "' "
+                . "WHERE `resetcode` = '" . $code . "'";
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+
+        if ($result) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
     }
 
 }
