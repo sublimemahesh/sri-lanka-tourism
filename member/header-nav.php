@@ -1,15 +1,22 @@
+<?php
+
+//
+//if (!Member::login()) {
+//    redirect('login.php');
+//}
+?>
 <header class="header black-bg">
     <div class="sidebar-toggle-box">
         <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
     </div>
     <!--logo start-->
-    <a href="index.html" class="logo"><b>DASHGUM FREE</b></a>
+    <a href="index.html" class="logo"><b>Your Tourism Panel</b></a>
     <!--logo end-->
 
     <div class="pull-right top-menu nav notify-row">
         <ul class="nav top-menu">
             <li id="header_inbox_bar" class="dropdown">
-                <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
+                <a data-toggle="dropdown" class="dropdown-toggle" href="index.php">
                     <i class="fa fa-sign-out"></i>
                     <span class="badge bg-theme">o</span>
                 </a>
@@ -27,15 +34,15 @@
                         </a>
                     </li>
                     <li>
-                        <a href="../admin/index.php">
-                            <span class="photo"><img alt="avatar" src="../upload/visitor/-574108304_190629032602_1518674405_n.jpg"></span>
+                        <a href="../index.php">
+                            <span class="photo"><img alt="avatar" src="../images/3d-building.png"></span>
                             <span class="subject">
                                 <span class="from"> My Ads</span>
                             </span>
                         </a>
                     </li>
                     <li>
-                        <a href="../admin/index.php">
+                        <a href="../index.php">
                             <span class="photo"><img alt="avatar" src="../upload/visitor/-574108304_190629032602_1518674405_n.jpg"></span>
                             <span class="subject">
                                 <span class="from"> My Rates</span>
@@ -46,10 +53,10 @@
                         </a>
                     </li>
                     <li>
-                        <a href="login-or-register.php">
+                        <a href="post-and-get/logout.php">
                             <span class="photo"><img alt="avatar" src="../upload/visitor/-574108304_190629032602_1518674405_n.jpg"></span>
                             <span class="subject">
-                                <span class="from"> Log Out</span>
+                                <span class="from"> Sign Out</span>
                             </span>
                         </a>
                     </li>
@@ -136,4 +143,3 @@
         <!-- sidebar menu end-->
     </div>
 </aside>
-<!--sidebar end-->

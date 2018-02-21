@@ -1,5 +1,8 @@
 <?php
 include_once(dirname(__FILE__) . '/../class/include.php');
+include_once(dirname(__FILE__) . './auth.php');
+
+$MEMBER = new Member($_SESSION["id"]);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,9 +30,7 @@ include_once(dirname(__FILE__) . '/../class/include.php');
     </head>
 
     <body>
-
         <section id="container" >
-
             <?php
             include './header-nav.php';
             ?>
@@ -42,7 +43,7 @@ include_once(dirname(__FILE__) . '/../class/include.php');
                             if (isset($_GET['message'])) {
                                 $message = new Message($_GET['message']);
                                 ?>
-                                <div class="alert alert-success"><b>Well done!</b><?php echo $message->description; ?></div>
+                                <div class="alert alert-success"><?php echo $message->description; ?></div>
 
                                 <?php
                             }
@@ -56,19 +57,29 @@ include_once(dirname(__FILE__) . '/../class/include.php');
                                     <div class="row">
                                         <div class="col-sm-9 col-md-9">
                                             <ul class="list-group">
-                                                <li class="list-group-item"><b>Name</b> : Mayomi</li> 
-                                                <li class="list-group-item"><b>Username</b> : msg</li> 
-                                                <li class="list-group-item"><b>Email</b> : gsalosha111@gmail.com</li>
-                                                <li class="list-group-item"><b>Contact No</b> : </li>
-                                                <li class="list-group-item"><b>Created Date</b> : 2018.02.16</li>
-                                                <li class="list-group-item"><b>Last Login</b> : </li> 
+                                                <li class="list-group-item"><b>Name</b> : <?php echo $MEMBER->name; ?></li> 
+                                                <li class="list-group-item"><b>User Name</b> : <?php echo $MEMBER->username; ?></li> 
+                                                <li class="list-group-item"><b>Email</b> : <?php echo $MEMBER->email; ?></li>
+                                                <li class="list-group-item"><b>Contact No</b> : <?php echo $MEMBER->contact_number; ?></li>
+                                                <li class="list-group-item"> <b>Created Date</b> : 2018.02.16</li>
+                                                <li class="list-group-item"> <b>Last Login</b> : </li> 
                                             </ul>
                                         </div>
-
                                         <div class="col-sm-3 col-md-3">  
-                                            <img src="../upload/visitor/-574108304_190629032602_1518674405_n.jpg" class="img img-responsive img-thumbnail"/> 
-                                        </div>
+                                            <?php
+                                            if (empty($MEMBER->profile_picture)) {
+                                                ?>
+                                                <img src="../upload/member/member.png" class="img img-responsive img-thumbnail"/> 
 
+                                                <?php
+                                            } else {
+                                                ?>
+                                                <img src="../upload/member/<?php echo $MEMBER->profile_picture; ?>" class="img img-responsive img-thumbnail"/> 
+                                                <?php
+                                            }
+                                            ?>
+
+                                        </div>
                                     </div>
                                 </div>   	
                             </div>
@@ -76,9 +87,6 @@ include_once(dirname(__FILE__) . '/../class/include.php');
                     </div>
                 </div>
             </section>
-
-
-
 
             <?php
             include './footer.php';
@@ -106,16 +114,13 @@ include_once(dirname(__FILE__) . '/../class/include.php');
         <script src="assets/js/jquery.tagsinput.js"></script>
 
         <!--custom checkbox & radio-->
-
         <script type="text/javascript" src="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-datepicker/js/bootstrap-datepicker.html"></script>
         <script type="text/javascript" src="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-daterangepicker/date.html"></script>
         <script type="text/javascript" src="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-daterangepicker/daterangepicker-2.html"></script>
 
         <script type="text/javascript" src="assets/js/bootstrap-inputmask/bootstrap-inputmask.min.js"></script>
 
-
         <script src="assets/js/form-component.js"></script>    
-
 
         <script>
             //custom select box

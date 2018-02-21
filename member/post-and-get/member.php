@@ -3,53 +3,61 @@
 include_once(dirname(__FILE__) . '/../../class/include.php');
 
 
-if (isset($_POST['create'])) {
+if (isset($_POST['register'])) {
     $MEMBER = new Member(NULL);
     $VALID = new Validator();
 
     $pw = $_POST['password'];
     $cpw = $_POST['confirm_password'];
+    $email = $_POST['email'];
+    $cemail = $_POST['cnfemail'];
+
 
     if ($cpw == $pw) {
-        $MEMBER->name = filter_input(INPUT_POST, 'name');
-        $MEMBER->email = filter_input(INPUT_POST, 'email');
-        $MEMBER->contact_number = filter_input(INPUT_POST, 'contact_number');
-        $MEMBER->username = filter_input(INPUT_POST, 'username');
-        $MEMBER->password = filter_input(INPUT_POST, 'password');
+
+        if ($email == $cemail) {
+
+            $MEMBER->name = filter_input(INPUT_POST, 'name');
+            $MEMBER->email = filter_input(INPUT_POST, 'email');
+            $MEMBER->contact_number = filter_input(INPUT_POST, 'contact_number');
+            $MEMBER->username = filter_input(INPUT_POST, 'username');
+            $MEMBER->password = filter_input(INPUT_POST, 'password');
 
 
-        $VALID->check($MEMBER, [
-            'name' => ['required' => TRUE],
-            'email' => ['required' => TRUE],
-            'contact_number' => ['required' => TRUE],
-            'username' => ['required' => TRUE],
-            'password' => ['required' => TRUE]
-        ]);
+            $VALID->check($MEMBER, [
+                'name' => ['required' => TRUE],
+                'email' => ['required' => TRUE],
+                'contact_number' => ['required' => TRUE],
+                'username' => ['required' => TRUE],
+                'password' => ['required' => TRUE]
+            ]);
 
-        if ($VALID->passed()) {
-            $MEMBER->create();
+            if ($VALID->passed()) {
+                $MEMBER->create();
 
-            if (!isset($_SESSION)) {
-                session_start();
+                if (!isset($_SESSION)) {
+                    session_start();
+                }
+                $VALID->addError("Your data was saved successfully", 'success');
+                $_SESSION['ERRORS'] = $VALID->errors();
+
+                header('Location: ' . $_SERVER['HTTP_REFERER']);
+            } else {
+
+                if (!isset($_SESSION)) {
+                    session_start();
+                }
+
+                $_SESSION['ERRORS'] = $VALID->errors();
             }
-            $VALID->addError("Your data was saved successfully", 'success');
-            $_SESSION['ERRORS'] = $VALID->errors();
-
-            header('Location: ' . $_SERVER['HTTP_REFERER']);
+            header('location: ../profile.php?message=10');
         } else {
-
-            if (!isset($_SESSION)) {
-                session_start();
-            }
-
-            $_SESSION['ERRORS'] = $VALID->errors();
+            header('Location: ../register.php?message=19');
         }
-        header('location: ../profile.php?message=10');
     } else {
-        header('Location: ../login-or-register.php?message=12' );
+        header('Location: ../register.php?message=17');
     }
 }
-
 
 if (isset($_POST['update'])) {
 
@@ -113,5 +121,21 @@ if (isset($_POST['update'])) {
         $_SESSION['ERRORS'] = $VALID->errors();
 
         header('Location: ' . $_SERVER['HTTP_REFERER']);
+    }
+}
+
+if (isset($_POST['login'])) {
+
+    $MEMBER = new Member(NULL);
+
+    $username = filter_var($_POST['username'], FILTER_SANITIZE_STRING);
+    $password = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
+
+    if ($MEMBER->login($username, $password)) {
+        header('Location: ../profile.php?message=5');
+        exit();
+    } else {
+        header('Location: ../login.php?message=7');
+        exit();
     }
 }

@@ -20,7 +20,7 @@ class Member {
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`,`name`,`email`,`contact_number`,`profile_picture`,`username`,`password`,`status`,`rank` FROM `member` WHERE `id`=" . $id;
+            $query = "SELECT `id`,`name`,`email`,`contact_number`,`profile_picture`,`username`,`status`,`rank` FROM `member` WHERE `id`=" . $id;
 
             $db = new Database();
 
@@ -32,7 +32,6 @@ class Member {
             $this->contact_number = $result['contact_number'];
             $this->profile_picture = $result['profile_picture'];
             $this->username = $result['username'];
-            $this->password = $result['password'];
             $this->rank = $result['rank'];
             $this->status = $result['status'];
 
@@ -63,6 +62,86 @@ class Member {
         } else {
             return FALSE;
         }
+    }
+
+    public function login($username, $password) {
+
+        $query = "SELECT * FROM `member` WHERE `username`= '" . $username . "' AND `password`= '" . $password . "'";
+
+        $db = new Database();
+
+        $result = mysql_fetch_array($db->readQuery($query));
+
+        if (!$result) {
+            return FALSE;
+        } else {
+
+            $this->id = $result['id'];
+            $member = $this->__construct($this->id);
+
+            if (!isset($_SESSION)) {
+                session_start();
+                session_unset($_SESSION);
+            }
+
+            $_SESSION["login"] = TRUE;
+
+            $_SESSION["id"] = $member->id;
+            $_SESSION["name"] = $member->name;
+            $_SESSION["email"] = $member->email;
+            $_SESSION["contact_number"] = $member->contact_number;
+            $_SESSION["profile_picture"] = $member->profile_picture;
+            $_SESSION["username"] = $member->username;
+            $_SESSION["status"] = $member->status;
+            $_SESSION["rank"] = $member->rank;
+
+            return TRUE;
+        }
+    }
+
+    public function authenticate() {
+
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+
+        $id = NULL;
+
+        if (isset($_SESSION["id"])) {
+            $id = $_SESSION["id"];
+        }
+
+        $query = "SELECT `id` FROM `member` WHERE `id`= '" . $id . "'";
+
+        $db = new Database();
+
+        $result = mysql_fetch_array($db->readQuery($query));
+
+        if (!$result) {
+            return FALSE;
+        } else {
+
+            return TRUE;
+        }
+    }
+
+    public function logOut() {
+
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+
+        unset($_SESSION["id"]);
+        unset($_SESSION["name"]);
+        unset($_SESSION["email"]);
+        unset($_SESSION["contact_number"]);
+        unset($_SESSION["profile_picture"]);
+        unset($_SESSION["username"]);
+        unset($_SESSION["password"]);
+        unset($_SESSION["status"]);
+        unset($_SESSION["rank"]);
+
+        return TRUE;
     }
 
     public function all() {
