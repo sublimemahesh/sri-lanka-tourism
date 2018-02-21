@@ -31,77 +31,73 @@ include_once(dirname(__FILE__) . '/../class/include.php');
 
                 <!-- Modal login-->
                 <form class="form-horizontal form-login"  method="post" action="post-and-get/member.php" enctype="multipart/form-data"> 
-                    <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
 
+                    <div class="">
+                        <div class="modal-content">
+
+                            <div class="modal-header">
+                                <a href="login.php"><button type="button" class="close">&times;</button></a>
+                                <h4 class="modal-title">Create Account</h4>
+                            </div>
+                            <div class="modal-body">
                                 <?php
                                 if (isset($_GET['message'])) {
                                     $message = new Message($_GET['message']);
                                     ?>
-                                    <div class="alert alert-<?php echo $message->status; ?>"><b>Well done!</b><?php echo $message->description; ?></div>
+                                    <div class="alert alert-<?php echo $message->status; ?>"><?php echo $message->description; ?></div>
 
                                     <?php
                                 }
                                 ?>
-
-
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                    <h4 class="modal-title">Create Account</h4>
+                                <p>Enter your details</p>
+                                <div>
+                                    <input type="text" name="name" placeholder="Full Name" autocomplete="off" class="form-control placeholder-no-fix">
                                 </div>
-                                <div class="modal-body">
+                                <br>
 
-                                    <p>Enter your details</p>
-                                    <div>
-                                        <input type="text" name="name" placeholder="Full Name" autocomplete="off" class="form-control placeholder-no-fix">
-                                    </div>
-                                    <br>
-
-                                    <div>
-                                        <input type="text" name="username" placeholder="User Name" autocomplete="off" class="form-control placeholder-no-fix">
-                                    </div>
-                                    <br>
-
-                                    <div>
-                                        <input type="email" name="email" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
-                                    </div>
-                                    <br>
-
-                                    <div>
-                                        <input type="email" name="cnfemail" placeholder="Confirm Email" autocomplete="off" class="form-control placeholder-no-fix">
-                                    </div>
-                                    <br>
-
-                                    <div>
-                                        <input type="text" name="contact_number" placeholder="Contact Number" autocomplete="off" class="form-control placeholder-no-fix">
-                                    </div>
-                                    <br>
-
-                                    <div>
-                                        <input type="password" name="password" placeholder="Enter Password" autocomplete="off" class="form-control placeholder-no-fix">
-                                    </div>
-                                    <br>
-
-                                    <div>
-                                        <input type="password" name="confirm_password" placeholder="Confirm Password" autocomplete="off" class="form-control placeholder-no-fix">
-                                    </div>
-                                    <br>
-
-                                    <div class="formrow">
-                                        <input type="checkbox" value="agree text c" name="cagree">
-                                        Remember Me
-                                    </div>
-
+                                <div>
+                                    <input type="text" name="username" placeholder="User Name" autocomplete="off" class="form-control placeholder-no-fix">
                                 </div>
-                                <div class="modal-footer">
-                                    <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
-                                    <button class="btn btn-theme" name="create" type="submit">Register</button>
+                                <br>
+
+                                <div>
+                                    <input type="email" name="email" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
                                 </div>
+                                <br>
+
+                                <div>
+                                    <input type="email" name="cnfemail" placeholder="Confirm Email" autocomplete="off" class="form-control placeholder-no-fix">
+                                </div>
+                                <br>
+
+                                <div>
+                                    <input type="text" name="contact_number" placeholder="Contact Number" autocomplete="off" class="form-control placeholder-no-fix">
+                                </div>
+                                <br>
+
+                                <div>
+                                    <input type="password" name="password" placeholder="Enter Password" autocomplete="off" class="form-control placeholder-no-fix">
+                                </div>
+                                <br>
+
+                                <div>
+                                    <input type="password" name="confirm_password" placeholder="Confirm Password" autocomplete="off" class="form-control placeholder-no-fix">
+                                </div>
+                                <br>
+
+                                <div class="formrow">
+                                    <input type="checkbox" value="agree text c" name="cagree">
+                                    Remember Me
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <a href="login.php"><button class="btn btn-default" type="button">Cancel</button></a>
+                                <input class="btn btn-theme" type="submit" value="Register" name="register">
                             </div>
                         </div>
                     </div>
-                    <!-- modal -->
+
                 </form>
             </div>
         </div>

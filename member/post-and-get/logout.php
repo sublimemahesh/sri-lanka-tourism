@@ -2,12 +2,11 @@
 
 include_once(dirname(__FILE__) . '/../../class/include.php');
 
+$MEMBER = new Member(NULL);
 
-$USER = new User(NULL);
-
-if ($USER->logOut()) {
+if ($MEMBER->logOut()) {
     header('Location: ../login.php');
 } else {
-    header('Location: ./?message=2');
+    header('Location: ./?error=2');
 }
 

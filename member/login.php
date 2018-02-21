@@ -29,19 +29,30 @@ include_once(dirname(__FILE__) . '/../class/include.php');
         <div id="login-page">
             <div class="container">
 
-                <form class="form-login" action="">
+                <form class="form-login" action="post-and-get/member.php" method="POST">
                     <h2 class="form-login-heading">sign in now</h2>
                     <div class="login-wrap">
-                        <input type="text" class="form-control" placeholder="User ID" autofocus>
+                        <?php
+                        if (isset($_GET['message'])) {
+                            $message = new Message($_GET['message']);
+                            ?>
+                            <div class="alert alert-<?php echo $message->status; ?>"><?php echo $message->description; ?></div>
+
+                            <?php
+                        }
+                        ?>
+                        <input type="text" class="form-control" name="username" placeholder="User ID" autofocus>
                         <br>
-                        <input type="password" class="form-control" placeholder="Password">
+
+                        <input type="password" class="form-control" name="password" placeholder="Password">
+
+
                         <label class="checkbox">
                             <span class="pull-right">
-                                <a data-toggle="modal" href="login.html#myModal1"> Forgot Password?</a>
-
+                                <a href="forgot-password.php"> Forgot Password?</a>
                             </span>
                         </label>
-                        <button class="btn btn-theme btn-block" href="index.html" type="submit"><i class="fa fa-lock"></i> SIGN IN</button>
+                        <button class="btn btn-theme btn-block" name="login" type="submit"><i class="fa fa-lock"></i> SIGN IN</button>
                         <hr>
 
                         <div class="login-social-link centered">
@@ -52,8 +63,7 @@ include_once(dirname(__FILE__) . '/../class/include.php');
                         <div class="registration">
                             Don't have an account yet?<br/>
                             <label class="checkbox">
-                                <a data-toggle="modal" href="login-or-register.php#myModal"> Create an account</a>
-
+                                <a href="register.php"> Create an account</a>
                                 </a>
                             </label>
                         </div>
@@ -71,8 +81,6 @@ include_once(dirname(__FILE__) . '/../class/include.php');
         <script>
             $.backstretch("assets/img/login-bg.jpg", {speed: 500});
         </script>
-
-
     </body>
 
 </html>
