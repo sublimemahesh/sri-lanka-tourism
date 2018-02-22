@@ -6,10 +6,6 @@ $id = '';
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 }
-$AId = '';
-if (isset($_GET['aid'])) {
-    $AId = $_GET['aid'];
-}
 
 $ACCOMODATION_GENERAL_FACILITY = new AccommodationGeneralFacilities($id);
 
@@ -67,7 +63,7 @@ $ACCOMODATION_GENERAL_FACILITY = new AccommodationGeneralFacilities($id);
                                 </h2>
                                 <ul class="header-dropdown">
                                     <li class="">
-                                        <a href="create-accommodation-general-facilities-types.php?id=<?php echo $AId;?>">
+                                        <a href="create-accommodation-general-facilities-types.php">
                                             <i class="material-icons">list</i> 
                                         </a>
                                     </li>

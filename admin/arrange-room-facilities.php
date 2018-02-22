@@ -2,14 +2,7 @@
 include_once(dirname(__FILE__) . '/../class/include.php');
 include_once(dirname(__FILE__) . '/auth.php');
 
-$id = $_GET['id'];
-
-$RId = '';
-if (isset($_GET['Rid'])) {
-    $RId = $_GET['Rid'];
-}
-
-$ACCOMODATION_ROOM_FACILITY = RoomFacility::getRoomFacilityById($id);
+$ACCOMODATION_ROOM_FACILITY = new RoomFacility(NULL);
 ?>
 <!DOCTYPE html>
 <html> 
@@ -45,7 +38,7 @@ $ACCOMODATION_ROOM_FACILITY = RoomFacility::getRoomFacilityById($id);
                                 <h2>Arrange Room Facilities</h2>
                                 <ul class="header-dropdown">
                                     <li class="">
-                                        <a href="create-room-facility.php?id=<?php echo $RId;?>">
+                                        <a href="manage-room-facility-types.php">
                                             <i class="material-icons">list</i> 
                                         </a>
                                     </li>
@@ -58,8 +51,8 @@ $ACCOMODATION_ROOM_FACILITY = RoomFacility::getRoomFacilityById($id);
                                             <div class="col-md-12 arrange-container">
                                                 <ul id="sortable">
                                                     <?php
-                                                    if (count($ACCOMODATION_ROOM_FACILITY) > 0) {
-                                                        foreach ($ACCOMODATION_ROOM_FACILITY as $key => $img) {
+                                                    if (count($ACCOMODATION_ROOM_FACILITY->all()) > 0) {
+                                                        foreach ($ACCOMODATION_ROOM_FACILITY->all() as $key => $img) {
                                                             ?>
                                                             <div class="col-md-3" style="list-style: none;">
                                                                 <li class="ui-state-default">

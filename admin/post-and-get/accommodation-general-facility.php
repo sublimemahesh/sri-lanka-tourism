@@ -8,7 +8,6 @@ if (isset($_POST['create'])) {
     $ACCOMODATION_GENERAL_FACILITY = new AccommodationGeneralFacilities(NULL);
     $VALID = new Validator();
 
-    $ACCOMODATION_GENERAL_FACILITY->accommodation = $_POST['id'];
     $ACCOMODATION_GENERAL_FACILITY->name = filter_input(INPUT_POST, 'name');
 
     $VALID->check($ACCOMODATION_GENERAL_FACILITY, ['name' =>
@@ -80,3 +79,4 @@ if (isset($_POST['save-data'])) {
         header('Location: ' . $_SERVER['HTTP_REFERER']);
     }
 }
+

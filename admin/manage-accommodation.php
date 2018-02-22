@@ -120,7 +120,7 @@ $ACCOMODATION = new Accommodation(NULL)
                                                         </a>
                                                         <a href="view-accommodation-photos.php?id=<?php echo $accommodation['id']; ?>" class="op-link btn btn-sm btn-default"><i class="glyphicon glyphicon-picture"></i></a>
                                                         <a href="create-accommodation-rooms.php?id=<?php echo $accommodation['id']; ?>" class="op-link btn btn-sm btn-default"><i class="glyphicon glyphicon-bed"></i></a> 
-                                                        <a href="create-accommodation-general-facilities-types.php?id=<?php echo $accommodation['id']; ?>" class="op-link btn btn-sm btn-default"><i class="glyphicon glyphicon-ok"></i></a> 
+                                                        <a href="view-accommodation-facilities.php?id=<?php echo $accommodation['id']; ?>" class="op-link btn btn-sm btn-default"><i class="glyphicon glyphicon-ok"></i></a> 
                                                     </td>
                                                 </tr>
                                                 <?php

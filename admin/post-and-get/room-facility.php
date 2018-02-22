@@ -8,7 +8,6 @@ if (isset($_POST['create'])) {
     $ROOM_FACILITY = new RoomFacility(NULL);
     $VALID = new Validator();
 
-    $ROOM_FACILITY->room = $_POST['id'];
     $ROOM_FACILITY->name = filter_input(INPUT_POST, 'name');
 
     $VALID->check($ROOM_FACILITY, ['name' =>
@@ -75,7 +74,7 @@ if (isset($_POST['save-data'])) {
     foreach ($_POST['sort'] as $key => $img) {
         $key = $key + 1;
 
-        $ACCOMODATION_ROOM_FACILITY = RoomFacility::arrange($key, $img);
+        $ROOM_FACILITY = RoomFacility::arrange($key, $img);
 
         header('Location: ' . $_SERVER['HTTP_REFERER']);
     }

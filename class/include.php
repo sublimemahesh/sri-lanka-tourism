@@ -27,6 +27,8 @@ include_once(dirname(__FILE__) . '/offer.php');
 include_once(dirname(__FILE__) . '/Visitor.php');
 include_once(dirname(__FILE__) . '/Room.php');
 include_once(dirname(__FILE__) . '/RoomFacility.php');
+include_once(dirname(__FILE__) . '/AccommodationFacilityDetails.php');
+include_once(dirname(__FILE__) . '/RoomFaciliityDetails.php');
 
 function dd($data) {
     var_dump($data);

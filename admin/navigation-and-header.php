@@ -271,8 +271,8 @@
                 <li class="header">MAIN NAVIGATION</li>
                 <li class="active">
                     <a href="index.php">
-                        <i class="material-icons">home</i>
-                        <span>Home</span>
+                        <i class="material-icons">dashboard</i>
+                        <span>Dashboard</span>
                     </a>
                 </li>
 
@@ -398,16 +398,16 @@
                         </li>
                     </ul>
                 </li>
-<!--                <li>
+                <li>
                     <a href="javascript:void(0);" class="menu-toggle">
                         <i class="material-icons">chevron_right</i>
-                        <span>Accommodation General Facility</span>
+                        <span>Accommodation Facilities</span>
                     </a>
                     <ul class="ml-menu">
                         <li>
                             <a href="create-accommodation-general-facilities-types.php">
                                 <i class="material-icons">add</i>
-                                <span>Add New</span>
+                                <span>Add</span>
                             </a>
                         </li>
                         <li>
@@ -417,7 +417,27 @@
                             </a>
                         </li>
                     </ul>
-                </li>-->
+                </li>
+                <li>
+                    <a href="javascript:void(0);" class="menu-toggle">
+                        <i class="material-icons">chevron_right</i>
+                        <span>Room Facilities</span>
+                    </a>
+                    <ul class="ml-menu">
+                        <li>
+                            <a href="create-room-facility-types.php">
+                                <i class="material-icons">add</i>
+                                <span>Add</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="manage-room-facility-types.php">
+                                <i class="material-icons">list</i>
+                                <span>Manage</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 <li>
                     <a href="javascript:void(0);" class="menu-toggle">
                         <i class="material-icons">chevron_right</i>

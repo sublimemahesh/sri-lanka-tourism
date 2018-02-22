@@ -7,37 +7,37 @@
  */
 
 /**
- * Description of AccommodationGeneralFacilities
+ * Description of AccommodationType
  *
  * @author HP
  */
-class RoomFacility {
+class AccommodationFacilityDetails {
 
     public $id;
-    public $room;
-    public $sort;
+    public $accommodation;
+    public $facility;
 
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`,`name`,`sort` FROM `room_facility` WHERE `id`=" . $id;
+            $query = "SELECT `id`,`accommodation`,`facility` FROM `acommodation_facility_details` WHERE `id`=" . $id;
 
             $db = new Database();
 
             $result = mysql_fetch_array($db->readQuery($query));
 
             $this->id = $result['id'];
-            $this->name = $result['name'];
-            $this->queue = $result['sort'];
+            $this->accommodation = $result['accommodation'];
+            $this->facility = $result['facility'];
             return $this;
         }
     }
 
     public function create() {
 
-        $query = "INSERT INTO `room_facility` (`name`,`sort`) VALUES  ('"
-                . $this->name . "','"
-                . $this->sort . "')";
+        $query = "INSERT INTO `acommodation_facility_details` (`accommodation`,`facility`) VALUES  ('"
+                . $this->accommodation . "','"
+                . $this->facility . "')";
 
         $db = new Database();
 
@@ -54,7 +54,7 @@ class RoomFacility {
 
     public function all() {
 
-        $query = "SELECT * FROM `room_facility` ORDER BY sort ASC";
+        $query = "SELECT * FROM `acommodation_facility_details`";
         $db = new Database();
         $result = $db->readQuery($query);
         $array_res = array();
@@ -62,35 +62,15 @@ class RoomFacility {
         while ($row = mysql_fetch_array($result)) {
             array_push($array_res, $row);
         }
+
         return $array_res;
-    }
-
-    public function getRoomFacilityById($id) {
-
-        $query = "SELECT * FROM `room_facility` WHERE `room`= $id ORDER BY sort ASC";
-
-        $db = new Database();
-
-        $result = $db->readQuery($query);
-        $array_res = array();
-
-        while ($row = mysql_fetch_array($result)) {
-            array_push($array_res, $row);
-        }
-        return $array_res;
-    }
-
-    public function arrange($key, $img) {
-        $query = "UPDATE `room_facility` SET `sort` = '" . $key . "'  WHERE id = '" . $img . "'";
-        $db = new Database();
-        $result = $db->readQuery($query);
-        return $result;
     }
 
     public function update() {
 
-        $query = "UPDATE  `room_facility` SET "
-                . "`name` ='" . $this->name . "'"
+        $query = "UPDATE  `acommodation_facility_details` SET "
+                . "`accommodation` ='" . $this->accommodation . "', "
+                . "`facility` ='" . $this->facility . "' "
                 . "WHERE `id` = '" . $this->id . "'";
 
         $db = new Database();
@@ -106,11 +86,26 @@ class RoomFacility {
 
     public function delete() {
 
-        $query = 'DELETE FROM `room_facility` WHERE id="' . $this->id . '"';
+        $query = 'DELETE FROM `acommodation_facility_details` WHERE id="' . $this->id . '"';
 
         $db = new Database();
 
         return $db->readQuery($query);
+    }
+
+    public function getFacilitiesByAccommodationId($accommodation) {
+
+        $query = "SELECT `id`,`accommodation`,`facility` FROM `acommodation_facility_details` WHERE `accommodation`= '" . $accommodation . "'";
+
+        $db = new Database();
+
+        $result = mysql_fetch_array($db->readQuery($query));
+
+        if (!$result) {
+            return FALSE;
+        } else {
+            return $result;
+        }
     }
 
 }
