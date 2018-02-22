@@ -2,14 +2,7 @@
 include_once(dirname(__FILE__) . '/../class/include.php');
 include_once(dirname(__FILE__) . '/auth.php');
 
-$id = $_GET['id'];
-
-$AId = '';
-if (isset($_GET['aid'])) {
-    $AId = $_GET['aid'];
-}
-
-$ACCOMODATION_GENERAL_FACILITY = AccommodationGeneralFacilities::getAccommodationFacilityById($id);
+$ACCOMODATION_GENERAL_FACILITY = new AccommodationGeneralFacilities(NULL);
 ?>
 <!DOCTYPE html>
 <html> 
@@ -45,28 +38,25 @@ $ACCOMODATION_GENERAL_FACILITY = AccommodationGeneralFacilities::getAccommodatio
                                 <h2>Arrange Accommodation Facilities</h2>
                                 <ul class="header-dropdown">
                                     <li class="">
-                                        <a href="create-accommodation-general-facilities-types.php?id=<?php echo $AId;?>">
+                                        <a href="manage-accommodation-genaral-facilities-types.php">
                                             <i class="material-icons">list</i> 
                                         </a>
                                     </li>
                                 </ul>
                             </div>
-                            <div class="body">
-                                <form method="post" action="post-and-get/accommodation-general-facility.php" class="form-horizontal" >
+                            <form method="post" action="post-and-get/accommodation-general-facility.php" class="form-horizontal" >
                                     <div class="panel-body">
                                         <div class="row">
                                             <div class="col-md-12 arrange-container">
                                                 <ul id="sortable">
                                                     <?php
-                                                    if (count($ACCOMODATION_GENERAL_FACILITY) > 0) {
-                                                        foreach ($ACCOMODATION_GENERAL_FACILITY as $key => $img) {
+                                                    if (count($ACCOMODATION_GENERAL_FACILITY->all()) > 0) {
+                                                        foreach ($ACCOMODATION_GENERAL_FACILITY->all() as $key => $img) {
                                                             ?>
                                                             <div class="col-md-3" style="list-style: none;">
                                                                 <li class="ui-state-default">
                                                                     <span class="number-class">(<?php echo $key + 1; ?>)</span>
-                                                                    <p>
-                                                                        <?php echo $img['name'] ?>
-                                                                    </p>
+                                                                    <p><?php echo $img["name"]; ?></p>
                                                                     <input type="hidden" name="sort[]"  value="<?php echo $img["id"]; ?>" class="sort-input"/>
 
                                                                 </li>
@@ -89,8 +79,6 @@ $ACCOMODATION_GENERAL_FACILITY = AccommodationGeneralFacilities::getAccommodatio
                                         </div> 
                                     </div>
                                 </form>
-
-                            </div>
                         </div>
                     </div>
                 </div>

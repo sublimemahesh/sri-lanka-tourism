@@ -6,13 +6,8 @@ $id = '';
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 }
-$RId = '';
-if (isset($_GET['aid'])) {
-    $RId = $_GET['aid'];
-}
 
 $ROOM_FACILITY = new RoomFacility($id);
-
 
 ?> 
 ﻿<!DOCTYPE html>
@@ -67,7 +62,7 @@ $ROOM_FACILITY = new RoomFacility($id);
                                 </h2>
                                 <ul class="header-dropdown">
                                     <li class="">
-                                        <a href="create-room-facility.php?id=<?php echo $RId;?>">
+                                        <a href="manage-room-facility-types.php">
                                             <i class="material-icons">list</i> 
                                         </a>
                                     </li>

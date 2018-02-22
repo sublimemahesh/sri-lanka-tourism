@@ -1,16 +1,13 @@
-﻿<?php
+﻿﻿<!DOCTYPE html>
+<?php
 include_once(dirname(__FILE__) . '/../class/include.php');
 include_once(dirname(__FILE__) . '/auth.php');
-
-$ACCOMODATION_GENERAL_FACILITY = new AccommodationGeneralFacilities(NULL);
 ?> 
-﻿<!DOCTYPE html>
 <html>
-
     <head>
         <meta charset="UTF-8">
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <title>Manage Accommodation Genaral Facilities - www.srilankatourism.travel</title>
+        <title>Manage Accommodation Room Facilities - www.srilankatourism.travel</title>
         <!-- Favicon-->
         <link rel="icon" href="favicon.ico" type="image/x-icon">
 
@@ -54,11 +51,11 @@ $ACCOMODATION_GENERAL_FACILITY = new AccommodationGeneralFacilities(NULL);
                         <div class="card">
                             <div class="header">
                                 <h2>
-                                    Manage Accommodation Genaral Facilities
+                                    Manage Room Facilities
                                 </h2>
                                 <ul class="header-dropdown">
                                     <li>
-                                        <a href="create-accommodation-general-facilities-types.php">
+                                        <a href="create-room-facility-types.php">
                                             <i class="material-icons">add</i> 
                                         </a>
                                     </li>
@@ -85,17 +82,18 @@ $ACCOMODATION_GENERAL_FACILITY = new AccommodationGeneralFacilities(NULL);
                                         <tbody>
 
                                             <?php
-                                            foreach ($ACCOMODATION_GENERAL_FACILITY->all() as $key => $accommodation_general_facility) {
+                                            $ROOM_FACILITY = RoomFacility::all();
+                                            foreach ($ROOM_FACILITY as $key => $room_facility) {
                                                 ?>
-                                                <tr id="row_<?php echo $accommodation_general_facility['id']; ?>">
-                                                    <td><?php echo $accommodation_general_facility['sort']; ?></td> 
-                                                    <td><?php echo $accommodation_general_facility['name']; ?></td> 
+                                                <tr id="row_<?php echo $room_facility['id']; ?>">
+                                                    <td><?php echo $room_facility['sort']; ?></td> 
+                                                    <td><?php echo $room_facility['name']; ?></td> 
                                                     <td> 
-                                                        <a href="edit-accommodation-genaral-facilities-types.php?id=<?php echo $accommodation_general_facility['id']; ?>" class="op-link btn btn-sm btn-default"><i class="glyphicon glyphicon-pencil"></i></a>   
-                                                        <a href="#" class="delete-accommodation-genaral-facility-type btn btn-sm btn-danger" data-id="<?php echo $accommodation_general_facility['id']; ?>">
+                                                        <a href="edit-room-facilities.php?id=<?php echo $room_facility['id']; ?>" class="op-link btn btn-sm btn-default"><i class="glyphicon glyphicon-pencil"></i></a>  
+                                                        <a href="#" class="delete-room-facility btn btn-sm btn-danger" data-id="<?php echo $room_facility['id']; ?>">
                                                             <i class="glyphicon glyphicon-trash" data-type="cancel"></i>
                                                         </a>
-                                                        <a href="arrange-general-facilities.php" class="op-link btn btn-sm btn-default"><i class="glyphicon glyphicon-random"></i></a>  
+                                                        <a href="arrange-room-facilities.php" class="op-link btn btn-sm btn-default"><i class="glyphicon glyphicon-random"></i></a>  
                                                     </td>
                                                 </tr>
                                                 <?php
@@ -146,7 +144,8 @@ $ACCOMODATION_GENERAL_FACILITY = new AccommodationGeneralFacilities(NULL);
 
         <!-- Demo Js -->
         <script src="js/demo.js"></script>
-        <script src="delete/js/accommodation-genaral-facility-type.js" type="text/javascript"></script>
+        <script src="delete/js/room-facility.js" type="text/javascript"></script>
+
     </body>
 
 </html> 

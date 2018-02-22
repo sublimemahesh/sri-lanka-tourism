@@ -15,13 +15,12 @@ class AccommodationGeneralFacilities {
 
     public $id;
     public $name;
-    public $accommodation;
     public $sort;
 
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`,`name`,`accommodation`,`sort` FROM `accommodation_general_facilities` WHERE `id`=" . $id;
+            $query = "SELECT `id`,`name`,`sort` FROM `accommodation_general_facilities` WHERE `id`=" . $id;
 
             $db = new Database();
 
@@ -29,7 +28,6 @@ class AccommodationGeneralFacilities {
 
             $this->id = $result['id'];
             $this->name = $result['name'];
-            $this->accommodation = $result['name'];
             $this->queue = $result['sort'];
             return $this;
         }
@@ -37,9 +35,8 @@ class AccommodationGeneralFacilities {
 
     public function create() {
 
-        $query = "INSERT INTO `accommodation_general_facilities` (`name`,`accommodation`,`sort`) VALUES  ('"
+        $query = "INSERT INTO `accommodation_general_facilities` (`name`,`sort`) VALUES  ('"
                 . $this->name . "','"
-                . $this->accommodation . "','"
                 . $this->sort . "')";
 
         $db = new Database();
@@ -57,7 +54,7 @@ class AccommodationGeneralFacilities {
 
     public function all() {
 
-        $query = "SELECT * FROM `accommodation_general_facilities`";
+        $query = "SELECT * FROM `accommodation_general_facilities` ORDER BY sort ASC";
         $db = new Database();
         $result = $db->readQuery($query);
         $array_res = array();
@@ -71,8 +68,7 @@ class AccommodationGeneralFacilities {
     public function update() {
 
         $query = "UPDATE  `accommodation_general_facilities` SET "
-                . "`name` ='" . $this->name . "', "
-                . "`sort` ='" . $this->sort . "' "
+                . "`name` ='" . $this->name . "'"
                 . "WHERE `id` = '" . $this->id . "'";
 
         $db = new Database();

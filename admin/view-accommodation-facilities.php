@@ -1,8 +1,13 @@
 ﻿<?php
 include_once(dirname(__FILE__) . '/../class/include.php');
 include_once(dirname(__FILE__) . '/auth.php');
-
+$id = '';
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+}
+$ACCOMODATION = new Accommodation($id);
 $ACCOMODATION_GENERAL_FACILITY = new AccommodationGeneralFacilities(NULL);
+$ACCOMODATION_FACILITY_DETAILS = new AccommodationFacilityDetails(NULL);
 ?> 
 ﻿<!DOCTYPE html>
 <html>
@@ -10,7 +15,7 @@ $ACCOMODATION_GENERAL_FACILITY = new AccommodationGeneralFacilities(NULL);
     <head>
         <meta charset="UTF-8">
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <title>Manage Accommodation Genaral Facilities - www.srilankatourism.travel</title>
+        <title>View Room Facilities - www.srilankatourism.travel</title>
         <!-- Favicon-->
         <link rel="icon" href="favicon.ico" type="image/x-icon">
 
@@ -35,6 +40,13 @@ $ACCOMODATION_GENERAL_FACILITY = new AccommodationGeneralFacilities(NULL);
 
         <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
         <link href="css/themes/all-themes.css" rel="stylesheet" />
+        <style>
+            [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+                left: -9999px;
+                opacity: 1;
+                position: inherit;
+            }
+        </style>
     </head>
 
     <body class="theme-red">
@@ -54,7 +66,7 @@ $ACCOMODATION_GENERAL_FACILITY = new AccommodationGeneralFacilities(NULL);
                         <div class="card">
                             <div class="header">
                                 <h2>
-                                    Manage Accommodation Genaral Facilities
+                                    Facilities of <?php echo $ACCOMODATION->name; ?> 
                                 </h2>
                                 <ul class="header-dropdown">
                                     <li>
@@ -67,42 +79,53 @@ $ACCOMODATION_GENERAL_FACILITY = new AccommodationGeneralFacilities(NULL);
                             <div class="body">
                                 <!-- <div class="table-responsive">-->
                                 <div>
-                                    <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
-                                        <thead>
-                                            <tr>
-                                                <th>ID</th>
-                                                <th>Name</th> 
-                                                <th>Options</th>
-                                            </tr>
-                                        </thead>
-                                        <tfoot>
-                                            <tr>
-                                                <th>ID</th>
-                                                <th>Name</th> 
-                                                <th>Options</th>
-                                            </tr>
-                                        </tfoot>
-                                        <tbody>
-
-                                            <?php
-                                            foreach ($ACCOMODATION_GENERAL_FACILITY->all() as $key => $accommodation_general_facility) {
-                                                ?>
-                                                <tr id="row_<?php echo $accommodation_general_facility['id']; ?>">
-                                                    <td><?php echo $accommodation_general_facility['sort']; ?></td> 
-                                                    <td><?php echo $accommodation_general_facility['name']; ?></td> 
-                                                    <td> 
-                                                        <a href="edit-accommodation-genaral-facilities-types.php?id=<?php echo $accommodation_general_facility['id']; ?>" class="op-link btn btn-sm btn-default"><i class="glyphicon glyphicon-pencil"></i></a>   
-                                                        <a href="#" class="delete-accommodation-genaral-facility-type btn btn-sm btn-danger" data-id="<?php echo $accommodation_general_facility['id']; ?>">
-                                                            <i class="glyphicon glyphicon-trash" data-type="cancel"></i>
-                                                        </a>
-                                                        <a href="arrange-general-facilities.php" class="op-link btn btn-sm btn-default"><i class="glyphicon glyphicon-random"></i></a>  
-                                                    </td>
+                                    <form  method="post" action="post-and-get/accommodation-facilities-details.php" enctype="multipart/form-data">
+                                        <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                                            <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>Name</th> 
+                                                    <th>Options</th>
                                                 </tr>
+                                            </thead>
+                                            <tfoot>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>Name</th> 
+                                                    <th>Options</th>
+                                                </tr>
+                                            </tfoot>
+                                            <tbody>
+
                                                 <?php
-                                            }
-                                            ?>   
-                                        </tbody>
-                                    </table>
+                                                $result = AccommodationFacilityDetails::getFacilitiesByAccommodationId($id);
+                                                foreach ($ACCOMODATION_GENERAL_FACILITY->all() as $key => $accommodation_general_facility) {
+                                                    ?>
+                                                    <tr id="row_<?php echo $accommodation_general_facility['id']; ?>">
+                                                        <td><?php echo $accommodation_general_facility['sort']; ?></td> 
+                                                        <td><?php echo $accommodation_general_facility['name']; ?></td> 
+                                                        <td> 
+                                                            <input  value="<?php echo $accommodation_general_facility['id']; ?>" <?php
+                                                            $resultFacilities = explode(",", $result['facility']);
+                                                            foreach ($resultFacilities as $items => $resultFacility) {
+                                                                if ($resultFacility == $accommodation_general_facility['id']) {
+                                                                    echo 'checked';
+                                                                }
+                                                            }
+                                                                ?> name="facility[]" type="checkbox">
+                                                            </td>
+                                                        </tr>
+                                                        <?php
+                                                    }
+                                                    ?>   
+                                                </tbody>
+                                            </table>
+                                            <div class="text-center"> 
+                                                <input type="hidden" id="accommodation_id" value="<?php echo $ACCOMODATION->id; ?>" name="accommodation_id"/>
+                                            <input type="submit" name="create" class="btn btn-primary m-t-15 waves-effect" value="Save Changes"/>
+                                        </div>
+                                    </form>
+
                                 </div>
                             </div>
                         </div>

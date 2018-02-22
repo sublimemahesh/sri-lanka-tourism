@@ -129,7 +129,7 @@ include_once(dirname(__FILE__) . './auth.php');
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <select class="show-tick" id="type" name="type">
+                                                    <select class="form-control place-select1 show-tick" id="type" name="type">
                                                         <option value="">-- Please select --</option>
                                                         <?php
                                                         if (count(AccommodationType::all()) > 0) {
@@ -155,7 +155,7 @@ include_once(dirname(__FILE__) . './auth.php');
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <select class="show-tick" id="city" name="city">
+                                                    <select class="form-control place-select1 show-tick" id="city" name="city">
                                                         <option value="">-- Please select --</option>
                                                         <?php
                                                         if (count(City::all()) > 0) {
@@ -181,7 +181,7 @@ include_once(dirname(__FILE__) . './auth.php');
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <select class="show-tick" id="member" name="member">
+                                                    <select class="form-control place-select1 show-tick" id="member" name="member">
                                                         <option value="">-- Please select --</option>
                                                         <?php
                                                         if (count(Member::all()) > 0) {

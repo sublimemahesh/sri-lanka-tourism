@@ -1,19 +1,13 @@
 <?php
 include_once(dirname(__FILE__) . '/../class/include.php');
 include_once(dirname(__FILE__) . './auth.php');
-$id = '';
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
-}
-$ACCOMODATION_ROOM = new Room($id)
 ?> 
-
 <!DOCTYPE html>
 <html> 
     <head>
         <meta charset="UTF-8">
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <title>Add Room Facility - www.srilankatourism.travel</title>
+        <title>Add New Room Facility - www.srilankatourism.travel</title>
         <!-- Favicon-->
         <link rel="icon" href="favicon.ico" type="image/x-icon">
 
@@ -59,10 +53,10 @@ $ACCOMODATION_ROOM = new Room($id)
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="card">
                             <div class="header">
-                                <h2>Add Room Facility</h2>
+                                <h2>Add New Room Facility</h2>
                                 <ul class="header-dropdown">
                                     <li class="">
-                                        <a href="manage-accommodation.php">
+                                        <a href="manage-room-facility-types.php">
                                             <i class="material-icons">list</i> 
                                         </a>
                                     </li>
@@ -85,52 +79,12 @@ $ACCOMODATION_ROOM = new Room($id)
 
                                     <div class="row clearfix">
                                         <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5"> 
-                                            <input type="hidden" id="id" value="<?php echo $ACCOMODATION_ROOM->id; ?>" name="id"/>
                                             <input type="submit" name="create" class="btn btn-primary m-t-15 waves-effect" value="Create"/>
                                         </div>
                                     </div>
                                     <hr/>
                                 </form>
 
-                                <div>
-                                    <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
-                                        <thead>
-                                            <tr>
-                                                <th>ID</th>
-                                                <th>Name</th> 
-                                                <th>Options</th>
-                                            </tr>
-                                        </thead>
-                                        <tfoot>
-                                            <tr>
-                                                <th>ID</th>
-                                                <th>Name</th> 
-                                                <th>Options</th>
-                                            </tr>
-                                        </tfoot>
-                                        <tbody>
-
-                                            <?php
-                                            $ROOM_FACILITY = RoomFacility::getRoomFacilityById($id);
-                                            foreach ($ROOM_FACILITY as $key => $room_facility) {
-                                                ?>
-                                                <tr id="row_<?php echo $room_facility['id']; ?>">
-                                                    <td><?php echo $room_facility['id']; ?></td> 
-                                                    <td><?php echo $room_facility['name']; ?></td> 
-                                                    <td> 
-                                                        <a href="edit-room-facilities.php?id=<?php echo $room_facility['id']; ?>&Rid=<?php echo $id; ?>" class="op-link btn btn-sm btn-default"><i class="glyphicon glyphicon-pencil"></i></a>  
-                                                        <a href="#" class="delete-room-facility btn btn-sm btn-danger" data-id="<?php echo $room_facility['id']; ?>">
-                                                            <i class="glyphicon glyphicon-trash" data-type="cancel"></i>
-                                                        </a>
-                                                        <a href="arrange-room-facilities.php?id=<?php echo $id; ?>&Rid=<?php echo $id; ?>" class="op-link btn btn-sm btn-default"><i class="glyphicon glyphicon-random"></i></a>  
-                                                    </td>
-                                                </tr>
-                                                <?php
-                                            }
-                                            ?>   
-                                        </tbody>
-                                    </table>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -177,8 +131,8 @@ $ACCOMODATION_ROOM = new Room($id)
         <script src="js/pages/ui/dialogs.js"></script>
         <script src="js/demo.js"></script>
         <script src="js/pages/tables/jquery-datatable.js"></script>
-        <script src="delete/js/room-facility.js" type="text/javascript"></script>
 
+        <script src="delete/js/accommodation-genaral-facility-type.js" type="text/javascript"></script>
     </body>
 
 </html>
