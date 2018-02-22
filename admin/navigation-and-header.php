@@ -271,95 +271,13 @@
                 <li class="header">MAIN NAVIGATION</li>
                 <li class="active">
                     <a href="index.php">
-                        <i class="material-icons">dashboard</i>
+                        <i class="material-icons">av_timer</i>
                         <span>Dashboard</span>
                     </a>
                 </li>
-
                 <li>
                     <a href="javascript:void(0);" class="menu-toggle">
-                        <i class="material-icons">chevron_right</i>
-                        <span>District</span>
-                    </a>
-                    <ul class="ml-menu">
-                        <li>
-                            <a href="create-district.php">
-                                <i class="material-icons">add</i>
-                                <span>Add New</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="manage-district.php">
-                                <i class="material-icons">list</i>
-                                <span>Manage</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="arrange-district.php">
-                                <i class="material-icons">compare_arrows</i>
-                                <span>Arrange</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li> 
-
-                <li>
-                    <a href="javascript:void(0);" class="menu-toggle">
-                        <i class="material-icons">chevron_right</i>
-                        <span>City</span>
-                    </a>
-                    <ul class="ml-menu">
-                        <li>
-                            <a href="create-city.php">
-                                <i class="material-icons">add</i>
-                                <span>Add New</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="manage-city.php">
-                                <i class="material-icons">list</i>
-                                <span>Manage</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="arrange-city.php">
-                                <i class="material-icons">compare_arrows</i>
-                                <span>Arrange</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="javascript:void(0);" class="menu-toggle">
-                        <i class="material-icons">chevron_right</i>
-                        <span>Vehicle Type</span>
-                    </a>
-                    <ul class="ml-menu">
-                        <li>
-                            <a href="create-vehicle-type.php">
-                                <i class="material-icons">add</i>
-                                <span>Add New</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="manage-vehicle-type.php">
-                                <i class="material-icons">list</i>
-                                <span>Manage</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="arrange-vehicle-type.php">
-                                <i class="material-icons">compare_arrows</i>
-                                <span>Arrange</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="javascript:void(0);" class="menu-toggle">
-                        <i class="material-icons">chevron_right</i>
+                        <i class="material-icons">directions_car</i>
                         <span>Transports</span>
                     </a>
                     <ul class="ml-menu">
@@ -375,132 +293,37 @@
                                 <span>Manage</span>
                             </a>
                         </li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="javascript:void(0);" class="menu-toggle">
-                        <i class="material-icons">chevron_right</i>
-                        <span>Accommodation Type</span>
-                    </a>
-                    <ul class="ml-menu">
                         <li>
-                            <a href="create-accommodation-type.php">
-                                <i class="material-icons">add</i>
-                                <span>Add New</span>
+                            <a href="javascript:void(0);" class="menu-toggle">
+                                <i class="material-icons">chevron_right</i>
+                                <span>Vehicle Type</span>
                             </a>
-                        </li>
-                        <li>
-                            <a href="manage-accommodation-type.php">
-                                <i class="material-icons">list</i>
-                                <span>Manage</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="javascript:void(0);" class="menu-toggle">
-                        <i class="material-icons">chevron_right</i>
-                        <span>Accommodation Facilities</span>
-                    </a>
-                    <ul class="ml-menu">
-                        <li>
-                            <a href="create-accommodation-general-facilities-types.php">
-                                <i class="material-icons">add</i>
-                                <span>Add</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="manage-accommodation-genaral-facilities-types.php">
-                                <i class="material-icons">list</i>
-                                <span>Manage</span>
-                            </a>
+                            <ul class="ml-menu">
+                                <li>
+                                    <a href="create-vehicle-type.php">
+                                        <i class="material-icons">add</i>
+                                        <span>Add New</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="manage-vehicle-type.php">
+                                        <i class="material-icons">list</i>
+                                        <span>Manage</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="arrange-vehicle-type.php">
+                                        <i class="material-icons">compare_arrows</i>
+                                        <span>Arrange</span>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </li>
                 <li>
                     <a href="javascript:void(0);" class="menu-toggle">
-                        <i class="material-icons">chevron_right</i>
-                        <span>Room Facilities</span>
-                    </a>
-                    <ul class="ml-menu">
-                        <li>
-                            <a href="create-room-facility-types.php">
-                                <i class="material-icons">add</i>
-                                <span>Add</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="manage-room-facility-types.php">
-                                <i class="material-icons">list</i>
-                                <span>Manage</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="javascript:void(0);" class="menu-toggle">
-                        <i class="material-icons">chevron_right</i>
-                        <span>Accommodation</span>
-                    </a>
-                    <ul class="ml-menu">
-                        <li>
-                            <a href="create-accommodation.php">
-                                <i class="material-icons">add</i>
-                                <span>Add New</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="manage-accommodation.php">
-                                <i class="material-icons">list</i>
-                                <span>Manage</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="javascript:void(0);" class="menu-toggle">
-                        <i class="material-icons">chevron_right</i>
-                        <span>Member</span>
-                    </a>
-                    <ul class="ml-menu">
-                        <li>
-                            <a href="create-member.php">
-                                <i class="material-icons">add</i>
-                                <span>Add New</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="manage-member.php">
-                                <i class="material-icons">list</i>
-                                <span>Manage</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="javascript:void(0);" class="menu-toggle">
-                        <i class="material-icons">chevron_right</i>
-                        <span>Visitor</span>
-                    </a>
-                    <ul class="ml-menu">
-                        <li>
-                            <a href="create-visitor.php">
-                                <i class="material-icons">add</i>
-                                <span>Add New</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="manage-visitor.php">
-                                <i class="material-icons">list</i>
-                                <span>Manage</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="javascript:void(0);" class="menu-toggle">
-                        <i class="material-icons">chevron_right</i>
+                        <i class="material-icons">map</i>
                         <span>Tour Package</span>
                     </a>
                     <ul class="ml-menu">
@@ -518,52 +341,90 @@
                         </li>
                     </ul>
                 </li>
-
-
                 <li>
                     <a href="javascript:void(0);" class="menu-toggle">
-                        <i class="material-icons">chevron_right</i>
-                        <span>Article Type</span>
+                        <i class="material-icons">hotel</i>
+                        <span>Accommodation</span>
                     </a>
                     <ul class="ml-menu">
                         <li>
-                            <a href="create-article-type.php">
+                            <a href="create-accommodation.php">
                                 <i class="material-icons">add</i>
                                 <span>Add New</span>
                             </a>
                         </li>
                         <li>
-                            <a href="manage-article-type.php">
+                            <a href="manage-accommodation.php">
                                 <i class="material-icons">list</i>
                                 <span>Manage</span>
                             </a>
                         </li>
-                    </ul>
-                </li>
+                        <li>
+                            <a href="javascript:void(0);" class="menu-toggle">
+                                <i class="material-icons">chevron_right</i>
+                                <span>Accommodation Type</span>
+                            </a>
+                            <ul class="ml-menu">
+                                <li>
+                                    <a href="create-accommodation-type.php">
+                                        <i class="material-icons">add</i>
+                                        <span>Add New</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="manage-accommodation-type.php">
+                                        <i class="material-icons">list</i>
+                                        <span>Manage</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);" class="menu-toggle">
+                                <i class="material-icons">chevron_right</i>
+                                <span>Accommodation Facilities</span>
+                            </a>
+                            <ul class="ml-menu">
+                                <li>
+                                    <a href="create-accommodation-general-facilities-types.php">
+                                        <i class="material-icons">add</i>
+                                        <span>Add</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="manage-accommodation-genaral-facilities-types.php">
+                                        <i class="material-icons">list</i>
+                                        <span>Manage</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
 
-                <li>
-                    <a href="javascript:void(0);" class="menu-toggle">
-                        <i class="material-icons">chevron_right</i>
-                        <span>Article</span>
-                    </a>
-                    <ul class="ml-menu">
                         <li>
-                            <a href="create-article.php">
-                                <i class="material-icons">add</i>
-                                <span>Add New</span>
+                            <a href="javascript:void(0);" class="menu-toggle">
+                                <i class="material-icons">chevron_right</i>
+                                <span>Room Facilities</span>
                             </a>
-                        </li>
-                        <li>
-                            <a href="manage-article.php">
-                                <i class="material-icons">list</i>
-                                <span>Manage</span>
-                            </a>
+                            <ul class="ml-menu">
+                                <li>
+                                    <a href="create-room-facility-types.php">
+                                        <i class="material-icons">add</i>
+                                        <span>Add</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="manage-room-facility-types.php">
+                                        <i class="material-icons">list</i>
+                                        <span>Manage</span>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </li>
                 <li>
                     <a href="javascript:void(0);" class="menu-toggle">
-                        <i class="material-icons">chevron_right</i>
+                        <i class="material-icons">local_offer</i>
                         <span>Offer</span>
                     </a>
                     <ul class="ml-menu">
@@ -584,6 +445,146 @@
                                 <i class="material-icons">compare_arrows</i>
                                 <span>Arrange</span>
                             </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" class="menu-toggle">
+                        <i class="material-icons">chrome_reader_mode</i>
+                        <span>Article</span>
+                    </a>
+                    <ul class="ml-menu">
+                        <li>
+                            <a href="create-article.php">
+                                <i class="material-icons">add</i>
+                                <span>Add New</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="manage-article.php">
+                                <i class="material-icons">list</i>
+                                <span>Manage</span>
+                            </a>
+                        </li>
+                          <li>
+                    <a href="javascript:void(0);" class="menu-toggle">
+                        <i class="material-icons">chevron_right</i>
+                        <span>Article Type</span>
+                    </a>
+                    <ul class="ml-menu">
+                        <li>
+                            <a href="create-article-type.php">
+                                <i class="material-icons">add</i>
+                                <span>Add New</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="manage-article-type.php">
+                                <i class="material-icons">list</i>
+                                <span>Manage</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" class="menu-toggle">
+                        <i class="material-icons">supervisor_account</i>
+                        <span>Member</span>
+                    </a>
+                    <ul class="ml-menu">
+                        <li>
+                            <a href="create-member.php">
+                                <i class="material-icons">add</i>
+                                <span>Add New</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="manage-member.php">
+                                <i class="material-icons">list</i>
+                                <span>Manage</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" class="menu-toggle">
+                        <i class="material-icons">person_outline</i>
+                        <span>Visitor</span>
+                    </a>
+                    <ul class="ml-menu">
+                        <li>
+                            <a href="create-visitor.php">
+                                <i class="material-icons">add</i>
+                                <span>Add New</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="manage-visitor.php">
+                                <i class="material-icons">list</i>
+                                <span>Manage</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" class="menu-toggle">
+                        <i class="material-icons">pin_drop</i>
+                        <span>Location Manager</span>
+                    </a>
+                    <ul class="ml-menu">
+                        <li>
+                            <a href="javascript:void(0);" class="menu-toggle">
+                                <i class="material-icons">chevron_right</i>
+                                <span>District</span>
+                            </a>
+                            <ul class="ml-menu">
+                                <li>
+                                    <a href="create-district.php">
+                                        <i class="material-icons">add</i>
+                                        <span>Add New</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="manage-district.php">
+                                        <i class="material-icons">list</i>
+                                        <span>Manage</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="arrange-district.php">
+                                        <i class="material-icons">compare_arrows</i>
+                                        <span>Arrange</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);" class="menu-toggle">
+                                <i class="material-icons">chevron_right</i>
+                                <span>City</span>
+                            </a>
+                            <ul class="ml-menu">
+                                <li>
+                                    <a href="create-city.php">
+                                        <i class="material-icons">add</i>
+                                        <span>Add New</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="manage-city.php">
+                                        <i class="material-icons">list</i>
+                                        <span>Manage</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="arrange-city.php">
+                                        <i class="material-icons">compare_arrows</i>
+                                        <span>Arrange</span>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </li>
