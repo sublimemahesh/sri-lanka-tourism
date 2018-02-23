@@ -19,3 +19,6 @@ and open the template in the editor.
     padding-bottom: 50px;
     padding-top: 20px;
 }
+.top50{
+    padding-top: 50px !important;
+}

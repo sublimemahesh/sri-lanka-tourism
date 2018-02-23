@@ -1,3 +1,9 @@
+<?php
+include_once(dirname(__FILE__) . '/../class/include.php');
+include_once(dirname(__FILE__) . '/auth.php');
+
+$MEMBER = new Member($_SESSION['id']);
+?> 
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,12 +32,9 @@
                 max-width: 50% !important;
             }
         </style>
-    </head>
-
-    <body>
-
-        <section id="container" >
-
+    </head> 
+    <body> 
+        <section id="container" > 
             <?php
             include './header-nav.php';
             ?>
@@ -39,58 +42,71 @@
             <section id="main-content">
                 <div class="wrapper">
                     <div class="container-fluid">
-                        <div class="row">
-                            <div class="top-bott20">
-                                <h2><i class="fa fa-pencil"></i> Change Password</h2>
-                            </div>
+                        <div class="row  top-bott20"> 
+                            <?php
+                            if (isset($_GET['message'])) {
 
-                            <div class="body">
-                                <div class="userccount">
-                                    <div class="formpanel"> 
+                                $MESSAGE = New Message($_GET['message']);
+                                ?>
+                                <div class="alert alert-<?php echo $MESSAGE->status; ?>" role = "alert">
+                                    <?php echo $MESSAGE->description; ?>
+                                </div>
+                                <?php
+                            }
+                            ?> 
 
-                                        <form method="post" action="post-and-get/member.php">
-                                            <div class="col-md-12">
-                                                <div class="">
-                                                    <div class="bottom-top">User name</div>
-                                                    <div class="formrow">
-                                                        <input type="text" name="name" class="form-control" placeholder="Please Enter Your Full Name"  value="Mayomi" disabled="true">
-                                                    </div>
-                                                </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading"><i class="fa fa-pencil"></i> Change Password</div>
+                                <div class="panel-body">
+                                    <div class="body">
+                                        <div class="userccount">
+                                            <div class="formpanel"> 
 
-                                                <div class="">
-                                                    <div class="bottom-top">Current Password</div>
-                                                    <div class="formrow">
-                                                        <input type="password" name="currentpassword" class="form-control" placeholder="Enter Current Password" required="TRUE" value="">
-                                                    </div>
-                                                </div>
-                                                <div class="">
-                                                    <div class="bottom-top">New Password</div>
-                                                    <div class="formrow">
-                                                        <input type="password" name="cnewpassword" class="form-control" placeholder="Enter New Password" required="TRUE" value="">
-                                                    </div>
-                                                </div> 
-                                                <div class="">
-                                                    <div class="bottom-top">Confirm Password</div>
-                                                    <div class="formrow">
-                                                        <input type="password" name="confirmpassword" class="form-control" placeholder="Enter Confirm Password" required="TRUE" value="">
-                                                    </div>
-                                                </div> 
-                                                <div class="top-bott50">
-                                                    <div class="bottom-top">
-                                                        <input type="hidden" id="oldDis" value=""/>
+                                                <form method="post" action="post-and-get/change-password.php">
+                                                    <div class="col-md-12">
+                                                        <div class="">
+                                                            <div class="bottom-top">User name</div>
+                                                            <div class="formrow">
+                                                                <input type="text" name="username" class="form-control" placeholder="Please Enter Your Full Name"  value="<?php echo $MEMBER->username; ?>" disabled="true">
+                                                            </div>
+                                                        </div>
 
-                                                        <input type="hidden" id="memeberId" name="memeberId" value="fds"/>
-                                                        <button type="button" class="btn btn-info center-block">CHANGE SAVE</button>
-                                                    </div>
-                                                </div> 
-                                            </div> 
+                                                        <div class="">
+                                                            <div class="bottom-top">Current Password</div>
+                                                            <div class="formrow">
+                                                                <input type="password" name="oldPass" class="form-control" placeholder="Enter Current Password" required="TRUE" value="">
+                                                            </div>
+                                                        </div>
+                                                        <div class="">
+                                                            <div class="bottom-top">New Password</div>
+                                                            <div class="formrow">
+                                                                <input type="password" name="newPass" class="form-control" placeholder="Enter New Password" required="TRUE" value="">
+                                                            </div>
+                                                        </div> 
+                                                        <div class="">
+                                                            <div class="bottom-top">Confirm Password</div>
+                                                            <div class="formrow">
+                                                                <input type="password" name="confPass" class="form-control" placeholder="Enter Confirm Password" required="TRUE" value="">
+                                                            </div>
+                                                        </div> 
+                                                        <div class="top-bott50">
+                                                            <div class="bottom-top">
+                                                                <input type="hidden" id="oldDis" value=""/>
 
-                                        </form>
-                                        <br>
-
+                                                                <input type="hidden" id="memeberId" name="memeberId" value="fds"/>
+                                                                <button name="changePassword" type="submit" class="btn btn-info center-block">Change Password</button>
+                                                                <input type="hidden" id="id" value="<?php echo $MEMBER->id; ?>" name="id"> 
+                                                            </div>
+                                                        </div> 
+                                                    </div>  
+                                                </form>  
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> 
+
+
                         </div>
                     </div>
                 </div>

@@ -2,7 +2,7 @@
 include_once(dirname(__FILE__) . '/../class/include.php');
 include_once(dirname(__FILE__) . './auth.php');
 
-$MEMBER = new Member($_SESSION["id"]);
+$MEMBER = new Member($_SESSION['id']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,7 +38,7 @@ $MEMBER = new Member($_SESSION["id"]);
             <section id="main-content">
                 <div class="wrapper">
                     <div class="container-fluid">
-                        <div class="row">
+                        <div class="row top-bott20">
                             <?php
                             if (isset($_GET['message'])) {
                                 $message = new Message($_GET['message']);
@@ -48,41 +48,44 @@ $MEMBER = new Member($_SESSION["id"]);
                                 <?php
                             }
                             ?>
-                            <div class="top-bott20">
-                                <h2><i class="fa fa-user"></i>   My Profile</h2>
-                            </div>
 
-                            <div class="body">
-                                <div class="col-sm-12 col-md-12">
-                                    <div class="row">
-                                        <div class="col-sm-9 col-md-9">
-                                            <ul class="list-group">
-                                                <li class="list-group-item"><b>Name</b> : <?php echo $MEMBER->name; ?></li> 
-                                                <li class="list-group-item"><b>User Name</b> : <?php echo $MEMBER->username; ?></li> 
-                                                <li class="list-group-item"><b>Email</b> : <?php echo $MEMBER->email; ?></li>
-                                                <li class="list-group-item"><b>Contact No</b> : <?php echo $MEMBER->contact_number; ?></li>
-                                                <li class="list-group-item"> <b>Created Date</b> : 2018.02.16</li>
-                                                <li class="list-group-item"> <b>Last Login</b> : </li> 
-                                            </ul>
-                                        </div>
-                                        <div class="col-sm-3 col-md-3">  
-                                            <?php
-                                            if (empty($MEMBER->profile_picture)) {
-                                                ?>
-                                                <img src="../upload/member/member.png" class="img img-responsive img-thumbnail"/> 
+                            <div class="panel panel-default">
+                                <div class="panel-heading"><i class="fa fa-user"></i>   My Profile</div>
+                                <div class="panel-body">  <div class="body">
+                                        <div class="col-sm-12 col-md-12">
+                                            <div class="row">
+                                                <div class="col-sm-9 col-md-9">
+                                                    <ul class="list-group">
+                                                        <li class="list-group-item"><b>Name</b> : <?php echo $MEMBER->name; ?></li> 
+                                                        <li class="list-group-item"><b>User Name</b> : <?php echo $MEMBER->username; ?></li> 
+                                                        <li class="list-group-item"><b>Email</b> : <?php echo $MEMBER->email; ?></li>
+                                                        <li class="list-group-item"><b>Contact No</b> : <?php echo $MEMBER->contact_number; ?></li>
+                                                        <li class="list-group-item"> <b>Created Date</b> : 2018.02.16</li>
+                                                        <li class="list-group-item"> <b>Last Login</b> : </li> 
+                                                    </ul>
+                                                </div>
+                                                <div class="col-sm-3 col-md-3">  
+                                                    <?php
+                                                    if (empty($MEMBER->profile_picture)) {
+                                                        ?>
+                                                        <img src="../upload/member/member.png" class="img img-responsive img-thumbnail"/> 
 
-                                                <?php
-                                            } else {
-                                                ?>
-                                                <img src="../upload/member/<?php echo $MEMBER->profile_picture; ?>" class="img img-responsive img-thumbnail"/> 
-                                                <?php
-                                            }
-                                            ?>
+                                                        <?php
+                                                    } else {
+                                                        ?>
+                                                        <img src="../upload/member/<?php echo $MEMBER->profile_picture; ?>" class="img img-responsive img-thumbnail"/> 
+                                                        <?php
+                                                    }
+                                                    ?>
 
-                                        </div>
+                                                </div>
+                                            </div>
+                                        </div>   	
                                     </div>
-                                </div>   	
+                                </div>
                             </div>
+
+
                         </div>
                     </div>
                 </div>
