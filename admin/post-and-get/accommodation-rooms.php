@@ -31,7 +31,7 @@ if (isset($_POST['create'])) {
         $VALID->addError("Your data was saved successfully", 'success');
         $_SESSION['ERRORS'] = $VALID->errors();
 
-        header('Location: ' . $_SERVER['HTTP_REFERER']);
+        header("location: ../view-room-facilities.php?id=". $ACCOMODATION_ROOM->id);
     } else {
 
         if (!isset($_SESSION)) {

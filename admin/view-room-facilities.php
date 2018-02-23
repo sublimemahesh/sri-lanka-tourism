@@ -5,6 +5,11 @@ $id = '';
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 }
+
+$Aid = '';
+if (isset($_GET['Aid'])) {
+    $Aid = $_GET['Aid'];
+}
 $ACCOMODATION_ROOM = new Room($id);
 $ACCOMODATION_ROOM_FACILITY = new RoomFacility(NULL);
 $ACCOMODATION_ROOM_DETAILS = new RoomFaciliityDetails(NULL);
@@ -74,7 +79,7 @@ $ACCOMODATION_ROOM_DETAILS = new RoomFaciliityDetails(NULL);
                                 </h2>
                                 <ul class="header-dropdown">
                                     <li class="">
-                                        <a href="create-accommodation-rooms.php?id=<?php echo $ACCOMODATION_ROOM->id; ?>">
+                                        <a href="create-accommodation-rooms.php?id=<?php echo $Aid; ?>">
                                             <i class="material-icons">list</i> 
                                         </a>
                                     </li>

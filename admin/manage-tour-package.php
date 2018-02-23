@@ -84,7 +84,6 @@ $TOURP = new TourPackage(NULL)
                                                             <a href="#"  class="delete-tour-package" data-id="<?php echo $tour_package['id']; ?>"> <button class="glyphicon glyphicon-trash delete-btn"></button></a>
                                                             <a href="edit-tour-package.php?id=<?php echo $tour_package['id']; ?>"> <button class="glyphicon glyphicon-pencil edit-btn"></button></a>
                                                             <a href="view-tour-sub-section.php?id=<?php echo $tour_package['id']; ?>">  <button class="glyphicon glyphicon-indent-left arrange-btn"></button></a>
-                                                            <a href="view-tour-sub-section-photos.php?id=<?php echo $tour_package['id']; ?>">  <button class="glyphicon glyphicon-picture arrange-btn"></button></a>
                                                         </div>
                                                     </div>
                                                 </div>

@@ -5,13 +5,14 @@
  *
  * @author sublime holdings
  * @web www.sublime.lk
- **/
- 
- 
+ * */
 class Database {
 
-
-     
+//    private $host = 'kelum818.ipagemysql.com';
+//    private $name = 'srilanka_tourism';
+//    private $user = 'srilankatourism';
+//    private $password = 'Tourism@srilanka';
+    
     private $host = 'localhost';
     private $name = 'tourism';
     private $user = 'root';
