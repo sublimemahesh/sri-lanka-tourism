@@ -5,7 +5,7 @@ $id = '';
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 }
-$TOUR_SS_PHOTO = new TourPackage($id);
+$TOUR_SUB = new TourSubSection($id);
 ?> 
 <!DOCTYPE html>
 
@@ -78,7 +78,7 @@ $TOUR_SS_PHOTO = new TourPackage($id);
                                     </div>
                                     <div class="row clearfix">
                                         <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5"> 
-                                            <input type="hidden" id="id" value="<?php echo $TOUR_SS_PHOTO->id; ?>" name="id"/>
+                                            <input type="hidden" id="id" value="<?php echo $TOUR_SUB->id; ?>" name="id"/>
                                             <input type="submit" name="create" class="btn btn-primary m-t-15 waves-effect" value="create"/>
                                         </div>
                                     </div>
@@ -108,7 +108,7 @@ $TOUR_SS_PHOTO = new TourPackage($id);
                                         }
                                     } else {
                                         ?> 
-                                        <b style="padding-left: 15px;">No Offer photos in the database.</b> 
+                                        <b style="padding-left: 15px;">No Tour Section photos in the database.</b> 
                                     <?php } ?> 
 
                                 </div>

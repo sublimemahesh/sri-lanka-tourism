@@ -172,7 +172,7 @@ $ACCOMODATION = new Accommodation($id)
                                                         <a href="#" class="delete-room" data-id="<?php echo $accommodation_room['id']; ?>"> <button class="glyphicon glyphicon-trash delete-btn"></button></a>
                                                         <a href="edit-accommodation-room.php?id=<?php echo $accommodation_room['id']; ?>"> <button class="glyphicon glyphicon-pencil edit-btn"></button></a>
                                                         <a href="arrange-accommodation-room.php?id=<?php echo $id; ?>">  <button class="glyphicon glyphicon-random arrange-btn"></button></a>
-                                                        <a href="view-room-facilities.php?id=<?php echo $accommodation_room['id']; ?>">  <button class="glyphicon glyphicon-ok-circle arrange-btn"></button></a>
+                                                        <a href="view-room-facilities.php?id=<?php echo $accommodation_room['id']; ?>&Aid=<?php echo $id;?>">  <button class="glyphicon glyphicon-ok-circle arrange-btn"></button></a>
                                                     </div>
                                                 </div>
                                             </div>

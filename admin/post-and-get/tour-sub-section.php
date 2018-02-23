@@ -30,7 +30,7 @@ if (isset($_POST['add-tour-sub-section'])) {
         $VALID->addError("Your data was saved successfully", 'success');
         $_SESSION['ERRORS'] = $VALID->errors();
 
-        header('Location: ' . $_SERVER['HTTP_REFERER']);
+           header("location: ../view-tour-sub-section-photos.php?id=". $TOURSUBSECTION->id);
     } else {
 
         if (!isset($_SESSION)) {
