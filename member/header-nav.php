@@ -1,9 +1,9 @@
 <?php
-
 //
 //if (!Member::login()) {
 //    redirect('login.php');
 //}
+$MEMBER = new Member($_SESSION['id']);
 ?>
 <header class="header black-bg">
     <div class="sidebar-toggle-box">
@@ -27,7 +27,20 @@
                     </li>
                     <li>
                         <a href="profile.php">
-                            <span class="photo"><img alt="avatar" src="../upload/visitor/-574108304_190629032602_1518674405_n.jpg"></span>
+
+                            <?php
+                            if (empty($MEMBER->profile_picture)) {
+                                ?> 
+                                <span class="photo"><img alt="avatar" src="../upload/member/member.png"></span>
+                                <?php
+                            } else {
+                                ?>
+                                <span class="photo"><img alt="avatar" src="../upload/member/<?php echo $MEMBER->profile_picture; ?>"></span>
+                                <?php
+                            }
+                            ?>
+
+
                             <span class="subject">
                                 <span class="from"> My Profile</span>
                             </span>
@@ -71,8 +84,18 @@
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
 
-            <p class="centered"><a href=""><img src="../upload/visitor/-574108304_190629032602_1518674405_n.jpg" class="img-circle" width="60"></a></p>
-            <h5 class="centered">Mayomi Gunawardana</h5>
+            <?php
+            if (empty($MEMBER->profile_picture)) {
+                ?> 
+                <p class="centered"><a href="./"><img src="../upload/member/member.png" class="img-circle" width="60"></a></p>
+                <?php
+            } else {
+                ?>
+                <p class="centered"><a href="./"><img src="../upload/member/<?php echo $MEMBER->profile_picture; ?>" class="img-circle" width="60"></a></p>
+                <?php
+            }
+            ?>
+            <h5 class="centered"><?php echo $MEMBER->name; ?></h5>
 
 
             <li class="sub-menu">

@@ -60,43 +60,91 @@ if (isset($_POST['register'])) {
     }
 }
 
+if (isset($_POST['login'])) {
+
+    $MEMBER = new Member(NULL);
+
+    $username = filter_var($_POST['username'], FILTER_SANITIZE_STRING);
+    $password = md5(filter_var($_POST['password'], FILTER_SANITIZE_STRING));
+
+
+
+    if ($MEMBER->login($username, $password)) {
+        header('Location: ../profile.php?message=5');
+        exit();
+    } else {
+        header('Location: ../login.php?message=7');
+        exit();
+    }
+}
+
+
 if (isset($_POST['update'])) {
 
-    $dir_dest = '../../upload/member/';
+    $imgName = '';
 
-    $handle = new Upload($_FILES['image']);
+    if (empty($_POST["profile_picture_name"])) {
 
-    $imgName = null;
-    if ($handle->uploaded) {
-        $handle->image_resize = true;
-        $handle->file_new_name_body = TRUE;
-        $handle->file_overwrite = TRUE;
-        $handle->file_new_name_ext = FALSE;
-        $handle->image_ratio_crop = 'C';
-        $handle->file_new_name_body = $_POST ["oldImageName"];
-        $handle->image_x = 900;
-        $handle->image_y = 500;
+        $dir_dest = '../../upload/member/';
 
-        $handle->Process($dir_dest);
+        $handle = new Upload($_FILES['profile_picture']);
 
-        if ($handle->processed) {
-            $info = getimagesize($handle->file_dst_pathname);
-            $imgName = $handle->file_dst_name;
+        $imgName = Helper::randamId();
+
+        if ($handle->uploaded) {
+            $handle->image_resize = true;
+            $handle->file_new_name_body = TRUE;
+            $handle->file_overwrite = TRUE;
+            $handle->file_new_name_ext = 'jpg';
+            $handle->image_ratio_crop = 'C';
+            $handle->file_new_name_body = $imgName;
+            $handle->image_x = 250;
+            $handle->image_y = 250;
+
+            $handle->Process($dir_dest);
+
+            if ($handle->processed) {
+                $info = getimagesize($handle->file_dst_pathname);
+                $imgName = $handle->file_dst_name;
+            }
         }
+    } else {
+
+        $dir_dest = '../../upload/member/';
+
+        $handle = new Upload($_FILES['profile_picture']);
+
+        if ($handle->uploaded) {
+            $handle->image_resize = true;
+            $handle->file_new_name_body = TRUE;
+            $handle->file_overwrite = TRUE;
+            $handle->file_new_name_ext = FALSE;
+            $handle->image_ratio_crop = 'C';
+            $handle->file_new_name_body = $_POST["profile_picture_name"];
+            $handle->image_x = 250;
+            $handle->image_y = 250;
+
+            $handle->Process($dir_dest);
+
+            if ($handle->processed) {
+                $info = getimagesize($handle->file_dst_pathname);
+                $imgName = $handle->file_dst_name;
+            }
+        }
+        $imgName = $_POST["profile_picture_name"];
     }
 
     $MEMBER = new Member($_POST['id']);
 
-    $MEMBER->profile_picture = $_POST["oldImageName"];
+    $MEMBER->profile_picture = $imgName;
     $MEMBER->name = mysql_real_escape_string($_POST['name']);
     $MEMBER->email = mysql_real_escape_string($_POST['email']);
     $MEMBER->contact_number = mysql_real_escape_string($_POST['contact_number']);
     $MEMBER->username = mysql_real_escape_string($_POST['username']);
-    $MEMBER->status = mysql_real_escape_string($_POST['active']);
 
     $VALID = new Validator();
+
     $VALID->check($MEMBER, [
-        'profile_picture' => ['required' => TRUE],
         'name' => ['required' => TRUE],
         'email' => ['required' => TRUE],
         'contact_number' => ['required' => TRUE],
@@ -122,23 +170,5 @@ if (isset($_POST['update'])) {
         $_SESSION['ERRORS'] = $VALID->errors();
 
         header('Location: ' . $_SERVER['HTTP_REFERER']);
-    }
-}
-
-if (isset($_POST['login'])) {
-
-    $MEMBER = new Member(NULL);
-
-    $username = filter_var($_POST['username'], FILTER_SANITIZE_STRING);
-    $password = md5(filter_var($_POST['password'], FILTER_SANITIZE_STRING));
-
-
-
-    if ($MEMBER->login($username, $password)) {
-        header('Location: ../profile.php?message=5');
-        exit();
-    } else {
-        header('Location: ../login.php?message=7');
-        exit();
     }
 }

@@ -2,29 +2,29 @@
 
 include_once(dirname(__FILE__) . '/../../class/include.php');
 
-//if (isset($_POST['changePassword'])) {
-//
-//    $OldPassOk = Member::checkOldPass($_POST["id"], $_POST["oldPass"]);
-//
-//    if ($_POST["newPass"] === $_POST["confPass"]) {
-//        if ($OldPassOk) {
-//            $result = Member::changePassword($_POST["id"], $_POST["newPass"]);
-//            if ($result == 'TRUE') {
-//                header('location: log-out.php');
-//                exit();
-//            } else {
-//                header('location: ../change-password.php?id=' . $_POST["id"] . '&&message=14');
-//                exit();
-//            }
-//        } else {
-//            header('location: ../change-password.php?id=' . $_POST["id"] . '&&message=18');
-//            exit();
-//        }
-//    } else {
-//        header('location: ../change-password.php?id=' . $_POST["id"] . '&&message=17');
-//        exit();
-//    }
-//}
+if (isset($_POST['changePassword'])) {
+
+    $OldPassOk = Member::checkOldPass($_POST["id"], $_POST["oldPass"]);
+
+    if ($_POST["newPass"] === $_POST["confPass"]) {
+        if ($OldPassOk) {
+            $result = Member::changePassword($_POST["id"], $_POST["newPass"]);
+            if ($result == 'TRUE') {
+                header('location: logout.php');
+                exit();
+            } else {
+                header('location: ../change-password.php?message=14');
+                exit();
+            }
+        } else {
+            header('location: ../change-password.php?message=18');
+            exit();
+        }
+    } else {
+        header('location: ../change-password.php?message=17');
+        exit();
+    }
+}
 
 if (isset($_POST['PasswordReset'])) {
     $MEMBER = new Member(NULL);
