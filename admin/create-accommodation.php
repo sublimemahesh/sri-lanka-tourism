@@ -181,21 +181,7 @@ include_once(dirname(__FILE__) . './auth.php');
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <select class="form-control place-select1 show-tick" id="member" name="member">
-                                                        <option value="">-- Please select --</option>
-                                                        <?php
-                                                        if (count(Member::all()) > 0) {
-                                                            foreach (Member::all() as $key => $member) {
-                                                                ?>
-                                                                <option value="<?php echo $member["id"]; ?>"><?php echo $member["name"]; ?></option>
-                                                                <?php
-                                                            }
-                                                        } else {
-                                                            ?> 
-                                                            <b style="padding-left: 15px;">No Members in the database.</b> 
-                                                        <?php } ?> 
-                                                        ?>
-                                                    </select>
+                                                    <input type="number" id="member" class="form-control" placeholder="Enter Member ID" autocomplete="off" name="member" required="TRUE">
                                                 </div>
                                             </div>
                                         </div>

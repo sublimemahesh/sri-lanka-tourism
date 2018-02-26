@@ -11,13 +11,14 @@ class TourPackage {
     public $name;
     public $picture_name;
     public $price;
+    public $member;
     public $description;
     public $sort;
 
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`,`name`,`picture_name`,`price`,`description`,`sort` FROM `tour_package` WHERE `id`=" . $id;
+            $query = "SELECT `id`,`name`,`picture_name`,`price`,`member`,`description`,`sort` FROM `tour_package` WHERE `id`=" . $id;
 
             $db = new Database();
 
@@ -27,6 +28,7 @@ class TourPackage {
             $this->name = $result['name'];
             $this->picture_name = $result['picture_name'];
             $this->price = $result['price'];
+            $this->member = $result['member'];
             $this->description = $result['description'];
             $this->sort = $result['sort'];
 
@@ -36,10 +38,11 @@ class TourPackage {
 
     public function create() {
 
-        $query = "INSERT INTO `tour_package` (`name`,`picture_name`,`price`,`description`,`sort`) VALUES  ('"
+        $query = "INSERT INTO `tour_package` (`name`,`picture_name`,`price`,`member`,`description`,`sort`) VALUES  ('"
                 . $this->name . "', '"
                 . $this->picture_name . "', '"
                 . $this->price . "', '"
+                . $this->member . "', '"
                 . $this->description . "', '"
                 . $this->sort . "')";
 
@@ -76,6 +79,7 @@ class TourPackage {
                 . "`name` ='" . $this->name . "', "
                 . "`picture_name` ='" . $this->picture_name . "', "
                 . "`price` ='" . $this->price . "', "
+                . "`member` ='" . $this->member . "', "
                 . "`description` ='" . $this->description . "', "
                 . "`sort` ='" . $this->sort . "' "
                 . "WHERE `id` = '" . $this->id . "'";
@@ -139,6 +143,21 @@ class TourPackage {
         $db = new Database();
         $result = $db->readQuery($query);
         return $result;
+    }
+
+    public function getTourPackagesByMemberId($member) {
+
+        $query = "SELECT * FROM `tour_package` WHERE `member`= $member";
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+        return $array_res;
     }
 
 }

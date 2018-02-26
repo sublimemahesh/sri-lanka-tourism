@@ -133,5 +133,20 @@ class Accommodation {
             $ACCMMODATION_PHOTO->delete();
         }
     }
+    
+     public function getAccommodationByMemberId($member) {
+
+        $query = "SELECT * FROM `accommodation` WHERE `member`= $member";
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+        return $array_res;
+    }
 
 }
