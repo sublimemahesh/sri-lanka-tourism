@@ -74,6 +74,7 @@ class Transports {
 
         $query = "UPDATE  `transports` SET "
                 . "`title` ='" . $this->title . "', "
+                . "`member` ='" . $this->member . "', "
                 . "`description` ='" . $this->description . "' "
                 . "WHERE `id` = '" . $this->id . "'";
 
@@ -128,6 +129,21 @@ class Transports {
             $TRANSPORT_RATES->id = $Rate["id"];
             $TRANSPORT_RATES->delete();
         }
+    }
+
+    public function getTransportsByMemberId($member) {
+
+        $query = "SELECT * FROM `transports` WHERE `member`= $member";
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+        return $array_res;
     }
 
 }

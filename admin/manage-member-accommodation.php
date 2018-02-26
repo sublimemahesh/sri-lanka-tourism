@@ -2,15 +2,20 @@
 include_once(dirname(__FILE__) . '/../class/include.php');
 include_once(dirname(__FILE__) . '/auth.php');
 
-$MEMBER = new Member(NULL)
-?> 
+$memberId = '';
+if (isset($_GET['member'])) {
+    $memberId = $_GET['member'];
+}
+$ACCOMODATION = Accommodation::getAccommodationByMemberId($memberId);
+
+?>
 ﻿<!DOCTYPE html>
 <html>
 
     <head>
         <meta charset="UTF-8">
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <title>Manage Member - www.srilankatourism.travel</title>
+        <title>Manage Accommodation- www.srilankatourism.travel</title>
         <!-- Favicon-->
         <link rel="icon" href="favicon.ico" type="image/x-icon">
 
@@ -54,11 +59,20 @@ $MEMBER = new Member(NULL)
                         <div class="card">
                             <div class="header">
                                 <h2>
-                                    Manage Member
+                                    <?php
+                                    foreach ($ACCOMODATION as $key => $accommodation) {
+                                        if($key<1){
+                                        $member = new Member($accommodation['member']);
+                                        ?>
+                                        Manage Accommodation - <?php echo $member->name; ?>
+                                        <?php
+                                        }
+                                    }
+                                    ?>
                                 </h2>
                                 <ul class="header-dropdown">
                                     <li>
-                                        <a href="create-member.php">
+                                        <a href="create-accommodation.php">
                                             <i class="material-icons">add</i> 
                                         </a>
                                     </li>
@@ -72,10 +86,9 @@ $MEMBER = new Member(NULL)
                                             <tr>
                                                 <th>ID</th>
                                                 <th>Name</th> 
-                                                <th>email</th>
-                                                <th>Contact Number</th> 
-                                                <th>Username</th>
-                                                <th>Rank</th> 
+                                                <th>Type</th>
+                                                <th>City</th>
+                                                <th>Address</th>
                                                 <th>Options</th>
                                             </tr>
                                         </thead>
@@ -83,36 +96,35 @@ $MEMBER = new Member(NULL)
                                             <tr>
                                                 <th>ID</th>
                                                 <th>Name</th> 
-                                                <th>email</th>
-                                                <th>Contact Number</th> 
-                                                <th>Username</th>
-                                                <th>Rank</th> 
+                                                <th>Type</th>
+                                                <th>City</th>
+                                                <th>Address</th>
                                                 <th>Options</th>
                                             </tr>
                                         </tfoot>
                                         <tbody>
 
                                             <?php
-                                            foreach ($MEMBER->all() as $key => $member) {
+                                            foreach ($ACCOMODATION as $key => $accommodation) {
+                                                $accommodation_type = new AccommodationType($accommodation['type']);
+                                                $city = new City($accommodation['city']);
                                                 ?>
-                                                <tr id="row_<?php echo $member['id']; ?>">
-                                                    <td><?php echo $member['id']; ?></td> 
-                                                    <td><?php echo substr($member['name'], 0, 20); ?></td> 
-                                                    <td><?php echo substr($member['email'], 0, 30); ?></td> 
-                                                    <td><?php echo $member['contact_number']; ?></td> 
-                                                    <td><?php echo substr($member['username'], 0, 30); ?></td> 
-                                                    <td><?php echo $member['rank']; ?></td> 
-                                                    <td> 
-                                                        <a href="edit-member.php?id=<?php echo $member['id']; ?>" class="op-link btn btn-sm btn-default"><i class="glyphicon glyphicon-pencil"></i></a>
+                                                <tr id="row_<?php echo $accommodation['id']; ?>">
 
-                                                        <a href="#" class="delete-member btn btn-sm btn-danger" data-id="<?php echo $member['id']; ?>">
+                                                    <td><?php echo $accommodation['id']; ?></td> 
+                                                    <td><?php echo substr($accommodation['name'], 0, 25); ?></td> 
+                                                    <td><?php echo substr($accommodation_type->name, 0, 30); ?></td> 
+                                                    <td><?php echo substr($city->name, 0, 30); ?></td>
+                                                    <td><?php echo substr($accommodation['address'], 0, 40); ?></td>
+                                                    <td> 
+                                                        <a href="edit-accommodation.php?id=<?php echo $accommodation['id']; ?>" class="op-link btn btn-sm btn-default"><i class="glyphicon glyphicon-pencil"></i></a>  
+
+                                                        <a href="#" class="delete-accommodation btn btn-sm btn-danger" data-id="<?php echo $accommodation['id']; ?>">
                                                             <i class="glyphicon glyphicon-trash" data-type="cancel"></i>
                                                         </a>
-                                                        |
-                                                        <a href="manage-member-accommodation.php?member=<?php echo $member['id']; ?>" class="op-link btn btn-sm btn-default"><i class="glyphicon glyphicon-bed"></i></a>
-                                                        <a href="manage-member-tour-packages.php?member=<?php echo $member['id']; ?>" class="op-link btn btn-sm btn-default"><i class="glyphicon glyphicon-map-marker"></i></a>
-                                                        <a href="manage-member-transports.php?member=<?php echo $member['id']; ?>" class="op-link btn btn-sm btn-default"><i class="glyphicon glyphicon-road"></i></a>
-
+                                                        <a href="view-accommodation-photos.php?id=<?php echo $accommodation['id']; ?>" class="op-link btn btn-sm btn-default"><i class="glyphicon glyphicon-picture"></i></a>
+                                                        <a href="create-accommodation-rooms.php?id=<?php echo $accommodation['id']; ?>" class="op-link btn btn-sm btn-default"><i class="glyphicon glyphicon-bed"></i></a> 
+                                                        <a href="view-accommodation-facilities.php?id=<?php echo $accommodation['id']; ?>" class="op-link btn btn-sm btn-default"><i class="glyphicon glyphicon-ok"></i></a> 
                                                     </td>
                                                 </tr>
                                                 <?php
@@ -163,7 +175,6 @@ $MEMBER = new Member(NULL)
 
         <!-- Demo Js -->
         <script src="js/demo.js"></script>
-        <script src="delete/js/member.js" type="text/javascript"></script>
+        <script src="delete/js/accommodation.js" type="text/javascript"></script>
     </body>
-
 </html> 

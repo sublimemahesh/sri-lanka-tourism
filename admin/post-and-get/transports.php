@@ -12,11 +12,13 @@ if (isset($_POST['add-transports'])) {
 
     $TRANSPORTS->title = $_POST['title'];
     $TRANSPORTS->vehicle_type = $_POST['vehicle_type'];
+    $TRANSPORTS->member = $_POST['member_id'];
     $TRANSPORTS->description = $_POST['description'];
 
     $VALID->check($TRANSPORTS, [
         'title' => ['required' => TRUE],
         'vehicle_type' => ['required' => TRUE],
+        'member' => ['required' => TRUE],
         'description' => ['required' => TRUE],
     ]);
 
@@ -49,10 +51,12 @@ if (isset($_POST['edit-transports'])) {
 
     $TRANSPORTS->title = $_POST['title'];
     $TRANSPORTS->description = $_POST['description'];
+    $TRANSPORTS->member = $_POST['member_id'];
 
     $VALID->check($TRANSPORTS, [
         'title' => ['required' => TRUE],
         'description' => ['required' => TRUE],
+         'member' => ['required' => TRUE]
     ]);
 
     if ($VALID->passed()) {

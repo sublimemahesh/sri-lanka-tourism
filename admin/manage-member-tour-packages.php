@@ -1,8 +1,12 @@
 ﻿<?php
 include_once(dirname(__FILE__) . '/../class/include.php');
 include_once(dirname(__FILE__) . '/auth.php');
+$memberId = '';
+if (isset($_GET['member'])) {
+    $memberId = $_GET['member'];
+}
 
-$MEMBER = new Member(NULL)
+$TOUR_PACKAGE = TourPackage::getTourPackagesByMemberId($memberId);
 ?> 
 ﻿<!DOCTYPE html>
 <html>
@@ -10,7 +14,7 @@ $MEMBER = new Member(NULL)
     <head>
         <meta charset="UTF-8">
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <title>Manage Member - www.srilankatourism.travel</title>
+        <title>Manage Tour Package - www.srilankatourism.travel</title>
         <!-- Favicon-->
         <link rel="icon" href="favicon.ico" type="image/x-icon">
 
@@ -48,85 +52,66 @@ $MEMBER = new Member(NULL)
 
                 $vali->show_message();
                 ?>
-                <!-- Manage Districts -->
+                <!-- Manage Tour Package -->
                 <div class="row clearfix">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="card">
                             <div class="header">
                                 <h2>
-                                    Manage Member
+                                    <?php
+                                    foreach ($TOUR_PACKAGE as $key => $tour_package) {
+                                        if ($key < 1) {
+                                            $member = new Member($tour_package['member']);
+                                            ?>
+                                            Manage Tour Package - <?php echo $member->name; ?>
+                                            <?php
+                                        }
+                                    }
+                                    ?>
                                 </h2>
                                 <ul class="header-dropdown">
                                     <li>
-                                        <a href="create-member.php">
+                                        <a href="create-tour-package.php">
                                             <i class="material-icons">add</i> 
                                         </a>
                                     </li>
                                 </ul>
                             </div>
                             <div class="body">
-                                <!-- <div class="table-responsive">-->
+                                <!--                                <div class="table-responsive">-->
                                 <div>
-                                    <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
-                                        <thead>
-                                            <tr>
-                                                <th>ID</th>
-                                                <th>Name</th> 
-                                                <th>email</th>
-                                                <th>Contact Number</th> 
-                                                <th>Username</th>
-                                                <th>Rank</th> 
-                                                <th>Options</th>
-                                            </tr>
-                                        </thead>
-                                        <tfoot>
-                                            <tr>
-                                                <th>ID</th>
-                                                <th>Name</th> 
-                                                <th>email</th>
-                                                <th>Contact Number</th> 
-                                                <th>Username</th>
-                                                <th>Rank</th> 
-                                                <th>Options</th>
-                                            </tr>
-                                        </tfoot>
-                                        <tbody>
-
-                                            <?php
-                                            foreach ($MEMBER->all() as $key => $member) {
+                                    <div class="row clearfix">
+                                        <?php
+                                        if (count($TOUR_PACKAGE) > 0) {
+                                            foreach ($TOUR_PACKAGE as $key => $tour_package) {
                                                 ?>
-                                                <tr id="row_<?php echo $member['id']; ?>">
-                                                    <td><?php echo $member['id']; ?></td> 
-                                                    <td><?php echo substr($member['name'], 0, 20); ?></td> 
-                                                    <td><?php echo substr($member['email'], 0, 30); ?></td> 
-                                                    <td><?php echo $member['contact_number']; ?></td> 
-                                                    <td><?php echo substr($member['username'], 0, 30); ?></td> 
-                                                    <td><?php echo $member['rank']; ?></td> 
-                                                    <td> 
-                                                        <a href="edit-member.php?id=<?php echo $member['id']; ?>" class="op-link btn btn-sm btn-default"><i class="glyphicon glyphicon-pencil"></i></a>
-
-                                                        <a href="#" class="delete-member btn btn-sm btn-danger" data-id="<?php echo $member['id']; ?>">
-                                                            <i class="glyphicon glyphicon-trash" data-type="cancel"></i>
-                                                        </a>
-                                                        |
-                                                        <a href="manage-member-accommodation.php?member=<?php echo $member['id']; ?>" class="op-link btn btn-sm btn-default"><i class="glyphicon glyphicon-bed"></i></a>
-                                                        <a href="manage-member-tour-packages.php?member=<?php echo $member['id']; ?>" class="op-link btn btn-sm btn-default"><i class="glyphicon glyphicon-map-marker"></i></a>
-                                                        <a href="manage-member-transports.php?member=<?php echo $member['id']; ?>" class="op-link btn btn-sm btn-default"><i class="glyphicon glyphicon-road"></i></a>
-
-                                                    </td>
-                                                </tr>
+                                                <div class="col-md-3"  id="div<?php echo $tour_package['id']; ?>">
+                                                    <div class="photo-img-container">
+                                                        <img src="../upload/tour-package/<?php echo $tour_package['picture_name']; ?>" class="img-responsive ">
+                                                    </div>
+                                                    <div class="img-caption">
+                                                        <p class="maxlinetitle">Name : <?php echo $tour_package['name']; ?></p>  
+                                                        <p class="maxlinetitle">Price : <?php echo $tour_package['price']; ?></p>  
+                                                        <div class="d">
+                                                            <a href="#"  class="delete-tour-package" data-id="<?php echo $tour_package['id']; ?>"> <button class="glyphicon glyphicon-trash delete-btn"></button></a>
+                                                            <a href="edit-tour-package.php?id=<?php echo $tour_package['id']; ?>"> <button class="glyphicon glyphicon-pencil edit-btn"></button></a>
+                                                            <a href="view-tour-sub-section.php?id=<?php echo $tour_package['id']; ?>">  <button class="glyphicon glyphicon-indent-left arrange-btn"></button></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                                 <?php
                                             }
-                                            ?>   
-                                        </tbody>
-                                    </table>
+                                        } else {
+                                            ?> 
+                                            <b style="padding-left: 15px;">No packages in the database.</b> 
+                                        <?php } ?> 
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- #END# Manage District -->
-
             </div>
         </section>
 
@@ -163,7 +148,7 @@ $MEMBER = new Member(NULL)
 
         <!-- Demo Js -->
         <script src="js/demo.js"></script>
-        <script src="delete/js/member.js" type="text/javascript"></script>
+        <script src="delete/js/tour-package.js" type="text/javascript"></script>
     </body>
 
 </html> 
