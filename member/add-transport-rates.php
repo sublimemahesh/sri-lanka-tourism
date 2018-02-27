@@ -190,6 +190,11 @@ $TRANSPORTS = new Transports($id);
                                                         <?php } ?> 
                                                         </tbody>
                                                     </table>
+                                                    <div class="text-right">
+                                                        <a href="add-transport-photo.php?id=<?php echo $TRANSPORTS->id; ?>"> 
+                                                            <button type="button" class="btn btn-round btn-info">Add Transport Image</button>
+                                                        </a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

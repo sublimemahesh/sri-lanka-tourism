@@ -124,6 +124,9 @@ if (isset($_GET['id'])) {
                                             <?php } ?> 
 
                                         </div>
+                                        <div class="text-right">
+                                            <a href="manage-transport.php"><button type="button" class="btn btn-round btn-info">Manage Transport</button></a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -136,7 +139,7 @@ if (isset($_GET['id'])) {
             ?>
         </section>
 
-      <script src="assets/js/jquery.js"></script>
+        <script src="assets/js/jquery.js"></script>
         <script src="assets/js/bootstrap.min.js"></script>
         <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
         <script src="assets/js/jquery.scrollTo.min.js"></script>

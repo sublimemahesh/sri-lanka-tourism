@@ -3,6 +3,7 @@ include_once(dirname(__FILE__) . '/../class/include.php');
 include_once(dirname(__FILE__) . '/auth.php');
 
 $TRANSPORTS = new Transports(NULL);
+$TRANSPORTS_PHOTO = new TransportPhoto(NULL);
 ?> 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +17,6 @@ $TRANSPORTS = new Transports(NULL);
 
         <title>Edit Transports || My Accout ||  www.srilankatourism.travel</title>
 
-        <!-- Bootstrap core CSS -->
         <link href="assets/css/bootstrap.css" rel="stylesheet">
         <!--external css-->
         <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
@@ -40,51 +40,63 @@ $TRANSPORTS = new Transports(NULL);
             <section id="main-content">
                 <div class="wrapper">
                     <div class="container-fluid">
-                        <div class="row  top-bott20"> 
-
+                        <div class="top-bott20"> 
                             <div class="panel panel-default">
                                 <div class="panel-heading"><i class="fa fa-pencil"></i> manage Transport</div>
                                 <div class="panel-body">
                                     <div class="body">
                                         <div class="userccount">
                                             <div class="formpanel"> 
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <?php
+                                                        foreach ($TRANSPORTS->all() as $key => $vehicle_t) {
+                                                            ?>
+                                                            <div class="col-md-4 col-sm-6 col-xs-12 style-transport">
+                                                                <div id="div_<?php echo $vehicle_t['id']; ?>">
+                                                                    <div><?php echo $vehicle_t['id']; ?></div>
+                                                                    <div class="">
+                                                                        <?php
+                                                                        if (count($TRANSPORTS_PHOTO) > 0) {
+                                                                            foreach ($TRANSPORTS_PHOTO->getTransportPhotosById($vehicle_t['id']) as $key => $TRANSPORTS_P) {
+                                                                                if ($key == 1) {
+                                                                                    break;
+                                                                                }
+                                                                                ?>
+                                                                                <img class="img-responsive" src="../upload/transport/transport-photo/gallery/<?php echo $TRANSPORTS_P['image_name']; ?>">
+                                                                                <?php
+                                                                            }
+                                                                        } else {
+                                                                            ?> 
+                                                                            <b style="padding-left: 15px;">No Transport Image.</b> 
+                                                                        <?php } ?>
+                                                                    </div> 
 
-                                                <div class="col-md-12">
-                                                    <?php
-                                                    foreach ($TRANSPORTS->all() as $key => $vehicle_t) {
-                                                        ?>
-                                                        <div class="col-md-4 text-f-size top-bott20">
-                                                            <div id="div_<?php echo $vehicle_t['id']; ?>">
-                                                                <div><?php echo $vehicle_t['id']; ?></div>
-                                                                <div>
-                                                                    <?php
-                                                                    $VEHICLE_TYPE = new VehicleType($vehicle_t['vehicle_type']);
-                                                                    echo $VEHICLE_TYPE->name;
-                                                                    ?>
-                                                                </div>
-                                                                <div> <?php echo $vehicle_t['title']; ?></div>
-                                                                <div>
 
-                                                                    <a href="edit-transport.php?id=<?php echo $vehicle_t['id']; ?>"><button class="btn btn-primary btn-xs fa fa-pencil"></button>
-                                                                    </a> 
-                                                                    |
-                                                                    <a>
-                                                                        <button class="delete-transports btn btn-danger btn-xs fa fa-trash-o" data-id="<?php echo $vehicle_t['id']; ?>"></button>
-                                                                    </a> 
-                                                                    |
-                                                                    <a href="add-transport-photo.php?id=<?php echo $vehicle_t['id']; ?>">
-                                                                        <button class="btn btn-success btn-xs fa fa-photo"></button>
-                                                                    </a> 
-                                                                    |
-                                                                    <a href="add-transport-rates.php?id=<?php echo $vehicle_t['id']; ?>">
-                                                                        <button class="btn btn-warning btn-xs fa fa-star"></button>
-                                                                    </a> 
+                                                                    <div><b>Title :</b> <?php echo $vehicle_t['title']; ?></div>
+                                                                    <div>
+
+                                                                        <a href="edit-transport.php?id=<?php echo $vehicle_t['id']; ?>"><button class="btn btn-primary btn-xs fa fa-pencil"></button>
+                                                                        </a> 
+                                                                        |
+                                                                        <a>
+                                                                            <button class="delete-transports btn btn-danger btn-xs fa fa-trash-o" data-id="<?php echo $vehicle_t['id']; ?>"></button>
+                                                                        </a> 
+                                                                        |
+                                                                        <a href="add-transport-photo.php?id=<?php echo $vehicle_t['id']; ?>">
+                                                                            <button class="btn btn-success btn-xs fa fa-photo"></button>
+                                                                        </a> 
+                                                                        |
+                                                                        <a href="add-transport-rates.php?id=<?php echo $vehicle_t['id']; ?>">
+                                                                            <button class="btn btn-warning btn-xs fa fa-star"></button>
+                                                                        </a> 
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <?php
-                                                    }
-                                                    ?>   
+                                                            <?php
+                                                        }
+                                                        ?>  
+                                                    </div>  
                                                 </div>  
                                             </div>
                                         </div>
