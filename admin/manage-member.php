@@ -109,9 +109,9 @@ $MEMBER = new Member(NULL)
                                                             <i class="glyphicon glyphicon-trash" data-type="cancel"></i>
                                                         </a>
                                                         |
-                                                        <a href="manage-member-accommodation.php?member=<?php echo $member['id']; ?>" class="op-link btn btn-sm btn-default"><i class="glyphicon glyphicon-bed"></i></a>
-                                                        <a href="manage-member-tour-packages.php?member=<?php echo $member['id']; ?>" class="op-link btn btn-sm btn-default"><i class="glyphicon glyphicon-map-marker"></i></a>
-                                                        <a href="manage-member-transports.php?member=<?php echo $member['id']; ?>" class="op-link btn btn-sm btn-default"><i class="glyphicon glyphicon-road"></i></a>
+                                                        <a href="manage-accommodation.php?member=<?php echo $member['id']; ?>" class="op-link btn btn-sm btn-default"><i class="glyphicon glyphicon-bed"></i></a>
+                                                        <a href="manage-tour-package.php?member=<?php echo $member['id']; ?>" class="op-link btn btn-sm btn-default"><i class="glyphicon glyphicon-map-marker"></i></a>
+                                                        <a href="manage-transports.php?member=<?php echo $member['id']; ?>" class="op-link btn btn-sm btn-default"><i class="glyphicon glyphicon-road"></i></a>
 
                                                     </td>
                                                 </tr>

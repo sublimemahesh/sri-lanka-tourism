@@ -1,6 +1,14 @@
 <?php
 include_once(dirname(__FILE__) . '/../class/include.php');
 include_once(dirname(__FILE__) . './auth.php');
+$TRANSPORTS = new Transports(NULL);
+$transports = NULL;
+if (isset($_GET['member'])) {
+    $transports = $TRANSPORTS->getTransportsByMemberId($_GET['member']);
+} else {
+    $transports = $TRANSPORTS->all();
+}
+?> 
 ?>
 <!DOCTYPE html>
 <html>
@@ -35,6 +43,12 @@ include_once(dirname(__FILE__) . './auth.php');
                             <div class="header">
                                 <h2>
                                     Manage Transports
+                                    <?php
+                                    if (isset($_GET['member'])) {
+                                        $MEM = new Member($_GET['member']);
+                                        echo ': ' . $MEM->name;
+                                    }
+                                    ?>
                                 </h2>
                                 <ul class="header-dropdown">
                                     <li>
@@ -67,32 +81,31 @@ include_once(dirname(__FILE__) . './auth.php');
                                             </tfoot>
                                             <tbody>
                                                 <?php
-                                                $TRANSPORTS = new Transports(NULL);
-                                                foreach ($TRANSPORTS->all() as $key => $vehicle_t) {
+                                               foreach ($transports as $key => $transport) {
                                                     ?>
-                                                    <tr id="row_<?php echo $vehicle_t['id']; ?>">
-                                                        <td><?php echo $vehicle_t['id']; ?></td> 
+                                                    <tr id="row_<?php echo $transport['id']; ?>">
+                                                        <td><?php echo $transport['id']; ?></td> 
                                                         <td>
                                                             <?php
-                                                            $VEHICLE_TYPE = new VehicleType($vehicle_t['vehicle_type']);
+                                                            $VEHICLE_TYPE = new VehicleType($transport['vehicle_type']);
                                                             echo $VEHICLE_TYPE->name;
                                                             ?>
                                                         </td>
 
-                                                        <td><?php echo $vehicle_t['title']; ?></td> 
+                                                        <td><?php echo $transport['title']; ?></td> 
                                                         <td>  
 
-                                                            <a href="edit-transports.php?id=<?php echo $vehicle_t['id']; ?>" <button class="glyphicon glyphicon-pencil edit-btn"></button></a>
+                                                            <a href="edit-transports.php?id=<?php echo $transport['id']; ?>" <button class="glyphicon glyphicon-pencil edit-btn"></button></a>
                                                             |  
                                                             <a href="#" > 
-                                                                <button class="glyphicon glyphicon-trash delete-btn delete-transports" data-id="<?php echo $vehicle_t['id']; ?>"></button> 
+                                                                <button class="glyphicon glyphicon-trash delete-btn delete-transports" data-id="<?php echo $transport['id']; ?>"></button> 
                                                             </a>  
                                                             |  
-                                                            <a href="view-transport-rates.php?id=<?php echo $vehicle_t['id']; ?>">
+                                                            <a href="view-transport-rates.php?id=<?php echo $transport['id']; ?>">
                                                                 <button class="glyphicon glyphicon-indent-left arrange-btn"></button>
                                                             </a>
                                                             |
-                                                            <a href="view-transport-photo.php?id=<?php echo $vehicle_t['id']; ?>">  <button class="glyphicon glyphicon-picture arrange-btn"></button></a>
+                                                            <a href="view-transport-photo.php?id=<?php echo $transport['id']; ?>">  <button class="glyphicon glyphicon-picture arrange-btn"></button></a>
                                                         </td>
                                                     </tr>
                                                     <?php

@@ -2,7 +2,13 @@
 include_once(dirname(__FILE__) . '/../class/include.php');
 include_once(dirname(__FILE__) . '/auth.php');
 
-$TOURP = new TourPackage(NULL)
+$TOUR_PACKAGE = new TourPackage(NULL);
+$tour_packages = NULL;
+if (isset($_GET['member'])) {
+    $tour_packages = $TOUR_PACKAGE->getTourPackagesByMemberId($_GET['member']);
+} else {
+    $tour_packages = $TOUR_PACKAGE->all();
+}
 ?> 
 ﻿<!DOCTYPE html>
 <html>
@@ -55,6 +61,12 @@ $TOURP = new TourPackage(NULL)
                             <div class="header">
                                 <h2>
                                     Manage Tour Package
+                                    <?php
+                                    if (isset($_GET['member'])) {
+                                        $MEM = new Member($_GET['member']);
+                                        echo ': ' . $MEM->name;
+                                    }
+                                    ?>
                                 </h2>
                                 <ul class="header-dropdown">
                                     <li>
@@ -69,9 +81,8 @@ $TOURP = new TourPackage(NULL)
                                 <div>
                                     <div class="row clearfix">
                                         <?php
-                                        $TOUR_PACKAGE = TourPackage::all();
-                                        if (count($TOUR_PACKAGE) > 0) {
-                                            foreach ($TOUR_PACKAGE as $key => $tour_package) {
+                                        foreach ($tour_packages as $key => $tour_package) {
+                                            if (count($tour_package) > 0) {
                                                 ?>
                                                 <div class="col-md-3"  id="div<?php echo $tour_package['id']; ?>">
                                                     <div class="photo-img-container">
@@ -88,11 +99,13 @@ $TOURP = new TourPackage(NULL)
                                                     </div>
                                                 </div>
                                                 <?php
+                                            } else {
+                                                ?> 
+                                                <b style="padding-left: 15px;">No packages in the database.</b> 
+                                                <?php
                                             }
-                                        } else {
-                                            ?> 
-                                            <b style="padding-left: 15px;">No packages in the database.</b> 
-                                        <?php } ?> 
+                                        }
+                                        ?> 
 
                                     </div>
                                 </div>
