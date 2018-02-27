@@ -75,7 +75,8 @@ class Transports {
         $query = "UPDATE  `transports` SET "
                 . "`title` ='" . $this->title . "', "
                 . "`member` ='" . $this->member . "', "
-                . "`description` ='" . $this->description . "' "
+                . "`description` ='" . $this->description . "', "
+                . "`vehicle_type` ='" . $this->vehicle_type . "' "
                 . "WHERE `id` = '" . $this->id . "'";
 
         $db = new Database();

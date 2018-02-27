@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Description of TransportRates
  *
@@ -11,13 +10,14 @@ class TransportRates {
     public $transport_id;
     public $location_from;
     public $location_to;
+    public $distance;
     public $price;
     public $sort;
 
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`,`transport_id`,`location_from`,`location_to`,`price`,`sort` FROM `transport_rates` WHERE `id`=" . $id;
+            $query = "SELECT `id`,`transport_id`,`location_from`,`location_to`,`distance`,`price`,`sort` FROM `transport_rates` WHERE `id`=" . $id;
 
             $db = new Database();
 
@@ -27,6 +27,7 @@ class TransportRates {
             $this->transport_id = $result['transport_id'];
             $this->location_from = $result['location_from'];
             $this->location_to = $result['location_to'];
+            $this->distance = $result['distance'];
             $this->price = $result['price'];
             $this->sort = $result['sort'];
 
@@ -36,7 +37,13 @@ class TransportRates {
 
     public function create() {
 
-        $query = "INSERT INTO `transport_rates` (`transport_id`,`location_from`,`location_to`,`price`,`sort`) VALUES  ('" . $this->transport_id . "','" . $this->location_from . "','" . $this->location_to . "','" . $this->price . "', '" . $this->sort . "')";
+        $query = "INSERT INTO `transport_rates` (`transport_id`,`location_from`,`location_to`,`distance`,`price`,`sort`) VALUES  ('"
+                . $this->transport_id . "','"
+                . $this->location_from . "','"
+                . $this->location_to . "','"
+                . $this->distance . "', '"
+                . $this->price . "', '"
+                . $this->sort . "')";
 
         $db = new Database();
 
@@ -70,6 +77,7 @@ class TransportRates {
         $query = "UPDATE  `transport_rates` SET "
                 . "`location_from` ='" . $this->location_from . "', "
                 . "`location_to` ='" . $this->location_to . "', "
+                . "`distance` ='" . $this->distance . "', "
                 . "`price` ='" . $this->price . "' "
                 . "WHERE `id` = '" . $this->id . "'";
 

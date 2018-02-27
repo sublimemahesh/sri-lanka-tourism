@@ -75,7 +75,6 @@ class TransportPhoto {
                 . "`caption` ='" . $this->caption . "', "
                 . "`sort` ='" . $this->sort . "' "
                 . "WHERE `id` = '" . $this->id . "'";
-
         $db = new Database();
 
         $result = $db->readQuery($query);
