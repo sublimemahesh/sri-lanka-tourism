@@ -30,7 +30,7 @@ if (isset($_POST['add-transports'])) {
         $VALID->addError("Your data was saved successfully", 'success');
         $_SESSION['ERRORS'] = $VALID->errors();
 
-        header('Location: ' . $_SERVER['HTTP_REFERER']);
+        header('Location: ../add-transport-rates.php?id='. $TRANSPORTS->id);
     } else {
 
         if (!isset($_SESSION)) {
@@ -38,7 +38,6 @@ if (isset($_POST['add-transports'])) {
         }
 
         $_SESSION['ERRORS'] = $VALID->errors();
-
         header('Location: ' . $_SERVER['HTTP_REFERER']);
     }
 }
