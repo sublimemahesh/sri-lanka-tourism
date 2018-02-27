@@ -2,7 +2,13 @@
 include_once(dirname(__FILE__) . '/../class/include.php');
 include_once(dirname(__FILE__) . '/auth.php');
 
-$ACCOMODATION = new Accommodation(NULL)
+$ACCOMODATION = new Accommodation(NULL);
+$accommodations = NULL;
+if (isset($_GET['member'])) {
+    $accommodations = $ACCOMODATION->getAccommodationByMemberId($_GET['member']);
+} else {
+    $accommodations = $ACCOMODATION->all();
+}
 ?> 
 ﻿<!DOCTYPE html>
 <html>
@@ -54,7 +60,13 @@ $ACCOMODATION = new Accommodation(NULL)
                         <div class="card">
                             <div class="header">
                                 <h2>
-                                    Manage Accommodation
+                                    Manage Accommodations
+                                    <?php
+                                    if (isset($_GET['member'])) {
+                                        $MEM = new Member($_GET['member']);
+                                        echo ': ' . $MEM->name;
+                                    }
+                                    ?>
                                 </h2>
                                 <ul class="header-dropdown">
                                     <li>
@@ -72,12 +84,8 @@ $ACCOMODATION = new Accommodation(NULL)
                                             <tr>
                                                 <th>ID</th>
                                                 <th>Name</th> 
-<!--                                                <th>Email</th>-->
-                                                <th>Website</th>
                                                 <th>Type</th>
                                                 <th>City</th>
-                                                <th>Member</th>
-                                                <th>Rank</th>
                                                 <th>Options</th>
                                             </tr>
                                         </thead>
@@ -85,36 +93,24 @@ $ACCOMODATION = new Accommodation(NULL)
                                             <tr>
                                                 <th>ID</th>
                                                 <th>Name</th> 
-<!--                                                <th>Email</th>-->
-                                                <th>Website</th>
                                                 <th>Type</th>
                                                 <th>City</th>
-                                                <th>Member</th>
-                                                <th>Rank</th>
                                                 <th>Options</th>
                                             </tr>
                                         </tfoot>
                                         <tbody>
-
                                             <?php
-                                            foreach ($ACCOMODATION->all() as $key => $accommodation) {
+                                            foreach ($accommodations as $key => $accommodation) {
                                                 $accommodation_type = new AccommodationType($accommodation['type']);
                                                 $city = new City($accommodation['city']);
-                                                $member = new Member($accommodation['member']);
                                                 ?>
                                                 <tr id="row_<?php echo $accommodation['id']; ?>">
-
                                                     <td><?php echo $accommodation['id']; ?></td> 
                                                     <td><?php echo substr($accommodation['name'], 0, 30); ?></td> 
-    <!--                                                    <td><?php echo substr($accommodation['email'], 0, 15); ?></td> -->
-                                                    <td><?php echo substr($accommodation['website'], 0, 15); ?></td> 
                                                     <td><?php echo substr($accommodation_type->name, 0, 30); ?></td> 
                                                     <td><?php echo substr($city->name, 0, 30); ?></td>
-                                                    <td><?php echo substr($member->name, 0, 30); ?></td>
-                                                    <td><?php echo substr($accommodation['rank'], 0, 30); ?></td>
                                                     <td> 
                                                         <a href="edit-accommodation.php?id=<?php echo $accommodation['id']; ?>" class="op-link btn btn-sm btn-default"><i class="glyphicon glyphicon-pencil"></i></a>  
-
                                                         <a href="#" class="delete-accommodation btn btn-sm btn-danger" data-id="<?php echo $accommodation['id']; ?>">
                                                             <i class="glyphicon glyphicon-trash" data-type="cancel"></i>
                                                         </a>
@@ -125,8 +121,8 @@ $ACCOMODATION = new Accommodation(NULL)
                                                 </tr>
                                                 <?php
                                             }
-                                            ?>   
-                                        </tbody>
+                                            ?> 
+                                        </tbody> 
                                     </table>
                                 </div>
                             </div>
