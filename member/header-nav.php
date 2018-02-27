@@ -112,13 +112,12 @@ $MEMBER = new Member($_SESSION['id']);
 
             <li class="sub-menu">
                 <a href="javascript:;" >
-                    <i class="fa fa-cogs"></i>
-                    <span>Components</span>
+                    <i class="fa fa-car"></i>
+                    <span>Transport</span>
                 </a>
                 <ul class="sub">
-                    <li><a  href="calendar.html">Calendar</a></li>
-                    <li><a  href="gallery.html">Gallery</a></li>
-                    <li><a  href="todo_list.html">Todo List</a></li>
+                    <li><a  href="add-new-transport.php">Add New Transport</a></li>
+                    <li><a  href="manage-transport.php">Manage Transport</a></li>
                 </ul>
             </li>
             <li class="sub-menu">

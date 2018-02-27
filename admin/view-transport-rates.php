@@ -181,10 +181,6 @@ $TRANSPORTS = new Transports($id);
                                         </div>
                                     </div>
                                 </div>
-
-
-
-
                             </div>
                         </div>
                     </div>

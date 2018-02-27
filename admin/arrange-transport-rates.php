@@ -100,8 +100,6 @@ $TRANSPORT_RATES = TransportRates::GetTransportRatesByTransportId($id);
                 </div>
 
 
-                <!-- #END# Vertical Layout -->
-
             </div>
         </section>
 
