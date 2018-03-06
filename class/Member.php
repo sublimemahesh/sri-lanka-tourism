@@ -10,7 +10,12 @@ class Member {
     public $id;
     public $name;
     public $email;
+    public $nic_number;
+    public $date_of_birthday;
     public $contact_number;
+    public $driving_licence_number;
+    public $home_address;
+    public $city;
     public $profile_picture;
     public $username;
     public $password;
@@ -21,7 +26,7 @@ class Member {
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`,`name`,`email`,`contact_number`,`profile_picture`,`username`,`status`,`rank` FROM `member` WHERE `id`=" . $id;
+            $query = "SELECT `id`,`name`,`email`,`nic_number`,`date_of_birthday`,`contact_number`,`driving_licence_number`,`home_address`,`city`,`profile_picture`,`username`,`status`,`rank` FROM `member` WHERE `id`=" . $id;
 
             $db = new Database();
 
@@ -30,7 +35,12 @@ class Member {
             $this->id = $result['id'];
             $this->name = $result['name'];
             $this->email = $result['email'];
+            $this->nic_number = $result['nic_number'];
+            $this->date_of_birthday = $result['date_of_birthday'];
             $this->contact_number = $result['contact_number'];
+            $this->driving_licence_number = $result['driving_licence_number'];
+            $this->home_address = $result['home_address'];
+            $this->city = $result['city'];
             $this->profile_picture = $result['profile_picture'];
             $this->username = $result['username'];
             $this->rank = $result['rank'];
@@ -44,10 +54,15 @@ class Member {
 
 
 
-        $query = "INSERT INTO `member` (`name`,`email`,`contact_number`,`profile_picture`,`username`,`password`,`status`,`rank`) VALUES  ('"
+        $query = "INSERT INTO `member` (`name`,`email`,`nic_number`,`date_of_birthday`,`contact_number`,`driving_licence_number`,`home_address`,`city`,`profile_picture`,`username`,`password`,`status`,`rank`) VALUES  ('"
                 . $this->name . "','"
                 . $this->email . "','"
+                . $this->nic_number . "','"
+                . $this->date_of_birthday . "','"
                 . $this->contact_number . "','"
+                . $this->driving_licence_number . "','"
+                . $this->home_address . "','"
+                . $this->city . "','"
                 . $this->profile_picture . "','"
                 . $this->username . "','"
                 . $this->password . "','"
@@ -92,7 +107,12 @@ class Member {
             $_SESSION["id"] = $member->id;
             $_SESSION["name"] = $member->name;
             $_SESSION["email"] = $member->email;
+            $_SESSION["nic_number"] = $member->nic_number;
+            $_SESSION["date_of_birthday"] = $member->date_of_birthday;
             $_SESSION["contact_number"] = $member->contact_number;
+            $_SESSION["driving_licence_number"] = $member->driving_licence_number;
+            $_SESSION["home_address"] = $member->home_address;
+            $_SESSION["city"] = $member->city;
             $_SESSION["profile_picture"] = $member->profile_picture;
             $_SESSION["username"] = $member->username;
             $_SESSION["status"] = $member->status;
@@ -137,7 +157,12 @@ class Member {
         unset($_SESSION["id"]);
         unset($_SESSION["name"]);
         unset($_SESSION["email"]);
+        unset($_SESSION["nic_number"]);
+        unset($_SESSION["date_of_birthday"]);
         unset($_SESSION["contact_number"]);
+        unset($_SESSION["driving_licence_number"]);
+        unset($_SESSION["home_address"]);
+        unset($_SESSION["city"]);
         unset($_SESSION["profile_picture"]);
         unset($_SESSION["username"]);
         unset($_SESSION["password"]);
@@ -166,7 +191,12 @@ class Member {
         $query = "UPDATE  `member` SET "
                 . "`name` ='" . $this->name . "', "
                 . "`email` ='" . $this->email . "', "
+                . "`nic_number` ='" . $this->nic_number . "', "
+                . "`date_of_birthday` ='" . $this->date_of_birthday . "', "
                 . "`contact_number` ='" . $this->contact_number . "', "
+                . "`driving_licence_number` ='" . $this->driving_licence_number . "', "
+                . "`home_address` ='" . $this->home_address . "', "
+                . "`city` ='" . $this->city . "', "
                 . "`profile_picture` ='" . $this->profile_picture . "', "
                 . "`username` ='" . $this->username . "', "
                 . "`password` ='" . $this->password . "', "
