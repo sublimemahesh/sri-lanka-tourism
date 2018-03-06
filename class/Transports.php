@@ -12,12 +12,16 @@ class Transports {
     public $vehicle_type;
     public $member;
     public $description;
+    public $registered_number;
+    public $registered_year;
+    public $fuel_type;
+    public $condition;
     public $sort;
 
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`,`title`,`vehicle_type`,`member`,`description`,`sort` FROM `transports` WHERE `id`=" . $id;
+            $query = "SELECT `id`,`title`,`vehicle_type`,`member`,`description`,`registered_number`,`registered_year`,`fuel_type`,`condition`,`sort` FROM `transports` WHERE `id`=" . $id;
 
             $db = new Database();
 
@@ -28,6 +32,10 @@ class Transports {
             $this->vehicle_type = $result['vehicle_type'];
             $this->member = $result['member'];
             $this->description = $result['description'];
+            $this->registered_number = $result['registered_number'];
+            $this->registered_year = $result['registered_year'];
+            $this->fuel_type = $result['fuel_type'];
+            $this->condition = $result['condition'];
             $this->sort = $result['sort'];
 
             return $this;
@@ -36,11 +44,15 @@ class Transports {
 
     public function create() {
 
-        $query = "INSERT INTO `transports` (`title`,`vehicle_type`,`member`,`description`,`sort`) VALUES  ("
+        $query = "INSERT INTO `transports` (`title`,`vehicle_type`,`member`,`description`,`registered_number`,`registered_year`,`fuel_type`,`condition`,`sort`) VALUES  ("
                 . "'" . $this->title .
                 "','" . $this->vehicle_type .
                 "', '" . $this->member .
                 "','" . $this->description .
+                "','" . $this->registered_number .
+                "','" . $this->registered_year .
+                "','" . $this->fuel_type .
+                "','" . $this->condition .
                 "','" . $this->sort . "')";
 
         $db = new Database();
@@ -76,9 +88,12 @@ class Transports {
                 . "`title` ='" . $this->title . "', "
                 . "`member` ='" . $this->member . "', "
                 . "`description` ='" . $this->description . "', "
+                . "`registered_number` ='" . $this->registered_number . "', "
+                . "`registered_year` ='" . $this->registered_year . "', "
+                . "`fuel_type` ='" . $this->fuel_type . "', "
+                . "`condition` ='" . $this->condition . "', "
                 . "`vehicle_type` ='" . $this->vehicle_type . "' "
                 . "WHERE `id` = '" . $this->id . "'";
-
         $db = new Database();
 
         $result = $db->readQuery($query);
