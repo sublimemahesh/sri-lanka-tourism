@@ -30,6 +30,7 @@ include_once(dirname(__FILE__) . '/RoomFacility.php');
 include_once(dirname(__FILE__) . '/AccommodationFacilityDetails.php');
 include_once(dirname(__FILE__) . '/RoomFaciliityDetails.php');
 include_once(dirname(__FILE__) . '/FuelType.php');
+include_once(dirname(__FILE__) . '/VehicleCondition.php');
 
 function dd($data) {
     var_dump($data);
