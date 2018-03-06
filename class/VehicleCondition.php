@@ -1,13 +1,12 @@
 <?php
 
 /**
- * Description of FuelType
+ * Description of VehicleCondition
  *
  * @author official
  */
-class FuelType {
+class VehicleCondition {
 
-    //put your code here
     public $id;
     public $name;
     public $sort;
@@ -15,7 +14,7 @@ class FuelType {
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`,`name`,`sort` FROM `fuel_type` WHERE `id`=" . $id;
+            $query = "SELECT `id`,`name`,`sort` FROM `vehicle_condition` WHERE `id`=" . $id;
 
             $db = new Database();
 
@@ -24,14 +23,15 @@ class FuelType {
             $this->id = $result['id'];
             $this->name = $result['name'];
             $this->sort = $result['sort'];
-
             return $this;
         }
     }
 
     public function create() {
 
-        $query = "INSERT INTO `fuel_type` (`name`, `sort`) VALUES  ('" . $this->name . "', '" . $this->sort . "')";
+        $query = "INSERT INTO `vehicle_condition` (`name`,`sort`) VALUES  ('"
+                . $this->name . "','"
+                . $this->sort . "')";
 
         $db = new Database();
 
@@ -48,7 +48,7 @@ class FuelType {
 
     public function all() {
 
-        $query = "SELECT * FROM `fuel_type` ORDER BY `sort` ASC";
+        $query = "SELECT * FROM `vehicle_condition` ORDER BY sort ASC";
         $db = new Database();
         $result = $db->readQuery($query);
         $array_res = array();
@@ -62,9 +62,13 @@ class FuelType {
 
     public function update() {
 
-        $query = 'UPDATE `fuel_type` SET `name`= "' . $this->name . '" WHERE id="' . $this->id . '"';
+        $query = "UPDATE  `vehicle_condition` SET "
+                . "`name` ='" . $this->name . "', "
+                . "`sort` ='" . $this->sort . "' "
+                . "WHERE `id` = '" . $this->id . "'";
 
         $db = new Database();
+
         $result = $db->readQuery($query);
 
         if ($result) {
@@ -74,9 +78,18 @@ class FuelType {
         }
     }
 
-    public function GetFuelTypeById($id) {
+    public function delete() {
 
-        $query = "SELECT * FROM `fuel_type` WHERE `id` = '" . $id . "' ORDER BY `sort` ASC";
+        $query = 'DELETE FROM `vehicle_condition` WHERE id="' . $this->id . '"';
+
+        $db = new Database();
+
+        return $db->readQuery($query);
+    }
+
+    public function GetVehicleConditionById($id) {
+
+        $query = "SELECT * FROM `vehicle_condition` WHERE `id` = '" . $id . "' ORDER BY `sort` ASC";
 
         $db = new Database();
 
@@ -90,13 +103,11 @@ class FuelType {
         return $array_res;
     }
 
-    public function delete() {
-
-        $query = 'DELETE FROM `fuel_type` WHERE id="' . $this->id . '"';
-
+    public function arrange($key, $img) {
+        $query = "UPDATE `vehicle_condition` SET `sort` = '" . $key . "'  WHERE id = '" . $img . "'";
         $db = new Database();
-
-        return $db->readQuery($query);
+        $result = $db->readQuery($query);
+        return $result;
     }
 
 }
