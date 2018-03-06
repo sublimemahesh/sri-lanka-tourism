@@ -41,8 +41,7 @@ if (isset($_POST['add-tour-package'])) {
     $VALID->check($TOUR_PACKAGE, [
         'name' => ['required' => TRUE],
         'description' => ['required' => TRUE],
-        'picture_name' => ['required' => TRUE],
-        'member' => ['required' => TRUE]
+        'picture_name' => ['required' => TRUE]
     ]);
 
 
@@ -55,7 +54,7 @@ if (isset($_POST['add-tour-package'])) {
         $VALID->addError("Your data was saved successfully", 'success');
         $_SESSION['ERRORS'] = $VALID->errors();
 
-           header("location: ../view-tour-sub-section.php?id=" . $TOUR_PACKAGE->id);
+        header("location: ../manage-tour-package.php?id=" . $TOUR_PACKAGE->id);
     } else {
 
         if (!isset($_SESSION)) {
@@ -66,10 +65,9 @@ if (isset($_POST['add-tour-package'])) {
 
         header('Location: ' . $_SERVER['HTTP_REFERER']);
     }
-
 }
 
-if (isset($_POST['update'])) {
+if (isset($_POST['edit-tour-package'])) {
     $dir_dest = '../../upload/tour-package/';
 
     $handle = new Upload($_FILES['picture_name']);
@@ -106,9 +104,9 @@ if (isset($_POST['update'])) {
 
     $VALID->check($TOUR_PACKAGE, [
         'name' => ['required' => TRUE],
+        'price' => ['required' => TRUE],
         'description' => ['required' => TRUE],
         'picture_name' => ['required' => TRUE],
-        'member' => ['required' => TRUE]
     ]);
 
 
@@ -129,7 +127,6 @@ if (isset($_POST['update'])) {
         }
 
         $_SESSION['ERRORS'] = $VALID->errors();
-
         header('Location: ' . $_SERVER['HTTP_REFERER']);
     }
 }

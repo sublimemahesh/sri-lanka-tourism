@@ -40,7 +40,7 @@ include_once(dirname(__FILE__) . '/auth.php');
             <section id="main-content">
                 <div class="wrapper">
                     <div class="container-fluid">
-                        <div class="row  top-bott20"> 
+                        <div class="row top-bott20"> 
                              <?php
                             $vali = new Validator();
 

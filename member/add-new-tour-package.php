@@ -1,12 +1,6 @@
 <?php
 include_once(dirname(__FILE__) . '/../class/include.php');
 include_once(dirname(__FILE__) . '/auth.php');
-
-$id = '';
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
-}
-$TRANSPORTS = new Transports($id);
 ?> 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,16 +12,14 @@ $TRANSPORTS = new Transports($id);
         <meta name="author" content="Dashboard">
         <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
-        <title>Edit Transports - www.srilankatourism.travel</title>
+        <title>Add New Tour Package|| My Account || www.srilankatourism.travel</title>
 
-        <!-- Bootstrap core CSS -->
         <link href="assets/css/bootstrap.css" rel="stylesheet">
-        <!--external css-->
+
         <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
         <link rel="stylesheet" type="text/css" href="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-datepicker/css/datepicker.html" />
         <link rel="stylesheet" type="text/css" href="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-daterangepicker/daterangepicker.html" />
 
-        <!-- Custom styles for this template -->
         <link href="assets/css/style.css" rel="stylesheet">
         <link href="assets/css/style-responsive.css" rel="stylesheet">
         <link href="assets/css/custom.css" rel="stylesheet" type="text/css"/>
@@ -53,43 +45,39 @@ $TRANSPORTS = new Transports($id);
                             $vali->show_message();
                             ?>
                             <div class="panel panel-default">
-                                <div class="panel-heading"><i class="fa fa-pencil"></i> Edit Transports</div>
+                                <div class="panel-heading"><i class="fa fa-pencil"></i> Create Tour Package</div>
                                 <div class="panel-body">
                                     <div class="body">
                                         <div class="userccount">
                                             <div class="formpanel"> 
-
-                                                <form class="form-horizontal" method="post" action="post-and-get/transports.php" enctype="multipart/form-data"> 
+                                                <form class="form-horizontal"  method="post" action="post-and-get/tour-package.php" enctype="multipart/form-data"> 
                                                     <div class="col-md-12">
+
                                                         <div class="">
                                                             <div class="bottom-top">
-                                                                <label for="vehicle_type">Vehicle Type</label>
+                                                                <label for="name">Name</label>
                                                             </div>
                                                             <div class="formrow">
-                                                                <select class="form-control" type="text" id="vehicle_type" autocomplete="off" name="vehicle_type">
-                                                                    <option value="<?php $TRANSPORTS->id ?>" class="active light-c">
-                                                                        <?php
-                                                                        $VEHICLE_TYPE = new VehicleType($TRANSPORTS->vehicle_type);
-                                                                        echo $VEHICLE_TYPE->name;
-                                                                        ?>
-                                                                    </option>
-                                                                    <?php foreach (VehicleType::all() as $key => $vehicle_t) {
-                                                                        ?>
-                                                                        <option value="<?php echo $vehicle_t['id']; ?>"><?php echo $vehicle_t['name']; ?></option>
-                                                                        <?php
-                                                                    }
-                                                                    ?>
-                                                                </select>
-
+                                                                <input type="text" id="name" name="name" class="form-control" placeholder="Please Enter Title">
                                                             </div>
                                                         </div>
 
                                                         <div class="">
                                                             <div class="bottom-top">
-                                                                <label for="title">Title</label>
+                                                                <label for="price">Price</label>
                                                             </div>
                                                             <div class="formrow">
-                                                                <input type="text" id="title" name="title" class="form-control" placeholder="Please Enter Title" value="<?php echo $TRANSPORTS->title; ?>" >
+                                                                <input type="text" id="price" class="form-control" placeholder="Enter price" autocomplete="off" name="price" required="TRUE">
+                                                            </div>
+
+                                                        </div>
+
+                                                        <div class="">
+                                                            <div class="bottom-top">
+                                                                <label for="picture_name">Picture</label>
+                                                            </div>
+                                                            <div class="formrow">
+                                                                <input type="file" id="picture_name" class="form-control" name="picture_name"  required="true">
                                                             </div>
                                                         </div>
 
@@ -98,17 +86,14 @@ $TRANSPORTS = new Transports($id);
                                                                 <label for="description">Description</label>
                                                             </div>
                                                             <div class="formrow">
-                                                                <textarea type="text" id="description" name="description" class="form-control" placeholder="Please Enter Description"><?php echo $TRANSPORTS->description; ?></textarea>
+                                                                <textarea type="text" id="description" name="description" class="form-control" placeholder="Please Enter Description"></textarea>
                                                             </div>
                                                         </div>
 
                                                         <div class="top-bott50">
                                                             <div class="bottom-top">
-                                                                <input type="hidden" id="oldDis" value=""/>
-
                                                                 <input type="hidden" id="member" name="member" value="<?php echo $_SESSION['id']; ?>"/>
-                                                                <input type="hidden" id="id" value="<?php echo $TRANSPORTS->id; ?>" name="id"/>
-                                                                <button name="edit-transports" type="submit" class="btn btn-info center-block">Change</button>
+                                                                <input type="submit" name="add-tour-package" class="btn btn-info center-block" value="Add tour package"/>
                                                             </div>
                                                         </div> 
                                                     </div>  
@@ -117,13 +102,11 @@ $TRANSPORTS = new Transports($id);
                                         </div>
                                     </div>
                                 </div>
-                            </div> 
-
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
-
             <?php
             include './footer.php';
             ?>

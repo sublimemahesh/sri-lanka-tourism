@@ -2,8 +2,8 @@
 include_once(dirname(__FILE__) . '/../class/include.php');
 include_once(dirname(__FILE__) . '/auth.php');
 
-$TRANSPORTS = new Transports(NULL);
-$TRANSPORTS_PHOTO = new TransportPhoto(NULL);
+$TOUR_PACKAGE = new TourPackage(NULL);
+$TOUR_PACKAGE_PHOTO = new TourSubSectionPhoto(NULL);
 ?> 
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +15,7 @@ $TRANSPORTS_PHOTO = new TransportPhoto(NULL);
         <meta name="author" content="Dashboard">
         <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
-        <title>Manage Transports || My Accout ||  www.srilankatourism.travel</title>
+        <title>Tour Package || My Accout ||  www.srilankatourism.travel</title>
 
         <link href="assets/css/bootstrap.css" rel="stylesheet">
         <!--external css-->
@@ -42,7 +42,7 @@ $TRANSPORTS_PHOTO = new TransportPhoto(NULL);
                     <div class="container-fluid">
                         <div class="top-bott20"> 
                             <div class="panel panel-default">
-                                <div class="panel-heading"><i class="fa fa-pencil"></i> manage Transport</div>
+                                <div class="panel-heading"><i class="fa fa-pencil"></i> manage Tour Package</div>
                                 <div class="panel-body">
                                     <div class="body">
                                         <div class="userccount">
@@ -50,46 +50,26 @@ $TRANSPORTS_PHOTO = new TransportPhoto(NULL);
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <?php
-                                                        foreach ($TRANSPORTS->all() as $key => $vehicle_t) {
+                                                        foreach ($TOUR_PACKAGE->all() as $key => $tour_pack) {
                                                             ?>
                                                             <div class="col-md-4 col-sm-6 col-xs-12 style-transport">
-                                                                <div id="div_<?php echo $vehicle_t['id']; ?>">
-                                                                    <div><?php echo $vehicle_t['id']; ?></div>
-                                                                    <div class="">
-                                                                        <?php
-                                                                        if (count($TRANSPORTS_PHOTO) > 0) {
-                                                                            foreach ($TRANSPORTS_PHOTO->getTransportPhotosById($vehicle_t['id']) as $key => $TRANSPORTS_P) {
-                                                                                if ($key == 1) {
-                                                                                    break;
-                                                                                }
-                                                                                ?>
-                                                                                <img class="img-responsive" src="../upload/transport/transport-photo/gallery/<?php echo $TRANSPORTS_P['image_name']; ?>">
-                                                                                <?php
-                                                                            }
-                                                                        } else {
-                                                                            ?> 
-                                                                            <b style="padding-left: 15px;">No Transport Image.</b> 
-                                                                        <?php } ?>
-                                                                    </div> 
+                                                                <div id="div_<?php echo $tour_pack['id']; ?>">
+                                                                    <div><?php echo $tour_pack['id']; ?></div>
 
-
-                                                                    <div><b>Title :</b> <?php echo $vehicle_t['title']; ?></div>
+                                                                    <div><img class="img-responsive" src="../upload/tour-package/<?php echo $tour_pack['picture_name']; ?>"></div>
+                                                                    <div><b>Name :</b> <?php echo $tour_pack['name']; ?></div> 
+                                                                    <div><b>Price :</b> <?php echo $tour_pack['price']; ?></div> 
                                                                     <div>
-
-                                                                        <a href="edit-transport.php?id=<?php echo $vehicle_t['id']; ?>"><button class="btn btn-primary btn-xs fa fa-pencil"></button>
+                                                                        <a href="edit-tour-package.php?id=<?php echo $tour_pack['id']; ?>"><button class="btn btn-primary btn-xs fa fa-pencil"></button>
                                                                         </a> 
                                                                         |
                                                                         <a>
-                                                                            <button class="delete-transports btn btn-danger btn-xs fa fa-trash-o" data-id="<?php echo $vehicle_t['id']; ?>"></button>
+                                                                            <button class="delete-tour-package btn btn-danger btn-xs fa fa-trash-o" data-id="<?php echo $tour_pack['id']; ?>"></button>
                                                                         </a> 
                                                                         |
-                                                                        <a href="add-transport-photo.php?id=<?php echo $vehicle_t['id']; ?>">
-                                                                            <button class="btn btn-success btn-xs fa fa-photo"></button>
-                                                                        </a> 
-                                                                        |
-                                                                        <a href="add-transport-rates.php?id=<?php echo $vehicle_t['id']; ?>">
-                                                                            <button class="btn btn-warning btn-xs fa fa-star"></button>
-                                                                        </a> 
+                                                                        <a href="add-new-tour-package-sub-section.php?id=<?php echo $tour_pack['id']; ?>">
+                                                                            <button class="btn btn-success btn-xs fa fa-file-text-o"></button>
+                                                                        </a>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -123,8 +103,7 @@ $TRANSPORTS_PHOTO = new TransportPhoto(NULL);
         <script type="text/javascript" src="assets/js/bootstrap-inputmask/bootstrap-inputmask.min.js"></script>
         <script src="assets/plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>
 
-
-        <script src="delete/js/transports.js" type="text/javascript"></script>
+        <script src="delete/js/tour-package.js" type="text/javascript"></script>
         <script>
             //custom select box
 
