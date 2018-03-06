@@ -122,12 +122,12 @@ $MEMBER = new Member($_SESSION['id']);
             </li>
             <li class="sub-menu">
                 <a href="javascript:;" >
-                    <i class="fa fa-book"></i>
-                    <span>Extra Pages</span>
+                    <i class="fa fa-tree"></i>
+                    <span>Tour Packages</span>
                 </a>
                 <ul class="sub">
-                    <li><a  href="blank.html">Blank Page</a></li>
-                    <li><a  href="login.php">Login</a></li>
+                    <li><a  href="add-new-tour-package.php">Add New Tour Packages</a></li>
+                    <li><a  href="manage-tour-package.php">Manage Tour Packages</a></li>
                     <li><a  href="lock_screen.html">Lock Screen</a></li>
                 </ul>
             </li>
@@ -162,6 +162,5 @@ $MEMBER = new Member($_SESSION['id']);
             </li>
 
         </ul>
-        <!-- sidebar menu end-->
     </div>
 </aside>

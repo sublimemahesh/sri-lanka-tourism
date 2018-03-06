@@ -6,7 +6,7 @@ $id = '';
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 }
-$TRANSPORTS = new Transports($id);
+$TOUR_PACKAGE = new TourPackage($id);
 ?> 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +18,7 @@ $TRANSPORTS = new Transports($id);
         <meta name="author" content="Dashboard">
         <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
-        <title>Edit Transports - www.srilankatourism.travel</title>
+        <title>Edit Tour Package - www.srilankatourism.travel</title>
 
         <!-- Bootstrap core CSS -->
         <link href="assets/css/bootstrap.css" rel="stylesheet">
@@ -53,43 +53,41 @@ $TRANSPORTS = new Transports($id);
                             $vali->show_message();
                             ?>
                             <div class="panel panel-default">
-                                <div class="panel-heading"><i class="fa fa-pencil"></i> Edit Transports</div>
+                                <div class="panel-heading"><i class="fa fa-pencil"></i> Edit Tour Package</div>
                                 <div class="panel-body">
                                     <div class="body">
                                         <div class="userccount">
                                             <div class="formpanel"> 
 
-                                                <form class="form-horizontal" method="post" action="post-and-get/transports.php" enctype="multipart/form-data"> 
+                                                <form class="form-horizontal" method="post" action="post-and-get/tour-package.php" enctype="multipart/form-data"> 
                                                     <div class="col-md-12">
+
                                                         <div class="">
                                                             <div class="bottom-top">
-                                                                <label for="vehicle_type">Vehicle Type</label>
+                                                                <label for="name">Name</label>
                                                             </div>
                                                             <div class="formrow">
-                                                                <select class="form-control" type="text" id="vehicle_type" autocomplete="off" name="vehicle_type">
-                                                                    <option value="<?php $TRANSPORTS->id ?>" class="active light-c">
-                                                                        <?php
-                                                                        $VEHICLE_TYPE = new VehicleType($TRANSPORTS->vehicle_type);
-                                                                        echo $VEHICLE_TYPE->name;
-                                                                        ?>
-                                                                    </option>
-                                                                    <?php foreach (VehicleType::all() as $key => $vehicle_t) {
-                                                                        ?>
-                                                                        <option value="<?php echo $vehicle_t['id']; ?>"><?php echo $vehicle_t['name']; ?></option>
-                                                                        <?php
-                                                                    }
-                                                                    ?>
-                                                                </select>
-
+                                                                <input type="text" id="title" name="name" class="form-control" placeholder="Please Enter Name" value="<?php echo $TOUR_PACKAGE->name; ?>" >
                                                             </div>
                                                         </div>
 
                                                         <div class="">
                                                             <div class="bottom-top">
-                                                                <label for="title">Title</label>
+                                                                <label for="price">Price</label>
                                                             </div>
                                                             <div class="formrow">
-                                                                <input type="text" id="title" name="title" class="form-control" placeholder="Please Enter Title" value="<?php echo $TRANSPORTS->title; ?>" >
+                                                                <input type="text" id="price" name="price" class="form-control" placeholder="Please Enter Price" value="<?php echo $TOUR_PACKAGE->price; ?>" >
+                                                            </div>
+                                                        </div>
+
+
+                                                        <div class="">
+                                                            <div class="bottom-top">
+                                                                <label for="picture_name">Image</label>
+                                                            </div>
+                                                            <div class="formrow">
+                                                                <input type="file" id="image" class="form-control" value="<?php echo $TOUR_PACKAGE->picture_name; ?>"  name="picture_name">
+                                                                <img src="../upload/tour-package/<?php echo $TOUR_PACKAGE->picture_name; ?>" id="image" class="view-edit-img img img-responsive img-thumbnail" name="picture_name" alt="old image">
                                                             </div>
                                                         </div>
 
@@ -98,17 +96,21 @@ $TRANSPORTS = new Transports($id);
                                                                 <label for="description">Description</label>
                                                             </div>
                                                             <div class="formrow">
-                                                                <textarea type="text" id="description" name="description" class="form-control" placeholder="Please Enter Description"><?php echo $TRANSPORTS->description; ?></textarea>
+                                                                <textarea id="description" name="description" class="form-control" rows="5"><?php echo $TOUR_PACKAGE->description; ?></textarea> 
                                                             </div>
                                                         </div>
+
+
+
 
                                                         <div class="top-bott50">
                                                             <div class="bottom-top">
                                                                 <input type="hidden" id="oldDis" value=""/>
 
                                                                 <input type="hidden" id="member" name="member" value="<?php echo $_SESSION['id']; ?>"/>
-                                                                <input type="hidden" id="id" value="<?php echo $TRANSPORTS->id; ?>" name="id"/>
-                                                                <button name="edit-transports" type="submit" class="btn btn-info center-block">Change</button>
+                                                                <input type="hidden" id="id" value="<?php echo $TOUR_PACKAGE->id; ?>" name="id"/>
+                                                                <input type="hidden" id="oldImageName" value="<?php echo $TOUR_PACKAGE->picture_name; ?>" name="oldImageName"/>
+                                                                <button name="edit-tour-package" type="submit" class="btn btn-info center-block">Change</button>
                                                             </div>
                                                         </div> 
                                                     </div>  

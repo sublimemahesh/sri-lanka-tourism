@@ -1,12 +1,11 @@
 <?php
 include_once(dirname(__FILE__) . '/../class/include.php');
 include_once(dirname(__FILE__) . '/auth.php');
-
 $id = '';
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 }
-$TRANSPORTS = new Transports($id);
+$TOUR_SUB = new TourSubSection($id);
 ?> 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +17,7 @@ $TRANSPORTS = new Transports($id);
         <meta name="author" content="Dashboard">
         <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
-        <title>Edit Transports - www.srilankatourism.travel</title>
+        <title>Edit  Tour Sub Section || My Account || www.srilankatourism.travel</title>
 
         <!-- Bootstrap core CSS -->
         <link href="assets/css/bootstrap.css" rel="stylesheet">
@@ -59,59 +58,42 @@ $TRANSPORTS = new Transports($id);
                                         <div class="userccount">
                                             <div class="formpanel"> 
 
-                                                <form class="form-horizontal" method="post" action="post-and-get/transports.php" enctype="multipart/form-data"> 
+                                                <form class="form-horizontal" method="post" action="post-and-get/tour-package-sub-section.php" enctype="multipart/form-data"> 
                                                     <div class="col-md-12">
-                                                        <div class="">
-                                                            <div class="bottom-top">
-                                                                <label for="vehicle_type">Vehicle Type</label>
-                                                            </div>
-                                                            <div class="formrow">
-                                                                <select class="form-control" type="text" id="vehicle_type" autocomplete="off" name="vehicle_type">
-                                                                    <option value="<?php $TRANSPORTS->id ?>" class="active light-c">
-                                                                        <?php
-                                                                        $VEHICLE_TYPE = new VehicleType($TRANSPORTS->vehicle_type);
-                                                                        echo $VEHICLE_TYPE->name;
-                                                                        ?>
-                                                                    </option>
-                                                                    <?php foreach (VehicleType::all() as $key => $vehicle_t) {
-                                                                        ?>
-                                                                        <option value="<?php echo $vehicle_t['id']; ?>"><?php echo $vehicle_t['name']; ?></option>
-                                                                        <?php
-                                                                    }
-                                                                    ?>
-                                                                </select>
-
-                                                            </div>
-                                                        </div>
 
                                                         <div class="">
                                                             <div class="bottom-top">
                                                                 <label for="title">Title</label>
                                                             </div>
+
                                                             <div class="formrow">
-                                                                <input type="text" id="title" name="title" class="form-control" placeholder="Please Enter Title" value="<?php echo $TRANSPORTS->title; ?>" >
+                                                                <input type="text" id="title" class="form-control"  value="<?php echo $TOUR_SUB->title; ?>"  name="title"  required="TRUE">
                                                             </div>
                                                         </div>
-
                                                         <div class="">
                                                             <div class="bottom-top">
-                                                                <label for="description">Description</label>
+                                                                <label for="duration">Duration</label>
                                                             </div>
+
                                                             <div class="formrow">
-                                                                <textarea type="text" id="description" name="description" class="form-control" placeholder="Please Enter Description"><?php echo $TRANSPORTS->description; ?></textarea>
+                                                                <input type="text" id="duration" class="form-control"  value="<?php echo $TOUR_SUB->duration; ?>"  name="duration"  required="TRUE">
                                                             </div>
-                                                        </div>
-
-                                                        <div class="top-bott50">
-                                                            <div class="bottom-top">
-                                                                <input type="hidden" id="oldDis" value=""/>
-
-                                                                <input type="hidden" id="member" name="member" value="<?php echo $_SESSION['id']; ?>"/>
-                                                                <input type="hidden" id="id" value="<?php echo $TRANSPORTS->id; ?>" name="id"/>
-                                                                <button name="edit-transports" type="submit" class="btn btn-info center-block">Change</button>
+                                                            <div class="">
+                                                                <div class="bottom-top">
+                                                                    <label for="description">Description</label>
+                                                                </div>
+                                                                <div class="formrow">
+                                                                    <textarea type="text" id="description" name="description" class="form-control"><?php echo $TOUR_SUB->description; ?></textarea>
+                                                                </div>
                                                             </div>
-                                                        </div> 
-                                                    </div>  
+                                                            <div class="top-bott50">
+                                                                <div class="bottom-top">
+                                                                    <input type="hidden" id="id" value="<?php echo $TOUR_SUB->id; ?>" name="id"/>
+                                                                    <input type="hidden" id="authToken" value="<?php echo $_SESSION["id"]; ?>" name="memeber"/>
+                                                                    <button name="edit-tour-sub-section" type="submit" class="btn btn-info center-block">Change</button>
+                                                                </div>
+                                                            </div> 
+                                                        </div>  
                                                 </form>  
                                             </div>
                                         </div>

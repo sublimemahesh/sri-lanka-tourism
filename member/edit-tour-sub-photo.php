@@ -6,7 +6,7 @@ $id = '';
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 }
-$TRANSPORTS = new Transports($id);
+$TOUR_SUB_PHOTO = new TourSubSectionPhoto($id);
 ?> 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +18,7 @@ $TRANSPORTS = new Transports($id);
         <meta name="author" content="Dashboard">
         <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
-        <title>Edit Transports - www.srilankatourism.travel</title>
+        <title>Edit Tour Sub Section Photo || My Account || www.srilankatourism.travel</title>
 
         <!-- Bootstrap core CSS -->
         <link href="assets/css/bootstrap.css" rel="stylesheet">
@@ -53,64 +53,46 @@ $TRANSPORTS = new Transports($id);
                             $vali->show_message();
                             ?>
                             <div class="panel panel-default">
-                                <div class="panel-heading"><i class="fa fa-pencil"></i> Edit Transports</div>
+                                <div class="panel-heading"><i class="fa fa-pencil"></i> Edit Tour Sub Section Photo</div>
                                 <div class="panel-body">
                                     <div class="body">
                                         <div class="userccount">
                                             <div class="formpanel"> 
 
-                                                <form class="form-horizontal" method="post" action="post-and-get/transports.php" enctype="multipart/form-data"> 
+                                                <form class="form-horizontal" method="post" action="post-and-get/tour-sub-section-photo.php" enctype="multipart/form-data"> 
                                                     <div class="col-md-12">
-                                                        <div class="">
-                                                            <div class="bottom-top">
-                                                                <label for="vehicle_type">Vehicle Type</label>
-                                                            </div>
-                                                            <div class="formrow">
-                                                                <select class="form-control" type="text" id="vehicle_type" autocomplete="off" name="vehicle_type">
-                                                                    <option value="<?php $TRANSPORTS->id ?>" class="active light-c">
-                                                                        <?php
-                                                                        $VEHICLE_TYPE = new VehicleType($TRANSPORTS->vehicle_type);
-                                                                        echo $VEHICLE_TYPE->name;
-                                                                        ?>
-                                                                    </option>
-                                                                    <?php foreach (VehicleType::all() as $key => $vehicle_t) {
-                                                                        ?>
-                                                                        <option value="<?php echo $vehicle_t['id']; ?>"><?php echo $vehicle_t['name']; ?></option>
-                                                                        <?php
-                                                                    }
-                                                                    ?>
-                                                                </select>
 
+
+                                                        <div class="bottom-top">
+                                                            <label for="caption">Title</label>
+                                                            <div class="form-group">
+                                                                <div class="form-line">
+                                                                    <input type="text" id="caption" name="caption" class="form-control" placeholder="Please Enter Title" value="<?php echo $TOUR_SUB_PHOTO->caption; ?>" >
+                                                                </div>
                                                             </div>
                                                         </div>
 
                                                         <div class="">
-                                                            <div class="bottom-top">
-                                                                <label for="title">Title</label>
+                                                            <label for="image">Image</label>
+                                                            <div class="form-group">
+                                                                <div class="form-line">
+                                                                    <input type="file" id="image" class="form-control" value="<?php echo $TOUR_SUB_PHOTO->image_name; ?>"  name="image">
+                                                                    <img src="../upload/tour-package/sub-section/gallery/<?php echo $TOUR_SUB_PHOTO->image_name; ?>" id="image" class="view-edit-img img img-responsive img-thumbnail" name="image" alt="old image">
+                                                                </div>
                                                             </div>
-                                                            <div class="formrow">
-                                                                <input type="text" id="title" name="title" class="form-control" placeholder="Please Enter Title" value="<?php echo $TRANSPORTS->title; ?>" >
-                                                            </div>
-                                                        </div>
 
-                                                        <div class="">
-                                                            <div class="bottom-top">
-                                                                <label for="description">Description</label>
-                                                            </div>
-                                                            <div class="formrow">
-                                                                <textarea type="text" id="description" name="description" class="form-control" placeholder="Please Enter Description"><?php echo $TRANSPORTS->description; ?></textarea>
-                                                            </div>
                                                         </div>
 
                                                         <div class="top-bott50">
                                                             <div class="bottom-top">
-                                                                <input type="hidden" id="oldDis" value=""/>
 
-                                                                <input type="hidden" id="member" name="member" value="<?php echo $_SESSION['id']; ?>"/>
-                                                                <input type="hidden" id="id" value="<?php echo $TRANSPORTS->id; ?>" name="id"/>
-                                                                <button name="edit-transports" type="submit" class="btn btn-info center-block">Change</button>
+                                                                <input type="hidden" id="oldImageName" value="<?php echo $TOUR_SUB_PHOTO->image_name; ?>" name="oldImageName"/>
+                                                                <input type="hidden" id="id" value="<?php echo $TOUR_SUB_PHOTO->id; ?>" name="id"/>
+                                                                <input type="hidden" id="authToken" value="<?php echo $_SESSION["id"]; ?>" name="memeber"/>
+                                                                <button name="update" type="submit" class="btn btn-info center-block">Change</button>
                                                             </div>
                                                         </div> 
+
                                                     </div>  
                                                 </form>  
                                             </div>

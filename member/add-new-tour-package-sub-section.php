@@ -1,12 +1,11 @@
 <?php
 include_once(dirname(__FILE__) . '/../class/include.php');
 include_once(dirname(__FILE__) . '/auth.php');
-
 $id = '';
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 }
-$TRANSPORTS = new Transports($id);
+$TOUR_PACKAGE = new TourPackage($id)
 ?> 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,19 +17,18 @@ $TRANSPORTS = new Transports($id);
         <meta name="author" content="Dashboard">
         <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
-        <title>Edit Transports - www.srilankatourism.travel</title>
+        <title>Tour Package Images || My Account || www.srilankatourism.travel</title>
 
         <!-- Bootstrap core CSS -->
         <link href="assets/css/bootstrap.css" rel="stylesheet">
         <!--external css-->
         <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-        <link rel="stylesheet" type="text/css" href="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-datepicker/css/datepicker.html" />
-        <link rel="stylesheet" type="text/css" href="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-daterangepicker/daterangepicker.html" />
-
+        <link href="assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css"/>
         <!-- Custom styles for this template -->
         <link href="assets/css/style.css" rel="stylesheet">
         <link href="assets/css/style-responsive.css" rel="stylesheet">
         <link href="assets/css/custom.css" rel="stylesheet" type="text/css"/>
+
         <style>
             .img-thumbnail {
                 max-width: 50% !important;
@@ -52,114 +50,112 @@ $TRANSPORTS = new Transports($id);
 
                             $vali->show_message();
                             ?>
+
                             <div class="panel panel-default">
-                                <div class="panel-heading"><i class="fa fa-pencil"></i> Edit Transports</div>
+                                <div class="panel-heading"><i class="fa fa-save"></i> Create Transport Images</div>
                                 <div class="panel-body">
                                     <div class="body">
                                         <div class="userccount">
                                             <div class="formpanel"> 
-
-                                                <form class="form-horizontal" method="post" action="post-and-get/transports.php" enctype="multipart/form-data"> 
+                                                <form class="form-horizontal"  method="post" action="post-and-get/tour-package-sub-section.php" enctype="multipart/form-data"> 
                                                     <div class="col-md-12">
-                                                        <div class="">
-                                                            <div class="bottom-top">
-                                                                <label for="vehicle_type">Vehicle Type</label>
-                                                            </div>
-                                                            <div class="formrow">
-                                                                <select class="form-control" type="text" id="vehicle_type" autocomplete="off" name="vehicle_type">
-                                                                    <option value="<?php $TRANSPORTS->id ?>" class="active light-c">
-                                                                        <?php
-                                                                        $VEHICLE_TYPE = new VehicleType($TRANSPORTS->vehicle_type);
-                                                                        echo $VEHICLE_TYPE->name;
-                                                                        ?>
-                                                                    </option>
-                                                                    <?php foreach (VehicleType::all() as $key => $vehicle_t) {
-                                                                        ?>
-                                                                        <option value="<?php echo $vehicle_t['id']; ?>"><?php echo $vehicle_t['name']; ?></option>
-                                                                        <?php
-                                                                    }
-                                                                    ?>
-                                                                </select>
-
-                                                            </div>
-                                                        </div>
 
                                                         <div class="">
                                                             <div class="bottom-top">
                                                                 <label for="title">Title</label>
                                                             </div>
                                                             <div class="formrow">
-                                                                <input type="text" id="title" name="title" class="form-control" placeholder="Please Enter Title" value="<?php echo $TRANSPORTS->title; ?>" >
+                                                                <input type="text" id="caption" class="form-control" placeholder="Enter Title" autocomplete="off" name="title" required="true">
                                                             </div>
                                                         </div>
-
+                                                        <div class="">
+                                                            <div class="bottom-top">
+                                                                <label for="duration">Duration</label>
+                                                            </div>
+                                                            <div class="formrow">
+                                                                <input type="text" id="duration" class="form-control" placeholder="Enter Duration" autocomplete="off" name="duration" required="true">
+                                                            </div>
+                                                        </div>
                                                         <div class="">
                                                             <div class="bottom-top">
                                                                 <label for="description">Description</label>
                                                             </div>
                                                             <div class="formrow">
-                                                                <textarea type="text" id="description" name="description" class="form-control" placeholder="Please Enter Description"><?php echo $TRANSPORTS->description; ?></textarea>
+                                                                <textarea type="text" id="description" name="description" class="form-control" placeholder="Please Enter Description"></textarea>
                                                             </div>
                                                         </div>
-
                                                         <div class="top-bott50">
                                                             <div class="bottom-top">
-                                                                <input type="hidden" id="oldDis" value=""/>
-
+                                                                <input type="hidden" id="id" class="form-control" placeholder="Enter id" autocomplete="off" name="id" required="true">
                                                                 <input type="hidden" id="member" name="member" value="<?php echo $_SESSION['id']; ?>"/>
-                                                                <input type="hidden" id="id" value="<?php echo $TRANSPORTS->id; ?>" name="id"/>
-                                                                <button name="edit-transports" type="submit" class="btn btn-info center-block">Change</button>
+                                                                <input type="hidden" value="<?php echo $id ?>" name="id"/>
+                                                                <button name="create-tour-sub-section" type="submit" class="btn btn-info center-block">Create</button>
                                                             </div>
                                                         </div> 
                                                     </div>  
                                                 </form>  
                                             </div>
                                         </div>
+                                        <div class="row clearfix">
+                                            <?php
+                                            $TOUR_SUB = TourSubSection::GetTourSubSectionByTourPackage($id);
+                                            if (count($TOUR_SUB) > 0) {
+                                                foreach ($TOUR_SUB as $key => $tour_s) {
+                                                    ?>
+                                                    <div class="col-md-3" id="div_<?php echo $tour_s['id']; ?>">
+        <!--                                                        <p class="maxlinetitle"><?php echo $tour_s['sort']; ?></p>-->
+                                                        <p class="maxlinetitle"><?php echo $tour_s['title']; ?></p>
+                                                        <p class="maxlinetitle"><?php echo $tour_s['duration']; ?></p>
+                                                        <div>
+                                                            <div class="" style="padding-bottom: 10px">
+
+                                                                <a href="edit-tour-sub-section.php?id=<?php echo $tour_s['id']; ?>">
+                                                                    <button class="btn btn-primary btn-xs fa fa-pencil"></button>
+                                                                </a>
+                                                                |
+                                                                <a>
+                                                                    <button class="delete-tour-sub-section btn btn-danger btn-xs fa fa-trash-o" data-id="<?php echo $tour_s['id']; ?>"></button>
+                                                                </a> 
+                                                                |
+                                                                <a href="add-new-tour-package-photo.php?id=<?php echo $tour_s['id']; ?>">
+                                                                    <button class="btn btn-success btn-xs fa fa-photo"></button>
+                                                                </a> 
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <?php
+                                                }
+                                            } else {
+                                                ?> 
+                                                <b style="padding-left: 15px;">No Transport Images in the database.</b> 
+                                            <?php } ?> 
+
+                                        </div>
+                                        <div class="text-right">
+                                            <a href="manage-tour-package.php"><button type="button" class="btn btn-round btn-info">Manage Tour Package</button></a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div> 
-
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
-
             <?php
             include './footer.php';
             ?>
         </section>
 
-        <!-- js placed at the end of the document so the pages load faster -->
         <script src="assets/js/jquery.js"></script>
         <script src="assets/js/bootstrap.min.js"></script>
         <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
         <script src="assets/js/jquery.scrollTo.min.js"></script>
-        <script src="assets/js/jquery.nicescroll.js" type="text/javascript"></script>
-
-
-        <!--common script for all pages-->
         <script src="assets/js/common-scripts.js"></script>
-
-        <!--script for this page-->
         <script src="assets/js/jquery-ui-1.9.2.custom.min.js"></script>
 
-        <!--custom switch-->
-        <script src="assets/js/bootstrap-switch.js"></script>
-
-        <!--custom tagsinput-->
-        <script src="assets/js/jquery.tagsinput.js"></script>
-
-        <!--custom checkbox & radio-->
-
-        <script type="text/javascript" src="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-datepicker/js/bootstrap-datepicker.html"></script>
-        <script type="text/javascript" src="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-daterangepicker/date.html"></script>
-        <script type="text/javascript" src="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-daterangepicker/daterangepicker-2.html"></script>
-
         <script type="text/javascript" src="assets/js/bootstrap-inputmask/bootstrap-inputmask.min.js"></script>
-
-
-        <script src="assets/js/form-component.js"></script>    
-
+        <script src="assets/plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>
+        <script src="delete/js/tour-sub-section.js" type="text/javascript"></script>
 
         <script>
             //custom select box
@@ -194,10 +190,7 @@ $TRANSPORTS = new Transports($id);
                 relative_urls: false
 
             });
-
-
         </script>
 
     </body>
-
 </html>
