@@ -1,5 +1,4 @@
 <?php
-//
 //if (!Member::login()) {
 //    redirect('login.php');
 //}
@@ -12,7 +11,6 @@ $MEMBER = new Member($_SESSION['id']);
     <!--logo start-->
     <a href="index.html" class="logo"><b>Your Tourism Panel</b></a>
     <!--logo end-->
-
     <div class="pull-right top-menu nav notify-row">
         <ul class="nav top-menu">
             <li id="header_inbox_bar" class="dropdown">
@@ -23,51 +21,75 @@ $MEMBER = new Member($_SESSION['id']);
                 <ul class="dropdown-menu extended inbox">
                     <div class="notify-arrow notify-arrow-green"></div>
                     <li>
-                        <p class="green">Your Account</p>
+                        <p class="green">You have 5 new messages</p>
                     </li>
                     <li>
-                        <a href="profile.php">
-
-                            <?php
-                            if (empty($MEMBER->profile_picture)) {
-                                ?> 
-                                <span class="photo"><img alt="avatar" src="../upload/member/member.png"></span>
-                                <?php
-                            } else {
-                                ?>
-                                <span class="photo"><img alt="avatar" src="../upload/member/<?php echo $MEMBER->profile_picture; ?>"></span>
-                                <?php
-                            }
-                            ?>
-
-
+                        <a href="index.html#">
+                            <span class="photo"><img alt="avatar" src="assets/img/ui-zac.jpg"></span>
                             <span class="subject">
-                                <span class="from"> My Profile</span>
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="../index.php">
-                            <span class="photo"><img alt="avatar" src="../images/3d-building.png"></span>
-                            <span class="subject">
-                                <span class="from"> My Ads</span>
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="../index.php">
-                            <span class="photo"><img alt="avatar" src="../upload/visitor/-574108304_190629032602_1518674405_n.jpg"></span>
-                            <span class="subject">
-                                <span class="from"> My Rates</span>
+                                <span class="from">Zac Snider</span>
+                                <span class="time">Just now</span>
                             </span>
                             <span class="message">
-                                *******
+                                Hi mate, how is everything?
                             </span>
                         </a>
                     </li>
                     <li>
+                        <a href="index.html#">
+                            <span class="photo"><img alt="avatar" src="assets/img/ui-divya.jpg"></span>
+                            <span class="subject">
+                                <span class="from">Divya Manian</span>
+                                <span class="time">40 mins.</span>
+                            </span>
+                            <span class="message">
+                                Hi, I need your help with this.
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="index.html#">
+                            <span class="photo"><img alt="avatar" src="assets/img/ui-danro.jpg"></span>
+                            <span class="subject">
+                                <span class="from">Dan Rogers</span>
+                                <span class="time">2 hrs.</span>
+                            </span>
+                            <span class="message">
+                                Love your new Dashboard.
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="index.html#">
+                            <span class="photo"><img alt="avatar" src="assets/img/ui-sherman.jpg"></span>
+                            <span class="subject">
+                                <span class="from">Dj Sherman</span>
+                                <span class="time">4 hrs.</span>
+                            </span>
+                            <span class="message">
+                                Please, answer asap.
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="index.html#">See all messages</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li id="header_inbox_bar" class="dropdown">
+                <a data-toggle="dropdown" class="dropdown-toggle" href="index.php">
+                    <i class="fa fa-gear"></i>
+                    <span class="badge bg-theme"></span>
+                </a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="./">Home</a></li>
+                    <li><a href="edit-profile.php">Edit Profile</a></li>
+                    <li><a href="change-password.php">Change Password</a></li>
+                    <li class="divider"></li>
+                    <li>
                         <a href="post-and-get/logout.php">
-                            <span class="photo"><img alt="avatar" src="../upload/visitor/-574108304_190629032602_1518674405_n.jpg"></span>
+
                             <span class="subject">
                                 <span class="from"> Sign Out</span>
                             </span>
@@ -97,17 +119,20 @@ $MEMBER = new Member($_SESSION['id']);
             ?>
             <h5 class="centered"><?php echo $MEMBER->name; ?></h5>
 
-
             <li class="sub-menu">
-                <a href="javascript:;" >
-                    <i class="fa fa-user"></i>
-                    <span>Account</span>
+                <a href="./" >
+                    <i class="fa fa-home"></i>
+                    <span>Home</span>
                 </a>
-                <ul class="sub">
-                    <li><a  href="profile.php">My Profile</a></li>
-                    <li><a  href="edit-profile.php">Edit Profile</a></li>
-                    <li><a  href="change-password.php">Change Password</a></li>
-                </ul>
+            </li>
+            <li class="sub-menu">
+                <a href="profile.php" >
+                    <i class="fa fa-user"></i>
+                    <span>Your Profile</span>
+                </a>
+                <!--                <ul class="sub">
+                                    <li><a  href="profile.php">My Profile</a></li>
+                                </ul>-->
             </li>
 
             <li class="sub-menu">
@@ -140,36 +165,35 @@ $MEMBER = new Member($_SESSION['id']);
                     <li><a  href="manage-tour-package.php">Manage Tour Packages</a></li>
                 </ul>
             </li>
-<!--            <li class="sub-menu">
-                <a href="javascript:;" >
-                    <i class="fa fa-tasks"></i>
-                    <span>Forms</span>
-                </a>
-                <ul class="sub">
-                    <li><a  href="form_component.html">Form Components</a></li>
-                </ul>
-            </li>
-            <li class="sub-menu">
-                <a href="javascript:;" >
-                    <i class="fa fa-th"></i>
-                    <span>Data Tables</span>
-                </a>
-                <ul class="sub">
-                    <li><a  href="basic_table.html">Basic Table</a></li>
-                    <li><a  href="responsive_table.html">Responsive Table</a></li>
-                </ul>
-            </li>
-            <li class="sub-menu">
-                <a href="javascript:;" >
-                    <i class=" fa fa-bar-chart-o"></i>
-                    <span>Charts</span>
-                </a>
-                <ul class="sub">
-                    <li><a  href="morris.html">Morris</a></li>
-                    <li><a  href="chartjs.html">Chartjs</a></li>
-                </ul>
-            </li>-->
-
+            <!--            <li class="sub-menu">
+                            <a href="javascript:;" >
+                                <i class="fa fa-tasks"></i>
+                                <span>Forms</span>
+                            </a>
+                            <ul class="sub">
+                                <li><a  href="form_component.html">Form Components</a></li>
+                            </ul>
+                        </li>
+                        <li class="sub-menu">
+                            <a href="javascript:;" >
+                                <i class="fa fa-th"></i>
+                                <span>Data Tables</span>
+                            </a>
+                            <ul class="sub">
+                                <li><a  href="basic_table.html">Basic Table</a></li>
+                                <li><a  href="responsive_table.html">Responsive Table</a></li>
+                            </ul>
+                        </li>
+                        <li class="sub-menu">
+                            <a href="javascript:;" >
+                                <i class=" fa fa-bar-chart-o"></i>
+                                <span>Charts</span>
+                            </a>
+                            <ul class="sub">
+                                <li><a  href="morris.html">Morris</a></li>
+                                <li><a  href="chartjs.html">Chartjs</a></li>
+                            </ul>
+                        </li>-->
         </ul>
     </div>
 </aside>

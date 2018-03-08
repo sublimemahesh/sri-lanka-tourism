@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <!-- Mirrored from www.blacktie.co/demo/dashgum/general.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 15 Feb 2018 07:14:22 GMT -->
+    <!-- Mirrored from www.blacktie.co/demo/dashgum/buttons.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 15 Feb 2018 07:14:24 GMT -->
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,7 +15,6 @@
         <link href="assets/css/bootstrap.css" rel="stylesheet">
         <!--external css-->
         <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-        <link rel="stylesheet" type="text/css" href="assets/js/gritter/css/jquery.gritter.css" />
 
         <!-- Custom styles for this template -->
         <link href="assets/css/style.css" rel="stylesheet">
@@ -215,8 +214,8 @@
                                 <span>UI Elements</span>
                             </a>
                             <ul class="sub">
-                                <li class="active"><a  href="general.html">General</a></li>
-                                <li><a  href="buttons.html">Buttons</a></li>
+                                <li><a  href="general.html">General</a></li>
+                                <li class="active"><a  href="buttons.html">Buttons</a></li>
                                 <li><a  href="panels.html">Panels</a></li>
                             </ul>
                         </li>
@@ -287,148 +286,174 @@
                 <section class="wrapper">
                     <div class="row mt">
                         <div class="col-lg-6 col-md-6 col-sm-12">
-                            <! -- BASIC PROGRESS BARS -->
+                            <! -- BASIC BUTTONS -->
                             <div class="showback">
-                                <h4><i class="fa fa-angle-right"></i> Basic Progress Bars</h4>
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-                                        <span class="sr-only">40% Complete (success)</span>
-                                    </div>
-                                </div>
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
-                                        <span class="sr-only">20% Complete</span>
-                                    </div>
-                                </div>
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-                                        <span class="sr-only">60% Complete (warning)</span>
-                                    </div>
-                                </div>
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
-                                        <span class="sr-only">80% Complete</span>
-                                    </div>
-                                </div>
-                            </div><!--/showback -->
+                                <h4><i class="fa fa-angle-right"></i> Basic Buttons</h4>
+                                <button type="button" class="btn btn-default">Default</button>
+                                <button type="button" class="btn btn-primary">Primary</button>
+                                <button type="button" class="btn btn-success">Success</button>
+                                <button type="button" class="btn btn-info">Info</button>
+                                <button type="button" class="btn btn-warning">Warning</button>
+                                <button type="button" class="btn btn-danger">Danger</button>
+                            </div><!-- /showback -->
 
-                            <! -- STRIPPED PROGRESS BARS -->
+                            <! -- BUTTONS ROUND -->
                             <div class="showback">
-                                <h4><i class="fa fa-angle-right"></i> Stripped Progress Bars</h4>
-                                <div class="progress progress-striped">
-                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-                                        <span class="sr-only">40% Complete (success)</span>
-                                    </div>
-                                </div>
-                                <div class="progress progress-striped">
-                                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
-                                        <span class="sr-only">20% Complete</span>
-                                    </div>
-                                </div>
-                                <div class="progress progress-striped">
-                                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-                                        <span class="sr-only">60% Complete (warning)</span>
-                                    </div>
-                                </div>
-                                <div class="progress progress-striped">
-                                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
-                                        <span class="sr-only">80% Complete (danger)</span>
-                                    </div>
+                                <h4><i class="fa fa-angle-right"></i> Buttons Round</h4>
+                                <button type="button" class="btn btn-round btn-default">Default</button>
+                                <button type="button" class="btn btn-round btn-primary">Primary</button>
+                                <button type="button" class="btn btn-round btn-success">Success</button>
+                                <button type="button" class="btn btn-round btn-info">Info</button>
+                                <button type="button" class="btn btn-round btn-warning">Warning</button>
+                                <button type="button" class="btn btn-round btn-danger">Danger</button>
+                            </div><!-- /showback -->
+
+                            <! -- THEME BUTTONS -->
+                            <div class="showback">
+                                <h4><i class="fa fa-angle-right"></i> Theme Buttons</h4>
+                                <!-- Standard button -->
+                                <button type="button" class="btn btn-theme">Theme</button>
+                                <button type="button" class="btn btn-theme02">Theme 02</button>
+                                <button type="button" class="btn btn-theme03">Theme 03</button>
+                                <button type="button" class="btn btn-theme04">Theme 04</button>
+                            </div><!-- /showback -->
+
+                            <! -- BUTTONS GROUP -->
+                            <div class="showback">
+                                <h4><i class="fa fa-angle-right"></i> Buttons Group</h4>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-default">Left</button>
+                                    <button type="button" class="btn btn-default">Middle</button>
+                                    <button type="button" class="btn btn-default">Right</button>
                                 </div>      				
                             </div><!-- /showback -->
 
-                            <! -- ANIMATED PROGRESS BARS -->
+                            <! -- BUTTONS NESTING -->
                             <div class="showback">
-                                <h4><i class="fa fa-angle-right"></i> Animated Progress Bars</h4>
-                                <div class="progress progress-striped active">
-                                    <div class="progress-bar"  role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
-                                        <span class="sr-only">45% Complete</span>
+                                <h4><i class="fa fa-angle-right"></i> Button Nesting</h4>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-default">1</button>
+                                    <button type="button" class="btn btn-default">2</button>
+
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                            Dropdown
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#">Dropdown link</a></li>
+                                            <li><a href="#">Dropdown link</a></li>
+                                        </ul>
                                     </div>
-                                </div>
+                                </div>      					
                             </div><!-- /showback -->
 
-                            <! -- MODALS -->
+                            <! -- SPLIT BUTTONS -->
                             <div class="showback">
-                                <h4><i class="fa fa-angle-right"></i> Modal Example</h4>
-                                <!-- Button trigger modal -->
-                                <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal">
-                                    Launch Modal
-                                </button>
-
-                                <!-- Modal -->
-                                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-                                            </div>
-                                            <div class="modal-body">
-                                                Hi there, I am a Modal Example for Dashgum Admin Panel.
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary">Save changes</button>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <h4><i class="fa fa-angle-right"></i> Split Buttons</h4>
+                                <!-- Split button -->
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-theme03">Action</button>
+                                    <button type="button" class="btn btn-theme03 dropdown-toggle" data-toggle="dropdown">
+                                        <span class="caret"></span>
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="#">Action</a></li>
+                                        <li><a href="#">Another action</a></li>
+                                        <li><a href="#">Something else here</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="#">Separated link</a></li>
+                                    </ul>
                                 </div>      				
-                            </div><!-- /showback -->
 
-                            <! -- GRITTER NOTICES -->
-                            <div class="showback">
-                                <h4><i class="fa fa-angle-right"></i> Gritter Examples</h4>
-                                <p>Click on below buttons to check it out.</p>
-                                <a id="add-regular" class="btn btn-default btn-sm" href="javascript:;">Regular</a>
-                                <a id="add-sticky" class="btn btn-success  btn-sm" href="javascript:;">Sticky</a>
-                                <a id="add-without-image" class="btn btn-info  btn-sm" href="javascript:;">Imageless</a>
-                                <a id="add-gritter-light" class="btn btn-warning  btn-sm" href="javascript:;">Light</a>
-                                <a id="remove-all" class="btn btn-danger  btn-sm" href="general.html#">Remove all</a>
                             </div><!-- /showback -->
 
                         </div><! --/col-lg-6 -->
 
 
                         <div class="col-lg-6 col-md-6 col-sm-12">
-                            <! -- ALERTS EXAMPLES -->
+                            <! -- BUTTONS SIZES -->
                             <div class="showback">
-                                <h4><i class="fa fa-angle-right"></i> Alerts Examples</h4>
-                                <div class="alert alert-success"><b>Well done!</b> You successfully read this important alert message.</div>
-                                <div class="alert alert-info"><b>Heads up!</b> This alert needs your attention, but it's not super important.</div>
-                                <div class="alert alert-warning"><b>Warning!</b> Better check yourself, you're not looking too good.</div>
-                                <div class="alert alert-danger"><b>Oh snap!</b> Change a few things up and try submitting again.</div>      				
+                                <h4><i class="fa fa-angle-right"></i> Buttons Sizes</h4>
+                                <p>
+                                    <button type="button" class="btn btn-primary btn-lg">Large button</button>
+                                    <button type="button" class="btn btn-default btn-lg">Large button</button>
+                                </p>
+                                <p>
+                                    <button type="button" class="btn btn-primary">Default button</button>
+                                    <button type="button" class="btn btn-default">Default button</button>
+                                </p>
+                                <p>
+                                    <button type="button" class="btn btn-primary btn-sm">Small button</button>
+                                    <button type="button" class="btn btn-default btn-sm">Small button</button>
+                                </p>
+                                <p>
+                                    <button type="button" class="btn btn-primary btn-xs">Extra small button</button>
+                                    <button type="button" class="btn btn-default btn-xs">Extra small button</button>
+                                </p>      					
                             </div><!-- /showback -->
 
-                            <! -- DISMISSABLE ALERT -->
+                            <!-- BUTTON BLOCK -->
                             <div class="showback">
-                                <h4><i class="fa fa-angle-right"></i> Dismissable Alert</h4>
-                                <div class="alert alert-warning alert-dismissable">
-                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                    <strong>Warning!</strong> Better check yourself, you're not looking too good.
+                                <h4><i class="fa fa-angle-right"></i> Block Buttons</h4>
+                                <button type="button" class="btn btn-primary btn-lg btn-block">Block level button</button>
+                                <button type="button" class="btn btn-default btn-lg btn-block">Block level button</button>
+                            </div><!--/showback -->
+
+                            <!-- JUSTIFIED BUTTONS -->
+                            <div class="showback">
+                                <h4><i class="fa fa-angle-right"></i> Justified Buttons</h4>
+                                <div class="btn-group btn-group-justified">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-theme">Left</button>
+                                    </div>
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-theme">Middle</button>
+                                    </div>
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-theme">Right</button>
+                                    </div>
                                 </div>      				
+                            </div><!--/showback -->
+
+                            <!-- DROPDOWN BUTTONS -->
+                            <div class="showback">
+                                <h4><i class="fa fa-angle-right"></i> Dropdown Buttons</h4>
+                                <!-- Single button -->
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-theme dropdown-toggle" data-toggle="dropdown">
+                                        Action <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="#">Action</a></li>
+                                        <li><a href="#">Another action</a></li>
+                                        <li><a href="#">Something else here</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="#">Separated link</a></li>
+                                    </ul>
+                                </div>
+                                <!-- Single button -->
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-theme04 dropdown-toggle" data-toggle="dropdown">
+                                        Action <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="#">Action</a></li>
+                                        <li><a href="#">Another action</a></li>
+                                        <li><a href="#">Something else here</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="#">Separated link</a></li>
+                                    </ul>
+                                </div>
                             </div><!-- /showback -->
 
-                            <! -- BADGES -->
+                            <!-- BUTTONS WITH ICONS -->
                             <div class="showback">
-                                <h4><i class="fa fa-angle-right"></i> Badges</h4>
-                                <span class="badge">5</span>
-                                <span class="badge bg-primary">10</span>
-                                <span class="badge bg-success">15</span>
-                                <span class="badge bg-info">20</span>
-                                <span class="badge bg-inverse">25</span>
-                                <span class="badge bg-warning">30</span>
-                                <span class="badge bg-important">35</span>
-                            </div><!-- /showback -->
-
-                            <! -- LABELS -->
-                            <div class="showback">
-                                <h4><i class="fa fa-angle-right"></i> Labels</h4>
-                                <span class="label label-default">label</span>
-                                <span class="label label-primary">Primary</span>
-                                <span class="label label-success">Success</span>
-                                <span class="label label-info">Info</span>
-                                <span class="label label-warning">Warning</span>
-                                <span class="label label-danger">Danger</span>
+                                <h4><i class="fa fa-angle-right"></i> Buttons With Icons</h4>
+                                <button type="button" class="btn btn-theme"><i class="fa fa-cog"></i> Button</button>
+                                <button type="button" class="btn btn-theme02"><i class="fa fa-check"></i> Button</button>
+                                <button type="button" class="btn btn-theme04"><i class="fa fa-heart"></i> Button</button>
                             </div><!-- /showback -->
 
                         </div><!-- /col-lg-6 -->
@@ -442,7 +467,7 @@
             <footer class="site-footer">
                 <div class="text-center">
                     2014 - Alvarez.is
-                    <a href="general.html#" class="go-top">
+                    <a href="buttons.html#" class="go-top">
                         <i class="fa fa-angle-up"></i>
                     </a>
                 </div>
@@ -463,8 +488,6 @@
         <script src="assets/js/common-scripts.js"></script>
 
         <!--script for this page-->
-        <script type="text/javascript" src="assets/js/gritter/js/jquery.gritter.js"></script>
-        <script type="text/javascript" src="assets/js/gritter-conf.js"></script>
 
         <script>
             //custom select box
@@ -477,5 +500,5 @@
 
     </body>
 
-    <!-- Mirrored from www.blacktie.co/demo/dashgum/general.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 15 Feb 2018 07:14:24 GMT -->
+    <!-- Mirrored from www.blacktie.co/demo/dashgum/buttons.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 15 Feb 2018 07:14:24 GMT -->
 </html>
