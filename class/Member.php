@@ -346,4 +346,21 @@ class Member {
         }
     }
 
+    public function ChangeProPic($member, $file) {
+
+        $query = "UPDATE  `member` SET "
+                . "`profile_picture` ='" . $file . "' "
+                . "WHERE `id` = '" . $member . "'";
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+
+        if ($result) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
+
 }
