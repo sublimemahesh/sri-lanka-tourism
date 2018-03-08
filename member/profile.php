@@ -72,21 +72,27 @@ $MEMBER = new Member($_SESSION['id']);
                                                         <!--<li class="list-group-item"> <b>Last Login</b> : </li>--> 
                                                     </ul>
                                                 </div>
+
                                                 <div class="col-sm-3 col-md-3">  
                                                     <?php
+                                                    $MEMBER = new Member($_SESSION["id"]);
                                                     if (empty($MEMBER->profile_picture)) {
                                                         ?>
-                                                        <img src="../upload/member/member.png" class="img img-responsive img-thumbnail"/> 
-
+                                                        <img src="../upload/member/member.png" class="img img-responsive img-thumbnail" id="profil_pic"/>
                                                         <?php
                                                     } else {
                                                         ?>
-                                                        <img src="../upload/member/<?php echo $MEMBER->profile_picture; ?>" class="img img-responsive img-thumbnail"/> 
+                                                        <img src="../upload/member/<?php echo $MEMBER->profile_picture; ?>" class="img img-responsive img-thumbnail" id="profil_pic"/>
                                                         <?php
                                                     }
                                                     ?>
-
+                                                    <form class="form-horizontal"  method="post" enctype="multipart/form-data" id="upForm">
+                                                        <input type="file" name="pro-picture" id="pro-picture" />
+                                                        <input type="hidden" name="upload-profile-image" id="upload-profile-image"/>
+                                                        <input type="hidden" name="member" id="member" value="<?php echo $MEMBER->id; ?>"/>
+                                                    </form>
                                                 </div>
+
                                             </div>
                                         </div>   	
                                     </div>
@@ -132,7 +138,7 @@ $MEMBER = new Member($_SESSION['id']);
         <script type="text/javascript" src="assets/js/bootstrap-inputmask/bootstrap-inputmask.min.js"></script>
 
         <script src="assets/js/form-component.js"></script>    
-
+        <script src="js/profile.js" type="text/javascript"></script>
         <script>
             //custom select box
 
