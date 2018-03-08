@@ -9,15 +9,19 @@ if (isset($_POST['add-transports'])) {
     $TRANSPORTS = New Transports(NULL);
     $VALID = new Validator();
 
-
     $TRANSPORTS->title = $_POST['title'];
-    $TRANSPORTS->member = $_POST['member'];
     $TRANSPORTS->vehicle_type = $_POST['vehicle_type'];
+    $TRANSPORTS->member = $_POST['member'];
+    $TRANSPORTS->registered_number = $_POST['registered_number'];
+    $TRANSPORTS->registered_year = $_POST['registered_year'];
+    $TRANSPORTS->fuel_type = $_POST['fuel_type_id'];
+    $TRANSPORTS->condition = $_POST['condition_id'];
     $TRANSPORTS->description = $_POST['description'];
 
     $VALID->check($TRANSPORTS, [
         'title' => ['required' => TRUE],
         'vehicle_type' => ['required' => TRUE],
+        'registered_number' => ['required' => TRUE],
         'description' => ['required' => TRUE],
     ]);
 
@@ -30,7 +34,7 @@ if (isset($_POST['add-transports'])) {
         $VALID->addError("Your data was saved successfully", 'success');
         $_SESSION['ERRORS'] = $VALID->errors();
 
-        header('Location: ../add-transport-rates.php?id='. $TRANSPORTS->id);
+        header('Location: ../add-transport-rates.php?id=' . $TRANSPORTS->id);
     } else {
 
         if (!isset($_SESSION)) {
@@ -48,11 +52,20 @@ if (isset($_POST['edit-transports'])) {
     $VALID = new Validator();
 
     $TRANSPORTS->title = $_POST['title'];
-    $TRANSPORTS->description = $_POST['description'];
     $TRANSPORTS->vehicle_type = $_POST['vehicle_type'];
+    $TRANSPORTS->registered_number = $_POST['registered_number'];
+    $TRANSPORTS->registered_year = $_POST['registered_year'];
+    $TRANSPORTS->fuel_type = $_POST['fuel_type_id'];
+    $TRANSPORTS->condition = $_POST['condition_id'];
+    $TRANSPORTS->description = $_POST['description'];
+
+
 
     $VALID->check($TRANSPORTS, [
         'title' => ['required' => TRUE],
+        'vehicle_type' => ['required' => TRUE],
+        'member' => ['required' => TRUE],
+        'registered_number' => ['required' => TRUE],
         'description' => ['required' => TRUE],
     ]);
 

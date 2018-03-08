@@ -67,6 +67,9 @@ if (isset($_GET['member'])) {
                                                     <th>ID</th>
                                                     <th>Vehicle Type</th>
                                                     <th>Title</th> 
+                                                    <th>Registered Number</th>
+                                                    <th>Fuel Type</th>
+                                                    <th>Vehicle Condition</th> 
                                                     <th>Option</th>
 
                                                 </tr>
@@ -76,12 +79,15 @@ if (isset($_GET['member'])) {
                                                     <th>ID</th>
                                                     <th>Vehicle Type</th>
                                                     <th>Title</th>
+                                                    <th>Registered Number</th>
+                                                    <th>Fuel Type</th>
+                                                    <th>Vehicle Condition</th> 
                                                     <th>Option</th>
                                                 </tr>
                                             </tfoot>
                                             <tbody>
                                                 <?php
-                                               foreach ($transports as $key => $transport) {
+                                                foreach ($transports as $key => $transport) {
                                                     ?>
                                                     <tr id="row_<?php echo $transport['id']; ?>">
                                                         <td><?php echo $transport['id']; ?></td> 
@@ -93,6 +99,19 @@ if (isset($_GET['member'])) {
                                                         </td>
 
                                                         <td><?php echo $transport['title']; ?></td> 
+                                                        <td><?php echo $transport['registered_number']; ?></td>
+                                                        <td>
+                                                            <?php
+                                                            $FUEL_TYPE = new FuelType($transport['fuel_type']);
+                                                            echo $FUEL_TYPE->name;
+                                                            ?>
+                                                        </td>
+                                                        <td>
+                                                            <?php
+                                                            $VEHICLE_CONDITIONS = new VehicleCondition($transport['condition']);
+                                                            echo $VEHICLE_CONDITIONS->name;
+                                                            ?>
+                                                        </td>
                                                         <td>  
 
                                                             <a href="edit-transports.php?id=<?php echo $transport['id']; ?>" <button class="glyphicon glyphicon-pencil edit-btn"></button></a>

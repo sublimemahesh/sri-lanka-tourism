@@ -8,11 +8,18 @@ if (isset($_POST['create'])) {
     $MEMBER = new Member(NULL);
     $VALID = new Validator();
 
+    $password = md5(filter_var($_POST['password'], FILTER_SANITIZE_STRING));
+
     $MEMBER->name = filter_input(INPUT_POST, 'name');
     $MEMBER->email = filter_input(INPUT_POST, 'email');
+    $MEMBER->nic_number = filter_input(INPUT_POST, 'nic_number');
+    $MEMBER->date_of_birthday = filter_input(INPUT_POST, 'date_of_birthday');
     $MEMBER->contact_number = filter_input(INPUT_POST, 'contact_number');
+    $MEMBER->driving_licence_number = filter_input(INPUT_POST, 'driving_licence_number');
+    $MEMBER->home_address = filter_input(INPUT_POST, 'home_address');
+    $MEMBER->city = filter_input(INPUT_POST, 'city');
     $MEMBER->username = filter_input(INPUT_POST, 'username');
-    $MEMBER->password = filter_input(INPUT_POST, 'password');
+    $MEMBER->password = $password;
 
     $dir_dest = '../../upload/member/';
 
@@ -25,8 +32,8 @@ if (isset($_POST['create'])) {
         $handle->file_new_name_ext = 'jpg';
         $handle->image_ratio_crop = 'C';
         $handle->file_new_name_body = Helper::randamId();
-        $handle->image_x = 900;
-        $handle->image_y = 500;
+        $handle->image_x = 250;
+        $handle->image_y = 250;
 
         $handle->Process($dir_dest);
 
@@ -41,7 +48,9 @@ if (isset($_POST['create'])) {
     $VALID->check($MEMBER, [
         'name' => ['required' => TRUE],
         'email' => ['required' => TRUE],
+        'nic_number' => ['required' => TRUE],
         'contact_number' => ['required' => TRUE],
+        'driving_licence_number' => ['required' => TRUE],
         'username' => ['required' => TRUE],
         'password' => ['required' => TRUE],
         'profile_picture' => ['required' => TRUE]
@@ -83,8 +92,8 @@ if (isset($_POST['update'])) {
         $handle->file_new_name_ext = FALSE;
         $handle->image_ratio_crop = 'C';
         $handle->file_new_name_body = $_POST ["oldImageName"];
-        $handle->image_x = 900;
-        $handle->image_y = 500;
+        $handle->image_x = 250;
+        $handle->image_y = 250;
 
         $handle->Process($dir_dest);
 
@@ -97,10 +106,15 @@ if (isset($_POST['update'])) {
     $MEMBER = new Member($_POST['id']);
 
     $MEMBER->profile_picture = $_POST["oldImageName"];
-    $MEMBER->name = mysql_real_escape_string($_POST['name']);
-    $MEMBER->email = mysql_real_escape_string($_POST['email']);
-    $MEMBER->contact_number = mysql_real_escape_string($_POST['contact_number']);
-    $MEMBER->username = mysql_real_escape_string($_POST['username']);
+    $MEMBER->name = filter_input(INPUT_POST, 'name');
+    $MEMBER->email = filter_input(INPUT_POST, 'email');
+    $MEMBER->nic_number = filter_input(INPUT_POST, 'nic_number');
+    $MEMBER->date_of_birthday = filter_input(INPUT_POST, 'date_of_birthday');
+    $MEMBER->contact_number = filter_input(INPUT_POST, 'contact_number');
+    $MEMBER->driving_licence_number = filter_input(INPUT_POST, 'driving_licence_number');
+    $MEMBER->home_address = filter_input(INPUT_POST, 'home_address');
+    $MEMBER->city = filter_input(INPUT_POST, 'city');
+    $MEMBER->username = filter_input(INPUT_POST, 'username');
     $MEMBER->status = mysql_real_escape_string($_POST['active']);
 
     $VALID = new Validator();
@@ -108,7 +122,9 @@ if (isset($_POST['update'])) {
         'profile_picture' => ['required' => TRUE],
         'name' => ['required' => TRUE],
         'email' => ['required' => TRUE],
+        'nic_number' => ['required' => TRUE],
         'contact_number' => ['required' => TRUE],
+        'driving_licence_number' => ['required' => TRUE],
         'username' => ['required' => TRUE]
     ]);
 

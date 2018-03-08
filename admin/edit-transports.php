@@ -66,7 +66,7 @@ $TRANSPORTS = new Transports($id);
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group place-select">
                                                 <div class="form-line">
-                                                    <select class="form-control show-tick place-select1" type="text" id="vehicle_type" autocomplete="off" name="vehicle_type" disabled="true">
+                                                    <select class="form-control show-tick place-select1" type="text" id="vehicle_type" autocomplete="off" name="vehicle_type">
                                                         <option value="<?php $TRANSPORTS->id ?>" class="active light-c">
                                                             <?php
                                                             $VEHICLE_TYPE = new VehicleType($TRANSPORTS->vehicle_type);
@@ -84,7 +84,6 @@ $TRANSPORTS = new Transports($id);
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="row clearfix">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                             <label for="title">Title</label>
@@ -97,6 +96,83 @@ $TRANSPORTS = new Transports($id);
                                             </div>
                                         </div>
                                     </div>
+
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="registered_number">Registered Num</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    <input type="text" id="registered_number" class="form-control" placeholder="Enter Vehicle Registered Number" autocomplete="off" name="registered_number" value="<?php echo $TRANSPORTS->registered_number; ?>">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="registered_year">Registered Year</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    <input type="text" id="registered_year" class="form-control" placeholder="Enter Vehicle Registered Year" autocomplete="off" name="registered_year" value="<?php echo $TRANSPORTS->registered_year; ?>">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="fuel_type">Fuel Type</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group place-select">
+                                                <div class="form-line">
+                                                    <select class="form-control show-tick place-select1" type="text" id="fuel_type_id" autocomplete="off" name="fuel_type_id">
+                                                        <option value="<?php $TRANSPORTS->id ?>" class="active light-c">
+                                                            <?php
+                                                            $FUEL_TYPE = new FuelType($TRANSPORTS->fuel_type);
+                                                            echo $FUEL_TYPE->name;
+                                                            ?>
+                                                        </option>
+                                                        <?php foreach ($FUEL_TYPE::all() as $key => $fuel_t) {
+                                                            ?>
+                                                            <option value="<?php echo $fuel_t['id']; ?>"><?php echo $fuel_t['name']; ?></option>
+                                                            <?php
+                                                        }
+                                                        ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="condition">Condition</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group place-select">
+                                                <div class="form-line">
+                                                    <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="condition_id" autocomplete="off" name="condition_id" required="TRUE">
+                                                        <option value="<?php $TRANSPORTS->id ?>" class="active light-c"> 
+                                                            <?php
+                                                            $VEHICLE_CONDITIONS = new VehicleCondition($TRANSPORTS->condition);
+                                                            echo $VEHICLE_CONDITIONS->name;
+                                                            ?>
+                                                        </option>
+                                                        <?php foreach ($VEHICLE_CONDITIONS::all() as $key => $condition) {
+                                                            ?>
+                                                            <option value="<?php echo $condition['id']; ?>"><?php echo $condition['name']; ?></option>
+                                                            <?php
+                                                        }
+                                                        ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     <div class="row clearfix">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                             <label for="title">Member ID</label>
@@ -129,6 +205,7 @@ $TRANSPORTS = new Transports($id);
                                             <button type="submit" class="btn btn-primary m-t-15 waves-effect" name="edit-transports" value="submit">Save Changes</button>
                                         </div>
                                     </div>
+
                                 </form>
                             </div>
                         </div>

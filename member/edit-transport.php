@@ -89,9 +89,76 @@ $TRANSPORTS = new Transports($id);
                                                                 <label for="title">Title</label>
                                                             </div>
                                                             <div class="formrow">
-                                                                <input type="text" id="title" name="title" class="form-control" placeholder="Please Enter Title" value="<?php echo $TRANSPORTS->title; ?>" >
+                                                                <input type="text" id="title" name="title" class="form-control" placeholder="Please Enter Title" value="<?php echo $TRANSPORTS->title; ?>">
                                                             </div>
                                                         </div>
+
+                                                        <div class="">
+                                                            <div class="bottom-top">
+                                                                <label for="registered_number">Registered Number</label>
+                                                            </div>
+                                                            <div class="formrow">
+                                                                <input type="text" id="registered_number" name="registered_number" class="form-control" placeholder="Please Enter Registered Number" value="<?php echo $TRANSPORTS->registered_number; ?>">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="">
+                                                            <div class="bottom-top">
+                                                                <label for="registered_year">Registered Year</label>
+                                                            </div>
+                                                            <div class="formrow">
+                                                                <input type="text" id="registered_year" name="registered_year" class="form-control" placeholder="Please Enter Registered Year" value="<?php echo $TRANSPORTS->registered_year; ?>">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="">
+                                                            <div class="bottom-top">
+                                                                <label for="fuel_type_id">Fuel Type</label>
+                                                            </div>
+                                                            <div class="formrow">
+                                                                <select class="form-control" type="text" id="fuel_type_id" autocomplete="off" name="fuel_type_id">
+                                                                    <option value="<?php $TRANSPORTS->id ?>" class="active light-c">
+                                                                        <?php
+                                                                        $FUEL_TYPE = new FuelType($TRANSPORTS->fuel_type);
+                                                                        echo $FUEL_TYPE->name;
+                                                                        ?>
+                                                                    </option>
+                                                                    <?php foreach (FuelType::all() as $key => $fuel_t) {
+                                                                        ?>
+                                                                        <option value="<?php echo $fuel_t['id']; ?>"><?php echo $fuel_t['name']; ?></option>
+                                                                        <?php
+                                                                    }
+                                                                    ?>
+                                                                </select>
+
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="">
+                                                            <div class="bottom-top">
+                                                                <label for="condition_id">Condition Type</label>
+                                                            </div>
+                                                            <div class="formrow">
+                                                                <select class="form-control" type="text" id="condition_id" autocomplete="off" name="condition_id">
+                                                                    <option value="<?php $TRANSPORTS->id ?>" class="active light-c">
+                                                                        <?php
+                                                                        $VEHICLE_CONDITIONS = new VehicleCondition($TRANSPORTS->condition);
+                                                                        echo $VEHICLE_CONDITIONS->name;
+                                                                        ?>
+                                                                    </option>
+                                                                    <?php foreach (VehicleCondition::all() as $key => $condition) {
+                                                                        ?>
+                                                                        <option value="<?php echo $condition['id']; ?>"><?php echo $condition['name']; ?></option>
+                                                                        <?php
+                                                                    }
+                                                                    ?>
+                                                                </select>
+
+                                                            </div>
+                                                        </div>
+
+
+
 
                                                         <div class="">
                                                             <div class="bottom-top">
