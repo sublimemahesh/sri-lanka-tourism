@@ -96,7 +96,6 @@ $ACCOMODATION_FACILITY_DETAILS = new AccommodationFacilityDetails(NULL);
                                                 </tr>
                                             </tfoot>
                                             <tbody>
-
                                                 <?php
                                                 $result = AccommodationFacilityDetails::getFacilitiesByAccommodationId($id);
                                                 foreach ($ACCOMODATION_GENERAL_FACILITY->all() as $key => $accommodation_general_facility) {
@@ -112,16 +111,16 @@ $ACCOMODATION_FACILITY_DETAILS = new AccommodationFacilityDetails(NULL);
                                                                     echo 'checked';
                                                                 }
                                                             }
-                                                                ?> name="facility[]" type="checkbox">
-                                                            </td>
-                                                        </tr>
-                                                        <?php
-                                                    }
-                                                    ?>   
-                                                </tbody>
-                                            </table>
-                                            <div class="text-center"> 
-                                                <input type="hidden" id="accommodation_id" value="<?php echo $ACCOMODATION->id; ?>" name="accommodation_id"/>
+                                                            ?> name="facility[]" type="checkbox">
+                                                        </td>
+                                                    </tr>
+                                                    <?php
+                                                }
+                                                ?>   
+                                            </tbody>
+                                        </table>
+                                        <div class="text-center"> 
+                                            <input type="hidden" id="accommodation_id" value="<?php echo $ACCOMODATION->id; ?>" name="accommodation_id"/>
                                             <input type="submit" name="create" class="btn btn-primary m-t-15 waves-effect" value="Save Changes"/>
                                         </div>
                                     </form>
