@@ -23,7 +23,6 @@ $MEMBER = new Member($_SESSION['id']);
         <link rel="stylesheet" type="text/css" href="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-datepicker/css/datepicker.html" />
         <link rel="stylesheet" type="text/css" href="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-daterangepicker/daterangepicker.html" />
 
-        <!-- Custom styles for this template -->
         <link href="assets/css/style.css" rel="stylesheet">
         <link href="assets/css/style-responsive.css" rel="stylesheet">
         <link href="assets/css/custom.css" rel="stylesheet" type="text/css"/>
@@ -60,8 +59,17 @@ $MEMBER = new Member($_SESSION['id']);
                                                         <li class="list-group-item"><b>User Name</b> : <?php echo $MEMBER->username; ?></li> 
                                                         <li class="list-group-item"><b>Email</b> : <?php echo $MEMBER->email; ?></li>
                                                         <li class="list-group-item"><b>Contact No</b> : <?php echo $MEMBER->contact_number; ?></li>
-                                                        <li class="list-group-item"> <b>Created Date</b> : 2018.02.16</li>
-                                                        <li class="list-group-item"> <b>Last Login</b> : </li> 
+                                                        <li class="list-group-item"> <b>Date Of Birthday</b> : <?php echo $MEMBER->date_of_birthday; ?></li>
+                                                        <li class="list-group-item"> <b>Contact Number</b> : <?php echo $MEMBER->contact_number; ?></li>
+                                                        <li class="list-group-item"> <b>Driving Licence Number</b> : <?php echo $MEMBER->driving_licence_number; ?></li>
+                                                        <li class="list-group-item"> <b>Home Address</b> : <?php echo $MEMBER->home_address; ?></li>
+                                                        <li class="list-group-item"> <b>City</b> :
+                                                            <?php
+                                                            $CITY = new City($MEMBER->city);
+                                                            echo $CITY->name;
+                                                            ?>
+                                                        </li>
+                                                        <!--<li class="list-group-item"> <b>Last Login</b> : </li>--> 
                                                     </ul>
                                                 </div>
                                                 <div class="col-sm-3 col-md-3">  

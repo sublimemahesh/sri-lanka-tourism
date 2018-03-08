@@ -73,7 +73,15 @@ $TRANSPORTS_PHOTO = new TransportPhoto(NULL);
                                                                     </div> 
 
 
-                                                                    <div><b>Title :</b> <?php echo $vehicle_t['title']; ?></div>
+                                                                    <div>
+                                                                        <b>Title :</b> <?php echo $vehicle_t['title']; ?>
+                                                                    </div>
+                                                                    <div>
+                                                                        <b>Registered Number :</b> <?php echo $vehicle_t['registered_number']; ?>
+                                                                    </div>
+                                                                    <div>
+                                                                        <b>Registered Year :</b> <?php echo $vehicle_t['registered_year']; ?>
+                                                                    </div>
                                                                     <div>
 
                                                                         <a href="edit-transport.php?id=<?php echo $vehicle_t['id']; ?>"><button class="btn btn-primary btn-xs fa fa-pencil"></button>

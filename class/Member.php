@@ -199,7 +199,6 @@ class Member {
                 . "`city` ='" . $this->city . "', "
                 . "`profile_picture` ='" . $this->profile_picture . "', "
                 . "`username` ='" . $this->username . "', "
-                . "`password` ='" . $this->password . "', "
                 . "`status` ='" . $this->status . "', "
                 . "`rank` ='" . $this->rank . "' "
                 . "WHERE `id` = '" . $this->id . "'";

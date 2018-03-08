@@ -138,10 +138,9 @@ $MEMBER = new Member($_SESSION['id']);
                 <ul class="sub">
                     <li><a  href="add-new-tour-package.php">Add New Tour Packages</a></li>
                     <li><a  href="manage-tour-package.php">Manage Tour Packages</a></li>
-                    <li><a  href="lock_screen.html">Lock Screen</a></li>
                 </ul>
             </li>
-            <li class="sub-menu">
+<!--            <li class="sub-menu">
                 <a href="javascript:;" >
                     <i class="fa fa-tasks"></i>
                     <span>Forms</span>
@@ -169,7 +168,7 @@ $MEMBER = new Member($_SESSION['id']);
                     <li><a  href="morris.html">Morris</a></li>
                     <li><a  href="chartjs.html">Chartjs</a></li>
                 </ul>
-            </li>
+            </li>-->
 
         </ul>
     </div>

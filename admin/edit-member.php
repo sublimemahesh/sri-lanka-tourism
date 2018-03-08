@@ -17,24 +17,13 @@ $MEMBER = new Member($id);
 
         <!-- Favicon-->
         <link rel="icon" href="favicon.ico" type="image/x-icon">
-
-        <!-- Google Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
-
-        <!-- Bootstrap Core Css -->
         <link href="plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
-
-        <!-- Waves Effect Css -->
         <link href="plugins/node-waves/waves.css" rel="stylesheet" />
-
-        <!-- Animation Css -->
         <link href="plugins/animate-css/animate.css" rel="stylesheet" />
-
-        <!-- Custom Css -->
+        <link href="plugins/sweetalert/sweetalert.css" rel="stylesheet" />
         <link href="css/style.css" rel="stylesheet">
-
-        <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
         <link href="css/themes/all-themes.css" rel="stylesheet" />
     </head>
 
@@ -62,6 +51,7 @@ $MEMBER = new Member($id);
                             </div>
                             <div class="body row">
                                 <form class="form-horizontal" method="post" action="post-and-get/member.php" enctype="multipart/form-data"> 
+                                    <!--Name-->
                                     <div class="row clearfix">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                             <label for="name">Name</label>
@@ -74,6 +64,7 @@ $MEMBER = new Member($id);
                                             </div>
                                         </div>
                                     </div> 
+                                    <!--Email-->
                                     <div class="row clearfix">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                             <label for="name">Email</label>
@@ -86,6 +77,7 @@ $MEMBER = new Member($id);
                                             </div>
                                         </div>
                                     </div> 
+                                    <!--Contact Number-->
                                     <div class="row clearfix">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                             <label for="name">Contact Number</label>
@@ -98,6 +90,84 @@ $MEMBER = new Member($id);
                                             </div>
                                         </div>
                                     </div> 
+                                    <!--NIC Number-->
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="nic_number">NIC Number</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    <input type="text" id="nic_number" class="form-control" placeholder="Enter NIC number" autocomplete="off" name="nic_number" required="TRUE" value="<?php echo $MEMBER->nic_number; ?>">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                    <!--Driving Licence Number-->
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="driving_licence_number">Driving Licence Number</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    <input type="text" id="driving_licence_number" class="form-control" placeholder="Enter Driving Licence Number" autocomplete="off" name="driving_licence_number" required="TRUE" value="<?php echo $MEMBER->driving_licence_number; ?>">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                    <!--Home Address-->
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="home_address">Home Address</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    <input type="text" id="home_address" class="form-control" placeholder="Enter Home Address" autocomplete="off" name="home_address" required="TRUE" value="<?php echo $MEMBER->home_address; ?>">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                    <!-- city-->
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="city">City</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group place-select">
+                                                <div class="form-line">
+                                                    <select class="form-control show-tick place-select1" type="text" id="city" autocomplete="off" name="city">
+                                                        <option value="<?php echo $MEMBER->id; ?>" class="active light-c">
+                                                            <?php
+                                                            $CITY = new City($MEMBER->city);
+                                                            echo $CITY->name;
+                                                            ?>
+                                                        </option>
+                                                        <?php foreach (City::all() as $key => $city) {
+                                                            ?>
+                                                            <option value="<?php echo $city['id']; ?>"><?php echo $city['name']; ?></option><?php
+                                                        }
+                                                        ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--date_of_birthday-->
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="date_of_birthday">Date Of Birthday</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    <input type="date" id="date_of_birthday" class="form-control" placeholder="Enter Date Of Birthday" autocomplete="off" name="date_of_birthday" required="TRUE">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                    <!--Profile Picture-->
                                     <div class="row clearfix">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                             <label for="image">Profile Picture</label>
@@ -111,6 +181,7 @@ $MEMBER = new Member($id);
                                             </div>
                                         </div>
                                     </div>
+                                    <!--Username-->
                                     <div class="row clearfix">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                             <label for="name">Username</label>
@@ -123,7 +194,7 @@ $MEMBER = new Member($id);
                                             </div>
                                         </div>
                                     </div> 
-                                    
+
                                     <div class="col-md-12">
                                         <div class="col-md-2"></div>  
                                         <div class="form-group">
@@ -133,45 +204,63 @@ $MEMBER = new Member($id);
                                             }
                                             ?> name="active" value="1" id="rememberme" />
                                             <label for="rememberme">Active</label>
-                                        
-                                    </div>
-                                    <div class="row clearfix">
-                                        <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
-                                            <input type="hidden" id="oldImageName" value="<?php echo $MEMBER->profile_picture; ?>" name="oldImageName"/>
-                                            <input type="hidden" id="id" value="<?php echo $MEMBER->id; ?>" name="id"/>
-    <!--                                            <input type="hidden" id="authToken" value="<?php echo $_SESSION["authToken"]; ?>" name="authToken"/>-->
-                                            <button type="submit" class="btn btn-primary m-t-15 waves-effect" name="update" value="update">Save Changes</button>
+
                                         </div>
+                                        <div class="row clearfix">
+                                            <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
+                                                <input type="hidden" id="oldImageName" value="<?php echo $MEMBER->profile_picture; ?>" name="oldImageName"/>
+                                                <input type="hidden" id="id" value="<?php echo $MEMBER->id; ?>" name="id"/>
+        <!--                                            <input type="hidden" id="authToken" value="<?php echo $_SESSION["authToken"]; ?>" name="authToken"/>-->
+                                                <button type="submit" class="btn btn-primary m-t-15 waves-effect" name="update" value="update">Save Changes</button>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
-                </div>
 
-            </div>
+                </div>
         </section>
 
         <!-- Jquery Core Js -->
         <script src="plugins/jquery/jquery.min.js"></script>
-
-        <!-- Bootstrap Core Js -->
-        <script src="plugins/bootstrap/js/bootstrap.js"></script>
-
-        <!-- Select Plugin Js -->
-        <script src="plugins/bootstrap-select/js/bootstrap-select.js"></script>
-
-        <!-- Slimscroll Plugin Js -->
+        <script src="plugins/bootstrap/js/bootstrap.js"></script> 
         <script src="plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
-
-        <!-- Waves Effect Plugin Js -->
         <script src="plugins/node-waves/waves.js"></script>
-
-        <!-- Custom Js -->
+        <script src="plugins/jquery-spinner/js/jquery.spinner.js"></script>
         <script src="js/admin.js"></script>
-
-        <!-- Demo Js -->
         <script src="js/demo.js"></script>
+        <script src="js/add-new-ad.js" type="text/javascript"></script>
+        <script src="tinymce/js/tinymce/tinymce.min.js"></script>
+        <script>
+            tinymce.init({
+                selector: "#description",
+                // ===========================================
+                // INCLUDE THE PLUGIN
+                // ===========================================
+
+                plugins: [
+                    "advlist autolink lists link image charmap print preview anchor",
+                    "searchreplace visualblocks code fullscreen",
+                    "insertdatetime media table contextmenu paste"
+                ],
+                // ===========================================
+                // PUT PLUGIN'S BUTTON on the toolbar
+                // ===========================================
+
+                toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image jbimages",
+                // ===========================================
+                // SET RELATIVE_URLS to FALSE (This is required for images to display properly)
+                // ===========================================
+
+                relative_urls: false
+
+            });
+
+
+        </script>
     </body>
 
 </html>
