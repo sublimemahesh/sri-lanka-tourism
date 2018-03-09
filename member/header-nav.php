@@ -1,7 +1,10 @@
 <?php
+include_once(dirname(__FILE__) . '/../class/include.php');
+include_once(dirname(__FILE__) . '/auth.php');
 //if (!Member::login()) {
 //    redirect('login.php');
 //}
+
 $MEMBER = new Member($_SESSION['id']);
 ?>
 <header class="header black-bg">
