@@ -10,8 +10,8 @@ if (isset($_POST['create-transports-images'])) {
     $TRANSPORT_PHOTO->transport_id = $_POST['id'];
     $TRANSPORT_PHOTO->caption = filter_input(INPUT_POST, 'caption');
 
-    $dir_dest = '../../upload/transport/transport-photo/gallery/';
-    $dir_dest_thumb = '../../upload/transport/transport-photo/gallery/thumb/';
+    $dir_dest = '../../upload/transport/';
+    $dir_dest_thumb = '../../upload/transport/thumb/';
 
     $handle = new Upload($_FILES['image']);
 
@@ -84,8 +84,8 @@ if (isset($_POST['create-transports-images'])) {
 
 if (isset($_POST['update-transports-images'])) {
 
-    $dir_dest = '../../upload/transport/transport-photo/gallery';
-    $dir_dest_thumb = '../../upload/transport/transport-photo/gallery/thumb/';
+    $dir_dest = '../../upload/transport/';
+    $dir_dest_thumb = '../../upload/transport/thumb/';
 
     $handle = new Upload($_FILES['image']);
 

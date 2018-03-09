@@ -28,6 +28,18 @@ if (isset($_POST['add-transports'])) {
     if ($VALID->passed()) {
         $TRANSPORTS->create();
 
+        foreach ($_POST["transport-images"] as $key => $photos) {
+
+            $TRANSPORTS_PHOTO = new TransportPhoto(NULL);
+            $TRANSPORTS_PHOTO->transport_id = $TRANSPORTS->id;
+            $TRANSPORTS_PHOTO->image_name = $photos;
+            $TRANSPORTS_PHOTO->caption = '';
+            $key++;
+            $TRANSPORTS_PHOTO->sort = $key;
+            $TRANSPORTS_PHOTO->create();
+        }
+
+
         if (!isset($_SESSION)) {
             session_start();
         }

@@ -95,7 +95,7 @@ if (isset($_GET['id'])) {
                                                     ?>
                                                     <div class="col-md-3" id="div_<?php echo $transport_photo['id']; ?>">
                                                         <div>
-                                                            <img src="../upload/transport/transport-photo/gallery/<?php echo $transport_photo['image_name']; ?>" class="img-responsive ">
+                                                            <img src="../upload/transport/thumb/<?php echo $transport_photo['image_name']; ?>" class="img-responsive ">
                                                         </div>
                                                         <p class="maxlinetitle"><?php echo $transport_photo['caption']; ?></p>
                                                         <div>

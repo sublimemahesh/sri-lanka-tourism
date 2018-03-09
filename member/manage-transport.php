@@ -63,7 +63,7 @@ $TRANSPORTS_PHOTO = new TransportPhoto(NULL);
                                                                                     break;
                                                                                 }
                                                                                 ?>
-                                                                                <img class="img-responsive" src="../upload/transport/transport-photo/gallery/<?php echo $TRANSPORTS_P['image_name']; ?>">
+                                                                        <img class="img-responsive" src="../upload/transport/thumb/<?php echo $TRANSPORTS_P['image_name']; ?>">
                                                                                 <?php
                                                                             }
                                                                         } else {
