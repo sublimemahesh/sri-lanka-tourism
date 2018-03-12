@@ -1,7 +1,7 @@
 <?php
 
 class RoomFaciliityDetails {
-
+    
     public $id;
     public $room;
     public $facility;
@@ -97,13 +97,6 @@ class RoomFaciliityDetails {
         }
     }
 
-    public function deleteFacilitiesByRoomID($id) {
 
-        $query = "DELETE FROM `room_facility_details` WHERE `room`= '" . $id . "'";
-
-        $db = new Database();
-
-        return $db->readQuery($query);
-    }
 
 }

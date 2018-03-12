@@ -150,16 +150,6 @@ $MEMBER = new Member($_SESSION['id']);
             </li>
             <li class="sub-menu">
                 <a href="javascript:;" >
-                    <i class="fa fa-adn"></i>
-                    <span>Accommodation</span>
-                </a>
-                <ul class="sub">
-                    <li><a  href="add-new-accommodation.php">Add Accommodation</a></li>
-                    <li><a  href="manage-accommodation.php">Manage Accommodation</a></li>
-                </ul>
-            </li>
-            <li class="sub-menu">
-                <a href="javascript:;" >
                     <i class="fa fa-tree"></i>
                     <span>Tour Packages</span>
                 </a>
