@@ -31,6 +31,7 @@ $ROOM_PHOTO = new RoomPhoto(NULL);
         <!-- Custom styles for this template -->
         <link href="assets/css/style.css" rel="stylesheet">
         <link href="assets/css/style-responsive.css" rel="stylesheet">
+        <script src="assets/plugins/jquery-steps/jquery.steps.js" type="text/javascript"></script>
         <link href="assets/css/custom.css" rel="stylesheet" type="text/css"/>
         <style>
             .img-thumbnail {
@@ -39,6 +40,7 @@ $ROOM_PHOTO = new RoomPhoto(NULL);
         </style>
     </head> 
     <body> 
+        <div class="loading" id="loading">Loading&#8230;</div>
         <section id="container" > 
             <?php
             include './header-nav.php';
@@ -61,7 +63,7 @@ $ROOM_PHOTO = new RoomPhoto(NULL);
                                         <div class="userccount">
 
                                             <div class="formpanel"> 
-                                                <form class="form-horizontal"  method="post" action="post-and-get/room.php" enctype="multipart/form-data"> 
+                                                <form class="form-horizontal"  method="post" action="post-and-get/room.php" enctype="multipart/form-data" id="form-room"> 
                                                     <div class="col-md-12">
 
                                                         <div class="">
@@ -112,7 +114,20 @@ $ROOM_PHOTO = new RoomPhoto(NULL);
                                                                 <input type="number" min="0" id="extra_bed_price" class="form-control" placeholder="Enter Extra Bed price" autocomplete="off" name="extra_bed_price" required="TRUE">
                                                             </div>
                                                         </div>
-                                                        <div class="">
+                                                        <div class="bottom-top col-md-2">
+                                                            <div class="formrow">
+                                                                <div class="uploadphotobx" id="uploadphotobx"> 
+                                                                    <i class="fa fa-upload" aria-hidden="true"></i>
+                                                                    <label class="uploadBox">Click here to Upload photo
+                                                                        <input type="file" name="room-picture" id="room-picture">
+                                                                        <input type="hidden" name="upload-room-image" id="upload-room-image" value="TRUE"/>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div id="image-list">
+                                                        </div>
+                                                        <div class="col-md-12">
                                                             <div class="bottom-top">
                                                                 <label for="Description">Description</label>
                                                             </div>
@@ -120,7 +135,7 @@ $ROOM_PHOTO = new RoomPhoto(NULL);
                                                                 <textarea id="description" name="description" class="form-control" rows="5"></textarea> 
                                                             </div>
                                                         </div>
-                                                        <div class="top-bott50">
+                                                        <div class="top-bott50 col-md-12">
                                                             <div class="bottom-top">
                                                                 <input type="hidden" value="<?php echo $id ?>" name="id" />
                                                                 <button name="create" type="submit" class="btn btn-info center-block">Create</button>
@@ -128,57 +143,7 @@ $ROOM_PHOTO = new RoomPhoto(NULL);
                                                         </div> 
                                                     </div>  
                                                 </form>  
-                                                <div class="row clearfix">
-                                                    <?php
-                                                    foreach ($ROOMS as $key => $room) {
-                                                        ?>
-                                                        <div class="col-md-3 style-transport" id="div_<?php echo $room['id']; ?>">
-                                                            <div><?php echo $room['id']; ?></div>
-                                                            <div class="room_all">
-                                                                <?php
-                                                                if (count($ROOM_PHOTO) > 0) {
-                                                                    foreach ($ROOM_PHOTO->getRoomPhotosById($room['id']) as $key => $room_p) {
-                                                                        if ($key == 1) {
-                                                                            break;
-                                                                        }
-                                                                        ?>
-                                                                        <img class="img-responsive" src="../upload/accommodation/rooms/<?php echo $room_p['image_name']; ?>">
-                                                                        <?php
-                                                                    }
-                                                                } else {
-                                                                    ?> 
-                                                                    <b style="padding-left: 15px;">No Room Image.</b> 
-                                                                <?php } ?>
-                                                            </div> 
-
-
-                                                            <div><b>Title :</b> <?php echo $room['name']; ?></div>
-                                                            <div>
-
-                                                                <a href="edit-room.php?id=<?php echo $room['id']; ?>&aid=<?php echo $id; ?>"><button class="btn btn-primary btn-xs fa fa-pencil"></button>
-                                                                </a> 
-                                                                |
-                                                                <a>
-                                                                    <button class="delete-rooms btn btn-danger btn-xs fa fa-trash-o" data-id="<?php echo $room['id']; ?>"></button>
-                                                                </a> 
-                                                                |
-                                                                <a href="add-room-photo.php?id=<?php echo $room['id']; ?>&aid=<?php echo $id; ?>">
-                                                                    <button class="btn btn-success btn-xs fa fa-photo"></button>
-                                                                </a> 
-                                                                |
-                                                                <a href="room-facilities.php?id=<?php echo $room['id']; ?>">
-                                                                    <button class="btn btn-warning btn-xs fa fa-check-square"></button>
-                                                                </a> 
-                                                            </div>
-
-                                                        </div>
-                                                        <?php
-                                                    }
-                                                    ?>  
-
-                                                </div>  
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
@@ -217,16 +182,16 @@ $ROOM_PHOTO = new RoomPhoto(NULL);
         <script type="text/javascript" src="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-daterangepicker/daterangepicker-2.html"></script>
         <script type="text/javascript" src="assets/js/bootstrap-inputmask/bootstrap-inputmask.min.js"></script>
         <script src="assets/js/form-component.js"></script>    
-
+        <script src="assets/plugins/jquery-steps/jquery.steps.min.js" type="text/javascript"></script>
         <script src="assets/plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>
         <script src="delete/js/rooms.js" type="text/javascript"></script>
+        <script src="js/post-room-image.js" type="text/javascript"></script>
         <script>
             //custom select box
 
             $(function () {
                 $('select.styled').customSelect();
             });
-
         </script>
 
         <script src="assets/tinymce/js/tinymce/tinymce.min.js"></script>
@@ -254,11 +219,7 @@ $ROOM_PHOTO = new RoomPhoto(NULL);
                 relative_urls: false
 
             });
-
-
         </script>
-
-
     </body>
 
 </html>

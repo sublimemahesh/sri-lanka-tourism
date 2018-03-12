@@ -20,7 +20,7 @@ include_once(dirname(__FILE__) . '/auth.php');
         <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
         <link rel="stylesheet" type="text/css" href="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-datepicker/css/datepicker.html" />
         <link rel="stylesheet" type="text/css" href="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-daterangepicker/daterangepicker.html" />
-
+        <link href="assets/plugins/jquery-steps/jquery.steps.css" rel="stylesheet" type="text/css"/>
         <!-- Custom styles for this template -->
         <link href="assets/css/style.css" rel="stylesheet">
         <link href="assets/css/style-responsive.css" rel="stylesheet">
@@ -32,6 +32,7 @@ include_once(dirname(__FILE__) . '/auth.php');
         </style>
     </head> 
     <body> 
+        <div class="loading" id="loading">Loading&#8230;</div>
         <section id="container" > 
             <?php
             include './header-nav.php';
@@ -54,7 +55,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                         <div class="userccount">
                                             <div class="formpanel"> 
 
-                                                <form class="form-horizontal"  method="post" action="post-and-get/accommodation.php" enctype="multipart/form-data"> 
+                                                <form class="form-horizontal"  method="post" action="post-and-get/accommodation.php" enctype="multipart/form-data" id="form-accommodation"> 
                                                     <div class="col-md-12">
                                                         <div class="">
                                                             <div class="bottom-top">
@@ -128,8 +129,21 @@ include_once(dirname(__FILE__) . '/auth.php');
 
                                                             </div>
                                                         </div>
-                                                      
-                                                        <div class="">
+                                                        <div class="bottom-top col-md-2">
+                                                            <div class="formrow">
+                                                                <div class="uploadphotobx" id="uploadphotobx"> 
+                                                                    <i class="fa fa-upload" aria-hidden="true"></i>
+                                                                    <label class="uploadBox">Click here to Upload photo
+                                                                        <input type="file" name="accommodation-picture" id="accommodation-picture">
+                                                                        <input type="hidden" name="upload-accommodation-image" id="upload-accommodation-image" value="TRUE"/>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div id="image-list">
+                                                        </div>
+                                                        <div class="col-md-12">
+
                                                             <div class="bottom-top">
                                                                 <label for="description">Description</label>
                                                             </div>
@@ -138,9 +152,8 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                             </div>
                                                         </div>
 
-                                                        <div class="top-bott50">
+                                                        <div class="top-bott50 col-md-12">
                                                             <div class="bottom-top">
-                                       
                                                                 <input type="hidden" id="member" name="member" value="<?php echo $_SESSION['id']; ?>"/>
                                                                 <button name="create" type="submit" class="btn btn-info center-block">Create</button>
                                                             </div>
@@ -192,12 +205,10 @@ include_once(dirname(__FILE__) . '/auth.php');
         <script type="text/javascript" src="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-datepicker/js/bootstrap-datepicker.html"></script>
         <script type="text/javascript" src="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-daterangepicker/date.html"></script>
         <script type="text/javascript" src="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-daterangepicker/daterangepicker-2.html"></script>
-
         <script type="text/javascript" src="assets/js/bootstrap-inputmask/bootstrap-inputmask.min.js"></script>
-
-
+        <script src="assets/plugins/jquery-steps/jquery.steps.js" type="text/javascript"></script>
+        <script src="js/post-accommodation-image.js" type="text/javascript"></script>
         <script src="assets/js/form-component.js"></script>    
-
 
         <script>
             //custom select box
