@@ -100,7 +100,7 @@ $Aid = $_GET['aid'];
                                                     ?>
                                                     <div class="col-md-3" id="div_<?php echo $room_photo['id']; ?>">
                                                         <div>
-                                                            <img src="../upload/accommodation/rooms/<?php echo $room_photo['image_name']; ?>" class="img-responsive ">
+                                                            <img src="../upload/accommodation/rooms/thumb/<?php echo $room_photo['image_name']; ?>" class="img-responsive ">
                                                         </div>
                                                         <p class="maxlinetitle"><?php echo $room_photo['caption']; ?></p>
                                                         <div>

@@ -96,7 +96,7 @@ if (isset($_GET['id'])) {
                                                     ?>
                                                     <div class="col-md-3" id="div_<?php echo $accommodation_photo['id']; ?>">
                                                         <div>
-                                                            <img src="../upload/accommodation/<?php echo $accommodation_photo['image_name']; ?>" class="img-responsive ">
+                                                            <img src="../upload/accommodation/thumb/<?php echo $accommodation_photo['image_name']; ?>" class="img-responsive ">
                                                         </div>
                                                         <p class="maxlinetitle"><?php echo $accommodation_photo['caption']; ?></p>
                                                         <div>

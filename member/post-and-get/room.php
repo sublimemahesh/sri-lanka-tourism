@@ -25,6 +25,16 @@ if (isset($_POST['create'])) {
     if ($VALID->passed()) {
         $ACCOMODATION_ROOM->create();
 
+        foreach ($_POST["room-images"] as $key => $photos) {
+
+            $ROOM_PHOTO = new RoomPhoto(NULL);
+            $ROOM_PHOTO->room = $ACCOMODATION_ROOM->id;
+            $ROOM_PHOTO->image_name = $photos;
+            $ROOM_PHOTO->caption = '';
+            $key++;
+            $ROOM_PHOTO->sort = $key;
+            $ROOM_PHOTO->create();
+        }
         if (!isset($_SESSION)) {
             session_start();
         }
@@ -92,4 +102,4 @@ if (isset($_POST['save-data'])) {
 
         header('Location: ' . $_SERVER['HTTP_REFERER']);
     }
-}
+}    

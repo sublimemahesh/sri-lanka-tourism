@@ -25,8 +25,15 @@ if (isset($_POST['create'])) {
         $handle->file_new_name_ext = 'jpg';
         $handle->image_ratio_crop = 'C';
         $handle->file_new_name_body = $img;
-        $handle->image_x = 900;
-        $handle->image_y = 500;
+         $image_dst_x = $handle->image_dst_x;
+        $image_dst_y = $handle->image_dst_y;
+        $newSize = Helper::calImgResize(600, $image_dst_x, $image_dst_y);
+
+        $image_x = (int) $newSize[0];
+        $image_y = (int) $newSize[1];
+
+        $handle->image_x = $image_x;
+        $handle->image_y = $image_y;
 
         $handle->Process($dir_dest);
 
