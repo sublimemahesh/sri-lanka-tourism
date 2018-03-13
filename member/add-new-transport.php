@@ -32,7 +32,7 @@ include_once(dirname(__FILE__) . '/auth.php');
         </style>
     </head> 
     <body> 
-        <!--        <div class="loading" id="loading">Loading&#8230;</div>-->
+        <div class="loading" id="loading">Loading&#8230;</div>
         <section id="container" > 
             <?php
             include './header-nav.php';

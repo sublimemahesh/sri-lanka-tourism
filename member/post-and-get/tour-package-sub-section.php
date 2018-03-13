@@ -24,13 +24,25 @@ if (isset($_POST['create-tour-sub-section'])) {
     if ($VALID->passed()) {
         $TOURSUBSECTION->create();
 
+
+        foreach ($_POST["tour-package-images"] as $key => $photos) {
+
+            $TOUR_SUB_PHOTO_PHOTO = new TourSubSectionPhoto(NULL);
+            $TOUR_SUB_PHOTO_PHOTO->tour_sub_section = $TOURSUBSECTION->id;
+            $TOUR_SUB_PHOTO_PHOTO->image_name = $photos;
+            $TOUR_SUB_PHOTO_PHOTO->caption = '';
+            $key++;
+            $TOUR_SUB_PHOTO_PHOTO->sort = $key;
+            $TOUR_SUB_PHOTO_PHOTO->create();
+        }
+
         if (!isset($_SESSION)) {
             session_start();
         }
         $VALID->addError("Your data was saved successfully", 'success');
         $_SESSION['ERRORS'] = $VALID->errors();
 
-           header("location: ../add-new-tour-package-sub-section.php?id=". $TOURSUBSECTION->tour);
+        header("location: ../add-new-tour-package-sub-section.php?id=" . $TOURSUBSECTION->tour);
     } else {
 
         if (!isset($_SESSION)) {

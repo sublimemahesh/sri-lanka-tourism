@@ -3,7 +3,7 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 */
-/* 
+/*
     Created on : 16-Feb-2018, 11:07:02
     Author     : official
 */
@@ -13,7 +13,7 @@ and open the template in the editor.
 }
 .bottom-top{
     padding-bottom: 5px;
-    padding-top: 10px;  
+    padding-top: 10px; 
 }
 .top-bott50{
     padding-bottom: 50px;
@@ -79,7 +79,7 @@ and open the template in the editor.
     bottom: 0;
     right: 0;
 }
-#loading{ 
+#loading{
     display: none;
 }
 
@@ -136,7 +136,7 @@ and open the template in the editor.
     bottom: 0;
     right: 0;
 }
-#loading{ 
+#loading{
     display: none;
 }
 
@@ -290,4 +290,24 @@ and open the template in the editor.
 .jssora053 {display:block;position:absolute;cursor:pointer;}
 .jssora053 .a {fill:none;stroke:#fff;stroke-width:640;stroke-miterlimit:10;}
 .jssora053:hover {opacity:.8;}
-.jssora053.jssora053dn {opacity:.5;}
+.jssora053.jssora053dn {
+    opacity:.5;
+}
+
+.uploadbox{
+    height: 182px;
+}
+.plus-icon{
+    padding-top: 32px;
+}
+.delete-icon{
+    margin: -70px 0px 0px 12px;
+    font-size: 20px;
+    border: 2px dashed #ddd;
+}
+.all-icon{
+  
+    font-size: 20px;
+    border: 2px dashed #ddd;
+}
+

@@ -93,17 +93,17 @@ $TOUR_SUB = new TourSubSection($id);
                                                                     <button name="edit-tour-sub-section" type="submit" class="btn btn-info center-block">Change</button>
                                                                 </div>
                                                             </div> 
-                                                        </div>  
+                                                        </div> 
+                                                    </div>
                                                 </form>  
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div> 
+                                </div> 
 
+                            </div>
                         </div>
                     </div>
-                </div>
             </section>
 
             <?php
