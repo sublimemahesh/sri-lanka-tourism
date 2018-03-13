@@ -1,9 +1,6 @@
 <?php
 include_once(dirname(__FILE__) . '/../class/include.php');
 include_once(dirname(__FILE__) . '/auth.php');
-//if (!Member::login()) {
-//    redirect('login.php');
-//}
 
 $MEMBER = new Member($_SESSION['id']);
 ?>
@@ -12,7 +9,7 @@ $MEMBER = new Member($_SESSION['id']);
         <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
     </div>
     <!--logo start-->
-    <a href="index.html" class="logo"><b>Your Tourism Panel</b></a>
+    <a href="index.php" class="logo"><b>Managment Center</b></a>
     <!--logo end-->
     <div class="pull-right top-menu nav notify-row">
         <ul class="nav top-menu">
@@ -133,9 +130,6 @@ $MEMBER = new Member($_SESSION['id']);
                     <i class="fa fa-user"></i>
                     <span>Your Profile</span>
                 </a>
-                <!--                <ul class="sub">
-                                    <li><a  href="profile.php">My Profile</a></li>
-                                </ul>-->
             </li>
 
             <li class="sub-menu">
@@ -150,6 +144,16 @@ $MEMBER = new Member($_SESSION['id']);
             </li>
             <li class="sub-menu">
                 <a href="javascript:;" >
+                    <i class="fa fa-adn"></i>
+                    <span>Accommodation</span>
+                </a>
+                <ul class="sub">
+                    <li><a  href="add-new-accommodation.php">Add Accommodation</a></li>
+                    <li><a  href="manage-accommodation.php">Manage Accommodation</a></li>
+                </ul>
+            </li>
+            <li class="sub-menu">
+                <a href="javascript:;" >
                     <i class="fa fa-tree"></i>
                     <span>Tour Packages</span>
                 </a>
@@ -158,35 +162,6 @@ $MEMBER = new Member($_SESSION['id']);
                     <li><a  href="manage-tour-package.php">Manage Tour Packages</a></li>
                 </ul>
             </li>
-            <!--            <li class="sub-menu">
-                            <a href="javascript:;" >
-                                <i class="fa fa-tasks"></i>
-                                <span>Forms</span>
-                            </a>
-                            <ul class="sub">
-                                <li><a  href="form_component.html">Form Components</a></li>
-                            </ul>
-                        </li>
-                        <li class="sub-menu">
-                            <a href="javascript:;" >
-                                <i class="fa fa-th"></i>
-                                <span>Data Tables</span>
-                            </a>
-                            <ul class="sub">
-                                <li><a  href="basic_table.html">Basic Table</a></li>
-                                <li><a  href="responsive_table.html">Responsive Table</a></li>
-                            </ul>
-                        </li>
-                        <li class="sub-menu">
-                            <a href="javascript:;" >
-                                <i class=" fa fa-bar-chart-o"></i>
-                                <span>Charts</span>
-                            </a>
-                            <ul class="sub">
-                                <li><a  href="morris.html">Morris</a></li>
-                                <li><a  href="chartjs.html">Chartjs</a></li>
-                            </ul>
-                        </li>-->
         </ul>
     </div>
 </aside>
