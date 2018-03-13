@@ -50,83 +50,51 @@ $TOUR_SUB = new TourSubSection($id);
 
                             $vali->show_message();
                             ?>
-
                             <div class="panel panel-default">
                                 <div class="panel-heading"><i class="fa fa-save"></i> Create Tour Package Sub Section Images</div>
                                 <div class="panel-body">
                                     <div class="body">
                                         <div class="userccount">
-                                            <div class="formpanel"> 
-                                                <form class="form-horizontal"  method="post" action="post-and-get/tour-sub-section-photo.php" enctype="multipart/form-data"> 
-                                                    <div class="col-md-12">
-
-                                                        <div class="">
-                                                            <div class="bottom-top">
-                                                                <label for="caption">Title</label>
-                                                            </div>
+                                            <div class="formpanel">  
+                                                <div class="row clearfix">
+                                                    <form class="form-horizontal"  method="post" id="form-new-tour-sub-section-photo" enctype="multipart/form-data">    
+                                                        <div class="col-md-3">
                                                             <div class="formrow">
-                                                                <input type="text" id="caption" class="form-control" placeholder="Enter Image Caption" autocomplete="off" name="caption" required="true">
+                                                                <div class="uploadbox uploadphotobx" id="uploadphotobx">
+                                                                    <i class="fa fa-plus plus-icon" aria-hidden="true"></i>
+                                                                    <label class="uploadBox">Click here to Upload photo
+                                                                        <input type="file" name="tour-sub-picture" id="tour-sub-picture">
+                                                                        <input type="hidden" name="upload-tour-sub-photo" id="upload-tour-sub-photo" value="TRUE">
+                                                                        <input type="hidden" name="sub-section" id="sub-section" value="<?php echo $id; ?>">
+                                                                    </label>
+                                                                </div>
                                                             </div>
-                                                        </div>
+                                                        </div>  
+                                                    </form> 
+                                                    <div id="image-list">
+                                                        <?php
+                                                        $TOUR_SUB_PHOTO = TourSubSectionPhoto::getTourSubSectionPhotosById($id);
+                                                        if (count($TOUR_SUB_PHOTO) > 0) {
+                                                            foreach ($TOUR_SUB_PHOTO as $key => $tour_sub_photo) {
+                                                                ?>
+                                                                <div class="col-md-3" style="padding-bottom: 15px" id="div_<?php echo $tour_sub_photo['id']; ?>"> 
+                                                                    <img src="../upload/tour-package/sub-section/thumb/<?php echo $tour_sub_photo['image_name']; ?>" class="img-responsive ">    
+                                                                  
+                                                                    <a class="aa">
+                                                                        <button class="delete-icon delete-tour-sub-photo btn btn-danger btn-md fa fa-trash-o" data-id="<?php echo $tour_sub_photo['id']; ?>"></button>
+                                                                    </a>   
+                                                                </div>
 
-
-                                                        <div class="">
-                                                            <div class="bottom-top">
-                                                                <label for="image">Image</label>
-                                                            </div>
-                                                            <div>
-                                                                <input type="file" id="image" class="form-control" name="image" required="true">
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="top-bott50">
-                                                            <div class="bottom-top">
-                                                                <input type="hidden" id="id" class="form-control" placeholder="Enter id" autocomplete="off" name="id" required="true">
-                                                                <input type="hidden" id="member" name="member" value="<?php echo $_SESSION['id']; ?>"/>
-                                                                <input type="hidden" value="<?php echo $TOUR_SUB->id; ?>" name="id" />
-                                                                <button name="create" type="submit" class="btn btn-info center-block">Create</button>
-                                                            </div>
-
-                                                        </div> 
-                                                    </div>  
-                                                </form>  
-                                            </div>
-                                        </div>
-                                        <div class="row clearfix">
-                                            <?php
-                                            $TOUR_SUB_PHOTO = TourSubSectionPhoto::getTourSubSectionPhotosById($id);
-                                            if (count($TOUR_SUB_PHOTO) > 0) {
-                                                foreach ($TOUR_SUB_PHOTO as $key => $tour_sub_photo) {
-                                                    ?>
-                                                    <div class="col-md-3" id="div_<?php echo $tour_sub_photo['id']; ?>">
-                                                        <div>
-                                                            <img src="../upload/tour-package/sub-section/gallery/<?php echo $tour_sub_photo['image_name']; ?>" class="img-responsive ">
-                                                        </div>
-                                                        <p class="maxlinetitle"><?php echo $tour_sub_photo['caption']; ?></p>
-                                                        <div>
-                                                            <div class="d">
-
-                                                                <a href="edit-tour-sub-photo.php?id=<?php echo $tour_sub_photo['id']; ?>">
-                                                                    <button class="btn btn-primary btn-xs fa fa-pencil"></button>
-                                                                </a> 
-
-                                                                |
-
-                                                                <a class="aa">
-                                                                    <button class="delete-tour-sub-photo btn btn-danger btn-xs fa fa-trash-o" data-id="<?php echo $tour_sub_photo['id']; ?>"></button>
-                                                                </a> 
-                                                            </div>
-                                                        </div>
+                                                                <?php
+                                                            }
+                                                        } else {
+                                                            ?> 
+                                                        <b id="empty-mess" style="padding-left: 15px;">No Tour Package Sub Section Images in the database.</b> 
+                                                        <?php } ?> 
                                                     </div>
-
-                                                    <?php
-                                                }
-                                            } else {
-                                                ?> 
-                                                <b style="padding-left: 15px;">No Tour Package Sub Section Images in the database.</b> 
-                                            <?php } ?> 
-
-                                        </div>
+                                                </div> 
+                                            </div>
+                                        </div> 
                                         <div class="text-right">
                                             <a href="manage-tour-package.php"><button type="button" class="btn btn-round btn-info">Manage Tour Package</button></a>
                                         </div>
@@ -148,12 +116,11 @@ $TOUR_SUB = new TourSubSection($id);
         <script src="assets/js/jquery.scrollTo.min.js"></script>
         <script src="assets/js/common-scripts.js"></script>
         <script src="assets/js/jquery-ui-1.9.2.custom.min.js"></script>
-
         <script type="text/javascript" src="assets/js/bootstrap-inputmask/bootstrap-inputmask.min.js"></script>
         <script src="assets/plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>
         <script src="delete/js/tour-package-photo.js" type="text/javascript"></script>
+        <script src="js/add-new-tour-package-photo.js" type="text/javascript"></script>
         <script>
-            //custom select box
 
             $(function () {
                 $('select.styled').customSelect();

@@ -60,15 +60,15 @@ $TOUR_PACKAGE_PHOTO = new TourSubSectionPhoto(NULL);
                                                                     <div><b>Name :</b> <?php echo $tour_pack['name']; ?></div> 
                                                                     <div><b>Price :</b> <?php echo $tour_pack['price']; ?></div> 
                                                                     <div>
-                                                                        <a href="edit-tour-package.php?id=<?php echo $tour_pack['id']; ?>"><button class="btn btn-primary btn-xs fa fa-pencil"></button>
+                                                                        <a href="edit-tour-package.php?id=<?php echo $tour_pack['id']; ?>"><button class="btn btn-primary btn-md all-icon fa fa-pencil"></button>
                                                                         </a> 
                                                                         |
                                                                         <a>
-                                                                            <button class="delete-tour-package btn btn-danger btn-xs fa fa-trash-o" data-id="<?php echo $tour_pack['id']; ?>"></button>
+                                                                            <button class="delete-tour-package btn btn-danger btn-md all-icon fa fa-trash-o" data-id="<?php echo $tour_pack['id']; ?>"></button>
                                                                         </a> 
                                                                         |
                                                                         <a href="add-new-tour-package-sub-section.php?id=<?php echo $tour_pack['id']; ?>">
-                                                                            <button class="btn btn-success btn-xs fa fa-file-text-o"></button>
+                                                                            <button class="btn btn-success btn-md all-icon fa fa-file-text-o"></button>
                                                                         </a>
                                                                     </div>
                                                                 </div>

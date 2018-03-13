@@ -1,7 +1,6 @@
 $(document).ready(function () {
 
-    $('.delete-tour-sub-photo').click(function () {
-
+    $('#image-list').on('click', '.delete-tour-sub-photo', function () {
         var id = $(this).attr("data-id");
 
         swal({
