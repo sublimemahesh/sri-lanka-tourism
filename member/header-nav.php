@@ -1,7 +1,7 @@
 <?php
 include_once(dirname(__FILE__) . '/../class/include.php');
 include_once(dirname(__FILE__) . '/auth.php');
-
+ 
 $MEMBER = new Member($_SESSION['id']);
 ?>
 <header class="header black-bg">
@@ -9,7 +9,7 @@ $MEMBER = new Member($_SESSION['id']);
         <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
     </div>
     <!--logo start-->
-    <a href="index.php" class="logo"><b>Managment Center</b></a>
+    <a href="index.html" class="logo"><b>Your Tourism Panel</b></a>
     <!--logo end-->
     <div class="pull-right top-menu nav notify-row">
         <ul class="nav top-menu">
@@ -130,6 +130,9 @@ $MEMBER = new Member($_SESSION['id']);
                     <i class="fa fa-user"></i>
                     <span>Your Profile</span>
                 </a>
+                <!--                <ul class="sub">
+                                    <li><a  href="profile.php">My Profile</a></li>
+                                </ul>-->
             </li>
 
             <li class="sub-menu">
@@ -161,7 +164,7 @@ $MEMBER = new Member($_SESSION['id']);
                     <li><a  href="add-new-tour-package.php">Add New Tour Packages</a></li>
                     <li><a  href="manage-tour-package.php">Manage Tour Packages</a></li>
                 </ul>
-            </li>
+            </li> 
         </ul>
     </div>
 </aside>
