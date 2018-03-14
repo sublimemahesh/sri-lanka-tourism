@@ -16,6 +16,10 @@ if (isset($_POST['add-transports'])) {
     $TRANSPORTS->registered_year = $_POST['registered_year'];
     $TRANSPORTS->fuel_type = $_POST['fuel_type_id'];
     $TRANSPORTS->condition = $_POST['condition_id'];
+    $TRANSPORTS->no_of_passangers = $_POST['no_of_passangers'];
+    $TRANSPORTS->no_of_baggages = $_POST['no_of_baggages'];
+    $TRANSPORTS->no_of_doors = $_POST['no_of_doors'];
+    $TRANSPORTS->ac = $_POST['ac'];
     $TRANSPORTS->description = $_POST['description'];
 
     $VALID->check($TRANSPORTS, [
@@ -69,6 +73,10 @@ if (isset($_POST['edit-transports'])) {
     $TRANSPORTS->registered_year = $_POST['registered_year'];
     $TRANSPORTS->fuel_type = $_POST['fuel_type_id'];
     $TRANSPORTS->condition = $_POST['condition_id'];
+    $TRANSPORTS->no_of_passangers = $_POST['no_of_passangers'];
+    $TRANSPORTS->no_of_baggages = $_POST['no_of_baggages'];
+    $TRANSPORTS->no_of_doors = $_POST['no_of_doors'];
+    $TRANSPORTS->ac = $_POST['ac'];
     $TRANSPORTS->description = $_POST['description'];
 
 

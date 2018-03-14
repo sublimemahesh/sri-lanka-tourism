@@ -131,6 +131,42 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                                 </select>
                                                             </div>
                                                         </div>
+                                                        <div class="col-md-12">
+                                                            <div class="bottom-top">
+                                                                <label for="no_of_passangers">Number of Passangers</label>
+                                                            </div>
+                                                            <div class="formrow">
+                                                                <input type="number" id="no_of_passangers" class="form-control" placeholder="Enter number of passangers" autocomplete="off" name="no_of_passangers" >
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <div class="bottom-top">
+                                                                <label for="No_of_Baggages">No of Baggages</label>
+                                                            </div>
+                                                            <div class="formrow">
+                                                                <input type="number" id="no_of_baggages" class="form-control" placeholder="Enter number of baggages" autocomplete="off" name="no_of_baggages" >
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <div class="bottom-top">
+                                                                <label for="No_of_Doors">No of Doors</label>
+                                                            </div>
+                                                            <div class="formrow">
+                                                                <input type="number" id="no_of_doors" class="form-control" placeholder="Enter number of doors" autocomplete="off" name="no_of_doors" >
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <div class="bottom-top">
+                                                                <label for="No_of_Doors">AC / non AC</label>
+                                                            </div>
+                                                            <div class="formrow">
+                                                                <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="ac" autocomplete="off" name="ac" required="TRUE">
+                                                                    <option value=""> -- Please Select -- </option>
+                                                                    <option value="1">air-conditioned</option>
+                                                                    <option value="0">non-air-conditioned</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
                                                         <div class="bottom-top col-md-2">
                                                             <div class="formrow">
                                                                 <div class="uploadphotobx" id="uploadphotobx"> 
@@ -143,7 +179,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                             </div>
                                                         </div>
                                                         <div id="image-list">
-                                                         
+
                                                         </div>
                                                         <div class="col-md-12">
                                                             <div class="bottom-top">
