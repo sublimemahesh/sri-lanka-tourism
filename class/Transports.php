@@ -16,12 +16,16 @@ class Transports {
     public $registered_year;
     public $fuel_type;
     public $condition;
+    public $no_of_passangers;
+    public $no_of_baggages;
+    public $no_of_doors;
+    public $ac;
     public $sort;
 
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`,`title`,`vehicle_type`,`member`,`description`,`registered_number`,`registered_year`,`fuel_type`,`condition`,`sort` FROM `transports` WHERE `id`=" . $id;
+            $query = "SELECT `id`,`title`,`vehicle_type`,`member`,`description`,`registered_number`,`registered_year`,`fuel_type`,`condition`,`no_of_passangers`,`no_of_baggages`,`no_of_doors`,`ac`,`sort` FROM `transports` WHERE `id`=" . $id;
 
             $db = new Database();
 
@@ -36,23 +40,30 @@ class Transports {
             $this->registered_year = $result['registered_year'];
             $this->fuel_type = $result['fuel_type'];
             $this->condition = $result['condition'];
+            $this->no_of_passangers = $result['no_of_passangers'];
+            $this->no_of_baggages = $result['no_of_baggages'];
+            $this->no_of_doors = $result['no_of_doors'];
+            $this->ac = $result['ac'];
             $this->sort = $result['sort'];
-
             return $this;
         }
     }
 
     public function create() {
 
-        $query = "INSERT INTO `transports` (`title`,`vehicle_type`,`member`,`description`,`registered_number`,`registered_year`,`fuel_type`,`condition`,`sort`) VALUES  ("
+        $query = "INSERT INTO `transports` (`title`,`vehicle_type`,`member`,`description`,`registered_number`,`registered_year`,`fuel_type`,`condition`,`no_of_passangers`,`no_of_baggages`,`no_of_doors`,`ac`,`sort`) VALUES  ("
                 . "'" . $this->title .
                 "','" . $this->vehicle_type .
-                "', '" . $this->member .
+                "','" . $this->member .
                 "','" . $this->description .
                 "','" . $this->registered_number .
                 "','" . $this->registered_year .
                 "','" . $this->fuel_type .
                 "','" . $this->condition .
+                "','" . $this->no_of_passangers .
+                "','" . $this->no_of_baggages .
+                "','" . $this->no_of_doors .
+                "','" . $this->ac .
                 "','" . $this->sort . "')";
 
         $db = new Database();
@@ -91,8 +102,12 @@ class Transports {
                 . "`registered_number` ='" . $this->registered_number . "', "
                 . "`registered_year` ='" . $this->registered_year . "', "
                 . "`fuel_type` ='" . $this->fuel_type . "', "
+                . "`vehicle_type` ='" . $this->vehicle_type . "', "
                 . "`condition` ='" . $this->condition . "', "
-                . "`vehicle_type` ='" . $this->vehicle_type . "' "
+                . "`no_of_passangers` ='" . $this->no_of_passangers . "', "
+                . "`no_of_baggages` ='" . $this->no_of_baggages . "', "
+                . "`no_of_doors` ='" . $this->no_of_doors . "', "
+                . "`ac` ='" . $this->ac . "' "
                 . "WHERE `id` = '" . $this->id . "'";
         $db = new Database();
 

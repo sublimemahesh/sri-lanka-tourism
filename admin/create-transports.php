@@ -82,7 +82,7 @@ include_once(dirname(__FILE__) . './auth.php');
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="row clearfix">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                             <label for="registered_number">Registered Number</label>
@@ -145,7 +145,7 @@ include_once(dirname(__FILE__) . './auth.php');
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="row clearfix">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                             <label for="title">Member Id</label>
@@ -154,6 +154,59 @@ include_once(dirname(__FILE__) . './auth.php');
                                             <div class="form-group">
                                                 <div class="form-line">
                                                     <input type="number" id="member_id" class="form-control" placeholder="Enter Member ID" autocomplete="off" name="member_id" >
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="title">No of Passangers</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    <input type="number" id="no_of_passangers" class="form-control" placeholder="Enter number of passangers" autocomplete="off" name="no_of_passangers" >
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="title">No of Baggages</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    <input type="number" id="no_of_baggages" class="form-control" placeholder="Enter number of baggages" autocomplete="off" name="no_of_baggages" >
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="title">No of Doors</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    <input type="number" id="no_of_doors" class="form-control" placeholder="Enter number of doors" autocomplete="off" name="no_of_doors" >
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="title">AC / non AC</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="ac" autocomplete="off" name="ac" required="TRUE">
+                                                        <option value=""> -- Please Select -- </option>
+                                                        <option value="1">air-conditioned</option>
+                                                        <option value="0">non-air-conditioned</option>
+                                                    </select>
                                                 </div>
                                             </div>
                                         </div>
