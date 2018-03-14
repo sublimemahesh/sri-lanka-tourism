@@ -89,19 +89,19 @@ $ROOM_PHOTO = new RoomPhoto(NULL);
                                                             <div><b>Title :</b> <?php echo $room['name']; ?></div>
                                                             <div>
 
-                                                                <a href="edit-room.php?id=<?php echo $room['id']; ?>&aid=<?php echo $id; ?>"><button class="btn btn-primary btn-xs fa fa-pencil"></button>
+                                                                <a title="Edit Room" href="edit-room.php?id=<?php echo $room['id']; ?>&aid=<?php echo $id; ?>"><button class="btn btn-primary btn-sm all-icon all-icon fa fa-pencil"></button>
                                                                 </a> 
                                                                 |
-                                                                <a>
-                                                                    <button class="delete-rooms btn btn-danger btn-xs fa fa-trash-o" data-id="<?php echo $room['id']; ?>"></button>
+                                                                <a title="Delete Room">
+                                                                    <button class="delete-rooms btn btn-danger btn-sm all-icon all-icon fa fa-trash-o" data-id="<?php echo $room['id']; ?>"></button>
                                                                 </a> 
                                                                 |
-                                                                <a href="add-room-photo.php?id=<?php echo $room['id']; ?>&aid=<?php echo $id; ?>">
-                                                                    <button class="btn btn-success btn-xs fa fa-photo"></button>
+                                                                <a title="Add Your Room Photos" href="add-room-photo.php?id=<?php echo $room['id']; ?>&aid=<?php echo $id; ?>">
+                                                                    <button class="btn btn-success btn-sm all-icon all-icon fa fa-photo"></button>
                                                                 </a> 
                                                                 |
-                                                                <a href="room-facilities.php?id=<?php echo $room['id']; ?>">
-                                                                    <button class="btn btn-warning btn-xs fa fa-check-square"></button>
+                                                                <a title="Add Your Accommodation Room Facilities" href="room-facilities.php?id=<?php echo $room['id']; ?>">
+                                                                    <button class="btn btn-warning btn-sm all-icon all-icon fa fa-check-square"></button>
                                                                 </a> 
                                                             </div>
 

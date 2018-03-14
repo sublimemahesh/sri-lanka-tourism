@@ -22,8 +22,11 @@ $ACCOMODATION_PHOTO = new AccommodationPhoto(NULL);
 
         <link href="assets/css/bootstrap.css" rel="stylesheet">
         <!--external css-->
+        
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
         <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
         <link href="assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css"/>
+        <link href="assets/css/font-awesome.min.min.css" rel="stylesheet" type="text/css"/>
         <!-- Custom styles for this template -->
         <link href="assets/css/style.css" rel="stylesheet">
         <link href="assets/css/style-responsive.css" rel="stylesheet">
@@ -77,27 +80,27 @@ $ACCOMODATION_PHOTO = new AccommodationPhoto(NULL);
                                                             <div><b>Title :</b> <?php echo $accommodation['name']; ?></div>
                                                             <div>
 
-                                                                <a href="edit-accommodation.php?id=<?php echo $accommodation['id']; ?>"><button class="btn btn-primary btn-xs fa fa-pencil"></button>
+                                                                <a title="Edit Accommodation" href="edit-accommodation.php?id=<?php echo $accommodation['id']; ?>"><button class="btn btn-primary btn-xs all-icon fa fa-pencil"></button>
                                                                 </a> 
                                                                 |
-                                                                <a>
-                                                                    <button class="delete-accommodation btn btn-danger btn-xs fa fa-trash-o" data-id="<?php echo $accommodation['id']; ?>"></button>
+                                                                <a title="Delete Accommodation">
+                                                                    <button class="delete-accommodation btn btn-danger btn-xs all-icon fa fa-trash-o" data-id="<?php echo $accommodation['id']; ?>"></button>
                                                                 </a> 
                                                                 |
-                                                                <a href="add-accommodation-photo.php?id=<?php echo $accommodation['id']; ?>">
-                                                                    <button class="btn btn-success btn-xs fa fa-photo"></button>
+                                                                <a title="Add Your Accommodation Photo" href="add-accommodation-photo.php?id=<?php echo $accommodation['id']; ?>">
+                                                                    <button class="btn btn-success btn-xs all-icon fa fa-photo"></button>
                                                                 </a> 
                                                                 |
-                                                                <a href="accommodation-facilities.php?id=<?php echo $accommodation['id']; ?>">
-                                                                    <button class="btn btn-warning btn-xs fa fa-check-square"></button>
+                                                                <a title="Add Your Accommodation Facilities" href="accommodation-facilities.php?id=<?php echo $accommodation['id']; ?>">
+                                                                    <button class="btn btn-warning btn-xs all-icon fa fa-check-square"></button>
                                                                 </a> 
                                                                 |
-                                                                <a href="accommodation-room.php?id=<?php echo $accommodation['id']; ?>">
-                                                                    <button class="btn btn-facebook btn-xs fa fa-adn"></button>
+                                                                <a title="Add Your Accommodation No Of Rooms" href="accommodation-room.php?id=<?php echo $accommodation['id']; ?>">
+                                                                    <button class="btn btn-facebook btn-xs all-icon fa fa-th-list"></button>
                                                                 </a> 
                                                                 |
-                                                                <a href="manage-room.php?id=<?php echo $accommodation['id']; ?>">
-                                                                    <button class="btn btn-facebook btn-xs fa fa-bank"></button>
+                                                                <a title="Accommodation Rooms" href="manage-room.php?id=<?php echo $accommodation['id']; ?>">
+                                                                    <button class="btn btn-facebook btn-xs all-icon fa fa-bed"></button>
                                                                 </a> 
                                                             </div>
 

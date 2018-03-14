@@ -105,12 +105,12 @@ $Aid = $_GET['aid'];
                                                         <p class="maxlinetitle"><?php echo $room_photo['caption']; ?></p>
                                                         <div>
                                                             <div class="d">
-                                                                <a href="edit-room-photo.php?id=<?php echo $room_photo['id']; ?>">
-                                                                    <button class="btn btn-primary btn-xs fa fa-pencil"></button>
+                                                                <a title="Edit Room Photo" href="edit-room-photo.php?id=<?php echo $room_photo['id']; ?>">
+                                                                    <button class="btn btn-primary btn-sm all-icon fa fa-pencil"></button>
                                                                 </a> 
                                                                 |
-                                                                <a class="aa">
-                                                                    <button class="delete-room-photo btn btn-danger btn-xs fa fa-trash-o" data-id="<?php echo $room_photo['id']; ?>"></button>
+                                                                <a title="Delete Room Photo" class="aa">
+                                                                    <button class="delete-room-photo btn btn-danger btn-sm all-icon fa fa-trash-o" data-id="<?php echo $room_photo['id']; ?>"></button>
                                                                 </a> 
                                                             </div>
                                                         </div>
