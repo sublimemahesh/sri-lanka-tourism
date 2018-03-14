@@ -104,11 +104,39 @@ class Room {
 
     public function delete() {
 
+        $this->deletePhotos();
+        $this->deleteRoomFacilities();
+
         $query = 'DELETE FROM `rooms` WHERE id="' . $this->id . '"';
 
         $db = new Database();
 
         return $db->readQuery($query);
+    }
+
+    public function deletePhotos() {
+
+        $ROOM_PHOTO = new RoomPhoto(NULL);
+
+        $allPhotos = $ROOM_PHOTO->getRoomPhotosById($this->id);
+
+        foreach ($allPhotos as $photo) {
+
+            $IMG = $ROOM_PHOTO->image_name = $photo["image_name"];
+            unlink(Helper::getSitePath() . "upload/accommodation/rooms/" . $IMG);
+            unlink(Helper::getSitePath() . "upload/accommodation/rooms/thumb/" . $IMG);
+
+            $ROOM_PHOTO->id = $photo["id"];
+            $ROOM_PHOTO->delete();
+        }
+    }
+
+    public function deleteRoomFacilities() {
+
+        $FACILITIES = new RoomFaciliityDetails(NULL);
+        $Facility = $FACILITIES->getFacilitiesByRoomId($this->id);
+        $FACILITIES->id = $Facility["id"];
+        $FACILITIES->delete();
     }
 
     public function getAccommodationRoomsById($id) {

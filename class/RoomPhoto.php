@@ -1,15 +1,17 @@
 <?php
 
-class RoomFaciliityDetails {
+class RoomPhoto {
 
     public $id;
     public $room;
-    public $facility;
+    public $image_name;
+    public $caption;
+    public $sort;
 
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`,`room`,`facility` FROM `room_facility_details` WHERE `id`=" . $id;
+            $query = "SELECT `id`,`room`,`image_name`,`caption`,`sort` FROM `room_photos` WHERE `id`=" . $id;
 
             $db = new Database();
 
@@ -17,16 +19,21 @@ class RoomFaciliityDetails {
 
             $this->id = $result['id'];
             $this->room = $result['room'];
-            $this->facility = $result['facility'];
+            $this->image_name = $result['image_name'];
+            $this->caption = $result['caption'];
+            $this->sort = $result['sort'];
+
             return $this;
         }
     }
 
     public function create() {
 
-        $query = "INSERT INTO `room_facility_details` (`room`,`facility`) VALUES  ('"
+        $query = "INSERT INTO `room_photos` (`room`,`image_name`,`caption`,`sort`) VALUES  ('"
                 . $this->room . "','"
-                . $this->facility . "')";
+                . $this->image_name . "', '"
+                . $this->caption . "', '"
+                . $this->sort . "')";
 
         $db = new Database();
 
@@ -43,7 +50,7 @@ class RoomFaciliityDetails {
 
     public function all() {
 
-        $query = "SELECT * FROM `room_facility_details`";
+        $query = "SELECT * FROM `room_photos` ORDER BY sort ASC";
         $db = new Database();
         $result = $db->readQuery($query);
         $array_res = array();
@@ -57,9 +64,11 @@ class RoomFaciliityDetails {
 
     public function update() {
 
-        $query = "UPDATE  `room_facility_details` SET "
+        $query = "UPDATE  `room_photos` SET "
                 . "`room` ='" . $this->room . "', "
-                . "`facility` ='" . $this->facility . "' "
+                . "`image_name` ='" . $this->image_name . "', "
+                . "`caption` ='" . $this->caption . "', "
+                . "`sort` ='" . $this->sort . "' "
                 . "WHERE `id` = '" . $this->id . "'";
 
         $db = new Database();
@@ -75,35 +84,33 @@ class RoomFaciliityDetails {
 
     public function delete() {
 
-        $query = 'DELETE FROM `room_facility_details` WHERE id="' . $this->id . '"';
+        $query = 'DELETE FROM `room_photos` WHERE id="' . $this->id . '"';
 
         $db = new Database();
 
         return $db->readQuery($query);
     }
 
-    public function getFacilitiesByRoomId($room) {
+    public function getRoomPhotosById($id) {
 
-        $query = "SELECT `id`,`room`,`facility` FROM `room_facility_details` WHERE `room`= '" . $room . "'";
+        $query = "SELECT * FROM `room_photos` WHERE `room`= $id ORDER BY sort ASC";
 
         $db = new Database();
 
-        $result = mysql_fetch_array($db->readQuery($query));
+        $result = $db->readQuery($query);
+        $array_res = array();
 
-        if (!$result) {
-            return FALSE;
-        } else {
-            return $result;
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
         }
+        return $array_res;
     }
 
-    public function deleteFacilitiesByRoomID($id) {
-
-        $query = "DELETE FROM `room_facility_details` WHERE `room`= '" . $id . "'";
-
+    public function arrange($key, $img) {
+        $query = "UPDATE `room_photos` SET `sort` = '" . $key . "'  WHERE id = '" . $img . "'";
         $db = new Database();
-
-        return $db->readQuery($query);
+        $result = $db->readQuery($query);
+        return $result;
     }
 
 }

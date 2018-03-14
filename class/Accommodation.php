@@ -108,8 +108,10 @@ class Accommodation {
 
     public function delete() {
 
-         $this->deletePhotos();
-         
+        $this->deletePhotos();
+        $this->deleteRoom();
+        $this->deleteAccommodationFacilities();
+
         $query = 'DELETE FROM `accommodation` WHERE id="' . $this->id . '"';
 
         $db = new Database();
@@ -133,8 +135,29 @@ class Accommodation {
             $ACCMMODATION_PHOTO->delete();
         }
     }
-    
-     public function getAccommodationByMemberId($member) {
+
+    public function deleteRoom() {
+
+        $ROOM = new Room(NULL);
+
+        $allrooms = $ROOM->getAccommodationRoomsById($this->id);
+
+        foreach ($allrooms as $room) {
+
+            $ROOM->id = $room["id"];
+            $ROOM->delete();
+        }
+    }
+
+    public function deleteAccommodationFacilities() {
+
+        $FACILITIES = new AccommodationFacilityDetails(NULL);
+        $Facility = $FACILITIES->getFacilitiesByAccommodationId($this->id);
+        $FACILITIES->id = $Facility["id"];
+        $FACILITIES->delete();
+    }
+
+    public function getAccommodationByMemberId($member) {
 
         $query = "SELECT * FROM `accommodation` WHERE `member`= $member";
 
