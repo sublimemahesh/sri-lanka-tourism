@@ -178,7 +178,7 @@ include_once(dirname(__FILE__) . './auth.php');
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <input type="number" id="no_of_baggages" class="form-control" placeholder="Enter number of baggages" autocomplete="off" name="no_of_baggages" >
+                                                    <input type="number" id="no_of_baggages" class="form-control" placeholder="Enter number of baggages" autocomplete="off" name="no_of_baggages">
                                                 </div>
                                             </div>
                                         </div>
