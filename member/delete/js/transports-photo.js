@@ -1,9 +1,7 @@
 $(document).ready(function () {
 
-    $('.delete-transports-photo').click(function () {
-
+    $('#image-list').on('click', '.delete-transports-photo', function () {
         var id = $(this).attr("data-id");
-
         swal({
             title: "Are you sure?",
             text: "You will not be able to recover!",
@@ -29,7 +27,6 @@ $(document).ready(function () {
                             timer: 2000,
                             showConfirmButton: false
                         });
-
                         $('#div_' + id).remove();
                     }
                 }

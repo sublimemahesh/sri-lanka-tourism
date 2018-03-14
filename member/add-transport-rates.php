@@ -173,11 +173,11 @@ $TRANSPORTS = new Transports($id);
                                                                         <td class="text-right"> $ <?php echo $transport_rates['price']; ?>.00</td>
                                                                         <td> 
                                                                             <a href="#"> 
-                                                                                <button class="btn btn-danger btn-xs fa fa-trash-o delete-transport-rates" data-id="<?php echo $transport_rates['id']; ?>"></button>
+                                                                                <button class="btn btn-danger btn-sm all-icon fa fa-trash-o delete-transport-rates" data-id="<?php echo $transport_rates['id']; ?>"></button>
                                                                             </a> |
 
                                                                             <a href="edit-transport-rate.php?id=<?php echo $transport_rates['id']; ?>">
-                                                                                <button class="btn btn-primary btn-xs fa fa-pencil"></button>
+                                                                                <button class="btn btn-primary btn-sm all-icon fa fa-pencil"></button>
                                                                             </a> 
 
                                                                         </td>

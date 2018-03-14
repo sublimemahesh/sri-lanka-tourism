@@ -118,8 +118,10 @@ $TOUR_SUB = new TourSubSection($id);
         <script src="assets/js/jquery-ui-1.9.2.custom.min.js"></script>
         <script type="text/javascript" src="assets/js/bootstrap-inputmask/bootstrap-inputmask.min.js"></script>
         <script src="assets/plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>
+        
         <script src="delete/js/tour-package-photo.js" type="text/javascript"></script>
-        <script src="js/add-new-tour-package-photo.js" type="text/javascript"></script>
+        <script src="js/add-new-tour-sub-photo.js" type="text/javascript"></script>
+        
         <script>
 
             $(function () {
