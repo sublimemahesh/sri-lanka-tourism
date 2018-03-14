@@ -55,7 +55,7 @@ $TRANSPORTS_PHOTO = new TransportPhoto(NULL);
                                                             <div class="col-md-4 col-sm-6 col-xs-12 style-transport">
                                                                 <div id="div_<?php echo $vehicle_t['id']; ?>">
                                                                     <div><?php echo $vehicle_t['id']; ?></div>
-                                                                    <div class="">
+                                                                    <div>
                                                                         <?php
                                                                         if (count($TRANSPORTS_PHOTO) > 0) {
                                                                             foreach ($TRANSPORTS_PHOTO->getTransportPhotosById($vehicle_t['id']) as $key => $TRANSPORTS_P) {
@@ -63,7 +63,7 @@ $TRANSPORTS_PHOTO = new TransportPhoto(NULL);
                                                                                     break;
                                                                                 }
                                                                                 ?>
-                                                                        <img class="img-responsive" src="../upload/transport/thumb/<?php echo $TRANSPORTS_P['image_name']; ?>">
+                                                                                <img class="img-responsive" src="../upload/transport/thumb/<?php echo $TRANSPORTS_P['image_name']; ?>">
                                                                                 <?php
                                                                             }
                                                                         } else {
@@ -71,8 +71,6 @@ $TRANSPORTS_PHOTO = new TransportPhoto(NULL);
                                                                             <b style="padding-left: 15px;">No Transport Image.</b> 
                                                                         <?php } ?>
                                                                     </div> 
-
-
                                                                     <div>
                                                                         <b>Title :</b> <?php echo $vehicle_t['title']; ?>
                                                                     </div>
@@ -84,19 +82,19 @@ $TRANSPORTS_PHOTO = new TransportPhoto(NULL);
                                                                     </div>
                                                                     <div>
 
-                                                                        <a href="edit-transport.php?id=<?php echo $vehicle_t['id']; ?>"><button class="btn btn-primary btn-xs fa fa-pencil"></button>
+                                                                        <a title="Edit Your Transport" href="edit-transport.php?id=<?php echo $vehicle_t['id']; ?>"><button class="all-icon btn btn-primary btn-md fa fa-pencil"></button>
                                                                         </a> 
                                                                         |
-                                                                        <a>
-                                                                            <button class="delete-transports btn btn-danger btn-xs fa fa-trash-o" data-id="<?php echo $vehicle_t['id']; ?>"></button>
+                                                                        <a title="Delete Transport">
+                                                                            <button class="all-icon delete-transports btn btn-danger btn-md fa fa-trash-o" data-id="<?php echo $vehicle_t['id']; ?>"></button>
                                                                         </a> 
                                                                         |
-                                                                        <a href="add-transport-photo.php?id=<?php echo $vehicle_t['id']; ?>">
-                                                                            <button class="btn btn-success btn-xs fa fa-photo"></button>
+                                                                        <a title="Add Your Transport Photos" href="add-transport-photo.php?id=<?php echo $vehicle_t['id']; ?>">
+                                                                            <button class="all-icon btn btn-success btn-md fa fa-photo"></button>
                                                                         </a> 
                                                                         |
-                                                                        <a href="add-transport-rates.php?id=<?php echo $vehicle_t['id']; ?>">
-                                                                            <button class="btn btn-warning btn-xs fa fa-star"></button>
+                                                                        <a title="Add Your Transport Rates" href="add-transport-rates.php?id=<?php echo $vehicle_t['id']; ?>">
+                                                                            <button class="all-icon btn btn-warning btn-md fa fa-star"></button>
                                                                         </a> 
                                                                     </div>
                                                                 </div>

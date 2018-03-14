@@ -6,7 +6,7 @@ $(document).ready(function () {
         var formData = new FormData($('#form-new-tour-sub-section-photo')[0]);
 
         $.ajax({
-            url: "post-and-get/ajax/add-new-tour-package-photo.php",
+            url: "post-and-get/ajax/add-new-tour-sub-photo.php",
             type: "POST",
             data: formData,
             async: false,
@@ -32,8 +32,5 @@ $(document).ready(function () {
         });
     });
 
-    $('#image-list').on('click', '.img-tour-package-delete', function () {
 
-        $('#col_' + this.id).remove();
-    });
 });
