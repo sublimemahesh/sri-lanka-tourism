@@ -64,10 +64,10 @@ $TRANSPORTS = new Transports($id);
                                             <label for="vehicle_type">Vehicle Type</label>
                                         </div>
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                                            <div class="form-group place-select">
+                                            <div class="form-group">
                                                 <div class="form-line">
-                                                    <select class="form-control show-tick place-select1" type="text" id="vehicle_type" autocomplete="off" name="vehicle_type">
-                                                        <option value="<?php $TRANSPORTS->id ?>" class="active light-c">
+                                                    <select class="form-control" id="vehicle_type" name="vehicle_type">
+                                                        <option value="<?php echo $TRANSPORTS->vehicle_type?>">
                                                             <?php
                                                             $VEHICLE_TYPE = new VehicleType($TRANSPORTS->vehicle_type);
                                                             echo $VEHICLE_TYPE->name;
@@ -127,10 +127,10 @@ $TRANSPORTS = new Transports($id);
                                             <label for="fuel_type">Fuel Type</label>
                                         </div>
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                                            <div class="form-group place-select">
+                                            <div class="form-group">
                                                 <div class="form-line">
-                                                    <select class="form-control show-tick place-select1" type="text" id="fuel_type_id" autocomplete="off" name="fuel_type_id">
-                                                        <option value="<?php $TRANSPORTS->id ?>" class="active light-c">
+                                                    <select class="form-control" type="text" id="fuel_type_id" autocomplete="off" name="fuel_type_id">
+                                                        <option value="<?php echo $TRANSPORTS->fuel_type?>">
                                                             <?php
                                                             $FUEL_TYPE = new FuelType($TRANSPORTS->fuel_type);
                                                             echo $FUEL_TYPE->name;
@@ -152,10 +152,10 @@ $TRANSPORTS = new Transports($id);
                                             <label for="condition">Condition</label>
                                         </div>
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                                            <div class="form-group place-select">
+                                            <div class="form-group">
                                                 <div class="form-line">
-                                                    <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="condition_id" autocomplete="off" name="condition_id" required="TRUE">
-                                                        <option value="<?php $TRANSPORTS->id ?>" class="active light-c"> 
+                                                    <select class="form-control" id="condition_id" name="condition_id">
+                                                        <option value="<?php echo $TRANSPORTS->condition ?>"> 
                                                             <?php
                                                             $VEHICLE_CONDITIONS = new VehicleCondition($TRANSPORTS->condition);
                                                             echo $VEHICLE_CONDITIONS->name;
@@ -181,6 +181,68 @@ $TRANSPORTS = new Transports($id);
                                             <div class="form-group">
                                                 <div class="form-line">
                                                     <input type="number" id="member_id" class="form-control" placeholder="Enter Member Id" autocomplete="off" name="member_id" value="<?php echo $TRANSPORTS->member; ?>" >
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="title">No of Passangers</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    <input type="number" id="no_of_passangers" value="<?php echo $TRANSPORTS->no_of_passangers; ?>" class="form-control" placeholder="Enter number of passangers" autocomplete="off" name="no_of_passangers" >
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="title">No of Baggages</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    <input type="number" id="no_of_baggages" value="<?php echo $TRANSPORTS->no_of_baggages; ?>" class="form-control" placeholder="Enter number of baggages" autocomplete="off" name="no_of_baggages" >
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="title">No of Doors</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    <input type="number" id="no_of_doors" value="<?php echo $TRANSPORTS->no_of_doors; ?>"  class="form-control" placeholder="Enter number of doors" autocomplete="off" name="no_of_doors" >
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="title">AC / non AC</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    <select class="form-control" autocomplete="off" type="text" id="ac" autocomplete="off" name="ac">
+                                                        <?php
+                                                        if ($TRANSPORTS->ac == 1) {
+                                                            ?>
+                                                            <option value="1" selected="true">air-conditioned</option>
+                                                            <option value="0">non-air-conditioned</option>
+                                                            <?php
+                                                        } else {
+                                                            ?>
+                                                            <option value="0" selected="true">non-air-conditioned</option>
+                                                            <option value="1">air-conditioned</option>
+                                                            <?php
+                                                        }
+                                                        ?>
+                                                    </select>
                                                 </div>
                                             </div>
                                         </div>
