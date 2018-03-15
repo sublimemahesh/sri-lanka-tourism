@@ -1,10 +1,7 @@
 $(document).ready(function () {
-
     $('#accommodation-picture').change(function () {
-
         $('#loading').show();
         var formData = new FormData($('#form-accommodation')[0]);
-
         $.ajax({
             url: "post-and-get/ajax/post-accommodation-images.php",
             type: "POST",
@@ -16,12 +13,12 @@ $(document).ready(function () {
                 var arr = mess.filename.split('.');
 
                 var html = '';
-                html += '<div class="col-md-2" id="col_' + arr[0] + '">';
-                html += '<i class="btn btn-danger fa fa-trash-o img-accommodation-delete"  id="' + arr[0] + '"></i>';
+                html += '<div class="col-md-2 bottom-top" id="col_' + arr[0] + '" style="padding-bottom: 3px;">';
                 html += '<img src="../upload/accommodation/thumb/' + mess.filename + '"  class="img img-responsive">';
                 html += '<input type="hidden" name="accommodation-images[]" value="' + mess.filename + '"/>';
+                html += '<i class="img-accommodation-delete delete-icon btn btn-danger btn-md fa fa-trash-o"  id="' + arr[0] + '"></i>';
                 html += '</div>';
-                $('#image-list').append(html);
+                $('#image-list').prepend(html);
 
                 $('#loading').hide();
             },
@@ -34,6 +31,6 @@ $(document).ready(function () {
     $('#image-list').on('click', '.img-accommodation-delete', function () {
 
         $('#col_' + this.id).remove();
-        
+
     });
 });

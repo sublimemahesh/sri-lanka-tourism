@@ -22,7 +22,7 @@ $(document).ready(function () {
                 html += '<button class="delete-accommodation-photo delete-icon btn btn-danger btn-md fa fa-trash-o" data-id="' + mess.id + '"></button>';
                 html += '</a>';
                 html += '</div>';
-                $('#image-list').append(html);
+                $('#image-list').prepend(html);
                 $('#loading').hide();
             },
             cache: false,

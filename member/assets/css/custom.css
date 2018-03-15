@@ -295,10 +295,10 @@ and open the template in the editor.
 }
 
 .uploadbox{
-    height: 182px;
+   height: 230px;
 }
 .plus-icon{
-    padding-top: 32px;
+    padding-top: 60px;
 }
 .delete-icon{
     margin: -70px 0px 0px 12px;

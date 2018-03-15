@@ -201,8 +201,6 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                                                         <div class="formrow">
                                                                                             <textarea type="text" id="description" name="description" class="form-control" placeholder="Please Enter Description"></textarea>
                                                                                         </div>
-
-
                                                                                         <div class="top-bott50 col-md-12">
                                                                                             <div class="bottom-top">
                                                                                                 <input type="hidden" id="member" name="member" value="<?php echo $_SESSION['id']; ?>"/>
@@ -224,8 +222,6 @@ include_once(dirname(__FILE__) . '/auth.php');
                                     </div>
                                 </div>
                             </div> 
-
-
                         </div>
                     </div>
                 </div>
