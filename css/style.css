@@ -1,65 +1,4 @@
-/***************************************************************************************************************
-||||||||||||||||||||||||||||       MASTER STYLESHEET FOR RESORT       ||||||||||||||||||||||||||||||||||||
-****************************************************************************************************************
-||||||||||||||||||||||||||||              TABLE OF CONTENT                  ||||||||||||||||||||||||||||||||||||
-****************************************************************************************************************
-****************************************************************************************************************
 
-1 Imported styles
-2 Global styles
-3 header top styles
-4 header top right section
-5 Home two main menu
-6 Stricky header Styles
-7 hidden bar Styles
-8 banner styles
-9 Search styles
-10 Welcome to Lake Resort styles
-11 Rooms And Suits styles
-12 Know About Us styles
-13 Our Resort Values styles
-14 satisfied with the Resort styles
-15 Testimonials styles
-16 News and Events styles
-17 Green Band ads style
-18 footer style
-19 Top right search field Styles
-20 Top right Search results Styles
-21 Inner page - about us
-22 accrodion - about us
-23 Take a tour video - about us
-24 Room1 style
-25 Room2 style
-26 News page styles
-27 News Details Comments
-28 gallery filter Styles
-29 image-gallery Styles
-30 pop up single gallery item Styles
-31 Booking Styles 
-32 Single room Styles
-33 Home Two Styles
-34 Home Two main menu Styles
-35 Home Two banner Styles
-36 Search Home Two Styles
-37 Counter Home Two Styles
-38 Activities of Resort Home Two Styles
-39 Our Offers Home Two Styles
-40 Our Gallery Home Two Styles
-41 Testimonials & Our Events Home Two Styles
-42 Get in Touch & Drop a Message Home Two Styles
-43 Rooms And Suits Home Two Styles
-44 Rooms Amenities Styles
-45 Resort Activities Styles
-46 Offers & Deals Styles
-47 Family Fun Styles
-48 hidden-bar Home Two Styles
-49 tracking styles
-50 our Restaurant Styles
-
-
-****************************************************************************************************************
-||||||||||||||||||||||||||||            End TABLE OF CONTENT                ||||||||||||||||||||||||||||||||||||
-****************************************************************************************************************/
 /* ==============================
    1 Imported styles
    ============================== */
@@ -841,7 +780,7 @@ span.score-rate{
     max-width: 100%;
     max-height:100%; 
     margin-top: 14px;
-    
+
 }
 
 #rooms-section.row-view .room-container .room-box1 {
@@ -858,17 +797,17 @@ span.score-rate{
         margin-left: 0;
         padding: 0 30px; } }
 #rooms-section.row-view .room-container .room-box1:hover .room-img1, #rooms-section.row-view .room-container .room-box1:hover .r-sec {
-/*    -webkit-box-shadow: 0 0 0 3px #c8eef3;
-    box-shadow: 0 0 0 3px #c8eef3; */
+    /*    -webkit-box-shadow: 0 0 0 3px #c8eef3;
+        box-shadow: 0 0 0 3px #c8eef3; */
 }
 #rooms-section.row-view .room-container .room-box1:hover .room-img1:before, #rooms-section.row-view .room-container .room-box1:hover .room-img1:after {
-/*    margin-top: 0;
-    opacity: 1;
-    filter: alpha(opacity=100);*/
+    /*    margin-top: 0;
+        opacity: 1;
+        filter: alpha(opacity=100);*/
 }
 #rooms-section.row-view .room-container .room-box1:hover .room-img1 a {
-/*    opacity: 1;
-    filter: alpha(opacity=100); */
+    /*    opacity: 1;
+        filter: alpha(opacity=100); */
 }
 #rooms-section.row-view .room-container .room-box1:hover .r-sec {
     /*    background: #222222; */
@@ -1079,10 +1018,130 @@ span.score-rate{
 .room-container .room-box1 > .inner-box:hover .caption .desc {
     max-height: 100px; }
 .room-container .room-box1 > .inner-box:hover .caption .desc .inner-box {
-/*    opacity: 1;
-    filter: alpha(opacity=100);
-    visibility: visible;
-    top: 0;
-    -webkit-transition-delay: 0.3s;
-    transition-delay: 0.3s; */
+    /*    opacity: 1;
+        filter: alpha(opacity=100);
+        visibility: visible;
+        top: 0;
+        -webkit-transition-delay: 0.3s;
+        transition-delay: 0.3s; */
+}
+/*Tour Package*/
+
+.inner-container1{
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+.image-back{
+    border-radius: 13px;
+    -webkit-clip-path: polygon(24% 0, 50% 49%, 25% 100%, 0% 100%, 0 48%, 0% 0%);
+    clip-path: polygon(32% 0, 46% 53%, 30% 103%, 0% 100%, 0 48%, 0% 0%);
+
+}
+
+.square {
+    height: 100%;
+    width: 100%;
+    background-color: #555;
+}
+.polygon{
+    border-radius: 13px;
+    background: #FFFFFF;
+    box-sizing: border-box;
+
+}
+
+.triangle-topright {
+    width: 0;
+    height: 0;
+    border-top: 86px solid #FFCB06;
+    border-top-right-radius: 13px;
+    border-left: 24px solid transparent;
+    margin-top: -269px;
+    float: right;
+    border-right: 207px solid #FFCB06;
+
+}
+.image-back ::after{
+    background-color: red;
+} 
+
+.triangle-bottomright {
+    width: 0;
+    height: 0;
+    border-bottom: 33px solid #fff;
+    border-left: 199px solid transparent;
+    margin-top: -33px;
+    margin-left: 8px;
+}
+.package-box{
+    background-color: #fff;
+    border-radius: 13px;
+}
+/*#triangle-bottomright1 { 
+    width: 0;
+    height: 0;
+    border-bottom: 67px solid red;
+    border-left: 41px solid transparent;
+    margin-top: 119px;
+    margin-left: -58px;
+} */
+.body-title{
+    margin-top: -78px;
+    color: #000;
+    font-size: 21px;
+    font-family: initial;
+    position: absolute;
+}
+
+.mid-section{
+    position: absolute;
+    float: left;
+    padding-right:0px;
+    margin-top: -8px;
+}
+.mobile-numbers{
+    position: absolute;
+    margin-left: -105px;
+}
+.contact-details{
+    color: red;
+}
+.more-details{
+    color: black;
+}
+.prices{
+    font-weight: bold;
+    color: black;
+}
+.main-pack{
+    padding-top: 28px;
+}
+.nights{
+    position: absolute;
+    bottom: 8px;
+    left: 24px;
+    background-color: #FFCB06;
+    color: #000;
+    border-radius: 7px;
+    border: 3px solid #fff;
+    font-size: 32px;
+}
+.days{
+    position: absolute;
+    bottom: 8px;
+    left: 74px;
+    background-color: #FFCB06;
+    color: #000;
+    border-radius: 7px;
+    border: 3px solid #fff;
+    font-size: 32px;
+
+}
+.text-night{
+    font-size: 12px; 
+    margin-top: -12px;
+}
+.text-days{
+    font-size: 12px; 
+    margin-top: -12px;
 }
