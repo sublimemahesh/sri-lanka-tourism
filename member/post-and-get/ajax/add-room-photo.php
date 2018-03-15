@@ -2,12 +2,12 @@
 
 include_once(dirname(__FILE__) . '/../../../class/include.php');
 
-if (isset($_POST['upload-accommodation-image'])) {
+if (isset($_POST['upload-room-photo'])) {
 
-    $folder = '../../../upload/accommodation/';
+    $folder = '../../../upload/accommodation/rooms/';
     $imgName = Helper::randamId();
 
-    $handle = new Upload($_FILES['accommodation-picture']);
+    $handle = new Upload($_FILES['room-picture']);
 
     if ($handle->uploaded) {
 
@@ -15,7 +15,7 @@ if (isset($_POST['upload-accommodation-image'])) {
         $handle->file_new_name_ext = 'jpg';
         $handle->image_ratio_crop = 'C';
         $handle->file_new_name_body = $imgName;
-//        $handle->image_watermark = '../../assets/img/logo-watermark.png';
+        $handle->image_watermark = '../../assets/img/logo-watermark.png';
 
         $image_dst_x = $handle->image_dst_x;
         $image_dst_y = $handle->image_dst_y;
@@ -31,7 +31,7 @@ if (isset($_POST['upload-accommodation-image'])) {
 
         if ($handle->processed) {
 
-            $handle1 = new Upload($_FILES['accommodation-picture']);
+            $handle1 = new Upload($_FILES['room-picture']);
 
             if ($handle1->uploaded) {
 
@@ -46,12 +46,20 @@ if (isset($_POST['upload-accommodation-image'])) {
 
                 if ($handle1->processed) {
 
+                    $ROOM_PHOTO = new RoomPhoto(NULL);
+                    $ROOM_PHOTO->room= $_POST["room"];
+                    $ROOM_PHOTO->image_name = $handle1->file_dst_name;
+                    $ROOM_PHOTO->caption = "";
+
+                    $ROOM_PHOTO->create();
+
                     $handle1->Clean();
 
                     header('Content-Type: application/json');
 
                     $result = [
                         "filename" => $handle1->file_dst_name,
+                        "id" => $ROOM_PHOTO->id,
                         "message" => 'success'
                     ];
                     echo json_encode($result);
@@ -97,5 +105,3 @@ if (isset($_POST['upload-accommodation-image'])) {
         exit();
     }
 }
-
-
