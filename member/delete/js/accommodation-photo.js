@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
-    $('.delete-accommodation-photo').click(function () {
-
+    $('#image-list').on('click', '.delete-accommodation-photo', function () {
+ 
         var id = $(this).attr("data-id");
 
         swal({

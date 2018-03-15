@@ -16,13 +16,12 @@ $(document).ready(function () {
                 var arr = mess.filename.split('.');
 
                 var html = '';
-                html += '<div class="col-md-2" id="col_' + arr[0] + '">';
-                html += '<i class="btn btn-danger fa fa-trash-o img-transport-delete"  id="' + arr[0] + '"></i>';
+                html += '<div class="col-md-2 bottom-top" id="col_' + arr[0] + '" style="padding-bottom: 3px;">';
                 html += '<img src="../upload/transport/thumb/' + mess.filename + '"  class="img img-responsive">';
                 html += '<input type="hidden" name="transport-images[]" value="' + mess.filename + '"/>';
+                html += '<i class="img-transport-delete delete-icon btn btn-danger btn-md fa fa-trash-o"  id="' + arr[0] + '"></i>';
                 html += '</div>';
-                $('#image-list').append(html);
-
+                $('#image-list').prepend(html);
                 $('#loading').hide();
             },
             cache: false,

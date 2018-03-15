@@ -22,10 +22,11 @@ if (isset($_POST['create-tour-sub-section'])) {
 
 
     if ($VALID->passed()) {
+        
         $TOURSUBSECTION->create();
 
 
-        foreach ($_POST["tour-package-images"] as $key => $photos) {
+        foreach ($_POST["tour-packages-images"] as $key => $photos) {
 
             $TOUR_SUB_PHOTO_PHOTO = new TourSubSectionPhoto(NULL);
             $TOUR_SUB_PHOTO_PHOTO->tour_sub_section = $TOURSUBSECTION->id;

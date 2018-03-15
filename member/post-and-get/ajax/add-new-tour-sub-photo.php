@@ -40,7 +40,7 @@ if (isset($_POST['upload-tour-sub-photo'])) {
                 $handle1->image_ratio_crop = 'C';
                 $handle1->file_new_name_body = $imgName;
                 $handle1->image_x = 300;
-                $handle1->image_y = 220;
+                $handle1->image_y = 260;
 
                 $handle1->Process($folder . '/thumb');
 

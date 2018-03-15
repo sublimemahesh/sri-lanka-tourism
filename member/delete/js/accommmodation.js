@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    $('.delete-accommodation').click(function () {
+    $('#image-list').on('click', '.delete-accommodation', function () {
 
         var id = $(this).attr("data-id");
 

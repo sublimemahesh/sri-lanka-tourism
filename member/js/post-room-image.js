@@ -2,7 +2,7 @@ $(document).ready(function () {
 
     $('#room-picture').change(function () {
 
-       $('#loading').show();
+        $('#loading').show();
         var formData = new FormData($('#form-room')[0]);
 
         $.ajax({
@@ -16,12 +16,12 @@ $(document).ready(function () {
                 var arr = mess.filename.split('.');
 
                 var html = '';
-                html += '<div class="col-md-2" id="col_' + arr[0] + '">';
-                html += '<i class="btn btn-danger fa fa-trash-o img-room-delete"  id="' + arr[0] + '"></i>';
+                html += '<div class="col-md-2 bottom-top" id="col_' + arr[0] + '" style="padding-bottom: 3px;">';
                 html += '<img src="../upload/accommodation/rooms/thumb/' + mess.filename + '"  class="img img-responsive">';
                 html += '<input type="hidden" name="room-images[]" value="' + mess.filename + '"/>';
+                html += '<i class="img-room-delete delete-icon btn btn-danger btn-md fa fa-trash-o"  id="' + arr[0] + '"></i>';
                 html += '</div>';
-                $('#image-list').append(html);
+                $('#image-list').prepend(html);
                 $('#loading').hide();
             },
             cache: false,
@@ -33,6 +33,6 @@ $(document).ready(function () {
     $('#image-list').on('click', '.img-room-delete', function () {
 
         $('#col_' + this.id).remove();
-        
+
     });
 });
