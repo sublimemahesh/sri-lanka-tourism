@@ -6,9 +6,7 @@ $id = '';
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 }
-
 $Aid = $_GET['aid'];
-
 ?> 
 
 <html lang="en">
@@ -40,6 +38,7 @@ $Aid = $_GET['aid'];
         </style>
     </head> 
     <body> 
+        <div class="loading" id="loading">Loading&#8230;</div>
         <section id="container" > 
             <?php
             include './header-nav.php';
@@ -56,75 +55,51 @@ $Aid = $_GET['aid'];
                             ?>
 
                             <div class="panel panel-default">
-                                <div class="panel-heading"><i class="fa fa-save"></i> Create Accommodation Room Images</div>
+                                <div class="panel-heading"><i class="fa fa-save"></i> Create Room Images</div>
                                 <div class="panel-body">
                                     <div class="body">
                                         <div class="userccount">
-                                            <div class="formpanel"> 
-                                                <form class="form-horizontal"  method="post" action="post-and-get/room-photo.php" enctype="multipart/form-data"> 
-                                                    <div class="col-md-12">
-
-                                                        <div class="">
-                                                            <div class="bottom-top">
-                                                                <label for="caption">Title</label>
-                                                            </div>
+                                            <div class="formpanel">  
+                                                <div class="row clearfix">
+                                                    <form class="form-horizontal" method="post" id="form-new-room-photo" enctype="multipart/form-data"> 
+                                                        <div class="col-md-3">
                                                             <div class="formrow">
-                                                                <input type="text" id="caption" class="form-control" placeholder="Enter Image Caption" autocomplete="off" name="caption" required="true">
+                                                                <div class="uploadbox uploadphotobx" id="uploadphotobx">
+                                                                    <i class="fa fa-plus plus-icon" aria-hidden="true"></i>
+                                                                    <label class="uploadBox">Click here to Upload photo
+                                                                        <input type="file" name="room-picture" id="room-picture">
+                                                                        <input type="hidden" name="upload-room-photo" id="upload-room-photo" value="TRUE">
+                                                                        <input type="hidden" name="room" id="room" value="<?php echo $id; ?>">
+                                                                    </label>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="">
-                                                            <div class="bottom-top">
-                                                                <label for="image">Image</label>
-                                                            </div>
-                                                            <div>
-                                                                <input type="file" id="image" class="form-control" name="image" required="true">
-                                                            </div>
-                                                        </div>
-                                                        <div class="top-bott50">
-                                                            <div class="bottom-top">
-                                                                <input type="hidden" id="id" class="form-control" placeholder="Enter id" autocomplete="off" name="id" required="true">
-                                                                <input type="hidden" id="member" name="member" value="<?php echo $_SESSION['id']; ?>"/>
-                                                                <input type="hidden" value="<?php echo $id ?>" name="id" />
-                                                                <button name="create" type="submit" class="btn btn-info center-block">Create</button>
-                                                            </div>
-                                                        </div> 
-                                                    </div>  
-                                                </form>  
-                                            </div>
-                                        </div>
-                                        <div class="row clearfix">
-                                            <?php
-                                            $ROOM_PHOTOS = RoomPhoto::getRoomPhotosById($id);
-                                            if (count($ROOM_PHOTOS) > 0) {
-                                                foreach ($ROOM_PHOTOS as $key => $room_photo) {
-                                                    ?>
-                                                    <div class="col-md-3" id="div_<?php echo $room_photo['id']; ?>">
-                                                        <div>
-                                                            <img src="../upload/accommodation/rooms/thumb/<?php echo $room_photo['image_name']; ?>" class="img-responsive ">
-                                                        </div>
-                                                        <p class="maxlinetitle"><?php echo $room_photo['caption']; ?></p>
-                                                        <div>
-                                                            <div class="d">
-                                                                <a title="Edit Room Photo" href="edit-room-photo.php?id=<?php echo $room_photo['id']; ?>">
-                                                                    <button class="btn btn-primary btn-sm all-icon fa fa-pencil"></button>
-                                                                </a> 
-                                                                |
-                                                                <a title="Delete Room Photo" class="aa">
-                                                                    <button class="delete-room-photo btn btn-danger btn-sm all-icon fa fa-trash-o" data-id="<?php echo $room_photo['id']; ?>"></button>
-                                                                </a> 
-                                                            </div>
-                                                        </div>
+                                                        </div>  
+                                                    </form>  
+                                                    <div id="image-list">
+                                                        <?php
+                                                        $ROOM_PHOTOS = RoomPhoto::getRoomPhotosById($id);
+                                                        if (count($ROOM_PHOTOS) > 0) {
+                                                            foreach ($ROOM_PHOTOS as $key => $room_photo) {
+                                                                ?>
+                                                                <div class="col-md-3" style="padding-bottom: 15px" id="div_<?php echo $room_photo['id']; ?>"> 
+                                                                    <img src="../upload/accommodation/rooms/thumb/<?php echo $room_photo['image_name']; ?>" class="img-responsive ">
+                                                                    <p class="maxlinetitle"><?php echo $room_photo['caption']; ?></p>
+                                                                    <a class="aa">
+                                                                        <button class="delete-icon delete-room-photo btn btn-danger btn-md fa fa-trash-o" style="margin-bottom: 25px;" data-id="<?php echo $room_photo['id']; ?>"></button>
+                                                                    </a> 
+                                                                </div>
+                                                                <?php
+                                                            }
+                                                        } else {
+                                                            ?> 
+                                                            <b style="padding-left: 15px;">No Room Images in the database.</b> 
+                                                        <?php } ?> 
                                                     </div>
-                                                    <?php
-                                                }
-                                            } else {
-                                                ?> 
-                                                <b style="padding-left: 15px;">No Accommodation Images in the database.</b> 
-                                            <?php } ?> 
-
-                                        </div>
+                                                </div> 
+                                            </div>
+                                        </div> 
                                         <div class="text-right">
-                                            <a href="accommodation-room.php?id=<?php echo $Aid;?>"><button type="button" class="btn btn-round btn-info">Manage Accommodation Rooms</button></a>
+                                            <a href="accommodation-room.php?id=<?php echo $Aid; ?>"><button type="button" class="btn btn-round btn-info">Manage Accommodation Rooms</button></a>
                                         </div>
                                     </div>
                                 </div>
@@ -144,18 +119,16 @@ $Aid = $_GET['aid'];
         <script src="assets/js/jquery.scrollTo.min.js"></script>
         <script src="assets/js/common-scripts.js"></script>
         <script src="assets/js/jquery-ui-1.9.2.custom.min.js"></script>
-
         <script type="text/javascript" src="assets/js/bootstrap-inputmask/bootstrap-inputmask.min.js"></script>
         <script src="assets/plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>
-
         <script src="delete/js/room-photo.js" type="text/javascript"></script>
+        <script src="js/add-room-photo.js" type="text/javascript"></script>
+
         <script>
             //custom select box
-
             $(function () {
                 $('select.styled').customSelect();
             });
-
         </script>
         <script src="assets/tinymce/js/tinymce/tinymce.min.js"></script>
         <script>

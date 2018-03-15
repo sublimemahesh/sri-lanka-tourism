@@ -22,7 +22,6 @@ $(document).ready(function () {
                 html += '<input type="hidden" name="room-images[]" value="' + mess.filename + '"/>';
                 html += '</div>';
                 $('#image-list').append(html);
-
                 $('#loading').hide();
             },
             cache: false,
