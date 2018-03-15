@@ -61,88 +61,150 @@ $ROOM_PHOTO = new RoomPhoto(NULL);
                                 <div class="panel-body">
                                     <div class="body">
                                         <div class="userccount">
-
                                             <div class="formpanel"> 
                                                 <form class="form-horizontal"  method="post" action="post-and-get/room.php" enctype="multipart/form-data" id="form-room"> 
                                                     <div class="col-md-12">
+                                                        <div class="card">
+                                                            <div class="body">
+                                                                <div class="row clearfix">
+                                                                    <div class="col-xs-12 ol-sm-12 col-md-12 col-lg-12">
+                                                                        <div class="panel-group" id="accordion_3" role="tablist" aria-multiselectable="true">
+                                                                            <div class="panel panel-default">
+                                                                                <a role="button" data-toggle="collapse" data-parent="#accordion_3" href="#collapseOne_3" aria-expanded="true" aria-controls="collapseOne_3">
+                                                                                    <div class="panel-heading tab-panel-heading" role="tab" id="headingOne_3">
+                                                                                        <h4 class="panel-title">
+                                                                                            Your Room Details
+                                                                                        </h4>
+                                                                                    </div>
+                                                                                </a>
+                                                                                <div id="collapseOne_3" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne_3">
+                                                                                    <div class="panel-body">
+                                                                                        <div class="">
+                                                                                            <div class="bottom-top">
+                                                                                                <label for="Name">Name</label>
+                                                                                            </div>
+                                                                                            <div class="formrow">
+                                                                                                <input type="text" id="name" class="form-control" placeholder="Enter Name" autocomplete="off" name="name" required="true">
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="">
+                                                                                            <div class="bottom-top">
+                                                                                                <label for="Name">Number of Rooms</label>
+                                                                                            </div>
+                                                                                            <div class="formrow">
+                                                                                                <input type="number" min="0" id="number_of_room" class="form-control" placeholder="Enter Number of Rooms" autocomplete="off" name="number_of_room" required="TRUE">
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="">
+                                                                                            <div class="bottom-top">
+                                                                                                <label for="Name">Number of Adults</label>
+                                                                                            </div>
+                                                                                            <div class="formrow">
+                                                                                                <input type="number" min="0" id="number_of_adults" class="form-control" placeholder="Enter Number of adults" autocomplete="off" name="number_of_adults" required="TRUE">
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="">
+                                                                                            <div class="bottom-top">
+                                                                                                <label for="Name">Number of Children</label>
+                                                                                            </div>
+                                                                                            <div class="formrow">
+                                                                                                <input type="number" min="0" id="number_of_children" class="form-control" placeholder="Enter Number of Children" autocomplete="off" name="number_of_children" required="TRUE">
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="">
+                                                                                            <div class="bottom-top">
+                                                                                                <label for="Name">Number of Extra Beds</label>
+                                                                                            </div>
+                                                                                            <div class="formrow">
+                                                                                                <input type="number" min="0" id="number_of_extra_bed" class="form-control" placeholder="Enter Number Of Extra Bed" autocomplete="off" name="number_of_extra_bed" required="TRUE">
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="">
+                                                                                            <div class="bottom-top">
+                                                                                                <label for="Name">Extra Bed Price</label>
+                                                                                            </div>
+                                                                                            <div class="formrow">
+                                                                                                <input type="number" min="0" id="extra_bed_price" class="form-control" placeholder="Enter Extra Bed price" autocomplete="off" name="extra_bed_price" required="TRUE">
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="col-md-12 text-right">
+                                                                                            <a role="button" class="btn btn-info tab-next-button" data-toggle="collapse" data-parent="#accordion_3" href="#collapseTwo_3" aria-expanded="true" aria-controls="collapseOne_3">
+                                                                                                Next >>
+                                                                                            </a>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="panel panel panel-default">
+                                                                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion_3" href="#collapseTwo_3" aria-expanded="false"
+                                                                                   aria-controls="collapseTwo_3">
+                                                                                    <div class="panel-heading tab-panel-heading" role="tab" id="headingTwo_3">
+                                                                                        <h4 class="panel-title">
 
-                                                        <div class="">
-                                                            <div class="bottom-top">
-                                                                <label for="Name">Name</label>
-                                                            </div>
-                                                            <div class="formrow">
-                                                                <input type="text" id="name" class="form-control" placeholder="Enter Name" autocomplete="off" name="name" required="true">
-                                                            </div>
-                                                        </div>
-                                                        <div class="">
-                                                            <div class="bottom-top">
-                                                                <label for="Name">Number of Rooms</label>
-                                                            </div>
-                                                            <div class="formrow">
-                                                                <input type="number" min="0" id="number_of_room" class="form-control" placeholder="Enter Number of Rooms" autocomplete="off" name="number_of_room" required="TRUE">
-                                                            </div>
-                                                        </div>
-                                                        <div class="">
-                                                            <div class="bottom-top">
-                                                                <label for="Name">Number of Adults</label>
-                                                            </div>
-                                                            <div class="formrow">
-                                                                <input type="number" min="0" id="number_of_adults" class="form-control" placeholder="Enter Number of adults" autocomplete="off" name="number_of_adults" required="TRUE">
-                                                            </div>
-                                                        </div>
-                                                        <div class="">
-                                                            <div class="bottom-top">
-                                                                <label for="Name">Number of Children</label>
-                                                            </div>
-                                                            <div class="formrow">
-                                                                <input type="number" min="0" id="number_of_children" class="form-control" placeholder="Enter Number of Children" autocomplete="off" name="number_of_children" required="TRUE">
-                                                            </div>
-                                                        </div>
-                                                        <div class="">
-                                                            <div class="bottom-top">
-                                                                <label for="Name">Number of Extra Beds</label>
-                                                            </div>
-                                                            <div class="formrow">
-                                                                <input type="number" min="0" id="number_of_extra_bed" class="form-control" placeholder="Enter Number Of Extra Bed" autocomplete="off" name="number_of_extra_bed" required="TRUE">
-                                                            </div>
-                                                        </div>
-                                                        <div class="">
-                                                            <div class="bottom-top">
-                                                                <label for="Name">Extra Bed Price</label>
-                                                            </div>
-                                                            <div class="formrow">
-                                                                <input type="number" min="0" id="extra_bed_price" class="form-control" placeholder="Enter Extra Bed price" autocomplete="off" name="extra_bed_price" required="TRUE">
-                                                            </div>
-                                                        </div>
-                                                        <div class="bottom-top col-md-2">
-                                                            <div class="formrow">
-                                                                <div class="uploadphotobx" id="uploadphotobx"> 
-                                                                    <i class="fa fa-upload" aria-hidden="true"></i>
-                                                                    <label class="uploadBox">Click here to Upload photo
-                                                                        <input type="file" name="room-picture" id="room-picture">
-                                                                        <input type="hidden" name="upload-room-image" id="upload-room-image" value="TRUE"/>
-                                                                    </label>
+                                                                                            Room Photos
+
+                                                                                        </h4>
+                                                                                    </div>
+                                                                                </a>
+                                                                                <div id="collapseTwo_3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo_3">
+                                                                                    <div class="panel-body">
+
+                                                                                        <div class="bottom-top col-md-2">
+                                                                                            <div class="formrow">
+                                                                                                <div class="uploadphotobx" id="uploadphotobx"> 
+                                                                                                    <i class="fa fa-upload" aria-hidden="true"></i>
+                                                                                                    <label class="uploadBox">Click here to Upload photo
+                                                                                                        <input type="file" name="room-picture" id="room-picture">
+                                                                                                        <input type="hidden" name="upload-room-image" id="upload-room-image" value="TRUE"/>
+                                                                                                    </label>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div id="image-list">
+                                                                                        </div>
+                                                                                        <div class="col-md-12 text-right">
+                                                                                            <a role="button" class="btn btn-info tab-next-button" data-toggle="collapse" data-parent="#accordion_3" href="#collapseThree_3" aria-expanded="true" aria-controls="collapseOne_3">
+                                                                                                Next >>
+                                                                                            </a>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="panel panel panel-default">
+                                                                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion_3" href="#collapseThree_3" aria-expanded="false"
+                                                                                   aria-controls="collapseThree_3">
+                                                                                    <div class="panel-heading tab-panel-heading" role="tab" id="headingThree_3">
+                                                                                        <h4 class="panel-title">
+                                                                                            Description
+                                                                                        </h4>
+                                                                                    </div>
+                                                                                </a>
+                                                                                <div id="collapseThree_3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree_3">
+                                                                                    <div class="panel-body">
+                                                                                        <div class="col-md-12">
+                                                                                            <div class="bottom-top">
+                                                                                                <label for="Description">Description</label>
+                                                                                            </div>
+                                                                                            <div class="formrow">
+                                                                                                <textarea id="description" name="description" class="form-control" rows="5"></textarea> 
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="top-bott50 col-md-12">
+                                                                                            <div class="bottom-top">
+                                                                                                <input type="hidden" value="<?php echo $id ?>" name="id" />
+                                                                                                <button name="create" type="submit" class="btn btn-info center-block">Create</button>
+                                                                                            </div>
+                                                                                        </div> 
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div id="image-list">
-                                                        </div>
-                                                        <div class="col-md-12">
-                                                            <div class="bottom-top">
-                                                                <label for="Description">Description</label>
-                                                            </div>
-                                                            <div class="formrow">
-                                                                <textarea id="description" name="description" class="form-control" rows="5"></textarea> 
-                                                            </div>
-                                                        </div>
-                                                        <div class="top-bott50 col-md-12">
-                                                            <div class="bottom-top">
-                                                                <input type="hidden" value="<?php echo $id ?>" name="id" />
-                                                                <button name="create" type="submit" class="btn btn-info center-block">Create</button>
-                                                            </div>
-                                                        </div> 
-                                                    </div>  
-                                                </form>  
+                                                    </div>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
@@ -151,6 +213,7 @@ $ROOM_PHOTO = new RoomPhoto(NULL);
                         </div>
                     </div>
                 </div>
+
             </section>
 
 

@@ -57,108 +57,167 @@ include_once(dirname(__FILE__) . '/auth.php');
 
                                                 <form class="form-horizontal"  method="post" action="post-and-get/accommodation.php" enctype="multipart/form-data" id="form-accommodation"> 
                                                     <div class="col-md-12">
-                                                        <div class="">
-                                                            <div class="bottom-top">
-                                                                <label for="Name">Name</label>
-                                                            </div>
-                                                            <div class="formrow">
-                                                                <input type="text" id="name" name="name" class="form-control" placeholder="Please Enter Name">
-                                                            </div>
-                                                        </div>
-                                                        <div class="">
-                                                            <div class="bottom-top">
-                                                                <label for="Address">Address</label>
-                                                            </div>
-                                                            <div class="formrow">
-                                                                <input type="text" id="address" name="address" class="form-control" placeholder="Please Enter Your Address">
-                                                            </div>
-                                                        </div>
-                                                        <div class="">
-                                                            <div class="bottom-top">
-                                                                <label for="Email">Email</label>
-                                                            </div>
-                                                            <div class="formrow">
-                                                                <input type="email" id="email" name="email" class="form-control" placeholder="Please Enter Your Email Address">
-                                                            </div>
-                                                        </div>
-                                                        <div class="">
-                                                            <div class="bottom-top">
-                                                                <label for="Phone">Phone</label>
-                                                            </div>
-                                                            <div class="formrow">
-                                                                <input type="text" id="phone" name="phone" class="form-control" placeholder="Please Enter Your Phone Number">
-                                                            </div>
-                                                        </div>
-                                                        <div class="">
-                                                            <div class="bottom-top">
-                                                                <label for="Website">Website</label>
-                                                            </div>
-                                                            <div class="formrow">
-                                                                <input type="text" id="website" name="website" class="form-control" placeholder="Please Enter Your Website">
-                                                            </div>
-                                                        </div>
-                                                        <div class="">
-                                                            <div class="bottom-top">
-                                                                <label for="Accomodation_type">Accomodation Type</label>
-                                                            </div>
-                                                            <div class="formrow">
-                                                                <select class="form-control" autocomplete="off" type="text" id="type" autocomplete="off" name="type" required="TRUE">
-                                                                    <option value=""> -- Please Select -- </option>
-                                                                    <?php foreach (AccommodationType::all() as $key => $type) {
-                                                                        ?>
-                                                                        <option value="<?php echo $type['id']; ?>"><?php echo $type['name']; ?></option><?php
-                                                                    }
-                                                                    ?>
-                                                                </select>
+                                                        <div class="card">
+                                                            <div class="body">
+                                                                <div class="row clearfix">
+                                                                    <div class="col-xs-12 ol-sm-12 col-md-12 col-lg-12">
+                                                                        <div class="panel-group" id="accordion_3" role="tablist" aria-multiselectable="true">
+                                                                            <div class="panel panel-default">
+                                                                                <a role="button" data-toggle="collapse" data-parent="#accordion_3" href="#collapseOne_3" aria-expanded="true" aria-controls="collapseOne_3">
+                                                                                    <div class="panel-heading tab-panel-heading" role="tab" id="headingOne_3">
+                                                                                        <h4 class="panel-title">
+                                                                                            Your Accommodation Details
+                                                                                        </h4>
+                                                                                    </div>
+                                                                                </a>
+                                                                                <div id="collapseOne_3" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne_3">
+                                                                                    <div class="panel-body">
+                                                                                        <div class="">
+                                                                                            <div class="bottom-top">
+                                                                                                <label for="Name">Name</label>
+                                                                                            </div>
+                                                                                            <div class="formrow">
+                                                                                                <input type="text" id="name" name="name" class="form-control" placeholder="Please Enter Name">
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="">
+                                                                                            <div class="bottom-top">
+                                                                                                <label for="Address">Address</label>
+                                                                                            </div>
+                                                                                            <div class="formrow">
+                                                                                                <input type="text" id="address" name="address" class="form-control" placeholder="Please Enter Your Address">
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="">
+                                                                                            <div class="bottom-top">
+                                                                                                <label for="Email">Email</label>
+                                                                                            </div>
+                                                                                            <div class="formrow">
+                                                                                                <input type="email" id="email" name="email" class="form-control" placeholder="Please Enter Your Email Address">
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="">
+                                                                                            <div class="bottom-top">
+                                                                                                <label for="Phone">Phone</label>
+                                                                                            </div>
+                                                                                            <div class="formrow">
+                                                                                                <input type="text" id="phone" name="phone" class="form-control" placeholder="Please Enter Your Phone Number">
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="">
+                                                                                            <div class="bottom-top">
+                                                                                                <label for="Website">Website</label>
+                                                                                            </div>
+                                                                                            <div class="formrow">
+                                                                                                <input type="text" id="website" name="website" class="form-control" placeholder="Please Enter Your Website">
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="">
+                                                                                            <div class="bottom-top">
+                                                                                                <label for="Accomodation_type">Accomodation Type</label>
+                                                                                            </div>
+                                                                                            <div class="formrow">
+                                                                                                <select class="form-control" autocomplete="off" type="text" id="type" autocomplete="off" name="type" required="TRUE">
+                                                                                                    <option value=""> -- Please Select -- </option>
+                                                                                                    <?php foreach (AccommodationType::all() as $key => $type) {
+                                                                                                        ?>
+                                                                                                        <option value="<?php echo $type['id']; ?>"><?php echo $type['name']; ?></option><?php
+                                                                                                    }
+                                                                                                    ?>
+                                                                                                </select>
 
-                                                            </div>
-                                                        </div>
-                                                        <div class="">
-                                                            <div class="bottom-top">
-                                                                <label for="city">City</label>
-                                                            </div>
-                                                            <div class="formrow">
-                                                                <select class="form-control" autocomplete="off" type="text" id="city" autocomplete="off" name="city" required="TRUE">
-                                                                    <option value=""> -- Please Select -- </option>
-                                                                    <?php foreach (City::all() as $key => $city) {
-                                                                        ?>
-                                                                        <option value="<?php echo $city['id']; ?>"><?php echo $city['name']; ?></option><?php
-                                                                    }
-                                                                    ?>
-                                                                </select>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="">
+                                                                                            <div class="bottom-top">
+                                                                                                <label for="city">City</label>
+                                                                                            </div>
+                                                                                            <div class="formrow">
+                                                                                                <select class="form-control" autocomplete="off" type="text" id="city" autocomplete="off" name="city" required="TRUE">
+                                                                                                    <option value=""> -- Please Select -- </option>
+                                                                                                    <?php foreach (City::all() as $key => $city) {
+                                                                                                        ?>
+                                                                                                        <option value="<?php echo $city['id']; ?>"><?php echo $city['name']; ?></option><?php
+                                                                                                    }
+                                                                                                    ?>
+                                                                                                </select>
 
-                                                            </div>
-                                                        </div>
-                                                        <div class="bottom-top col-md-2">
-                                                            <div class="formrow">
-                                                                <div class="uploadphotobx" id="uploadphotobx"> 
-                                                                    <i class="fa fa-upload" aria-hidden="true"></i>
-                                                                    <label class="uploadBox">Click here to Upload photo
-                                                                        <input type="file" name="accommodation-picture" id="accommodation-picture">
-                                                                        <input type="hidden" name="upload-accommodation-image" id="upload-accommodation-image" value="TRUE"/>
-                                                                    </label>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="col-md-12 text-right">
+                                                                                            <a role="button" class="btn btn-info tab-next-button" data-toggle="collapse" data-parent="#accordion_3" href="#collapseTwo_3" aria-expanded="true" aria-controls="collapseOne_3">
+                                                                                                Next >>
+                                                                                            </a>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="panel panel panel-default">
+                                                                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion_3" href="#collapseTwo_3" aria-expanded="false"
+                                                                                   aria-controls="collapseTwo_3">
+                                                                                    <div class="panel-heading tab-panel-heading" role="tab" id="headingTwo_3">
+                                                                                        <h4 class="panel-title">
+                                                                                            Accommodations Photos
+                                                                                        </h4>
+                                                                                    </div>
+                                                                                </a>
+                                                                                <div id="collapseTwo_3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo_3">
+                                                                                    <div class="panel-body">
+                                                                                        <div class="bottom-top col-md-2">
+                                                                                            <div class="formrow">
+                                                                                                <div class="uploadphotobx" id="uploadphotobx"> 
+                                                                                                    <i class="fa fa-upload" aria-hidden="true"></i>
+                                                                                                    <label class="uploadBox">Click here to Upload photo
+                                                                                                        <input type="file" name="accommodation-picture" id="accommodation-picture">
+                                                                                                        <input type="hidden" name="upload-accommodation-image" id="upload-accommodation-image" value="TRUE"/>
+                                                                                                    </label>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div id="image-list">
+                                                                                        </div>
+                                                                                        <div class="col-md-12 text-right">
+                                                                                            <a role="button" class="btn btn-info tab-next-button" data-toggle="collapse" data-parent="#accordion_3" href="#collapseThree_3" aria-expanded="true" aria-controls="collapseOne_3">
+                                                                                                Next >>
+                                                                                            </a>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="panel panel panel-default">
+                                                                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion_3" href="#collapseThree_3" aria-expanded="false"
+                                                                                   aria-controls="collapseThree_3">
+                                                                                    <div class="panel-heading tab-panel-heading" role="tab" id="headingThree_3">
+                                                                                        <h4 class="panel-title">
+                                                                                            Description
+                                                                                        </h4>
+                                                                                    </div>
+                                                                                </a>
+                                                                                <div id="collapseThree_3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree_3">
+                                                                                    <div class="panel-body">
+                                                                                        <div class="bottom-top">
+                                                                                            <label for="description">Description</label>
+                                                                                        </div>
+                                                                                        <div class="formrow">
+                                                                                            <textarea type="text" id="description" name="description" class="form-control" placeholder="Please Enter Description"></textarea>
+                                                                                        </div>
+
+
+                                                                                        <div class="top-bott50 col-md-12">
+                                                                                            <div class="bottom-top">
+                                                                                                <input type="hidden" id="member" name="member" value="<?php echo $_SESSION['id']; ?>"/>
+                                                                                                <button name="create" type="submit" class="btn btn-info center-block">Create</button>
+                                                                                            </div>
+                                                                                        </div> 
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div id="image-list">
-                                                        </div>
-                                                        <div class="col-md-12">
-
-                                                            <div class="bottom-top">
-                                                                <label for="description">Description</label>
-                                                            </div>
-                                                            <div class="formrow">
-                                                                <textarea type="text" id="description" name="description" class="form-control" placeholder="Please Enter Description"></textarea>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="top-bott50 col-md-12">
-                                                            <div class="bottom-top">
-                                                                <input type="hidden" id="member" name="member" value="<?php echo $_SESSION['id']; ?>"/>
-                                                                <button name="create" type="submit" class="btn btn-info center-block">Create</button>
-                                                            </div>
-                                                        </div> 
-                                                    </div>  
+                                                    </div>
                                                 </form>  
                                             </div>
                                         </div>
@@ -171,10 +230,6 @@ include_once(dirname(__FILE__) . '/auth.php');
                     </div>
                 </div>
             </section>
-
-
-
-
             <?php
             include './footer.php';
             ?>
