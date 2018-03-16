@@ -192,7 +192,7 @@ $ROOM_PHOTO = new RoomPhoto(NULL);
                                                                                         <div class="top-bott50 col-md-12">
                                                                                             <div class="bottom-top">
                                                                                                 <input type="hidden" value="<?php echo $id ?>" name="id" />
-                                                                                                <button name="create" type="submit" class="btn btn-info center-block">Create</button>
+                                                                                                <input name="create" type="submit" class="btn btn-info center-block" value="Create">
                                                                                             </div>
                                                                                         </div> 
                                                                                     </div>

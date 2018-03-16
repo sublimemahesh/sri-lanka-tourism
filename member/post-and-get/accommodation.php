@@ -31,7 +31,7 @@ if (isset($_POST['create'])) {
 
     if ($VALID->passed()) {
         $ACCOMODATION->create();
-        
+
         foreach ($_POST["accommodation-images"] as $key => $photos) {
 
             $ACCOMMODATION_PHOTO = new AccommodationPhoto(NULL);
@@ -48,7 +48,8 @@ if (isset($_POST['create'])) {
         $VALID->addError("Your data was saved successfully", 'success');
         $_SESSION['ERRORS'] = $VALID->errors();
 
-        header('Location: ' . $_SERVER['HTTP_REFERER']);
+//        header('Location: ' . $_SERVER['HTTP_REFERER']);
+        header("location: ../manage-tour-package.php");
     } else {
 
         if (!isset($_SESSION)) {
