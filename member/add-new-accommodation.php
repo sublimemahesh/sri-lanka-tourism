@@ -189,22 +189,81 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                                                    aria-controls="collapseThree_3">
                                                                                     <div class="panel-heading tab-panel-heading" role="tab" id="headingThree_3">
                                                                                         <h4 class="panel-title">
-                                                                                            Description
+                                                                                            Facilities
                                                                                         </h4>
                                                                                     </div>
                                                                                 </a>
                                                                                 <div id="collapseThree_3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree_3">
                                                                                     <div class="panel-body">
-                                                                                        <div class="bottom-top">
-                                                                                            <label for="description">Description</label>
+                                                                                        <div class="table-responsive">
+                                                                                            <div>
+                                                                                                <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                                                                                                    <thead>
+                                                                                                        <tr>
+                                                                                                            <th>ID</th>
+                                                                                                            <th>Name</th>
+                                                                                                            <th>Option</th>
+                                                                                                        </tr>
+                                                                                                    </thead>
+                                                                                                    <tfoot>
+                                                                                                        <tr>
+                                                                                                            <th>ID</th>
+                                                                                                            <th>Name</th>
+                                                                                                            <th>Option</th>
+                                                                                                        </tr>
+                                                                                                    </tfoot>
+                                                                                                    <tbody>
+                                                                                                        <?php
+                                                                                                        $ACCOMODATION_GENERAL_FACILITY = new AccommodationGeneralFacilities(NULL);
+                                                                                                        $ACCOMODATION_FACILITY_DETAILS = new AccommodationFacilityDetails(NULL);
+                                                                                                        foreach ($ACCOMODATION_GENERAL_FACILITY->all() as $key => $accommodation_general_facility) {
+                                                                                                            ?>
+                                                                                                            <tr id="row_<?php echo $accommodation_general_facility['id']; ?>">
+                                                                                                                <td><?php echo $accommodation_general_facility['sort']; ?></td> 
+                                                                                                                <td><?php echo $accommodation_general_facility['name']; ?></td> 
+                                                                                                                <td> 
+                                                                                                                    <input  value="<?php echo $accommodation_general_facility['id']; ?>" name="facility[]" type="checkbox">
+                                                                                                                </td>
+                                                                                                            </tr>
+                                                                                                            <?php
+                                                                                                        }
+                                                                                                        ?>   
+                                                                                                    </tbody>
+                                                                                                </table>
+                                                                                            </div>
                                                                                         </div>
-                                                                                        <div class="formrow">
-                                                                                            <textarea type="text" id="description" name="description" class="form-control" placeholder="Please Enter Description"></textarea>
+                                                                                        <div class="col-md-12 text-right">
+                                                                                            <a role="button" class="btn btn-info tab-next-button" data-toggle="collapse" data-parent="#accordion_3" href="#collapseFour_3" aria-expanded="true" aria-controls="collapseOne_3">
+                                                                                                Next >>
+                                                                                            </a>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="panel panel panel-default">
+                                                                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion_3" href="#collapseFour_3" aria-expanded="false"
+                                                                                   aria-controls="collapseFour_3">
+                                                                                    <div class="panel-heading tab-panel-heading" role="tab" id="headingFour_3">
+                                                                                        <h4 class="panel-title">
+                                                                                            Description
+                                                                                        </h4>
+                                                                                    </div>
+                                                                                </a>
+                                                                                <div id="collapseFour_3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour_3">
+                                                                                    <div class="panel-body">
+                                                                                        <div class="col-md-12">
+                                                                                            <div class="bottom-top">
+                                                                                                <label for="Description">Description</label>
+                                                                                            </div>
+                                                                                            <div class="formrow">
+                                                                                                <textarea id="description" name="description" class="form-control" rows="5"></textarea> 
+                                                                                            </div>
                                                                                         </div>
                                                                                         <div class="top-bott50 col-md-12">
                                                                                             <div class="bottom-top">
                                                                                                 <input type="hidden" id="member" name="member" value="<?php echo $_SESSION['id']; ?>"/>
-                                                                                                <button name="create" type="submit" class="btn btn-info center-block">Create</button>
+                                                                                                <input type="hidden" value="<?php echo $id ?>" name="id" />
+                                                                                                <input name="create" type="submit" class="btn btn-info center-block" value="Create">
                                                                                             </div>
                                                                                         </div> 
                                                                                     </div>
