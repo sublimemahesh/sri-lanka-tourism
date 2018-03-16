@@ -5,7 +5,8 @@ $id = '';
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 }
-$TOUR_PACKAGE = new TourPackage($id)
+$TOUR_PACKAGE = new TourPackage($id);
+$TOUR_SUB_PHOTO = new TourSubSectionPhoto(NULL);
 ?> 
 <!DOCTYPE html>
 <html lang="en">
@@ -115,6 +116,22 @@ $TOUR_PACKAGE = new TourPackage($id)
                                                     ?>
                                                     <div class="col-md-3" id="div_<?php echo $tour_s['id']; ?>">
         <!--                                                        <p class="maxlinetitle"><?php echo $tour_s['sort']; ?></p>-->
+                                                        <div class="">
+                                                            <?php
+                                                            if (count($TOUR_SUB_PHOTO) > 0) {
+                                                                foreach ($TOUR_SUB_PHOTO->getTourSubSectionPhotosById($tour_s['id']) as $key => $tour_sub_p) {
+                                                                    if ($key == 1) {
+                                                                        break;
+                                                                    }
+                                                                    ?>
+                                                            <img class="img-responsive" src="../upload/tour-package/sub-section/thumb/<?php echo $tour_sub_p['image_name']; ?>">
+                                                                    <?php
+                                                                }
+                                                            } else {
+                                                                ?> 
+                                                                <b style="padding-left: 15px;">No Accommodation Image.</b> 
+                                                            <?php } ?>
+                                                        </div> 
                                                         <p class="maxlinetitle"><?php echo $tour_s['title']; ?></p>
                                                         <p class="maxlinetitle"><?php echo $tour_s['duration']; ?></p>
                                                         <div>
