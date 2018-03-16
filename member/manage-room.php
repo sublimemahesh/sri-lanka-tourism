@@ -19,19 +19,18 @@ $ROOM_PHOTO = new RoomPhoto(NULL);
         <meta name="author" content="Dashboard">
         <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
-        <title>Rooms - www.srilankatourism.travel</title>
+        <title>Manage Room || My Account ||  www.srilankatourism.travel</title>
 
-        <!-- Bootstrap core CSS -->
         <link href="assets/css/bootstrap.css" rel="stylesheet">
         <!--external css-->
+
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
         <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-        <link rel="stylesheet" type="text/css" href="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-datepicker/css/datepicker.html" />
-        <link rel="stylesheet" type="text/css" href="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-daterangepicker/daterangepicker.html" />
         <link href="assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css"/>
+        <link href="assets/css/font-awesome.min.min.css" rel="stylesheet" type="text/css"/>
         <!-- Custom styles for this template -->
         <link href="assets/css/style.css" rel="stylesheet">
         <link href="assets/css/style-responsive.css" rel="stylesheet">
-        <script src="assets/plugins/jquery-steps/jquery.steps.js" type="text/javascript"></script>
         <link href="assets/css/custom.css" rel="stylesheet" type="text/css"/>
         <style>
             .img-thumbnail {
@@ -48,27 +47,32 @@ $ROOM_PHOTO = new RoomPhoto(NULL);
             <section id="main-content">
                 <div class="wrapper">
                     <div class="container-fluid">
-                        <div class="row  top-bott20"> 
-                            <?php
-                            $vali = new Validator();
-
-                            $vali->show_message();
-                            ?>
-
+                        <div class="top-bott20"> 
                             <div class="panel panel-default">
                                 <div class="panel-heading"><i class="fa fa-pencil"></i>Rooms</div>
                                 <div class="panel-body">
-                                    <div class="body">
+                                      <div class="body">
                                         <div class="userccount">
 
                                             <div class="formpanel"> 
                                                 <div class="row clearfix">
+                                                    <div class="col-md-3">
+                                                        <div class="formrow">
+                                                            <a href="accommodation-room.php?id=<?php echo $id;?>">
+                                                                <div class="uploadbox2 uploadphotobx2" id="uploadphotobx">
+                                                                    <i class="fa fa-plus plus-icon" aria-hidden="true"></i>
+                                                                    <label class="uploadBox">Click here to Upload New Room
+                                                                     
+                                                                    </label>
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                    </div>  
                                                     <?php
                                                     foreach ($ROOMS as $key => $room) {
                                                         ?>
                                                         <div class="col-md-3 style-transport" id="div_<?php echo $room['id']; ?>">
-                                                            <div><?php echo $room['id']; ?></div>
-                                                            <div class="room_all">
+                                                                                                                      <div class="room_all">
                                                                 <?php
                                                                 if (count($ROOM_PHOTO) > 0) {
                                                                     foreach ($ROOM_PHOTO->getRoomPhotosById($room['id']) as $key => $room_p) {
@@ -76,37 +80,39 @@ $ROOM_PHOTO = new RoomPhoto(NULL);
                                                                             break;
                                                                         }
                                                                         ?>
-                                                                <img class="img-responsive" src="../upload/accommodation/rooms/thumb/<?php echo $room_p['image_name']; ?>">
+                                                                        <img class="img-responsive" src="../upload/accommodation/rooms/thumb/<?php echo $room_p['image_name']; ?>">
                                                                         <?php
                                                                     }
-                                                                } else {
-                                                                    ?> 
-                                                                    <b style="padding-left: 15px;">No Room Image.</b> 
-                                                                <?php } ?>
-                                                            </div> 
+                                                                    ?>
+                                                                </div> 
 
 
-                                                            <div><b>Title :</b> <?php echo $room['name']; ?></div>
-                                                            <div>
+                                                                <div><b>Title :</b> <?php echo $room['name']; ?></div>
+                                                                <div>
 
-                                                                <a title="Edit Room" href="edit-room.php?id=<?php echo $room['id']; ?>&aid=<?php echo $id; ?>"><button class="btn btn-primary btn-sm all-icon all-icon fa fa-pencil"></button>
-                                                                </a> 
-                                                                |
-                                                                <a title="Delete Room">
-                                                                    <button class="delete-rooms btn btn-danger btn-sm all-icon all-icon fa fa-trash-o" data-id="<?php echo $room['id']; ?>"></button>
-                                                                </a> 
-                                                                |
-                                                                <a title="Add Your Room Photos" href="add-room-photo.php?id=<?php echo $room['id']; ?>&aid=<?php echo $id; ?>">
-                                                                    <button class="btn btn-success btn-sm all-icon all-icon fa fa-photo"></button>
-                                                                </a> 
-                                                                |
-                                                                <a title="Add Your Accommodation Room Facilities" href="room-facilities.php?id=<?php echo $room['id']; ?>">
-                                                                    <button class="btn btn-warning btn-sm all-icon all-icon fa fa-check-square"></button>
-                                                                </a> 
+                                                                    <a title="Edit Room" href="edit-room.php?id=<?php echo $room['id']; ?>&aid=<?php echo $id; ?>"><button class="btn btn-primary btn-sm all-icon all-icon fa fa-pencil"></button>
+                                                                    </a> 
+                                                                    |
+                                                                    <a title="Delete Room">
+                                                                        <button class="delete-rooms btn btn-danger btn-sm all-icon all-icon fa fa-trash-o" data-id="<?php echo $room['id']; ?>"></button>
+                                                                    </a> 
+                                                                    |
+                                                                    <a title="Add Your Room Photos" href="add-room-photo.php?id=<?php echo $room['id']; ?>&aid=<?php echo $id; ?>">
+                                                                        <button class="btn btn-success btn-sm all-icon all-icon fa fa-photo"></button>
+                                                                    </a> 
+                                                                    |
+                                                                    <a title="Add Your Accommodation Room Facilities" href="room-facilities.php?id=<?php echo $room['id']; ?>">
+                                                                        <button class="btn btn-warning btn-sm all-icon all-icon fa fa-check-square"></button>
+                                                                    </a> 
+                                                                </div>
+
                                                             </div>
-
-                                                        </div>
-                                                        <?php
+                                                            <?php
+                                                        } else {
+                                                            ?> 
+                                                            <b style="padding-left: 15px;">No Room Image.</b> 
+                                                            <?php
+                                                        }
                                                     }
                                                     ?>  
 
@@ -122,47 +128,30 @@ $ROOM_PHOTO = new RoomPhoto(NULL);
                 </div>
             </section>
 
-
-
-
             <?php
             include './footer.php';
             ?>
         </section>
 
-        <!-- js placed at the end of the document so the pages load faster -->
         <script src="assets/js/jquery.js"></script>
         <script src="assets/js/bootstrap.min.js"></script>
         <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
         <script src="assets/js/jquery.scrollTo.min.js"></script>
-        <script src="assets/js/jquery.nicescroll.js" type="text/javascript"></script>
-
-        <!--common script for all pages-->
         <script src="assets/js/common-scripts.js"></script>
-        <!--script for this page-->
         <script src="assets/js/jquery-ui-1.9.2.custom.min.js"></script>
-        <!--custom switch-->
-        <script src="assets/js/bootstrap-switch.js"></script>
-        <!--custom tagsinput-->
-        <script src="assets/js/jquery.tagsinput.js"></script>
-        <!--custom checkbox & radio-->
-        <script type="text/javascript" src="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-datepicker/js/bootstrap-datepicker.html"></script>
-        <script type="text/javascript" src="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-daterangepicker/date.html"></script>
-        <script type="text/javascript" src="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-daterangepicker/daterangepicker-2.html"></script>
+
         <script type="text/javascript" src="assets/js/bootstrap-inputmask/bootstrap-inputmask.min.js"></script>
-        <script src="assets/js/form-component.js"></script>    
-        <script src="assets/plugins/jquery-steps/jquery.steps.min.js" type="text/javascript"></script>
         <script src="assets/plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>
-        <script src="delete/js/rooms.js" type="text/javascript"></script>
-        <script src="js/post-room-image.js" type="text/javascript"></script>
+
+        <script src="delete/js/accommmodation.js" type="text/javascript"></script>
         <script>
             //custom select box
 
             $(function () {
                 $('select.styled').customSelect();
             });
-        </script>
 
+        </script>
         <script src="assets/tinymce/js/tinymce/tinymce.min.js"></script>
         <script>
             tinymce.init({
@@ -190,5 +179,4 @@ $ROOM_PHOTO = new RoomPhoto(NULL);
             });
         </script>
     </body>
-
 </html>

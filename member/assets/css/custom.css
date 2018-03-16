@@ -295,7 +295,7 @@ and open the template in the editor.
 }
 
 .uploadbox{
-   height: 230px;
+    height: 230px;
 }
 .plus-icon{
     padding-top: 60px;
@@ -341,4 +341,37 @@ and open the template in the editor.
 .tab-next-button{
     margin-top: 20px;
     margin-right: -15px;
+}
+
+
+
+.uploadphotobx1{
+    border: 3px dashed #ddd;
+    background: #eee;
+    padding: 10px 10px;
+    text-align: center;
+}
+
+.uploadphotobx1 i {
+    font-size: 48px;
+    color: #999;
+    display: block;
+    margin-bottom: 15px;
+    height: 142px;
+}
+
+.uploadphotobx2{
+    border: 3px dashed #ddd;
+    background: #eee;
+    padding: 10px 10px;
+    text-align: center;
+   
+}
+
+.uploadphotobx2 i {
+    font-size: 48px;
+    color: #999;
+    display: block;
+    margin-bottom: 15px;
+     height: 160px;
 }

@@ -22,7 +22,7 @@ $ACCOMODATION_PHOTO = new AccommodationPhoto(NULL);
 
         <link href="assets/css/bootstrap.css" rel="stylesheet">
         <!--external css-->
-        
+
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
         <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
         <link href="assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css"/>
@@ -48,66 +48,78 @@ $ACCOMODATION_PHOTO = new AccommodationPhoto(NULL);
                     <div class="container-fluid">
                         <div class="top-bott20"> 
                             <div class="panel panel-default">
-                                <div class="panel-heading"><i class="fa fa-pencil"></i> Manage Accommodation</div>
+                                <div class="panel-heading"><i class="fa fa-pencil"></i>Accommodation</div>
                                 <div class="panel-body">
                                     <div class="body">
                                         <div class="userccount">
                                             <div class="formpanel"> 
                                                 <div class="row clearfix">
-                                                    <?php
-                                                    foreach ($accommodations as $key => $accommodation) {
-                                                        ?>
-                                                        <div class="col-md-4 style-transport" id="div_<?php echo $accommodation['id']; ?>">
-                                                            <div><?php echo $accommodation['id']; ?></div>
-                                                            <div class="">
-                                                                <?php
-                                                                if (count($ACCOMODATION_PHOTO) > 0) {
-                                                                    foreach ($ACCOMODATION_PHOTO->getAccommodationPhotosById($accommodation['id']) as $key => $accommodation_p) {
-                                                                        if ($key == 1) {
-                                                                            break;
-                                                                        }
-                                                                        ?>
-                                                                        <img class="img-responsive" src="../upload/accommodation/thumb/<?php echo $accommodation_p['image_name']; ?>">
-                                                                        <?php
-                                                                    }
-                                                                } else {
-                                                                    ?> 
-                                                                    <b style="padding-left: 15px;">No Accommodation Image.</b> 
-                                                                <?php } ?>
-                                                            </div> 
-
-
-                                                            <div><b>Title :</b> <?php echo $accommodation['name']; ?></div>
-                                                            <div>
-
-                                                                <a title="Edit Accommodation" href="edit-accommodation.php?id=<?php echo $accommodation['id']; ?>"><button class="btn btn-primary btn-xs all-icon fa fa-pencil"></button>
-                                                                </a> 
-                                                                |
-                                                                <a title="Delete Accommodation">
-                                                                    <button class="delete-accommodation btn btn-danger btn-xs all-icon fa fa-trash-o" data-id="<?php echo $accommodation['id']; ?>"></button>
-                                                                </a> 
-                                                                |
-                                                                <a title="Add Your Accommodation Photo" href="add-accommodation-photo.php?id=<?php echo $accommodation['id']; ?>">
-                                                                    <button class="btn btn-success btn-xs all-icon fa fa-photo"></button>
-                                                                </a> 
-                                                                |
-                                                                <a title="Add Your Accommodation Facilities" href="accommodation-facilities.php?id=<?php echo $accommodation['id']; ?>">
-                                                                    <button class="btn btn-warning btn-xs all-icon fa fa-check-square"></button>
-                                                                </a> 
-                                                                |
-                                                                <a title="Add Your Accommodation No Of Rooms" href="accommodation-room.php?id=<?php echo $accommodation['id']; ?>">
-                                                                    <button class="btn btn-facebook btn-xs all-icon fa fa-th-list"></button>
-                                                                </a> 
-                                                                |
-                                                                <a title="Accommodation Rooms" href="manage-room.php?id=<?php echo $accommodation['id']; ?>">
-                                                                    <button class="btn btn-facebook btn-xs all-icon fa fa-bed"></button>
-                                                                </a> 
-                                                            </div>
-
+                                                    <div class="col-md-3">
+                                                        <div class="formrow">
+                                                            <a href="add-new-accommodation.php">
+                                                                <div class="uploadbox1 uploadphotobx1" id="uploadphotobx">
+                                                                    <i class="fa fa-plus plus-icon" aria-hidden="true"></i>
+                                                                    <label class="uploadBox">Click here to Upload New Accommodation
+                                                                        <input type="hidden" name="upload-transport-photo" id="upload-transport-photo" value="TRUE">
+                                                                        <input type="hidden" name="transport" id="transport" value="<?php echo $id; ?>">
+                                                                    </label>
+                                                                </div>
+                                                            </a>
                                                         </div>
+                                                    </div>  
+                                                    <div id="image-list">
                                                         <?php
-                                                    }
-                                                    ?> 
+                                                        foreach ($accommodations as $key => $accommodation) {
+                                                            ?>
+                                                            <div class="col-md-3" style="padding-bottom: 15px" id="div_<?php echo $accommodation['id']; ?>"> 
+                                                                <div class="">
+                                                                    <?php
+                                                                    if (count($ACCOMODATION_PHOTO) > 0) {
+                                                                        foreach ($ACCOMODATION_PHOTO->getAccommodationPhotosById($accommodation['id']) as $key => $accommodation_p) {
+                                                                            if ($key == 1) {
+                                                                                break;
+                                                                            }
+                                                                            ?>
+                                                                            <img class="img-responsive" src="../upload/accommodation/thumb/<?php echo $accommodation_p['image_name']; ?>">
+                                                                            <?php
+                                                                        }
+                                                                    } else {
+                                                                        ?> 
+                                                                        <b style="padding-left: 15px;">No Accommodation Image.</b> 
+                                                                    <?php } ?>
+                                                                </div> 
+                                                                <div><b>Title :</b> <?php echo $accommodation['name']; ?></div>
+                                                                <div>
+
+                                                                    <a title="Edit Accommodation" href="edit-accommodation.php?id=<?php echo $accommodation['id']; ?>"><button class="btn btn-primary btn-xs all-icon fa fa-pencil"></button>
+                                                                    </a> 
+                                                                    |
+                                                                    <a title="Delete Accommodation">
+                                                                        <button class="delete-accommodation btn btn-danger btn-xs all-icon fa fa-trash-o" data-id="<?php echo $accommodation['id']; ?>"></button>
+                                                                    </a> 
+                                                                    |
+                                                                    <a title="Add Your Accommodation Photo" href="add-accommodation-photo.php?id=<?php echo $accommodation['id']; ?>">
+                                                                        <button class="btn btn-success btn-xs all-icon fa fa-photo"></button>
+                                                                    </a> 
+                                                                    |
+                                                                    <a title="Add Your Accommodation Facilities" href="accommodation-facilities.php?id=<?php echo $accommodation['id']; ?>">
+                                                                        <button class="btn btn-warning btn-xs all-icon fa fa-check-square"></button>
+                                                                    </a> 
+                                                                    <!--                                                                    |
+                                                                                                                                        <a title="Add Your Accommodation No Of Rooms" href="accommodation-room.php?id=<?php echo $accommodation['id']; ?>">
+                                                                                                                                            <button class="btn btn-facebook btn-xs all-icon fa fa-th-list"></button>
+                                                                                                                                        </a> -->
+                                                                    |
+                                                                    <a title="Accommodation Rooms" href="manage-room.php?id=<?php echo $accommodation['id']; ?>">
+                                                                        <button class="btn btn-facebook btn-xs all-icon fa fa-bed"></button>
+                                                                    </a> 
+                                                                </div>
+
+                                                            </div>
+                                                            <?php
+                                                        }
+                                                        ?> 
+                                                    </div>
                                                 </div>  
                                             </div>
                                         </div>
@@ -170,5 +182,4 @@ $ACCOMODATION_PHOTO = new AccommodationPhoto(NULL);
             });
         </script>
     </body>
-
 </html>
