@@ -8,6 +8,8 @@ if (isset($_GET['id'])) {
 $ACCOMODATION = new Accommodation($id);
 $ROOMS = Room::getAccommodationRoomsById($id);
 $ROOM_PHOTO = new RoomPhoto(NULL);
+$ROOM_FACILITY = new RoomFacility(NULL);
+$ROOM_FACILITY_DETAILS = new RoomFaciliityDetails(NULL);
 ?> 
 <!DOCTYPE html>
 <html lang="en">
@@ -175,11 +177,75 @@ $ROOM_PHOTO = new RoomPhoto(NULL);
                                                                                    aria-controls="collapseThree_3">
                                                                                     <div class="panel-heading tab-panel-heading" role="tab" id="headingThree_3">
                                                                                         <h4 class="panel-title">
-                                                                                            Description
+                                                                                            Facilities
                                                                                         </h4>
                                                                                     </div>
                                                                                 </a>
                                                                                 <div id="collapseThree_3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree_3">
+                                                                                    <div class="panel-body">
+                                                                                        <div class="table-responsive">
+                                                                                            <div>
+                                                                                                <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                                                                                                    <thead>
+                                                                                                        <tr>
+                                                                                                            <th>ID</th>
+                                                                                                            <th>Name</th> 
+                                                                                                            <th>Options</th>
+                                                                                                        </tr>
+                                                                                                    </thead>
+                                                                                                    <tfoot>
+                                                                                                        <tr>
+                                                                                                            <th>ID</th>
+                                                                                                            <th>Name</th> 
+                                                                                                            <th>Options</th>
+                                                                                                        </tr>
+                                                                                                    </tfoot>
+                                                                                                    <tbody>
+
+                                                                                                        <?php
+                                                                                                        $result = RoomFaciliityDetails::getFacilitiesByRoomId($id);
+                                                                                                        foreach ($ROOM_FACILITY->all() as $key => $room_facility) {
+                                                                                                            ?>
+                                                                                                            <tr id="row_<?php echo $room_facility['id']; ?>">
+                                                                                                                <td><?php echo $room_facility['sort']; ?></td> 
+                                                                                                                <td><?php echo $room_facility['name']; ?></td> 
+                                                                                                                <td> 
+                                                                                                                    <input  value="<?php echo $room_facility['id']; ?>" <?php
+                                                                                                                    $resultFacilities = explode(",", $result['facility']);
+                                                                                                                    foreach ($resultFacilities as $items => $resultFacility) {
+                                                                                                                        if ($resultFacility == $room_facility['id']) {
+                                                                                                                            echo 'checked';
+                                                                                                                        }
+                                                                                                                    }
+                                                                                                                    ?> name="facility[]" type="checkbox">
+                                                                                                                </td>
+                                                                                                            </tr>
+                                                                                                            <?php
+                                                                                                        }
+                                                                                                        ?> 
+                                                                                                    </tbody>
+                                                                                                </table>
+                                                                                            
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="col-md-12 text-right">
+                                                                                            <a role="button" class="btn btn-info tab-next-button" data-toggle="collapse" data-parent="#accordion_3" href="#collapseFour_3" aria-expanded="true" aria-controls="collapseOne_3">
+                                                                                                Next >>
+                                                                                            </a>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="panel panel panel-default">
+                                                                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion_3" href="#collapseFour_3" aria-expanded="false"
+                                                                                   aria-controls="collapseFour_3">
+                                                                                    <div class="panel-heading tab-panel-heading" role="tab" id="headingFour_3">
+                                                                                        <h4 class="panel-title">
+                                                                                            Description
+                                                                                        </h4>
+                                                                                    </div>
+                                                                                </a>
+                                                                                <div id="collapseFour_3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour_3">
                                                                                     <div class="panel-body">
                                                                                         <div class="col-md-12">
                                                                                             <div class="bottom-top">
@@ -251,7 +317,6 @@ $ROOM_PHOTO = new RoomPhoto(NULL);
         <script src="js/post-room-image.js" type="text/javascript"></script>
         <script>
             //custom select box
-
             $(function () {
                 $('select.styled').customSelect();
             });
