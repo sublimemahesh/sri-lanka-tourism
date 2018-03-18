@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <?php
 include_once(dirname(__FILE__) . '/../class/include.php');
 include_once(dirname(__FILE__) . '/auth.php');
@@ -8,7 +9,6 @@ if (isset($_GET['id'])) {
 $TOUR_PACKAGE = new TourPackage($id);
 $TOUR_SUB_PHOTO = new TourSubSectionPhoto(NULL);
 ?> 
-<!DOCTYPE html>
 <html lang="en">
 
     <head>
@@ -57,58 +57,67 @@ $TOUR_SUB_PHOTO = new TourSubSectionPhoto(NULL);
                                 <div class="panel-heading"><i class="fa fa-save"></i> Create Tour Sub Section Package</div>
                                 <div class="panel-body">
                                     <div class="body">
-                                        <div class="userccount">
-                                            <div class="formpanel"> 
-                                                <form class="form-horizontal"  method="post" action="post-and-get/tour-package-sub-section.php" enctype="multipart/form-data" id="form-tour-sub-section-package"> 
-                                                    <div class="col-md-12">
-                                                        <div class="bottom-top">
-                                                            <label for="title">Title</label>
+                                        <div class="row clearfix">
+                                            <div class="col-md-3">
+                                                <div class="formrow">
+                                                    <a href="add-new-tour-package-sub-section.php?id=<?php echo $id; ?>">
+                                                        <div class="uploadbox uploadphotobx" id="uploadphotobx">
+                                                            <i class="fa fa-plus plus-icon" aria-hidden="true"></i>
+                                                            <label class="uploadBox">Click here to Upload New Tour Sub section
+                                                            </label>
                                                         </div>
-                                                        <div class="formrow">
-                                                            <input type="text" id="caption" class="form-control" placeholder="Enter Title" autocomplete="off" name="title" required="true">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-12">
-                                                        <div class="bottom-top">
-                                                            <label for="duration">Duration</label>
-                                                        </div>
-                                                        <div class="formrow">
-                                                            <input type="text" id="duration" class="form-control" placeholder="Enter Duration" autocomplete="off" name="duration" required="true">
-                                                        </div>
-                                                    </div>
-                                                    <div class="bottom-top col-md-2">
-                                                        <div class="formrow">
-                                                            <div class="uploadphotobx" id="uploadphotobx"> 
-                                                                <i class="fa fa-upload" aria-hidden="true"></i>
-                                                                <label class="uploadBox">Click here to Upload photo
-                                                                    <input type="file" name="tour-sub-picture" id="tour-sub-picture">
-                                                                    <input type="hidden" name="upload-tour-sub-image" id="upload-tour-sub-image" value="TRUE"/>
-                                                                </label>
+                                                    </a>
+                                                </div>
+                                            </div>  
+                                            <?php
+                                            $TOUR_SUB = TourSubSection::GetTourSubSectionByTourPackage($id);
+                                            if (count($TOUR_SUB) > 0) {
+                                                foreach ($TOUR_SUB as $key => $tour_s) {
+                                                    ?>
+                                                    <div class="col-md-3" id="div_<?php echo $tour_s['id']; ?>">
+        <!--                                                        <p class="maxlinetitle"><?php echo $tour_s['sort']; ?></p>-->
+                                                        <div class="">
+                                                            <?php
+                                                            if (count($TOUR_SUB_PHOTO) > 0) {
+                                                                foreach ($TOUR_SUB_PHOTO->getTourSubSectionPhotosById($tour_s['id']) as $key => $tour_sub_p) {
+                                                                    if ($key == 1) {
+                                                                        break;
+                                                                    }
+                                                                    ?>
+                                                                    <img class="img-responsive" src="../upload/tour-package/sub-section/thumb/<?php echo $tour_sub_p['image_name']; ?>">
+                                                                    <?php
+                                                                }
+                                                            } else {
+                                                                ?> 
+                                                                <b style="padding-left: 15px;">No Accommodation Image.</b> 
+                                                            <?php } ?>
+                                                        </div> 
+                                                        <p class="maxlinetitle"><?php echo $tour_s['title']; ?></p>
+                                                        <div>
+                                                            <div class="" style="padding-bottom: 10px">
+
+                                                                <a href="edit-tour-sub-section.php?id=<?php echo $tour_s['id']; ?>">
+                                                                    <button class="btn btn-primary btn-md all-icon fa fa-pencil"></button>
+                                                                </a>
+                                                                |
+                                                                <a>
+                                                                    <button class="delete-tour-sub-section all-icon btn btn-danger btn-md fa fa-trash-o" data-id="<?php echo $tour_s['id']; ?>"></button>
+                                                                </a> 
+                                                                |
+                                                                <a href="add-new-tour-package-photo.php?id=<?php echo $tour_s['id']; ?>">
+                                                                    <button class="btn btn-success btn-md all-icon fa fa-photo"></button>
+                                                                </a> 
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div id="image-list"></div>
-                                                    <div class="col-md-12">
-                                                        <div class="bottom-top">
-                                                            <label for="description">Description</label>
-                                                        </div>
-                                                        <div class="formrow">
-                                                            <textarea type="text" id="description" name="description" class="form-control" placeholder="Please Enter Description"></textarea>
-                                                        </div>
-                                                    </div>
-                                                    <div class="top-bott50 col-md-12">
-                                                        <div class="bottom-top">
-                                                            <input type="hidden" id="id" class="form-control" autocomplete="off" name="id" required="true">
-                                                            <input type="hidden" id="member" name="member" value="<?php echo $_SESSION['id']; ?>"/>
-                                                            <input type="hidden" value="<?php echo $id ?>" name="id"/>
-                                                            <button name="create-tour-sub-section" type="submit" class="btn btn-info center-block">Create</button>
-                                                        </div>
-                                                    </div> 
+                                                    <?php
+                                                }
+                                            } else {
+                                                ?> 
 
-                                                </form>  
-                                            </div>
+                                            <?php } ?> 
                                         </div>
-                                        <div class="col-md-12 text-right">
+                                        <div class="text-right">
                                             <a href="manage-tour-package.php"><button type="button" class="btn btn-round btn-info">Manage Tour Package</button></a>
                                         </div>
                                     </div>
@@ -156,9 +165,11 @@ $TOUR_SUB_PHOTO = new TourSubSectionPhoto(NULL);
         <script src="js/post-tour-package-images.js" type="text/javascript"></script>
         <script>
             //custom select box
+
             $(function () {
                 $('select.styled').customSelect();
             });
+
         </script>
         <script src="assets/tinymce/js/tinymce/tinymce.min.js"></script>
         <script>
@@ -181,9 +192,7 @@ $TOUR_SUB_PHOTO = new TourSubSectionPhoto(NULL);
                 // ===========================================
                 // SET RELATIVE_URLS to FALSE (This is required for images to display properly)
                 // ===========================================
-
                 relative_urls: false
-
             });
         </script>
     </body>

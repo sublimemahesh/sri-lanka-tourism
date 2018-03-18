@@ -14,9 +14,7 @@ $TRANSPORTS_PHOTO = new TransportPhoto(NULL);
         <meta name="description" content="">
         <meta name="author" content="Dashboard">
         <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-
         <title>Manage Transports || My Accout ||  www.srilankatourism.travel</title>
-
         <link href="assets/css/bootstrap.css" rel="stylesheet">
         <!--external css-->
         <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
@@ -49,12 +47,22 @@ $TRANSPORTS_PHOTO = new TransportPhoto(NULL);
                                             <div class="formpanel"> 
                                                 <div class="row">
                                                     <div class="col-md-12">
-                                                        <?php
-                                                        foreach ($TRANSPORTS->all() as $key => $vehicle_t) {
-                                                            ?>
-                                                            <div class="col-md-4 col-sm-6 col-xs-12 style-transport">
-                                                                <div id="div_<?php echo $vehicle_t['id']; ?>">
-                                                                    <div><?php echo $vehicle_t['id']; ?></div>
+                                                        <div class="col-md-3">
+                                                            <div class="formrow">
+                                                                <a href="add-new-transport.php">
+                                                                    <div class="uploadbox1 uploadphotobx1" id="uploadphotobx">
+                                                                        <i class="fa fa-plus plus-icon" aria-hidden="true"></i>
+                                                                        <label class="uploadBox">Click here to Upload New Transport
+                                                                        </label>
+                                                                    </div>
+                                                                </a>
+                                                            </div>
+                                                        </div> 
+                                                        <div id="image-list">
+                                                            <?php
+                                                            foreach ($TRANSPORTS->all() as $key => $vehicle_t) {
+                                                                ?>
+                                                                <div class="col-md-3" id="div_<?php echo $vehicle_t['id']; ?>">
                                                                     <div>
                                                                         <?php
                                                                         if (count($TRANSPORTS_PHOTO) > 0) {
@@ -98,10 +106,11 @@ $TRANSPORTS_PHOTO = new TransportPhoto(NULL);
                                                                         </a> 
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                            <?php
-                                                        }
-                                                        ?>  
+
+                                                                <?php
+                                                            }
+                                                            ?>  
+                                                        </div>
                                                     </div>  
                                                 </div>  
                                             </div>

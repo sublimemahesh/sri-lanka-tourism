@@ -49,14 +49,24 @@ $TOUR_PACKAGE_PHOTO = new TourSubSectionPhoto(NULL);
                                             <div class="formpanel"> 
                                                 <div class="row">
                                                     <div class="col-md-12">
-                                                        <?php
-                                                        foreach ($TOUR_PACKAGE->all() as $key => $tour_pack) {
-                                                            ?>
-                                                            <div class="col-md-4 col-sm-6 col-xs-12 style-transport">
-                                                                <div id="div_<?php echo $tour_pack['id']; ?>">
-                                                                    <div><?php echo $tour_pack['id']; ?></div>
+                                                        <div class="col-md-3">
+                                                            <div class="formrow">
+                                                                <a href="add-new-tour-package.php">
+                                                                    <div class="uploadbox uploadphotobx" id="uploadphotobx">
+                                                                        <i class="fa fa-plus plus-icon" aria-hidden="true"></i>
+                                                                        <label class="uploadBox">Click here to Upload New Tour Package
+                                                                        </label>
+                                                                    </div>
+                                                                </a>
+                                                            </div>
+                                                        </div>  
+                                                        <div id="image-list">
+                                                            <?php
+                                                            foreach ($TOUR_PACKAGE->all() as $key => $tour_pack) {
+                                                                ?>
 
-                                                                    <div><img class="img-responsive" src="../upload/tour-package/<?php echo $tour_pack['picture_name']; ?>"></div>
+                                                                <div id="div_<?php echo $tour_pack['id']; ?>" class="col-md-3" id="div_8" style="padding-bottom: 15px">
+                                                                    <div>  <img class="img-responsive" src="../upload/tour-package/<?php echo $tour_pack['picture_name']; ?>"></div> 
                                                                     <div><b>Name :</b> <?php echo $tour_pack['name']; ?></div> 
                                                                     <div><b>Price :</b> <?php echo $tour_pack['price']; ?></div> 
                                                                     <div>
@@ -66,16 +76,20 @@ $TOUR_PACKAGE_PHOTO = new TourSubSectionPhoto(NULL);
                                                                         <a>
                                                                             <button class="delete-tour-package btn btn-danger btn-md all-icon fa fa-trash-o" data-id="<?php echo $tour_pack['id']; ?>"></button>
                                                                         </a> 
-                                                                        |
+<!--                                                                        |
                                                                         <a href="add-new-tour-package-sub-section.php?id=<?php echo $tour_pack['id']; ?>">
+                                                                            <button class="btn btn-success btn-md all-icon fa fa-file-text-o"></button>
+                                                                        </a>-->
+                                                                        |
+                                                                        <a href="manage-tour-package-sub-section.php?id=<?php echo $tour_pack['id']; ?>">
                                                                             <button class="btn btn-success btn-md all-icon fa fa-file-text-o"></button>
                                                                         </a>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                            <?php
-                                                        }
-                                                        ?>  
+                                                                <?php
+                                                            }
+                                                            ?>  
+                                                        </div>
                                                     </div>  
                                                 </div>  
                                             </div>
