@@ -1,22 +1,22 @@
 <?php
 include_once(dirname(__FILE__) . '/../class/include.php');
 include_once(dirname(__FILE__) . '/auth.php');
- 
+
 $MEMBER = new Member($_SESSION['id']);
 ?>
 <header class="header black-bg">
     <div class="sidebar-toggle-box">
-        <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+        <div class="fa fa-bars"></div>
     </div>
     <!--logo start-->
-    <a href="index.html" class="logo"><b>Your Tourism Panel</b></a>
+    <a href="index.php" class="logo"><b>www.srilankatourism.travel - Member Dashboard</b></a>
     <!--logo end-->
     <div class="pull-right top-menu nav notify-row">
         <ul class="nav top-menu">
             <li id="header_inbox_bar" class="dropdown">
                 <a data-toggle="dropdown" class="dropdown-toggle" href="index.php">
-                    <i class="fa fa-sign-out"></i>
-                    <span class="badge bg-theme">o</span>
+                    <i class="fa fa-envelope"></i>
+                    <span class="badge bg-theme">5</span>
                 </a>
                 <ul class="dropdown-menu extended inbox">
                     <div class="notify-arrow notify-arrow-green"></div>
@@ -118,26 +118,24 @@ $MEMBER = new Member($_SESSION['id']);
             }
             ?>
             <h5 class="centered"><?php echo $MEMBER->name; ?></h5>
+            <h6  class="centered"><?php echo $MEMBER->email; ?></h6>
 
             <li class="sub-menu">
                 <a href="./" >
-                    <i class="fa fa-home"></i>
-                    <span>Home</span>
+                    <i class="fa fa-tachometer"></i>
+                    <span>Dashboard</span>
                 </a>
             </li>
             <li class="sub-menu">
                 <a href="profile.php" >
-                    <i class="fa fa-user"></i>
+                    <i class="fa fa-user-circle"></i>
                     <span>Your Profile</span>
-                </a>
-                <!--                <ul class="sub">
-                                    <li><a  href="profile.php">My Profile</a></li>
-                                </ul>-->
+                </a> 
             </li>
 
             <li class="sub-menu">
                 <a href="javascript:;" >
-                    <i class="fa fa-car"></i>
+                    <i class="fa fa-taxi"></i>
                     <span>Transport</span>
                 </a>
                 <ul class="sub">
@@ -147,7 +145,7 @@ $MEMBER = new Member($_SESSION['id']);
             </li>
             <li class="sub-menu">
                 <a href="javascript:;" >
-                    <i class="fa fa-adn"></i>
+                    <i class="fa fa-bed"></i>
                     <span>Accommodation</span>
                 </a>
                 <ul class="sub">
@@ -157,7 +155,7 @@ $MEMBER = new Member($_SESSION['id']);
             </li>
             <li class="sub-menu">
                 <a href="javascript:;" >
-                    <i class="fa fa-tree"></i>
+                    <i class="fa fa-suitcase"></i>
                     <span>Tour Packages</span>
                 </a>
                 <ul class="sub">
