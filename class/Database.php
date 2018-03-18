@@ -14,7 +14,7 @@ class Database {
 //    private $password = 'Tourism@srilanka';
     
     private $host = 'localhost';
-    private $name = 'sri-lanka-tourism';
+    private $name = 'tourism';
     private $user = 'root';
     private $password = '';
 

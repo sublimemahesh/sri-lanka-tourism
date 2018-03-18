@@ -61,16 +61,16 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                             <div class="body">
                                                                 <div class="row clearfix">
                                                                     <div class="col-xs-12 ol-sm-12 col-md-12 col-lg-12">
-                                                                        <div class="panel-group" id="accordion_3" role="tablist" aria-multiselectable="true">
+                                                                        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                                                                             <div class="panel panel-default">
-                                                                                <a role="button" data-toggle="collapse" data-parent="#accordion_3" href="#collapseOne_3" aria-expanded="true" aria-controls="collapseOne_3">
-                                                                                    <div class="panel-heading tab-panel-heading" role="tab" id="headingOne_3">
+                                                                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                                                    <div class="panel-heading tab-panel-heading" role="tab" id="headingOne">
                                                                                         <h4 class="panel-title">
                                                                                             Your Accommodation Details
                                                                                         </h4>
                                                                                     </div>
                                                                                 </a>
-                                                                                <div id="collapseOne_3" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne_3">
+                                                                                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                                                                                     <div class="panel-body">
                                                                                         <div class="">
                                                                                             <div class="bottom-top">
@@ -145,7 +145,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="col-md-12 text-right">
-                                                                                            <a role="button" class="btn btn-info tab-next-button" data-toggle="collapse" data-parent="#accordion_3" href="#collapseTwo_3" aria-expanded="true" aria-controls="collapseOne_3">
+                                                                                            <a role="button" class="btn btn-info tab-next-button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseOne">
                                                                                                 Next >>
                                                                                             </a>
                                                                                         </div>
@@ -153,15 +153,15 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                                                 </div>
                                                                             </div>
                                                                             <div class="panel panel panel-default">
-                                                                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion_3" href="#collapseTwo_3" aria-expanded="false"
-                                                                                   aria-controls="collapseTwo_3">
-                                                                                    <div class="panel-heading tab-panel-heading" role="tab" id="headingTwo_3">
+                                                                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false"
+                                                                                   aria-controls="collapseTwo">
+                                                                                    <div class="panel-heading tab-panel-heading" role="tab" id="headingTwo">
                                                                                         <h4 class="panel-title">
                                                                                             Accommodations Photos
                                                                                         </h4>
                                                                                     </div>
                                                                                 </a>
-                                                                                <div id="collapseTwo_3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo_3">
+                                                                                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                                                                                     <div class="panel-body">
                                                                                         <div class="bottom-top col-md-2">
                                                                                             <div class="formrow">
@@ -177,7 +177,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                                                         <div id="image-list">
                                                                                         </div>
                                                                                         <div class="col-md-12 text-right">
-                                                                                            <a role="button" class="btn btn-info tab-next-button" data-toggle="collapse" data-parent="#accordion_3" href="#collapseThree_3" aria-expanded="true" aria-controls="collapseOne_3">
+                                                                                            <a role="button" class="btn btn-info tab-next-button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseOne">
                                                                                                 Next >>
                                                                                             </a>
                                                                                         </div>
@@ -185,15 +185,15 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                                                 </div>
                                                                             </div>
                                                                             <div class="panel panel panel-default">
-                                                                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion_3" href="#collapseThree_3" aria-expanded="false"
-                                                                                   aria-controls="collapseThree_3">
-                                                                                    <div class="panel-heading tab-panel-heading" role="tab" id="headingThree_3">
+                                                                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false"
+                                                                                   aria-controls="collapseThree">
+                                                                                    <div class="panel-heading tab-panel-heading" role="tab" id="headingThree">
                                                                                         <h4 class="panel-title">
                                                                                             Facilities
                                                                                         </h4>
                                                                                     </div>
                                                                                 </a>
-                                                                                <div id="collapseThree_3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree_3">
+                                                                                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
                                                                                     <div class="panel-body">
                                                                                         <div class="table-responsive">
                                                                                             <div>
@@ -233,7 +233,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="col-md-12 text-right">
-                                                                                            <a role="button" class="btn btn-info tab-next-button" data-toggle="collapse" data-parent="#accordion_3" href="#collapseFour_3" aria-expanded="true" aria-controls="collapseOne_3">
+                                                                                            <a role="button" class="btn btn-info tab-next-button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="true" aria-controls="collapseOne">
                                                                                                 Next >>
                                                                                             </a>
                                                                                         </div>
@@ -241,15 +241,15 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                                                 </div>
                                                                             </div>
                                                                             <div class="panel panel panel-default">
-                                                                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion_3" href="#collapseFour_3" aria-expanded="false"
-                                                                                   aria-controls="collapseFour_3">
-                                                                                    <div class="panel-heading tab-panel-heading" role="tab" id="headingFour_3">
+                                                                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false"
+                                                                                   aria-controls="collapseFour">
+                                                                                    <div class="panel-heading tab-panel-heading" role="tab" id="headingFour">
                                                                                         <h4 class="panel-title">
                                                                                             Description
                                                                                         </h4>
                                                                                     </div>
                                                                                 </a>
-                                                                                <div id="collapseFour_3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour_3">
+                                                                                <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
                                                                                     <div class="panel-body">
                                                                                         <div class="col-md-12">
                                                                                             <div class="bottom-top">
