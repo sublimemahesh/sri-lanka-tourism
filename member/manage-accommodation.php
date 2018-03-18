@@ -60,8 +60,6 @@ $ACCOMODATION_PHOTO = new AccommodationPhoto(NULL);
                                                                 <div class="uploadbox1 uploadphotobx1" id="uploadphotobx">
                                                                     <i class="fa fa-plus plus-icon" aria-hidden="true"></i>
                                                                     <label class="uploadBox">Click here to Upload New Accommodation
-                                                                        <input type="hidden" name="upload-transport-photo" id="upload-transport-photo" value="TRUE">
-                                                                        <input type="hidden" name="transport" id="transport" value="<?php echo $id; ?>">
                                                                     </label>
                                                                 </div>
                                                             </a>

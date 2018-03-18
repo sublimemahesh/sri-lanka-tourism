@@ -18,6 +18,7 @@ if (isset($_POST['add-tour-package'])) {
 
     $handle = new Upload($_FILES['picture_name']);
 
+ 
     $imgName = null;
 
     if ($handle->uploaded) {
@@ -25,10 +26,11 @@ if (isset($_POST['add-tour-package'])) {
         $handle->file_new_name_ext = 'jpg';
         $handle->image_ratio_crop = 'C';
         $handle->file_new_name_body = Helper::randamId();
-        $handle->image_x = 900;
-        $handle->image_y = 500;
+        $handle->image_x = 300;
+        $handle->image_y = 278;
 
         $handle->Process($dir_dest);
+      
 
         if ($handle->processed) {
             $info = getimagesize($handle->file_dst_pathname);
@@ -81,8 +83,8 @@ if (isset($_POST['edit-tour-package'])) {
         $handle->file_new_name_ext = FALSE;
         $handle->image_ratio_crop = 'C';
         $handle->file_new_name_body = $_POST ["oldImageName"];
-        $handle->image_x = 900;
-        $handle->image_y = 500;
+        $handle->image_x = 300;
+        $handle->image_y = 278;
 
         $handle->Process($dir_dest);
 

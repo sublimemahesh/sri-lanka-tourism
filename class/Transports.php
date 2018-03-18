@@ -141,8 +141,8 @@ class Transports {
         foreach ($allPhotos as $photo) {
 
             $IMG = $TRANSPORT_PHOTO->image_name = $photo["image_name"];
-            unlink(Helper::getSitePath() . "upload/transport/transport-photo/gallery/" . $IMG);
-            unlink(Helper::getSitePath() . "upload/transport/transport-photo/gallery/thumb/" . $IMG);
+            unlink(Helper::getSitePath() . "upload/transport/" . $IMG);
+            unlink(Helper::getSitePath() . "upload/transport/thumb/" . $IMG);
 
             $TRANSPORT_PHOTO->id = $photo["id"];
             $TRANSPORT_PHOTO->delete();

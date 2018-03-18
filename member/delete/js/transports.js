@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    $('.delete-transports').click(function () {
+     $('#image-list').on('click', '.delete-transports', function () {
 
         var id = $(this).attr("data-id");
 

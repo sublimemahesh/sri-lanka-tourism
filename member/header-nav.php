@@ -134,34 +134,34 @@ $MEMBER = new Member($_SESSION['id']);
             </li>
 
             <li class="sub-menu">
-                <a href="javascript:;" >
+                <a href="manage-transport.php" >
                     <i class="fa fa-taxi"></i>
                     <span>Transport</span>
                 </a>
-                <ul class="sub">
+<!--                <ul class="sub">
                     <li><a  href="add-new-transport.php">Add New Transport</a></li>
                     <li><a  href="manage-transport.php">Manage Transport</a></li>
-                </ul>
+                </ul>-->
             </li>
             <li class="sub-menu">
-                <a href="javascript:;" >
+                <a href="manage-accommodation.php" >
                     <i class="fa fa-bed"></i>
                     <span>Accommodation</span>
                 </a>
-                <ul class="sub">
+<!--                <ul class="sub">
                     <li><a  href="add-new-accommodation.php">Add Accommodation</a></li>
                     <li><a  href="manage-accommodation.php">Manage Accommodation</a></li>
-                </ul>
+                </ul>-->
             </li>
             <li class="sub-menu">
-                <a href="javascript:;" >
+                <a href="manage-tour-package.php" >
                     <i class="fa fa-suitcase"></i>
                     <span>Tour Packages</span>
                 </a>
-                <ul class="sub">
+<!--                <ul class="sub">
                     <li><a  href="add-new-tour-package.php">Add New Tour Packages</a></li>
                     <li><a  href="manage-tour-package.php">Manage Tour Packages</a></li>
-                </ul>
+                </ul>-->
             </li> 
         </ul>
     </div>
