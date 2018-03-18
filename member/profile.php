@@ -5,8 +5,7 @@ include_once(dirname(__FILE__) . './auth.php');
 $MEMBER = new Member($_SESSION['id']);
 ?>
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en"> 
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,11 +17,16 @@ $MEMBER = new Member($_SESSION['id']);
 
         <!-- Bootstrap core CSS -->
         <link href="assets/css/bootstrap.css" rel="stylesheet">
+
         <!--external css-->
         <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
         <link rel="stylesheet" type="text/css" href="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-datepicker/css/datepicker.html" />
         <link rel="stylesheet" type="text/css" href="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-daterangepicker/daterangepicker.html" />
 
+        <!-- Fonts -->
+        <link href="http://fonts.googleapis.com/css?family=Ruda:400,700,900" type="text/css">
+
+        <!-- Custom styles for this template --> 
         <link href="assets/css/style.css" rel="stylesheet">
         <link href="assets/css/style-responsive.css" rel="stylesheet">
         <link href="assets/css/custom.css" rel="stylesheet" type="text/css"/>
