@@ -13,7 +13,7 @@ and open the template in the editor.
 }
 
 .visitor-list-color{
-  color: #442525;  
+    color: #442525;  
 }
 
 .usernavdash {
@@ -51,4 +51,9 @@ and open the template in the editor.
 
 .margin-panel{
     margin-top: 40px;
+}
+
+.forget-password-link{
+    color: #1a069e;
+    background-color: #fff;
 }
