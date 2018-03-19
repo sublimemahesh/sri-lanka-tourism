@@ -45,8 +45,6 @@ include_once(dirname(__FILE__) . '/../class/include.php');
                         <br>
 
                         <input type="password" class="form-control" name="password" placeholder="Password">
-
-
                         <label class="checkbox">
                             <span class="pull-right">
                                 <a href="forgot-password.php"> Forgot Password?</a>

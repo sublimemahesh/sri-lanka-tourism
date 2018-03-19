@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <?php
 include './class/include.php';
+include './auth.php';
 if (!isset($_SESSION)) {
     session_start();
 }
@@ -27,22 +28,24 @@ $VISITOR = new Visitor($_SESSION['id']);
         <div class="container">
             <div class="row top-bott20">
                 <?php
-                $vali = new Validator();
-                $vali->show_message();
-                ?>
+                if (isset($_GET['message'])) {
+
+                    $MESSAGE = New Message($_GET['message']);
+                    ?>
+                    <div class="alert alert-<?php echo $MESSAGE->status; ?>" role = "alert">
+                        <?php echo $MESSAGE->description; ?>
+                    </div>
+                    <?php
+                }
+                ?> 
                 <div class="col-md-9">
                     <div class="panel panel-default margin-panel">
 
-                        <div class="panel-heading"><i class="fa fa-user"></i>Edit Profile</div>
+                        <div class="panel-heading"><i class="fa fa-user"></i>Change Password</div>
                         <div class="panel-body">  <div class="body">
                                 <div class="col-md-12">
                                     <div class="row">
                                         <div class="col-sm-12 col-md-12 visitor-prof-margin text-center">  
-                                            <form class="form-horizontal"  method="post" enctype="multipart/form-data" id="upForm">
-                                                <input type="file" name="pro-picture" id="pro-picture" />
-                                                <input type="hidden" name="upload-profile-image" id="upload-profile-image"/>
-                                                <input type="hidden" name="visitor" id="visitor" value="<?php echo $VISITOR->id; ?>"/>
-                                            </form>
                                             <?php
                                             if (empty($VISITOR->image_name)) {
                                                 ?>
@@ -59,58 +62,42 @@ $VISITOR = new Visitor($_SESSION['id']);
                                         <form method="post" action="post-and-get/visitor.php" enctype="multipart/form-data">
                                             <div class="col-sm-12 col-md-12">
                                                 <div class="col-md-12">
-                                                    <!--Full Name-->
                                                     <div class="">
-                                                        <div class="bottom-top">First Name</div>
                                                         <div class="formrow">
-                                                            <input type="text" name="first_name" class="form-control" placeholder="Please Enter Your Full Name"  value="<?php echo $VISITOR->first_name; ?>" required="TRUE">
+                                                            <input type="text" name="name" class="form-control" placeholder="Please Enter Your Full Name"  value="<?php echo $VISITOR->first_name; ?>" disabled="true">
                                                         </div>
+                                                        <br>
                                                     </div>
-                                                    <!--User Name-->
-                                                    <div class="">
-                                                        <div class="bottom-top">Second Name</div>
-                                                        <div class="formrow">
-                                                            <input type="text" name="second_name" class="form-control" placeholder="Please Second Name" required="TRUE" value="<?php echo $VISITOR->second_name; ?>">
-                                                        </div>
-                                                    </div>
-                                                    <!--Email-->
-                                                    <div class="">
-                                                        <div class="bottom-top">Email</div>
-                                                        <div class="formrow">
-                                                            <input type="email" name="email" class="form-control" placeholder="Please Enter Your Email" required="TRUE" value="<?php echo $VISITOR->email; ?>">
-                                                            <br>
-                                                        </div>
-                                                    </div>
-                                                    <!--Contact No-->
-                                                    <div class="">
-                                                        <div class="bottom-top">Contact No</div>
-                                                        <div class="formrow">
-                                                            <input type="text" name="contact_number" class="form-control" placeholder="Please Enter Your Contact Number" required="TRUE" value="<?php echo $VISITOR->contact_number; ?>">
-                                                        </div>
-                                                    </div> 
-                                                    <div class="">
-                                                        <div class="bottom-top">Address</div>
-                                                        <div class="formrow">
-                                                            <input type="text" name="address" class="form-control" placeholder="Please Enter your Address" required="TRUE" value="<?php echo $VISITOR->address; ?>">
-                                                        </div>
-                                                    </div> 
-                                                    <!--Date Of Birthday-->
-                                                    <div class="">
-                                                        <div class="bottom-top">City</div>
-                                                        <div class="formrow">
-                                                            <input type="text" name="city" class="form-control" placeholder="Please Enter city" required="TRUE" value="<?php echo $VISITOR->city; ?>">
-                                                        </div>
-                                                    </div> 
 
-                                                </div> 
-                                                <div class="row">
+                                                    <div class="">
+                                                        <div class="bottom-top">Current Password</div>
+                                                        <div class="formrow">
+                                                            <input type="password" name="oldPass" class="form-control" placeholder="Enter Current Password" required="TRUE" value="">
+                                                        </div>
+                                                        <br>
+                                                    </div>
+                                                    <div class="">
+                                                        <div class="bottom-top">New Password</div>
+                                                        <div class="formrow">
+                                                            <input type="password" name="newPass" class="form-control" placeholder="Enter New Password" required="TRUE" value="">
+                                                        </div>
+                                                        <br>
+                                                    </div> 
+                                                    <div class="">
+                                                        <div class="bottom-top">Confirm Password</div>
+                                                        <div class="formrow">
+                                                            <input type="password" name="confPass" class="form-control" placeholder="Enter Confirm Password" required="TRUE" value="">
+                                                        </div>
+                                                        <br>
+                                                        <br>
+                                                    </div> 
                                                     <div class="top-bott50">
                                                         <div class="bottom-top">
-                                                            <input type="hidden" id="id" value="<?php echo $VISITOR->id; ?>" name="id"/>
-                                                            <button type="submit" name="update" class="btn btn-info center-block">Save Changes</button>
+                                                            <button name="changePassword" type="submit" class="btn btn-info center-block">Change Password</button>
+                                                            <input type="hidden" id="id" value="<?php echo $VISITOR->id; ?>" name="id"> 
                                                         </div>
                                                     </div> 
-                                                </div>
+                                                </div> 
                                             </div>
                                         </form>
                                     </div>
