@@ -24,14 +24,13 @@ include './class/include.php';
                 <div class="col-md-12 col-sm-12 center-all">
                     <div class="tab-content">
                         <div class="row">
-                            <form class="form-horizontal form-login"  method="post" action="post-and-get/visitor.php" enctype="multipart/form-data"> 
+                            <form class="form-horizontal form-login"  method="post" action="post-and-get/send-reset-email.php" enctype="multipart/form-data"> 
 
-                                <div class="">
                                     <div class="modal-content">
 
                                         <div class="modal-header">
                                             <a href="#"><button type="button" class="close">&times;</button></a>
-                                            <h4 class="modal-title">Login</h4>
+                                            <h4 class="modal-title">Forget Password</h4>
                                         </div>
                                         <div class="modal-body">
                                             <?php
@@ -41,26 +40,22 @@ include './class/include.php';
                                                 <div class="alert alert-<?php echo $message->status; ?>"><?php echo $message->description; ?></div>
                                             <?php }
                                             ?>
-
+                                              
                                             <div>
-                                                <input type="email" class="form-control" name="email" placeholder="Email" autofocus>
-                                                <br>
-                                                <input type="password" class="form-control" name="password" placeholder="Password">
+                                                <input type="email" class="form-control" name="email" placeholder="Your Email" autofocus>
                                                 <br>
                                             </div>
-                                               
-                                        <div class="modal-footer">
-                                            <input class="btn btn-theme" type="submit" value="Login" name="login">
+
+                                            <div class="modal-footer">
+                                                <input class="btn btn-theme" type="submit" value="Send" name="send">
+                                            </div>
+                                          
                                         </div>
-                                                 <div class="text-center">
-                                                     <a href="forget-password.php" class="forget-password-link">Forgot Password?</a>
-                                                </div>
                                     </div>
-                                </div>
 
                             </form>
 
-                        </div>
+                        
                     </div>
                 </div>
             </div>

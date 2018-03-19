@@ -27,19 +27,22 @@ $VISITOR = new Visitor($_SESSION['id']);
 
         <div class="container">
             <div class="row top-bott20">
-                <?php
-                if (isset($_GET['message'])) {
-                    $message = new Message($_GET['message']);
-                    ?>
-                    <div class="alert alert-success"><?php echo $message->description; ?></div>
 
-                    <?php
-                }
-                ?>
                 <div class="col-md-9">
                     <div class="panel panel-default margin-panel">
                         <div class="panel-heading"><i class="fa fa-user"></i>Visitor Profile</div>
                         <div class="panel-body">  <div class="body">
+                                <div class="col-md-12">
+                                    <?php
+                                    if (isset($_GET['message'])) {
+                                        $message = new Message($_GET['message']);
+                                        ?>
+                                        <div class="alert alert-success"><?php echo $message->description; ?></div>
+
+                                        <?php
+                                    }
+                                    ?> 
+                                </div>
                                 <div class="col-md-12">
                                     <div class="row">
                                         <div class="col-sm-3 col-md-4 visitor-prof-margin">  

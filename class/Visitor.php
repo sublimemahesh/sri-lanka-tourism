@@ -16,11 +16,12 @@ class Visitor {
     public $city;
     public $contact_number;
     public $image_name;
+    public $resetcode;
 
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`,`first_name`,`second_name`,`email`,`password`,`address`,`city`,`contact_number`,`image_name` FROM `visitor` WHERE `id`=" . $id;
+            $query = "SELECT `id`,`first_name`,`second_name`,`email`,`password`,`address`,`city`,`contact_number`,`image_name`,`resetcode` FROM `visitor` WHERE `id`=" . $id;
 
             $db = new Database();
 
@@ -35,6 +36,7 @@ class Visitor {
             $this->city = $result['city'];
             $this->contact_number = $result['contact_number'];
             $this->image_name = $result['image_name'];
+            $this->resetcode = $result['resetcode'];
 
             return $this;
         }
@@ -221,6 +223,92 @@ class Visitor {
         $query = "UPDATE  `visitor` SET "
                 . "`password` ='" . $enPass . "' "
                 . "WHERE `id` = '" . $id . "'";
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+
+        if ($result) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
+
+    public function checkEmail($email) {
+
+        $query = "SELECT `email` FROM `visitor` WHERE `email`= '" . $email . "'";
+
+        $db = new Database();
+
+        $result = mysql_fetch_array($db->readQuery($query));
+
+        if (!$result) {
+            return FALSE;
+        } else {
+            return $result;
+        }
+    }
+
+    public function GenarateCode($email) {
+
+        $rand = rand(10000, 99999);
+
+        $query = "UPDATE  `visitor` SET "
+                . "`resetcode` ='" . $rand . "' "
+                . "WHERE `email` = '" . $email . "'";
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+
+        if ($result) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
+
+    public function SelectForgetMember($email) {
+
+        if ($email) {
+
+            $query = "SELECT `email`,`resetcode` FROM `visitor` WHERE `email`= '" . $email . "'";
+
+            $db = new Database();
+
+            $result = mysql_fetch_array($db->readQuery($query));
+
+            $this->email = $result['email'];
+            $this->restCode = $result['resetcode'];
+
+            return $result;
+        }
+    }
+
+    public function SelectResetCode($code) {
+
+        $query = "SELECT `id` FROM `visitor` WHERE `resetcode`= '" . $code . "'";
+
+        $db = new Database();
+
+        $result = mysql_fetch_array($db->readQuery($query));
+
+        if (!$result) {
+            return FALSE;
+        } else {
+
+            return TRUE;
+        }
+    }
+
+    public function updatePassword($password, $code) {
+
+        $enPass = md5($password);
+
+        $query = "UPDATE  `visitor` SET "
+                . "`password` ='" . $enPass . "' "
+                . "WHERE `resetcode` = '" . $code . "'";
 
         $db = new Database();
 

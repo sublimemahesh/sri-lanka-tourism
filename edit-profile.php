@@ -26,15 +26,17 @@ $VISITOR = new Visitor($_SESSION['id']);
 
         <div class="container">
             <div class="row top-bott20">
-                <?php
-                $vali = new Validator();
-                $vali->show_message();
-                ?>
                 <div class="col-md-9">
                     <div class="panel panel-default margin-panel">
 
                         <div class="panel-heading"><i class="fa fa-user"></i>Edit Profile</div>
                         <div class="panel-body">  <div class="body">
+                                <div class="col-md-12">
+                                    <?php
+                                    $vali = new Validator();
+                                    $vali->show_message();
+                                    ?>
+                                </div>
                                 <div class="col-md-12">
                                     <div class="row">
                                         <div class="col-sm-12 col-md-12 visitor-prof-margin text-center">  
