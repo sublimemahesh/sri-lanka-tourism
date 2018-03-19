@@ -8,27 +8,33 @@
 class Visitor {
 
     public $id;
-    public $name;
+    public $first_name;
+    public $second_name;
     public $email;
-    public $contact_number;
+    public $password;
+    public $address;
     public $city;
-    public $profile_picture;
+    public $contact_number;
+    public $image_name;
 
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`,`name`,`email`,`contact_number`,`city`,`profile_picture` FROM `visitor` WHERE `id`=" . $id;
+            $query = "SELECT `id`,`first_name`,`second_name`,`email`,`password`,`address`,`city`,`contact_number`,`image_name` FROM `visitor` WHERE `id`=" . $id;
 
             $db = new Database();
 
             $result = mysql_fetch_array($db->readQuery($query));
 
             $this->id = $result['id'];
-            $this->name = $result['name'];
+            $this->first_name = $result['first_name'];
+            $this->second_name = $result['second_name'];
             $this->email = $result['email'];
-            $this->contact_number = $result['contact_number'];
+            $this->password = $result['password'];
+            $this->address = $result['address'];
             $this->city = $result['city'];
-            $this->profile_picture = $result['profile_picture'];
+            $this->contact_number = $result['contact_number'];
+            $this->image_name = $result['image_name'];
 
             return $this;
         }
@@ -36,12 +42,15 @@ class Visitor {
 
     public function create() {
 
-        $query = "INSERT INTO `visitor` (`name`,`email`,`contact_number`,`city`,`profile_picture`) VALUES  ('"
-                . $this->name . "','"
+        $query = "INSERT INTO `visitor` (`first_name`,`second_name`,`email`,`password`,`address`,`city`,`contact_number`,`image_name`) VALUES  ('"
+                . $this->first_name . "','"
+                . $this->second_name . "','"
                 . $this->email . "','"
-                . $this->contact_number . "','"
+                . $this->password . "','"
+                . $this->address . "','"
                 . $this->city . "','"
-                . $this->profile_picture . "')";
+                . $this->contact_number . "','"
+                . $this->image_name . "')";
 
         $db = new Database();
 
@@ -73,11 +82,12 @@ class Visitor {
     public function update() {
 
         $query = "UPDATE  `visitor` SET "
-                . "`name` ='" . $this->name . "', "
+                . "`first_name` ='" . $this->first_name . "', "
+                . "`second_name` ='" . $this->second_name . "', "
                 . "`email` ='" . $this->email . "', "
-                . "`contact_number` ='" . $this->contact_number . "', "
+                . "`address` ='" . $this->address . "', "
                 . "`city` ='" . $this->city . "', "
-                . "`profile_picture` ='" . $this->profile_picture . "' "
+                . "`contact_number` ='" . $this->contact_number . "' "
                 . "WHERE `id` = '" . $this->id . "'";
 
         $db = new Database();
@@ -98,6 +108,129 @@ class Visitor {
         $db = new Database();
 
         return $db->readQuery($query);
+    }
+
+    public function login($email, $password) {
+
+        $query = "SELECT * FROM `visitor` WHERE `email`= '" . $email . "' AND `password`= '" . $password . "'";
+
+        $db = new Database();
+
+        $result = mysql_fetch_array($db->readQuery($query));
+
+        if (!$result) {
+            return FALSE;
+        } else {
+
+            $this->id = $result['id'];
+            $visitor = $this->__construct($this->id);
+
+            if (!isset($_SESSION)) {
+                session_start();
+                session_unset($_SESSION);
+            }
+
+            $_SESSION["login"] = TRUE;
+
+            $_SESSION["id"] = $visitor->id;
+            $_SESSION["first_name"] = $visitor->first_name;
+            $_SESSION["second_name"] = $visitor->second_name;
+            $_SESSION["email"] = $visitor->email;
+            return TRUE;
+        }
+    }
+
+    public function authenticate() {
+
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+
+        $id = NULL;
+
+        if (isset($_SESSION["id"])) {
+            $id = $_SESSION["id"];
+        }
+
+        $query = "SELECT `id` FROM `visitor` WHERE `id`= '" . $id . "'";
+
+        $db = new Database();
+
+        $result = mysql_fetch_array($db->readQuery($query));
+
+        if (!$result) {
+            return FALSE;
+        } else {
+
+            return TRUE;
+        }
+    }
+
+    public function logOut() {
+
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+
+        unset($_SESSION["id"]);
+        unset($_SESSION["first_name"]);
+        unset($_SESSION["second_name"]);
+        unset($_SESSION["email"]);
+
+        return TRUE;
+    }
+
+    public function ChangeProPic($visitor, $file) {
+
+        $query = "UPDATE  `visitor` SET "
+                . "`image_name` ='" . $file . "' "
+                . "WHERE `id` = '" . $visitor . "'";
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+
+        if ($result) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
+
+    public function checkOldPass($id, $password) {
+
+        $enPass = md5($password);
+
+        $query = "SELECT `id` FROM `visitor` WHERE `id`= '" . $id . "' AND `password`= '" . $enPass . "'";
+
+        $db = new Database();
+
+        $result = mysql_fetch_array($db->readQuery($query));
+
+        if (!$result) {
+            return FALSE;
+        } else {
+            return TRUE;
+        }
+    }
+
+    public function changePassword($id, $password) {
+
+        $enPass = md5($password);
+
+        $query = "UPDATE  `visitor` SET "
+                . "`password` ='" . $enPass . "' "
+                . "WHERE `id` = '" . $id . "'";
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+
+        if ($result) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
     }
 
 }
