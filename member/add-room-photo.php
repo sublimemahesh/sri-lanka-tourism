@@ -99,7 +99,7 @@ $Aid = $_GET['aid'];
                                             </div>
                                         </div> 
                                         <div class="text-right">
-                                            <a href="accommodation-room.php?id=<?php echo $Aid; ?>"><button type="button" class="btn btn-round btn-info">Manage Accommodation Rooms</button></a>
+                                            <a href="manage-room.php?id=<?php echo $Aid; ?>"><button type="button" class="btn btn-round btn-info">Manage Rooms</button></a>
                                         </div>
                                     </div>
                                 </div>

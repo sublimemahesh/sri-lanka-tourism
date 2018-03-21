@@ -189,7 +189,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                                                    aria-controls="collapseThree">
                                                                                     <div class="panel-heading tab-panel-heading" role="tab" id="headingThree">
                                                                                         <h4 class="panel-title">
-                                                                                            Description
+                                                                                            Accommodation Facilities
                                                                                         </h4>
                                                                                     </div>
                                                                                 </a>
@@ -213,7 +213,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                                                                         </tr>
                                                                                                     </tfoot>
                                                                                                     <tbody>
-                                                                                                        <?php
+                                                                                                         <?php
                                                                                                         $ACCOMODATION_GENERAL_FACILITY = new AccommodationGeneralFacilities(NULL);
                                                                                                         $ACCOMODATION_FACILITY_DETAILS = new AccommodationFacilityDetails(NULL);
                                                                                                         foreach ($ACCOMODATION_GENERAL_FACILITY->all() as $key => $accommodation_general_facility) {

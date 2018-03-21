@@ -7,26 +7,26 @@ if (isset($_POST['create'])) {
     $ACCOMODATION = new Accommodation(NULL);
     $VALID = new Validator();
 
-    $ACCOMODATION->name = mysql_real_escape_string($_POST['name']);
-    $ACCOMODATION->address = mysql_real_escape_string($_POST['address']);
-    $ACCOMODATION->email = mysql_real_escape_string($_POST['email']);
-    $ACCOMODATION->phone = mysql_real_escape_string($_POST['phone']);
-    $ACCOMODATION->website = mysql_real_escape_string($_POST['website']);
-    $ACCOMODATION->city = mysql_real_escape_string($_POST['city']);
-    $ACCOMODATION->type = mysql_real_escape_string($_POST['type']);
-    $ACCOMODATION->member = mysql_real_escape_string($_POST['member']);
-    $ACCOMODATION->description = mysql_real_escape_string($_POST['description']);
+    $ACCOMODATION->name = $_POST['name'];
+    $ACCOMODATION->address = $_POST['address'];
+    $ACCOMODATION->email = $_POST['email'];
+    $ACCOMODATION->phone = $_POST['phone'];
+    $ACCOMODATION->website = $_POST['website'];
+    $ACCOMODATION->city = $_POST['city'];
+    $ACCOMODATION->type = $_POST['type'];
+    $ACCOMODATION->member = $_POST['member'];
+    $ACCOMODATION->description = $_POST['description'];
 
 
     $VALID->check($ACCOMODATION, [
         'name' => ['required' => TRUE],
         'address' => ['required' => TRUE],
+        'email' => ['required' => TRUE],
         'phone' => ['required' => TRUE],
+        'website' => ['required' => TRUE],
         'city' => ['required' => TRUE],
         'type' => ['required' => TRUE],
-        'member' => ['required' => TRUE],
-        'address' => ['required' => TRUE],
-        'description' => ['required' => TRUE]
+        'member' => ['required' => TRUE]
     ]);
 
     if ($VALID->passed()) {
@@ -42,6 +42,12 @@ if (isset($_POST['create'])) {
             $ACCOMMODATION_PHOTO->sort = $key;
             $ACCOMMODATION_PHOTO->create();
         }
+        if (isset($_POST["facility"])) {
+            $ACCOMODATION_FACILITY_DETAILS = new AccommodationFacilityDetails(NULL);
+            $ACCOMODATION_FACILITY_DETAILS->accommodation = mysql_real_escape_string($ACCOMODATION->id);
+            $ACCOMODATION_FACILITY_DETAILS->facility = implode(",", $_POST['facility']);
+            $ACCOMODATION_FACILITY_DETAILS->create();
+        }
         if (!isset($_SESSION)) {
             session_start();
         }
@@ -49,7 +55,7 @@ if (isset($_POST['create'])) {
         $_SESSION['ERRORS'] = $VALID->errors();
 
 //        header('Location: ' . $_SERVER['HTTP_REFERER']);
-        header("location: ../manage-tour-package.php");
+        header("location: ../manage-accommodation.php");
     } else {
 
         if (!isset($_SESSION)) {
@@ -66,15 +72,15 @@ if (isset($_POST['update'])) {
 
     $ACCOMODATION = new Accommodation($_POST['id']);
 
-    $ACCOMODATION->name = mysql_real_escape_string($_POST['name']);
-    $ACCOMODATION->address = mysql_real_escape_string($_POST['address']);
-    $ACCOMODATION->email = mysql_real_escape_string($_POST['email']);
-    $ACCOMODATION->phone = mysql_real_escape_string($_POST['phone']);
-    $ACCOMODATION->website = mysql_real_escape_string($_POST['website']);
-    $ACCOMODATION->city = mysql_real_escape_string($_POST['city']);
-    $ACCOMODATION->type = mysql_real_escape_string($_POST['type']);
-    $ACCOMODATION->member = mysql_real_escape_string($_POST['member']);
-    $ACCOMODATION->description = mysql_real_escape_string($_POST['description']);
+    $ACCOMODATION->name = $_POST['name'];
+    $ACCOMODATION->address = $_POST['address'];
+    $ACCOMODATION->email = $_POST['email'];
+    $ACCOMODATION->phone = $_POST['phone'];
+    $ACCOMODATION->website = $_POST['website'];
+    $ACCOMODATION->city = $_POST['city'];
+    $ACCOMODATION->type = $_POST['type'];
+    $ACCOMODATION->member = $_POST['member'];
+    $ACCOMODATION->description = $_POST['description'];
 
     $VALID = new Validator();
     $VALID->check($ACCOMODATION, [

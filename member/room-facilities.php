@@ -51,16 +51,10 @@ $ROOM_FACILITY_DETAILS = new RoomFaciliityDetails(NULL);
                     <div class="container-fluid">
                         <div class="row  top-bott20"> 
                             <?php
-                            if (isset($_GET['message'])) {
+                            $vali = new Validator();
 
-                                $MESSAGE = New Message($_GET['message']);
-                                ?>
-                                <div class="alert alert-<?php echo $MESSAGE->status; ?>" role = "alert">
-                                    <?php echo $MESSAGE->description; ?>
-                                </div>
-                                <?php
-                            }
-                            ?> 
+                            $vali->show_message();
+                            ?>
                             <div class="panel panel-default">
                                 <div class="panel-heading"><i class="fa fa-pencil"></i>Accommodation Room Facilities</div>
                                 <div class="panel-body">

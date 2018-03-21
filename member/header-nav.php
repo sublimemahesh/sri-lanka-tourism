@@ -109,7 +109,7 @@ $MEMBER = new Member($_SESSION['id']);
             <?php
             if (empty($MEMBER->profile_picture)) {
                 ?> 
-                <p class="centered"><a href="./"><img src="../upload/member/member.png" class="img-circle" width="60"></a></p>
+                <p class="centered"><a href="./"><img src="../upload/member/member.png" class="img-circle" id="profil_pic1" width="60"></a></p>
                 <?php
             } else {
                 ?>
