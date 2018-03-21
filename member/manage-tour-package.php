@@ -62,7 +62,7 @@ $TOUR_PACKAGE_PHOTO = new TourSubSectionPhoto(NULL);
                                                         </div>  
                                                         <div id="image-list">
                                                             <?php
-                                                            foreach ($TOUR_PACKAGE->all() as $key => $tour_pack) {
+                                                            foreach ($TOUR_PACKAGE->getTourPackagesByMemberId($_SESSION['id'])as $key => $tour_pack) {
                                                                 ?>
 
                                                                 <div id="div_<?php echo $tour_pack['id']; ?>" class="col-md-3" id="div_8" style="padding-bottom: 15px">

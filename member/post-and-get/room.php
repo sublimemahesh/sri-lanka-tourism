@@ -35,14 +35,20 @@ if (isset($_POST['create'])) {
             $ROOM_PHOTO->sort = $key;
             $ROOM_PHOTO->create();
         }
+        if (isset($_POST["facility"])) {
+            $ACCOMODATION_ROOM_DETAILS = new RoomFaciliityDetails(NULL);
+            $ACCOMODATION_ROOM_DETAILS->room = mysql_real_escape_string($ACCOMODATION_ROOM->id);
+            $ACCOMODATION_ROOM_DETAILS->facility = implode(",", $_POST['facility']);
+            $ACCOMODATION_ROOM_DETAILS->create();
+        }
         if (!isset($_SESSION)) {
             session_start();
         }
         $VALID->addError("Your data was saved successfully", 'success');
         $_SESSION['ERRORS'] = $VALID->errors();
 
-        header('Location: ' . $_SERVER['HTTP_REFERER']);
-//        header("location: ../view-room-facilities.php?id=" . $ACCOMODATION_ROOM->id);
+//        header('Location: ' . $_SERVER['HTTP_REFERER']);
+        header("location: ../manage-room.php?id=" . $ACCOMODATION_ROOM->accommodation);
     } else {
 
         if (!isset($_SESSION)) {

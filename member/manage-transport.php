@@ -60,7 +60,7 @@ $TRANSPORTS_PHOTO = new TransportPhoto(NULL);
                                                         </div> 
                                                         <div id="image-list">
                                                             <?php
-                                                            foreach ($TRANSPORTS->all() as $key => $vehicle_t) {
+                                                            foreach ($TRANSPORTS->getTransportsByMemberId($_SESSION['id']) as $key => $vehicle_t) {
                                                                 ?>
                                                                 <div class="col-md-3" id="div_<?php echo $vehicle_t['id']; ?>">
                                                                     <div>
