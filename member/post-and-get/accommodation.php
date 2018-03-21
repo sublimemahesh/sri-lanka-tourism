@@ -42,13 +42,6 @@ if (isset($_POST['create'])) {
             $ACCOMMODATION_PHOTO->sort = $key;
             $ACCOMMODATION_PHOTO->create();
         }
-
-        if (isset($_POST["facility"])) {
-            $ACCOMODATION_FACILITY_DETAILS = new AccommodationFacilityDetails(NULL);
-            $ACCOMODATION_FACILITY_DETAILS->accommodation = mysql_real_escape_string($ACCOMODATION->id);
-            $ACCOMODATION_FACILITY_DETAILS->facility = implode(",", $_POST['facility']);
-            $ACCOMODATION_FACILITY_DETAILS->create();
-        }
         if (!isset($_SESSION)) {
             session_start();
         }

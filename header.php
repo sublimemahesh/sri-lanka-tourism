@@ -5,8 +5,12 @@
                         <div class="contact-detail">
                             <i class="fa fa-phone"><span class="details">0757522415</span></i><span class="separate">||</span>
                             <i class="fa fa-envelope-o"><span class="details">srilankatourism.com</span></i>
+
                             <a href="visitor-login.php" ><img class="add-user" id="visitor_pic"src="images/icon/user(1).png" alt="" /></a>
                             <a href="visitor-register.php"><img class="index" src="images/icon/user(2).png" alt=""/></a>
+                            <a href="member/login.php" ><img class="add-user" src="images/icon/user(1).png" alt="" /></a>
+                            <a href="member/register.php"><img class="index" src="images/icon/user(2).png" alt=""/></a>
+
                         </div>
                     </div>
                 </div>
