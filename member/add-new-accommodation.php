@@ -189,7 +189,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                                                    aria-controls="collapseThree">
                                                                                     <div class="panel-heading tab-panel-heading" role="tab" id="headingThree">
                                                                                         <h4 class="panel-title">
-                                                                                            Facilities
+                                                                                            Description
                                                                                         </h4>
                                                                                     </div>
                                                                                 </a>
@@ -262,8 +262,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                                                         <div class="top-bott50 col-md-12">
                                                                                             <div class="bottom-top">
                                                                                                 <input type="hidden" id="member" name="member" value="<?php echo $_SESSION['id']; ?>"/>
-                                                                                                <input type="hidden" value="<?php echo $id ?>" name="id" />
-                                                                                                <input name="create" type="submit" class="btn btn-info center-block" value="Create">
+                                                                                                <button name="create" type="submit" class="btn btn-info center-block">Create</button>
                                                                                             </div>
                                                                                         </div> 
                                                                                     </div>

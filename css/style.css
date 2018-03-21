@@ -1392,3 +1392,215 @@ hr.style16:after {
     transform: scale(1);
     background-color: rgba(0,0,0,0.4);
 }
+.transport-container{
+    padding-top: 38px;
+    padding-bottom: 26px;
+}
+.galleria-slider{
+    border: solid 1px #AFAFAF;
+    box-shadow: 0px 0px 4px #6F6F6F;
+    margin-bottom: 20px;
+}
+.transport-description{
+    text-align: justify;
+    color: #000;
+    font-family: initial;
+    font-size: 17px;
+}
+.transport-facilities{
+    color: #000;
+    font-family: initial;
+    padding-left: 31px;
+}
+.car-type{
+    padding-top: 10px;
+    font-size: 20px;
+}
+.facility-list{
+    padding-top: 20px;
+}
+.fuel-type{
+    padding-top: 15px;
+    padding-bottom: 18px;
+}
+.facility-img{
+    vertical-align: unset !important;
+}
+.details-vehical{
+    background-color: #E3F5FE;
+    border: solid 1px #D5F1FB;
+    box-shadow: 0px 0px 4px #DEF9FF;
+    margin-bottom: 20px;
+}
+.subtitle {
+    margin: 0 2px 0em 0;
+    color: #000;
+}
+.fancy {
+    line-height: 2.5;
+    text-align: center;
+}
+.fancy span {
+    display: inline-block;
+    position: relative;  
+}
+.fancy span:before,
+.fancy span:after {
+    content: "";
+    position: absolute;
+    height: 5px;
+    border-bottom: 1px solid #75CAEC;
+    border-top: 1px solid #75CAEC;
+    top: 32px;
+    width:50px;
+}
+.fancy span:before {
+    right: 100%;
+    margin-right: 15px;
+}
+.fancy span:after {
+    left: 100%;
+    margin-left: 15px;
+}
+.btn{
+    color: #fff;
+    text-transform: uppercase;
+    border-radius: 0;
+    padding-left: 60px;
+    position: relative;
+    transform: translateZ(0px);
+    transition: all 0.5s ease 0s;
+}
+.btn:after{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: #fff;
+    z-index: -1;
+    transform: scaleX(0);
+    transform-origin: 100% 50% 0;
+    transition: all 0.5s ease-out 0s;
+}
+.btn:hover:after{
+    transform: scaleX(1);
+    transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+}
+.btn span{
+    width: 40px;
+    height: 100%;
+    line-height: 40px;
+    background: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: all 0.3s linear 0s;
+}
+.btn span:after{
+    content: "";
+    display: block;
+    width: 10px;
+    height: 10px;
+    background: #fff;
+    margin: auto 0;
+    position: absolute;
+    top: 0;
+    right: -6px;
+    bottom: 0;
+    transform: rotate(45deg);
+    transition: all 0.3s linear 0s;
+}
+.btn.btn-sm{
+    padding-left: 40px;
+}
+.btn.btn-sm span{
+    width: 27px;
+    line-height: 27px;
+}
+.btn.btn-sm span:after{
+    width: 8px;
+    height: 8px;
+    right: -5px;
+}
+
+.btn.red{
+    border: 1px solid #fe6d6d;
+    background: #fe6d6d;
+}
+.btn.red:hover,
+.btn.red span{
+    color: #fe6d6d;
+}
+.btn.red:hover span,
+.btn.red:hover span:after{
+    background: #fe6d6d;
+}
+.btn.blue{
+    border: 1px solid #3bb4e5;
+    background: #3bb4e5;
+}
+.btn.blue:hover,
+.btn.blue span{
+    color: #3bb4e5;
+}
+.btn.blue:hover span,
+.btn.blue:hover span:after{
+    background: #3bb4e5;
+}
+.btn.orange{
+    border: 1px solid #ee955b;
+    background: #ee955b;
+}
+.btn.orange:hover,
+.btn.orange span{
+    color: #ee955b;
+}
+.btn.orange:hover span,
+.btn.orange:hover span:after{
+    background: #ee955b;
+}
+.btn.green{
+    border: 1px solid #79d799;
+    background: #79d799;
+}
+.btn.green:hover,
+.btn.green span{
+    color: #79d799;
+}
+.btn.green:hover span,
+.btn.green:hover span:after{
+    background: #79d799;
+}
+.btn:hover span{
+    color: #fff;
+}
+@media only screen and (max-width: 767px){
+    .btn{ margin-bottom: 20px; }
+}
+.t-more{
+    padding-top: 12px;
+    padding-bottom: 30px;
+}
+.transport-short-desc{
+    text-align: justify;
+}
+.more-transport{
+    background-color: #E3F5FE;
+    border: solid 1px #D5F1FB;
+    box-shadow: 0px 0px 4px #DEF9FF;
+    margin-bottom: 20px;
+    color: #000;
+    font-family: initial;
+}
+.hover01 figure img {
+	-webkit-transform: scale(1);
+	transform: scale(1);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+.hover01 figure:hover img {
+	-webkit-transform: scale(1.3);
+	transform: scale(1.3);
+}
