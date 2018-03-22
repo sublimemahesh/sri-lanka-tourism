@@ -189,13 +189,13 @@ $TRANSPORTS = new Transports($id);
                                                                     <?php
                                                                     if ($TRANSPORTS->ac == 1) {
                                                                         ?>
-                                                                        <option value="1" selected="true">air-conditioned</option>
-                                                                        <option value="0">non-air-conditioned</option>
+                                                                        <option value="1" selected="true">Air Conditioned</option>
+                                                                        <option value="0">Non Air Conditioned</option>
                                                                         <?php
                                                                     } else {
                                                                         ?>
-                                                                        <option value="0" selected="true">non-air-conditioned</option>
-                                                                        <option value="1">air-conditioned</option>
+                                                                        <option value="0" selected="true">Non Air Conditioned</option>
+                                                                        <option value="1">Air Conditioned</option>
                                                                         <?php
                                                                     }
                                                                     ?>

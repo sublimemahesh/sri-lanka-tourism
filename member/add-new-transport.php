@@ -75,7 +75,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                                                         </div>
                                                                                         <div class="formrow">
                                                                                             <select class="form-control" autocomplete="off" type="text" id="vehicle_type" autocomplete="off" name="vehicle_type" required="TRUE">
-                                                                                                <option value=""> -- Please Select -- </option>
+                                                                                                <option value=""> -- Select your vehicle type -- </option>
                                                                                                 <?php foreach (VehicleType::all() as $key => $vehicle) {
                                                                                                     ?>
                                                                                                     <option value="<?php echo $vehicle['id']; ?>"><?php echo $vehicle['name']; ?></option><?php
@@ -90,7 +90,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                                                             <label for="title">Title</label>
                                                                                         </div>
                                                                                         <div class="formrow">
-                                                                                            <input type="text" id="title" name="title" class="form-control" placeholder="Please Enter Title">
+                                                                                            <input type="text" id="title" name="title" class="form-control" placeholder="Enter a title for your service">
                                                                                         </div>
                                                                                     </div>
 
@@ -99,7 +99,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                                                             <label for="registered_number">Registered Number</label>
                                                                                         </div>
                                                                                         <div class="formrow">
-                                                                                            <input type="text" id="registered_number" name="registered_number" class="form-control" placeholder="Please Enter Registered Number">
+                                                                                            <input type="text" id="registered_number" name="registered_number" class="form-control" placeholder="Enter registered number of the vehicle">
                                                                                         </div>
                                                                                     </div>
 
@@ -108,7 +108,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                                                             <label for="registered_year">Registered Year</label>
                                                                                         </div>
                                                                                         <div class="formrow">
-                                                                                            <input type="text" id="registered_year" name="registered_year" class="form-control" placeholder="Please Enter Registered Year">
+                                                                                            <input type="text" id="registered_year" name="registered_year" class="form-control" placeholder="Enter registered year of the vehicle">
                                                                                         </div>
                                                                                     </div>
 
@@ -118,7 +118,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                                                         </div>
                                                                                         <div class="formrow">
                                                                                             <select class="form-control" autocomplete="off" type="text" id="fuel_type_id" autocomplete="off" name="fuel_type_id" required="TRUE">
-                                                                                                <option value=""> -- Please Select -- </option>
+                                                                                                <option value=""> -- Select the fuel type of the vehicle -- </option>
                                                                                                 <?php foreach (FuelType::all() as $key => $fuel_type) {
                                                                                                     ?>
                                                                                                     <option value="<?php echo $fuel_type['id']; ?>"><?php echo $fuel_type['name']; ?></option><?php
@@ -153,7 +153,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                                                         </div>
                                                                                         <div class="formrow">
                                                                                             <select class="form-control" autocomplete="off" type="text" id="condition_id" autocomplete="off" name="condition_id" required="TRUE">
-                                                                                                <option value=""> -- Please Select -- </option>
+                                                                                                <option value=""> -- Select the vehicle condition -- </option>
                                                                                                 <?php foreach (VehicleCondition::all() as $key => $vehicle_c) {
                                                                                                     ?>
                                                                                                     <option value="<?php echo $vehicle_c['id']; ?>"><?php echo $vehicle_c['name']; ?></option><?php
@@ -167,15 +167,15 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                                                             <label for="no_of_passangers">Number of Passangers</label>
                                                                                         </div>
                                                                                         <div class="formrow">
-                                                                                            <input type="number" id="no_of_passangers" class="form-control" placeholder="Enter number of passangers" autocomplete="off" name="no_of_passangers" >
+                                                                                            <input type="number" id="no_of_passangers" class="form-control" placeholder="Enter maximum number of passengers" autocomplete="off" name="no_of_passangers" >
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="col-md-12">
                                                                                         <div class="bottom-top">
-                                                                                            <label for="No_of_Baggages">No of Baggages</label>
+                                                                                            <label for="No_of_Baggages">No of Baggage</label>
                                                                                         </div>
                                                                                         <div class="formrow">
-                                                                                            <input type="number" id="no_of_baggages" class="form-control" placeholder="Enter number of baggages" autocomplete="off" name="no_of_baggages" >
+                                                                                            <input type="number" id="no_of_baggages" class="form-control" placeholder="Enter maximum number of Baggage" autocomplete="off" name="no_of_baggages" >
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="col-md-12">
@@ -183,18 +183,18 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                                                             <label for="No_of_Doors">No of Doors</label>
                                                                                         </div>
                                                                                         <div class="formrow">
-                                                                                            <input type="number" id="no_of_doors" class="form-control" placeholder="Enter number of doors" autocomplete="off" name="no_of_doors" >
+                                                                                            <input type="number" id="no_of_doors" class="form-control" placeholder="Enter number of door" autocomplete="off" name="no_of_doors" >
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="col-md-12">
                                                                                         <div class="bottom-top">
-                                                                                            <label for="No_of_Doors">AC / non AC</label>
+                                                                                            <label for="No_of_Doors">Air Conditioned</label>
                                                                                         </div>
                                                                                         <div class="formrow">
                                                                                             <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="ac" autocomplete="off" name="ac" required="TRUE">
-                                                                                                <option value=""> -- Please Select -- </option>
-                                                                                                <option value="1">air-conditioned</option>
-                                                                                                <option value="0">non-air-conditioned</option>
+                                                                                                <option value=""> -- Please select -- </option>
+                                                                                                <option value="1">Air Conditioned</option>
+                                                                                                <option value="0">Non Air Conditioned</option>
                                                                                             </select>
                                                                                         </div>
                                                                                     </div>
@@ -251,10 +251,10 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                                                 <div class="panel-body">
                                                                                     <div class="col-md-12">
                                                                                         <div class="bottom-top">
-                                                                                            <label for="description">Description</label>
+                                                                                            <label for="description">Please enter more information about your service</label>
                                                                                         </div>
                                                                                         <div class="formrow">
-                                                                                            <textarea type="text" id="description" name="description" class="form-control" placeholder="Please Enter Description"></textarea>
+                                                                                            <textarea type="text" id="description" name="description" class="form-control" placeholder="Please enter more information about your service"></textarea>
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="top-bott50 col-md-12">
