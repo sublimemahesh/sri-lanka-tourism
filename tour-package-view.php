@@ -14,6 +14,7 @@
         <link href="admin/plugins/jquery-ui/jquery-ui.css" rel="stylesheet" type="text/css"/>
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
         <link href="css/lightbox.min.css" rel="stylesheet" type="text/css"/>
+        <link href="css/comments-style.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <!-- Our Resort Values style-->
@@ -199,7 +200,7 @@
                         </div>
                     </div>
                     <div class="col-md-3 col-xs-12 other-section">
-                        <hr class="style16">
+                        <h2 class="other-tour">Other <b>Tour Packages</b></h2>
                         <div class="adjust-top">
                             <div class="col-md-12 col-xs-12 other-packs">
                                 <div class="hovereffect">
@@ -258,6 +259,189 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-sm-12">			
+                    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                        <h2 class="tt-comment">Customer <b>Testimonials</b></h2>
+                        <!-- Carousel indicators -->
+                        <ol class="carousel-indicators">
+                            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                            <li data-target="#myCarousel" data-slide-to="1"></li>
+                            <li data-target="#myCarousel" data-slide-to="2"></li>
+                        </ol>   
+                        <!-- Wrapper for carousel items -->
+                        <div class="carousel-inner">
+                            <div class="item carousel-item active">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="testimonial">
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu sem tempor, varius quam at, luctus dui. Mauris magna metus, dapibus nec turpis vel, semper malesuada ante.</p>
+                                        </div>
+                                        <div class="media">
+                                            <div class="media-left d-flex mr-3">
+                                                <img src="assets/img/comments/2.jpg" alt=""/>										
+                                            </div>
+                                            <div class="media-body">
+                                                <div class="overview">
+                                                    <div class="name"><b>Paula Wilson</b></div>
+                                                    <div class="details">Media Analyst / SkyNet</div>
+                                                    <div class="star-rating-t">
+                                                        <ul class="list-inline">
+                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                            <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>										
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="testimonial">
+                                            <p>Vestibulum quis quam ut magna consequat faucibu. Eget mi suscipit tincidunt. Utmtc tempus dictum. Pellentesque virra. Quis quam ut magna consequat faucibus quam.</p>
+                                        </div>
+                                        <div class="media">
+                                            <div class="media-left d-flex mr-3">
+                                                <img src="assets/img/comments/1.jpg" alt=""/>
+                                            </div>
+                                            <div class="media-body">
+                                                <div class="overview">
+                                                    <div class="name"><b>Antonio Moreno</b></div>
+                                                    <div class="details">Web Developer / SoftBee</div>
+                                                    <div class="star-rating-t">
+                                                        <ul class="list-inline">
+                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                            <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>										
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>			
+                            </div>
+                            <div class="item carousel-item">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="testimonial">
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu sem tempor, varius quam at, luctus dui. Mauris magna metus, dapibus nec turpis vel, semper malesuada ante.</p>
+                                        </div>
+                                        <div class="media">
+                                            <div class="media-left d-flex mr-3">										
+                                                <img src="assets/img/comments/2.jpg" alt=""/>
+                                            </div>
+                                            <div class="media-body">
+                                                <div class="overview">
+                                                    <div class="name"><b>Michael Holz</b></div>
+                                                    <div class="details">Web Developer / DevCorp</div>											
+                                                    <div class="star-rating-t">
+                                                        <ul class="list-inline">
+                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                            <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>										
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="testimonial">
+                                            <p>Vestibulum quis quam ut magna consequat faucibu. Eget mi suscipit tincidunt. Utmtc tempus dictum. Pellentesque virra. Quis quam ut magna consequat faucibus quam.</p>
+                                        </div>
+                                        <div class="media">
+                                            <div class="media-left d-flex mr-3">
+                                                <img src="assets/img/comments/3.jpg" alt=""/>
+                                            </div>
+                                            <div class="media-body">
+                                                <div class="overview">
+                                                    <div class="name"><b>Mary Saveley</b></div>
+                                                    <div class="details">Graphic Designer / MarsMedia</div>
+                                                    <div class="star-rating-t">
+                                                        <ul class="list-inline">
+                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                            <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>										
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>			
+                            </div>
+                            <div class="item carousel-item">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="testimonial">
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu sem tempor, varius quam at, luctus dui. Mauris magna metus, dapibus nec turpis vel, semper malesuada ante.</p>
+                                        </div>
+                                        <div class="media">
+                                            <div class="media-left d-flex mr-3">
+                                                <img src="assets/img/comments/2.jpg" alt=""/>
+                                            </div>
+                                            <div class="media-body">
+                                                <div class="overview">
+                                                    <div class="name"><b>Martin Sommer</b></div>
+                                                    <div class="details">SEO Analyst / RealSearch</div>
+                                                    <div class="star-rating-t">
+                                                        <ul class="list-inline">
+                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                            <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>										
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="testimonial">
+                                            <p>Vestibulum quis quam ut magna consequat faucibu. Eget mi suscipit tincidunt. Utmtc tempus dictum. Pellentesque virra. Quis quam ut magna consequat faucibus quam.</p>
+                                        </div>
+                                        <div class="media">
+                                            <div class="media-left d-flex mr-3">
+                                                <img src="assets/img/comments/2.jpg" alt=""/>										
+                                            </div>
+                                            <div class="media-body">
+                                                <div class="overview">
+                                                    <div class="name"><b>John Williams</b></div>
+                                                    <div class="details">Web Designer / UniqueDesign</div>
+                                                    <div class="star-rating-t">
+                                                        <ul class="list-inline">
+                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                            <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>										
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>			
+                            </div>
+                        </div>
+                        <!-- Carousel controls -->
+                        <a class="carousel-control left carousel-control-prev" href="#myCarousel" data-slide="prev">
+                            <i class="fa fa-chevron-left"></i>
+                        </a>
+                        <a class="carousel-control right carousel-control-next" href="#myCarousel" data-slide="next">
+                            <i class="fa fa-chevron-right"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -269,9 +453,6 @@
         <script src="js/jquery-2.2.4.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="assets/js/jquery-3.1.0.min.js" type="text/javascript"></script>
-        <script src="js/bootstrap-datepicker.js" type="text/javascript"></script>
-        <script src="assets/js/helper.js" type="text/javascript"></script>
-        <script src="assets/js/template.js" type="text/javascript"></script>
         <script src="js/lightbox-plus-jquery.min.js" type="text/javascript"></script>
 
     </body> 
