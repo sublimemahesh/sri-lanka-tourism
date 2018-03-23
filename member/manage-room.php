@@ -51,18 +51,18 @@ $ROOM_PHOTO = new RoomPhoto(NULL);
                             <div class="panel panel-default">
                                 <div class="panel-heading"><i class="fa fa-pencil"></i>Rooms</div>
                                 <div class="panel-body">
-                                      <div class="body">
+                                    <div class="body">
                                         <div class="userccount">
 
                                             <div class="formpanel"> 
                                                 <div class="row clearfix">
                                                     <div class="col-md-3">
                                                         <div class="formrow">
-                                                            <a href="accommodation-room.php?id=<?php echo $id;?>">
+                                                            <a href="accommodation-room.php?id=<?php echo $id; ?>">
                                                                 <div class="uploadbox2 uploadphotobx2" id="uploadphotobx">
                                                                     <i class="fa fa-plus plus-icon" aria-hidden="true"></i>
                                                                     <label class="uploadBox">Click here to Upload New Room
-                                                                     
+
                                                                     </label>
                                                                 </div>
                                                             </a>
@@ -72,7 +72,7 @@ $ROOM_PHOTO = new RoomPhoto(NULL);
                                                     foreach ($ROOMS as $key => $room) {
                                                         ?>
                                                         <div class="col-md-3 style-transport" id="div_<?php echo $room['id']; ?>">
-                                                                                                                      <div class="room_all">
+                                                            <div class="room_all">
                                                                 <?php
                                                                 if (count($ROOM_PHOTO) > 0) {
                                                                     foreach ($ROOM_PHOTO->getRoomPhotosById($room['id']) as $key => $room_p) {
@@ -102,6 +102,12 @@ $ROOM_PHOTO = new RoomPhoto(NULL);
                                                                     </a> 
                                                                     |
                                                                     <a title="Add Your Accommodation Room Facilities" href="room-facilities.php?id=<?php echo $room['id']; ?>">
+                                                                        <button class="btn btn-warning btn-sm all-icon all-icon fa fa-check-square"></button>
+                                                                    </a> 
+                                                                    <a title="Add Your Room Price" href="add-room-price.php?id=<?php echo $room['id']; ?>&aid=<?php echo $id; ?>">
+                                                                        <button class="btn btn-success btn-sm all-icon all-icon fa fa-photo"></button>
+                                                                    </a> 
+                                                                    <a title="Manage Room Prices" href="manage-room-price-seasons.php?id=<?php echo $room['id']; ?>">
                                                                         <button class="btn btn-warning btn-sm all-icon all-icon fa fa-check-square"></button>
                                                                     </a> 
                                                                 </div>
@@ -143,7 +149,7 @@ $ROOM_PHOTO = new RoomPhoto(NULL);
         <script type="text/javascript" src="assets/js/bootstrap-inputmask/bootstrap-inputmask.min.js"></script>
         <script src="assets/plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>
 
-        <script src="delete/js/accommmodation.js" type="text/javascript"></script>
+        <script src="delete/js/rooms.js" type="text/javascript"></script>
         <script>
             //custom select box
 

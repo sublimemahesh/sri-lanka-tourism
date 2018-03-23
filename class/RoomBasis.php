@@ -33,4 +33,17 @@ class RoomBasis {
         return $array_res;
     }
 
+    public static function getAllRoomBasisById($id) {
+
+        $db = new Database();
+
+        $query = "SELECT * FROM `room_basis` WHERE `id` = '" . $id . "' ";
+
+        $result = $db->readQuery($query);
+
+        $row = mysql_fetch_assoc($result);
+
+        return $row;
+    }
+
 }

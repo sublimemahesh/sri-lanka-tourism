@@ -1,8 +1,10 @@
 $(document).ready(function () {
 
-    $('.delete-rooms').click(function () {
+    $('.delete-price-season').click(function () {
 
-        var id = $(this).attr("data-id");
+        var start = $(this).attr('start');
+        var end = $(this).attr('end');
+        var id = $(this).attr('row_id');
 
         swal({
             title: "Are you sure?",
@@ -15,22 +17,24 @@ $(document).ready(function () {
         }, function () {
 
             $.ajax({
-                url: "delete/ajax/rooms.php",
+                url: "delete/ajax/price-season.php",
                 type: "POST",
-                data: {id: id, option: 'delete'},
+                data: {
+                    start: start,
+                    end: end
+                },
                 dataType: "JSON",
                 success: function (jsonStr) {
                     if (jsonStr.status) {
 
                         swal({
                             title: "Deleted!",
-                            text: "Room has een deleted.",
+                            text: "Price Season has been deleted.",
                             type: 'success',
                             timer: 2000,
                             showConfirmButton: false
                         });
-
-                        $('#div_' + id).remove();
+                        window.location.reload();
                     }
                 }
             });

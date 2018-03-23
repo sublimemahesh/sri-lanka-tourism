@@ -121,7 +121,7 @@ $ROOM = new Room($id);
                                                         <div class="top-bott50">
                                                             <div class="bottom-top">
                                                                 <input type="hidden" value="<?php echo $id ?>" name="id" />
-                                                                <button name="update" type="submit" class="btn btn-info center-block">Create</button>
+                                                                <button name="update" type="submit" class="btn btn-info center-block">Save</button>
                                                             </div>
                                                         </div> 
                                                     </div>  
@@ -129,7 +129,7 @@ $ROOM = new Room($id);
                                             </div>
                                         </div>
                                         <div class="text-right">
-                                            <a href="accommodation-room.php?id=<?php echo $Aid; ?>"><button type="button" class="btn btn-round btn-info">Manage Accommodation Rooms</button></a>
+                                            <a href="manage-room.php?id=<?php echo $Aid; ?>"><button type="button" class="btn btn-round btn-info">Manage Accommodation Rooms</button></a>
                                         </div>
                                     </div>
                                 </div>

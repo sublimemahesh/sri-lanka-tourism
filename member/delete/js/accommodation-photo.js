@@ -24,7 +24,7 @@ $(document).ready(function () {
 
                         swal({
                             title: "Deleted!",
-                            text: "Transports has been deleted.",
+                            text: "Photo has been deleted.",
                             type: 'success',
                             timer: 2000,
                             showConfirmButton: false
