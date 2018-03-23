@@ -1179,20 +1179,7 @@ hr.style15:after {
     color: #102ab7;
     font-size: 18px;
 }
-hr.style16 {
-    border-top: 4px double #595ac6;
-    text-align: center;
-}
-hr.style16:after {
-    content: 'Other Tour Packages';
-    display: inline-block;
-    position: relative;
-    top: -15px;
-    padding: 0 10px;
-    background: #f0f0f0;
-    color: #102ab7;
-    font-size: 18px;
-}
+
 
 .middle {
     transition: .5s ease;
@@ -1296,7 +1283,7 @@ hr.style16:after {
     -webkit-transform: scale(1);
 }
 .other-section{
-    padding-top: 65px;
+    padding-top: 26px;
 }
 .adjust-top{
     padding-top: 30px;

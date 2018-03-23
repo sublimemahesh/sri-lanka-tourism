@@ -95,7 +95,7 @@
 }
 .carousel .overview b {
     text-transform: uppercase;
-    color: #ff5555;
+    color: #1d46ba;
 }
 .carousel .carousel-control {
     width: 30px;
@@ -129,7 +129,7 @@
 }
 .carousel-indicators li.active {
     color: #fff;
-    background: #ff5555;    
+    background: #1d46ba;    
     border: 5px double;    
 }
 .star-rating-t li {
@@ -140,3 +140,42 @@
     color: #ffdc12;
 }
 
+.tt-comment {
+    color: #000;
+    font-size: 26px;
+    font-weight: 300;
+    position: relative;
+    margin: 0 0 50px 0;
+    text-transform: uppercase;
+    display: inline-block;
+}
+.tt-comment::after {
+    content: "";
+    width: 50%;
+    position: absolute;
+    height: 4px;
+    border-radius: 1px;
+    background: #102AB7;
+    left: 0;
+    bottom: -20px;
+}
+
+.other-tour {
+    color: #000;
+    font-size: 20px;
+    font-weight: 300;
+    position: relative;
+    margin: 0 0 50px 0;
+    text-transform: uppercase;
+    display: inline-block;
+}
+.other-tour::after {
+    content: "";
+    width: 41%;
+    position: absolute;
+    height: 4px;
+    border-radius: 1px;
+    background: #102AB7;
+    left: 0;
+    bottom: -20px;
+}
