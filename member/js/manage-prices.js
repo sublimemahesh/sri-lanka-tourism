@@ -1,36 +1,42 @@
+
 $(document).ready(function () {
 
-    $('.delete-rooms').click(function () {
+    $('.update-price').change(function () {
 
-        var id = $(this).attr("data-id");
+        var data = $(this).val();
+        var priceId = $(this).attr('priceid');
+        var column = $(this).attr('column');
+
 
         swal({
             title: "Are you sure?",
-            text: "You will not be able to recover!",
+            text: "Do you want to change Price?",
             type: "warning",
             showCancelButton: true,
-            confirmButtonColor: "#DD6B55",
-            confirmButtonText: "Yes, delete it!",
+            confirmButtonColor: "#107d8d",
+            confirmButtonText: "Yes, Change it!",
             closeOnConfirm: false
         }, function () {
 
             $.ajax({
-                url: "delete/ajax/rooms.php",
+                url: "post-and-get/ajax/update-room-price.php",
                 type: "POST",
-                data: {id: id, option: 'delete'},
+                data: {
+                    id: priceId,
+                    data: data,
+                    column: column
+                },
                 dataType: "JSON",
                 success: function (jsonStr) {
                     if (jsonStr.status) {
 
                         swal({
-                            title: "Deleted!",
-                            text: "Room has een deleted.",
+                            title: "Changed!",
+                            text: "Room Price has been changed.",
                             type: 'success',
                             timer: 2000,
                             showConfirmButton: false
                         });
-
-                        $('#div_' + id).remove();
                     }
                 }
             });
