@@ -5,6 +5,8 @@ $id = '';
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 }
+$month = date('m');
+$year = date('Y');
 $ACCOMODATION = new Accommodation($id);
 $ROOMS = Room::getAccommodationRoomsById($id);
 $ROOM_PHOTO = new RoomPhoto(NULL);
@@ -109,6 +111,9 @@ $ROOM_PHOTO = new RoomPhoto(NULL);
                                                                     </a> 
                                                                     <a title="Manage Room Prices" href="manage-room-price-seasons.php?id=<?php echo $room['id']; ?>">
                                                                         <button class="btn btn-warning btn-sm all-icon all-icon fa fa-check-square"></button>
+                                                                    </a> 
+                                                                    <a title="Manage Avilability" href="manage-room-avilability.php?id=<?php echo $room['id']; ?>&year=<?php echo $year; ?>&month=<?php echo $month; ?>">
+                                                                        <button class="btn btn-warning btn-sm all-icon all-icon fa fa-calendar"></button>
                                                                     </a> 
                                                                 </div>
 

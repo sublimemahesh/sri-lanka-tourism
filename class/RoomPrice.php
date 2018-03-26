@@ -109,11 +109,11 @@ class RoomPrice {
         return $array_res;
     }
 
-    public function getAllDistinctSeasons() {
+    public function getAllDistinctSeasons($id) {
 
         $db = new Database();
 
-        $query = "SELECT DISTINCT start,end FROM `room_price`";
+        $query = "SELECT DISTINCT start,end FROM `room_price` WHERE `room`= $id";
 
         $result = $db->readQuery($query);
 

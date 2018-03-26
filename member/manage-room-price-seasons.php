@@ -9,7 +9,7 @@ if (isset($_GET['id'])) {
 $ROOM = new Room($id);
 $ROOMPRICE = new RoomPrice(NULL);
 $details = $ROOMPRICE->all();
-$DifferentSeasons = $ROOMPRICE->getAllDistinctSeasons()
+$DifferentSeasons = $ROOMPRICE->getAllDistinctSeasons($id);
 ?> 
 
 <html lang="en">
