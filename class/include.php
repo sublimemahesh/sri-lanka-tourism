@@ -32,6 +32,7 @@ include_once(dirname(__FILE__) . '/RoomPrice.php');
 include_once(dirname(__FILE__) . '/AccommodationFacilityDetails.php');
 include_once(dirname(__FILE__) . '/RoomFaciliityDetails.php');
 include_once(dirname(__FILE__) . '/RoomPhoto.php');
+include_once(dirname(__FILE__) . '/RoomAvailability.php');
 include_once(dirname(__FILE__) . '/FuelType.php');
 include_once(dirname(__FILE__) . '/VehicleCondition.php');
 include_once(dirname(__FILE__) . '/Visitor.php');

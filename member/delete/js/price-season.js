@@ -31,7 +31,7 @@ $(document).ready(function () {
                             title: "Deleted!",
                             text: "Price Season has been deleted.",
                             type: 'success',
-                            timer: 2000,
+                            timer: 3000,
                             showConfirmButton: false
                         });
                         window.location.reload();
