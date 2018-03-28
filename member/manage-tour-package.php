@@ -42,7 +42,7 @@ $TOUR_PACKAGE_PHOTO = new TourSubSectionPhoto(NULL);
                     <div class="container-fluid">
                         <div class="top-bott20"> 
                             <div class="panel panel-default">
-                                <div class="panel-heading"><i class="fa fa-pencil"></i> manage Tour Package</div>
+                                <div class="panel-heading"><i class="fa fa-pencil"></i> Manage Tour Package</div>
                                 <div class="panel-body">
                                     <div class="body">
                                         <div class="userccount">
@@ -54,7 +54,7 @@ $TOUR_PACKAGE_PHOTO = new TourSubSectionPhoto(NULL);
                                                                 <a href="add-new-tour-package.php">
                                                                     <div class="uploadbox uploadphotobx" id="uploadphotobx">
                                                                         <i class="fa fa-plus plus-icon" aria-hidden="true"></i>
-                                                                        <label class="uploadBox">Click here to Upload New Tour Package
+                                                                        <label class="uploadBox">Click here to add your new tour package
                                                                         </label>
                                                                     </div>
                                                                 </a>
@@ -66,25 +66,19 @@ $TOUR_PACKAGE_PHOTO = new TourSubSectionPhoto(NULL);
                                                                 ?>
 
                                                                 <div id="div_<?php echo $tour_pack['id']; ?>" class="col-md-3" id="div_8" style="padding-bottom: 15px">
-                                                                    <div>  <img class="img-responsive" src="../upload/tour-package/<?php echo $tour_pack['picture_name']; ?>"></div> 
+                                                                    <div>  
+                                                                        <div class="menu-button-hover">
+                                                                            <div class="dropdown">
+                                                                                <button class="dropbtn"><i class="fa fa-bars"></i></button>
+                                                                                <div class="dropdown-content text-left">
+                                                                                    <a href="edit-tour-package.php?id=<?php echo $tour_pack['id']; ?>"><i class="hover-menu-icon fa fa-pencil"></i>Edit</a>
+                                                                                    <a href="manage-tour-package-sub-section.php?id=<?php echo $tour_pack['id']; ?>"><i class="hover-menu-icon fa fa-photo"></i>Manage sub sections</a>
+                                                                                    <a href="#" class="delete-tour-package menu-hover-delete-font delete-accommodation" data-id="<?php echo $tour_pack['id']; ?>"><i class="hover-menu-icon fa fa-file-text-o"></i>Delete</a>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <img class="img-responsive" src="../upload/tour-package/<?php echo $tour_pack['picture_name']; ?>"></div> 
                                                                     <div><b>Name :</b> <?php echo $tour_pack['name']; ?></div> 
-                                                                    <div><b>Price :</b> <?php echo $tour_pack['price']; ?></div> 
-                                                                    <div>
-                                                                        <a href="edit-tour-package.php?id=<?php echo $tour_pack['id']; ?>"><button class="btn btn-primary btn-md all-icon fa fa-pencil"></button>
-                                                                        </a> 
-                                                                        |
-                                                                        <a>
-                                                                            <button class="delete-tour-package btn btn-danger btn-md all-icon fa fa-trash-o" data-id="<?php echo $tour_pack['id']; ?>"></button>
-                                                                        </a> 
-<!--                                                                        |
-                                                                        <a href="add-new-tour-package-sub-section.php?id=<?php echo $tour_pack['id']; ?>">
-                                                                            <button class="btn btn-success btn-md all-icon fa fa-file-text-o"></button>
-                                                                        </a>-->
-                                                                        |
-                                                                        <a href="manage-tour-package-sub-section.php?id=<?php echo $tour_pack['id']; ?>">
-                                                                            <button class="btn btn-success btn-md all-icon fa fa-file-text-o"></button>
-                                                                        </a>
-                                                                    </div>
                                                                 </div>
                                                                 <?php
                                                             }

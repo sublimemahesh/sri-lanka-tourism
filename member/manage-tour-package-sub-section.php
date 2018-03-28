@@ -63,7 +63,7 @@ $TOUR_SUB_PHOTO = new TourSubSectionPhoto(NULL);
                                                     <a href="add-new-tour-package-sub-section.php?id=<?php echo $id; ?>">
                                                         <div class="uploadbox uploadphotobx" id="uploadphotobx">
                                                             <i class="fa fa-plus plus-icon" aria-hidden="true"></i>
-                                                            <label class="uploadBox">Click here to Upload New Tour Sub section
+                                                            <label class="uploadBox">Click here to add new tour sub section
                                                             </label>
                                                         </div>
                                                     </a>
@@ -84,6 +84,16 @@ $TOUR_SUB_PHOTO = new TourSubSectionPhoto(NULL);
                                                                         break;
                                                                     }
                                                                     ?>
+                                                                    <div class="menu-button-hover">
+                                                                        <div class="dropdown">
+                                                                            <button class="dropbtn"><i class="fa fa-bars"></i></button>
+                                                                            <div class="dropdown-content text-left">
+                                                                                <a href="edit-tour-sub-section.php?id=<?php echo $tour_s['id']; ?>"><i class="hover-menu-icon fa fa-pencil"></i>Edit</a>
+                                                                                <a href="add-new-tour-package-photo.php?id=<?php echo $tour_s['id']; ?>"><i class="hover-menu-icon fa fa-photo"></i>Manage photos</a>
+                                                                                <a href="#" class="delete-tour-sub-section menu-hover-delete-font delete-accommodation" data-id="<?php echo $tour_s['id']; ?>"><i class="hover-menu-icon fa fa-file-text-o"></i>Delete</a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
                                                                     <img class="img-responsive" src="../upload/tour-package/sub-section/thumb/<?php echo $tour_sub_p['image_name']; ?>">
                                                                     <?php
                                                                 }
@@ -93,22 +103,6 @@ $TOUR_SUB_PHOTO = new TourSubSectionPhoto(NULL);
                                                             <?php } ?>
                                                         </div> 
                                                         <p class="maxlinetitle"><?php echo $tour_s['title']; ?></p>
-                                                        <div>
-                                                            <div class="" style="padding-bottom: 10px">
-
-                                                                <a href="edit-tour-sub-section.php?id=<?php echo $tour_s['id']; ?>">
-                                                                    <button class="btn btn-primary btn-md all-icon fa fa-pencil"></button>
-                                                                </a>
-                                                                |
-                                                                <a>
-                                                                    <button class="delete-tour-sub-section all-icon btn btn-danger btn-md fa fa-trash-o" data-id="<?php echo $tour_s['id']; ?>"></button>
-                                                                </a> 
-                                                                |
-                                                                <a href="add-new-tour-package-photo.php?id=<?php echo $tour_s['id']; ?>">
-                                                                    <button class="btn btn-success btn-md all-icon fa fa-photo"></button>
-                                                                </a> 
-                                                            </div>
-                                                        </div>
                                                     </div>
                                                     <?php
                                                 }

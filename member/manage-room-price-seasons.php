@@ -63,13 +63,18 @@ $DifferentSeasons = $ROOMPRICE->getAllDistinctSeasons($id);
                                 <div class="panel-body">
                                     <div class="body">
                                         <div class="row mt">
+                                            <div class="col-md-12 text-left">
+                                                <a class="btn btn-info" href="add-room-price.php?id=<?php echo $id; ?>&aid=<?php echo $id; ?>">Add New Price</a>
+                                               
+                                            </div>
                                             <div class="col-md-12">
+
                                                 <div class="content-panel">
                                                     <?php
                                                     if ($DifferentSeasons) {
                                                         ?>
                                                         <table class="table table-striped table-advance table-hover">
-                                                            <h4><i class="fa fa-angle-right"></i>Price Seacons of <?php echo $ROOM->name;?></h4>
+                                                            <h4><i class="fa fa-angle-right"></i>Price Seasons of <?php echo $ROOM->name; ?></h4>
                                                             <hr>
                                                             <thead>
                                                                 <tr>
