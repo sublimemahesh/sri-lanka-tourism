@@ -84,7 +84,6 @@ $DETAILS = $ROOMPRICE->getAllFromDateRange($start, $end);
                                                                     $basisA = $ROOM_BASISOBJ->getAllRoomBasisById($detail['basis']);
                                                                     $basisname = $basisA['name'];
                                                                     ?>
-
                                                                     <tr id="price-row-<?php echo $detail['id']; ?>">
                                                                         <td style="display: none;"><?php echo $detail['id']; ?></td>
                                                                         <td><?php echo $basisname; ?></td>

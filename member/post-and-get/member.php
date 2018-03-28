@@ -80,59 +80,6 @@ if (isset($_POST['login'])) {
 
 if (isset($_POST['update'])) {
 
-    $imgName = '';
-
-    if (empty($_POST["profile_picture_name"])) {
-
-        $dir_dest = '../../upload/member/';
-
-        $handle = new Upload($_FILES['profile_picture']);
-
-        $imgName = Helper::randamId();
-
-        if ($handle->uploaded) {
-            $handle->image_resize = true;
-            $handle->file_new_name_body = TRUE;
-            $handle->file_overwrite = TRUE;
-            $handle->file_new_name_ext = 'jpg';
-            $handle->image_ratio_crop = 'C';
-            $handle->file_new_name_body = $imgName;
-            $handle->image_x = 250;
-            $handle->image_y = 250;
-
-            $handle->Process($dir_dest);
-
-            if ($handle->processed) {
-                $info = getimagesize($handle->file_dst_pathname);
-                $imgName = $handle->file_dst_name;
-            }
-        }
-    } else {
-
-        $dir_dest = '../../upload/member/';
-
-        $handle = new Upload($_FILES['profile_picture']);
-
-        if ($handle->uploaded) {
-            $handle->image_resize = true;
-            $handle->file_new_name_body = TRUE;
-            $handle->file_overwrite = TRUE;
-            $handle->file_new_name_ext = FALSE;
-            $handle->image_ratio_crop = 'C';
-            $handle->file_new_name_body = $_POST["profile_picture_name"];
-            $handle->image_x = 250;
-            $handle->image_y = 250;
-
-            $handle->Process($dir_dest);
-
-            if ($handle->processed) {
-                $info = getimagesize($handle->file_dst_pathname);
-                $imgName = $handle->file_dst_name;
-            }
-        }
-        $imgName = $_POST["profile_picture_name"];
-    }
-
     $MEMBER = new Member($_POST['id']);
 
     $MEMBER->profile_picture = $imgName;
@@ -145,6 +92,7 @@ if (isset($_POST['update'])) {
     $MEMBER->home_address = filter_input(INPUT_POST, 'home_address');
     $MEMBER->city = filter_input(INPUT_POST, 'city');
     $MEMBER->contact_number = mysql_real_escape_string($_POST['contact_number']);
+    $MEMBER->about_me = filter_input(INPUT_POST, 'about_me');
     $MEMBER->username = mysql_real_escape_string($_POST['username']);
 
 

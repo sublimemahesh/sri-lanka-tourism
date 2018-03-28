@@ -22,7 +22,7 @@ $MEMBER = new Member($_SESSION['id']);
         <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
         <link rel="stylesheet" type="text/css" href="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-datepicker/css/datepicker.html" />
         <link rel="stylesheet" type="text/css" href="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-daterangepicker/daterangepicker.html" />
-
+        <link href="assets/jquery-ui/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
         <link href="assets/css/style.css" rel="stylesheet">
         <link href="assets/css/style-responsive.css" rel="stylesheet">
         <link href="assets/css/custom.css" rel="stylesheet" type="text/css"/>
@@ -68,9 +68,11 @@ $MEMBER = new Member($_SESSION['id']);
                                     <div class="body">
                                         <div class="userccount">
                                             <div class="formpanel"> 
-                                                <form method="post" action="post-and-get/member.php" enctype="multipart/form-data">
-                                                    <div class="col-md-12 top-bott50">
-                                                        <div class="col-md-8">
+
+                                                <div class="col-md-12 top-bott50">
+                                                    <div class="col-md-8">
+                                                        <form method="post" action="post-and-get/member.php">
+
                                                             <!--Full Name-->
                                                             <div class="">
                                                                 <div class="bottom-top">Full Name</div>
@@ -110,7 +112,7 @@ $MEMBER = new Member($_SESSION['id']);
                                                             <div class="">
                                                                 <div class="bottom-top">Date Of Birthday</div>
                                                                 <div class="formrow">
-                                                                    <input type="text" name="date_of_birthday" class="form-control" placeholder="Please Enter Date Of Birthday" required="TRUE" value="<?php echo $MEMBER->date_of_birthday; ?>">
+                                                                    <input type="text" name="date_of_birthday" class="form-control datepicker" placeholder="Please Enter Date Of Birthday" required="TRUE" value="<?php echo $MEMBER->date_of_birthday; ?>">
                                                                 </div>
                                                             </div> 
                                                             <!--Driving Licence Number-->
@@ -134,54 +136,64 @@ $MEMBER = new Member($_SESSION['id']);
                                                                 </div>
                                                                 <div class="formrow">
                                                                     <select class="form-control" type="text" id="city" autocomplete="off" name="city">
-                                                                        <option value="<?php $MEMBER->id ?>" class="active light-c">
-                                                                            <?php
-                                                                            $CITY = new City($MEMBER->city);
-                                                                            echo $CITY->name;
-                                                                            ?>
-                                                                        </option>
-                                                                        <?php foreach (City::all() as $key => $city) {
-                                                                            ?>
-                                                                            <option value="<?php echo $city['id']; ?>"><?php echo $city['name']; ?></option>
-                                                                            <?php
+
+                                                                        <?php
+                                                                        foreach (City::all() as $key => $city) {
+                                                                            if ($city[id] == $MEMBER->city) {
+                                                                                ?>
+                                                                                <option value="<?php echo $city['id']; ?>" selected="true"><?php echo $city['name']; ?></option>
+                                                                                <?php
+                                                                            } else {
+                                                                                ?>      
+                                                                                <option value="<?php echo $city['id']; ?>"><?php echo $city['name']; ?></option>
+                                                                                <?php
+                                                                            }
                                                                         }
                                                                         ?>
                                                                     </select>
                                                                 </div>
                                                             </div>
-                                                        </div> 
-                                                        <div class="col-md-4">
-                                                            <div>
-                                                                <div class="bottom-top">Change Your Profile Picture</div>
-                                                                <div>
-                                                                    <?php
-                                                                    if (empty($MEMBER->profile_picture)) {
-                                                                        ?>
-                                                                        <img src="../upload/member/member.png" class="img img-responsive img-thumbnail"/> 
-                                                                        <?php
-                                                                    } else {
-                                                                        ?>
-                                                                        <img src="../upload/member/<?php echo $MEMBER->profile_picture; ?>" class="img img-responsive img-thumbnail"/> 
-                                                                        <?php
-                                                                    }
-                                                                    ?>
+                                                            <div class="">
+                                                                <div class="bottom-top">
+                                                                    <label for="about_me">About Me</label>
                                                                 </div>
-                                                                <input type="file" id="profile_picture" class="" name="profile_picture">
-                                                                <input type="hidden" name="profile_picture_name" value="<?php echo $MEMBER->profile_picture; ?>"/> 
+                                                                <div class="formrow">
+                                                                    <textarea id="description" class="form-control" rows="5" name="about_me"><?php echo $MEMBER->about_me;?></textarea>
+                                                                </div>
                                                             </div>
+
+                                                            <div class="top-bott50">
+                                                                <div class="bottom-top">
+                                                                    <input type="hidden" id="id" value="<?php echo $MEMBER->id; ?>" name="id"/>
+                                                                    <button type="submit" name="update" class="btn btn-info">Save Changes</button>
+                                                                </div>
+                                                            </div> 
+                                                            <br> 
+                                                        </form>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div>
+                                                            <div class="bottom-top">Change Your Profile Picture</div>
+                                                            <?php
+                                                            $MEMBER = new Member($_SESSION["id"]);
+                                                            if (empty($MEMBER->profile_picture)) {
+                                                                ?>
+                                                                <img src="../upload/member/member.png" class="img img-responsive img-thumbnail" id="profil_pic"/>
+                                                                <?php
+                                                            } else {
+                                                                ?>
+                                                                <img src="../upload/member/<?php echo $MEMBER->profile_picture; ?>" class="img img-responsive img-thumbnail" id="profil_pic"/>
+                                                                <?php
+                                                            }
+                                                            ?>
+                                                            <form class="form-horizontal"  method="post" enctype="multipart/form-data" id="upForm">
+                                                                <input type="file" name="pro-picture" id="pro-picture" />
+                                                                <input type="hidden" name="upload-profile-image" id="upload-profile-image"/>
+                                                                <input type="hidden" name="member" id="member" value="<?php echo $MEMBER->id; ?>"/>
+                                                            </form>
                                                         </div>
                                                     </div>
-                                                    <div class="row">
-                                                        <div class="top-bott50">
-                                                            <div class="bottom-top">
-                                                                <input type="hidden" id="id" value="<?php echo $MEMBER->id; ?>" name="id"/>
-                                                                <button type="submit" name="update" class="btn btn-info center-block">Save Changes</button>
-                                                            </div>
-                                                        </div> 
-                                                    </div>
-                                                </form>
-                                                <br>
-
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -222,9 +234,20 @@ $MEMBER = new Member($_SESSION['id']);
         <script type="text/javascript" src="assets/js/bootstrap-inputmask/bootstrap-inputmask.min.js"></script>
 
         <script src="assets/js/form-component.js"></script>    
+        <script src="js/profile.js" type="text/javascript"></script>
 
         <script>
             //custom select box
+            $(function () {
+                var dateToday = new Date();
+                /* global setting */
+                var datepickersOpt = {
+                    dateFormat: 'yy-mm-dd',
+                };
+
+                $(".datepicker").datepicker($.extend(datepickersOpt));
+
+            });
 
             $(function () {
                 $('select.styled').customSelect();
@@ -235,3 +258,7 @@ $MEMBER = new Member($_SESSION['id']);
     </body>
 
 </html>
+
+
+
+

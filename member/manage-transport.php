@@ -50,9 +50,9 @@ $TRANSPORTS_PHOTO = new TransportPhoto(NULL);
                                                         <div class="col-md-3">
                                                             <div class="formrow">
                                                                 <a href="add-new-transport.php">
-                                                                    <div class="uploadbox1 uploadphotobx1" id="uploadphotobx">
+                                                                    <div class="uploadbox uploadphotobx" id="uploadphotobx">
                                                                         <i class="fa fa-plus plus-icon" aria-hidden="true"></i>
-                                                                        <label class="uploadBox">Click here to add your new vehicle
+                                                                        <label class="uploadBox">Click here to add your vehicle
                                                                         </label>
                                                                     </div>
                                                                 </a>

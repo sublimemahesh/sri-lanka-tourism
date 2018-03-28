@@ -83,13 +83,13 @@ $MEMBER = new Member($_SESSION['id']);
                     <span class="badge bg-theme"></span>
                 </a>
                 <ul class="dropdown-menu" role="menu">
-                    <li><a href="./">Home</a></li>
-                    <li><a href="edit-profile.php">Edit Profile</a></li>
-                    <li><a href="change-password.php">Change Password</a></li>
+                    <li><a href="profile.php" class="index-top-menu"><i class="index-top-menu-icon fa fa-user"></i>My Profile</a></li>
+                    <li><a href="edit-profile.php" class="index-top-menu"><i class="index-top-menu-icon fa fa-pencil"></i>Edit Profile</a></li>
+                    <li><a href="change-password.php" class="index-top-menu"><i class="index-top-menu-icon fa fa-edit"></i>Change Password</a></li>
                     <li class="divider"></li>
                     <li>
-                        <a href="post-and-get/logout.php">
-
+                        <a href="post-and-get/logout.php" class="index-top-menu">
+                            <i class="index-top-menu-icon fa fa-lock"></i>
                             <span class="subject">
                                 <span class="from"> Sign Out</span>
                             </span>
@@ -138,30 +138,30 @@ $MEMBER = new Member($_SESSION['id']);
                     <i class="fa fa-taxi"></i>
                     <span>Transport</span>
                 </a>
-<!--                <ul class="sub">
-                    <li><a  href="add-new-transport.php">Add New Transport</a></li>
-                    <li><a  href="manage-transport.php">Manage Transport</a></li>
-                </ul>-->
+                <!--                <ul class="sub">
+                                    <li><a  href="add-new-transport.php">Add New Transport</a></li>
+                                    <li><a  href="manage-transport.php">Manage Transport</a></li>
+                                </ul>-->
             </li>
             <li class="sub-menu">
                 <a href="manage-accommodation.php" >
                     <i class="fa fa-bed"></i>
                     <span>Accommodation</span>
                 </a>
-<!--                <ul class="sub">
-                    <li><a  href="add-new-accommodation.php">Add Accommodation</a></li>
-                    <li><a  href="manage-accommodation.php">Manage Accommodation</a></li>
-                </ul>-->
+                <!--                <ul class="sub">
+                                    <li><a  href="add-new-accommodation.php">Add Accommodation</a></li>
+                                    <li><a  href="manage-accommodation.php">Manage Accommodation</a></li>
+                                </ul>-->
             </li>
             <li class="sub-menu">
                 <a href="manage-tour-package.php" >
                     <i class="fa fa-suitcase"></i>
                     <span>Tour Packages</span>
                 </a>
-<!--                <ul class="sub">
-                    <li><a  href="add-new-tour-package.php">Add New Tour Packages</a></li>
-                    <li><a  href="manage-tour-package.php">Manage Tour Packages</a></li>
-                </ul>-->
+                <!--                <ul class="sub">
+                                    <li><a  href="add-new-tour-package.php">Add New Tour Packages</a></li>
+                                    <li><a  href="manage-tour-package.php">Manage Tour Packages</a></li>
+                                </ul>-->
             </li> 
         </ul>
     </div>

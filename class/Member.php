@@ -20,13 +20,14 @@ class Member {
     public $username;
     public $password;
     public $resetcode;
+    public $about_me;
     public $rank;
     public $status;
 
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`,`name`,`email`,`nic_number`,`date_of_birthday`,`contact_number`,`driving_licence_number`,`home_address`,`city`,`profile_picture`,`username`,`status`,`rank` FROM `member` WHERE `id`=" . $id;
+            $query = "SELECT `id`,`name`,`email`,`nic_number`,`date_of_birthday`,`contact_number`,`driving_licence_number`,`home_address`,`city`,`profile_picture`,`username`,`about_me`,`status`,`rank` FROM `member` WHERE `id`=" . $id;
 
             $db = new Database();
 
@@ -43,6 +44,7 @@ class Member {
             $this->city = $result['city'];
             $this->profile_picture = $result['profile_picture'];
             $this->username = $result['username'];
+            $this->about_me = $result['about_me'];
             $this->rank = $result['rank'];
             $this->status = $result['status'];
 
@@ -197,9 +199,9 @@ class Member {
                 . "`driving_licence_number` ='" . $this->driving_licence_number . "', "
                 . "`home_address` ='" . $this->home_address . "', "
                 . "`city` ='" . $this->city . "', "
-                . "`profile_picture` ='" . $this->profile_picture . "', "
                 . "`username` ='" . $this->username . "', "
                 . "`status` ='" . $this->status . "', "
+                . "`about_me` ='" . $this->about_me . "', "
                 . "`rank` ='" . $this->rank . "' "
                 . "WHERE `id` = '" . $this->id . "'";
 

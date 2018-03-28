@@ -483,3 +483,11 @@ and open the template in the editor.
 .hover-menu-icon{
     margin-right: 7px;
 }
+
+.index-top-menu{
+    padding: 3px 10px !important;
+}
+
+.index-top-menu-icon{
+    margin-right: 6px;
+}
