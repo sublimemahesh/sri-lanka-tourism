@@ -52,7 +52,7 @@ $TRANSPORTS_PHOTO = new TransportPhoto(NULL);
                                                                 <a href="add-new-transport.php">
                                                                     <div class="uploadbox1 uploadphotobx1" id="uploadphotobx">
                                                                         <i class="fa fa-plus plus-icon" aria-hidden="true"></i>
-                                                                        <label class="uploadBox">Click here to add new vehicle
+                                                                        <label class="uploadBox">Click here to add your new vehicle
                                                                         </label>
                                                                     </div>
                                                                 </a>
@@ -71,6 +71,18 @@ $TRANSPORTS_PHOTO = new TransportPhoto(NULL);
                                                                                     break;
                                                                                 }
                                                                                 ?>
+                                                                                <div class="menu-button-hover">
+                                                                                    <div class="dropdown">
+                                                                                        <button class="dropbtn"><i class="fa fa-bars"></i></button>
+                                                                                        <div class="dropdown-content text-left">
+                                                                                            <a href="edit-transport.php?id=<?php echo $vehicle_t['id']; ?>"><i class="hover-menu-icon fa fa-pencil"></i>Edit</a>
+                                                                                            <a href="add-transport-photo.php?id=<?php echo $vehicle_t['id']; ?>"><i class="hover-menu-icon fa fa-photo"></i>Manage Photos</a>
+                                                                                            <a href="add-transport-rates.php?id=<?php echo $vehicle_t['id']; ?>"><i class="hover-menu-icon fa fa-star"></i>Manage Rates</a>
+                                                                                            <a href="#" class="menu-hover-delete-font delete-transports" data-id="<?php echo $vehicle_t['id']; ?>"><i class="hover-menu-icon fa fa-trash-o"></i>Delete</a>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
                                                                                 <img class="img-responsive" src="../upload/transport/thumb/<?php echo $TRANSPORTS_P['image_name']; ?>">
                                                                                 <?php
                                                                             }
@@ -81,29 +93,6 @@ $TRANSPORTS_PHOTO = new TransportPhoto(NULL);
                                                                     </div> 
                                                                     <div>
                                                                         <b>Title :</b> <?php echo $vehicle_t['title']; ?>
-                                                                    </div>
-                                                                    <div>
-                                                                        <b>Registered Number :</b> <?php echo $vehicle_t['registered_number']; ?>
-                                                                    </div>
-                                                                    <div>
-                                                                        <b>Registered Year :</b> <?php echo $vehicle_t['registered_year']; ?>
-                                                                    </div>
-                                                                    <div>
-
-                                                                        <a title="Edit Your Transport" href="edit-transport.php?id=<?php echo $vehicle_t['id']; ?>"><button class="all-icon btn btn-primary btn-md fa fa-pencil"></button>
-                                                                        </a> 
-                                                                        |
-                                                                        <a title="Delete Transport">
-                                                                            <button class="all-icon delete-transports btn btn-danger btn-md fa fa-trash-o" data-id="<?php echo $vehicle_t['id']; ?>"></button>
-                                                                        </a> 
-                                                                        |
-                                                                        <a title="Add Your Transport Photos" href="add-transport-photo.php?id=<?php echo $vehicle_t['id']; ?>">
-                                                                            <button class="all-icon btn btn-success btn-md fa fa-photo"></button>
-                                                                        </a> 
-                                                                        |
-                                                                        <a title="Add Your Transport Rates" href="add-transport-rates.php?id=<?php echo $vehicle_t['id']; ?>">
-                                                                            <button class="all-icon btn btn-warning btn-md fa fa-star"></button>
-                                                                        </a> 
                                                                     </div>
                                                                 </div>
 

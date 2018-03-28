@@ -63,7 +63,7 @@ $ROOM_PHOTO = new RoomPhoto(NULL);
                                                             <a href="accommodation-room.php?id=<?php echo $id; ?>">
                                                                 <div class="uploadbox2 uploadphotobx2" id="uploadphotobx">
                                                                     <i class="fa fa-plus plus-icon" aria-hidden="true"></i>
-                                                                    <label class="uploadBox">Click here to Upload New Room
+                                                                    <label class="uploadBox">Click here to add your room
 
                                                                     </label>
                                                                 </div>
@@ -82,6 +82,21 @@ $ROOM_PHOTO = new RoomPhoto(NULL);
                                                                             break;
                                                                         }
                                                                         ?>
+                                                                        <div class="menu-button-hover">
+                                                                            <div class="dropdown">
+                                                                                <button class="dropbtn"><i class="fa fa-bars"></i></button>
+                                                                                <div class="dropdown-content text-left">
+                                                                                    <a href="edit-room.php?id=<?php echo $room['id']; ?>&aid=<?php echo $id; ?>"><i class="hover-menu-icon fa fa-pencil"></i>Edit</a>
+                                                                                    <a href="add-room-photo.php?id=<?php echo $room['id']; ?>&aid=<?php echo $id; ?>"><i class="hover-menu-icon fa fa-photo"></i>Manage Photos</a>
+                                                                                    <a href="room-facilities.php?id=<?php echo $room['id']; ?>"><i class="hover-menu-icon fa fa-check-square"></i>Manage Facilities</a>
+                                                                                    <a href="manage-room-price-seasons.php?id=<?php echo $room['id']; ?>"><i class="hover-menu-icon fa fa-dollar"></i>Manage Price</a>
+                                                                                    <a href="manage-room-avilability.php?id=<?php echo $room['id']; ?>&year=<?php echo $year; ?>&month=<?php echo $month; ?>"><i class="hover-menu-icon fa fa-calendar-check-o"></i>Manage Avilability</a>
+                                                                                    <a href="#" class="menu-hover-delete-font delete-rooms" data-id="<?php echo $room['id']; ?>"><i class="hover-menu-icon fa fa-trash-o"></i>Delete</a>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+
                                                                         <img class="img-responsive" src="../upload/accommodation/rooms/thumb/<?php echo $room_p['image_name']; ?>">
                                                                         <?php
                                                                     }
@@ -91,30 +106,6 @@ $ROOM_PHOTO = new RoomPhoto(NULL);
 
                                                                 <div><b>Title :</b> <?php echo $room['name']; ?></div>
                                                                 <div>
-
-                                                                    <a title="Edit Room" href="edit-room.php?id=<?php echo $room['id']; ?>&aid=<?php echo $id; ?>"><button class="btn btn-primary btn-sm all-icon all-icon fa fa-pencil"></button>
-                                                                    </a> 
-                                                                    |
-                                                                    <a title="Delete Room">
-                                                                        <button class="delete-rooms btn btn-danger btn-sm all-icon all-icon fa fa-trash-o" data-id="<?php echo $room['id']; ?>"></button>
-                                                                    </a> 
-                                                                    |
-                                                                    <a title="Add Your Room Photos" href="add-room-photo.php?id=<?php echo $room['id']; ?>&aid=<?php echo $id; ?>">
-                                                                        <button class="btn btn-success btn-sm all-icon all-icon fa fa-photo"></button>
-                                                                    </a> 
-                                                                    |
-                                                                    <a title="Add Your Accommodation Room Facilities" href="room-facilities.php?id=<?php echo $room['id']; ?>">
-                                                                        <button class="btn btn-warning btn-sm all-icon all-icon fa fa-check-square"></button>
-                                                                    </a> 
-                                                                    <a title="Add Your Room Price" href="add-room-price.php?id=<?php echo $room['id']; ?>&aid=<?php echo $id; ?>">
-                                                                        <button class="btn btn-success btn-sm all-icon all-icon fa fa-photo"></button>
-                                                                    </a> 
-                                                                    <a title="Manage Room Prices" href="manage-room-price-seasons.php?id=<?php echo $room['id']; ?>">
-                                                                        <button class="btn btn-warning btn-sm all-icon all-icon fa fa-check-square"></button>
-                                                                    </a> 
-                                                                    <a title="Manage Avilability" href="manage-room-avilability.php?id=<?php echo $room['id']; ?>&year=<?php echo $year; ?>&month=<?php echo $month; ?>">
-                                                                        <button class="btn btn-warning btn-sm all-icon all-icon fa fa-calendar"></button>
-                                                                    </a> 
                                                                 </div>
 
                                                             </div>

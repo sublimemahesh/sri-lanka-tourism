@@ -59,7 +59,7 @@ $ACCOMODATION_PHOTO = new AccommodationPhoto(NULL);
                                                             <a href="add-new-accommodation.php">
                                                                 <div class="uploadbox1 uploadphotobx1" id="uploadphotobx">
                                                                     <i class="fa fa-plus plus-icon" aria-hidden="true"></i>
-                                                                    <label class="uploadBox">Click here to Upload New Accommodation
+                                                                    <label class="uploadBox">Click here to add your accommodation
                                                                     </label>
                                                                 </div>
                                                             </a>
@@ -78,6 +78,20 @@ $ACCOMODATION_PHOTO = new AccommodationPhoto(NULL);
                                                                                 break;
                                                                             }
                                                                             ?>
+
+                                                                            <div class="menu-button-hover">
+                                                                                <div class="dropdown">
+                                                                                    <button class="dropbtn"><i class="fa fa-bars"></i></button>
+                                                                                    <div class="dropdown-content text-left">
+                                                                                        <a href="edit-accommodation.php?id=<?php echo $accommodation['id']; ?>"><i class="hover-menu-icon fa fa-pencil"></i>Edit</a>
+                                                                                        <a href="add-accommodation-photo.php?id=<?php echo $accommodation['id']; ?>"><i class="hover-menu-icon fa fa-photo"></i>Manage Photos</a>
+                                                                                        <a href="accommodation-facilities.php?id=<?php echo $accommodation['id']; ?>"><i class="hover-menu-icon fa fa-check-square"></i>Manage Facilities</a>
+                                                                                        <a href="manage-room.php?id=<?php echo $accommodation['id']; ?>"><i class="hover-menu-icon fa fa-bed"></i>Manage Rooms</a>
+                                                                                        <a href="#" class="menu-hover-delete-font delete-accommodation" data-id="<?php echo $accommodation['id']; ?>"><i class="hover-menu-icon fa fa-trash-o"></i>Delete</a>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+
                                                                             <img class="img-responsive" src="../upload/accommodation/thumb/<?php echo $accommodation_p['image_name']; ?>">
                                                                             <?php
                                                                         }
@@ -88,29 +102,29 @@ $ACCOMODATION_PHOTO = new AccommodationPhoto(NULL);
                                                                 </div> 
                                                                 <div><b>Title :</b> <?php echo $accommodation['name']; ?></div>
                                                                 <div>
-
-                                                                    <a title="Edit Accommodation" href="edit-accommodation.php?id=<?php echo $accommodation['id']; ?>"><button class="btn btn-primary btn-xs all-icon fa fa-pencil"></button>
+<!--
+                                                                    <a title="Edit Accommodation" href=""><button class="btn btn-primary btn-xs all-icon fa fa-pencil"></button>
                                                                     </a> 
                                                                     |
                                                                     <a title="Delete Accommodation">
-                                                                        <button class="delete-accommodation btn btn-danger btn-xs all-icon fa fa-trash-o" data-id="<?php echo $accommodation['id']; ?>"></button>
+                                                                        <button class="delete-accommodation btn btn-danger btn-xs all-icon fa fa-trash-o" ></button>
                                                                     </a> 
                                                                     |
-                                                                    <a title="Add Your Accommodation Photo" href="add-accommodation-photo.php?id=<?php echo $accommodation['id']; ?>">
+                                                                    <a title="Add Your Accommodation Photo" href="">
                                                                         <button class="btn btn-success btn-xs all-icon fa fa-photo"></button>
                                                                     </a> 
                                                                     |
-                                                                    <a title="Add Your Accommodation Facilities" href="accommodation-facilities.php?id=<?php echo $accommodation['id']; ?>">
+                                                                    <a title="Add Your Accommodation Facilities" href="">
                                                                         <button class="btn btn-warning btn-xs all-icon fa fa-check-square"></button>
                                                                     </a> 
-                                                                    <!--                                                                    |
+                                                                                                                                        |
                                                                                                                                         <a title="Add Your Accommodation No Of Rooms" href="accommodation-room.php?id=<?php echo $accommodation['id']; ?>">
                                                                                                                                             <button class="btn btn-facebook btn-xs all-icon fa fa-th-list"></button>
-                                                                                                                                        </a> -->
+                                                                                                                                        </a> 
                                                                     |
-                                                                    <a title="Accommodation Rooms" href="manage-room.php?id=<?php echo $accommodation['id']; ?>">
+                                                                    <a title="Accommodation Rooms" href="">
                                                                         <button class="btn btn-facebook btn-xs all-icon fa fa-bed"></button>
-                                                                    </a> 
+                                                                    </a> -->
                                                                 </div>
 
                                                             </div>
