@@ -17,7 +17,6 @@
         <link href="css/comments-style.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <!-- Our Resort Values style-->
         <?php
         include './header.php';
         ?>
@@ -445,8 +444,7 @@
             </div>
         </div>
 
-
-        <!-- Our Resort Values style-->  
+ 
         <?php
         include './footer.php';
         ?>
