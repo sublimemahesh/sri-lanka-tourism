@@ -34,7 +34,7 @@ $MEMBER = new Member($_SESSION['id']);
     </head>
 
     <body>
-
+        <div class="loading" id="loading">Loading&#8230;</div>
         <section id="container" >
 
             <?php
@@ -158,7 +158,7 @@ $MEMBER = new Member($_SESSION['id']);
                                                                     <label for="about_me">About Me</label>
                                                                 </div>
                                                                 <div class="formrow">
-                                                                    <textarea id="description" class="form-control" rows="5" name="about_me"><?php echo $MEMBER->about_me;?></textarea>
+                                                                    <textarea id="description" class="form-control" rows="5" name="about_me"><?php echo $MEMBER->about_me; ?></textarea>
                                                                 </div>
                                                             </div>
 

@@ -15,12 +15,13 @@ class AccommodationGeneralFacilities {
 
     public $id;
     public $name;
+    public $image_name;
     public $sort;
 
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`,`name`,`sort` FROM `accommodation_general_facilities` WHERE `id`=" . $id;
+            $query = "SELECT `id`,`name`,`image_name`,`sort` FROM `accommodation_general_facilities` WHERE `id`=" . $id;
 
             $db = new Database();
 
@@ -28,6 +29,7 @@ class AccommodationGeneralFacilities {
 
             $this->id = $result['id'];
             $this->name = $result['name'];
+            $this->image_name = $result['image_name'];
             $this->queue = $result['sort'];
             return $this;
         }
@@ -35,8 +37,9 @@ class AccommodationGeneralFacilities {
 
     public function create() {
 
-        $query = "INSERT INTO `accommodation_general_facilities` (`name`,`sort`) VALUES  ('"
+        $query = "INSERT INTO `accommodation_general_facilities` (`name`,`image_name`,`sort`) VALUES  ('"
                 . $this->name . "','"
+                . $this->image_name . "','"
                 . $this->sort . "')";
 
         $db = new Database();
@@ -68,7 +71,8 @@ class AccommodationGeneralFacilities {
     public function update() {
 
         $query = "UPDATE  `accommodation_general_facilities` SET "
-                . "`name` ='" . $this->name . "'"
+                . "`name` ='" . $this->name . "',"
+                . "`image_name` ='" . $this->image_name . "'"
                 . "WHERE `id` = '" . $this->id . "'";
 
         $db = new Database();

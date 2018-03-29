@@ -38,16 +38,16 @@ include_once(dirname(__FILE__) . './auth.php');
     </head>
 
     <body class="theme-red">
-<?php
-include './navigation-and-header.php';
-?> 
+        <?php
+        include './navigation-and-header.php';
+        ?> 
         <section class="content">
             <div class="container-fluid"> 
-<?php
-$vali = new Validator();
+                <?php
+                $vali = new Validator();
 
-$vali->show_message();
-?>
+                $vali->show_message();
+                ?>
                 <!-- Vertical Layout -->
                 <div class="row clearfix">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -72,6 +72,16 @@ $vali->show_message();
                                             <div class="form-group">
                                                 <div class="form-line">
                                                     <input type="text" id="name" class="form-control" placeholder="Enter Accommodation General Facility" autocomplete="off" name="name" required="TRUE">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="image">Image</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    <input type="file" id="image" class="form-control" name="image" required="true">
                                                 </div>
                                             </div>
                                         </div>
