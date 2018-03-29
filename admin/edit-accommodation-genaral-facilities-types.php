@@ -8,8 +8,6 @@ if (isset($_GET['id'])) {
 }
 
 $ACCOMODATION_GENERAL_FACILITY = new AccommodationGeneralFacilities($id);
-
-
 ?> 
 ﻿<!DOCTYPE html>
 <html> 
@@ -59,7 +57,7 @@ $ACCOMODATION_GENERAL_FACILITY = new AccommodationGeneralFacilities($id);
                         <div class="card">
                             <div class="header">
                                 <h2>
-                                  Edit Accommodation General Facilities
+                                    Edit Accommodation General Facilities
                                 </h2>
                                 <ul class="header-dropdown">
                                     <li class="">
@@ -83,11 +81,22 @@ $ACCOMODATION_GENERAL_FACILITY = new AccommodationGeneralFacilities($id);
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="name">Image</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">                                       
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="file" id="image" class="form-control" value="<?php echo $ACCOMODATION_GENERAL_FACILITY->image_name; ?>"  name="image">
+                                                    <img src="../upload/accommodation-facilities-icons/<?php echo $ACCOMODATION_GENERAL_FACILITY->image_name; ?>" id="image" class="view-edit-img img img-responsive img-thumbnail" name="image" style="width: 10%"alt="image">
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
 
                                     <div class="row clearfix">
                                         <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
-
+                                            <input type="hidden" id="oldImageName" value="<?php echo $ACCOMODATION_GENERAL_FACILITY->image_name; ?>" name="oldImageName"/>
                                             <input type="hidden" id="id" value="<?php echo $ACCOMODATION_GENERAL_FACILITY->id; ?>" name="id"/>
                                             <input type="hidden" id="authToken" value="<?php echo $_SESSION["authToken"]; ?>" name="authToken"/>
 

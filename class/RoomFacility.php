@@ -14,13 +14,14 @@
 class RoomFacility {
 
     public $id;
-    public $room;
+    public $name;
+    public $image_name;
     public $sort;
 
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`,`name`,`sort` FROM `room_facility` WHERE `id`=" . $id;
+            $query = "SELECT `id`,`name`,`image_name`,`sort` FROM `room_facility` WHERE `id`=" . $id;
 
             $db = new Database();
 
@@ -28,6 +29,7 @@ class RoomFacility {
 
             $this->id = $result['id'];
             $this->name = $result['name'];
+            $this->image_name = $result['image_name'];
             $this->queue = $result['sort'];
             return $this;
         }
@@ -35,8 +37,9 @@ class RoomFacility {
 
     public function create() {
 
-        $query = "INSERT INTO `room_facility` (`name`,`sort`) VALUES  ('"
+        $query = "INSERT INTO `room_facility` (`name`,`image_name`,`sort`) VALUES  ('"
                 . $this->name . "','"
+                . $this->image_name . "','"
                 . $this->sort . "')";
 
         $db = new Database();
@@ -90,7 +93,8 @@ class RoomFacility {
     public function update() {
 
         $query = "UPDATE  `room_facility` SET "
-                . "`name` ='" . $this->name . "'"
+                . "`name` ='" . $this->name . "',"
+                . "`image_name` ='" . $this->image_name . "'"
                 . "WHERE `id` = '" . $this->id . "'";
 
         $db = new Database();

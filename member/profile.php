@@ -33,6 +33,7 @@ $MEMBER = new Member($_SESSION['id']);
     </head>
 
     <body>
+        <div class="loading" id="loading">Loading&#8230;</div>
         <section id="container" >
             <?php
             include './header-nav.php';
@@ -73,6 +74,7 @@ $MEMBER = new Member($_SESSION['id']);
                                                             echo $CITY->name;
                                                             ?>
                                                         </li>
+                                                        <li class="list-group-item"> <b>About Me</b> : <?php echo $MEMBER->about_me; ?></li>
                                                         <!--<li class="list-group-item"> <b>Last Login</b> : </li>--> 
                                                     </ul>
                                                 </div>
@@ -117,7 +119,7 @@ $MEMBER = new Member($_SESSION['id']);
         <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
         <script src="assets/js/jquery.scrollTo.min.js"></script>
         <script src="assets/js/jquery.nicescroll.js" type="text/javascript"></script>
- 
+
         <!--common script for all pages-->
         <script src="assets/js/common-scripts.js"></script>
 
