@@ -101,14 +101,11 @@ $MEMBER = new Member($_SESSION['id']);
                                         </div>   	
                                     </div>
                                 </div>
-                            </div>
-
-
+                            </div> 
                         </div>
                     </div>
                 </div>
-            </section>
-
+            </section> 
             <?php
             include './footer.php';
             ?>
@@ -120,8 +117,7 @@ $MEMBER = new Member($_SESSION['id']);
         <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
         <script src="assets/js/jquery.scrollTo.min.js"></script>
         <script src="assets/js/jquery.nicescroll.js" type="text/javascript"></script>
-
-
+ 
         <!--common script for all pages-->
         <script src="assets/js/common-scripts.js"></script>
 
@@ -150,8 +146,7 @@ $MEMBER = new Member($_SESSION['id']);
                 $('select.styled').customSelect();
             });
 
-        </script>
-
+        </script> 
     </body>
 
 </html>
