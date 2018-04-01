@@ -1,3 +1,9 @@
+<?php
+include_once(dirname(__FILE__) . '/class/include.php');
+
+
+$ACCOMMODATION_PHOTO = new AccommodationPhoto(NULL);
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -12,7 +18,7 @@
         <link href="css/datepicker.css" rel="stylesheet" type="text/css"/>
         <link href="assets/css/styles.css" rel="stylesheet" type="text/css"/>
         <link href="admin/plugins/jquery-ui/jquery-ui.css" rel="stylesheet" type="text/css"/>
-      
+
     </head>
     <body>
         <!-- Our Resort Values style-->
@@ -25,322 +31,103 @@
                 <div class="inner-container container">
                     <div class="room-container clearfix">
                         <div class="col-md-9">
-                            <div class="room-box1 row animated-box animated-border" >
-                                <div class="col-md-3 room-img1 acc-image">
-                                    <img src="assets/img/hotel/2.jpg" class="thumbnail img-responsive accommodation-photo">
-                                    <a href="#" class=""></a>
-                                </div>
-                                <div class="r-sec col-md-9">
-                                    <div class="col-md-8 m-sec">
-                                        <div class="title-box row">
-                                            <div class="title col-md-6">Hotel Name</div>
-                                            <div class="rate-line col-md-4">
-                                                <div class="star-rating star-rate" >
-                                                    <span class="width-60">
-                                                        <strong class="rating">3.00 out of 3 </strong>
-                                                    </span>
+                            <?php
+                            $ACCOMMODATIONS = Accommodation::all();
+                            foreach ($ACCOMMODATIONS as $accommodation) {
+                                ?>
+                                <div class="room-box1 row animated-box animated-border" >
+                                    <div class="col-md-3 room-img1 acc-image">
+                                        <a href="accommodation-view.php?id=<?php echo $accommodation['id']; ?>" class="">
+                                            <?php
+                                            foreach ($ACCOMMODATION_PHOTO->getAccommodationPhotosById($accommodation['id']) as $key => $ACCOMMODATION_P) {
+                                                if ($key == 1) {
+                                                    break;
+                                                }
+                                                ?> 
+                                                <img src="upload/accommodation/thumb/<?php echo $ACCOMMODATION_P['image_name']; ?>" class="thumbnail img-responsive accommodation-photo">
+                                                <?php
+                                            }
+                                            ?>
+                                        </a>
+                                    </div>
+                                    <div class="r-sec col-md-9">
+                                        <div class="col-md-8 m-sec">
+                                            <div class="title-box row">
+                                                <div class="title col-md-6"><?php echo $accommodation['name']; ?></div>
+                                                <div class="rate-line col-md-4">
+                                                    <div class="star-rating star-rate" >
+                                                        <span class="width-60">
+                                                            <strong class="rating">3.00 out of 3 </strong>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2 like">
+                                                    <i class="fa fa-thumbs-up"></i>
                                                 </div>
                                             </div>
-                                            <div class="col-md-2 like">
-                                                <i class="fa fa-thumbs-up"></i>
-                                            </div>
-                                        </div>
-                                        <div class="row location-details">
-                                            <div class="location icons col-md-5">
-                                                <i class="fa fa-map-marker"></i>
-                                                <a href="" class="link-sec">Show on Map</a>
-                                            </div>
-                                            <div class="direction icons col-md-7">
-                                                <i class="fa fa-compass"></i>
-                                                <span class="text-d">Direction details(11km)</span>
-                                            </div>
-                                        </div>
-                                        <div class="details">
-                                            fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia um.
-                                        </div>
-                                        <div class="row facilities align-center">
-                                            <div class="col-md-2 ">
-                                                <a href="#" data-toggle="tooltip" title="Spa">
-                                                    <img src="assets/img/hotel/f1.png" class="img-responsive thumbnail">
-                                                </a>
-                                            </div>
-                                            <div class="col-md-2 img2">
-                                                <a href="#" data-toggle="tooltip" title="Restuarent">
-                                                    <img src="assets/img/hotel/f2.png" class="img-responsive thumbnail">
-                                                </a>
-                                            </div>
-                                            <div class="col-md-2 img3">
-                                                <a href="#" data-toggle="tooltip" title="Beach">
-                                                    <img src="assets/img/hotel/f5.png" class="img-responsive thumbnail">
-                                                </a>
-                                            </div>
-                                            <div class="col-md-2 img4">
-                                                <a href="#" data-toggle="tooltip" title="Private Pool">
-                                                    <img src="assets/img/hotel/f4.png" class="img-responsive thumbnail">
-                                                </a>
-                                            </div>
-                                            <div class="col-md-2 img5">
-                                                <a href="#" data-toggle="tooltip" title="Garden">
-                                                    <img src="assets/img/hotel/f6.png" class="img-responsive thumbnail"> 
-                                                </a>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 desc ">
-                                        <div class="row">
-                                            <div class="grade col-md-7" >
-                                                <strong class="">Excellent</strong>
-                                                <span class="brackets bottom-word">(reviews)</span>
-                                            </div>
-                                            <div class="score-review col-md-5">
-                                                <span class="score-rate">8.6</span>
-                                            </div>
-                                        </div>
-                                        <div class="m-sec view-price text-center">
-                                            <a href="room-details.html" class="more-info1">Show Price</a> 
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="room-box1 row animated-box animated-border" >
-                                <div class="col-md-3 room-img1 acc-image">
-                                    <img src="assets/img/hotel/2.jpg" class="thumbnail img-responsive accommodation-photo">
-                                    <a href="#" class=""></a>
-                                </div>
-                                <div class="r-sec col-md-9">
-                                    <div class="col-md-8 m-sec">
-                                        <div class="title-box row">
-                                            <div class="title col-md-6">Hotel Name</div>
-                                            <div class="rate-line col-md-4">
-                                                <div class="star-rating star-rate" >
-                                                    <span class="width-60">
-                                                        <strong class="rating">3.00 out of 3 </strong>
-                                                    </span>
+                                            <div class="row location-details">
+                                                <div class="location icons col-md-5">
+                                                    <i class="fa fa-map-marker"></i>
+                                                    <a href="" class="link-sec">Show on Map</a>
+                                                </div>
+                                                <div class="direction icons col-md-7">
+                                                    <i class="fa fa-globe"></i>
+                                                    <span class="text-d"><?php echo $accommodation['website']; ?></span>
                                                 </div>
                                             </div>
-                                            <div class="col-md-2 like">
-                                                <i class="fa fa-thumbs-up"></i>
+                                            <div class="details">
+                                                <?php echo substr($accommodation['description'],0,100).'..'; ?>
                                             </div>
-                                        </div>
-                                        <div class="row location-details">
-                                            <div class="location icons col-md-5">
-                                                <i class="fa fa-map-marker"></i>
-                                                <a href="" class="link-sec">Show on Map</a>
-                                            </div>
-                                            <div class="direction icons col-md-7">
-                                                <i class="fa fa-compass"></i>
-                                                <span class="text-d">Direction details(11km)</span>
-                                            </div>
-                                        </div>
-                                        <div class="details">
-                                            fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia um.
-                                        </div>
-                                        <div class="row facilities align-center">
-                                            <div class="col-md-2 ">
-                                                <a href="#" data-toggle="tooltip" title="Spa">
-                                                    <img src="assets/img/hotel/f1.png" class="img-responsive thumbnail">
-                                                </a>
-                                            </div>
-                                            <div class="col-md-2 img2">
-                                                <a href="#" data-toggle="tooltip" title="Restuarent">
-                                                    <img src="assets/img/hotel/f2.png" class="img-responsive thumbnail">
-                                                </a>
-                                            </div>
-                                            <div class="col-md-2 img3">
-                                                <a href="#" data-toggle="tooltip" title="Beach">
-                                                    <img src="assets/img/hotel/f5.png" class="img-responsive thumbnail">
-                                                </a>
-                                            </div>
-                                            <div class="col-md-2 img4">
-                                                <a href="#" data-toggle="tooltip" title="Private Pool">
-                                                    <img src="assets/img/hotel/f4.png" class="img-responsive thumbnail">
-                                                </a>
-                                            </div>
-                                            <div class="col-md-2 img5">
-                                                <a href="#" data-toggle="tooltip" title="Garden">
-                                                    <img src="assets/img/hotel/f6.png" class="img-responsive thumbnail"> 
-                                                </a>
-                                            </div>
+                                            <div class="row facilities align-center">
+                                                <div class="col-md-2 ">
+                                                    <a href="#" data-toggle="tooltip" title="Spa">
+                                                        <img src="assets/img/hotel/f1.png" class="img-responsive thumbnail">
+                                                    </a>
+                                                </div>
+                                                <div class="col-md-2 img2">
+                                                    <a href="#" data-toggle="tooltip" title="Restuarent">
+                                                        <img src="assets/img/hotel/f2.png" class="img-responsive thumbnail">
+                                                    </a>
+                                                </div>
+                                                <div class="col-md-2 img3">
+                                                    <a href="#" data-toggle="tooltip" title="Beach">
+                                                        <img src="assets/img/hotel/f5.png" class="img-responsive thumbnail">
+                                                    </a>
+                                                </div>
+                                                <div class="col-md-2 img4">
+                                                    <a href="#" data-toggle="tooltip" title="Private Pool">
+                                                        <img src="assets/img/hotel/f4.png" class="img-responsive thumbnail">
+                                                    </a>
+                                                </div>
+                                                <div class="col-md-2 img5">
+                                                    <a href="#" data-toggle="tooltip" title="Garden">
+                                                        <img src="assets/img/hotel/f6.png" class="img-responsive thumbnail"> 
+                                                    </a>
+                                                </div>
 
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 desc ">
-                                        <div class="row">
-                                            <div class="grade col-md-7" >
-                                                <strong class="">Excellent</strong>
-                                                <span class="brackets bottom-word">(reviews)</span>
-                                            </div>
-                                            <div class="score-review col-md-5">
-                                                <span class="score-rate">8.6</span>
                                             </div>
                                         </div>
-                                        <div class="m-sec view-price text-center">
-                                            <a href="room-details.html" class="more-info1">Show Price</a> 
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="room-box1 row animated-box animated-border" >
-                                <div class="col-md-3 room-img1 acc-image">
-                                    <img src="assets/img/hotel/2.jpg" class="thumbnail img-responsive accommodation-photo">
-                                    <a href="#" class=""></a>
-                                </div>
-                                <div class="r-sec col-md-9">
-                                    <div class="col-md-8 m-sec">
-                                        <div class="title-box row">
-                                            <div class="title col-md-6">Hotel Name</div>
-                                            <div class="rate-line col-md-4">
-                                                <div class="star-rating star-rate" >
-                                                    <span class="width-60">
-                                                        <strong class="rating">3.00 out of 3 </strong>
-                                                    </span>
+                                        <div class="col-md-4 desc ">
+                                            <div class="row">
+                                                <div class="grade col-md-7" >
+                                                    <strong class="">Excellent</strong>
+                                                    <span class="brackets bottom-word">(reviews)</span>
+                                                </div>
+                                                <div class="score-review col-md-5">
+                                                    <span class="score-rate">8.6</span>
                                                 </div>
                                             </div>
-                                            <div class="col-md-2 like">
-                                                <i class="fa fa-thumbs-up"></i>
-                                            </div>
-                                        </div>
-                                        <div class="row location-details">
-                                            <div class="location icons col-md-5">
-                                                <i class="fa fa-map-marker"></i>
-                                                <a href="" class="link-sec">Show on Map</a>
-                                            </div>
-                                            <div class="direction icons col-md-7">
-                                                <i class="fa fa-compass"></i>
-                                                <span class="text-d">Direction details(11km)</span>
-                                            </div>
-                                        </div>
-                                        <div class="details">
-                                            fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia um.
-                                        </div>
-                                        <div class="row facilities align-center">
-                                            <div class="col-md-2 ">
-                                                <a href="#" data-toggle="tooltip" title="Spa">
-                                                    <img src="assets/img/hotel/f1.png" class="img-responsive thumbnail">
-                                                </a>
-                                            </div>
-                                            <div class="col-md-2 img2">
-                                                <a href="#" data-toggle="tooltip" title="Restuarent">
-                                                    <img src="assets/img/hotel/f2.png" class="img-responsive thumbnail">
-                                                </a>
-                                            </div>
-                                            <div class="col-md-2 img3">
-                                                <a href="#" data-toggle="tooltip" title="Beach">
-                                                    <img src="assets/img/hotel/f5.png" class="img-responsive thumbnail">
-                                                </a>
-                                            </div>
-                                            <div class="col-md-2 img4">
-                                                <a href="#" data-toggle="tooltip" title="Private Pool">
-                                                    <img src="assets/img/hotel/f4.png" class="img-responsive thumbnail">
-                                                </a>
-                                            </div>
-                                            <div class="col-md-2 img5">
-                                                <a href="#" data-toggle="tooltip" title="Garden">
-                                                    <img src="assets/img/hotel/f6.png" class="img-responsive thumbnail"> 
-                                                </a>
+                                            <div class="m-sec view-price text-center">
+                                                <a href="accommodation-view.php?id=<?php echo $accommodation['id']; ?>" class="more-info1">View More</a> 
                                             </div>
 
                                         </div>
-                                    </div>
-                                    <div class="col-md-4 desc ">
-                                        <div class="row">
-                                            <div class="grade col-md-7" >
-                                                <strong class="">Excellent</strong>
-                                                <span class="brackets bottom-word">(reviews)</span>
-                                            </div>
-                                            <div class="score-review col-md-5">
-                                                <span class="score-rate">8.6</span>
-                                            </div>
-                                        </div>
-                                        <div class="m-sec view-price text-center">
-                                            <a href="room-details.html" class="more-info1">Show Price</a> 
-                                        </div>
-
                                     </div>
                                 </div>
-                            </div>
-                            <div class="room-box1 row animated-box animated-border" >
-                                <div class="col-md-3 room-img1 acc-image">
-                                    <img src="assets/img/hotel/2.jpg" class="thumbnail img-responsive accommodation-photo">
-                                    <a href="#" class=""></a>
-                                </div>
-                                <div class="r-sec col-md-9">
-                                    <div class="col-md-8 m-sec">
-                                        <div class="title-box row">
-                                            <div class="title col-md-6">Hotel Name</div>
-                                            <div class="rate-line col-md-4">
-                                                <div class="star-rating star-rate" >
-                                                    <span class="width-60">
-                                                        <strong class="rating">3.00 out of 3 </strong>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2 like">
-                                                <i class="fa fa-thumbs-up"></i>
-                                            </div>
-                                        </div>
-                                        <div class="row location-details">
-                                            <div class="location icons col-md-5">
-                                                <i class="fa fa-map-marker"></i>
-                                                <a href="" class="link-sec">Show on Map</a>
-                                            </div>
-                                            <div class="direction icons col-md-7">
-                                                <i class="fa fa-compass"></i>
-                                                <span class="text-d">Direction details(11km)</span>
-                                            </div>
-                                        </div>
-                                        <div class="details">
-                                            fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia um.
-                                        </div>
-                                        <div class="row facilities align-center">
-                                            <div class="col-md-2 ">
-                                                <a href="#" data-toggle="tooltip" title="Spa">
-                                                    <img src="assets/img/hotel/f1.png" class="img-responsive thumbnail">
-                                                </a>
-                                            </div>
-                                            <div class="col-md-2 img2">
-                                                <a href="#" data-toggle="tooltip" title="Restuarent">
-                                                    <img src="assets/img/hotel/f2.png" class="img-responsive thumbnail">
-                                                </a>
-                                            </div>
-                                            <div class="col-md-2 img3">
-                                                <a href="#" data-toggle="tooltip" title="Beach">
-                                                    <img src="assets/img/hotel/f5.png" class="img-responsive thumbnail">
-                                                </a>
-                                            </div>
-                                            <div class="col-md-2 img4">
-                                                <a href="#" data-toggle="tooltip" title="Private Pool">
-                                                    <img src="assets/img/hotel/f4.png" class="img-responsive thumbnail">
-                                                </a>
-                                            </div>
-                                            <div class="col-md-2 img5">
-                                                <a href="#" data-toggle="tooltip" title="Garden">
-                                                    <img src="assets/img/hotel/f6.png" class="img-responsive thumbnail"> 
-                                                </a>
-                                            </div>
+                                <?php
+                            }
+                            ?>
 
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 desc ">
-                                        <div class="row">
-                                            <div class="grade col-md-7" >
-                                                <strong class="">Excellent</strong>
-                                                <span class="brackets bottom-word">(reviews)</span>
-                                            </div>
-                                            <div class="score-review col-md-5">
-                                                <span class="score-rate">8.6</span>
-                                            </div>
-                                        </div>
-                                        <div class="m-sec view-price text-center">
-                                            <a href="room-details.html" class="more-info1">Show Price</a> 
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
             </section>
