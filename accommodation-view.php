@@ -1,3 +1,13 @@
+<?php
+include_once(dirname(__FILE__) . '/class/include.php');
+$id = $_GET["id"];
+$VIEW_ACCOMMODATIONS = new Accommodation($id);
+$ACCOMMODATIONS = new Accommodation($id);
+$ACCOMMODATION_PHOTO = new AccommodationPhoto(NULL);
+$ROOM_VIEW = new RoomFacility($id);
+$ROOM_PHOTO = new RoomPhoto(NULL);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -5,7 +15,9 @@
         <title>Sri Lanka || Tourism</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/owl.css" rel="stylesheet" type="text/css"/>
         <link href="css/font-awesome.min.css" rel="stylesheet">
+        <link href="css/owl.carousel.min.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/responsive.css">
         <link href="css/search.css" rel="stylesheet" type="text/css"/>
@@ -24,29 +36,21 @@
             <div class="container transport-container">
                 <div class="row">
                     <div class="col-md-8 p pro-details">
-                        <div id="galleria" class="galleria-slider">
-                            <a href="assets/img/rooms/1.jpg">
-                                <img src="assets/img/rooms/1r.jpg" data-title="" >
-                            </a>
-                            <a href="assets/img/rooms/2.jpg">
-                                <img src="assets/img/rooms/2r.jpg" data-title="" >
-                            </a>
-                            <a href="assets/img/rooms/3.jpg">
-                                <img src="assets/img/rooms/3r.jpg" data-title="" >
-                            </a>
-                            <a href="assets/img/rooms/4.jpg">
-                                <img src="assets/img/rooms/4r.jpg" data-title="" >
-                            </a>
-                            <a href="assets/img/rooms/5.jpg">
-                                <img src="assets/img/rooms/5r.jpg" data-title="" >
-                            </a>
+                        <div id="accommodation_photos" class="galleria-slider">
+                            <?php
+                            $VIEW_ACCOMMODATION = AccommodationPhoto::getAccommodationPhotosById($id);
+                            foreach ($VIEW_ACCOMMODATION as $key => $accommodation) {
+                                ?>
+                                <a href="upload/accommodation/<?php echo $accommodation['image_name']; ?>">
+                                    <img src="upload/accommodation/thumb/<?php echo $accommodation['image_name']; ?>" data-title="" >
+                                </a>
+                                <?php
+                            }
+                            ?>
                         </div> 
                         <div class="view-room-description">
                             <span>
-                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                                Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-                                Donec quam felis, ultricies nec, pellentesque eu, pretium quis,
-                                sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec.
+                                <?php echo $VIEW_ACCOMMODATIONS->description; ?>
                             </span>
                         </div>
 
@@ -54,247 +58,104 @@
                             <table class="table-responsive room-detail-table" style="background: #fff; color: #000;">
                                 <tr style="background-color:#007bb5;">
                                     <th>Room Type</th>
-                                    <th>Sleeps</th>
-                                    <th>Today's Price</th>
-                                    <th>Your Choice</th>
+                                    <th>No of Rooms</th>
+                                    <th>No of Adult</th>
+                                    <th>No of Child</th>
+                                    <th>No of Extra Bed</th>
+                                    <th>Extra Bed Price (US$)</th>
                                 </tr>
-                                <tr>
-                                    <td>
-                                        <button class="room-slide-btn" id="myBtn">Room name</button>
-                                        <div id="myModal" class="modal">
-                                            <div class="modal-content">
-                                                <span class="close">&times;</span>
-                                                <div class="row">
-                                                    <div class="col-md-9">
-                                                        <div id="galleria1" class="galleria-slider">
-                                                            <a href="assets/img/rooms/1.jpg">
-                                                                <img src="assets/img/rooms/1r.jpg" data-title="" >
-                                                            </a>
-                                                            <a href="assets/img/rooms/2.jpg">
-                                                                <img src="assets/img/rooms/2r.jpg" data-title="" >
-                                                            </a>
-                                                            <a href="assets/img/rooms/3.jpg">
-                                                                <img src="assets/img/rooms/3r.jpg" data-title="" >
-                                                            </a>
-                                                            <a href="assets/img/rooms/4.jpg">
-                                                                <img src="assets/img/rooms/4r.jpg" data-title="" >
-                                                            </a>
-                                                            <a href="assets/img/rooms/5.jpg">
-                                                                <img src="assets/img/rooms/5r.jpg" data-title="" >
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-3 inner-facility-section">
-                                                         <div class="inner-top-title">
-                                                             <img src="assets/img/facility/bathtub.png" alt=""/>
-                                                            <span>Private Bathroom</span>
-                                                        </div>
-                                                        <div class="room-area">
-                                                            <strong>Room Size</strong><span> 60m<sup>2</sup></span>
-                                                        </div>
-                                                        <div class="row">
-                                                            <strong class="inner-facility-title">Room Facilities:</strong>
-                                                            <div class="list-of-facilities">
-                                                                <div class="col-md-6">
-                                                                    <li>Mosquito net</li>
-                                                                    <li>Wardrobe/ Closet</li>
-                                                                    <li>Drying rack for clothing</li>
-                                                                    <li>Hairdryer</li>
-                                                                    <li>Bathrobe</li>
-                                                                    <li>Free toiletries</li>
-                                                                    <li>Toilet</li>
-                                                                    <li>Private bathroom</li>
-                                                                    <li>Bathtub or shower</li>
-                                                                    <li>Toilet paper</li>
-                                                                    <li>Dining area</li>
-                                                                    <li>Dining table</li>
-                                                                </div>
-                                                                <div class="col-md-6">
-                                                                    <li>Toilet</li>
-                                                                    <li>Private bathroom</li>
-                                                                    <li>Bathtub or shower</li>
-                                                                    <li>Toilet paper</li>
-                                                                    <li>Dining area</li>
-                                                                    <li>Dining table</li>
-                                                                    <li>Mosquito net</li>
-                                                                    <li>Wardrobe/ Closet</li>
-                                                                    <li>Drying rack for clothing</li>
-                                                                    <li>Hairdryer</li>
-                                                                    <li>Bathrobe</li>
-                                                                    <li>Free toiletries</li>
-                                                                </div>
+                                <?php
+                                $ROOM = Room::getAccommodationRoomsById($id);
+                                foreach ($ROOM as $rooms) {
+                                    ?>
+                                    <tr class="facility-tr">
+                                        <td>
+                                            <button class="room-title-btn" id="room-title-<?php echo $rooms['id']; ?>">
+                                                <?php echo $rooms['name']; ?>
+                                            </button>
+                                            <div id="room-slider-<?php echo $rooms['id']; ?>" class="modal">
+                                                <div class="modal-content">
+                                                    <span class="close">&times;</span>
+                                                    <div class="row">
+                                                        <div class="col-md-9">
+                                                            <div class="galleria-slider room-photos">
+                                                                <?php
+                                                                $VIEW_ROOMS = RoomPhoto::getRoomPhotosById($rooms['id']);
+                                                                foreach ($VIEW_ROOMS as $key => $room_p) {
+                                                                    ?>
+                                                                    <a href="upload/accommodation/rooms/<?php echo $room_p['image_name']; ?>">
+                                                                        <img src="upload/accommodation/rooms/thumb/<?php echo $room_p['image_name']; ?>" data-title="" >
+                                                                    </a>
+                                                                    <?php
+                                                                }
+                                                                ?>
                                                             </div>
                                                         </div>
-                                                        <div class="parking">
-                                                            <img src="assets/img/facility/parking-sign(1).png" alt=""/>
-                                                            <span>Free Private Parking</span>
-                                                        </div>
-                                                        <div class="inner-sub">
-                                                            <span style="color: red;">In high demand!</span>
-                                                            
-                                                        </div>
-                                                        <div class="inner-booked">
-                                                            <span>Recently booked or not</span>
-                                                        </div>
-                                                    </div>
+                                                        <div class="col-md-3 inner-facility-section">
+                                                            <div class="inner-top-title">
+                                                                <img src="assets/img/facility/bathtub.png" alt=""/>
+                                                                <span>Private Bathroom</span>
+                                                            </div>
+                                                            <div class="room-area">
+                                                                <strong>Room Size</strong><span> 60m<sup>2</sup></span>
+                                                            </div>
+                                                            <div class="row">
+                                                                <strong class="inner-facility-title">Room Facilities:</strong>
+                                                                <div class="list-of-facilities">
+                                                                    <?php
+                                                                    $results = RoomFaciliityDetails::getFacilitiesByRoomId($rooms['id']);
+                                                                    $resultroomfacilities = explode(",", $results['facility']);
+                                                                    foreach ($resultroomfacilities as $key => $resultRoomFacility) {
+                                                                        $RoomFacility = new RoomFacility($resultRoomFacility);
+                                                                        ?>
+                                                                        <div class="col-md-6">
+                                                                            <li><?php echo $RoomFacility->name; ?></li>
+                                                                        </div>
+                                                                        <?php
+                                                                    }
+                                                                    ?>
 
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="tr-facility">
-                                            <table class="inner-table">
-                                                <tr>
-                                                    <td><img src="assets/img/facility/parking-sign(1).png" alt=""/</td>
-                                                    <td>Free Parking</td>
-                                                    <td><img src="assets/img/facility/bathtub.png" alt=""/</td>
-                                                    <td>Free Parking</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><img src="assets/img/facility/breakfast-time.png" alt=""/</td>
-                                                    <td>Free Parking</td>
-                                                    <td><img src="assets/img/facility/computer-screen.png" alt=""/</td>
-                                                    <td>Free Parking</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><img src="assets/img/facility/parking-sign(1).png" alt=""/</td>
-                                                    <td>Free Parking</td>
-                                                    <td><img src="assets/img/facility/parking-sign(1).png" alt=""/</td>
-                                                    <td>Free Parking</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><img src="assets/img/facility/parking-sign(1).png" alt=""/</td>
-                                                    <td>Free Parking</td>
-                                                    <td><img src="assets/img/facility/parking-sign(1).png" alt=""/</td>
-                                                    <td>Free Parking</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </td>
-                                    <td>hrtshr</td>
-                                    <td>hrtshr</td>
-                                    <td>hrtshr</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                         <button class="room-slide-btn" id="myBtn">Room name</button>
-                                        <div id="myModal" class="modal">
-                                            <div class="modal-content">
-                                                <span class="close">&times;</span>
-                                                <div class="row">
-                                                    <div class="col-md-9">
-                                                        <div id="galleria1" class="galleria-slider">
-                                                            <a href="assets/img/rooms/1.jpg">
-                                                                <img src="assets/img/rooms/1r.jpg" data-title="" >
-                                                            </a>
-                                                            <a href="assets/img/rooms/2.jpg">
-                                                                <img src="assets/img/rooms/2r.jpg" data-title="" >
-                                                            </a>
-                                                            <a href="assets/img/rooms/3.jpg">
-                                                                <img src="assets/img/rooms/3r.jpg" data-title="" >
-                                                            </a>
-                                                            <a href="assets/img/rooms/4.jpg">
-                                                                <img src="assets/img/rooms/4r.jpg" data-title="" >
-                                                            </a>
-                                                            <a href="assets/img/rooms/5.jpg">
-                                                                <img src="assets/img/rooms/5r.jpg" data-title="" >
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-3 inner-facility-section">
-                                                         <div class="inner-top-title">
-                                                             <img src="assets/img/facility/bathtub.png" alt=""/>
-                                                            <span>Private Bathroom</span>
-                                                        </div>
-                                                        <div class="room-area">
-                                                            <strong>Room Size</strong><span> 60m<sup>2</sup></span>
-                                                        </div>
-                                                        <div class="row">
-                                                            <strong class="inner-facility-title">Room Facilities:</strong>
-                                                            <div class="list-of-facilities">
-                                                                <div class="col-md-6">
-                                                                    <li>Mosquito net</li>
-                                                                    <li>Wardrobe/ Closet</li>
-                                                                    <li>Drying rack for clothing</li>
-                                                                    <li>Hairdryer</li>
-                                                                    <li>Bathrobe</li>
-                                                                    <li>Free toiletries</li>
-                                                                    <li>Toilet</li>
-                                                                    <li>Private bathroom</li>
-                                                                    <li>Bathtub or shower</li>
-                                                                    <li>Toilet paper</li>
-                                                                    <li>Dining area</li>
-                                                                    <li>Dining table</li>
-                                                                </div>
-                                                                <div class="col-md-6">
-                                                                    <li>Toilet</li>
-                                                                    <li>Private bathroom</li>
-                                                                    <li>Bathtub or shower</li>
-                                                                    <li>Toilet paper</li>
-                                                                    <li>Dining area</li>
-                                                                    <li>Dining table</li>
-                                                                    <li>Mosquito net</li>
-                                                                    <li>Wardrobe/ Closet</li>
-                                                                    <li>Drying rack for clothing</li>
-                                                                    <li>Hairdryer</li>
-                                                                    <li>Bathrobe</li>
-                                                                    <li>Free toiletries</li>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="parking">
-                                                            <img src="assets/img/facility/parking-sign(1).png" alt=""/>
-                                                            <span>Free Private Parking</span>
-                                                        </div>
-                                                        <div class="inner-sub">
-                                                            <span style="color: red;">In high demand!</span>
-                                                            
-                                                        </div>
-                                                        <div class="inner-booked">
-                                                            <span>Recently booked or not</span>
-                                                        </div>
-                                                    </div>
+                                                            <div class="inner-sub">
+                                                                <span style="color: red;">In high demand!</span>
 
+                                                            </div>
+                                                            <div class="inner-booked">
+                                                                <span>Recently booked or not</span>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="tr-facility">
-                                            <table class="inner-table">
-                                                <tr>
-                                                    <td><img src="assets/img/facility/parking-sign(1).png" alt=""/</td>
-                                                    <td>Free Parking</td>
-                                                    <td><img src="assets/img/facility/bathtub.png" alt=""/</td>
-                                                    <td>Free Parking</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><img src="assets/img/facility/breakfast-time.png" alt=""/</td>
-                                                    <td>Free Parking</td>
-                                                    <td><img src="assets/img/facility/computer-screen.png" alt=""/</td>
-                                                    <td>Free Parking</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><img src="assets/img/facility/parking-sign(1).png" alt=""/</td>
-                                                    <td>Free Parking</td>
-                                                    <td><img src="assets/img/facility/parking-sign(1).png" alt=""/</td>
-                                                    <td>Free Parking</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><img src="assets/img/facility/parking-sign(1).png" alt=""/</td>
-                                                    <td>Free Parking</td>
-                                                    <td><img src="assets/img/facility/parking-sign(1).png" alt=""/</td>
-                                                    <td>Free Parking</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </td>
-                                    <td>hrtshr</td>
-                                    <td>hrtshr</td>
-                                    <td>hrtshr</td>
-                                </tr>
-
-
+                                            <div class="tr-facility">
+                                                <?php
+                                                $result = RoomFaciliityDetails::getFacilitiesByRoomId($rooms['id']);
+                                                $resultroomfacility = explode(",", $result['facility']);
+                                                foreach ($resultroomfacility as $key => $resultRoomFacility) {
+                                                    $RoomFacilities = new RoomFacility($resultRoomFacility);
+                                                    ?>
+                                                    <div class="col-md-6">
+                                                        <img src="assets/img/facility/parking-sign(1).png" alt=""/>
+                                                        <span><?php echo $RoomFacilities->name; ?></span>
+                                                    </div>
+                                                    <?php
+                                                }
+                                                ?>
+                                            </div>
+                                        </td>
+                                        <td><?php echo $rooms['number_of_room']; ?></td>
+                                        <td><?php echo $rooms['number_of_adults']; ?></td>
+                                        <td><?php echo $rooms['number_of_children']; ?></td>
+                                        <td><?php echo $rooms['number_of_extra_bed']; ?></td>
+                                        <td><?php echo $rooms['extra_bed_price']; ?></td>
+                                    </tr>
+                                    <?php
+                                }
+                                ?>
                             </table>
                         </div>
-
                     </div>
                     <div class="col-md-4 ">
                         <div class="right-side">
@@ -303,30 +164,19 @@
                                     <div class="acc-right-side">
                                         <h4><span>Facilities</span></h4>
                                         <div class="col-md-12 table-responsive">
-                                            <table class="table acc-table">
-                                                <tbody class="facility-table">
-                                                    <tr>
-                                                        <td><img src="assets/img/facility/wifi.png"></td>
-                                                        <td>Donec pede justo</td>
-                                                        <td><img src="assets/img/facility/parking-sign(1).png"></td>
-                                                        <td>Donec pede justo</td>
-
-                                                    </tr>
-                                                    <tr>
-                                                        <td><img src="assets/img/facility/sunbed.png"></td>
-                                                        <td>Fringilla vel</td>
-                                                        <td><img src="assets/img/facility/no-smoking-sign.png"></td>
-                                                        <td>Fringilla vel</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><img src="assets/img/facility/family.png"></td>
-                                                        <td>Aliquet nec</td>
-                                                        <td><img src="assets/img/facility/breakfast-time.png"></td>
-                                                        <td>Aliquet nec</td>
-                                                    </tr>
-
-                                                </tbody>
-                                            </table>
+                                            <?php
+                                            $result = AccommodationFacilityDetails::getFacilitiesByAccommodationId($id);
+                                            $resultFacilities = explode(",", $result['facility']);
+                                            foreach ($resultFacilities as $key => $resultFacility) {
+                                                $Facility = new AccommodationGeneralFacilities($resultFacility);
+                                                ?>
+                                                <div class="col-md-6">
+                                                    <img src="assets/img/facility/wifi.png">
+                                                    <span><?php echo $Facility->name; ?></span>
+                                                </div>
+                                                <?php
+                                            }
+                                            ?>
                                         </div>
                                         <div class="acc-contact-details">
                                             <div class="col-md-12 static-map-sec">
@@ -349,9 +199,7 @@
                                                         <li class="fa fa-map-marker"></li>
                                                     </div>
                                                     <div class="col-md-10 acc-location-details">
-                                                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-                                                        Aenean commodo ligula eget,
-                                                        Aenean massa.
+                                                         <?php echo $VIEW_ACCOMMODATIONS->address; ?>
                                                     </div>
                                                 </div>
                                             </div>
@@ -361,7 +209,7 @@
                             </div>
                             <div class="comment-bar">
                                 <div class="col-md-12 acc-comments">
-                                    <h4>Happy Clients</h4>  
+                                    <h4 class="review">Reviews</h4>  
                                     <div class="testimonials-acc">
                                         <div class="active item">
                                             <div class="carousel-info">
@@ -425,133 +273,111 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="more-rooms">
-                            <div class="row" >
-                                <h3 class="subtitle fancy"><span style="padding-bottom: 20px;">Other Accommodation</span></h3>
-                                <div class="col-md-3">
+                    </div> 
+                </div>
+                <div class="row">
+                    <div class="more-rooms"> 
+                        <h3 class="subtitle fancy"><span style="padding-bottom: 20px;">Other Accommodation</span></h3>
+                        <div class="owl-carousel owl-theme">
+                            <?php
+                            $OTHER_ACCOMMODATION = Accommodation::all();
+                            foreach ($OTHER_ACCOMMODATION as $key => $other_accommodation) {
+                                ?>
+                                <div class="item">
                                     <div class="box">
-                                        <img src="assets/img/rooms/1.jpg" alt="">
+                                        <?php
+                                        foreach ($ACCOMMODATION_PHOTO->getAccommodationPhotosById($other_accommodation['id']) as $key => $ACCOMMODATION_P) {
+                                            if ($key == 1) {
+                                                break;
+                                            }
+                                            ?>
+                                            <img src="upload/accommodation/thumb/<?php echo $ACCOMMODATION_P['image_name']; ?>" alt="">
+                                            <?php
+                                        }
+                                        ?>
                                         <div class="box-content">
-                                            <h3 class="room-title">title</h3>
+                                            <h3 class="room-title"><?php echo $other_accommodation['name']; ?></h3>
                                             <span class="post">
-                                                fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, 
+                                                <?php echo substr($other_accommodation['description'],0,75).'...'; ?>
                                             </span>
                                             <ul class="icon">
-                                                <li><a href="#" class="fa fa-eye" title="view more"></a></li>
+                                                <li><a href="accommodation-view.php?id=<?php echo $other_accommodation['id']; ?>" class="fa fa-eye" title="view more"></a></li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-3">
-                                    <div class="box">
-                                        <img src="assets/img/rooms/2.jpg" alt="">
-                                        <div class="box-content">
-                                            <h3 class="room-title">title</h3>
-                                            <span class="post">
-                                                fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, 
-                                            </span>
-                                            <ul class="icon">
-                                                <li><a href="#" class="fa fa-eye" title="view more"></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="box">
-                                        <img src="assets/img/rooms/3.jpg" alt="">
-                                        <div class="box-content">
-                                            <h3 class="room-title">title</h3>
-                                            <span class="post">
-                                                fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, 
-                                            </span>
-                                            <ul class="icon">
-                                                <li><a href="#" class="fa fa-eye" title="view more"></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="box">
-                                        <img src="assets/img/rooms/4.jpg" alt="">
-                                        <div class="box-content">
-                                            <h3 class="room-title">title</h3>
-                                            <span class="post">
-                                                fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, 
-                                            </span>
-                                            <ul class="icon">
-                                                <li><a href="#" class="fa fa-eye" title="view more"></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
+                                <?php
+                            }
+                            ?>
+                        </div>   
                     </div>
                 </div>
             </div>
 
+        </div>
 
-            <!-- Our Resort Values style-->  
-            <?php
-            include './footer.php';
-            ?>
-            <script src="js/jquery-2.2.4.min.js"></script>
-            <script src="js/bootstrap.min.js"></script>
-            <script src="js/jquery.flexslider.js" type="text/javascript"></script>
-            <link href="css/galleria.classic.css" rel="stylesheet" type="text/css"/>
-            <script src="js/galleria.js" type="text/javascript"></script>
-            <script src="js/galleria.classic.min.js" type="text/javascript"></script>
-            <script type="text/javascript">
-                $('#galleria').galleria({
-                    responsive: true,
-                    height: 500,
-                    autoplay: 7000,
-                    lightbox: true,
-                    showInfo: true,
-                    //                imageCrop: true,
-                });
-            </script>
-            <script type="text/javascript">
-                $('#galleria1').galleria({
-                    responsive: true,
-                    height: 500,
-                    autoplay: 7000,
-                    lightbox: true,
-                    showInfo: true,
-                    //                imageCrop: true,
-                });
-            </script>
-            <script>
-                // Get the modal
-                var modal = document.getElementById('myModal');
+        <?php
+        include './footer.php';
+        ?>
+        <script src="js/jquery-2.2.4.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/owl.carousel.min.js" type="text/javascript"></script>
+        <script src="js/jquery.flexslider.js" type="text/javascript"></script>
+        <link href="galleria/themes/classic/galleria.classic.css" rel="stylesheet" type="text/css"/>
+        <script src="js/galleria.js" type="text/javascript"></script>
+        <script src="js/galleria.classic.min.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            $('#accommodation_photos').galleria({
+                responsive: true,
+                width: 700,
+                height: 500,
+                autoplay: 7000,
+                lightbox: true,
+                showInfo: true,
 
-                // Get the button that opens the modal
-                var btn = document.getElementById("myBtn");
+                //                imageCrop: true,
+            });
+        </script>
+        <script type="text/javascript">
+            $('.room-photos').galleria({
+                responsive: true,
+                height: 500,
+                autoplay: 7000,
+                lightbox: true,
+                showInfo: true,
+                //                imageCrop: true,
+            });
+        </script>
+        <script>
 
-                // Get the <span> element that closes the modal
-                var span = document.getElementsByClassName("close")[0];
+            $('.room-title-btn').click(function () {
+                var roomTitleId = this.id;
+                var roomId = roomTitleId.replace('room-title-', '');
+                $('#room-slider-' + roomId).show();
 
-                // When the user clicks the button, open the modal 
-                btn.onclick = function () {
-                    modal.style.display = "block";
-                }
+            });
 
-                // When the user clicks on <span> (x), close the modal
-                span.onclick = function () {
-                    modal.style.display = "none";
-                }
+            $('.close').click(function () {
+                $('.modal').hide();
+            });
 
-                // When the user clicks anywhere outside of the modal, close it
-                window.onclick = function (event) {
-                    if (event.target == modal) {
-                        modal.style.display = "none";
+            $('.owl-carousel').owlCarousel({
+                loop: true,
+                margin: 10,
+                nav: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 3
+                    },
+                    1000: {
+                        items: 4
                     }
                 }
-            </script>
-
+            });
+        </script> 
     </body> 
 
 </html>

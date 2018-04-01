@@ -1,19 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
-        <file>
-            <url>member/manage-tour-package.php</url>
-            <bookmark id="1">
-                <name/>
-                <line>66</line>
-                <key/>
-            </bookmark>
-        </file>
-    </editor-bookmarks>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/sri-lanka-tourism/member/manage-accommodation.php</file>
-            <file>file:/C:/xampp/htdocs/sri-lanka-tourism/member/assets/css/custom.css</file>
+            <file>file:/C:/xampp/htdocs/sri-lanka-tourism/css/style.css</file>
+            <file>file:/C:/xampp/htdocs/sri-lanka-tourism/newEmptyPHPWebPage.php</file>
+            <file>file:/C:/xampp/htdocs/sri-lanka-tourism/css/owl.css</file>
+            <file>file:/C:/xampp/htdocs/sri-lanka-tourism/class/RoomPhoto.php</file>
+            <file>file:/C:/xampp/htdocs/sri-lanka-tourism/footer.php</file>
+            <file>file:/C:/xampp/htdocs/sri-lanka-tourism/galleria/themes/classic/galleria.classic.css</file>
+            <file>file:/C:/xampp/htdocs/sri-lanka-tourism/accommodation-view.php</file>
         </group>
     </open-files>
 </project-private>
