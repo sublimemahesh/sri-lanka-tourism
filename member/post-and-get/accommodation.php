@@ -23,7 +23,6 @@ if (isset($_POST['create'])) {
         'address' => ['required' => TRUE],
         'email' => ['required' => TRUE],
         'phone' => ['required' => TRUE],
-        'website' => ['required' => TRUE],
         'city' => ['required' => TRUE],
         'type' => ['required' => TRUE],
         'member' => ['required' => TRUE]

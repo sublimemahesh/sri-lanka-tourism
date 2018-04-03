@@ -29,7 +29,7 @@ $TOUR_SUB_PHOTO = new TourSubSectionPhoto(NULL);
         <link href="assets/css/style.css" rel="stylesheet">
         <link href="assets/css/style-responsive.css" rel="stylesheet">
         <link href="assets/css/custom.css" rel="stylesheet" type="text/css"/>
-
+        <link href="assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css"/>
         <style>
             .img-thumbnail {
                 max-width: 50% !important;
@@ -52,7 +52,6 @@ $TOUR_SUB_PHOTO = new TourSubSectionPhoto(NULL);
 
                             $vali->show_message();
                             ?>
-
                             <div class="panel panel-default">
                                 <div class="panel-heading"><i class="fa fa-save"></i> Create Tour Sub Section Package</div>
                                 <div class="panel-body">
@@ -101,7 +100,7 @@ $TOUR_SUB_PHOTO = new TourSubSectionPhoto(NULL);
                                                             <input type="hidden" id="id" class="form-control" autocomplete="off" name="id" required="true">
                                                             <input type="hidden" id="member" name="member" value="<?php echo $_SESSION['id']; ?>"/>
                                                             <input type="hidden" value="<?php echo $id ?>" name="id"/>
-                                                            <button name="create-tour-sub-section" type="submit" class="btn btn-info center-block">Create</button>
+                                                            <button name="create-tour-sub-section" id="create" type="submit" class="btn btn-info center-block">Create</button>
                                                         </div>
                                                     </div> 
 
@@ -129,6 +128,8 @@ $TOUR_SUB_PHOTO = new TourSubSectionPhoto(NULL);
         <script src="assets/js/jquery.scrollTo.min.js"></script>
         <script src="assets/js/jquery.nicescroll.js" type="text/javascript"></script>
 
+        <script src="js/add-new-tour-subsection.js" type="text/javascript"></script>
+        <script src="assets/plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>
 
         <!--common script for all pages-->
         <script src="assets/js/common-scripts.js"></script>

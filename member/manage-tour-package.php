@@ -41,6 +41,10 @@ $TOUR_PACKAGE_PHOTO = new TourSubSectionPhoto(NULL);
                 <div class="wrapper">
                     <div class="container-fluid">
                         <div class="top-bott20"> 
+                            <?php
+                            $vali = new Validator();
+                            $vali->show_message();
+                            ?>
                             <div class="panel panel-default">
                                 <div class="panel-heading"><i class="fa fa-pencil"></i> Manage Tour Package</div>
                                 <div class="panel-body">
