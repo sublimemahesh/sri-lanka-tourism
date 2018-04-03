@@ -35,6 +35,7 @@ $ROOM_FACILITY_DETAILS = new RoomFaciliityDetails(NULL);
         <link href="assets/css/style-responsive.css" rel="stylesheet">
         <script src="assets/plugins/jquery-steps/jquery.steps.js" type="text/javascript"></script>
         <link href="assets/css/custom.css" rel="stylesheet" type="text/css"/>
+        <link href="assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css"/>
         <style>
             .img-thumbnail {
                 max-width: 50% !important;
@@ -70,16 +71,16 @@ $ROOM_FACILITY_DETAILS = new RoomFaciliityDetails(NULL);
                                                             <div class="body">
                                                                 <div class="row clearfix">
                                                                     <div class="col-xs-12 ol-sm-12 col-md-12 col-lg-12">
-                                                                        <div class="panel-group" id="accordion_3" role="tablist" aria-multiselectable="true">
+                                                                        <div class="panel-group"  role="tablist" aria-multiselectable="true">
                                                                             <div class="panel panel-default">
-                                                                                <a role="button" data-toggle="collapse" data-parent="#accordion_3" href="#collapseOne_3" aria-expanded="true" aria-controls="collapseOne_3">
-                                                                                    <div class="panel-heading tab-panel-heading" role="tab" id="headingOne_3">
+                                                                                <a role="button" data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                                                    <div class="panel-heading tab-panel-heading" role="tab" id="headingOne">
                                                                                         <h4 class="panel-title">
                                                                                             Your Room Details
                                                                                         </h4>
                                                                                     </div>
                                                                                 </a>
-                                                                                <div id="collapseOne_3" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne_3">
+                                                                                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                                                                                     <div class="panel-body">
                                                                                         <div class="">
                                                                                             <div class="bottom-top">
@@ -130,7 +131,7 @@ $ROOM_FACILITY_DETAILS = new RoomFaciliityDetails(NULL);
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="col-md-12 text-right">
-                                                                                            <a role="button" class="btn btn-info tab-next-button" data-toggle="collapse" data-parent="#accordion_3" href="#collapseTwo_3" aria-expanded="true" aria-controls="collapseOne_3">
+                                                                                            <a role="button" id="step-1" class="btn btn-info tab-next-button" data-toggle="collapse" aria-expanded="true" aria-controls="collapseOne">
                                                                                                 Next >>
                                                                                             </a>
                                                                                         </div>
@@ -138,9 +139,9 @@ $ROOM_FACILITY_DETAILS = new RoomFaciliityDetails(NULL);
                                                                                 </div>
                                                                             </div>
                                                                             <div class="panel panel panel-default">
-                                                                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion_3" href="#collapseTwo_3" aria-expanded="false"
-                                                                                   aria-controls="collapseTwo_3">
-                                                                                    <div class="panel-heading tab-panel-heading" role="tab" id="headingTwo_3">
+                                                                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false"
+                                                                                   aria-controls="collapseTwo">
+                                                                                    <div class="panel-heading tab-panel-heading" role="tab" id="headingTwo">
                                                                                         <h4 class="panel-title">
 
                                                                                             Room Photos
@@ -148,7 +149,7 @@ $ROOM_FACILITY_DETAILS = new RoomFaciliityDetails(NULL);
                                                                                         </h4>
                                                                                     </div>
                                                                                 </a>
-                                                                                <div id="collapseTwo_3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo_3">
+                                                                                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                                                                                     <div class="panel-body">
 
                                                                                         <div class="bottom-top col-md-2">
@@ -165,7 +166,7 @@ $ROOM_FACILITY_DETAILS = new RoomFaciliityDetails(NULL);
                                                                                         <div id="image-list">
                                                                                         </div>
                                                                                         <div class="col-md-12 text-right">
-                                                                                            <a role="button" class="btn btn-info tab-next-button" data-toggle="collapse" data-parent="#accordion_3" href="#collapseThree_3" aria-expanded="true" aria-controls="collapseOne_3">
+                                                                                            <a role="button" id="step-2" class="btn btn-info tab-next-button" data-toggle="collapse" aria-expanded="true" aria-controls="collapseOne">
                                                                                                 Next >>
                                                                                             </a>
                                                                                         </div>
@@ -173,15 +174,15 @@ $ROOM_FACILITY_DETAILS = new RoomFaciliityDetails(NULL);
                                                                                 </div>
                                                                             </div>
                                                                             <div class="panel panel panel-default">
-                                                                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion_3" href="#collapseThree_3" aria-expanded="false"
-                                                                                   aria-controls="collapseThree_3">
-                                                                                    <div class="panel-heading tab-panel-heading" role="tab" id="headingThree_3">
+                                                                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false"
+                                                                                   aria-controls="collapseThree">
+                                                                                    <div class="panel-heading tab-panel-heading" role="tab" id="headingThree">
                                                                                         <h4 class="panel-title">
                                                                                             Facilities
                                                                                         </h4>
                                                                                     </div>
                                                                                 </a>
-                                                                                <div id="collapseThree_3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree_3">
+                                                                                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
                                                                                     <div class="panel-body">
                                                                                         <div class="table-responsive">
                                                                                             <div>
@@ -225,11 +226,11 @@ $ROOM_FACILITY_DETAILS = new RoomFaciliityDetails(NULL);
                                                                                                         ?> 
                                                                                                     </tbody>
                                                                                                 </table>
-                                                                                            
+
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="col-md-12 text-right">
-                                                                                            <a role="button" class="btn btn-info tab-next-button" data-toggle="collapse" data-parent="#accordion_3" href="#collapseFour_3" aria-expanded="true" aria-controls="collapseOne_3">
+                                                                                            <a role="button" id="step-3" class="btn btn-info tab-next-button" data-toggle="collapse" aria-expanded="true" aria-controls="collapseOne">
                                                                                                 Next >>
                                                                                             </a>
                                                                                         </div>
@@ -237,15 +238,15 @@ $ROOM_FACILITY_DETAILS = new RoomFaciliityDetails(NULL);
                                                                                 </div>
                                                                             </div>
                                                                             <div class="panel panel panel-default">
-                                                                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion_3" href="#collapseFour_3" aria-expanded="false"
-                                                                                   aria-controls="collapseFour_3">
-                                                                                    <div class="panel-heading tab-panel-heading" role="tab" id="headingFour_3">
+                                                                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false"
+                                                                                   aria-controls="collapseFour">
+                                                                                    <div class="panel-heading tab-panel-heading" role="tab" id="headingFour">
                                                                                         <h4 class="panel-title">
                                                                                             Description
                                                                                         </h4>
                                                                                     </div>
                                                                                 </a>
-                                                                                <div id="collapseFour_3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour_3">
+                                                                                <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
                                                                                     <div class="panel-body">
                                                                                         <div class="col-md-12">
                                                                                             <div class="bottom-top">
@@ -258,7 +259,7 @@ $ROOM_FACILITY_DETAILS = new RoomFaciliityDetails(NULL);
                                                                                         <div class="top-bott50 col-md-12">
                                                                                             <div class="bottom-top">
                                                                                                 <input type="hidden" value="<?php echo $id ?>" name="id" />
-                                                                                                <input name="create" type="submit" class="btn btn-info center-block" value="Create">
+                                                                                                <input name="create" id="create" type="submit" class="btn btn-info center-block" value="Create">
                                                                                             </div>
                                                                                         </div> 
                                                                                     </div>
@@ -296,7 +297,8 @@ $ROOM_FACILITY_DETAILS = new RoomFaciliityDetails(NULL);
         <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
         <script src="assets/js/jquery.scrollTo.min.js"></script>
         <script src="assets/js/jquery.nicescroll.js" type="text/javascript"></script>
-
+        <script src="js/add-new-room.js" type="text/javascript"></script>
+        <script src="assets/plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>
         <!--common script for all pages-->
         <script src="assets/js/common-scripts.js"></script>
         <!--script for this page-->
@@ -348,6 +350,7 @@ $ROOM_FACILITY_DETAILS = new RoomFaciliityDetails(NULL);
 
             });
         </script>
+
     </body>
 
 </html>

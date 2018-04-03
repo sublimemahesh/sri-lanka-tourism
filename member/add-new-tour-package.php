@@ -23,6 +23,7 @@ include_once(dirname(__FILE__) . '/auth.php');
         <link href="assets/css/style.css" rel="stylesheet">
         <link href="assets/css/style-responsive.css" rel="stylesheet">
         <link href="assets/css/custom.css" rel="stylesheet" type="text/css"/>
+        <link href="assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css"/>
         <style>
             .img-thumbnail {
                 max-width: 50% !important;
@@ -39,11 +40,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                 <div class="wrapper">
                     <div class="container-fluid">
                         <div class="row  top-bott20"> 
-                            <?php
-                            $vali = new Validator();
-
-                            $vali->show_message();
-                            ?>
+                           
                             <div class="panel panel-default">
                                 <div class="panel-heading"><i class="fa fa-pencil"></i> Create Tour Package</div>
                                 <div class="panel-body">
@@ -67,7 +64,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                                 <label for="price">Price</label>
                                                             </div>
                                                             <div class="formrow">
-                                                                <input type="text" id="price" class="form-control" placeholder="Enter price" autocomplete="off" name="price" required="TRUE">
+                                                                <input type="text" id="price" class="form-control" placeholder="Enter price" autocomplete="off" name="price">
                                                             </div>
 
                                                         </div>
@@ -77,7 +74,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                                 <label for="picture_name">Picture</label>
                                                             </div>
                                                             <div class="formrow">
-                                                                <input type="file" id="picture_name" class="form-control" name="picture_name"  required="true">
+                                                                <input type="file" id="picture_name" class="form-control" name="picture_name">
                                                             </div>
                                                         </div>
 
@@ -93,7 +90,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                         <div class="top-bott50">
                                                             <div class="bottom-top">
                                                                 <input type="hidden" id="member" name="member" value="<?php echo $_SESSION['id']; ?>"/>
-                                                                <input type="submit" name="add-tour-package" class="btn btn-info center-block" value="Add tour package"/>
+                                                                <input type="submit" id="create" name="add-tour-package" class="btn btn-info center-block" value="Add tour package"/>
                                                             </div>
                                                         </div> 
                                                     </div>  
@@ -119,6 +116,8 @@ include_once(dirname(__FILE__) . '/auth.php');
         <script src="assets/js/jquery.scrollTo.min.js"></script>
         <script src="assets/js/jquery.nicescroll.js" type="text/javascript"></script>
 
+        <script src="js/add-new-tour-package.js" type="text/javascript"></script>
+        <script src="assets/plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>
 
         <!--common script for all pages-->
         <script src="assets/js/common-scripts.js"></script>

@@ -26,7 +26,6 @@ if (isset($_POST['add-transports'])) {
         'title' => ['required' => TRUE],
         'vehicle_type' => ['required' => TRUE],
         'registered_number' => ['required' => TRUE],
-        'description' => ['required' => TRUE],
     ]);
 
     if ($VALID->passed()) {
@@ -51,7 +50,7 @@ if (isset($_POST['add-transports'])) {
         $_SESSION['ERRORS'] = $VALID->errors();
 
 //        header('Location: ../add-transport-rates.php?id=' . $TRANSPORTS->id);
-          header('Location: ../manage-transport.php');
+        header('Location: ../manage-transport.php');
     } else {
 
         if (!isset($_SESSION)) {

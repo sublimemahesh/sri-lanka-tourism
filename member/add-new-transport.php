@@ -27,6 +27,8 @@ include_once(dirname(__FILE__) . '/auth.php');
                 max-width: 50% !important;
             }
         </style>
+
+        <link href="assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css"/>
     </head> 
     <body> 
         <div class="loading" id="loading">Loading&#8230;</div>
@@ -39,10 +41,6 @@ include_once(dirname(__FILE__) . '/auth.php');
                 <div class="wrapper">
                     <div class="container-fluid">
                         <div class="row top-bott20"> 
-                            <?php
-                            $vali = new Validator();
-                            $vali->show_message();
-                            ?>
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <i class="fa fa-plus"></i> 
@@ -57,9 +55,9 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                         <div class="body">
                                                             <div class="row clearfix">
                                                                 <div class="col-xs-12 ol-sm-12 col-md-12 col-lg-12">
-                                                                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                                                    <div class="panel-group" role="tablist" aria-multiselectable="true">
                                                                         <div class="panel panel-default">
-                                                                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                                            <a role="button" data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                                                                 <div class="panel-heading tab-panel-heading" role="tab" id="headingOne">
                                                                                     <h4 class="panel-title">
                                                                                         Vehicle Details
@@ -126,10 +124,9 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                                                                 ?>
                                                                                             </select>
                                                                                         </div>
-                                                                                    </div>
- 
+                                                                                    </div> 
                                                                                     <div class="col-md-12 text-right">
-                                                                                        <a role="button" class="btn btn-info tab-next-button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseOne">
+                                                                                        <a id="step-1" role="button"  class="btn btn-info tab-next-button" data-toggle="collapse" aria-expanded="true">
                                                                                             Next >>
                                                                                         </a>
                                                                                     </div>
@@ -137,7 +134,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                                             </div>
                                                                         </div>
                                                                         <div class="panel panel-default">
-                                                                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseOne">
+                                                                            <a role="button" data-toggle="collapse" href="#collapseTwo" aria-expanded="true" aria-controls="collapseOne">
                                                                                 <div class="panel-heading tab-panel-heading" role="tab" id="headingOne">
                                                                                     <h4 class="panel-title">
                                                                                         Vehicle Condition & Facilities
@@ -146,7 +143,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                                             </a>
                                                                             <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                                                                                 <div class="panel-body">
-  
+
                                                                                     <div class="col-md-12">
                                                                                         <div class="bottom-top">
                                                                                             <label for="condition_id">Vehicle Condition</label>
@@ -199,7 +196,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="col-md-12 text-right">
-                                                                                        <a role="button" class="btn btn-info tab-next-button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseTwo">
+                                                                                        <a role="button" id="step-2" class="btn btn-info tab-next-button" data-toggle="collapse" aria-expanded="true" aria-controls="collapseTwo">
                                                                                             Next >>
                                                                                         </a>
                                                                                     </div>
@@ -207,8 +204,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                                             </div>
                                                                         </div>
                                                                         <div class="panel panel panel-default">
-                                                                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false"
-                                                                               aria-controls="collapseTwo">
+                                                                            <a class="collapsed" role="button" data-toggle="collapse" href="#collapseThree" aria-expanded="false"  aria-controls="collapseTwo">
                                                                                 <div class="panel-heading tab-panel-heading" role="tab" id="headingTwo">
                                                                                     <h4 class="panel-title">
                                                                                         Vehicle Photos
@@ -231,7 +227,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                                                     <div id="image-list" style="padding-bottom: 10px;">
                                                                                     </div>
                                                                                     <div class="col-md-12 text-right">
-                                                                                        <a role="button" class="btn btn-info tab-next-button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="true" aria-controls="collapseThree">
+                                                                                        <a role="button" id="step-3" class="btn btn-info tab-next-button" data-toggle="collapse"  aria-expanded="true" aria-controls="collapseThree">
                                                                                             Next >>
                                                                                         </a>
                                                                                     </div>
@@ -239,7 +235,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                                             </div>
                                                                         </div>
                                                                         <div class="panel panel panel-default">
-                                                                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false"
+                                                                            <a class="collapsed" role="button" data-toggle="collapse" href="#collapseFour" aria-expanded="false"
                                                                                aria-controls="collapseThree">
                                                                                 <div class="panel-heading tab-panel-heading" role="tab" id="headingThree">
                                                                                     <h4 class="panel-title">
@@ -262,7 +258,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                                                             <input type="hidden" id="oldDis" value=""/>
 
                                                                                             <input type="hidden" id="member" name="member" value="<?php echo $_SESSION['id']; ?>"/>
-                                                                                            <button name="add-transports" type="submit" class="btn btn-info center-block">Create</button>
+                                                                                            <button id="create" name="add-transports" type="submit" class="btn btn-info center-block">Create</button>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -290,10 +286,10 @@ include_once(dirname(__FILE__) . '/auth.php');
 
         <!-- js placed at the end of the document so the pages load faster -->
         <script src="assets/js/jquery.js"></script>
-        <script src="assets/js/bootstrap.min.js"></script>
-        <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
+        <script src="assets/js/bootstrap.min.js"></script> 
         <script src="assets/js/jquery.scrollTo.min.js"></script>
         <script src="assets/js/jquery.nicescroll.js" type="text/javascript"></script>
+        <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
 
 
         <!--common script for all pages-->
@@ -342,7 +338,8 @@ include_once(dirname(__FILE__) . '/auth.php');
 
 
         </script>
-
+        <script src="js/add-new-transport.js" type="text/javascript"></script>
+        <script src="assets/plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>
     </body>
 
 </html>

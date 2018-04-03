@@ -25,6 +25,7 @@ include_once(dirname(__FILE__) . '/auth.php');
         <link href="assets/css/style.css" rel="stylesheet">
         <link href="assets/css/style-responsive.css" rel="stylesheet">
         <link href="assets/css/custom.css" rel="stylesheet" type="text/css"/>
+        <link href="assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css"/>
         <style>
             .img-thumbnail {
                 max-width: 50% !important;
@@ -42,12 +43,6 @@ include_once(dirname(__FILE__) . '/auth.php');
                 <div class="wrapper">
                     <div class="container-fluid">
                         <div class="row  top-bott20"> 
-                            <?php
-                            $vali = new Validator();
-
-                            $vali->show_message();
-                            ?>
-
                             <div class="panel panel-default">
                                 <div class="panel-heading"><i class="fa fa-pencil"></i>Create Accommodation</div>
                                 <div class="panel-body">
@@ -63,7 +58,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                                     <div class="col-xs-12 ol-sm-12 col-md-12 col-lg-12">
                                                                         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                                                                             <div class="panel panel-default">
-                                                                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                                                <a role="button" data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                                                                     <div class="panel-heading tab-panel-heading" role="tab" id="headingOne">
                                                                                         <h4 class="panel-title">
                                                                                             Your Accommodation Details
@@ -145,7 +140,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="col-md-12 text-right">
-                                                                                            <a role="button" class="btn btn-info tab-next-button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseOne">
+                                                                                            <a role="button" id="step-1" class="btn btn-info tab-next-button" data-toggle="collapse" aria-expanded="true" aria-controls="collapseOne">
                                                                                                 Next >>
                                                                                             </a>
                                                                                         </div>
@@ -153,7 +148,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                                                 </div>
                                                                             </div>
                                                                             <div class="panel panel panel-default">
-                                                                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false"
+                                                                                <a class="collapsed" role="button" data-toggle="collapse" href="#collapseTwo" aria-expanded="false"
                                                                                    aria-controls="collapseTwo">
                                                                                     <div class="panel-heading tab-panel-heading" role="tab" id="headingTwo">
                                                                                         <h4 class="panel-title">
@@ -177,7 +172,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                                                         <div id="image-list">
                                                                                         </div>
                                                                                         <div class="col-md-12 text-right">
-                                                                                            <a role="button" class="btn btn-info tab-next-button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseOne">
+                                                                                            <a role="button" id="step-2" class="btn btn-info tab-next-button" data-toggle="collapse" aria-expanded="true">
                                                                                                 Next >>
                                                                                             </a>
                                                                                         </div>
@@ -185,7 +180,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                                                 </div>
                                                                             </div>
                                                                             <div class="panel panel panel-default">
-                                                                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false"
+                                                                                <a class="collapsed" role="button" data-toggle="collapse"  href="#collapseThree" aria-expanded="false"
                                                                                    aria-controls="collapseThree">
                                                                                     <div class="panel-heading tab-panel-heading" role="tab" id="headingThree">
                                                                                         <h4 class="panel-title">
@@ -213,7 +208,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                                                                         </tr>
                                                                                                     </tfoot>
                                                                                                     <tbody>
-                                                                                                         <?php
+                                                                                                        <?php
                                                                                                         $ACCOMODATION_GENERAL_FACILITY = new AccommodationGeneralFacilities(NULL);
                                                                                                         $ACCOMODATION_FACILITY_DETAILS = new AccommodationFacilityDetails(NULL);
                                                                                                         foreach ($ACCOMODATION_GENERAL_FACILITY->all() as $key => $accommodation_general_facility) {
@@ -222,7 +217,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                                                                                 <td><?php echo $accommodation_general_facility['sort']; ?></td> 
                                                                                                                 <td><?php echo $accommodation_general_facility['name']; ?></td> 
                                                                                                                 <td> 
-                                                                                                                    <input  value="<?php echo $accommodation_general_facility['id']; ?>" name="facility[]" type="checkbox">
+                                                                                                                    <input  id="facility-check" value="<?php echo $accommodation_general_facility['id']; ?>" name="facility[]" type="checkbox">
                                                                                                                 </td>
                                                                                                             </tr>
                                                                                                             <?php
@@ -233,7 +228,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="col-md-12 text-right">
-                                                                                            <a role="button" class="btn btn-info tab-next-button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="true" aria-controls="collapseOne">
+                                                                                            <a role="button" id="step-3"class="btn btn-info tab-next-button" data-toggle="collapse" aria-expanded="true">
                                                                                                 Next >>
                                                                                             </a>
                                                                                         </div>
@@ -241,7 +236,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                                                 </div>
                                                                             </div>
                                                                             <div class="panel panel panel-default">
-                                                                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false"
+                                                                                <a class="collapsed" role="button" data-toggle="collapse" href="#collapseFour" aria-expanded="false"
                                                                                    aria-controls="collapseFour">
                                                                                     <div class="panel-heading tab-panel-heading" role="tab" id="headingFour">
                                                                                         <h4 class="panel-title">
@@ -262,7 +257,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                                                         <div class="top-bott50 col-md-12">
                                                                                             <div class="bottom-top">
                                                                                                 <input type="hidden" id="member" name="member" value="<?php echo $_SESSION['id']; ?>"/>
-                                                                                                <button name="create" type="submit" class="btn btn-info center-block">Create</button>
+                                                                                                <button name="create" id="create" type="submit" class="btn btn-info center-block">Create</button>
                                                                                             </div>
                                                                                         </div> 
                                                                                     </div>
@@ -318,7 +313,7 @@ include_once(dirname(__FILE__) . '/auth.php');
         <script src="assets/plugins/jquery-steps/jquery.steps.js" type="text/javascript"></script>
         <script src="js/post-accommodation-image.js" type="text/javascript"></script>
         <script src="assets/js/form-component.js"></script>    
-
+        <script src="js/add-new-accommodation.js" type="text/javascript"></script>
         <script>
             //custom select box
 
@@ -352,10 +347,9 @@ include_once(dirname(__FILE__) . '/auth.php');
                 relative_urls: false
 
             });
-
-
         </script>
-
+        <script src="js/add-new-accommodation.js" type="text/javascript"></script>
+        <script src="assets/plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>
     </body>
 
 </html>
