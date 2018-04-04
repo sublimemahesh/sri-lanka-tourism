@@ -1,3 +1,4 @@
+
 <header class="main-header">
 
     <div class="container clearfix common-pad">
@@ -8,13 +9,25 @@
                     <i class="fa fa-envelope-o"><span class="details">srilankatourism.com</span></i>
                     <?php
                     if (isset($_SESSION["login"])) {
-                        if (empty($VISITOR->image_name)) {
-                            ?>
-                            <a href="#" ><img class="add-user img-circle" id="visitor_pic" src="upload/visitor/member.png" alt="" /></a>
+                        ?>
+                    <div class="dropdown" style="float: right;">
                             <?php
-                        } else {
-                            ?>
-                            <a href="#" ><img class="add-user img-circle" id="visitor_pic" src="upload/visitor/<?php echo $VISITOR->image_name; ?>" alt="" /></a>
+                            $VISITOR = new Visitor($_SESSION['id']);
+                            if (empty($VISITOR->image_name)) {
+                                ?>
+                                <a href="#" ><img class="add-user img-circle" id="visitor_pic" src="upload/visitor/member.png" alt="" /></a>
+                                <?php
+                            } else {
+                                ?>
+                                <div class="visitor-login-name"><?php echo 'Hi ' . $VISITOR->first_name . '..'; ?></div>
+                                <img class="img-circle add-user-logged" id="visitor_pic" src="upload/visitor/<?php echo $VISITOR->image_name; ?>" alt="" />
+
+                               
+                                <div class="dropdown-content">
+                                    <a href="visitor-profile.php"><i class="fa fa-user"></i>My profile</a>
+                                    <a href="post-and-get/logout.php"><i class="fa fa-power-off"></i>Log out</a>
+                                </div>
+                            </div>
                             <?php
                         }
                     } else {
@@ -60,7 +73,7 @@
                     <h3>Plan your trip to Sri Lanka</h3>
                 </div>
             </div>
-            <div class="col-lg-2 col-md-4 hidden-sm hidden-xs">
+            <div class="col-lg-2  text-center col-md-4 hidden-sm hidden-xs">
                 <img src="images/logo-intro2.png" alt="image" class="logo"/>
             </div>
             <div class="col-lg-5 col-md-4  icon-row">

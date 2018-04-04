@@ -6,7 +6,6 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
-$VISITOR = new Visitor($_SESSION['id']);
 ?>
 <html lang="en">
     <head>

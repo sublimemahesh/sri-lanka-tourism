@@ -178,6 +178,7 @@ class Visitor {
         unset($_SESSION["first_name"]);
         unset($_SESSION["second_name"]);
         unset($_SESSION["email"]);
+        unset($_SESSION["login"]);
 
         return TRUE;
     }
