@@ -29,6 +29,7 @@ $TRANSPORTS = new Transports($id);
 
     </head> 
     <body> 
+        <div class="loading" id="loading">Loading&#8230;</div>
         <section id="container" > 
             <?php
             include './header-nav.php';

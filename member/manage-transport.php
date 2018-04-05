@@ -65,41 +65,41 @@ $TRANSPORTS_PHOTO = new TransportPhoto(NULL);
                                                         <div id="image-list">
                                                             <?php
                                                             foreach ($TRANSPORTS->getTransportsByMemberId($_SESSION['id']) as $key => $vehicle_t) {
-                                                                ?>
-                                                                <div class="col-md-3" id="div_<?php echo $vehicle_t['id']; ?>">
-                                                                    <div>
-                                                                        <?php
-                                                                        if (count($TRANSPORTS_PHOTO) > 0) {
-                                                                            foreach ($TRANSPORTS_PHOTO->getTransportPhotosById($vehicle_t['id']) as $key => $TRANSPORTS_P) {
-                                                                                if ($key == 1) {
-                                                                                    break;
-                                                                                }
-                                                                                ?>
-                                                                                <div class="menu-button-hover">
-                                                                                    <div class="dropdown">
-                                                                                        <button class="dropbtn"><i class="fa fa-bars"></i></button>
-                                                                                        <div class="dropdown-content text-left">
-                                                                                            <a href="edit-transport.php?id=<?php echo $vehicle_t['id']; ?>"><i class="hover-menu-icon fa fa-pencil"></i>Edit</a>
-                                                                                            <a href="add-transport-photo.php?id=<?php echo $vehicle_t['id']; ?>"><i class="hover-menu-icon fa fa-photo"></i>Manage Photos</a>
-                                                                                            <a href="add-transport-rates.php?id=<?php echo $vehicle_t['id']; ?>"><i class="hover-menu-icon fa fa-star"></i>Manage Rates</a>
-                                                                                            <a href="#" class="menu-hover-delete-font delete-transports" data-id="<?php echo $vehicle_t['id']; ?>"><i class="hover-menu-icon fa fa-trash-o"></i>Delete</a>
+                                                                ?> <div class="formrow">
+                                                                    <div class="col-md-3" id="div_<?php echo $vehicle_t['id']; ?>">
+                                                                        <div>
+                                                                            <?php
+                                                                            if (count($TRANSPORTS_PHOTO) > 0) {
+                                                                                foreach ($TRANSPORTS_PHOTO->getTransportPhotosById($vehicle_t['id']) as $key => $TRANSPORTS_P) {
+                                                                                    if ($key == 1) {
+                                                                                        break;
+                                                                                    }
+                                                                                    ?>
+                                                                                    <div class="menu-button-hover">
+                                                                                        <div class="dropdown">
+                                                                                            <button class="dropbtn"><i class="fa fa-bars"></i></button>
+                                                                                            <div class="dropdown-content text-left">
+                                                                                                <a href="edit-transport.php?id=<?php echo $vehicle_t['id']; ?>"><i class="hover-menu-icon fa fa-pencil"></i>Edit</a>
+                                                                                                <a href="add-transport-photo.php?id=<?php echo $vehicle_t['id']; ?>"><i class="hover-menu-icon fa fa-photo"></i>Manage Photos</a>
+                                                                                                <a href="add-transport-rates.php?id=<?php echo $vehicle_t['id']; ?>"><i class="hover-menu-icon fa fa-star"></i>Manage Rates</a>
+                                                                                                <a href="#" class="menu-hover-delete-font delete-transports" data-id="<?php echo $vehicle_t['id']; ?>"><i class="hover-menu-icon fa fa-trash-o"></i>Delete</a>
+                                                                                            </div>
                                                                                         </div>
                                                                                     </div>
-                                                                                </div>
 
-                                                                                <img class="img-responsive" src="../upload/transport/thumb/<?php echo $TRANSPORTS_P['image_name']; ?>">
-                                                                                <?php
-                                                                            }
-                                                                        } else {
-                                                                            ?> 
-                                                                            <b style="padding-left: 15px;">No Transport Image.</b> 
-                                                                        <?php } ?>
-                                                                    </div> 
-                                                                    <div>
-                                                                        <b>Title :</b> <?php echo $vehicle_t['title']; ?>
+                                                                                    <img class="img-responsive" src="../upload/transport/thumb/<?php echo $TRANSPORTS_P['image_name']; ?>">
+                                                                                    <?php
+                                                                                }
+                                                                            } else {
+                                                                                ?> 
+                                                                                <b style="padding-left: 15px;">No Transport Image.</b> 
+                                                                            <?php } ?>
+                                                                        </div> 
+                                                                        <div>
+                                                                            <b>Title :</b> <?php echo $vehicle_t['title']; ?>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-
                                                                 <?php
                                                             }
                                                             ?>  

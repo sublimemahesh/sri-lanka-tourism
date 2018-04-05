@@ -155,10 +155,10 @@ $TRANSPORTS = new Transports($id);
 
                                                         <div class="">
                                                             <div class="bottom-top">
-                                                                <label for="title">No of Passangers</label>
+                                                                <label for="title">No of Passengers</label>
                                                             </div>
                                                             <div class="formrow">
-                                                                <input type="number" id="no_of_passangers" value="<?php echo $TRANSPORTS->no_of_passangers; ?>" class="form-control" placeholder="Enter number of passangers" autocomplete="off" name="no_of_passangers" >
+                                                                <input type="number" id="no_of_passangers" value="<?php echo $TRANSPORTS->no_of_passangers; ?>" class="form-control" placeholder="Enter number of passengers" autocomplete="off" name="no_of_passangers" >
                                                             </div>
                                                         </div>
 

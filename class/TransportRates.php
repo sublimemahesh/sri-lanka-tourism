@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Description of TransportRates
  *
@@ -137,6 +138,23 @@ class TransportRates {
         $db = new Database();
         $result = $db->readQuery($query);
         return $result;
+    }
+
+    public function GetTransportByLocationFromAndTo() {
+
+
+        $query = "SELECT transports.* FROM `transports` INNER JOIN transport_rates ON transports.id = transport_rates.transport_id WHERE `location_from` = '" . $this->location_from . "' AND `location_to` = '" . $this->location_to . "'";
+//        $query = "SELECT `transport_id` FROM `transport_rates` WHERE `location_from` = " . $this->location_from . " AND `location_to` = " . $this->location_to . "";
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+        return $array_res;
     }
 
 }

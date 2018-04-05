@@ -23,7 +23,6 @@ $(document).ready(function () {
                 html += '</a>';
                 html += '</div>';
                 $('#image-list').prepend(html);
-                $('#empty-mess').hidden();
                 $('#loading').hide();
             },
             cache: false,

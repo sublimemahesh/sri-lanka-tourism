@@ -36,6 +36,7 @@ include_once(dirname(__FILE__) . '/RoomAvailability.php');
 include_once(dirname(__FILE__) . '/FuelType.php');
 include_once(dirname(__FILE__) . '/VehicleCondition.php');
 include_once(dirname(__FILE__) . '/Visitor.php');
+include_once(dirname(__FILE__) . '/Search.php');
 
 function dd($data) {
     var_dump($data);
