@@ -1,8 +1,41 @@
 <?php
 include_once(dirname(__FILE__) . '/class/include.php');
-
-$TRANSPORT = Transports::all();
+$SEARCH = new Search(NULL);
 $TRANSPORTS_PHOTO = new TransportPhoto(NULL);
+$from = NULL;
+$to = NULL;
+$type = NULL;
+$condition = NULL;
+$passengers = NULL;
+
+
+/* set page numbers */
+if (isset($_GET["page"])) {
+    $page = (int) $_GET["page"];
+} else {
+    $page = 1;
+}
+$setLimit = 3;
+$pageLimit = ($page * $setLimit) - $setLimit;
+
+/* search */
+if (isset($_GET['from'])) {
+    $from = $_GET['from'];
+}
+if (isset($_GET['to'])) {
+    $to = $_GET['to'];
+}
+if (isset($_GET['type'])) {
+    $type = $_GET['type'];
+}
+if (isset($_GET['condition'])) {
+    $condition = $_GET['condition'];
+}
+if (isset($_GET['passengers'])) {
+    $passengers = $_GET['passengers'];
+}
+
+$TRANSPORTS = $SEARCH->GetTransportByLocationFromAndTo($from, $to, $type, $condition, $passengers, $pageLimit, $setLimit);
 ?>
 <html lang="en">
     <head>
@@ -31,7 +64,6 @@ $TRANSPORTS_PHOTO = new TransportPhoto(NULL);
                     <div class="room-container clearfix">
                         <div class="col-md-9">
                             <?php
-                            $TRANSPORTS = Transports::all();
                             foreach ($TRANSPORTS as $transport) {
                                 $FUEL_TYPE = new FuelType($transport['fuel_type']);
                                 $VEHICLE_TYPE = new VehicleType($transport['vehicle_type']);
@@ -44,7 +76,7 @@ $TRANSPORTS_PHOTO = new TransportPhoto(NULL);
                                             break;
                                         }
                                         ?>
-                                    <div class="col-md-4 room-img " style=" background-color: #E6F9FF;">
+                                        <div class="col-md-4 room-img " style=" background-color: #E6F9FF;">
                                             <a href="transportation-view.php?id=<?php echo $transport['id']; ?>">
                                                 <img class=" vehicle-img" src="upload/transport/thumb/<?php echo $TRANSPORTS_P['image_name']; ?>"/>
                                             </a>
@@ -117,20 +149,24 @@ $TRANSPORTS_PHOTO = new TransportPhoto(NULL);
                                         </div>
                                     </div>
                                 </div>
-    <?php
-}
-?>
-                            <div class="col-md-3"></div>
+                                <?php
+                            }
+                            ?>
+                            <div class="row">
+                                <?php Search::showPagination($from, $to, $type, $condition, $passengers, $setLimit, $page); ?>
+                            </div>
                         </div>
+
                     </div>
+                </div>
             </section>
         </div>
 
 
         <!-- Our Resort Values style-->  
-<?php
-include './footer.php';
-?>
+        <?php
+        include './footer.php';
+        ?>
         <script src="js/jquery-2.2.4.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="assets/js/jquery-3.1.0.min.js" type="text/javascript"></script>

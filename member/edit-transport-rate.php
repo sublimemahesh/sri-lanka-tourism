@@ -67,7 +67,7 @@ $TRANSPORT_RATES = new TransportRates($id);
                                                             </div>
                                                             <div class="formrow">
                                                                 <select class="form-control show-tick place-select1" type="text" id="location_from" autocomplete="off" name="location_from">
-                                                                    <option value="<?php $TRANSPORT_RATES->id ?>" class="active light-c">
+                                                                    <option value="<?php echo $TRANSPORT_RATES->location_from; ?>" class="active light-c">
                                                                         <?php
                                                                         $CITY = new City($TRANSPORT_RATES->location_from);
                                                                         echo $CITY->name;
@@ -89,7 +89,7 @@ $TRANSPORT_RATES = new TransportRates($id);
                                                             </div>
                                                             <div class="formrow">
                                                                 <select class="form-control show-tick place-select1" type="text" id="location_to" autocomplete="off" name="location_to">
-                                                                    <option value="<?php $TRANSPORT_RATES->id ?>" class="active light-c">
+                                                                    <option value="<?php echo $TRANSPORT_RATES->location_to ?>" class="active light-c">
                                                                         <?php
                                                                         $CITY = new City($TRANSPORT_RATES->location_to);
                                                                         echo $CITY->name;
