@@ -129,15 +129,27 @@ if (!isset($_SESSION)) {
                     <div class="tab-content">
                         <div id="taxi" class="tab-pane fade in active">
                             <h3>Taxi</h3>
-                            <form method="get" action="transports.php" >
+                            <form method="get" name="form" action="transports.php" >
                                 <div class="row">
+
+
                                     <div class="col-md-6 col-sm-6 col-xs-12 taxi-title">
                                         <span>Picking Up</span>
-                                        <input type="text" name="from" placeholder="city,airport or address" class="input-text">
+                                        <input type="text" autocomplete="off" id="from" placeholder="please select picking up city" class="input-text">
+                                        <div id="suggesstion-box">
+                                            <ul id="city-list-from" class="city-list"></ul>
+                                        </div>
+                                        <input type="hidden" name="from" value="" id="from-id" />
                                     </div>
+
+
                                     <div class="col-md-6 col-sm-6 col-xs-12 taxi-title">
                                         <span>Dropping Off</span>
-                                        <input type="text" name="to" placeholder="city,airport or address" class="input-text">
+                                        <input type="text" id="to" autocomplete="off" placeholder="please select dropping down city" class="input-text">
+                                        <div id="suggesstion-box">
+                                            <ul id="city-list-to" class="city-list"></ul>
+                                        </div>
+                                        <input type="hidden" name="to" value="" id="to-id" />
                                     </div>
                                 </div>
                                 <div class="row taxi-body">
@@ -152,7 +164,7 @@ if (!isset($_SESSION)) {
                                             ?>
                                         </select>
                                     </div>
-                                     <div class="col-md-4 col-sm-6">
+                                    <div class="col-md-4 col-sm-6">
                                         <span>Your Budget</span>
                                         <select class="form-control" autocomplete="off" type="text" id="condition" autocomplete="off" name="condition">
                                             <option value=""> --select-- </option>
@@ -443,6 +455,8 @@ if (!isset($_SESSION)) {
     <script src="js/jquery-2.2.4.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/bootstrap-datepicker.js" type="text/javascript"></script>
+    <script src="js/city-from.js" type="text/javascript"></script>
+    <script src="js/city-to.js" type="text/javascript"></script>
     <script>
         $(function () {
             $("#datepicker").datepicker({

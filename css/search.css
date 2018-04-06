@@ -66,3 +66,28 @@
 .input-search[type="submit"]:hover {
     opacity: 0.8;
 }
+
+.city-list{
+    float:left;
+    list-style:none;
+    margin-top:-18px;
+    padding:0;
+    width:190px;
+    position: absolute;
+    z-index: 1;
+}
+.city-list li{
+    padding: 10px; 
+    background: #f0f0f0;
+    border-bottom: #bbb9b9 1px solid;
+    color: #000;
+}
+.city-list li:hover{ 
+    cursor: pointer;
+    background: #0000ff !important;
+    color: white !important; 
+}
+.selected{
+    background: #0000ff !important;
+    color: white !important;
+}
