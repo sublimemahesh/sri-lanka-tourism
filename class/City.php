@@ -63,6 +63,20 @@ class City {
         return $array_res;
     }
 
+    public function allCityByKeyword($keyword) {
+
+        $query = "SELECT * FROM city WHERE name like '" . $keyword . "%' ORDER BY name LIMIT 0,6";
+        $db = new Database();
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+
+        return $array_res;
+    }
+
     public function update() {
 
         $query = 'UPDATE `city` SET `name`= "' . $this->name . '" WHERE id="' . $this->id . '"';
