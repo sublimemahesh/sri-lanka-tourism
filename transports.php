@@ -1,5 +1,10 @@
 <?php
 include_once(dirname(__FILE__) . '/class/include.php');
+
+if (!isset($_SESSION)) {
+    session_start();
+}
+
 $SEARCH = new Search(NULL);
 $TRANSPORTS_PHOTO = new TransportPhoto(NULL);
 $from = NULL;
@@ -80,6 +85,7 @@ $TRANSPORTS = $SEARCH->GetTransportByLocationFromAndTo($from, $to, $type, $condi
                                             <a href="transportation-view.php?id=<?php echo $transport['id']; ?>">
                                                 <img class=" vehicle-img" src="upload/transport/thumb/<?php echo $TRANSPORTS_P['image_name']; ?>"/>
                                             </a>
+
                                         </div>
                                         <?php
                                     }
@@ -143,7 +149,7 @@ $TRANSPORTS = $SEARCH->GetTransportByLocationFromAndTo($from, $to, $type, $condi
                                             <div class="bottom-sec">
                                                 <div class="pointer"><strong class="price">US$ 350</strong></div>
                                                 <div class="m-sec btn-padding">
-                                                    <a href="transportation-view.php?id=<?php echo $transport['id']; ?>" class="more-info">Book Now</a> 
+                                                    <a href="transport-booking.php?rate=<?php echo $transport['transport_rate'];?>&visitor=<?php echo $_SESSION['id'];?>" class="more-info">Book Now</a> 
                                                 </div>
                                             </div>
                                         </div>

@@ -110,7 +110,7 @@ $MEMBER = new Member($_SESSION['id']);
                                                             </div> 
                                                             <!--Date Of Birthday-->
                                                             <div class="">
-                                                                <div class="bottom-top">Date Of Birthday</div>
+                                                                <div class="bottom-top">Date Of Birth</div>
                                                                 <div class="formrow">
                                                                     <input type="text" name="date_of_birthday" class="form-control datepicker" placeholder="Please Enter Date Of Birthday" required="TRUE" value="<?php echo $MEMBER->date_of_birthday; ?>">
                                                                 </div>
