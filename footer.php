@@ -1,4 +1,4 @@
-<footer class="footer-style container-fluid" >
+<footer class="footer-style container-fluid"style="background-color: #003366; height: auto;">
     <div class="container">
         <div class="row footer-includes">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center footer-logo">

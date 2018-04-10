@@ -1468,7 +1468,7 @@ hr.style15:after {
     color: #fff;
     text-transform: uppercase;
     border-radius: 0;
-    padding-left: 60px;
+/*    padding-left: 60px;*/
     position: relative;
     transform: translateZ(0px);
     transition: all 0.5s ease 0s;

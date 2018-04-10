@@ -1,0 +1,31 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Apr 9, 2018, 10:49:52 AM
+    Author     : HP
+*/
+
+.booking-transports-title{
+    font-family: 'Dosis', sans-serif;
+    color: #1e1e1e;
+}
+
+
+.transport-booking-box {
+    background-color: rgba(243, 243, 243, 0.7);
+    border-radius: 5px;
+    margin-bottom: 50px;
+    padding: 12px 25px 55px 25px;
+}
+
+.booking-panel-default {
+    border-color: #d7961166 !important;
+    padding-top: 7px !important;
+}
+
+.input-type-bottom{
+    margin-bottom: 18px;
+}
