@@ -1,5 +1,6 @@
 $(document).ready(function () {
     $('#from').keyup(function (e) {
+
         var toId = $('#to-id').val();
         if (e.which != 38) {
             if (e.which != 40) {
@@ -14,12 +15,12 @@ $(document).ready(function () {
 
                             var html = '';
                             $.each(result, function (key) {
-                                if(toId !==this.id){
-                                     if (key === 0) {
-                                    html += '<li id="c' + this.id + '" class="city selected">' + this.name + '</li>';
-                                } else {
-                                    html += '<li id="c' + this.id + '" class="city">' + this.name + '</li>';
-                                }
+                                if (toId !== this.id) {
+                                    if (key === 0) {
+                                        html += '<li id="c' + this.id + '" class="city selected">' + this.name + '</li>';
+                                    } else {
+                                        html += '<li id="c' + this.id + '" class="city">' + this.name + '</li>';
+                                    }
                                 }
                             });
                             $('#city-list-from').empty();
@@ -51,10 +52,12 @@ $(document).ready(function () {
         $('#from-id').val(cityId.replace("c", ""));
         $('#from').val(cityName);
     });
+
+
+
     $(window).keydown(function (e) {
         var li = $('#city-list-from .city');
         var liSelected;
-        var next = '';
         if (e.which === 40) {
             if (liSelected) {
                 liSelected.removeClass('selected');
@@ -79,6 +82,7 @@ $(document).ready(function () {
             } else {
                 liSelected = li.last().addClass('selected');
             }
+
         } else if (e.which === 13) {
 
             var selected = $('.selected').attr("id");

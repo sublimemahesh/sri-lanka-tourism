@@ -29,3 +29,20 @@ and open the template in the editor.
 .input-type-bottom{
     margin-bottom: 18px;
 }
+
+.margin-top-40{
+    margin-top: 40px;
+}
+
+.public-member-box{
+    background-color: rgba(243, 243, 243, 0.7);
+    border-radius: 5px;
+    margin-bottom: 50px;
+    padding: 12px 25px 55px 25px;
+}
+
+.public-member-title{
+    font-family: 'Dosis', sans-serif;
+    color: #1e1e1e;
+    font-size: 20px;
+}
