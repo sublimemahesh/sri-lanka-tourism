@@ -97,7 +97,7 @@ $TRANSPORTS = $SEARCH->GetTransportByLocationFromAndTo($from, $to, $type, $condi
 
                                                 <div class="row driver">
                                                     <div class="profile col-md-3">
-                                                        <a href="" class="link">
+                                                        <a href="member-view.php?id=<?php echo $MEMBER->id; ?>" class="link">
                                                             <?php
                                                             if (empty($MEMBER->profile_picture)) {
                                                                 ?>
@@ -149,7 +149,7 @@ $TRANSPORTS = $SEARCH->GetTransportByLocationFromAndTo($from, $to, $type, $condi
                                             <div class="bottom-sec">
                                                 <div class="pointer"><strong class="price">US$ 350</strong></div>
                                                 <div class="m-sec btn-padding">
-                                                    <a href="transport-booking.php?rate=<?php echo $transport['transport_rate'];?>&visitor=<?php echo $_SESSION['id'];?>" class="more-info">Book Now</a> 
+                                                    <a href="transport-booking.php?rate=<?php echo $transport['transport_rate']; ?>&visitor=<?php echo $_SESSION['id']; ?>" class="more-info">Book Now</a> 
                                                 </div>
                                             </div>
                                         </div>

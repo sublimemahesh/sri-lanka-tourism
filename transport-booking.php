@@ -36,7 +36,7 @@ $now = date('Y-m-d H:i:s');
         <link rel="stylesheet" href="css/responsive.css">
         <link href="css/search.css" rel="stylesheet" type="text/css"/>
         <link href="css/visitor-custom.css" rel="stylesheet" type="text/css"/>
-        <link href="css/booking-custom.css" rel="stylesheet" type="text/css"/>
+        <link href="css/custom-styles.css" rel="stylesheet" type="text/css"/>
         <link href="assets/jquery-ui/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
         <style>
             .form-options .one-half {
