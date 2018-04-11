@@ -61,7 +61,13 @@ $MEMBER = new Member($_SESSION['id']);
                                                 <div class="col-sm-9 col-md-9">
                                                     <ul class="list-group">
                                                         <li class="list-group-item"><b>Name</b> : <?php echo $MEMBER->name; ?></li> 
-                                                        <li class="list-group-item"><b>User Name</b> : <?php echo $MEMBER->username; ?></li> 
+                                                        <?php
+                                                        if (!$MEMBER->facebookID) {
+                                                            ?>
+                                                            <li class="list-group-item"><b>User Name</b> : <?php echo $MEMBER->username; ?></li> 
+                                                            <?php
+                                                        }
+                                                        ?>
                                                         <li class="list-group-item"><b>Email</b> : <?php echo $MEMBER->email; ?></li>
                                                         <li class="list-group-item"><b>Contact No</b> : <?php echo $MEMBER->contact_number; ?></li>
                                                         <li class="list-group-item"> <b>Date Of Birth</b> : <?php echo $MEMBER->date_of_birthday; ?></li>
@@ -81,17 +87,28 @@ $MEMBER = new Member($_SESSION['id']);
 
                                                 <div class="col-sm-3 col-md-3">  
                                                     <?php
-                                                    $MEMBER = new Member($_SESSION["id"]);
                                                     if (empty($MEMBER->profile_picture)) {
                                                         ?>
-                                                        <img src="../upload/member/member.png" class="img img-responsive img-thumbnail" id="profil_pic"/>
+                                                        <img src="images/member.png" class="img img-responsive img-thumbnail" id="profil_pic"/>
                                                         <?php
                                                     } else {
-                                                        ?>
-                                                        <img src="../upload/member/<?php echo $MEMBER->profile_picture; ?>" class="img img-responsive img-thumbnail" id="profil_pic"/>
-                                                        <?php
+
+                                                        if ($MEMBER->facebookID && substr($MEMBER->profile_picture, 0, 5) === "https") {
+                                                            ?>
+                                                            <img src="<?php echo $MEMBER->profile_picture; ?>" class="img img-responsive img-thumbnail" id="profil_pic"/>
+                                                            <?php
+                                                        } else {
+                                                            ?>
+                                                            <img src="../upload/member/<?php echo $MEMBER->profile_picture; ?>" class="img img-responsive img-thumbnail" id="profil_pic"/>
+                                                            <?php
+                                                        }
                                                     }
                                                     ?>
+
+
+
+
+
                                                     <form class="form-horizontal"  method="post" enctype="multipart/form-data" id="upForm">
                                                         <input type="file" name="pro-picture" id="pro-picture" />
                                                         <input type="hidden" name="upload-profile-image" id="upload-profile-image"/>

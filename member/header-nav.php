@@ -112,11 +112,20 @@ $MEMBER = new Member($_SESSION['id']);
                 <p class="centered"><a href="./"><img src="../upload/member/member.png" class="img-circle" id="profil_pic1" width="60"></a></p>
                 <?php
             } else {
-                ?>
-                <p class="centered"><a href="./"><img src="../upload/member/<?php echo $MEMBER->profile_picture; ?>" id="profil_pic1" class="img-circle" width="60"></a></p>
-                <?php
+
+                if ($MEMBER->facebookID && substr($MEMBER->profile_picture, 0, 5) === "https") {
+                    ?>
+                    <p class="centered"><a href="./"><img src="<?php echo $MEMBER->profile_picture; ?>" id="profil_pic1" class="img-circle" width="60"></a></p>
+                    <?php
+                } else {
+                    ?>
+                    <p class="centered"><a href="./"><img src="../upload/member/<?php echo $MEMBER->profile_picture; ?>" id="profil_pic1" class="img-circle" width="60"></a></p>
+                    <?php
+                }
             }
             ?>
+
+
             <h5 class="centered"><?php echo $MEMBER->name; ?></h5>
             <h6  class="centered"><?php echo $MEMBER->email; ?></h6>
 
