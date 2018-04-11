@@ -1,5 +1,8 @@
 <?php
 include_once(dirname(__FILE__) . '/class/include.php');
+if (!isset($_SESSION)) {
+    session_start();
+}
 $id = $_GET["id"];
 $VIEW_TRANSPORTS = new Transports($id);
 $TRANSPORTS = new Transports($id);
@@ -19,6 +22,7 @@ $TRANSPORTS_PHOTO = new TransportPhoto(NULL);
         <link href="css/datepicker.css" rel="stylesheet" type="text/css"/>
         <link href="assets/css/styles.css" rel="stylesheet" type="text/css"/>
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
+        <link href="visitor-feedback/validation-styles.css" rel="stylesheet" type="text/css"/>
         <link href="css/comments-style.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
@@ -29,6 +33,11 @@ $TRANSPORTS_PHOTO = new TransportPhoto(NULL);
 
         <div class="row" style="background-color: #fff;">
             <div class="container transport-container">
+                <?php
+                $vali = new Validator();
+                $vali->show_message();
+                ?>
+
                 <div class="row">
                     <div class="col-md-8 p pro-details">
                         <div id="galleria" class="galleria-slider">
@@ -50,6 +59,122 @@ $TRANSPORTS_PHOTO = new TransportPhoto(NULL);
                                 <?php echo $VIEW_TRANSPORTS->description; ?>
                             </span>
                         </div>
+
+
+                        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                            <h2 class="t-comment">Customer <b>Testimonials</b></h2>
+                            <!-- Carousel indicators -->
+
+                            <ol class="carousel-indicators">
+                                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                                <li data-target="#myCarousel" data-slide-to="1"></li>
+                                <li data-target="#myCarousel" data-slide-to="2"></li>
+                            </ol>   
+
+
+                            <!-- Wrapper for carousel items -->
+                            <div class="carousel-inner">
+                                <?php
+                                $FEEDBACK = new Feedback(NULL);
+                                $TRANSPORT_FEEDBACKS = $FEEDBACK->getFeedbackByTransportID($id);
+                                $li = '';
+                                foreach ($TRANSPORT_FEEDBACKS as $key => $transport_feedback) {
+                                    $VISITOR = new Visitor($transport_feedback['visitor']);
+                                    if ($key === 0) {
+                                        $li .= ' <li data-target="#myCarousel" data-slide-to="' . $key . '" class="active">'
+                                                . '</li>';
+                                        ?>  
+                                        <div class="item carousel-item active">
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <div class="testimonial">
+                                                        <p><?php echo $transport_feedback['description']; ?></p>
+                                                    </div>
+                                                    <div class="media">
+                                                        <div class="media-left d-flex mr-3">
+                                                            <img src="upload/visitor/<?php echo $VISITOR->image_name?>" alt=""/>										
+                                                        </div>
+                                                        <div class="media-body">
+                                                            <div class="overview">
+                                                                <div class="name"><b><?php echo $VISITOR->first_name.' '.$VISITOR->second_name?></b></div>
+                                                                <div class="details"><?php echo $transport_feedback['title']; ?></div>
+                                                                <div class="star-rating-t">
+                                                                    <ul class="list-inline">
+                                                                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                                        <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>										
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>			
+                                        </div>
+                                        <?php
+                                    } else {
+                                        $li .= ' <li data-target="#myCarousel" data-slide-to="' . $key . '">'
+                                                . '</li>';
+                                        ?>
+                                        <div class="item carousel-item">
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <div class="testimonial">
+                                                        <p><?php echo $transport_feedback['description']; ?></p>
+                                                    </div>
+                                                    <div class="media">
+                                                        <div class="media-left d-flex mr-3">
+                                                            <img src="upload/visitor/<?php echo $VISITOR->image_name?>" alt=""/>										
+                                                        </div>
+                                                        <div class="media-body">
+                                                            <div class="overview">
+                                                                <div class="name"><b><?php echo $VISITOR->first_name.' '.$VISITOR->second_name?></b></div>
+                                                                <div class="details"><?php echo $transport_feedback['title']; ?></div>
+                                                                <div class="star-rating-t">
+                                                                    <ul class="list-inline">
+                                                                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                                        <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>										
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>			
+                                        </div>
+                                        <?php
+                                    }
+                                }
+                                ?>
+                            </div>
+                            <!-- Carousel controls -->
+                            <a class="carousel-control left carousel-control-prev" href="#myCarousel" data-slide="prev">
+                                <i class="fa fa-chevron-left"></i>
+                            </a>
+                            <a class="carousel-control right carousel-control-next" href="#myCarousel" data-slide="next">
+                                <i class="fa fa-chevron-right"></i>
+                            </a>
+                            <div class="text-center">
+                                <button type="submit" id="btn-add-comment" class="btn btn-info">
+                                    <i class="fa fa-plus"></i>  Add Your Comment
+                                </button>
+                            </div>
+
+                            <?php
+                            include './add-feedback.php';
+                            ?>
+                        </div>
+
+
+
+
                     </div>
                     <div class="col-md-4 ">
                         <div class="right-side">
@@ -89,7 +214,7 @@ $TRANSPORTS_PHOTO = new TransportPhoto(NULL);
                                             </div>
                                         </div>
                                         <div class="row car-details ">
-                                            
+
                                             <div class="col-md-12 fuel-type">
                                                 <span><strong>Fuel Type:</strong> <?php echo $FUEL_TYPE->name; ?> </span>
                                             </div>
@@ -128,6 +253,8 @@ $TRANSPORTS_PHOTO = new TransportPhoto(NULL);
                                                         <span class="fa fa-eye"></span>View
                                                     </a>
                                                 </div>
+
+
                                             </div>
                                         </div>
 
@@ -140,189 +267,7 @@ $TRANSPORTS_PHOTO = new TransportPhoto(NULL);
                     </div>
 
                 </div>
-                <div class="col-sm-12">			
-                    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                        <h2 class="t-comment">Customer <b>Testimonials</b></h2>
-                        <!-- Carousel indicators -->
-                        <ol class="carousel-indicators">
-                            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                            <li data-target="#myCarousel" data-slide-to="1"></li>
-                            <li data-target="#myCarousel" data-slide-to="2"></li>
-                        </ol>   
-                        <!-- Wrapper for carousel items -->
-                        <div class="carousel-inner">
-                            <div class="item carousel-item active">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="testimonial">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu sem tempor, varius quam at, luctus dui. Mauris magna metus, dapibus nec turpis vel, semper malesuada ante.</p>
-                                        </div>
-                                        <div class="media">
-                                            <div class="media-left d-flex mr-3">
-                                                <img src="assets/img/comments/2.jpg" alt=""/>										
-                                            </div>
-                                            <div class="media-body">
-                                                <div class="overview">
-                                                    <div class="name"><b>Paula Wilson</b></div>
-                                                    <div class="details">Media Analyst / SkyNet</div>
-                                                    <div class="star-rating-t">
-                                                        <ul class="list-inline">
-                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                            <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>										
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="testimonial">
-                                            <p>Vestibulum quis quam ut magna consequat faucibu. Eget mi suscipit tincidunt. Utmtc tempus dictum. Pellentesque virra. Quis quam ut magna consequat faucibus quam.</p>
-                                        </div>
-                                        <div class="media">
-                                            <div class="media-left d-flex mr-3">
-                                                <img src="assets/img/comments/1.jpg" alt=""/>
-                                            </div>
-                                            <div class="media-body">
-                                                <div class="overview">
-                                                    <div class="name"><b>Antonio Moreno</b></div>
-                                                    <div class="details">Web Developer / SoftBee</div>
-                                                    <div class="star-rating-t">
-                                                        <ul class="list-inline">
-                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                            <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>										
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>			
-                            </div>
-                            <div class="item carousel-item">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="testimonial">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu sem tempor, varius quam at, luctus dui. Mauris magna metus, dapibus nec turpis vel, semper malesuada ante.</p>
-                                        </div>
-                                        <div class="media">
-                                            <div class="media-left d-flex mr-3">										
-                                                <img src="assets/img/comments/2.jpg" alt=""/>
-                                            </div>
-                                            <div class="media-body">
-                                                <div class="overview">
-                                                    <div class="name"><b>Michael Holz</b></div>
-                                                    <div class="details">Web Developer / DevCorp</div>											
-                                                    <div class="star-rating-t">
-                                                        <ul class="list-inline">
-                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                            <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>										
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="testimonial">
-                                            <p>Vestibulum quis quam ut magna consequat faucibu. Eget mi suscipit tincidunt. Utmtc tempus dictum. Pellentesque virra. Quis quam ut magna consequat faucibus quam.</p>
-                                        </div>
-                                        <div class="media">
-                                            <div class="media-left d-flex mr-3">
-                                                <img src="assets/img/comments/3.jpg" alt=""/>
-                                            </div>
-                                            <div class="media-body">
-                                                <div class="overview">
-                                                    <div class="name"><b>Mary Saveley</b></div>
-                                                    <div class="details">Graphic Designer / MarsMedia</div>
-                                                    <div class="star-rating-t">
-                                                        <ul class="list-inline">
-                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                            <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>										
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>			
-                            </div>
-                            <div class="item carousel-item">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="testimonial">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu sem tempor, varius quam at, luctus dui. Mauris magna metus, dapibus nec turpis vel, semper malesuada ante.</p>
-                                        </div>
-                                        <div class="media">
-                                            <div class="media-left d-flex mr-3">
-                                                <img src="assets/img/comments/2.jpg" alt=""/>
-                                            </div>
-                                            <div class="media-body">
-                                                <div class="overview">
-                                                    <div class="name"><b>Martin Sommer</b></div>
-                                                    <div class="details">SEO Analyst / RealSearch</div>
-                                                    <div class="star-rating-t">
-                                                        <ul class="list-inline">
-                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                            <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>										
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="testimonial">
-                                            <p>Vestibulum quis quam ut magna consequat faucibu. Eget mi suscipit tincidunt. Utmtc tempus dictum. Pellentesque virra. Quis quam ut magna consequat faucibus quam.</p>
-                                        </div>
-                                        <div class="media">
-                                            <div class="media-left d-flex mr-3">
-                                                <img src="assets/img/comments/2.jpg" alt=""/>										
-                                            </div>
-                                            <div class="media-body">
-                                                <div class="overview">
-                                                    <div class="name"><b>John Williams</b></div>
-                                                    <div class="details">Web Designer / UniqueDesign</div>
-                                                    <div class="star-rating-t">
-                                                        <ul class="list-inline">
-                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                            <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>										
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>			
-                            </div>
-                        </div>
-                        <!-- Carousel controls -->
-                        <a class="carousel-control left carousel-control-prev" href="#myCarousel" data-slide="prev">
-                            <i class="fa fa-chevron-left"></i>
-                        </a>
-                        <a class="carousel-control right carousel-control-next" href="#myCarousel" data-slide="next">
-                            <i class="fa fa-chevron-right"></i>
-                        </a>
-                    </div>
-                </div>
+
             </div>
         </div>
     </body>
@@ -349,6 +294,50 @@ include './footer.php';
         lightbox: true,
         showInfo: true,
 //                imageCrop: true,
+    });
+</script>
+
+
+<script>
+    jQuery(document).ready(function () {
+        jQuery('#btn-add-comment').click(function () {
+            jQuery("#myModal").modal('show');
+        });
+
+    });
+
+
+    jQuery('#create').click(function (event) {
+
+        event.preventDefault();
+
+        var captchacode = jQuery('#captchacode').val();
+
+        jQuery.ajax({
+            url: "visitor-feedback/captchacode.php",
+            cache: false,
+            dataType: "json",
+            type: "POST",
+            data: {
+                captchacode: captchacode
+
+            },
+            success: function (html) {
+                var status = html.status;
+                var msg = html.msg;
+
+                if (status == "incorrect") {
+
+                    jQuery("#capspan").addClass("notvalidated");
+                    jQuery("#capspan").html(msg);
+                    jQuery("#capspan").show();
+                    jQuery("#capspan").fadeOut(2000);
+
+                } else if (status == "correct") {
+                    jQuery('#client-comment').submit();
+                }
+            }
+        });
     });
 </script>
 </body> 

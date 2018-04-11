@@ -38,6 +38,7 @@ include_once(dirname(__FILE__) . '/VehicleCondition.php');
 include_once(dirname(__FILE__) . '/Visitor.php');
 include_once(dirname(__FILE__) . '/Search.php');
 include_once(dirname(__FILE__) . '/TransportBooking.php');
+include_once(dirname(__FILE__) . '/Feedback.php');
 
 function dd($data) {
     var_dump($data);
