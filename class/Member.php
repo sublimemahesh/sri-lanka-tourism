@@ -19,6 +19,7 @@ class Member {
     public $profile_picture;
     public $username;
     public $password;
+    public $facebookID;
     public $resetcode;
     public $about_me;
     public $rank;
@@ -27,7 +28,7 @@ class Member {
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`,`name`,`email`,`nic_number`,`date_of_birthday`,`contact_number`,`driving_licence_number`,`home_address`,`city`,`profile_picture`,`username`,`about_me`,`status`,`rank` FROM `member` WHERE `id`=" . $id;
+            $query = "SELECT `id`,`name`,`email`,`nic_number`,`date_of_birthday`,`contact_number`,`driving_licence_number`,`home_address`,`city`,`profile_picture`,`username`,`facebookID`,`about_me`,`status`,`rank` FROM `member` WHERE `id`=" . $id;
 
             $db = new Database();
 
@@ -44,6 +45,7 @@ class Member {
             $this->city = $result['city'];
             $this->profile_picture = $result['profile_picture'];
             $this->username = $result['username'];
+            $this->facebookID = $result['facebookID'];
             $this->about_me = $result['about_me'];
             $this->rank = $result['rank'];
             $this->status = $result['status'];
@@ -81,6 +83,56 @@ class Member {
             return $this->__construct($last_id);
         } else {
             return FALSE;
+        }
+    }
+
+    public function createByFB($name, $email, $membername, $picture, $fbID, $password) {
+//        date_default_timezone_set('Asia/Colombo');
+//
+//        $createdAt = date('Y-m-d H:i:s');
+
+        $query = "INSERT INTO `member` (`name`,`email`,`username`,`profile_picture`,`facebookID`,`password`) VALUES  ('" . $name . "', '" . $email . "', '" . $membername . "', '" . $picture . "', '" . $fbID . "', '" . $password . "')";
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+
+        $last_id = mysql_insert_id();
+
+        if ($result) {
+
+            $this->loginByFB($membername, $password);
+
+            return $this->__construct($last_id);
+        } else {
+            return FALSE;
+        }
+    }
+
+    public function loginByFB($membername, $password) {
+
+        $query = "SELECT * FROM `member` WHERE `username`= '" . $membername . "' AND `password`= '" . $password . "'";
+
+        $db = new Database();
+
+        $result = mysql_fetch_array($db->readQuery($query));
+
+        if (!$result) {
+            return FALSE;
+        } else {
+            $this->id = $result['id'];
+            $member = $this->__construct($this->id);
+
+            if (!isset($_SESSION)) {
+                session_start();
+                session_unset($_SESSION);
+            }
+
+            $_SESSION["login"] = TRUE;
+
+            $_SESSION["id"] = $member->id;
+
+            return TRUE;
         }
     }
 
@@ -170,6 +222,7 @@ class Member {
         unset($_SESSION["password"]);
         unset($_SESSION["status"]);
         unset($_SESSION["rank"]);
+        unset($_SESSION["login"]);
 
         return TRUE;
     }
@@ -362,6 +415,21 @@ class Member {
             return TRUE;
         } else {
             return FALSE;
+        }
+    }
+
+    public function isFbIdIsEx($userID) {
+
+        $query = "SELECT * FROM `member` WHERE `facebookID` = '" . $userID . "'";
+
+        $db = new Database();
+
+        $result = mysql_fetch_array($db->readQuery($query));
+
+        if ($result === false) {
+            return false;
+        } else {
+            return true;
         }
     }
 
