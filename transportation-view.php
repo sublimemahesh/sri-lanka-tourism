@@ -30,7 +30,6 @@ $TRANSPORTS_PHOTO = new TransportPhoto(NULL);
         <?php
         include './header.php';
         ?>
-
         <div class="row" style="background-color: #fff;">
             <div class="container transport-container">
                 <?php
@@ -40,11 +39,13 @@ $TRANSPORTS_PHOTO = new TransportPhoto(NULL);
 
                 <div class="row">
                     <div class="col-md-8 p pro-details">
-                        <div id="galleria" class="galleria-slider">
+                      
+
+                        <div id="transport_photos" class="galleria-slider">
                             <?php
-                            $VIEW_TRANSPORT = TransportPhoto::getTransportPhotosById($id);
+                             $VIEW_TRANSPORT = TransportPhoto::getTransportPhotosById($id);
                             foreach ($VIEW_TRANSPORT as $key => $img) {
-                                $FUEL_TYPE = new FuelType($VIEW_TRANSPORTS->fuel_type);
+                                 $FUEL_TYPE = new FuelType($VIEW_TRANSPORTS->fuel_type);
                                 $CONDITION = new VehicleCondition($VIEW_TRANSPORTS->condition);
                                 ?>
                                 <a href="upload/transport/<?php echo $img['image_name']; ?>">
@@ -92,11 +93,11 @@ $TRANSPORTS_PHOTO = new TransportPhoto(NULL);
                                                     </div>
                                                     <div class="media">
                                                         <div class="media-left d-flex mr-3">
-                                                            <img src="upload/visitor/<?php echo $VISITOR->image_name?>" alt=""/>										
+                                                            <img src="upload/visitor/<?php echo $VISITOR->image_name ?>" alt=""/>										
                                                         </div>
                                                         <div class="media-body">
                                                             <div class="overview">
-                                                                <div class="name"><b><?php echo $VISITOR->first_name.' '.$VISITOR->second_name?></b></div>
+                                                                <div class="name"><b><?php echo $VISITOR->first_name . ' ' . $VISITOR->second_name ?></b></div>
                                                                 <div class="details"><?php echo $transport_feedback['title']; ?></div>
                                                                 <div class="star-rating-t">
                                                                     <ul class="list-inline">
@@ -127,11 +128,11 @@ $TRANSPORTS_PHOTO = new TransportPhoto(NULL);
                                                     </div>
                                                     <div class="media">
                                                         <div class="media-left d-flex mr-3">
-                                                            <img src="upload/visitor/<?php echo $VISITOR->image_name?>" alt=""/>										
+                                                            <img src="upload/visitor/<?php echo $VISITOR->image_name ?>" alt=""/>										
                                                         </div>
                                                         <div class="media-body">
                                                             <div class="overview">
-                                                                <div class="name"><b><?php echo $VISITOR->first_name.' '.$VISITOR->second_name?></b></div>
+                                                                <div class="name"><b><?php echo $VISITOR->first_name . ' ' . $VISITOR->second_name ?></b></div>
                                                                 <div class="details"><?php echo $transport_feedback['title']; ?></div>
                                                                 <div class="star-rating-t">
                                                                     <ul class="list-inline">
@@ -270,77 +271,71 @@ $TRANSPORTS_PHOTO = new TransportPhoto(NULL);
 
             </div>
         </div>
-    </body>
-</html>                                		                            
-</div>
-</div>
+
+        <!-- Our Resort Values style-->  
+        <?php
+        include './footer.php';
+        ?>
+        <script src="js/jquery-2.2.4.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/jquery.flexslider.js" type="text/javascript"></script>
+        <link href="css/galleria.classic.css" rel="stylesheet" type="text/css"/>
+        <script src="js/galleria.js" type="text/javascript"></script>
+        <script src="js/galleria.classic.min.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            $('#transport_photos').galleria({
+                responsive: true,
+                height: 500,
+                autoplay: 7000,
+                lightbox: true,
+                showInfo: true,
+                //                imageCrop: true,
+            });
+        </script>
 
 
-<!-- Our Resort Values style-->  
-<?php
-include './footer.php';
-?>
-<script src="js/jquery-2.2.4.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.flexslider.js" type="text/javascript"></script>
-<link href="css/galleria.classic.css" rel="stylesheet" type="text/css"/>
-<script src="js/galleria.js" type="text/javascript"></script>
-<script src="js/galleria.classic.min.js" type="text/javascript"></script>
-<script type="text/javascript">
-    $('#galleria').galleria({
-        responsive: true,
-        height: 500,
-        autoplay: 7000,
-        lightbox: true,
-        showInfo: true,
-//                imageCrop: true,
-    });
-</script>
+        <script>
+            jQuery(document).ready(function () {
+                jQuery('#btn-add-comment').click(function () {
+                    jQuery("#myModal").modal('show');
+                });
+
+            });
 
 
-<script>
-    jQuery(document).ready(function () {
-        jQuery('#btn-add-comment').click(function () {
-            jQuery("#myModal").modal('show');
-        });
+            jQuery('#create').click(function (event) {
 
-    });
+                event.preventDefault();
 
+                var captchacode = jQuery('#captchacode').val();
 
-    jQuery('#create').click(function (event) {
+                jQuery.ajax({
+                    url: "visitor-feedback/captchacode.php",
+                    cache: false,
+                    dataType: "json",
+                    type: "POST",
+                    data: {
+                        captchacode: captchacode
 
-        event.preventDefault();
+                    },
+                    success: function (html) {
+                        var status = html.status;
+                        var msg = html.msg;
 
-        var captchacode = jQuery('#captchacode').val();
+                        if (status == "incorrect") {
 
-        jQuery.ajax({
-            url: "visitor-feedback/captchacode.php",
-            cache: false,
-            dataType: "json",
-            type: "POST",
-            data: {
-                captchacode: captchacode
+                            jQuery("#capspan").addClass("notvalidated");
+                            jQuery("#capspan").html(msg);
+                            jQuery("#capspan").show();
+                            jQuery("#capspan").fadeOut(2000);
 
-            },
-            success: function (html) {
-                var status = html.status;
-                var msg = html.msg;
-
-                if (status == "incorrect") {
-
-                    jQuery("#capspan").addClass("notvalidated");
-                    jQuery("#capspan").html(msg);
-                    jQuery("#capspan").show();
-                    jQuery("#capspan").fadeOut(2000);
-
-                } else if (status == "correct") {
-                    jQuery('#client-comment').submit();
-                }
-            }
-        });
-    });
-</script>
-</body> 
-
+                        } else if (status == "correct") {
+                            jQuery('#client-comment').submit();
+                        }
+                    }
+                });
+            });
+        </script>
+    </body> 
 </html>
 

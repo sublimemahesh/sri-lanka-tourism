@@ -8118,3 +8118,12 @@ html.ie11 .bs-searchbox .form-control {
 #CDSWIDSSP{
     width:100% !important;
 }
+
+.bg-light-green {
+    background-color: #8BC34A !important;
+    color: #fff;
+}
+
+.margin-top-dashboard{
+    margin-top: 30px;
+}
