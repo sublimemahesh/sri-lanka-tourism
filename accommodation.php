@@ -18,6 +18,7 @@ $ACCOMMODATION_PHOTO = new AccommodationPhoto(NULL);
         <link href="css/datepicker.css" rel="stylesheet" type="text/css"/>
         <link href="assets/css/styles.css" rel="stylesheet" type="text/css"/>
         <link href="admin/plugins/jquery-ui/jquery-ui.css" rel="stylesheet" type="text/css"/>
+        <link href="https://fonts.googleapis.com/css?family=Russo+One|Magra|Ubuntu+Condensed" rel="stylesheet"> 
 
     </head>
     <body>
@@ -76,7 +77,7 @@ $ACCOMMODATION_PHOTO = new AccommodationPhoto(NULL);
                                                 </div>
                                             </div>
                                             <div class="details">
-                                                <?php echo substr($accommodation['description'],0,100).'..'; ?>
+                                                <?php echo substr($accommodation['description'], 0, 100) . '..'; ?>
                                             </div>
                                             <div class="row facilities align-center">
                                                 <div class="col-md-2 ">

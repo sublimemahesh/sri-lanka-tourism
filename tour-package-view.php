@@ -15,6 +15,7 @@
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
         <link href="css/lightbox.min.css" rel="stylesheet" type="text/css"/>
         <link href="css/comments-style.css" rel="stylesheet" type="text/css"/>
+        <link href="https://fonts.googleapis.com/css?family=Russo+One|Magra|Ubuntu+Condensed" rel="stylesheet"> 
     </head>
     <body>
         <?php
@@ -444,7 +445,7 @@
             </div>
         </div>
 
- 
+
         <?php
         include './footer.php';
         ?>

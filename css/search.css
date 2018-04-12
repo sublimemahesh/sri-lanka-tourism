@@ -91,3 +91,59 @@
     background: #0000ff !important;
     color: white !important;
 }
+.margin-bot-18{
+    margin-bottom: 18px;
+}
+
+index-textbox-st{
+    width: 263px;
+    line-height: 1.3;
+    font-size: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    height: 18px;
+    border: 1px solid #e4e6e8;
+    border-radius: 0;
+    cursor: auto !important;
+}
+
+
+#taxi input[type="text"],.taxi-combo {
+    border: 2px solid #060644   !important;
+    margin-top: 5px;
+}
+
+#taxi input[type="text"]:focus,.taxi-combo:focus {
+    border: 2px solid #282860   !important;
+}
+
+.select-op-header{
+    margin-bottom: 30px;
+    font-family: 'Russo One', sans-serif;
+    letter-spacing: 3px;
+}
+
+.select-ico-title{
+    font-weight: 700;
+}
+
+.span-style{
+    font-family: 'Magra', sans-serif; 
+    font-size: 14px;
+    color: #fff;
+}
+
+.top-link-button{
+    background-color: #003366 !important;
+    color: #fff;
+}
+
+.top-link-button:hover{
+    background-color: #1d79ab !important;
+    color: #fff;
+}
+
+.top-link-button:focus{
+    background-color: #1d79ab !important;
+    color: #1d79ab;
+}
