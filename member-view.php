@@ -20,6 +20,7 @@ $CITY = new City($MEMBER->city);
         <link href="css/datepicker.css" rel="stylesheet" type="text/css"/>
         <link href="css/visitor-custom.css" rel="stylesheet" type="text/css"/>
         <link href="css/custom-styles.css" rel="stylesheet" type="text/css"/>
+        <link href="https://fonts.googleapis.com/css?family=Russo+One|Magra|Ubuntu+Condensed" rel="stylesheet"> 
     </head>
     <body style="background-color: #FFF;">
         <!-- Our Resort Values style-->
@@ -30,9 +31,9 @@ $CITY = new City($MEMBER->city);
 
                 <div class="col-md-12">
                     <div class="public-member-box margin-panel">
-                         <h4 class="public-member-title">Member Details</h4>
+                        <h4 class="public-member-title">Member Details</h4>
                         <div class="panel panel-default margin-panel">
-                                
+
                             <div class="panel-body">  <div class="body">
                                     <div class="col-sm-12 col-md-12">
                                         <div class="row">

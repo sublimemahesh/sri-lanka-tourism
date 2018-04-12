@@ -13,12 +13,13 @@ include './class/include.php';
         <link rel="stylesheet" href="css/responsive.css">
         <link href="css/search.css" rel="stylesheet" type="text/css"/>
         <link href="css/datepicker.css" rel="stylesheet" type="text/css"/>
+        <link href="https://fonts.googleapis.com/css?family=Russo+One|Magra|Ubuntu+Condensed" rel="stylesheet"> 
     </head>
     <body>
         <!-- Our Resort Values style-->
         <?php include './header.php' ?>
 
-        <div class="row background-image" style="background-image: url('images/hotel/Beach-Tours3.jpg');">
+        <div class="row background-image" style="background-image: url('images/hotel/back.jpg');">
             <div class="container" style="width:350px; padding: 20px">
                 <div class="col-md-12 col-sm-12 center-all">
                     <div class="tab-content">

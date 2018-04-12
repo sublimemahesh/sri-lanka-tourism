@@ -13,6 +13,7 @@
         <link href="assets/css/styles.css" rel="stylesheet" type="text/css"/>
         <link href="admin/plugins/jquery-ui/jquery-ui.css" rel="stylesheet" type="text/css"/>
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
+        <link href="https://fonts.googleapis.com/css?family=Russo+One|Magra|Ubuntu+Condensed" rel="stylesheet"> 
     </head>
     <body>
         <!-- Our Resort Values style-->
@@ -62,7 +63,7 @@
 
                             </div>
                         </div>
-                       <div class="col-md-4 main-pack">
+                        <div class="col-md-4 main-pack">
                             <div class=" tour-photo polygon">
                                 <img src="assets/img/tour/imgtour.jpg" class="img-responsive image-back"/>
                                 <div class="nights text-center ">

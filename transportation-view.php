@@ -25,6 +25,7 @@ $TRANSPORTS_PHOTO = new TransportPhoto(NULL);
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
         <link href="visitor-feedback/validation-styles.css" rel="stylesheet" type="text/css"/>
         <link href="css/comments-style.css" rel="stylesheet" type="text/css"/>
+        <link href="https://fonts.googleapis.com/css?family=Russo+One|Magra|Ubuntu+Condensed" rel="stylesheet"> 
     </head>
     <body>
         <!-- Our Resort Values style-->

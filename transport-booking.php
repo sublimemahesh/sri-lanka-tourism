@@ -38,6 +38,7 @@ $now = date('Y-m-d H:i:s');
         <link href="css/visitor-custom.css" rel="stylesheet" type="text/css"/>
         <link href="css/custom-styles.css" rel="stylesheet" type="text/css"/>
         <link href="assets/jquery-ui/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
+        <link href="https://fonts.googleapis.com/css?family=Russo+One|Magra|Ubuntu+Condensed" rel="stylesheet"> 
         <style>
             .form-options .one-half {
                 width: 50%;
@@ -62,7 +63,7 @@ $now = date('Y-m-d H:i:s');
                             $vali = new Validator();
                             $vali->show_message();
                             ?>
-                            
+
                             <form method="post" action="post-and-get/transport-booking.php" enctype="multipart/form-data">
 
                                 <div class="row panel panel-default booking-panel-default">

@@ -54,7 +54,7 @@ $TRANSPORTS = $SEARCH->GetTransportByLocationFromAndTo($from, $to, $type, $condi
         <link href="css/search.css" rel="stylesheet" type="text/css"/>
         <link href="css/datepicker.css" rel="stylesheet" type="text/css"/>
         <link href="assets/css/styles.css" rel="stylesheet" type="text/css"/>
-
+        <link href="https://fonts.googleapis.com/css?family=Russo+One|Magra|Ubuntu+Condensed" rel="stylesheet"> 
 
     </head>
     <body>

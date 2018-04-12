@@ -25,6 +25,7 @@ $ROOM_PHOTO = new RoomPhoto(NULL);
         <link href="assets/css/styles.css" rel="stylesheet" type="text/css"/>
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
         <link href="css/bicon.min.css" rel="stylesheet" type="text/css"/>
+        <link href="https://fonts.googleapis.com/css?family=Russo+One|Magra|Ubuntu+Condensed" rel="stylesheet"> 
     </head>
     <body>
         <!-- Our Resort Values style-->
@@ -199,7 +200,7 @@ $ROOM_PHOTO = new RoomPhoto(NULL);
                                                         <li class="fa fa-map-marker"></li>
                                                     </div>
                                                     <div class="col-md-10 acc-location-details">
-                                                         <?php echo $VIEW_ACCOMMODATIONS->address; ?>
+                                                        <?php echo $VIEW_ACCOMMODATIONS->address; ?>
                                                     </div>
                                                 </div>
                                             </div>
@@ -298,7 +299,7 @@ $ROOM_PHOTO = new RoomPhoto(NULL);
                                         <div class="box-content">
                                             <h3 class="room-title"><?php echo $other_accommodation['name']; ?></h3>
                                             <span class="post">
-                                                <?php echo substr($other_accommodation['description'],0,75).'...'; ?>
+                                                <?php echo substr($other_accommodation['description'], 0, 75) . '...'; ?>
                                             </span>
                                             <ul class="icon">
                                                 <li><a href="accommodation-view.php?id=<?php echo $other_accommodation['id']; ?>" class="fa fa-eye" title="view more"></a></li>

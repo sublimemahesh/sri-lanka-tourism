@@ -14,6 +14,7 @@ include './class/include.php';
         <link href="css/search.css" rel="stylesheet" type="text/css"/>
         <link href="css/datepicker.css" rel="stylesheet" type="text/css"/>
         <link href="css/visitor-custom.css" rel="stylesheet" type="text/css"/>
+        <link href="https://fonts.googleapis.com/css?family=Russo+One|Magra|Ubuntu+Condensed" rel="stylesheet"> 
     </head>
     <body>
         <!-- Our Resort Values style-->
