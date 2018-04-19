@@ -470,6 +470,9 @@
     .mobile-frnd{
         padding-left: 10px;
     }
+    .select-op-header {
+        margin-bottom: 10px !important;
+    }
     .social-icon{
         float: none;
         padding-left: 67px;
@@ -571,7 +574,7 @@
         margin-top: -8px;
     }
     .sec-header h2 {
-        margin:30px 0 0.9em;
+        margin:20px 0 0.9em;
     }
 
     .social-icon h4{
@@ -672,7 +675,7 @@
 @media (min-width: 360px) and (max-width: 640px) {
     .main-header{
         /*height: 170px;*/
-        height: 160px;
+        height: 140px;
     }
     .logo{
         margin-top: 16px;
@@ -680,6 +683,7 @@
     .logo-col{
         padding-left: 0px;
         padding-right: 0px;
+        margin-top: -8px;
     } 
     .nav > li > a{
         margin-top: 5px;
@@ -693,7 +697,7 @@
     .btn-style {
         padding: 20px;
         text-align: center;
-        margin: 25px 0px;
+        margin: 10px 0px;
         padding: 9px 45px;
     }
     .add-user {
@@ -760,20 +764,36 @@
     }
     .mobile-view{
         background-color: rgba(0,51,102,.80);
-        padding-left: 4px;
-        padding-right: 5px;
-        border-radius: 3px;
-        padding-top: 9px;
+        padding-left: 0px;
+        padding-right: 0px;
+        border-radius: 4px;
+        padding-top: 5px;
         padding-bottom: 5px;
-        margin-top: 10px;
+        margin-top: 8px;
         height: 50px;
         width: 50px;
         margin-left: 5px;
         border: 1px solid #cacaca;
+        font-size: 10px;
+    }
+    .mobile-view:hover{
+         background-color: rgba(55, 70, 84, 0.8) !important;
+      
+    }
+    .mobile-view:focus{
+       background-color: rgba(55, 70, 84, 0.8) !important;
+    } 
+    
+    a:hover,a:focus{
+        color: #fff;
+        text-decoration: none;
+    }
+    .mobile-view-ico{
+        width: 25px;
     }
 
     .tab-content{
-        padding-top: 80px;
+        padding-top: 50px;
     }
     .fa-facebook {
         background: #3B5998;

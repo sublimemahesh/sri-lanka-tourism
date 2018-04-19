@@ -27,8 +27,10 @@ if (!isset($_SESSION)) {
         <div class="row background-image" style="background-image: url('images/hotel/back.jpg');">
             <div class="container body-style">
                 <div class="text-center">
-                    <div class=" col-md-8 col-md-offset-2 hidden-sm hidden-xs">
-                        <ul class="nav nav-pills">
+                    <div class=" col-md-12 hidden-sm hidden-xs">
+
+                        <ul class="nav nav-pills center-block" style="width:650px;">
+
                             <li class="btn-nav">
                                 <a data-toggle="pill" href="#taxi" class="space-adjust top-link-button">
                                     <div>
@@ -73,53 +75,62 @@ if (!isset($_SESSION)) {
                                 <a data-toggle="pill" href="#sea" class="space-adjust top-link-button">
                                     <div>
                                         <img src="images/icon/search11.png" alt=""/>
-                                        <span class="select-ico-title">Search</span>
+                                        <span class="select-ico-title">Article</span>
                                     </div>
                                 </a>
                             </li>
+
                         </ul>
+
+
                     </div>
                     <div class="mobile-section col-sm-12 col-xs-12 visible-xs visible-sm hidden-lg hidden-md">
                         <div class="mobile" style=" z-index: 900; position: relative;">
                             <div class="col-xs-2 mobile-view">
                                 <a data-toggle="pill" href="#taxi">
                                     <div>
-                                        <img src="images/frontal-taxi-cab.png" alt=""/>
+                                        <img src="images/frontal-taxi-cab.png" alt="" class="mobile-view-ico"/>
+                                        <span class="select-ico-title">Taxi</span>
                                     </div>
                                 </a>
                             </div>
                             <div class="col-xs-2 mobile-view">
                                 <a data-toggle="pill" href="#tour"> 
                                     <div>
-                                        <img src="images/earth-paradise.png" alt=""/>
+                                        <img src="images/earth-paradise.png" alt="" class="mobile-view-ico"/>
+                                        <span class="select-ico-title">Tour</span>
                                     </div>
                                 </a>
                             </div>
                             <div class="col-xs-2 mobile-view">
                                 <a data-toggle="pill" href="#hotel">
                                     <div>
-                                        <img src="images/3d-building.png" alt=""/>
+                                        <img src="images/3d-building.png" alt="" class="mobile-view-ico"/>
+                                        <span class="select-ico-title">Hotel</span>
                                     </div>
                                 </a>
                             </div>
                             <div class="col-xs-2 mobile-view">
                                 <a data-toggle="pill" href="#offer">
                                     <div>
-                                        <img src="images/discount(1).png" alt=""/>
+                                        <img src="images/discount(1).png" alt="" class="mobile-view-ico"/>
+                                        <span class="select-ico-title">Offer</span>
                                     </div>
                                 </a>
                             </div>
                             <div class="col-xs-2 mobile-view">
                                 <a data-toggle="pill" href="#booking">
                                     <div>
-                                        <img src="images/learning.png" alt=""/>
+                                        <img src="images/learning.png" alt="" class="mobile-view-ico"/>
+                                        <span class="select-ico-title">Booking</span>
                                     </div>
                                 </a>
                             </div>
                             <div class="col-xs-2 mobile-view">
                                 <a data-toggle="pill" href="#sea">
                                     <div>
-                                        <img src="images/icon/search11.png" alt=""/>
+                                        <img src="images/icon/search11.png" alt="" class="mobile-view-ico"/>
+                                        <span class="select-ico-title">Article</span>
                                     </div>
                                 </a>
                             </div>

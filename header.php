@@ -7,8 +7,8 @@
                     <i class="fa fa-phone">
                         <span class="details">0757522415</span>
                     </i>
-                    <span class="separate">||</span>
-                    <i class="fa fa-envelope-o">
+                    <span class="separate hidden-sm hidden-xs">||</span>
+                    <i class="fa fa-envelope-o hidden-sm hidden-xs">
                         <span class="details">srilankatourism.com</span>
                     </i>
                     <?php
@@ -69,9 +69,11 @@
                             <li><a data-original-title="Twitter" href="#"><i class="fa fa-twitter"></i></a></li>
                             <li><a data-original-title="Linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
                             <li><a data-original-title="instagram" href="#"><i class="fa fa-instagram"></i></a></li>
+                            <li> <a href="member/index.php"><div class="button-member-mobile" style="vertical-align:middle"><span>Add Your Business</span></div></a> </li>
                         </ul>
                     </div>
                 </div>
+
             </div>
         </div>
         <div class="row logo-section hidden-sm hidden-xs">
@@ -84,7 +86,7 @@
             <div class="col-lg-2  text-center col-md-2 hidden-sm hidden-xs">
                 <img src="images/logo-intro2.png" alt="image" class="logo"/>
             </div>
-            <div class="col-lg-5 col-md-5  icon-row">
+            <div class="col-lg-3 col-md-3  icon-row">
                 <div class="sec-header sec-header-pad">
                     <ul class="social-icon">
                         <h4>Follow us</h4>
@@ -94,6 +96,9 @@
                         <a data-original-title="instagram" href="#"><i class="fa fa-instagram"></i></a>
                     </ul>
                 </div>
+            </div>
+            <div class="col-lg-2 col-md-2">
+                <a href="member/index.php"><div class="button-member" style="vertical-align:middle"><span>Add Your Business</span></div></a> 
             </div>
         </div> 
         <div class="row logo-section hidden-md hidden-lg hidden-xs visible-sm"> 
