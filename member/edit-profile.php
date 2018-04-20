@@ -80,13 +80,7 @@ $MEMBER = new Member($_SESSION['id']);
                                                                     <input type="text" name="name" class="form-control" placeholder="Please Enter Your Full Name"  value="<?php echo $MEMBER->name; ?>" required="TRUE">
                                                                 </div>
                                                             </div>
-                                                            <!--User Name-->
-                                                            <div class="">
-                                                                <div class="bottom-top">User Name</div>
-                                                                <div class="formrow">
-                                                                    <input type="text" name="username" class="form-control" placeholder="Please Enter Your User Name" required="TRUE" value="<?php echo $MEMBER->username; ?>">
-                                                                </div>
-                                                            </div>
+                                                          
                                                             <!--Email-->
                                                             <div class="">
                                                                 <div class="bottom-top">Email</div>
