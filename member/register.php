@@ -21,7 +21,7 @@ include_once(dirname(__FILE__) . '/../class/include.php');
         <!-- Custom styles for this template -->
         <link href="assets/css/style.css" rel="stylesheet">
         <link href="assets/css/style-responsive.css" rel="stylesheet">
-
+        <link href="assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css"/>
     </head>
 
     <body>
@@ -30,7 +30,7 @@ include_once(dirname(__FILE__) . '/../class/include.php');
             <div class="container">
 
                 <!-- Modal login-->
-                <form class="form-horizontal form-login"  method="post" action="post-and-get/member.php" enctype="multipart/form-data"> 
+                <form class="form-horizontal form-login"  method="post" id="register"> 
 
                     <div class="">
                         <div class="modal-content">
@@ -49,40 +49,30 @@ include_once(dirname(__FILE__) . '/../class/include.php');
                                     <?php
                                 }
                                 ?>
-                                <p>Enter your details</p>
                                 <div>
-                                    <input type="text" name="name" placeholder="Full Name" autocomplete="off" class="form-control placeholder-no-fix">
+                                    <input type="text" id="name" name="name" placeholder="Enter Your Name" autocomplete="off" class="form-control placeholder-no-fix">
                                 </div>
                                 <br>
 
                                 <div>
-                                    <input type="text" name="username" placeholder="User Name" autocomplete="off" class="form-control placeholder-no-fix">
+                                    <input type="email" id="email" name="email" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
                                 </div>
                                 <br>
 
                                 <div>
-                                    <input type="email" name="email" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
+                                    <input type="email" id="cnfemail" name="cnfemail" placeholder="Confirm Email" autocomplete="off" class="form-control placeholder-no-fix">
                                 </div>
                                 <br>
 
                                 <div>
-                                    <input type="email" name="cnfemail" placeholder="Confirm Email" autocomplete="off" class="form-control placeholder-no-fix">
+                                    <input type="text" id="contact_no" name="contact_number" placeholder="Enter Your Phone Number" autocomplete="off" class="form-control placeholder-no-fix">
                                 </div>
                                 <br>
 
                                 <div>
-                                    <input type="text" name="contact_number" placeholder="Contact Number" autocomplete="off" class="form-control placeholder-no-fix">
+                                    <input type="password" id="password" name="password" placeholder="Enter Password" autocomplete="off" class="form-control placeholder-no-fix">
                                 </div>
                                 <br>
-
-                                <div>
-                                    <input type="password" name="password" placeholder="Enter Password" autocomplete="off" class="form-control placeholder-no-fix">
-                                </div>
-                                <br>
-
-                                <div>
-                                    <input type="password" name="confirm_password" placeholder="Confirm Password" autocomplete="off" class="form-control placeholder-no-fix">
-                                </div>
                                 <br>
 
                                 <div class="formrow">
@@ -91,9 +81,12 @@ include_once(dirname(__FILE__) . '/../class/include.php');
                                 </div>
 
                             </div>
-                            <div class="modal-footer">
-                                <input class="btn btn-theme" type="submit" value="Register" name="register">
+                            <div class="pull-left text-danger" id="message" style="padding:10px;"></div>
+                            <div class="pull-right padding_style" style="padding:10px;">
+                                <div class="btn btn-theme" id="btnSubmit">Register Now</div>
+                                <input type="hidden" name="save" value="save"/>
                             </div>
+                            <span class="clearfix"></span>
                         </div>
                     </div>
 
@@ -108,8 +101,8 @@ include_once(dirname(__FILE__) . '/../class/include.php');
         <script>
             $.backstretch("assets/img/login-bg.jpg", {speed: 500});
         </script>
-
-
+        <script src="js/add-member.js" type="text/javascript"></script>
+        <script src="assets/plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>
     </body>
 
 </html>

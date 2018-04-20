@@ -42,7 +42,7 @@ include_once(dirname(__FILE__) . '/../class/include.php');
                         }
                         ?>
                         <form action="post-and-get/member.php" method="POST">
-                            <input type="text" class="form-control" name="username" placeholder="User ID" autofocus>
+                            <input type="text" class="form-control" name="useremail" placeholder="Email address" autofocus>
                             <br>
 
                             <input type="password" class="form-control" name="password" placeholder="Password">

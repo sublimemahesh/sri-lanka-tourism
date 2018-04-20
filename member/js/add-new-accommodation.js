@@ -34,8 +34,6 @@ $(document).ready(function () {
                 timer: 2000,
                 showConfirmButton: false
             });
-
-
         } else if (!$('#phone').val() || $('#phone').val().length === 0) {
             swal({
                 title: "Error!",

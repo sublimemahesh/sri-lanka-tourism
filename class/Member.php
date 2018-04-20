@@ -17,7 +17,6 @@ class Member {
     public $home_address;
     public $city;
     public $profile_picture;
-    public $username;
     public $password;
     public $facebookID;
     public $resetcode;
@@ -28,7 +27,7 @@ class Member {
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`,`name`,`email`,`nic_number`,`date_of_birthday`,`contact_number`,`driving_licence_number`,`home_address`,`city`,`profile_picture`,`username`,`facebookID`,`about_me`,`status`,`rank` FROM `member` WHERE `id`=" . $id;
+            $query = "SELECT `id`,`name`,`email`,`nic_number`,`date_of_birthday`,`contact_number`,`driving_licence_number`,`home_address`,`city`,`profile_picture`,`facebookID`,`about_me`,`status`,`rank` FROM `member` WHERE `id`=" . $id;
 
             $db = new Database();
 
@@ -44,7 +43,6 @@ class Member {
             $this->home_address = $result['home_address'];
             $this->city = $result['city'];
             $this->profile_picture = $result['profile_picture'];
-            $this->username = $result['username'];
             $this->facebookID = $result['facebookID'];
             $this->about_me = $result['about_me'];
             $this->rank = $result['rank'];
@@ -58,7 +56,7 @@ class Member {
 
 
 
-        $query = "INSERT INTO `member` (`name`,`email`,`nic_number`,`date_of_birthday`,`contact_number`,`driving_licence_number`,`home_address`,`city`,`profile_picture`,`username`,`password`,`status`,`rank`) VALUES  ('"
+        $query = "INSERT INTO `member` (`name`,`email`,`nic_number`,`date_of_birthday`,`contact_number`,`driving_licence_number`,`home_address`,`city`,`profile_picture`,`password`,`status`,`rank`) VALUES  ('"
                 . $this->name . "','"
                 . $this->email . "','"
                 . $this->nic_number . "','"
@@ -68,7 +66,6 @@ class Member {
                 . $this->home_address . "','"
                 . $this->city . "','"
                 . $this->profile_picture . "','"
-                . $this->username . "','"
                 . $this->password . "','"
                 . $this->status . "','"
                 . $this->rank . "')";
@@ -136,9 +133,9 @@ class Member {
         }
     }
 
-    public function login($username, $password) {
+    public function login($useremail, $password) {
 
-        $query = "SELECT * FROM `member` WHERE `username`= '" . $username . "' AND `password`= '" . $password . "'";
+        $query = "SELECT * FROM `member` WHERE `email`= '" . $useremail . "' AND `password`= '" . $password . "'";
 
         $db = new Database();
 
@@ -252,7 +249,6 @@ class Member {
                 . "`driving_licence_number` ='" . $this->driving_licence_number . "', "
                 . "`home_address` ='" . $this->home_address . "', "
                 . "`city` ='" . $this->city . "', "
-                . "`username` ='" . $this->username . "', "
                 . "`status` ='" . $this->status . "', "
                 . "`about_me` ='" . $this->about_me . "', "
                 . "`rank` ='" . $this->rank . "' "
@@ -316,7 +312,7 @@ class Member {
 
     public function checkEmail($email) {
 
-        $query = "SELECT `email`,`username` FROM `member` WHERE `email`= '" . $email . "'";
+        $query = "SELECT `email` FROM `member` WHERE `email`= '" . $email . "'";
 
         $db = new Database();
 
@@ -432,5 +428,5 @@ class Member {
             return true;
         }
     }
-
+ 
 }
