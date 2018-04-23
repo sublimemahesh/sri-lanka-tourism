@@ -46,6 +46,7 @@ $(document).ready(function () {
         } else {
             $('#collapseOne').collapse("hide");
             $('#collapseTwo').collapse("show");
+            $.scrollTo(100, 0, "slow", "#collapseTwo");
         }
     });
 
@@ -53,7 +54,7 @@ $(document).ready(function () {
         if (!$('#condition_id').val() || $('#condition_id').val().length === 0) {
             swal({
                 title: "Error!",
-                text: "please select vehicle condition",
+                text: "please select vehicle budget",
                 type: 'error',
                 timer: 2000,
                 showConfirmButton: false
@@ -61,7 +62,7 @@ $(document).ready(function () {
         } else if (!$('#no_of_passangers').val() || $('#no_of_passangers').val().length === 0) {
             swal({
                 title: "Error!",
-                text: "please enter the number of passangers",
+                text: "please enter the number of passengers",
                 type: 'error',
                 timer: 2000,
                 showConfirmButton: false
@@ -95,6 +96,7 @@ $(document).ready(function () {
         } else {
             $('#collapseTwo').collapse("hide");
             $('#collapseThree').collapse("show");
+            $.scrollTo(100, 0, "slow", "#collapseThree");
         }
     });
 
@@ -112,6 +114,7 @@ $(document).ready(function () {
         } else {
             $('#collapseThree').collapse("hide");
             $('#collapseFour').collapse("show");
+            $.scrollTo(100, 0, "slow", "#collapseThree");
         }
     });
 
