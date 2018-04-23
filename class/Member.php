@@ -27,7 +27,7 @@ class Member {
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`,`name`,`email`,`nic_number`,`date_of_birthday`,`contact_number`,`driving_licence_number`,`home_address`,`city`,`profile_picture`,`facebookID`,`about_me`,`status`,`rank` FROM `member` WHERE `id`=" . $id;
+            $query = "SELECT `id`,`name`,`email`,`nic_number`,`date_of_birthday`,`contact_number`,`driving_licence_number`,`home_address`,`city`,`profile_picture`,`facebookID`,`resetcode`,`about_me`,`status`,`rank` FROM `member` WHERE `id`=" . $id;
 
             $db = new Database();
 
@@ -44,6 +44,7 @@ class Member {
             $this->city = $result['city'];
             $this->profile_picture = $result['profile_picture'];
             $this->facebookID = $result['facebookID'];
+            $this->resetcode = $result['resetcode'];
             $this->about_me = $result['about_me'];
             $this->rank = $result['rank'];
             $this->status = $result['status'];
@@ -347,15 +348,14 @@ class Member {
 
         if ($email) {
 
-            $query = "SELECT `email`,`username`,`resetcode` FROM `member` WHERE `email`= '" . $email . "'";
+            $query = "SELECT `email`,`resetcode` FROM `member` WHERE `email`= '" . $email . "'";
 
             $db = new Database();
 
             $result = mysql_fetch_array($db->readQuery($query));
 
-            $this->username = $result['username'];
             $this->email = $result['email'];
-            $this->restCode = $result['resetcode'];
+            $this->resetcode = $result['resetcode'];
 
             return $result;
         }
@@ -427,5 +427,5 @@ class Member {
             return true;
         }
     }
- 
+
 }
