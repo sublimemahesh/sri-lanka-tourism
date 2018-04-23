@@ -491,3 +491,7 @@ and open the template in the editor.
 .index-top-menu-icon{
     margin-right: 6px;
 }
+
+.short-select-box{
+    width: 160px;
+}

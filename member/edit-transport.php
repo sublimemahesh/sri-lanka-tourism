@@ -132,7 +132,7 @@ $TRANSPORTS = new Transports($id);
 
                                                         <div class="">
                                                             <div class="bottom-top">
-                                                                <label for="condition_id">Condition Type</label>
+                                                                <label for="condition_id">Budget Type</label>
                                                             </div>
                                                             <div class="formrow">
                                                                 <select class="form-control" id="condition_id"  name="condition_id">
@@ -158,7 +158,59 @@ $TRANSPORTS = new Transports($id);
                                                                 <label for="title">No of Passengers</label>
                                                             </div>
                                                             <div class="formrow">
-                                                                <input type="number" id="no_of_passangers" value="<?php echo $TRANSPORTS->no_of_passangers; ?>" class="form-control" placeholder="Enter number of passengers" autocomplete="off" name="no_of_passangers" >
+                                                                <select class="form-control place-select1 show-tick" id="no_of_passangers" value="<?php echo $TRANSPORTS->no_of_passangers; ?>" class="form-control" placeholder="Enter number of passengers" autocomplete="off" name="no_of_passangers">
+                                                                    <option value="<?php echo $TRANSPORTS->no_of_passangers; ?>" selected="true"><?php echo $TRANSPORTS->no_of_passangers; ?></option>
+                                                                    <option value="1">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="4">4</option>
+                                                                    <option value="5">5</option>
+                                                                    <option value="6">6</option>
+                                                                    <option value="7">7</option>
+                                                                    <option value="8">8</option>
+                                                                    <option value="9">9</option>
+                                                                    <option value="10">10</option>
+                                                                    <option value="11">11</option>
+                                                                    <option value="12">12</option>
+                                                                    <option value="13">13</option>
+                                                                    <option value="14">14</option>
+                                                                    <option value="15">15</option>
+                                                                    <option value="16">16</option>
+                                                                    <option value="17">17</option>
+                                                                    <option value="18">18</option>
+                                                                    <option value="19">19</option>
+                                                                    <option value="20">20</option>
+                                                                    <option value="21">21</option>
+                                                                    <option value="22">22</option>
+                                                                    <option value="23">23</option>
+                                                                    <option value="24">24</option>
+                                                                    <option value="25">25</option>
+                                                                    <option value="26">26</option>
+                                                                    <option value="27">27</option>
+                                                                    <option value="28">28</option>
+                                                                    <option value="29">29</option>
+                                                                    <option value="30">30</option>
+                                                                    <option value="31">31</option>
+                                                                    <option value="32">32</option>
+                                                                    <option value="33">33</option>
+                                                                    <option value="34">34</option>
+                                                                    <option value="35">35</option>
+                                                                    <option value="36">36</option>
+                                                                    <option value="37">37</option>
+                                                                    <option value="38">38</option>
+                                                                    <option value="39">39</option>
+                                                                    <option value="40">40</option>
+                                                                    <option value="41">41</option>
+                                                                    <option value="42">42</option>
+                                                                    <option value="43">43</option>
+                                                                    <option value="44">44</option>
+                                                                    <option value="45">45</option>
+                                                                    <option value="46">46</option>
+                                                                    <option value="47">47</option>
+                                                                    <option value="48">48</option>
+                                                                    <option value="49">49</option>
+                                                                    <option value="50">50</option>
+                                                                </select>
                                                             </div>
                                                         </div>
 
@@ -167,7 +219,60 @@ $TRANSPORTS = new Transports($id);
                                                                 <label for="title">No of Baggages</label>
                                                             </div>
                                                             <div class="formrow">
-                                                                <input type="number" id="no_of_baggages" value="<?php echo $TRANSPORTS->no_of_baggages; ?>" class="form-control" placeholder="Enter number of baggages" autocomplete="off" name="no_of_baggages" >
+                                                                <select class="form-control place-select1 show-tick" id="no_of_baggages" placeholder="Enter number of baggages" autocomplete="off" name="no_of_baggages" >
+                                                                    <option value="<?php echo $TRANSPORTS->no_of_baggages; ?>"><?php echo $TRANSPORTS->no_of_baggages; ?></option>
+                                                                    <option value="1">1</option>
+                                                                    <option value="1">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="4">4</option>
+                                                                    <option value="5">5</option>
+                                                                    <option value="6">6</option>
+                                                                    <option value="7">7</option>
+                                                                    <option value="8">8</option>
+                                                                    <option value="9">9</option>
+                                                                    <option value="10">10</option>
+                                                                    <option value="11">11</option>
+                                                                    <option value="12">12</option>
+                                                                    <option value="13">13</option>
+                                                                    <option value="14">14</option>
+                                                                    <option value="15">15</option>
+                                                                    <option value="16">16</option>
+                                                                    <option value="17">17</option>
+                                                                    <option value="18">18</option>
+                                                                    <option value="19">19</option>
+                                                                    <option value="20">20</option>
+                                                                    <option value="21">21</option>
+                                                                    <option value="22">22</option>
+                                                                    <option value="23">23</option>
+                                                                    <option value="24">24</option>
+                                                                    <option value="25">25</option>
+                                                                    <option value="26">26</option>
+                                                                    <option value="27">27</option>
+                                                                    <option value="28">28</option>
+                                                                    <option value="29">29</option>
+                                                                    <option value="30">30</option>
+                                                                    <option value="31">31</option>
+                                                                    <option value="32">32</option>
+                                                                    <option value="33">33</option>
+                                                                    <option value="34">34</option>
+                                                                    <option value="35">35</option>
+                                                                    <option value="36">36</option>
+                                                                    <option value="37">37</option>
+                                                                    <option value="38">38</option>
+                                                                    <option value="39">39</option>
+                                                                    <option value="40">40</option>
+                                                                    <option value="41">41</option>
+                                                                    <option value="42">42</option>
+                                                                    <option value="43">43</option>
+                                                                    <option value="44">44</option>
+                                                                    <option value="45">45</option>
+                                                                    <option value="46">46</option>
+                                                                    <option value="47">47</option>
+                                                                    <option value="48">48</option>
+                                                                    <option value="49">49</option>
+                                                                    <option value="50">50</option>
+                                                                </select>
                                                             </div>
                                                         </div>
 
@@ -176,7 +281,15 @@ $TRANSPORTS = new Transports($id);
                                                                 <label for="title">No of Doors</label>
                                                             </div>
                                                             <div class="formrow">
-                                                                <input type="number" id="no_of_doors" value="<?php echo $TRANSPORTS->no_of_doors; ?>"  class="form-control" placeholder="Enter number of doors" autocomplete="off" name="no_of_doors" >
+                                                                <select class="form-control place-select1 show-tick" id="no_of_doors" placeholder="Enter number of doors" autocomplete="off" name="no_of_doors" >
+                                                                    <option value="<?php echo $TRANSPORTS->no_of_doors; ?>"><?php echo $TRANSPORTS->no_of_doors; ?></option>
+                                                                    <option value="1">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="4">4</option>
+                                                                    <option value="5">5</option>
+                                                                    <option value="6">6</option>
+                                                                </select>
                                                             </div>
                                                         </div>
 
