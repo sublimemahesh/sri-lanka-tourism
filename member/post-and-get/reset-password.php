@@ -23,7 +23,7 @@ if ($MEMBER->checkEmail($email)) {
 
         $todayis = date("l, F j, Y, g:i a");
 
-        $subject = 'Dashboard - Password Reset';
+        $subject = 'Member - Password Reset';
         $from = 'noreply@sublime.lk'; // give from email address
 
 
@@ -34,7 +34,7 @@ if ($MEMBER->checkEmail($email)) {
 
         $html = "<table style='border:solid 1px #F0F0F0; font-size: 15px; font-family: sans-serif; padding: 0;'>";
 
-        $html .= "<tr><th colspan='3' style='font-size: 18px; padding: 30px 25px 0 25px; color: #fff; text-align: center; background-color: #4184F3;'><h2>Sublime Holdings</h2> </th> </tr>";
+        $html .= "<tr><th colspan='3' style='font-size: 18px; padding: 30px 25px 0 25px; color: #fff; text-align: center; background-color: #4184F3;'><h2>Srilanka Tourism</h2> </th> </tr>";
 
         $html .= "<tr><td colspan='3' style='font-size: 16px; padding: 20px 25px 10px 25px; color: #333; text-align: left; background-color: #fff;'><h3>" . $subject . "</h3> </td> </tr>";
 
