@@ -33,8 +33,7 @@ include_once(dirname(__FILE__) . '/../class/include.php');
             <div class="container">
 
                 <div class="form-login">
-                    <h2 class="form-login-heading">	
-                        Forgotten Password?</h2>
+                    <h2 class="form-login-heading">sign in now</h2>
                     <div class="login-wrap">
                         <?php
                         if (isset($_GET['message'])) {
@@ -45,14 +44,18 @@ include_once(dirname(__FILE__) . '/../class/include.php');
                             <?php
                         }
                         ?>
-                        <form class="" action="post-and-get/reset-password.php" method="POST">
-                            <div class="modal-body">
-                                <p><b>Enter your e-mail address below to reset your password.</b></p>
-                                <input type="email" name="email" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
-                            </div> 
-                            <button class="btn btn-theme btn-block" type="submit"><i class="fa fa-envelope-square"></i>SEND EMAIL</button>
+                        <form action="post-and-get/member.php" method="POST">
+                            <input type="text" class="form-control" name="useremail" placeholder="Email address" autofocus>
+                            <br>
+                            <input type="password" class="form-control" name="password" placeholder="Password">
+                            <label class="checkbox">
+                                <span class="pull-right">
+                                    <a href="forgot-password.php"> Forgot Password?</a>
+                                </span>
+                            </label>
+                            <button class="btn btn-theme btn-block" name="login" type="submit"><i class="fa fa-lock"></i> SIGN IN</button>
+                            <hr>
                         </form>
-                        <hr>
                         <div class="login-social-link centered">
                             <p>or you can sign in via your social network</p>
                             <button class="fb btn btn-facebook social-log-buttons-1" id="fb-login" type="submit"><i class="fa fa-facebook"></i> Facebook</button>

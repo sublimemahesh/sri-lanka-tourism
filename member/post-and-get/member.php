@@ -16,7 +16,7 @@ if (isset($_POST['login'])) {
         header('Location: ../profile.php?message=5');
         exit();
     } else {
-        header('Location: ../login.php?message=7');
+        header('Location: ../login-1.php?message=23');
         exit();
     }
 }
