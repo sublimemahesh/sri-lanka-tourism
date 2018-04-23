@@ -14,17 +14,12 @@ jQuery(document).ready(function () {
                     $('#message').text(result.message);
                     return false;
                 } else if (result.status === 'success') {
-                    window.location.replace("login.php");
+                    window.location.replace('profile.php?message=22');
                 }
             }
         });
-
-
     });
 });
-
-
-
 
 ////$(document).ready(function () {
 //    $("form").submit(function (e) {

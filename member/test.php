@@ -36,7 +36,7 @@ include_once(dirname(__FILE__) . '/../class/include.php');
                         <div class="col-md-5">
                             <div class="member-reg-login-container">
                                 <div class="">Email Address<br>
-                                    <input class="member-log-txtbox" name="useremail" autocomplete="false" placeholder="Email address" type="email" required="true"><br>
+                                    <input class="member-log-txtbox" name="useremail" placeholder="Email address" type="email"><br>
                                     <input type="checkbox">keep me logged in
                                 </div>
                             </div>
@@ -45,11 +45,8 @@ include_once(dirname(__FILE__) . '/../class/include.php');
                         <div class="col-md-5">
                             <div class="member-reg-login-container">
                                 <div class="">Password<br>
-                                    <input class="member-log-txtbox" name="password" type="password" placeholder="Password"required="true"><br>
-                                    <div class="forget-password-link">
-                                        <a href="forgot-password.php"> <p>Forgotten your password?</p></a>
-                                    </div>
-
+                                    <input class="member-log-txtbox" name="password" type="password" placeholder="Password"><br>
+                                    <p>Forgotten your password?</p>
                                 </div>
                             </div>
 
@@ -67,18 +64,11 @@ include_once(dirname(__FILE__) . '/../class/include.php');
 
         </div>
 
+
+
         <div class="member-log-body">
             <div class="container">
                 <div class="col-md-6">
-                    <?php
-                    if (isset($_GET['message'])) {
-                        $message = new Message($_GET['message']);
-                        ?>
-                        <div class="alert alert-<?php echo $message->status; ?>"><?php echo $message->description; ?></div>
-
-                        <?php
-                    }
-                    ?>
                     <div class="intro1 hidden-sm hidden-xs">Srilanka Tourism helps you to publish your business<br>
                     </div>
                     <img class="member-img hidden-sm hidden-xs"src="../images/member/img.png">
@@ -118,6 +108,8 @@ include_once(dirname(__FILE__) . '/../class/include.php');
 
         <script src="assets/js/jquery.js"></script>
         <script src="assets/js/bootstrap.min.js"></script>
+
+        <script type="text/javascript" src="assets/js/jquery.backstretch.min.js"></script>
 
         <script src="js/add-member.js" type="text/javascript"></script>
         <script src="js/fb-login-scripts.js" type="text/javascript"></script>

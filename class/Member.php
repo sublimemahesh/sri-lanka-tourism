@@ -165,7 +165,6 @@ class Member {
             $_SESSION["home_address"] = $member->home_address;
             $_SESSION["city"] = $member->city;
             $_SESSION["profile_picture"] = $member->profile_picture;
-            $_SESSION["username"] = $member->username;
             $_SESSION["status"] = $member->status;
             $_SESSION["rank"] = $member->rank;
 

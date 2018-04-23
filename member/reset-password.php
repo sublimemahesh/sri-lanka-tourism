@@ -1,3 +1,7 @@
+
+
+
+
 <?php
 include_once(dirname(__FILE__) . '/../class/include.php');
 ?>
@@ -11,7 +15,7 @@ include_once(dirname(__FILE__) . '/../class/include.php');
         <meta name="author" content="Dashboard">
         <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
-        <title>Forgot Password - www.srilankatourism.travel</title>
+        <title>Login - www.srilankatourism.travel</title>
 
         <!-- Bootstrap core CSS -->
         <link href="assets/css/bootstrap.css" rel="stylesheet">
@@ -21,36 +25,30 @@ include_once(dirname(__FILE__) . '/../class/include.php');
         <!-- Custom styles for this template -->
         <link href="assets/css/style.css" rel="stylesheet">
         <link href="assets/css/style-responsive.css" rel="stylesheet">
-
+        <link href="assets/css/custom-member-login.css" rel="stylesheet" type="text/css"/>
     </head>
 
-    <body>
+    <body style="background-color: #d7d7d7;">
 
         <div id="login-page">
             <div class="container">
 
-                <form id="sign_in" class="form-login" action="post-and-get/change-password.php" method="POST">
+                <div class="form-login">
+                    <h2 class="form-login-heading">	
+                        Password reset</h2>
+                    <div class="login-wrap">
+                        <?php
+                        if (isset($_GET['message'])) {
+                            $message = new Message($_GET['message']);
+                            ?>
+                            <div class="alert alert-<?php echo $message->status; ?>"><?php echo $message->description; ?></div>
 
-                    <!-- Modal1 -->
-
-                    <div class="">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title">Please check your email</h4>
-                            </div>
-
+                            <?php
+                        }
+                        ?>
+                        <form class="" action="post-and-get/change-password.php" method="POST">
                             <div class="modal-body">
-                                <?php
-                                if (isset($_GET['message'])) {
-
-                                    $MESSAGE = New Message($_GET['message']);
-                                    ?>
-                                    <div class="alert alert-<?php echo $MESSAGE->status; ?>" role = "alert">
-                                        <?php echo $MESSAGE->description; ?>
-                                    </div>
-                                    <?php
-                                }
-                                ?>
+                                <p><b>Please check your email</b></p>
                                 <input type="text" name="code" placeholder="Password Reset code" autocomplete="off" class="form-control placeholder-no-fix"> 
                                 <br>
 
@@ -63,35 +61,38 @@ include_once(dirname(__FILE__) . '/../class/include.php');
                                     <input type="password" name="confirmpassword" placeholder="Confirm Password" autocomplete="off" class="form-control placeholder-no-fix">
                                 </div>
                                 <br>
-
-
-                            </div>
-                            <div class="modal-footer">
-                                <button class="btn btn-theme" name="PasswordReset" type="submit">SIGN IN</button>
-                               
-                            </div>
+                            </div> 
+                            <button class="btn btn-theme btn-block" type="submit"  name="PasswordReset"><i class="fa fa-envelope-square"></i>Change Password</button>
+                        </form>
+                        <hr>
+                        <div class="login-social-link centered">
+                            <p>or you can sign in via your social network</p>
+                            <button class="fb btn btn-facebook social-log-buttons-1" id="fb-login" type="submit"><i class="fa fa-facebook"></i> Facebook</button>
+                            <button class="btn btn-twitter social-log-buttons-1" type="submit"><i class="fa fa-twitter"></i> Twitter</button>
+                            <button class="btn btn-danger social-log-buttons-1" type="submit"><i class="fa fa-google-plus"></i> Google</button>
                         </div>
+                        <div class="registration">
+                            Don't have an account yet?<br/>
+                            <label class="checkbox">
+                                <a href="login.php"> Create an account</a>
+
+                            </label>
+                        </div>
+
                     </div>
+                    <div>	  
 
-                    <!-- modal1 -->
-
-
-                </form>	  	
-
+                    </div>
+                </div>
             </div>
         </div>
-
         <script src="assets/js/jquery.js"></script>
         <script src="assets/js/bootstrap.min.js"></script>
 
         <script type="text/javascript" src="assets/js/jquery.backstretch.min.js"></script>
-        <script>
-            $.backstretch("assets/img/login-bg.jpg", {speed: 500});
-        </script>
 
+        <script src="js/fb-login-scripts.js" type="text/javascript"></script>
 
     </body>
 
 </html>
-
-
