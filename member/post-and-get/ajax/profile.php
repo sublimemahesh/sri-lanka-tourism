@@ -104,7 +104,3 @@ if (isset($_POST['upload-profile-image'])) {
         }
     }
 }
- 
-
-
-

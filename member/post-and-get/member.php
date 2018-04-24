@@ -44,8 +44,7 @@ if (isset($_POST['update'])) {
         'email' => ['required' => TRUE],
         'nic_number' => ['required' => TRUE],
         'contact_number' => ['required' => TRUE],
-        'city' => ['required' => TRUE],
-        'driving_licence_number' => ['required' => TRUE]
+        'city' => ['required' => TRUE]
     ]);
 
     if ($VALID->passed()) {
