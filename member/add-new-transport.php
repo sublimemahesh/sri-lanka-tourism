@@ -1,6 +1,10 @@
 <?php
 include_once(dirname(__FILE__) . '/../class/include.php');
 include_once(dirname(__FILE__) . '/auth.php');
+$MEMBER = new Member($_SESSION['id']);
+if (empty($MEMBER->licence_front) || empty($MEMBER->licence_back)) {
+    redirect('manage-licence-photos.php?message=24');
+}
 ?> 
 <!DOCTYPE html>
 <html lang="en">
@@ -285,7 +289,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                                                             <label for="No_of_Doors">No of Doors</label>
                                                                                         </div>
                                                                                         <div class="formrow">
-                                                                                              <select class="form-control place-select1 show-tick" id="no_of_doors" placeholder="Enter number of door" autocomplete="off" name="no_of_doors">
+                                                                                            <select class="form-control place-select1 show-tick" id="no_of_doors" placeholder="Enter number of door" autocomplete="off" name="no_of_doors">
                                                                                                 <option value=""> -- Please select -- </option>
                                                                                                 <option value="1">1</option>
                                                                                                 <option value="2">2</option>

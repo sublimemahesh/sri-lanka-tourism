@@ -80,7 +80,7 @@ $MEMBER = new Member($_SESSION['id']);
                                                                     <input type="text" name="name" class="form-control" placeholder="Please Enter Your Full Name"  value="<?php echo $MEMBER->name; ?>" required="TRUE">
                                                                 </div>
                                                             </div>
-                                                          
+
                                                             <!--Email-->
                                                             <div class="">
                                                                 <div class="bottom-top">Email</div>
@@ -113,7 +113,26 @@ $MEMBER = new Member($_SESSION['id']);
                                                             <div class="">
                                                                 <div class="bottom-top">Driving Licence Number</div>
                                                                 <div class="formrow">
-                                                                    <input type="text" name="driving_licence_number" class="form-control" placeholder="Please Enter Driving Licence Number" required="TRUE" value="<?php echo $MEMBER->driving_licence_number; ?>">
+                                                                    <input type="text" name="driving_licence_number" class="form-control" placeholder="Please Enter Driving Licence Number" value="<?php echo $MEMBER->driving_licence_number; ?>">
+                                                                </div>
+                                                            </div>
+                                                            <div class="">
+                                                                <div class="bottom-top">Photos of Driving Licence</div>
+                                                                <div class="formrow">
+                                                                    <?php
+                                                                    if (empty($MEMBER->licence_front) || empty($MEMBER->licence_back)) {
+                                                                        ?>
+                                                                        <img src="images/001-close.png">
+                                                                        <?php
+                                                                    } else {
+                                                                        ?>
+                                                                        <img src="images/002-interface.png">
+                                                                        <?php
+                                                                    }
+                                                                    ?>
+
+
+                                                                        <a href="manage-licence-photos.php">Upload</a>
                                                                 </div>
                                                             </div>
                                                             <!--Home Address-->
@@ -252,7 +271,3 @@ $MEMBER = new Member($_SESSION['id']);
     </body>
 
 </html>
-
-
-
-

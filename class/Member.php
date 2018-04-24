@@ -14,6 +14,8 @@ class Member {
     public $date_of_birthday;
     public $contact_number;
     public $driving_licence_number;
+    public $licence_front;
+    public $licence_back;
     public $home_address;
     public $city;
     public $profile_picture;
@@ -27,7 +29,7 @@ class Member {
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`,`name`,`email`,`nic_number`,`date_of_birthday`,`contact_number`,`driving_licence_number`,`home_address`,`city`,`profile_picture`,`facebookID`,`resetcode`,`about_me`,`status`,`rank` FROM `member` WHERE `id`=" . $id;
+            $query = "SELECT `id`,`name`,`email`,`nic_number`,`date_of_birthday`,`contact_number`,`driving_licence_number`,`licence_front`,`licence_back`,`home_address`,`city`,`profile_picture`,`facebookID`,`resetcode`,`about_me`,`status`,`rank` FROM `member` WHERE `id`=" . $id;
 
             $db = new Database();
 
@@ -40,6 +42,8 @@ class Member {
             $this->date_of_birthday = $result['date_of_birthday'];
             $this->contact_number = $result['contact_number'];
             $this->driving_licence_number = $result['driving_licence_number'];
+            $this->licence_front = $result['licence_front'];
+            $this->licence_back = $result['licence_back'];
             $this->home_address = $result['home_address'];
             $this->city = $result['city'];
             $this->profile_picture = $result['profile_picture'];
@@ -57,13 +61,15 @@ class Member {
 
 
 
-        $query = "INSERT INTO `member` (`name`,`email`,`nic_number`,`date_of_birthday`,`contact_number`,`driving_licence_number`,`home_address`,`city`,`profile_picture`,`password`,`status`,`rank`) VALUES  ('"
+        $query = "INSERT INTO `member` (`name`,`email`,`nic_number`,`date_of_birthday`,`contact_number`,`driving_licence_number`,`licence_front`,`licence_back`,`home_address`,`city`,`profile_picture`,`password`,`status`,`rank`) VALUES  ('"
                 . $this->name . "','"
                 . $this->email . "','"
                 . $this->nic_number . "','"
                 . $this->date_of_birthday . "','"
                 . $this->contact_number . "','"
                 . $this->driving_licence_number . "','"
+                . $this->licence_front . "','"
+                . $this->licence_back . "','"
                 . $this->home_address . "','"
                 . $this->city . "','"
                 . $this->profile_picture . "','"
@@ -247,6 +253,8 @@ class Member {
                 . "`date_of_birthday` ='" . $this->date_of_birthday . "', "
                 . "`contact_number` ='" . $this->contact_number . "', "
                 . "`driving_licence_number` ='" . $this->driving_licence_number . "', "
+                . "`licence_front` ='" . $this->licence_front . "', "
+                . "`licence_back` ='" . $this->licence_back . "', "
                 . "`home_address` ='" . $this->home_address . "', "
                 . "`city` ='" . $this->city . "', "
                 . "`status` ='" . $this->status . "', "
@@ -400,6 +408,40 @@ class Member {
 
         $query = "UPDATE  `member` SET "
                 . "`profile_picture` ='" . $file . "' "
+                . "WHERE `id` = '" . $member . "'";
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+
+        if ($result) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
+
+    public function ChangeLicenceFrontPic($member, $file) {
+
+        $query = "UPDATE  `member` SET "
+                . "`licence_front` ='" . $file . "' "
+                . "WHERE `id` = '" . $member . "'";
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+
+        if ($result) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
+
+    public function ChangeLicenceBackPic($member, $file) {
+
+        $query = "UPDATE  `member` SET "
+                . "`licence_back` ='" . $file . "' "
                 . "WHERE `id` = '" . $member . "'";
 
         $db = new Database();
