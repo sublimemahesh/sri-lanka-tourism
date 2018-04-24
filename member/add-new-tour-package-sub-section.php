@@ -67,14 +67,6 @@ $TOUR_SUB_PHOTO = new TourSubSectionPhoto(NULL);
                                                             <input type="text" id="caption" class="form-control" placeholder="Enter Title" autocomplete="off" name="title" required="true">
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-12">
-                                                        <div class="bottom-top">
-                                                            <label for="duration">Duration</label>
-                                                        </div>
-                                                        <div class="formrow">
-                                                            <input type="text" id="duration" class="form-control" placeholder="Enter Duration" autocomplete="off" name="duration" required="true">
-                                                        </div>
-                                                    </div>
                                                     <div class="bottom-top col-md-2">
                                                         <div class="formrow">
                                                             <div class="uploadphotobx" id="uploadphotobx"> 
