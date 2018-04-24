@@ -68,19 +68,6 @@ $TOUR_PACKAGE = new TourPackage($id)
                                         </div>
 
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                            <label for="duration">Duration</label>
-                                        </div>
-                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                                            <div class="form-group">
-                                                <div class="form-line">
-                                                    <input type="text" id="duration" class="form-control" placeholder="Enter Tour Sub Section Duration" autocomplete="off" name="duration" required="true">
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-
-                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                             <label for="description">Description</label>
                                         </div>
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
@@ -109,7 +96,6 @@ $TOUR_PACKAGE = new TourPackage($id)
                                                     <tr>
                                                         <th>ID</th>
                                                         <th>Title</th>
-                                                        <th>Duration</th> 
                                                         <th>Option</th>
 
                                                     </tr>
@@ -118,7 +104,6 @@ $TOUR_PACKAGE = new TourPackage($id)
                                                     <tr>
                                                         <th>ID</th>
                                                         <th>Title</th>
-                                                        <th>Duration</th> 
                                                         <th>Option</th>
                                                     </tr>
                                                 </tfoot>
@@ -131,7 +116,6 @@ $TOUR_PACKAGE = new TourPackage($id)
                                                             <tr id="row_<?php echo $tour_s['id']; ?>">
                                                                 <td><?php echo $tour_s['sort']; ?></td> 
                                                                 <td><?php echo $tour_s['title']; ?></td>
-                                                                <td><?php echo $tour_s['duration']; ?></td>
                                                                 <td> 
                                                                     <a href="#"> 
                                                                         <button class="glyphicon glyphicon-trash delete-btn delete-tour-sub-section" data-id="<?php echo $tour_s['id']; ?>"></button>

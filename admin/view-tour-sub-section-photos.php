@@ -93,7 +93,7 @@ $TOUR_SUB = new TourSubSection($id);
                                             ?>
                                             <div class="col-md-3"  id="div_<?php echo $tour_sub_photo['id']; ?>">
                                                 <div class="photo-img-container">
-                                                    <img src="../upload/tour-package/sub-section/gallery/<?php echo $tour_sub_photo['image_name']; ?>" class="img-responsive ">
+                                                    <img src="../upload/tour-package/sub-section/thumb/<?php echo $tour_sub_photo['image_name']; ?>" class="img-responsive ">
                                                 </div>
                                                 <div class="img-caption">
                                                     <p class="maxlinetitle"><?php echo $tour_sub_photo['caption']; ?></p>

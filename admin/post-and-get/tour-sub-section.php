@@ -11,13 +11,11 @@ if (isset($_POST['add-tour-sub-section'])) {
 
     $TOURSUBSECTION->tour = $_POST['id'];
     $TOURSUBSECTION->title = $_POST['title'];
-    $TOURSUBSECTION->duration = $_POST['duration'];
     $TOURSUBSECTION->description = $_POST['description'];
 
     $VALID->check($TOURSUBSECTION, [
         'title' => ['required' => TRUE],
-        'duration' => ['required' => TRUE],
-        'description' => ['required' => TRUE],
+        'description' => ['required' => TRUE]
     ]);
 
 
@@ -49,13 +47,11 @@ if (isset($_POST['edit-tour-sub-section'])) {
     $VALID = new Validator();
 
     $TOURSUBSECTION->title = $_POST['title'];
-    $TOURSUBSECTION->duration = $_POST['duration'];
     $TOURSUBSECTION->description = $_POST['description'];
 
     $VALID->check($TOURSUBSECTION, [
         'title' => ['required' => TRUE],
-        'duration' => ['required' => TRUE],
-        'description' => ['required' => TRUE],
+        'description' => ['required' => TRUE]
     ]);
 
     if ($VALID->passed()) {

@@ -71,13 +71,6 @@ $TOUR_SUB = new TourSubSection($id);
                                                             </div>
                                                         </div>
                                                         <div class="">
-                                                            <div class="bottom-top">
-                                                                <label for="duration">Duration</label>
-                                                            </div>
-
-                                                            <div class="formrow">
-                                                                <input type="text" id="duration" class="form-control"  value="<?php echo $TOUR_SUB->duration; ?>"  name="duration"  required="TRUE">
-                                                            </div>
                                                             <div class="">
                                                                 <div class="bottom-top">
                                                                     <label for="description">Description</label>

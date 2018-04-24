@@ -13,16 +13,18 @@ $(document).ready(function () {
                 showConfirmButton: false
             });
             return false
-        } else if (!$('#duration').val() || $('#duration').val().length === 0) {
-            swal({
-                title: "Error!",
-                text: "Please enter duration",
-                type: 'error',
-                timer: 2000,
-                showConfirmButton: false
-            });
-            return false
-        } else if (!$('#tour-sub-picture').val() || $('#tour-sub-picture').val().length === 0) {
+        } 
+//        else if (!$('#duration').val() || $('#duration').val().length === 0) {
+//            swal({
+//                title: "Error!",
+//                text: "Please enter duration",
+//                type: 'error',
+//                timer: 2000,
+//                showConfirmButton: false
+//            });
+//            return false
+//        }
+        else if (!$('#tour-sub-picture').val() || $('#tour-sub-picture').val().length === 0) {
             swal({
                 title: "Error!",
                 text: "please select at least one image",
