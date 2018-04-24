@@ -8055,6 +8055,10 @@ html.ie11 .bs-searchbox .form-control {
     width:50%;
 }
 
+.view-arrange-img {
+    width: 100%;
+}
+
 .view-edit-img-comments{
     width:20%;
 }
