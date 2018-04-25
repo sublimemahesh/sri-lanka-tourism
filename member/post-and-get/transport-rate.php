@@ -9,8 +9,8 @@ if (isset($_POST['add-transport-rate'])) {
     $VALID = new Validator();
 
     $TRANSPORT_RATES->transport_id = $_POST['id'];
-    $TRANSPORT_RATES->location_from = $_POST['location_from'];
-    $TRANSPORT_RATES->location_to = $_POST['location_to'];
+    $TRANSPORT_RATES->location_from = $_POST['from'];
+    $TRANSPORT_RATES->location_to = $_POST['to'];
     $TRANSPORT_RATES->distance = $_POST['distance'];
     $TRANSPORT_RATES->price = $_POST['price'];
 

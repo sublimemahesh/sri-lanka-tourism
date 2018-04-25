@@ -445,8 +445,8 @@ $TOURTYPES = TourType::all();
     <script src="js/jquery-2.2.4.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/bootstrap-datepicker.js" type="text/javascript"></script>
-    <script src="js/city-from.js" type="text/javascript"></script>
     <script src="js/city-to.js" type="text/javascript"></script>
+    <script src="js/city-from.js" type="text/javascript"></script> 
     <script src="js/price-range/ion.rangeSlider.js" type="text/javascript"></script>
     <script src="js/price-range.js" type="text/javascript"></script>
     <script>

@@ -60,71 +60,70 @@ $TRANSPORTS = new Transports($id);
                                                     <div class="col-md-12">
 
                                                         <div class="">
-                                                            <div class="bottom-top">
-                                                                <label for="location_from">Location From</label>
-                                                            </div>
-                                                            <div class="formrow">
-                                                                <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="location_from" autocomplete="off" name="location_from" required="TRUE">
-                                                                    <option value=""> -- Please Select -- </option>
-                                                                    <?php foreach (City::all() as $key => $location_from) {
-                                                                        ?>
-                                                                        <option value="<?php echo $location_from['id']; ?>"><?php echo $location_from['name']; ?></option><?php
-                                                                    }
-                                                                    ?>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="">
-                                                            <div class="bottom-top">
-                                                                <label for="location_to">Location To</label>
-                                                            </div>
-                                                            <div class="formrow">
-                                                                <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="location_to" autocomplete="off" name="location_to" required="TRUE">
-                                                                    <option value=""> -- Please Select -- </option>
-                                                                    <?php foreach (City::all() as $key => $location_to) {
-                                                                        ?>
-                                                                        <option value="<?php echo $location_to['id']; ?>"><?php echo $location_to['name']; ?></option><?php
-                                                                    }
-                                                                    ?>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="">
-                                                            <div class="bottom-top">
-                                                                <label for="distance">Distance</label>
-                                                            </div>
-                                                            <div class="formrow">
-                                                                <div class="form-line">
-                                                                    <input type="text" id="price" class="form-control" placeholder="Enter Distance" autocomplete="off" name="distance" required="true">
+                                                            <div class="col-md-6">
+                                                                <div class="bottom-top">
+                                                                    <label for="location_from">Location From</label>
+                                                                    <div class="formrow">
+                                                                        <input type="text" autocomplete="off" id="from" placeholder="please select picking up city" class="form-control">
+                                                                        <input type="hidden" name="from" value="" id="from-id" />
+                                                                        <div id="suggesstion-box">
+                                                                            <ul id="city-list-from" class="city-list"></ul>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="">
-                                                            <div class="bottom-top">
-                                                                <label for="price">Price</label>
-                                                            </div>
-                                                            <div class="formrow">
-                                                                <div class="form-line">
-                                                                    <input type="text" id="price" class="form-control" placeholder="Enter Price" autocomplete="off" name="price" required="true">
+                                                            <div class="col-md-6">
+                                                                <div class="bottom-top">
+                                                                    <label for="location_to">Location To</label>
+                                                                    <div class="formrow">
+                                                                        <input type="text" id="to" autocomplete="off" placeholder="please select dropping down city" class="form-control">
+                                                                        <div id="suggesstion-box">
+                                                                            <ul id="city-list-to" class="city-list"></ul>
+                                                                        </div>
+                                                                        <input type="hidden" name="to" value="" id="to-id" />
+                                                                    </div>
                                                                 </div>
-
                                                             </div>
+
                                                         </div>
 
-                                                        <div class="top-bott50">
-                                                            <div class="bottom-top">
-                                                                <input type="hidden" id="id" class="form-control" placeholder="Enter id" autocomplete="off" name="id" required="true">
-                                                                <input type="hidden" id="member" name="member" value="<?php echo $_SESSION['id']; ?>"/>
-                                                                <input type="hidden" id="id" value="<?php echo $TRANSPORTS->id; ?>" name="id"/>
-                                                                <input type="hidden" value="<?php echo $id ?>" name="id" />
-                                                                <button name="add-transport-rate" type="submit" class="btn btn-info center-block">Create</button>
+
+                                                        <div class="">
+                                                            <div class="col-md-6">
+                                                                <div class="bottom-top">
+                                                                    <label for="distance">Distance</label>
+                                                                    <div class="formrow">
+                                                                        <input type="text" id="price" class="form-control" placeholder="Enter Distance" autocomplete="off" name="distance" required="true">
+                                                                    </div>
+                                                                </div>
                                                             </div>
-                                                        </div> 
-                                                    </div>  
+                                                            <div class="col-md-6">
+                                                                <div class="bottom-top">
+                                                                    <label for="price">Price</label>
+                                                                    <div class="formrow">
+                                                                        <input type="text" id="price" class="form-control" placeholder="Enter Price" autocomplete="off" name="price" required="true">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <div class="top-bott50">
+                                                                <div class="bottom-top">
+                                                                    <input type="hidden" id="id" class="form-control" placeholder="Enter id" autocomplete="off" name="id" required="true">
+                                                                    <input type="hidden" id="member" name="member" value="<?php echo $_SESSION['id']; ?>"/>
+                                                                    <input type="hidden" id="id" value="<?php echo $TRANSPORTS->id; ?>" name="id"/>
+                                                                    <input type="hidden" value="<?php echo $id ?>" name="id" />
+                                                                    <button name="add-transport-rate" type="submit" class="btn btn-info">Create</button>
+                                                                </div>
+                                                            </div>   
+                                                        </div>
+                                                    </div>   
                                                 </form>  
+
                                             </div>
                                         </div>
+
                                         <div class="body">
                                             <div class="table-responsive">
                                                 <div>
@@ -220,6 +219,8 @@ $TRANSPORTS = new Transports($id);
         <script type="text/javascript" src="assets/js/bootstrap-inputmask/bootstrap-inputmask.min.js"></script>
         <script src="assets/plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>
         <script src="delete/js/transport-rate.js" type="text/javascript"></script>
+        <script src="js/city-from.js" type="text/javascript"></script>
+        <script src="js/city-to.js" type="text/javascript"></script>
         <script>
             //custom select box
 
