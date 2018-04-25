@@ -7,7 +7,7 @@ $(document).ready(function () {
                     var keyword = $('#to').val();
                     $.ajax({
                         type: 'POST',
-                        url: 'ajax/city-ajax.php',
+                        url: 'post-and-get/ajax/city-ajax.php',
                         dataType: "json",
                         data: {keyword: keyword},
                         success: function (result) {
