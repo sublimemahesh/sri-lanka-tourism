@@ -7,6 +7,9 @@ if (isset($_GET['id'])) {
     $id = $_GET['id'];
 }
 $TOUR_PACKAGE = new TourPackage($id);
+
+$TOURTYPES = new TourType(NULL);
+$types = $TOURTYPES->all();
 ?> 
 <!DOCTYPE html>
 <html lang="en">
@@ -61,6 +64,31 @@ $TOUR_PACKAGE = new TourPackage($id);
 
                                                 <form class="form-horizontal" method="post" action="post-and-get/tour-package.php" enctype="multipart/form-data"> 
                                                     <div class="col-md-12">
+
+                                                        <div class="">
+                                                            <div class="bottom-top">
+                                                                <label for="tourtype">Tour Type</label>
+                                                            </div>
+                                                            <div class="formrow">
+                                                                <select name="tourtype" id="tourtype" class="form-control">
+                                                                    <option>Please select a tour type</option>
+                                                                    <?php
+                                                                    foreach ($types as $type) {
+                                                                        ?>
+                                                                        <option value="<?php echo $type['id']; ?>" <?php
+                                                                        if ($TOUR_PACKAGE->tourtype === $type['id']) {
+                                                                            echo 'selected';
+                                                                        }
+                                                                        ?>>
+                                                                                    <?php echo $type['name']; ?>
+                                                                        </option>
+                                                                        <?php
+                                                                    }
+                                                                    ?>
+
+                                                                </select>
+                                                            </div>
+                                                        </div>
 
                                                         <div class="">
                                                             <div class="bottom-top">

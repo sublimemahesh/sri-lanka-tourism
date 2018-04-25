@@ -1,6 +1,10 @@
 <?php
 include_once(dirname(__FILE__) . '/../class/include.php');
 include_once(dirname(__FILE__) . '/auth.php');
+
+$TOURTYPES = new TourType(NULL);
+$types = $TOURTYPES->all();
+
 ?> 
 <!DOCTYPE html>
 <html lang="en">
@@ -40,7 +44,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                 <div class="wrapper">
                     <div class="container-fluid">
                         <div class="row  top-bott20"> 
-                           
+
                             <div class="panel panel-default">
                                 <div class="panel-heading"><i class="fa fa-pencil"></i> Create Tour Package</div>
                                 <div class="panel-body">
@@ -49,6 +53,24 @@ include_once(dirname(__FILE__) . '/auth.php');
                                             <div class="formpanel"> 
                                                 <form class="form-horizontal"  method="post" action="post-and-get/tour-package.php" enctype="multipart/form-data"> 
                                                     <div class="col-md-12">
+                                                        <div class="">
+                                                            <div class="bottom-top">
+                                                                <label for="tourtype">Tour Type</label>
+                                                            </div>
+                                                            <div class="formrow">
+                                                                <select name="tourtype" id="tourtype" class="form-control">
+                                                                    <option>Please select a tour type</option>
+                                                                    <?php
+                                                                    foreach ($types as $type) {
+                                                                        ?>
+                                                                        <option value="<?php echo $type['id']; ?>"><?php echo $type['name']; ?></option>
+                                                                        <?php
+                                                                    }
+                                                                    ?>
+
+                                                                </select>
+                                                            </div>
+                                                        </div>
 
                                                         <div class="">
                                                             <div class="bottom-top">

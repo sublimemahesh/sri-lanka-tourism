@@ -7,6 +7,9 @@ if (isset($_GET['id'])) {
     $id = $_GET['id'];
 }
 $TOUR_PACKAGE = new TourPackage($id);
+
+$TOURTYPES = new TourType(NULL);
+$types = $TOURTYPES->all();
 ?> 
 
 <!DOCTYPE html>
@@ -56,6 +59,32 @@ $TOUR_PACKAGE = new TourPackage($id);
                             </div>
                             <div class="body">
                                 <form class="form-horizontal" method="post" action="post-and-get/tour-package.php" enctype="multipart/form-data"> 
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="tourtype">Tour Type</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group place-select">
+                                                <div class="form-line">
+                                                    <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="tourtype" name="tourtype" required="TRUE">
+                                                        <option value=""> -- Please Select -- </option>
+                                                        <?php foreach ($types as $type) {
+                                                            ?>
+                                                            <option value="<?php echo $type['id']; ?>" <?php
+                                                            if ($TOUR_PACKAGE->tourtype === $type['id']) {
+                                                                echo 'selected';
+                                                            }
+                                                            ?>>
+                                                                        <?php echo $type['name']; ?>
+                                                            </option>
+                                                            <?php
+                                                        }
+                                                        ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> 
                                     <div class="row clearfix">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                             <label for="name">Name</label>
