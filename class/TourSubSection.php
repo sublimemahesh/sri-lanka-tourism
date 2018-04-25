@@ -129,5 +129,16 @@ class TourSubSection {
         $result = $db->readQuery($query);
         return $result;
     }
+    
+    public function CountDaysInTour($tour) {
+
+        $query = "SELECT count(id) AS days FROM `tour_sub_section` WHERE `tour` = '" . $tour . "' ORDER BY `sort` ASC";
+
+        $db = new Database();
+
+        $result = mysql_fetch_array($db->readQuery($query));
+
+        return $result;
+    }
 
 }

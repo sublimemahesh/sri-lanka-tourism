@@ -3,6 +3,8 @@ include './class/include.php';
 if (!isset($_SESSION)) {
     session_start();
 }
+
+$TOURTYPES = TourType::all();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,6 +19,10 @@ if (!isset($_SESSION)) {
         <link href="css/search.css" rel="stylesheet" type="text/css"/>
         <link href="css/datepicker.css" rel="stylesheet" type="text/css"/>
         <link href="https://fonts.googleapis.com/css?family=Russo+One|Magra|Ubuntu+Condensed" rel="stylesheet"> 
+        <link href="css/price-range/normalize.css" rel="stylesheet" type="text/css"/>
+        <link href="css/price-range/ion.rangeSlider.css" rel="stylesheet" type="text/css"/>
+        <link href="css/price-range/ion.rangeSlider.skinFlat.css" rel="stylesheet" type="text/css"/>
+
     </head>
     <body>
         <!-- Our Resort Values style-->
@@ -143,8 +149,6 @@ if (!isset($_SESSION)) {
                             <h3 class="select-op-header text-center">Taxi</h3>
                             <form method="get" name="form" action="transports.php" >
                                 <div class="row">
-
-
                                     <div class="col-md-6 col-sm-6 col-xs-12 taxi-title">
                                         <span class="span-style">Picking Up</span>
                                         <input type="text" autocomplete="off" id="from" placeholder="please select picking up city" class="input-text">
@@ -153,7 +157,6 @@ if (!isset($_SESSION)) {
                                         </div>
                                         <input type="hidden" name="from" value="" id="from-id" />
                                     </div>
-
 
                                     <div class="col-md-6 col-sm-6 col-xs-12 taxi-title">
                                         <span class="span-style">Dropping Off</span>
@@ -201,57 +204,48 @@ if (!isset($_SESSION)) {
                         </div>
                         <div id="tour" class="tab-pane fade">
                             <h3 class="select-op-header text-center">Tour</h3>
-                            <div id="taxi" class="tab-pane fade in active">
-                                <div class="row">
-                                    <div class="col-md-6 col-sm-6 col-xs-12 taxi-title">
-                                        <span class="span-style">Flying From</span>
-                                        <input type="text" name="piking-up" placeholder="city,airport or address" class="input-text">
+                            <form method="get" name="form" action="view-tour-packages.php" >
+                                <div id="taxi" class="tab-pane fade in active">
+                                    <div class="row">
+                                        <div class="col-md-6 col-sm-6 col-xs-12 taxi-title">
+                                            <span class="span-style">Tour</span>
+                                            <input type="text" name="keyword" placeholder="Tour Name" class="input-text">
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-12 taxi-title">
+                                            <span class="span-style">Number of Dates</span>
+                                            <input type="text" name="noofdates" placeholder="" class="input-text">
+                                        </div>
                                     </div>
-                                    <div class="col-md-6 col-sm-6 col-xs-12 taxi-title">
-                                        <span class="span-style">Flying To</span>
-                                        <input type="text" name="dropping-off" placeholder="city,airport or address" class="input-text">
+                                    <div class="row taxi-body">
+
+                                        <div class="col-md-6 col-sm-6 col-xs-12 taxi-title">
+                                            <span class="span-style">Tour Type</span>
+                                            <select name="type" class="form-control taxi-combo" id="tourtypes">
+                                                <option value="" selected="">-- Please select a tour type--</option>
+                                                <?php
+                                                foreach ($TOURTYPES as $TOURTYPE) {
+                                                    ?>
+                                                    <option value="<?php echo $TOURTYPE['id']; ?>"><?php echo $TOURTYPE['name']; ?></option>
+                                                    <?php
+                                                }
+                                                ?>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-12 taxi-title">
+                                            <span class="span-style">Price</span>
+                                            <div>
+                                                <input type="text" id="range" value="" name="range" />
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="row taxi-body">
-                                    <div class="col-md-3 col-sm-6 col-xs-12 taxi-title">
-                                        <span class="span-style">Departing</span>
-                                        <input type="text" name="check-out" placeholder="mm/dd/yy" class="check-out" id="datepicker2">
-                                    </div>
-                                    <div class="col-md-3 col-sm-6 col-xs-12 taxi-title">
-                                        <span class="span-style">Returning</span>
-                                        <input type="text" name="check-out" placeholder="mm/dd/yy" class="check-out" id="datepicker3">
-                                    </div>
-                                    <div class="col-md-3 col-sm-6 col-xs-12 taxi-title">
-                                        <span class="span-style">Adult (18+)</span>
-                                        <select name="adult" class="form-control taxi-combo" id="adult">
-                                            <option value="" selected="">1</option>
-                                            <option value="">2</option>
-                                            <option value="">3</option>
-                                            <option value="">4</option>
-                                            <option value="">6</option>
-                                            <option value="">7</option>
-                                            <option value="">8</option>
-                                            <option value="">9</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-3 col-sm-6 col-xs-12 taxi-title">
-                                        <span class="span-style">Child (0 - 17)</span>
-                                        <select name="adult" class="form-control taxi-combo" id="child">
-                                            <option value="" selected="">1</option>
-                                            <option value="">2</option>
-                                            <option value="">3</option>
-                                            <option value="">4</option>
-                                            <option value="">5</option>
-                                            <option value="">6</option>
-                                        </select>
+                                    <div class="row">
+                                        <div class="col-md-12 col-sm-12 col-xs-12 btn-search">
+                                            <button class="btn-style">Search</button>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-12 col-sm-12 col-xs-12 btn-search">
-                                        <button class="btn-style">Search</button>
-                                    </div>
-                                </div>
-                            </div>
+                            </form>
+                            </form>
                         </div>
                         <div id="hotel" class="tab-pane fade">
                             <h3 class="select-op-header text-center">Hotel</h3>
@@ -453,6 +447,8 @@ if (!isset($_SESSION)) {
     <script src="js/bootstrap-datepicker.js" type="text/javascript"></script>
     <script src="js/city-from.js" type="text/javascript"></script>
     <script src="js/city-to.js" type="text/javascript"></script>
+    <script src="js/price-range/ion.rangeSlider.js" type="text/javascript"></script>
+    <script src="js/price-range.js" type="text/javascript"></script>
     <script>
         $(function () {
             $("#datepicker").datepicker({
@@ -498,6 +494,7 @@ if (!isset($_SESSION)) {
 
 
     </script> 
+    
 </body> 
 
 </html>

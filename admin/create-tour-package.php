@@ -1,6 +1,9 @@
 <?php
 include_once(dirname(__FILE__) . '/../class/include.php');
 include_once(dirname(__FILE__) . './auth.php');
+
+$TOURTYPES = new TourType(NULL);
+$types = $TOURTYPES->all();
 ?>
 <!DOCTYPE html>
 <html> 
@@ -54,6 +57,27 @@ include_once(dirname(__FILE__) . './auth.php');
                             </div>
                             <div class="body">
                                 <form class="form-horizontal"  method="post" action="post-and-get/tour-package.php" enctype="multipart/form-data"> 
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="tourtype">Tour Type</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group place-select">
+                                                <div class="form-line">
+                                                    <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="tourtype" name="tourtype" required="TRUE">
+                                                        <option value=""> -- Please Select -- </option>
+                                                        <?php foreach ($types as $type) {
+                                                            ?>
+                                                            <option value="<?php echo $type['id']; ?>"><?php echo $type['name']; ?></option>
+                                                                <?php
+                                                        }
+                                                        ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                    
                                     <div class="row clearfix">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                             <label for="name">Name</label>
@@ -138,7 +162,7 @@ include_once(dirname(__FILE__) . './auth.php');
         <script src="plugins/bootstrap/js/bootstrap.js"></script>
 
         <!-- Select Plugin Js -->
-        <script src="plugins/bootstrap-select/js/bootstrap-select.js"></script>
+        <!--<script src="plugins/bootstrap-select/js/bootstrap-select.js"></script>-->
 
         <!-- Slimscroll Plugin Js -->
         <script src="plugins/jquery-slimscroll/jquery.slimscroll.js"></script>

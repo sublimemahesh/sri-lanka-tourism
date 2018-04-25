@@ -9,6 +9,7 @@ if (isset($_POST['add-tour-package'])) {
     $TOUR_PACKAGE = new TourPackage(NULL);
     $VALID = new Validator();
 
+    $TOUR_PACKAGE->tourtype = filter_input(INPUT_POST, 'tourtype');
     $TOUR_PACKAGE->name = filter_input(INPUT_POST, 'name');
     $TOUR_PACKAGE->price = filter_input(INPUT_POST, 'price');
     $TOUR_PACKAGE->member = filter_input(INPUT_POST, 'member');
@@ -25,8 +26,8 @@ if (isset($_POST['add-tour-package'])) {
         $handle->file_new_name_ext = 'jpg';
         $handle->image_ratio_crop = 'C';
         $handle->file_new_name_body = Helper::randamId();
-        $handle->image_x = 900;
-        $handle->image_y = 500;
+        $handle->image_x = 300;
+        $handle->image_y = 278;
 
         $handle->Process($dir_dest);
 
@@ -83,8 +84,8 @@ if (isset($_POST['update'])) {
         $handle->file_new_name_ext = FALSE;
         $handle->image_ratio_crop = 'C';
         $handle->file_new_name_body = $_POST ["oldImageName"];
-        $handle->image_x = 900;
-        $handle->image_y = 500;
+        $handle->image_x = 300;
+        $handle->image_y = 278;
 
         $handle->Process($dir_dest);
 
@@ -97,6 +98,7 @@ if (isset($_POST['update'])) {
     $TOUR_PACKAGE = new TourPackage($_POST['id']);
 
     $TOUR_PACKAGE->picture_name = $_POST['oldImageName'];
+    $TOUR_PACKAGE->tourtype = filter_input(INPUT_POST, 'tourtype');
     $TOUR_PACKAGE->name = filter_input(INPUT_POST, 'name');
     $TOUR_PACKAGE->price = filter_input(INPUT_POST, 'price');
     $TOUR_PACKAGE->member = filter_input(INPUT_POST, 'member');

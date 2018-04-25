@@ -8,6 +8,7 @@
 class TourPackage {
 
     public $id;
+    public $tourtype;
     public $name;
     public $picture_name;
     public $price;
@@ -18,13 +19,14 @@ class TourPackage {
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`,`name`,`picture_name`,`price`,`member`,`description`,`sort` FROM `tour_package` WHERE `id`=" . $id;
+            $query = "SELECT `id`,`tour_type`,`name`,`picture_name`,`price`,`member`,`description`,`sort` FROM `tour_package` WHERE `id`=" . $id;
 
             $db = new Database();
 
             $result = mysql_fetch_array($db->readQuery($query));
 
             $this->id = $result['id'];
+            $this->tourtype = $result['tour_type'];
             $this->name = $result['name'];
             $this->picture_name = $result['picture_name'];
             $this->price = $result['price'];
@@ -38,7 +40,8 @@ class TourPackage {
 
     public function create() {
 
-        $query = "INSERT INTO `tour_package` (`name`,`picture_name`,`price`,`member`,`description`,`sort`) VALUES  ('"
+        $query = "INSERT INTO `tour_package` (`tour_type`,`name`,`picture_name`,`price`,`member`,`description`,`sort`) VALUES  ('"
+                . $this->tourtype . "', '"
                 . $this->name . "', '"
                 . $this->picture_name . "', '"
                 . $this->price . "', '"
@@ -76,6 +79,7 @@ class TourPackage {
     public function update() {
 
         $query = "UPDATE  `tour_package` SET "
+                . "`tour_type` ='" . $this->tourtype . "', "
                 . "`name` ='" . $this->name . "', "
                 . "`picture_name` ='" . $this->picture_name . "', "
                 . "`price` ='" . $this->price . "', "
@@ -158,6 +162,22 @@ class TourPackage {
             array_push($array_res, $row);
         }
         return $array_res;
+    }
+
+    public function getMaxTourPrice() {
+        $query = "SELECT max(`price`) AS max FROM `tour_package`";
+
+        $db = new Database();
+        $result = mysql_fetch_array($db->readQuery($query));
+        return $result;
+    }
+    
+    public function getMinTourPrice() {
+        $query = "SELECT min(`price`) AS min FROM `tour_package`";
+
+        $db = new Database();
+        $result = mysql_fetch_array($db->readQuery($query));
+        return $result;
     }
 
 }

@@ -5,10 +5,10 @@ include_once(dirname(__FILE__) . '/../../class/include.php');
 include_once(dirname(__FILE__) . '/../auth.php');
 
 if (isset($_POST['add-tour-package'])) {
-
     $TOUR_PACKAGE = new TourPackage(NULL);
     $VALID = new Validator();
-
+    
+    $TOUR_PACKAGE->tourtype = filter_input(INPUT_POST, 'tourtype');
     $TOUR_PACKAGE->name = filter_input(INPUT_POST, 'name');
     $TOUR_PACKAGE->price = filter_input(INPUT_POST, 'price');
     $TOUR_PACKAGE->member = filter_input(INPUT_POST, 'member');
@@ -41,6 +41,7 @@ if (isset($_POST['add-tour-package'])) {
     $TOUR_PACKAGE->picture_name = $imgName;
 
     $VALID->check($TOUR_PACKAGE, [
+        'tourtype' => ['required' => TRUE],
         'name' => ['required' => TRUE],
         'description' => ['required' => TRUE],
         'picture_name' => ['required' => TRUE]
@@ -97,6 +98,7 @@ if (isset($_POST['edit-tour-package'])) {
     $TOUR_PACKAGE = new TourPackage($_POST['id']);
 
     $TOUR_PACKAGE->picture_name = $_POST['oldImageName'];
+    $TOUR_PACKAGE->tourtype = filter_input(INPUT_POST, 'tourtype');
     $TOUR_PACKAGE->name = filter_input(INPUT_POST, 'name');
     $TOUR_PACKAGE->price = filter_input(INPUT_POST, 'price');
     $TOUR_PACKAGE->member = filter_input(INPUT_POST, 'member');
@@ -105,6 +107,7 @@ if (isset($_POST['edit-tour-package'])) {
     $VALID = new Validator();
 
     $VALID->check($TOUR_PACKAGE, [
+        'tourtype' => ['required' => TRUE],
         'name' => ['required' => TRUE],
         'price' => ['required' => TRUE],
         'description' => ['required' => TRUE],
