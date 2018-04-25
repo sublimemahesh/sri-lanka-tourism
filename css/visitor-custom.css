@@ -7,7 +7,42 @@ and open the template in the editor.
     Created on : Mar 19, 2018, 11:29:15 AM
     Author     : HP
 */
-
+.form-login {
+    max-width: 400px;
+    margin: 50px auto 50px;
+    background: #fff;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+.form-login h2.form-login-heading {
+    margin: 0;
+    padding: 25px 20px;
+    text-align: center;
+    background: #003162;
+    border-radius: 5px 5px 0 0;
+    -webkit-border-radius: 5px 5px 0 0;
+    color: #fff;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: 300;
+}
+.btn-theme {
+    color: #fff;
+    background-color: #68dff0;
+    border-color: #48bcb4;
+}
+.login-wrap {
+    padding: 20px;
+}
+.link{
+    position: relative;
+    display: block;
+    min-height: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    color: #000;
+}
 .visitor-prof-margin{
     margin-top: 40px;
 }
@@ -56,4 +91,205 @@ and open the template in the editor.
 .forget-password-link{
     color: #1a069e;
     background-color: #fff;
+}
+
+input[type="text"] {
+    width: 100%;
+    height: 36px;
+    border-radius: 5px 5px 5px 5px;
+    background: white;
+    padding: 12px;
+    font-size: 17px;
+    margin-top: 0px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: gray;
+}
+
+input[type="password"] {
+    width: 100%;
+    height: 36px;
+    border-radius: 5px 5px 5px 5px;
+    background: white;
+    padding: 12px;
+    font-size: 17px;
+    margin-top: 0px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: gray;
+}
+
+
+.member-reg-login-container{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.member-login-btn-container{
+    padding-top: 27px;
+}
+.member-login-btn{
+    background-color: #2066aa;
+    color: #fff;
+}
+.member-login-btn:hover{
+    background-color: #1e7eda;
+    color: #fff;
+}
+.member-login-btn:focus{
+    background-color: #2066aa;
+    color: #fff;
+}
+.member-log-body{
+    position: relative;
+    width: 100%;
+    margin-top: 20px;
+}
+.inputbox {
+    width: 100%;
+    height: 36px;
+    border-radius: 5px 5px 5px 5px;
+    background: white;
+    padding: 12px;
+    font-size: 17px;
+    margin-top: 15px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: gray;
+}
+.buttonreg {
+    width: 250px;
+    height: 40px;
+    left: 750px;
+    top: 625px;
+    background: #18286f;
+    font-family: verdana;
+    font-size: 18px;
+    color: white;
+    border-radius: 5px 5px 5px 5px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: gray;
+    cursor: pointer;
+    outline: none;
+    padding-left: 40px;
+    padding-top: 6px;
+    margin-bottom: 30px;
+}
+.policy-container{
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+.margin-l-20{
+    margin-left:20px;
+}
+.intro1{
+    left: 178px;
+    top: 20px;
+    font-family: verdana;
+    font-size: 20px;
+    color: #142170;
+    height: 75px;
+}
+.member-img{
+    width: 60%;
+    margin-left: 70px;
+}
+.memeber-hed-logo{
+    width: 125px;
+    margin:5px;
+}
+.member-log-txtbox{
+    width: 100%;
+    color: #000;
+}
+.error-msg{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.social-log-buttons{
+    width: 150px;
+}
+.social-log-buttons-1{
+    width: 117px;
+}
+
+.forget-password-link a{
+    color: #fff;
+}
+@media (min-width: 320px) and (max-width: 640px) {
+    .member-login-btn-container {
+        padding-top: 0px !important;
+    }
+    .member-img {
+        margin-left: 55px !important;
+        width: 60% !important;
+    }
+    .buttonreg{
+        margin-bottom: 50px;
+        width: 100%;
+    }
+    .margin-l-20 {
+        margin-left: 0px;
+    }
+    .social-log-buttons{
+        width: 100%;
+    }
+}
+.btn::after {
+    content: "";
+    position: relative;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: #fff;
+    z-index: -1;
+    transform: scaleX(0);
+    transform-origin: 100% 50% 0;
+    transition: all 0.5s ease-out 0s;
+}
+
+.btn-facebook {
+    color: #fff;
+    background-color: #5193ea;
+    border-color: #2775e2;
+}
+.btn-facebook:hover {
+    color: #fff;
+    background-color: #3e79c6;
+    border-color: #2775e2;
+}
+
+.font-fb{
+    background: none;
+    color: white;
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-left: 0px;
+    padding-bottom: 0px;
+    font-size: 14px;
+    text-align: center;
+}
+
+p{
+    color: #2d2929;
+}
+
+.font-padding{
+    padding-top:7px;
+    padding-bottom:7px;
+}
+
+.hr{
+    margin-top: 15px;
+    margin-bottom: 0px;
+    border: 0;
+    border-top-width: 0px;
+    border-top-style: none;
+    border-top-color: currentcolor;
+    border-top: 1px solid #757575;
+}
+
+.social-title-container{
+    padding-bottom: 10px;
 }

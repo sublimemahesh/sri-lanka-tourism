@@ -28,7 +28,46 @@ include_once(dirname(__FILE__) . '/../class/include.php');
     </head>
 
     <body style="background-color: #d7d7d7;">
+        <div class="header-base">
+            <div class="container">
+                <div class="col-md-6">
+                    <img class="memeber-hed-logo hidden-sm hidden-xs" src="../images/logo-intro2.png">
+                </div>
+                <div class="col-md-6">
+                    <form action="post-and-get/member.php" method="POST">
+                        <div class="col-md-5">
+                            <div class="member-reg-login-container">
+                                <div class="">Email Address<br>
+                                    <input class="member-log-txtbox" name="useremail" autocomplete="false" placeholder="Email address" type="email" required="true"><br>
+                                    <input type="checkbox">keep me logged in
+                                </div>
+                            </div>
 
+                        </div>
+                        <div class="col-md-5">
+                            <div class="member-reg-login-container">
+                                <div class="">Password<br>
+                                    <input class="member-log-txtbox" name="password" type="password" placeholder="Password"required="true"><br>
+                                    <div class="forget-password-link">
+                                        <a href="forgot-password.php"> <p>Forgotten your password?</p></a>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-2">
+                            <div class="member-login-btn-container">
+                                <input class="btn btn-sm member-login-btn" name="login" value="Login"type="submit">
+                            </div>
+
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+        </div>
         <div id="login-page">
             <div class="container">
 
@@ -73,6 +112,8 @@ include_once(dirname(__FILE__) . '/../class/include.php');
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="login-footer">
         </div>
         <script src="assets/js/jquery.js"></script>
         <script src="assets/js/bootstrap.min.js"></script>

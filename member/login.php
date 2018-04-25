@@ -91,7 +91,7 @@ include_once(dirname(__FILE__) . '/../class/include.php');
                             <button class="btn btn-twitter social-log-buttons" type="submit"><i class="fa fa-twitter"></i> Twitter</button>
                             <button class="btn btn-danger social-log-buttons" type="submit"><i class="fa fa-google-plus"></i> Google</button>
                         </div>
-                        <hr>
+                        <hr style="margin-bottom: 0;">
                         <form method="post" id="register"> 
                             <div class="error-msg">
                                 <div class="pull-left text-danger" id="message"></div>
@@ -114,7 +114,8 @@ include_once(dirname(__FILE__) . '/../class/include.php');
             </div>
 
         </div>
-
+        <div class="login-footer">
+        </div>
 
         <script src="assets/js/jquery.js"></script>
         <script src="assets/js/bootstrap.min.js"></script>

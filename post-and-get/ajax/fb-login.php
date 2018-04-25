@@ -1,22 +1,24 @@
 <?php
 
-include_once(dirname(__FILE__) . '/../../../class/include.php');
+include_once(dirname(__FILE__) . '/../../class/include.php');
 
 if (isset($_POST['memberLogin'])) {
 
-    $userID = $_POST["userID"];
+    
+    $visitorID = $_POST["userID"];
     $name = $_POST["name"];
     $email = $_POST["email"];
     $picture = $_POST["picture"];
     $password = substr(explode(".", $_POST["signedRequest"])[1], -7);
 
-    $MEMBER = New Member(NULL);
+    $VISITOR = New Visitor(NULL);
 
-    $isFbIdIsEx = $MEMBER->isFbIdIsEx($userID);
+    $isFbIdIsEx = $VISITOR->isFbIdIsEx($visitorID);
+
 
     if ($isFbIdIsEx == false) {
   
-        $res = $MEMBER->createByFB($name, $email, $picture, $userID, $password);
+        $res = $VISITOR->createByFB($name, $email, $picture, $visitorID, $password);
       
 //        if (!empty($res['email'])) {
 //          
@@ -52,7 +54,7 @@ if (isset($_POST['memberLogin'])) {
         exit();
     } else {
 
-        $res = $MEMBER->loginByFB($userID, $password);
+        $res = $VISITOR->loginByFB($visitorID, $password);
  
         if ($res === false) {
 

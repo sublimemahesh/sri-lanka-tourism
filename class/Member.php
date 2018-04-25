@@ -90,12 +90,12 @@ class Member {
         }
     }
 
-    public function createByFB($name, $email, $membername, $picture, $fbID, $password) {
+    public function createByFB($name, $email, $picture, $fbID, $password) {
 //        date_default_timezone_set('Asia/Colombo');
 //
 //        $createdAt = date('Y-m-d H:i:s');
 
-        $query = "INSERT INTO `member` (`name`,`email`,`username`,`profile_picture`,`facebookID`,`password`) VALUES  ('" . $name . "', '" . $email . "', '" . $membername . "', '" . $picture . "', '" . $fbID . "', '" . $password . "')";
+        $query = "INSERT INTO `member` (`name`,`email`,`profile_picture`,`facebookID`,`password`) VALUES  ('" . $name . "', '" . $email . "', '" . $picture . "', '" . $fbID . "', '" . $password . "')";
 
         $db = new Database();
 
@@ -105,7 +105,7 @@ class Member {
 
         if ($result) {
 
-            $this->loginByFB($membername, $password);
+            $this->loginByFB($fbID, $password);
 
             return $this->__construct($last_id);
         } else {
@@ -113,9 +113,9 @@ class Member {
         }
     }
 
-    public function loginByFB($membername, $password) {
+    public function loginByFB($FbId, $password) {
 
-        $query = "SELECT * FROM `member` WHERE `username`= '" . $membername . "' AND `password`= '" . $password . "'";
+        $query = "SELECT * FROM `member` WHERE `facebookID`= '" . $FbId . "' AND `password`= '" . $password . "'";
 
         $db = new Database();
 

@@ -13,77 +13,72 @@ include './class/include.php';
         <link rel="stylesheet" href="css/responsive.css">
         <link href="css/search.css" rel="stylesheet" type="text/css"/>
         <link href="css/datepicker.css" rel="stylesheet" type="text/css"/>
+        <link href="css/visitor-custom.css" rel="stylesheet" type="text/css"/>
         <link href="https://fonts.googleapis.com/css?family=Russo+One|Magra|Ubuntu+Condensed" rel="stylesheet"> 
     </head>
-    <body>
+    <body style="background-color: #efefef;">
         <!-- Our Resort Values style-->
         <?php include './header.php' ?>
 
-        <div class="row background-image" style="background-image: url('images/hotel/back.jpg');">
-            <div class="container" style="width:350px; padding: 20px">
-                <div class="col-md-12 col-sm-12 center-all">
-                    <div class="tab-content">
-                        <div class="row">
-                            <form class="form-horizontal form-login"  method="post" action="post-and-get/visitor.php" enctype="multipart/form-data"> 
 
-                                <div class="">
-                                    <div class="modal-content">
 
-                                        <div class="modal-header">
-                                            <a href="login.php"><button type="button" class="close">&times;</button></a>
-                                            <h4 class="modal-title">Create Account</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                            <?php
-                                            if (isset($_GET['message'])) {
-                                                $message = new Message($_GET['message']);
-                                                ?>
-                                                <div class="alert alert-<?php echo $message->status; ?>"><?php echo $message->description; ?></div>
+        <div class="member-log-body">
+            <div class="container">
+                <div class="col-md-6">
+                    <?php
+                    if (isset($_GET['message'])) {
+                        $message = new Message($_GET['message']);
+                        ?>
+                        <div class="alert alert-<?php echo $message->status; ?>"><?php echo $message->description; ?></div>
 
-                                                <?php
-                                            }
-                                            ?>
-                                            <div>
-                                                <div class="">
-                                                    <input type="text" name="first_name" placeholder="First Name" autocomplete="off" class="form-control placeholder-no-fix">
-                                                </div>
-                                                <div class="">
-                                                    <input type="text" name="second_name" placeholder="Last Name" autocomplete="off" class="form-control placeholder-no-fix">
-                                                </div>
-                                                <div class="">
-                                                    <input type="email" name="email" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
-                                                    <br>
-                                                </div>
-                                                <div class="">
-                                                    <input type="email" name="cnfemail" placeholder="Confirm Email" autocomplete="off" class="form-control placeholder-no-fix">
-                                                    <br>
-                                                </div>
-                                                <div class="">
-                                                    <input type="password" name="password" placeholder="Password" autocomplete="off" class="form-control placeholder-no-fix">
-                                                    <br>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <input class="btn btn-theme" type="submit" value="Register" name="register">
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </form>
-
+                        <?php
+                    }
+                    ?>
+                    <div class="intro1 hidden-sm hidden-xs">Srilanka Tourism helps you to publish your business<br>
+                    </div>
+                    <img class="member-img hidden-sm hidden-xs"src="images/visitor/visitor.png">
+                </div>
+                <div class="col-md-6">
+                    <div class="margin-l-20">
+                        <div class="">
+                            <p class="social-title-container">or you can sign in via your social network</p>
+                            <button class="fb btn btn-facebook social-log-buttons" id="fb-login" type="submit"><i class="fa fa-facebook font-fb"></i> Facebook</button>
+                            <button class="btn btn-danger social-log-buttons" type="submit"><i class="fa fa-google-plus"></i> Google</button>
+                            <button class="btn btn-danger social-log-buttons" type="submit"><i class="fa fa-google-plus"></i> Google</button>
                         </div>
+                        <hr class="hr" style="margin-bottom: 0;">
+                        <form method="post" id="register"> 
+                            <div class="error-msg">
+                                <div class="pull-left text-danger" id="message"></div>
+                            </div>
+
+                            <input id="f_name" name="f_name" placeholder="Enter Your First Name" autocomplete="off" class="inputbox" type="text">
+                            <input id="s_name" name="s_name" placeholder="Enter Your Second Name" autocomplete="off" class="inputbox" type="text">
+                            <input id="email" name="email" placeholder="Enter Your Email" autocomplete="off" class="inputbox" type="text">
+                            <input id="cnfemail" name="cnfemail" placeholder="Confirm Email" autocomplete="off"class="inputbox" type="text">
+                            <input id="password" name="password" placeholder="Enter Password" autocomplete="off" class="inputbox" type="password">
+
+                            <div class="policy-container">
+                                <p>
+                                    By clicking Create an account, you agree to our Terms and conditions 
+                                </p>
+                            </div>
+                            <input type="hidden" name="save" value="save"/>
+                            <div class="buttonreg" id="btnSubmit">Create an account</div>
+                        </form>
                     </div>
                 </div>
             </div>
+
         </div>
 
-        <!-- Our Resort Values style-->  
+
         <?php include './footer.php' ?>
 
         <script src="js/jquery-2.2.4.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/bootstrap-datepicker.js" type="text/javascript"></script>
+        <script src="js/add-visitor.js" type="text/javascript"></script>
+        <script src="js/fb-login-scripts.js" type="text/javascript"></script>
     </body> 
-
 </html>
