@@ -16,7 +16,9 @@ include './auth.php';
         <link href="css/datepicker.css" rel="stylesheet" type="text/css"/>
         <link href="css/visitor-custom.css" rel="stylesheet" type="text/css"/>
         <link href="https://fonts.googleapis.com/css?family=Russo+One|Magra|Ubuntu+Condensed" rel="stylesheet"> 
+        <link href="css/loading.css" rel="stylesheet" type="text/css"/>
     </head>
+    <div class="loading" id="loading">Loading&#8230;</div>
     <body style="background-color: #FFF;">
         <!-- Our Resort Values style-->
         <?php include './header.php' ?>
@@ -48,9 +50,15 @@ include './auth.php';
                                                 <img src="upload/visitor/member.png" class="img img-responsive img-thumbnail" id="profil_pic"/>
                                                 <?php
                                             } else {
-                                                ?>
-                                                <img src="upload/visitor/<?php echo $VISITOR->image_name; ?>" class="img img-responsive img-thumbnail" id="profil_pic"/>
-                                                <?php
+
+                                                if ($VISITOR->facebookID && substr($VISITOR->image_name, 0, 5) === "https") {
+                                                    ?>
+                                                    <img src="<?php echo $VISITOR->image_name; ?>" class="img img-responsive img-thumbnail" id="profil_pic"/>
+                                                <?php } else {
+                                                    ?>
+                                                    <img src="upload/visitor/<?php echo $VISITOR->image_name; ?>" class="img img-responsive img-thumbnail" id="profil_pic"/>
+                                                    <?php
+                                                }
                                             }
                                             ?>
                                             <form class="form-horizontal"  method="post" enctype="multipart/form-data" id="upForm">
