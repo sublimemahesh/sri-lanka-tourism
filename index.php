@@ -23,6 +23,7 @@ $TOURTYPES = TourType::all();
         <link href="css/price-range/ion.rangeSlider.css" rel="stylesheet" type="text/css"/>
         <link href="css/price-range/ion.rangeSlider.skinFlat.css" rel="stylesheet" type="text/css"/>
         <link href="css/owl.carousel.min.css" rel="stylesheet" type="text/css"/>
+
     </head>
     <body>
         <!-- Our Resort Values style-->
@@ -213,7 +214,7 @@ $TOURTYPES = TourType::all();
                                         </div>
                                         <div class="col-md-6 col-sm-6 col-xs-12 taxi-title">
                                             <span class="span-style">Number of Dates</span>
-                                            <input type="text" name="noofdates" placeholder="" class="input-text">
+                                            <input type="number" name="noofdates" placeholder="" class="input-text" min="0">
                                         </div>
                                     </div>
                                     <div class="row taxi-body">
@@ -246,18 +247,18 @@ $TOURTYPES = TourType::all();
                                 </div>
                             </form>
 
-                            <div class="owl-carousel tour-slider">
+                            <div class="owl-carousel tour-slider" id="tour-slider">
                                 <?php
                                 foreach ($TOURTYPES as $TOURTYPE) {
                                     ?>
                                     <div>
                                         <img src="upload/tour-type/<?php echo $TOURTYPE['picture_name'] ?>" alt=""/>
-                                        <div class="tour-heading">ABC</div>
+                                        <div class="tour-heading pull-left"><?php echo $TOURTYPE['name'] ?></div>
+                                        <div class="tour-arrow white pull-right"><img src="images/icon/arrow2.png" alt=""/></div>
                                     </div>
                                     <?php
                                 }
                                 ?>
-
                             </div>
 
                         </div>
@@ -511,7 +512,8 @@ $TOURTYPES = TourType::all();
     </script> 
     <script>
         $(document).ready(function () {
-            $('.owl-carousel').owlCarousel({
+
+            $('#tour-slider').owlCarousel({
                 loop: true,
                 margin: 10,
                 responsiveClass: true,
@@ -533,6 +535,7 @@ $TOURTYPES = TourType::all();
             })
         });
     </script>
+
 
 </body> 
 
