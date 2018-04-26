@@ -2139,3 +2139,17 @@ hr.style15:after {
     color: #2e08a8;
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
 }
+
+/*------Tour Slider ------------*/
+.tour-slider {
+    margin-bottom: 30px;
+}
+.tour-heading {
+    background-color: #fff9;
+    color: #000;
+    padding: 10px 10px 10px 20px;
+    position: relative;
+    top: -81px;
+    font-size: 27px;
+    width: 75%;
+}

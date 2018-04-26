@@ -22,7 +22,7 @@ $TOURTYPES = TourType::all();
         <link href="css/price-range/normalize.css" rel="stylesheet" type="text/css"/>
         <link href="css/price-range/ion.rangeSlider.css" rel="stylesheet" type="text/css"/>
         <link href="css/price-range/ion.rangeSlider.skinFlat.css" rel="stylesheet" type="text/css"/>
-
+        <link href="css/owl.carousel.min.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <!-- Our Resort Values style-->
@@ -245,7 +245,21 @@ $TOURTYPES = TourType::all();
                                     </div>
                                 </div>
                             </form>
-                            </form>
+
+                            <div class="owl-carousel tour-slider">
+                                <?php
+                                foreach ($TOURTYPES as $TOURTYPE) {
+                                    ?>
+                                    <div>
+                                        <img src="upload/tour-type/<?php echo $TOURTYPE['picture_name'] ?>" alt=""/>
+                                        <div class="tour-heading">ABC</div>
+                                    </div>
+                                    <?php
+                                }
+                                ?>
+
+                            </div>
+
                         </div>
                         <div id="hotel" class="tab-pane fade">
                             <h3 class="select-op-header text-center">Hotel</h3>
@@ -449,6 +463,7 @@ $TOURTYPES = TourType::all();
     <script src="js/city-from.js" type="text/javascript"></script> 
     <script src="js/price-range/ion.rangeSlider.js" type="text/javascript"></script>
     <script src="js/price-range.js" type="text/javascript"></script>
+    <script src="js/owl.carousel.min.js" type="text/javascript"></script>
     <script>
         $(function () {
             $("#datepicker").datepicker({
@@ -494,7 +509,31 @@ $TOURTYPES = TourType::all();
 
 
     </script> 
-    
+    <script>
+        $(document).ready(function () {
+            $('.owl-carousel').owlCarousel({
+                loop: true,
+                margin: 10,
+                responsiveClass: true,
+                responsive: {
+                    0: {
+                        items: 1,
+                        nav: true
+                    },
+                    600: {
+                        items: 3,
+                        nav: false
+                    },
+                    1000: {
+                        items: 5,
+                        nav: true,
+                        loop: false
+                    }
+                }
+            })
+        });
+    </script>
+
 </body> 
 
 </html>
