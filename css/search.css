@@ -108,7 +108,7 @@ index-textbox-st{
 }
 
 
-#taxi input[type="text"],.taxi-combo {
+#taxi input[type="text"], #taxi input[type="number"],.taxi-combo {
     border: 2px solid #060644   !important;
     margin-top: 5px;
 }

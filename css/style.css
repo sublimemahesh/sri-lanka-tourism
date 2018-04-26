@@ -287,7 +287,7 @@ body {
     text-align: justify;
 }
 
-input[type=text] {
+input[type=text], input[type=number]{
     width: 100%;
     box-sizing: border-box;
     border: 2px solid #ccc;
@@ -2144,7 +2144,7 @@ hr.style15:after {
 .tour-slider {
     margin-bottom: 30px;
 }
-.tour-heading {
+.tour-heading:hover {
     background-color: #fff9;
     color: #000;
     padding: 10px 10px 10px 20px;
@@ -2153,3 +2153,47 @@ hr.style15:after {
     font-size: 27px;
     width: 75%;
 }
+.tour-heading {
+    background-color: #09090980;
+    color: #fffc;
+    padding: 10px 10px 10px 20px;
+    position: relative;
+    top: -81px;
+    font-size: 27px;
+    width: 75%;
+}
+.tour-arrow {
+    top: -81px;
+    position: relative;
+    margin-right: 11px;
+    /*background: #fff9;*/
+    background: #09090980;
+    height: 58px;
+    width: 39px;
+    padding: 5px;
+    border-radius: 0px 10px 10px 0px;
+}
+.tour-arrow:hover {
+    /*background-color: #09090980;*/
+    background-color: #fff9;
+
+}
+.tour-arrow img {
+    margin-top: 5px;
+}
+.owl-nav {
+    position: inherit;
+    margin: -269px 0px 174px 0px;
+    font-size: 25px;
+}
+.owl-prev span, .owl-next span {
+    background: #fff9;
+    padding: 0px 15px 2px 15px;
+    border-radius: 17px;
+    color: #000;
+}
+.owl-prev {
+    margin: 0% 90% 0% 0%;
+    letter-spacing: 0px;
+}
+
