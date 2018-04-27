@@ -16,6 +16,7 @@ if (isset($_POST['add-tour-package'])) {
     $TOUR_PACKAGE->description = filter_input(INPUT_POST, 'description');
 
     $dir_dest = '../../upload/tour-package/';
+    $dir_dest_thumb = '../../upload/tour-package/thumb/';
 
     $handle = new Upload($_FILES['picture_name']);
 
@@ -34,6 +35,21 @@ if (isset($_POST['add-tour-package'])) {
         if ($handle->processed) {
             $info = getimagesize($handle->file_dst_pathname);
             $imgName = $handle->file_dst_name;
+        }
+        if ($handle->uploaded) {
+            $handle->image_resize = true;
+            $handle->file_new_name_ext = 'jpg';
+            $handle->image_ratio_crop = 'C';
+            $handle->file_new_name_body = Helper::randamId();
+            $handle->image_x = 300;
+            $handle->image_y = 206;
+
+            $handle->Process($dir_dest_thumb);
+
+            if ($handle->processed) {
+                $info = getimagesize($handle->file_dst_pathname);
+                $imgName = $handle->file_dst_name;
+            }
         }
     }
 
@@ -56,7 +72,7 @@ if (isset($_POST['add-tour-package'])) {
         $VALID->addError("Your data was saved successfully", 'success');
         $_SESSION['ERRORS'] = $VALID->errors();
 
-           header("location: ../view-tour-sub-section.php?id=" . $TOUR_PACKAGE->id);
+        header("location: ../view-tour-sub-section.php?id=" . $TOUR_PACKAGE->id);
     } else {
 
         if (!isset($_SESSION)) {
@@ -67,11 +83,11 @@ if (isset($_POST['add-tour-package'])) {
 
         header('Location: ' . $_SERVER['HTTP_REFERER']);
     }
-
 }
 
 if (isset($_POST['update'])) {
     $dir_dest = '../../upload/tour-package/';
+    $dir_dest_thumb = '../../upload/tour-package/thumb/';
 
     $handle = new Upload($_FILES['picture_name']);
 
@@ -92,6 +108,23 @@ if (isset($_POST['update'])) {
         if ($handle->processed) {
             $info = getimagesize($handle->file_dst_pathname);
             $imgName = $handle->file_dst_name;
+        }
+        if ($handle->uploaded) {
+            $handle->image_resize = true;
+            $handle->file_new_name_body = TRUE;
+            $handle->file_overwrite = TRUE;
+            $handle->file_new_name_ext = FALSE;
+            $handle->image_ratio_crop = 'C';
+            $handle->file_new_name_body = $_POST ["oldImageName"];
+            $handle->image_x = 300;
+            $handle->image_y = 206;
+
+            $handle->Process($dir_dest_thumb);
+
+            if ($handle->processed) {
+                $info = getimagesize($handle->file_dst_pathname);
+                $imgName = $handle->file_dst_name;
+            }
         }
     }
 

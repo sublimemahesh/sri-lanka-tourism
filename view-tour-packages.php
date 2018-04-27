@@ -50,8 +50,9 @@ if (isset($_GET['priceto'])) {
     $priceto = $max;
 }
 
-
 $TOURS = $SEARCH->GetToursByKeywords($keyword, $noofdates, $type, $pricefrom, $priceto, $pageLimit, $setLimit);
+
+
 ?>
 
 <!DOCTYPE html>
@@ -79,7 +80,7 @@ $TOURS = $SEARCH->GetToursByKeywords($keyword, $noofdates, $type, $pricefrom, $p
 
         <div class="row background-image" style="background-image: url('images/hotel/sea.jpg');">
             <section>
-                <div class="container inner-container1">
+                <div class="container inner-container1 inner-tour-pack">
                     <div class="row">
                         <?php
                         foreach ($TOURS as $TOUR) {
@@ -87,100 +88,68 @@ $TOURS = $SEARCH->GetToursByKeywords($keyword, $noofdates, $type, $pricefrom, $p
                             $result = TourSubSection::CountDaysInTour($id);
                             $days = $result['days'];
                             $night = (int) $days - 1;
+                            
+                            $MEMBER = new Member($TOUR['member']);
+                            $TYPE = new TourType($TOUR['tour_type']);
+                            
                             ?>
-                            <div class="col-md-4 main-pack">
-                                <div class=" tour-photo polygon">
-                                    <img src="upload/tour-package/<?php echo $TOUR['picture_name']; ?>" class="img-responsive image-back"/>
-                                    <div class="nights text-center ">
-                                        <?php
-                                        if ($night < 10) {
-                                            echo '0' . $night;
-                                        } else {
-                                            echo $night;
-                                        }
-                                        ?> <div class="text-night">
-                                            Nights
-                                        </div>
-                                    </div>
-                                    <div class="days">
+                            <div class="tour-pack1 col-md-3">
+                                <div class="tour-pack">
+                                <div class="tour-img">
+                                    <img src="upload/tour-package/thumb/<?php echo $TOUR['picture_name']; ?>" alt=""/>
+                                </div>
+                                <div class="tour-duration">
+                                    <div class="tour-days pull-left">
+                                        <i class="fa fa-sun-o"></i> 
                                         <?php
                                         if ($days < 10) {
                                             echo '0' . $days;
                                         } else {
                                             echo $days;
                                         }
-                                        ?> <div class="text-days text-center">
-                                            Days
-                                        </div>
+                                        ?>
+                                    </div>
+                                    <div class="tour-nights pull-right">
+                                        <i class="fa fa-moon-o"></i>
+                                        <?php
+                                        if ($night < 10) {
+                                            echo '0' . $night;
+                                        } else {
+                                            echo $night;
+                                        }
+                                        ?>
                                     </div>
                                 </div>
-                                <div class="triangle-topright" id="triangle-topright" >
-                                    <div class="triangle-bottomright" id="triangle-bottomright" > </div>
-                                    <div class="body-title text-uppercase">
-                                        <span><?php echo $TOUR['name']; ?></span>
+                                <div class="tour-dtls">
+                                    <div class="row">
+                                        <a href="#" title="<?php echo $TOUR['name']; ?>"><div class="tour-title col-md-9 pull-left"><?php echo substr($TOUR['name'], 0, 16); ?></div></a>
+                                        <div class="mem-img col-md-3">
+                                            <img src="upload/member/<?php echo $MEMBER->profile_picture; ?>" class="thumbnail  pull-right" title="<?php echo $MEMBER->name; ?>" alt=""/>
+                                        </div>
                                     </div>
-                                    <div class="col-md-6 mid-section">
-                                        <div class="body-description text-center">
-                                            <div class="prices">
-                                                <span>Starting From</span><br/>
-                                                <span>LKR: <?php echo $TOUR['price']; ?>/=</span><br/>
-                                            </div>
-                                            <div class="more-details">
-                                                <span><?php echo substr($TOUR['description'], 0, 60); ?></span>
-                                            </div>
-                                            <div class="contact-details">
-                                                <h5>Contact</h5>
-                                                <span class="mobile-numbers">911-34234517 / 911-234567</span><br/>
-                                                <span class="text-center">MIN-2 PAX</span>
-                                            </div>
+                                    <div class="row">
+                                        <div class="tour-price pull-left"><i class="fa fa-dollar"></i> LKR <?php echo $TOUR['price']; ?>/=</div>
+                                        <div class="tour-rate pull-right">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
                                         </div>
                                     </div>
 
+                                    <div class="row tour-desc"><?php echo substr($TOUR['description'], 0, 90) . '...'; ?></div>
+                                    <div class="row">
+                                        <div class="tour-type pull-left"><i class="fa fa-certificate"></i> <?php echo $TYPE->name; ?> Type</div>
+                                        <a href="#"><div class="tour-btn pull-right btn btn-sm blue">Read More<span class="glyphicon glyphicon-eye-open"></span></div></a>
+                                    </div> 
+
                                 </div>
                             </div>
+                    </div>
                             <?php
                         }
                         ?>
-
-<!--                        <div class="col-md-4 main-pack">
-                            <div class=" tour-photo polygon">
-                                <img src="assets/img/tour/imgtour.jpg" class="img-responsive image-back"/>
-                                <div class="nights text-center ">
-                                    04 <div class="text-night">
-                                        Nights
-                                    </div>
-                                </div>
-                                <div class="days">
-                                    05 <div class="text-days text-center">
-                                        Days
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="triangle-topright" id="triangle-topright" >
-                                <div class="triangle-bottomright" id="triangle-bottomright" > </div>
-                                <div class="body-title text-uppercase">
-                                    <span>sri lanaka</span>
-                                </div>
-                                <div class="col-md-6 mid-section">
-                                    <div class="body-description text-center">
-                                        <div class="prices">
-                                            <span>Starting From</span><br/>
-                                            <span>LKR: 234566/=</span><br/>
-                                        </div>
-                                        <div class="more-details">
-                                            <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit </span>
-                                        </div>
-                                        <div class="contact-details">
-                                            <h5>Contact</h5>
-                                            <span class="mobile-numbers">911-34234517 / 911-234567</span><br/>
-                                            <span class="text-center">MIN-2 PAX</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>-->
-
                     </div>
 
                     <div class="row col-md-offset-3">
