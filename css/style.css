@@ -1027,6 +1027,10 @@ span.score-rate{
     padding-top: 25px;
     padding-bottom: 25px;
 }
+.inner-tour-pack{
+    padding-top: 25px;
+    padding-bottom: 0px;
+}
 .image-back{
     border-radius: 13px;
     -webkit-clip-path: polygon(24% 0, 50% 49%, 25% 100%, 0% 100%, 0 48%, 0% 0%);
@@ -2201,3 +2205,80 @@ hr.style15:after {
     letter-spacing: 0px;
 }
 
+/*--------Tour Packages------------*/
+.tour-pack {
+    background-color: #fffc;
+    height: 385px;
+    box-shadow: 5px 2px 5px 2px #8889;
+    
+    /*    opacity: 0.5;
+        filter: alpha(opacity=50);*/
+}
+.tour-pack1.col-md-3 {
+    padding: 0px 10px 30px;
+}
+.tour-title.col-md-9 {
+    padding: 0px;
+}
+.mem-img.col-md-3 {
+    padding: 0px;
+}
+.tour-img img{
+    width: 100%;
+}
+.tour-dtls {
+    color: #000;
+    padding: 10px;
+}
+.tour-duration {
+    color: #000;
+}
+.tour-days {
+    background: #0009;
+    padding: 10px;
+    font-size: 23px;
+    border: 1px solid #0000004d;
+    margin-top: -55px;
+    position: relative;
+    color: #fff;
+    margin-left: 105px;
+    font-family: Times New Roman;
+}
+.tour-nights {
+    background: #0009;
+    padding: 10px;
+    font-size: 23px;
+    border: 1px solid #0000004d;
+    margin-top: -55px;
+    position: relative;
+    color: #fff;
+    margin-left: 0px;
+    font-family: Times New Roman;
+}
+.tour-title {
+    font-family: 'Magra', sans-serif;
+    font-size: 25px;
+    padding-bottom: 5px;
+    color: #003366;
+
+}
+.tour-rate {
+    color: #ffb300;
+    text-shadow: -1px 0 #e9a504, 0 1px #e9a504, 1px 0 #e9a504, 0 -1px #e9a504;
+}
+.tour-dtls .row {
+    margin: 0px 0px 7px 0px;
+}
+.tour-desc {
+    text-align: justify;
+}
+.tour-dtls.row.tour-desc {
+    margin: 0px;
+}
+.tour-type {
+    padding-top: 5px;
+    color: #146a8d;
+}
+.mem-img img {
+    height: 45px;
+}
