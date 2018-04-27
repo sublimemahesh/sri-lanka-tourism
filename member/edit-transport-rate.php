@@ -6,38 +6,41 @@ if (isset($_GET['id'])) {
     $id = $_GET['id'];
 }
 $TRANSPORT_RATES = new TransportRates($id);
-?> 
+$CITYFROM = new City($TRANSPORT_RATES->location_from);
+$CITYTO = new City($TRANSPORT_RATES->location_to);
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang = "en">
 
     <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="">
-        <meta name="author" content="Dashboard">
-        <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+        <meta charset = "utf-8">
+        <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+        <meta name = "description" content = "">
+        <meta name = "author" content = "Dashboard">
+        <meta name = "keyword" content = "Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
         <title>My Account || Edit Transport Rate || www.srilankatourism.travel</title>
 
-        <!-- Bootstrap core CSS -->
-        <link href="assets/css/bootstrap.css" rel="stylesheet">
+        <!--Bootstrap core CSS -->
+        <link href = "assets/css/bootstrap.css" rel = "stylesheet">
         <!--external css-->
-        <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-        <link rel="stylesheet" type="text/css" href="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-datepicker/css/datepicker.html" />
-        <link rel="stylesheet" type="text/css" href="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-daterangepicker/daterangepicker.html" />
+        <link href = "assets/font-awesome/css/font-awesome.css" rel = "stylesheet" />
+        <link rel = "stylesheet" type = "text/css" href = "../../../blacktie.co/demo/dashgum/assets/js/bootstrap-datepicker/css/datepicker.html" />
+        <link rel = "stylesheet" type = "text/css" href = "../../../blacktie.co/demo/dashgum/assets/js/bootstrap-daterangepicker/daterangepicker.html" />
 
-        <!-- Custom styles for this template -->
-        <link href="assets/css/style.css" rel="stylesheet">
-        <link href="assets/css/style-responsive.css" rel="stylesheet">
-        <link href="assets/css/custom.css" rel="stylesheet" type="text/css"/>
+        <!--Custom styles for this template -->
+        <link href = "assets/css/style.css" rel = "stylesheet">
+        <link href = "assets/css/style-responsive.css" rel = "stylesheet">
+        <link href = "assets/css/custom.css" rel = "stylesheet" type = "text/css"/>
         <style>
             .img-thumbnail {
-                max-width: 50% !important;
+                max-width: 50%!important;
             }
         </style>
-    </head> 
-    <body> 
-        <section id="container" > 
+    </head>
+    <body>
+        <section id = "container" >
             <?php
             include './header-nav.php';
             ?>
@@ -58,70 +61,56 @@ $TRANSPORT_RATES = new TransportRates($id);
                                         <div class="userccount">
                                             <div class="formpanel"> 
 
+
                                                 <form class="form-horizontal" method="post" action="post-and-get/transport-rate.php" enctype="multipart/form-data"> 
                                                     <div class="col-md-12">
 
                                                         <div class="">
-                                                            <div class="bottom-top">
-                                                                <label for="location_from">Location From</label>
+                                                            <div class="col-md-6">
+                                                                <div class="bottom-top">
+                                                                    <label for="location_from">Location From</label>
+                                                                    <div class="formrow">
+                                                                        <input type="text" autocomplete="off" id="from" value="<?php echo $CITYFROM->name; ?>" placeholder="please select picking up city" class="form-control">
+                                                                        <input type="hidden" name="from" value="<?php echo $TRANSPORT_RATES->location_from; ?>" id="from-id" />
+                                                                        <div id="suggesstion-box">
+                                                                            <ul id="city-list-from" class="city-list"></ul>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
                                                             </div>
-                                                            <div class="formrow">
-                                                                <select class="form-control show-tick place-select1" type="text" id="location_from" autocomplete="off" name="location_from">
-                                                                    <option value="<?php echo $TRANSPORT_RATES->location_from; ?>" class="active light-c">
-                                                                        <?php
-                                                                        $CITY = new City($TRANSPORT_RATES->location_from);
-                                                                        echo $CITY->name;
-                                                                        ?>
-                                                                    </option>
-                                                                    <?php foreach (City::all() as $key => $CITY) {
-                                                                        ?>
-                                                                        <option value="<?php echo $CITY['id']; ?>"><?php echo $CITY['name']; ?></option>
-                                                                        <?php
-                                                                    }
-                                                                    ?>
-                                                                </select>
+                                                            <div class="col-md-6">
+                                                                <div class="bottom-top">
+                                                                    <label for="location_to">Location To</label>
+                                                                    <div class="formrow">
+                                                                        <input type="text" id="to" autocomplete="off" value="<?php echo $CITYTO->name; ?>"  placeholder="please select dropping down city" class="form-control">
+                                                                        <div id="suggesstion-box">
+                                                                            <ul id="city-list-to" class="city-list"></ul>
+                                                                        </div>
+                                                                        <input type="hidden"  value="<?php echo $TRANSPORT_RATES->location_to; ?>" name="to"  id="to-id" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
 
-                                                            </div>
                                                         </div>
-                                                        <div class="">
-                                                            <div class="bottom-top">
-                                                                <label for="location_to">Location To</label>
-                                                            </div>
-                                                            <div class="formrow">
-                                                                <select class="form-control show-tick place-select1" type="text" id="location_to" autocomplete="off" name="location_to">
-                                                                    <option value="<?php echo $TRANSPORT_RATES->location_to ?>" class="active light-c">
-                                                                        <?php
-                                                                        $CITY = new City($TRANSPORT_RATES->location_to);
-                                                                        echo $CITY->name;
-                                                                        ?>
-                                                                    </option>
-                                                                    <?php foreach (City::all() as $key => $CITY) {
-                                                                        ?>
-                                                                        <option value="<?php echo $CITY['id']; ?>"><?php echo $CITY['name']; ?></option>
-                                                                        <?php
-                                                                    }
-                                                                    ?>
-                                                                </select>
 
-                                                            </div>
-                                                        </div>
                                                         <div class="">
-                                                            <div class="bottom-top">
-                                                                <label for="distance">Distance</label>
+                                                            <div class="col-md-6">
+                                                                <div class="bottom-top">
+                                                                    <label for="distance">Distance</label>
+                                                                    <div class="formrow">
+                                                                        <input type="text" id="price" value="<?php echo $TRANSPORT_RATES->distance; ?>" class="form-control" placeholder="Enter Distance" autocomplete="off" name="distance" required="true">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="bottom-top">
+                                                                    <label for="price">Price</label>
+                                                                    <div class="formrow">
+                                                                        <input type="text" id="price" value="<?php echo $TRANSPORT_RATES->price; ?>" class="form-control" placeholder="Enter Price" autocomplete="off" name="price" required="true">
+                                                                    </div>
+                                                                </div>
                                                             </div>
 
-                                                            <div class="formrow">
-                                                                <input type="text" id="distance" class="form-control"  value="<?php echo $TRANSPORT_RATES->distance; ?> Km"  name="distance"  required="TRUE">
-                                                            </div>
-                                                        </div>
-                                                        <div class="">
-                                                            <div class="bottom-top">
-                                                                <label for="price">Price</label>
-                                                            </div>
-
-                                                            <div class="formrow">
-                                                                <input type="text" id="price" class="form-control"  value="<?php echo $TRANSPORT_RATES->price; ?>"  name="price"  required="TRUE">
-                                                            </div>
                                                         </div>
 
                                                         <div class="top-bott50">
@@ -180,7 +169,8 @@ $TRANSPORT_RATES = new TransportRates($id);
 
         <script src="assets/js/form-component.js"></script>    
 
-
+        <script src="js/city-from.js" type="text/javascript"></script>
+        <script src="js/city-to.js" type="text/javascript"></script>
         <script>
             //custom select box
 
