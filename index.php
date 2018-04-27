@@ -252,9 +252,11 @@ $TOURTYPES = TourType::all();
                                 foreach ($TOURTYPES as $TOURTYPE) {
                                     ?>
                                     <div>
-                                        <img src="upload/tour-type/<?php echo $TOURTYPE['picture_name'] ?>" alt=""/>
-                                        <div class="tour-heading pull-left"><?php echo $TOURTYPE['name'] ?></div>
-                                        <div class="tour-arrow white pull-right"><img src="images/icon/arrow2.png" alt=""/></div>
+                                        <a href="view-tour-packages.php?type=<?php echo $TOURTYPE['id']; ?>">
+                                            <img src="upload/tour-type/<?php echo $TOURTYPE['picture_name'];?>" alt=""/>
+                                            <div class="tour-heading pull-left"><?php echo strtoupper($TOURTYPE['name']); ?></div>
+                                            <div class="tour-arrow white pull-right"><img src="images/icon/arrow2.png" alt=""/></div>
+                                        </a>
                                     </div>
                                     <?php
                                 }
@@ -517,6 +519,9 @@ $TOURTYPES = TourType::all();
                 loop: true,
                 margin: 10,
                 responsiveClass: true,
+                autoplay: true,
+                autoplayTimeout: 2000,
+                autoplayHoverPause: true,
                 responsive: {
                     0: {
                         items: 1,
@@ -524,12 +529,12 @@ $TOURTYPES = TourType::all();
                     },
                     600: {
                         items: 3,
-                        nav: false
+                        nav: true
                     },
                     1000: {
                         items: 5,
                         nav: true,
-                        loop: false
+                        loop: true
                     }
                 }
             })

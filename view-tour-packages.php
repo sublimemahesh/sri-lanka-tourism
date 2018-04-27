@@ -8,6 +8,9 @@ if (isset($_GET["range"])) {
     $prices = split(";", $_GET['range']);
     $min = $prices[0];
     $max = $prices[1];
+} else {
+    $min = 0;
+    $max = 1000000000;
 }
 $SEARCH = new Search(NULL);
 $keyword = NULL;
