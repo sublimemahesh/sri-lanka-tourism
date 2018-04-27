@@ -4,6 +4,10 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
+$TRANSPORTSOBJ = new Transports(NULL);
+$TRANSPORTS_PHOTO = new TransportPhoto(NULL);
+$TRANSPORT_RATEOBJ = new TransportRates(NULL);
+
 $TOURTYPES = TourType::all();
 ?>
 <!DOCTYPE html>
@@ -23,6 +27,7 @@ $TOURTYPES = TourType::all();
         <link href="css/price-range/ion.rangeSlider.css" rel="stylesheet" type="text/css"/>
         <link href="css/price-range/ion.rangeSlider.skinFlat.css" rel="stylesheet" type="text/css"/>
         <link href="css/owl.carousel.min.css" rel="stylesheet" type="text/css"/>
+
 
     </head>
     <body>
@@ -202,6 +207,98 @@ $TOURTYPES = TourType::all();
                                     </div>
                                 </div>
                             </form>
+                            <div class="owl-carousel tour-slider" id="transport-carousel">
+                                <?php
+                                $TRANSPORT = $TRANSPORTSOBJ->all();
+                                foreach ($TRANSPORT as $transport) {
+                                    $transport_photos = $TRANSPORTS_PHOTO->getTransportPhotosById($transport['id']);
+                                    $condition = new VehicleCondition($transport['condition']);
+                                    $vehicle_type = new VehicleType($transport['vehicle_type']);
+                                    $fuel_type = new FuelType($transport['fuel_type'])
+                                    ?>
+                                    <div  class="index-transport-container">
+                                        <?php
+                                        foreach ($transport_photos as $key => $transport_photo) {
+                                            if ($key == 0) {
+                                                ?>
+                                                <a href="transportation-view.php?id=<?php echo $transport['id']; ?>">
+                                                    <span class="price">
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                    </span>
+                                                    <img src="upload/transport/thumb/<?php echo $transport_photo['image_name'] ?>" alt=""/>
+                                                </a>
+
+                                                <?php
+                                            }
+                                        }
+                                        ?>
+                                        <!--                                        <div class="transport-heading"></div>-->
+                                        <div class="transport-bot-container">  
+                                            <a href="transportation-view.php?id=<?php echo $transport['id']; ?>">
+                                                <div class="transport-bot-title"> <?php echo $transport['title'] ?></div>
+                                                <div class="vehicle-options-container">
+
+                                                    <div class="col-md-12">
+                                                        <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4">
+                                                            <img class="index-transport-ico" src="images/transport/passenges.png"><div>
+                                                                <span class="transport-ico-txt"><?php echo $transport['no_of_passangers'] ?></span>
+                                                            </div>
+                                                        </div>
+
+
+                                                        <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4">
+                                                            <img class="index-transport-ico" src="images/transport/001-suitcase.png"><div>
+                                                                <span class="transport-ico-txt"><?php echo $transport['no_of_baggages'] ?></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4">
+                                                            <img class="index-transport-ico" src="images/transport/004-car.png"><div>
+                                                                <span class="transport-ico-txt"><?php echo $transport['no_of_doors'] ?></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="vehicle-options-bottom">
+                                                    <div class="vehicle-options-heading">Vehicle Type : <?php echo $vehicle_type->name ?></div>
+                                                    <div class="vehicle-options-heading">Registered Year :  <?php echo $transport['registered_year'] ?></div>
+                                                    <div class="vehicle-options-heading">Fuel Type : <?php echo $fuel_type->name; ?></div>
+                                                    <div class="vehicle-options-heading">Air Conditioned : 
+                                                        <?php
+                                                        if ($transport['ac'] == 1) {
+                                                            ?>
+                                                            <span>yes</span>
+                                                            <?php
+                                                        } else {
+                                                            ?>
+                                                            <span>no</span>
+                                                            <?php
+                                                        }
+                                                        ?>
+                                                    </div>
+                                                    <div class="vehicle-options-heading"><b><?php echo $condition->name ?></b></div>
+                                                </div>
+
+                                            </a>
+
+                                            <div class="read_more">
+
+                                                <a href="transportation-view.php?id=<?php echo $transport['id']; ?>" class="read_more_button">Book Now
+                                                    <i class="fa fa-long-arrow-right"></i></a>
+                                                <div class="clear"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <?php
+                                }
+                                ?>
+
+                            </div>
                         </div>
                         <div id="tour" class="tab-pane fade">
                             <h3 class="select-op-header text-center">Tour</h3>
@@ -538,6 +635,31 @@ $TOURTYPES = TourType::all();
                     }
                 }
             })
+
+            $('#transport-carousel').owlCarousel({
+
+                loop: true,
+                margin: 10,
+                responsiveClass: true,
+                autoplay: true,
+                autoplayTimeout: 2000,
+                autoplayHoverPause: true,
+                responsive: {
+                    0: {
+                        items: 1,
+                        nav: true
+                    },
+                    600: {
+                        items: 3,
+                        nav: true
+                    },
+                    1000: {
+                        items: 5,
+                        nav: true,
+                        loop: true
+                    }
+                }
+            });
         });
     </script>
 

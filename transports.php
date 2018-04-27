@@ -85,7 +85,6 @@ $TRANSPORTS = $SEARCH->GetTransportByLocationFromAndTo($from, $to, $type, $condi
                                             <a href="transportation-view.php?id=<?php echo $transport['id']; ?>">
                                                 <img class=" vehicle-img" src="upload/transport/thumb/<?php echo $TRANSPORTS_P['image_name']; ?>"/>
                                             </a>
-
                                         </div>
                                         <?php
                                     }
