@@ -27,7 +27,7 @@ body {
     height: 100%;
     overflow-x: hidden;
     letter-spacing: 0.2px;
-    color: #fff;
+    color: #000;
     background-color: #2740DA;
     text-decoration: none;
 }
@@ -38,6 +38,9 @@ body {
 .common-pad {
     padding-top: 2em;
     /*  padding-bottom: 7em;*/
+}
+.contact-detail{
+    color: #fff;
 }
 
 .sec-header {

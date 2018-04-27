@@ -4,74 +4,245 @@ include_once(dirname(__FILE__) . '/class/include.php');
 <html>
     <head>
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="css/owl.carousel.min.css" rel="stylesheet" type="text/css"/>
+        <style>
+
+        </style>
     </head>
     <body>
-        <div id="myCarousel" class="carousel slide" data-ride="carousel">
-            <h2 class="t-comment">Customer <b>Testimonials</b></h2>
-            <!-- Carousel indicators -->
+        <ul class="gridlist itemgrid owl-carousel owl-theme owl-responsive-1170 owl-loaded" id="transport-carousel">
+            <div class="owl-stage-outer">
+                <div class="owl-stage" style="transform: translate3d(-2621.25px, 0px, 0px); transition: all 0.25s ease 0s; width: 4660px;">
 
-            <ol class="carousel-indicators">
-                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                <li data-target="#myCarousel" data-slide-to="1"></li>
-                <li data-target="#myCarousel" data-slide-to="2"></li>
-            </ol>   
-
-
-            <!-- Wrapper for carousel items -->
-            <div class="carousel-inner">
-
-                <div class="item carousel-item active">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="testimonial">
-                                <p>fdghdhhh</p>
+                    <div class="owl-item cloned" style="width: 266.25px; margin-right: 25px;">
+                        <li class="item">
+                            <div class="innerad">
+                                <h3><a href="detail.html">Car Name 2016</a></h3>
+                                <div class="price">$89,900</div>
+                                <div class="location"><i class="fa fa-map-marker" aria-hidden="true"></i> Atlanta, GA</div>
                             </div>
-                            <div class="media">
-                                <div class="media-left d-flex mr-3">
-                                    <img src="upload/visitor/-535179229_190667961677_1524565790_n.jpg" alt=""/>										
-                                </div>
-                                <div class="media-body">
-                                    <div class="overview">
-                                        <div class="name"><b>hrthr</b></div>
-                                        <div class="details">rhrthrh</div>
-                                        <div class="star-rating-t">
-                                            <ul class="list-inline">
-                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
-                                            </ul>
-                                        </div>
-                                    </div>										
-                                </div>
+                            <div class="adimg">
+                                <div class="ribbon_3 popular"><span>Featured</span></div>
+                                <a href="detail.html"><img src="images/cars/08.jpg" alt=""></a></div>
+                            <div class="innerad"> 
+                                <a href="detail.html" class="readmore">View Details 
+                                    <i class="fa fa-arrow-circle-right" aria-hidden="true">
+                                    </i>
+                                </a> 
                             </div>
-                        </div>
-
-                    </div>			
+                        </li>
+                    </div>
+                       <div class="owl-item cloned" style="width: 266.25px; margin-right: 25px;">
+                        <li class="item">
+                            <div class="innerad">
+                                <h3><a href="detail.html">Car Name 2016</a></h3>
+                                <div class="price">$89,900</div>
+                                <div class="location"><i class="fa fa-map-marker" aria-hidden="true"></i> Atlanta, GA</div>
+                            </div>
+                            <div class="adimg">
+                                <div class="ribbon_3 popular"><span>Featured</span></div>
+                                <a href="detail.html"><img src="images/cars/08.jpg" alt=""></a></div>
+                            <div class="innerad"> 
+                                <a href="detail.html" class="readmore">View Details 
+                                    <i class="fa fa-arrow-circle-right" aria-hidden="true">
+                                    </i>
+                                </a> 
+                            </div>
+                        </li>
+                    </div>
+                       <div class="owl-item cloned" style="width: 266.25px; margin-right: 25px;">
+                        <li class="item">
+                            <div class="innerad">
+                                <h3><a href="detail.html">Car Name 2016</a></h3>
+                                <div class="price">$89,900</div>
+                                <div class="location"><i class="fa fa-map-marker" aria-hidden="true"></i> Atlanta, GA</div>
+                            </div>
+                            <div class="adimg">
+                                <div class="ribbon_3 popular"><span>Featured</span></div>
+                                <a href="detail.html"><img src="images/cars/08.jpg" alt=""></a></div>
+                            <div class="innerad"> 
+                                <a href="detail.html" class="readmore">View Details 
+                                    <i class="fa fa-arrow-circle-right" aria-hidden="true">
+                                    </i>
+                                </a> 
+                            </div>
+                        </li>
+                    </div>
+                       <div class="owl-item cloned" style="width: 266.25px; margin-right: 25px;">
+                        <li class="item">
+                            <div class="innerad">
+                                <h3><a href="detail.html">Car Name 2016</a></h3>
+                                <div class="price">$89,900</div>
+                                <div class="location"><i class="fa fa-map-marker" aria-hidden="true"></i> Atlanta, GA</div>
+                            </div>
+                            <div class="adimg">
+                                <div class="ribbon_3 popular"><span>Featured</span></div>
+                                <a href="detail.html"><img src="images/cars/08.jpg" alt=""></a></div>
+                            <div class="innerad"> 
+                                <a href="detail.html" class="readmore">View Details 
+                                    <i class="fa fa-arrow-circle-right" aria-hidden="true">
+                                    </i>
+                                </a> 
+                            </div>
+                        </li>
+                    </div>
+                       <div class="owl-item cloned" style="width: 266.25px; margin-right: 25px;">
+                        <li class="item">
+                            <div class="innerad">
+                                <h3><a href="detail.html">Car Name 2016</a></h3>
+                                <div class="price">$89,900</div>
+                                <div class="location"><i class="fa fa-map-marker" aria-hidden="true"></i> Atlanta, GA</div>
+                            </div>
+                            <div class="adimg">
+                                <div class="ribbon_3 popular"><span>Featured</span></div>
+                                <a href="detail.html"><img src="images/cars/08.jpg" alt=""></a></div>
+                            <div class="innerad"> 
+                                <a href="detail.html" class="readmore">View Details 
+                                    <i class="fa fa-arrow-circle-right" aria-hidden="true">
+                                    </i>
+                                </a> 
+                            </div>
+                        </li>
+                    </div>
+                       <div class="owl-item cloned" style="width: 266.25px; margin-right: 25px;">
+                        <li class="item">
+                            <div class="innerad">
+                                <h3><a href="detail.html">Car Name 2016</a></h3>
+                                <div class="price">$89,900</div>
+                                <div class="location"><i class="fa fa-map-marker" aria-hidden="true"></i> Atlanta, GA</div>
+                            </div>
+                            <div class="adimg">
+                                <div class="ribbon_3 popular"><span>Featured</span></div>
+                                <a href="detail.html"><img src="images/cars/08.jpg" alt=""></a></div>
+                            <div class="innerad"> 
+                                <a href="detail.html" class="readmore">View Details 
+                                    <i class="fa fa-arrow-circle-right" aria-hidden="true">
+                                    </i>
+                                </a> 
+                            </div>
+                        </li>
+                    </div>
+                       <div class="owl-item cloned" style="width: 266.25px; margin-right: 25px;">
+                        <li class="item">
+                            <div class="innerad">
+                                <h3><a href="detail.html">Car Name 2016</a></h3>
+                                <div class="price">$89,900</div>
+                                <div class="location"><i class="fa fa-map-marker" aria-hidden="true"></i> Atlanta, GA</div>
+                            </div>
+                            <div class="adimg">
+                                <div class="ribbon_3 popular"><span>Featured</span></div>
+                                <a href="detail.html"><img src="images/cars/08.jpg" alt=""></a></div>
+                            <div class="innerad"> 
+                                <a href="detail.html" class="readmore">View Details 
+                                    <i class="fa fa-arrow-circle-right" aria-hidden="true">
+                                    </i>
+                                </a> 
+                            </div>
+                        </li>
+                    </div>
+                       <div class="owl-item cloned" style="width: 266.25px; margin-right: 25px;">
+                        <li class="item">
+                            <div class="innerad">
+                                <h3><a href="detail.html">Car Name 2016</a></h3>
+                                <div class="price">$89,900</div>
+                                <div class="location"><i class="fa fa-map-marker" aria-hidden="true"></i> Atlanta, GA</div>
+                            </div>
+                            <div class="adimg">
+                                <div class="ribbon_3 popular"><span>Featured</span></div>
+                                <a href="detail.html"><img src="images/cars/08.jpg" alt=""></a></div>
+                            <div class="innerad"> 
+                                <a href="detail.html" class="readmore">View Details 
+                                    <i class="fa fa-arrow-circle-right" aria-hidden="true">
+                                    </i>
+                                </a> 
+                            </div>
+                        </li>
+                    </div>
+                       <div class="owl-item cloned" style="width: 266.25px; margin-right: 25px;">
+                        <li class="item">
+                            <div class="innerad">
+                                <h3><a href="detail.html">Car Name 2016</a></h3>
+                                <div class="price">$89,900</div>
+                                <div class="location"><i class="fa fa-map-marker" aria-hidden="true"></i> Atlanta, GA</div>
+                            </div>
+                            <div class="adimg">
+                                <div class="ribbon_3 popular"><span>Featured</span></div>
+                                <a href="detail.html"><img src="images/cars/08.jpg" alt=""></a></div>
+                            <div class="innerad"> 
+                                <a href="detail.html" class="readmore">View Details 
+                                    <i class="fa fa-arrow-circle-right" aria-hidden="true">
+                                    </i>
+                                </a> 
+                            </div>
+                        </li>
+                    </div>
+                       <div class="owl-item cloned" style="width: 266.25px; margin-right: 25px;">
+                        <li class="item">
+                            <div class="innerad">
+                                <h3><a href="detail.html">Car Name 2016</a></h3>
+                                <div class="price">$89,900</div>
+                                <div class="location"><i class="fa fa-map-marker" aria-hidden="true"></i> Atlanta, GA</div>
+                            </div>
+                            <div class="adimg">
+                                <div class="ribbon_3 popular"><span>Featured</span></div>
+                                <a href="detail.html"><img src="images/cars/08.jpg" alt=""></a></div>
+                            <div class="innerad"> 
+                                <a href="detail.html" class="readmore">View Details 
+                                    <i class="fa fa-arrow-circle-right" aria-hidden="true">
+                                    </i>
+                                </a> 
+                            </div>
+                        </li>
+                    </div>
                 </div>
-
             </div>
-            <!-- Carousel controls -->
-            <a class="carousel-control left carousel-control-prev" href="#myCarousel" data-slide="prev">
-                <i class="fa fa-chevron-left"></i>
-            </a>
-            <a class="carousel-control right carousel-control-next" href="#myCarousel" data-slide="next">
-                <i class="fa fa-chevron-right"></i>
-            </a>
-            <div class="text-center">
-                <button type="submit" id="btn-add-comment" class="btn btn-info">
-                    <i class="fa fa-plus"></i>  Add Your Comment
-                </button>
-            </div>
+            <div class="owl-controls">
+                <div class="owl-nav">
+                    <div class="owl-prev" style="display: none;">
+                        <i class="fa fa-chevron-left" aria-hidden="true">
 
-            <?php
-            include './add-feedback.php';
-            ?>
-        </div>
+                        </i></div>
+                    <div class="owl-next" style="display: none;">
+                        <i class="fa fa-chevron-right" aria-hidden="true">
+
+                        </i>
+                    </div>
+                </div>
+                <div style="" class="owl-dots">
+                    <div class="owl-dot"><span></span></div>
+                    <div class="owl-dot active"><span></span></div>
+                </div>
+            </div>
+        </ul>
         <script src="js/jquery-2.2.4.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/owl.carousel.min.js" type="text/javascript"></script>
+        <script>
+            $(document).ready(function () {
+
+
+                $('#transport-carousel').owlCarousel({
+                    loop: true,
+                    margin: 10,
+                    responsiveClass: true,
+                    responsive: {
+                        0: {
+                            items: 1,
+                            nav: true
+                        },
+                        600: {
+                            items: 3,
+                            nav: false
+                        },
+                        1000: {
+                            items: 5,
+                            nav: true,
+                            loop: false
+                        }
+                    }
+                });
+            });
+        </script>
     </body>
 </html>
 
