@@ -239,7 +239,11 @@ $TOURTYPES = TourType::all();
                                         <!--                                        <div class="transport-heading"></div>-->
                                         <div class="transport-bot-container">  
                                             <a href="transportation-view.php?id=<?php echo $transport['id']; ?>">
-                                                <div class="transport-bot-title"> <?php echo $transport['title'] ?></div>
+                                                <div class="transport-bot-title"> <?php echo substr($transport['title'], 0,23);
+                                                        if(strlen($transport['title'])>23){
+                                                            echo '...';
+                                                        }
+                                                        ?></div>
                                                 <div class="vehicle-options-container">
 
                                                     <div class="col-md-12">
