@@ -454,11 +454,11 @@
     }
     .owl-nav {
         position: inherit;
-        margin: -350px 0px 230px 0px;
+        margin: -400px 0px 286px 0px;
         font-size: 25px;
     }
     .tour-arrow {
-        margin-right: 13px;
+        margin-right: 42px;
     }
     .tour-heading, .tour-heading:hover {
         width: 82%;
@@ -1010,7 +1010,7 @@
 
     .body-style {
         background-color: rgba(0,0,0,.60);
-        height: 569px;
+        /*height: 569px;*/
         margin-top: 60px;
         margin-bottom: 60px;
         border-radius: 10px;
@@ -1101,6 +1101,7 @@
 
     }
 
+
 }
 
 /*@media (min-width: 960px) and (max-width: 1024px)*/
@@ -1118,7 +1119,7 @@
 
     .body-style {
         background-color: rgba(0,0,0,.60);
-        height: 569px;
+        /*        height: 569px;*/
         margin-top: 29px;
         margin-bottom: 29px;
         border-radius: 10px;
@@ -1143,8 +1144,97 @@
     .mobile-section {
         margin-left: 37px;
     }
-
+    /*------tour-slider-----*/
+    .owl-nav {
+        margin: -207px 0px 100px 0px;
+    }
+    .owl-prev {
+        margin: 0% 87% 0% 0%;
+    }
+    .tour-arrow img {
+        margin-top: 1px;
+    }
+    .tour-heading {
+        padding: 5px 5px 5px 12px;
+        top: -56px;
+        font-size: 18px;
+        width: 68%;
+    }
+    .tour-arrow {
+        top: -92px;
+        margin-right: 12px;
+        height: 36px;
+        width: 29px;
+    }
 
 }
 
+@media (width: 320px) {
+    .tour-arrow {
+        margin-right: 13px;
+        top: -81px;
+    }
+    .owl-nav {
+        margin: -349px 0px 241px 0px;
+    }
+}
+@media (width: 360px) {
+    .tour-arrow {
+        margin-right: 20px;
+        height: 59px;
+    }
+}
+@media (width: 375px) {
+    .tour-arrow {
+        margin-right: 23px;
+    }
+}
+@media (width: 384px) {
+    .tour-arrow {
+        margin-right: 25px;
+        top: -140px;
+    }
+    .owl-nav {
+        margin: -474px 0px 286px 0px;
+    }
+}
+@media (width: 412px) {
+    .tour-arrow {
+        margin-right: 30px;
+        height: 59px;
+        top: -140px;
+    }
+    .owl-nav {
+        margin: -474px 0px 286px 0px;
+    }
+}
+@media (width: 414px) {
+    .tour-arrow {
+        margin-right: 30px;
+        height: 59px;
+    }
+    .owl-nav {
+        margin: -474px 0px 286px 0px;
+    }
+}
+@media (width: 960px) {
+    .owl-nav {
+        margin: -306px 0px 180px 0px;
+    }
+    .tour-heading {
+        padding: 6px 6px 6px 15px;
+        top: -56px;
+        font-size: 22px;
+        width: 72%;
+    }
+    .tour-arrow {
+        top: -99px;
+        margin-right: 33px;
+        height: 43px;
+        width: 29px;
+    }
+    .tour-arrow img {
+        margin-top: 4px;
+    }
+}
 
