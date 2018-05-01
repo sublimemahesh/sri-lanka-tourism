@@ -8,7 +8,7 @@
             </div>
             <form  method="post" id="client-comment" action="post-and-get/transport-feedback.php" enctype="multipart/form-data"> 
                 <div class="modal-body"> 
-                   
+
                     <div class="form-group">
                         <label for="name">Title</label>
                         <input type="text" name="title" class="form-control" id="title" placeholder="Enter Title" required/>
@@ -46,12 +46,22 @@
                 </div>
 
                 <div class="modal-footer">
-                    <?php $VIS = new Visitor($_SESSION['id']);?>
-                    <button type="submit" class="btn btn-default" data-dismiss="modal">Close</button>  
-                    <input type="hidden" name="visitor" value="<?php echo $VIS->id; ?>">
-                    <input type="hidden" name="transport" value="<?php echo $id ?>">
-                    <button type="submit" class="btn btn-default" name="create" id="create">Save Comment</button>
-                    <input type="hidden" name="save" value="TRUE">
+                    <?php
+                    if (isset($_SESSION["login"])) {
+                        ?>
+                        <button type="submit" class="btn btn-default" data-dismiss="modal">Close</button>  
+                        <input type="hidden" name="visitor" value="<?php echo $_SESSION['id']; ?>">
+                        <input type="hidden" name="transport" value="<?php echo $id ?>">
+                        <button type="submit" class="btn btn-default" name="create" id="create">Save Comment</button>
+                        <input type="hidden" name="save" value="TRUE">
+                        <?php
+                    } else {
+                        echo 'You must create an visiter account to continue this process';
+                    }
+                    ?>
+
+
+
                 </div>
 
             </form>
