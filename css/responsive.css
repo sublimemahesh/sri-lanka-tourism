@@ -175,6 +175,22 @@
         width: calc(100% + 30px);
         margin: 0 -15px;
     }
+    .tourpack {
+        padding: 0px 15px;
+    }
+    .view-image {
+        margin-bottom: 15px;
+    }
+    .other-tour {
+        margin: 0 0 5px 15px;
+    }
+    .other-packs {
+        padding-bottom: 15px;
+        padding-top: 15px;
+    }
+    .book-now-btn a {
+        margin: -13px 0px 60px 46px
+    }
 }
 
 @media (max-width: 650px) {

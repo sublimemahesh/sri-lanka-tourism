@@ -141,7 +141,7 @@ $TOURS = $SEARCH->GetToursByKeywords($keyword, $noofdates, $type, $pricefrom, $p
                                     <div class="row tour-desc"><?php echo substr($TOUR['description'], 0, 90) . '...'; ?></div>
                                     <div class="row">
                                         <div class="tour-type pull-left"><i class="fa fa-certificate"></i> <?php echo $TYPE->name; ?> Type</div>
-                                        <a href="#"><div class="tour-btn pull-right btn btn-sm blue">Read More<span class="glyphicon glyphicon-eye-open"></span></div></a>
+                                        <a href="tour-package-view.php?id=<?php echo $TOUR['id']; ?>"><div class="tour-btn pull-right btn btn-sm blue">Read More<span class="glyphicon glyphicon-eye-open"></span></div></a>
                                     </div> 
 
                                 </div>
