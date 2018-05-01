@@ -79,7 +79,7 @@ $TOURTYPES = TourType::all();
                                 <a data-toggle="pill" href="#booking" class="space-adjust top-link-button">
                                     <div>
                                         <img src="images/learning.png" alt=""/>
-                                        <span class="select-ico-title">Booking</span>
+                                        <span class="select-ico-title">Article</span>
                                     </div>
                                 </a>
                             </li>
@@ -87,7 +87,7 @@ $TOURTYPES = TourType::all();
                                 <a data-toggle="pill" href="#sea" class="space-adjust top-link-button">
                                     <div>
                                         <img src="images/icon/search11.png" alt=""/>
-                                        <span class="select-ico-title">Article</span>
+                                        <span class="select-ico-title">Search</span>
                                     </div>
                                 </a>
                             </li>
@@ -290,7 +290,7 @@ $TOURTYPES = TourType::all();
 
                                             <div class="read_more">
 
-                                                <a href="transportation-view.php?id=<?php echo $transport['id']; ?>" class="read_more_button">Book Now
+                                                <a href="transportation-view.php?id=<?php echo $transport['id']; ?>" class="read_more_button">View More
                                                     <i class="fa fa-long-arrow-right"></i></a>
                                                 <div class="clear"></div>
                                             </div>
