@@ -10,14 +10,27 @@ if (isset($_POST['save'])) {
     $VALID = new Validator();
 
     $FEEDBACK->visitor = $_POST['visitor'];
-    $FEEDBACK->transport = $_POST['transport'];
     $FEEDBACK->date_time = $now;
     $FEEDBACK->title = $_POST['title'];
     $FEEDBACK->rate = $_POST['rate'];
     $FEEDBACK->description = $_POST['message'];
-    $FEEDBACK->accommodation = 0;
-    $FEEDBACK->tour_package = 0;
 
+    if (isset($_POST['transport'])) {
+        $FEEDBACK->transport = $_POST['transport'];
+    } else {
+        $FEEDBACK->transport = 0;
+    }
+    if (isset($_POST['tourpackage'])) {
+        $FEEDBACK->tour_package = $_POST['tourpackage'];
+    } else {
+        $FEEDBACK->tour_package = 0;
+    }
+    if (isset($_POST['accommodation'])) {
+        $FEEDBACK->accommodation = $_POST['accommodation'];
+    } else {
+        $FEEDBACK->accommodation = 0;
+    }
+    
     $RESULT = $FEEDBACK->create();
 
     if ($RESULT) {

@@ -48,7 +48,6 @@ class Feedback {
                 . $this->tour_package . "')";
 
         $db = new Database();
-
         $result = $db->readQuery($query);
 
         if ($result) {
@@ -104,6 +103,21 @@ class Feedback {
     public function getFeedbackByTransportID($transport) {
 
         $query = "SELECT * FROM `feedback` WHERE `transport` = '" . $transport . "'";
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+        return $array_res;
+    }
+    
+    public function getFeedbackByTourPackageID($tour) {
+
+        $query = "SELECT * FROM `feedback` WHERE `tour_package` = '" . $tour . "'";
 
         $db = new Database();
 
