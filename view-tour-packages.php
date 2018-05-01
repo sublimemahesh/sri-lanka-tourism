@@ -69,8 +69,15 @@ $TOURS = $SEARCH->GetToursByKeywords($keyword, $noofdates, $type, $pricefrom, $p
         <link href="css/datepicker.css" rel="stylesheet" type="text/css"/>
         <link href="assets/css/styles.css" rel="stylesheet" type="text/css"/>
         <link href="admin/plugins/jquery-ui/jquery-ui.css" rel="stylesheet" type="text/css"/>
-        <link href="css/style.css" rel="stylesheet" type="text/css"/>
-        <link href="https://fonts.googleapis.com/css?family=Russo+One|Magra|Ubuntu+Condensed" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css?family=Russo+One|Magra|Ubuntu+Condensed" rel="stylesheet">
+        
+        <style>
+            @media (max-width: 480px) {
+                .carousel .testimonial {
+                    margin: 0px;
+                }
+            }
+        </style>
     </head>
     <body>
         <!-- Our Resort Values style-->
@@ -93,7 +100,7 @@ $TOURS = $SEARCH->GetToursByKeywords($keyword, $noofdates, $type, $pricefrom, $p
                             $TYPE = new TourType($TOUR['tour_type']);
                             
                             ?>
-                            <div class="tour-pack1 col-md-3">
+                            <div class="tour-pack1 col-md-3 col-sm-4">
                                 <div class="tour-pack">
                                 <div class="tour-img">
                                     <img src="upload/tour-package/thumb/<?php echo $TOUR['picture_name']; ?>" alt=""/>
