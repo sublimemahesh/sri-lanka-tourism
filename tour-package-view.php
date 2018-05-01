@@ -212,7 +212,7 @@ $count_feedbacks = count($feedbacks);
                             <?php
                             foreach ($packages as $package) {
                                 ?>
-                                <div class="col-md-12 col-xs-12 other-packs">
+                                <div class="col-md-12 col-xs-12 col-sm-6 other-packs">
                                     <div class="hovereffect">
                                         <img class="img-responsive" src="upload/tour-package/thumb/<?php echo $package['picture_name']; ?>" alt="">
                                         <div class="overlay">

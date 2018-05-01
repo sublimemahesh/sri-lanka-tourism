@@ -191,6 +191,9 @@
     .book-now-btn a {
         margin: -13px 0px 60px 46px
     }
+    .tour-pack1.col-md-3 {
+        margin: 10px 35px;
+    }
 }
 
 @media (max-width: 650px) {
@@ -1182,7 +1185,18 @@
         height: 36px;
         width: 29px;
     }
-
+    .tour-pack {
+        height: 405px;
+    }
+    .tour-btn {
+        margin-top: 6px;
+    }
+    .tour-days {
+        margin-left: 74px;
+    }
+    .hovereffect a.info {
+        top: -40%;
+    }
 }
 
 @media (width: 320px) {
@@ -1193,18 +1207,67 @@
     .owl-nav {
         margin: -349px 0px 241px 0px;
     }
+    .tour-pack1.col-md-3 {
+        margin: 10px 35px;
+    }
+    .tour-days {
+        margin-top: -59px;
+        margin-left: 110px;
+    }
+    .tour-nights {
+        margin-top: -59px;
+    }
+    .hovereffect a.info {
+        top: -21%;
+    }
 }
+
 @media (width: 360px) {
     .tour-arrow {
         margin-right: 20px;
         height: 59px;
     }
+    .tour-pack {
+        height: 412px;
+    }
+    .tour-days {
+        margin-top: -60px;
+        margin-left: 151px;
+    }
+    .tour-nights {
+        margin-top: -60px;
+    }
+    .hovereffect a.info {
+        top: -19%;
+    }
 }
+
 @media (width: 375px) {
     .tour-arrow {
         margin-right: 23px;
     }
+    .tour-days {
+        margin-top: -60px;
+        margin-left: 165px;
+    }
+    .tour-nights {
+        margin-top: -60px;
+    }
+    .tour-pack {
+        height: 427px;
+    }
+    .hovereffect a.info {
+        font-size: 18px;
+        top: -38px;
+    }
+    .hovereffect img, .hovereffect:hover img {
+        width: 100%
+    }
+    .hovereffect a.info {
+        top: -18%;
+    }
 }
+
 @media (width: 384px) {
     .tour-arrow {
         margin-right: 25px;
@@ -1213,7 +1276,18 @@
     .owl-nav {
         margin: -474px 0px 286px 0px;
     }
+    .tour-days {
+        margin-top: -60px;
+        margin-left: 173px;
+    }
+    .tour-nights {
+        margin-top: -60px;
+    }
+    .tour-pack {
+        height: 427px;
+    }
 }
+
 @media (width: 412px) {
     .tour-arrow {
         margin-right: 30px;
@@ -1223,7 +1297,28 @@
     .owl-nav {
         margin: -474px 0px 286px 0px;
     }
+    .tour-pack1.col-md-3 {
+        margin: 10px 50px;
+    }
+    .tour-days {
+        margin-top: -60px;
+        margin-left: 173px;
+    }
+    .tour-nights {
+        margin-top: -60px;
+    }
+    .tour-pack {
+        height: 427px;
+    }
+
+    .hovereffect img, .hovereffect:hover img {
+        width: 100%
+    }
+    .hovereffect a.info {
+        top: -16%;
+    }
 }
+
 @media (width: 414px) {
     .tour-arrow {
         margin-right: 30px;
@@ -1232,7 +1327,25 @@
     .owl-nav {
         margin: -474px 0px 286px 0px;
     }
+    .tour-days {
+        margin-top: -60px;
+        margin-left: 203px;
+    }
+    .tour-nights {
+        margin-top: -60px;
+    }
+    .tour-pack {
+        height: 427px;
+    }
+    .hovereffect a.info {
+        font-size: 18px;
+        top: -38px;
+    }
+    .hovereffect img, .hovereffect:hover img {
+        width: 100%
+    }
 }
+
 @media (width: 960px) {
     .owl-nav {
         margin: -306px 0px 180px 0px;
@@ -1251,6 +1364,21 @@
     }
     .tour-arrow img {
         margin-top: 4px;
+    }
+    .tour-pack {
+        height: 405px;
+    }
+    .tour-btn {
+        margin-top: 6px;
+    }
+    .tour-days {
+        margin-left: 80px;
+    }
+    .hovereffect a.info {
+        top: -16%;
+    }
+    .hovereffect img, .hovereffect:hover img {
+        width: 100%
     }
 }
 
