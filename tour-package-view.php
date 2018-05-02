@@ -93,7 +93,7 @@ $count_feedbacks = count($feedbacks);
                         }
                         ?>
                         <div class="col-md-4 col-xs-4 col-md-offset-4 book-now-btn">
-                            <a href="#" class="button"><span>Book Now </span></a>
+                            <a href="tour-package-booking.php?id=<?php echo $tourid; ?>&visitor=<?php echo $_SESSION['id']; ?>" class="button"><span>Book Now </span></a>
                         </div>
                         <div class="col-sm-12">			
                             <div id="myCarousel" class="carousel slide multi-item-carousel" data-ride="carousel">
