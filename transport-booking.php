@@ -117,7 +117,7 @@ $now = date('Y-m-d H:i:s');
 
                                 </div>
 
-                                <h4 class="booking-transports-title text-center">Vhicle Booking Details</h4>
+                                <h4 class="booking-transports-title text-center">Vehicle Booking Details</h4>
                                 <div class="row panel panel-default booking-panel-default">
                                     <div class="col-sm-12 col-md-12">
 

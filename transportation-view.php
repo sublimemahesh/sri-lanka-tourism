@@ -4,11 +4,12 @@ if (!isset($_SESSION)) {
     session_start();
 }
 $id = $_GET["id"];
-$VIEW_TRANSPORTS = new Transports($id);
+
 $TRANSPORTS = new Transports($id);
 $TRANSPORTS_PHOTO = new TransportPhoto(NULL);
 $TRANSPORT_RATE_OBJ = new TransportRates(NULL);
 $TRANSPORT_RATE = $TRANSPORT_RATE_OBJ->GetTransportRatesByTransportId($id);
+$MEMBER = new Member($TRANSPORTS->member);
 ?>
 
 <!DOCTYPE html>
@@ -24,105 +25,29 @@ $TRANSPORT_RATE = $TRANSPORT_RATE_OBJ->GetTransportRatesByTransportId($id);
         <link href="css/search.css" rel="stylesheet" type="text/css"/>
         <link href="css/datepicker.css" rel="stylesheet" type="text/css"/>
         <!--<link href="css/style.css" rel="stylesheet" type="text/css"/>-->
+        <link href="css/responsive-table.css" rel="stylesheet" type="text/css"/>
         <link href="visitor-feedback/validation-styles.css" rel="stylesheet" type="text/css"/>
         <link href="css/comments-style.css" rel="stylesheet" type="text/css"/>
         <link href="https://fonts.googleapis.com/css?family=Russo+One|Magra|Ubuntu+Condensed" rel="stylesheet"> 
-        <style>
-            table { 
-	width: 750px; 
-	border-collapse: collapse; 
-	margin:50px auto;
-	}
-
-/* Zebra striping */
-tr:nth-of-type(odd) { 
-	background: #eee; 
-	}
-
-th { 
-	background: #3498db; 
-	color: white; 
-	font-weight: bold; 
-	}
-
-td, th { 
-	padding: 10px; 
-	border: 1px solid #ccc; 
-	text-align: left; 
-	font-size: 18px;
-	}
-
-/* 
-Max width before this PARTICULAR table gets nasty
-This query will take effect for any screen smaller than 760px
-and also iPads specifically.
-*/
-@media 
-only screen and (max-width: 760px),
-(min-device-width: 768px) and (max-device-width: 1024px)  {
-
-	table { 
-	  	width: 100%; 
-	}
-
-	/* Force table to not be like tables anymore */
-	table, thead, tbody, th, td, tr { 
-		display: block; 
-	}
-	
-	/* Hide table headers (but not display: none;, for accessibility) */
-	thead tr { 
-		position: absolute;
-		top: -9999px;
-		left: -9999px;
-	}
-	
-	tr { border: 1px solid #ccc; }
-	
-	td { 
-		/* Behave  like a "row" */
-		border: none;
-		border-bottom: 1px solid #eee; 
-		position: relative;
-		padding-left: 50%; 
-	}
-
-	td:before { 
-		/* Now like a table header */
-/*		position: absolute;*/
-		/* Top/left values mimic padding */
-		top: 6px;
-		left: 6px;
-		width: 45%; 
-		padding-right: 10px; 
-		white-space: nowrap;
-		/* Label the data */
-		content: attr(data-column);
-
-		color: #000;
-		font-weight: bold;
-	}
-
-}
-        </style>
-            
+        <link href="css/owl.carousel.min.css" rel="stylesheet" type="text/css"/>
     </head>
-    <body>
+    <body style="background-color: #fff">
         <!-- Our Resort Values style-->
         <?php
         include './header.php';
         ?>
 
-        <div class="row" style="background-color: #fff;">
-            <div class="container transport-container">
-                <div class="col-md-8 p pro-details">
 
+
+        <div class="container transport-container">
+            <div class="row">
+                <div class="col-md-8">
                     <div id="transport_photos" class="galleria-slider">
                         <?php
                         $VIEW_TRANSPORT = TransportPhoto::getTransportPhotosById($id);
                         foreach ($VIEW_TRANSPORT as $key => $img) {
-                            $FUEL_TYPE = new FuelType($VIEW_TRANSPORTS->fuel_type);
-                            $CONDITION = new VehicleCondition($VIEW_TRANSPORTS->condition);
+                            $FUEL_TYPE = new FuelType($TRANSPORTS->fuel_type);
+                            $CONDITION = new VehicleCondition($TRANSPORTS->condition);
                             ?>
                             <a href="upload/transport/<?php echo $img['image_name']; ?>">
                                 <img src="upload/transport/thumb/<?php echo $img['image_name']; ?>" data-title="" >
@@ -131,12 +56,101 @@ only screen and (max-width: 760px),
                         }
                         ?>
                     </div> 
+                </div>
+                <div class="col-md-4">
+                    <div class="sidebar">
+
+                        <div class="widget">
+
+                            <div class="row">
+                                <div class="col-md-5 col-sm-5 col-xs-5">
+                                    <div class="posted-title">Posted By </div>  
+                                    <a href="member-view.php?id=<?php echo $MEMBER->id; ?>" class="link">
+                                        <?php
+                                        if (empty($MEMBER->profile_picture)) {
+                                            ?>
+                                            <img src="upload/member/member.png" class="img img-responsive" id="profil_pic"/>
+                                            <?php
+                                        } else {
+                                            ?>
+                                            <img src="upload/member/<?php echo $MEMBER->profile_picture; ?>" class="img-responsive">
+                                            <?php
+                                        }
+                                        ?>
+                                    </a>
+                                </div>
+                                <div class="col-md-7 col-sm-7 col-xs-7">
+
+
+                                    <ul class="list-group-transport">
+                                        <li class="list-group-transport-item"><b>Name</b>  <br>dhanusha</li> 
+                                        <li class="list-group-transport-item"><b>Email</b> <br>d@d.com</li>
+                                        <li class="list-group-transport-item"><b>Contact No</b> <br>123</li>
+                                    </ul>
+
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="transport-facilities details-vehical">
+
+                        <div class=" ">
+                            <h3 class="subtitle fancy"><span>Vehicle Condition</span></h3>
+                            <div class="car-type text-uppercase"><strong> <?php echo $TRANSPORTS->title; ?></strong></div>
+                            <div class="car-name"><strong> <?php echo $CONDITION->name; ?></strong></div>
+                            <div class="row facility-list">
+                                <div class="col-md-2 ">
+                                    <img src="assets/img/transport/people.png" class="facility-img">
+                                    <span><?php echo $TRANSPORTS->no_of_passangers; ?></span>
+                                </div>
+                                <div class="col-md-2">
+                                    <img src="assets/img/transport/luggage.png"class="facility-img">
+                                    <span><?php echo $TRANSPORTS->no_of_baggages; ?></span>
+                                </div>
+                                <div class="col-md-2">
+                                    <img src="assets/img/transport/door.png"class="facility-img">
+                                    <span><?php echo $TRANSPORTS->no_of_doors; ?></span>
+                                </div>
+                                <div class="col-md-6">
+                                    <?php
+                                    if ($TRANSPORTS->ac == 1) {
+                                        ?>
+                                        <img src="assets/img/transport/snow.png"class="facility-img">
+                                        <span>Air Conditioned  </span>
+                                        <?php
+                                    } else {
+                                        ?>
+                                        <img src="assets/img/transport/snow.png"class="facility-img">
+                                        <span>Non Air Conditioned </span>
+                                        <?php
+                                    }
+                                    ?>
+                                </div>
+                            </div>
+                            <div class="row car-details ">
+
+                                <div class="col-md-12 fuel-type">
+                                    <span><strong>Fuel Type:</strong> <?php echo $FUEL_TYPE->name; ?> </span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-8">
                     <div class="transport-description">
                         <span>
-                            <?php echo $VIEW_TRANSPORTS->description; ?>
+                            <?php echo $TRANSPORTS->description; ?>
                         </span>
                     </div>
-
                     <table class="table table-bordered">
                         <thead>
                             <tr>
@@ -168,215 +182,232 @@ only screen and (max-width: 760px),
                         </tbody>
                     </table>
 
-
-                    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                        <h2 class="t-comment">Customer <b>Testimonials</b></h2>
-                        <!-- Carousel indicators -->
-
-                        <ol class="carousel-indicators">
-                            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                            <li data-target="#myCarousel" data-slide-to="1"></li>
-                            <li data-target="#myCarousel" data-slide-to="2"></li>
-                        </ol>   
-
-
-                        <!-- Wrapper for carousel items -->
-                        <div class="carousel-inner">
-                            <?php
-                            $FEEDBACK = new Feedback(NULL);
-                            $TRANSPORT_FEEDBACKS = $FEEDBACK->getFeedbackByTransportID($id);
-                            $li = '';
-                            foreach ($TRANSPORT_FEEDBACKS as $key => $transport_feedback) {
-                                $VISITOR = new Visitor($transport_feedback['visitor']);
-                                if ($key === 0) {
-                                    $li .= ' <li data-target="#myCarousel" data-slide-to="' . $key . '" class="active">'
-                                            . '</li>';
-                                    ?>  
-                                    <div class="item carousel-item active">
-                                        <div class="row">
-                                            <div class="col-sm-12">
-                                                <div class="testimonial">
-                                                    <p><?php echo $transport_feedback['description']; ?></p>
-                                                </div>
-                                                <div class="media">
-                                                    <div class="media-left d-flex mr-3">
-                                                        <img src="upload/visitor/<?php echo $VISITOR->image_name ?>" alt=""/>										
-                                                    </div>
-                                                    <div class="media-body">
-                                                        <div class="overview">
-                                                            <div class="name"><b><?php echo $VISITOR->first_name . ' ' . $VISITOR->second_name ?></b></div>
-                                                            <div class="details"><?php echo $transport_feedback['title']; ?></div>
-                                                            <div class="star-rating-t">
-                                                                <ul class="list-inline">
-                                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                                    <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>										
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div>			
-                                    </div>
-                                    <?php
-                                } else {
-                                    $li .= ' <li data-target="#myCarousel" data-slide-to="' . $key . '">'
-                                            . '</li>';
-                                    ?>
-                                    <div class="item carousel-item">
-                                        <div class="row">
-                                            <div class="col-sm-12">
-                                                <div class="testimonial">
-                                                    <p><?php echo $transport_feedback['description']; ?></p>
-                                                </div>
-                                                <div class="media">
-                                                    <div class="media-left d-flex mr-3">
-                                                        <img src="upload/visitor/<?php echo $VISITOR->image_name ?>" alt=""/>										
-                                                    </div>
-                                                    <div class="media-body">
-                                                        <div class="overview">
-                                                            <div class="name"><b><?php echo $VISITOR->first_name . ' ' . $VISITOR->second_name ?></b></div>
-                                                            <div class="details"><?php echo $transport_feedback['title']; ?></div>
-                                                            <div class="star-rating-t">
-                                                                <ul class="list-inline">
-                                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                                    <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>										
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div>			
-                                    </div>
-                                    <?php
-                                }
-                            }
-                            ?>
-                        </div>
-                        <!-- Carousel controls -->
-                        <a class="carousel-control left carousel-control-prev" href="#myCarousel" data-slide="prev">
-                            <i class="fa fa-chevron-left"></i>
-                        </a>
-                        <a class="carousel-control right carousel-control-next" href="#myCarousel" data-slide="next">
-                            <i class="fa fa-chevron-right"></i>
-                        </a>
-                        <div class="text-center">
-                            <button type="submit" id="btn-add-comment" class="btn btn-info">
-                                <i class="fa fa-plus"></i>  Add Your Comment
-                            </button>
-                        </div>
-
-                        <?php
-                        include './add-feedback.php';
-                        ?>
-                    </div>
-
                 </div>
-                <div class="col-md-4 ">
-                    <div class="right-side">
-                        <div class="transport-facilities details-vehical">
+                <div class="col-md-4">
+                    <div class="sidebar">
+                        <div class="widget">
+                            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                                <h2 class="t-comment">Customer Testimonials</h2>
+                                <!-- Carousel indicators -->
 
-                            <div class=" ">
-                                <h3 class="subtitle fancy"><span>Lorem</span></h3>
-                                <div class="car-type text-uppercase"><strong> <?php echo $VIEW_TRANSPORTS->title; ?></strong></div>
-                                <div class="car-name"><strong> <?php echo $CONDITION->name; ?></strong></div>
-                                <div class="row facility-list">
-                                    <div class="col-md-2 ">
-                                        <img src="assets/img/transport/people.png" class="facility-img">
-                                        <span><?php echo $VIEW_TRANSPORTS->no_of_passangers; ?></span>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <img src="assets/img/transport/luggage.png"class="facility-img">
-                                        <span><?php echo $VIEW_TRANSPORTS->no_of_baggages; ?></span>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <img src="assets/img/transport/door.png"class="facility-img">
-                                        <span><?php echo $VIEW_TRANSPORTS->no_of_doors; ?></span>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <?php
-                                        if ($TRANSPORTS->ac == 1) {
-                                            ?>
-                                            <img src="assets/img/transport/snow.png"class="facility-img">
-                                            <span>Air Conditioned  </span>
+                                <!--                                <ol class="carousel-indicators">
+                                                                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                                                                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                                                                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                                                                </ol>   -->
+
+
+                                <!-- Wrapper for carousel items -->
+                                <div class="carousel-inner">
+                                    <?php
+                                    $FEEDBACK = new Feedback(NULL);
+                                    $TRANSPORT_FEEDBACKS = $FEEDBACK->getFeedbackByTransportID($id);
+                                    $li = '';
+                                    foreach ($TRANSPORT_FEEDBACKS as $key => $transport_feedback) {
+                                        $VISITOR = new Visitor($transport_feedback['visitor']);
+                                        if ($key === 0) {
+                                            $li .= ' <li data-target="#myCarousel" data-slide-to="' . $key . '" class="active">'
+                                                    . '</li>';
+                                            ?>  
+                                            <div class="item carousel-item active">
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <div class="testimonial">
+                                                            <p><?php echo $transport_feedback['description']; ?></p>
+                                                        </div>
+                                                        <div class="media">
+                                                            <div class="media-left d-flex mr-3">
+                                                                <img src="upload/visitor/<?php echo $VISITOR->image_name ?>" alt=""/>										
+                                                            </div>
+                                                            <div class="media-body">
+                                                                <div class="overview">
+                                                                    <div class="name"><b><?php echo $VISITOR->first_name . ' ' . $VISITOR->second_name ?></b></div>
+                                                                    <div class="details"><?php echo $transport_feedback['title']; ?></div>
+                                                                    <div class="star-rating-t">
+                                                                        <ul class="list-inline">
+                                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                                            <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>										
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>			
+                                            </div>
                                             <?php
                                         } else {
+                                            $li .= ' <li data-target="#myCarousel" data-slide-to="' . $key . '">'
+                                                    . '</li>';
                                             ?>
-                                            <img src="assets/img/transport/snow.png"class="facility-img">
-                                            <span>Non Air Conditioned </span>
+                                            <div class="item carousel-item">
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <div class="testimonial">
+                                                            <p><?php echo $transport_feedback['description']; ?></p>
+                                                        </div>
+                                                        <div class="media">
+                                                            <div class="media-left d-flex mr-3">
+                                                                <img src="upload/visitor/<?php echo $VISITOR->image_name ?>" alt=""/>										
+                                                            </div>
+                                                            <div class="media-body">
+                                                                <div class="overview">
+                                                                    <div class="name"><b><?php echo $VISITOR->first_name . ' ' . $VISITOR->second_name ?></b></div>
+                                                                    <div class="details"><?php echo $transport_feedback['title']; ?></div>
+                                                                    <div class="star-rating-t">
+                                                                        <ul class="list-inline">
+                                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                                            <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>										
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>			
+                                            </div>
                                             <?php
                                         }
-                                        ?>
-                                    </div>
-                                </div>
-                                <div class="row car-details ">
-
-                                    <div class="col-md-12 fuel-type">
-                                        <span><strong>Fuel Type:</strong> <?php echo $FUEL_TYPE->name; ?> </span>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                        </div>
-                        <div class="more-transport">
-                            <div class="row">
-
-                                <h3 class="subtitle fancy"><span>Other Transport</span></h3>
-                                <?php
-                                $OTHER_TRANSPORT = Transports::all();
-                                foreach ($OTHER_TRANSPORT as $other_transports) {
+                                    }
                                     ?>
-                                    <div class="car-pack col-md-12">
-                                        <div class="col-md-4 hover01">
-                                            <?php
-                                            foreach ($TRANSPORTS_PHOTO->getTransportPhotosById($other_transports['id']) as $key => $TRANSPORTS_P) {
-                                                if ($key == 1) {
-                                                    break;
-                                                }
-                                                ?>
-                                                <figure><img src="upload/transport/thumb/<?php echo $TRANSPORTS_P['image_name']; ?>" alt="" class="img-responsive" style="width: 100px; height: 75px;"/></figure>
-                                                <?php
-                                            }
-                                            ?>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="transports-desc">
-                                                <?php echo substr($other_transports ['description'], 0, 75) . '...'; ?>
-                                            </div>
-                                            <div class="t-more text-center">
-                                                <a href="transportation-view.php?id=<?php echo $other_transports['id']; ?>" class="btn btn-sm blue">
-                                                    <span class="fa fa-eye"></span>View
-                                                </a>
-                                            </div>
-
-
-                                        </div>
-                                    </div>
-
-                                    <?php
-                                }
+                                </div>
+                                <!-- Carousel controls -->
+                                <a class="carousel-control left carousel-control-prev" href="#myCarousel" data-slide="prev">
+                                    <i class="fa fa-chevron-left"></i>
+                                </a>
+                                <a class="carousel-control right carousel-control-next" href="#myCarousel" data-slide="next">
+                                    <i class="fa fa-chevron-right"></i>
+                                </a>
+                                <div class="text-center">
+                                    <button type="submit" id="btn-add-comment" class="btn btn-info btn-position-rel">
+                                        <i class="fa fa-plus"></i>  Add Your Comment
+                                    </button>
+                                </div>
+                                <?php
+                                include './add-feedback.php';
                                 ?>
                             </div>
-
-
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <div class="row top-margin-30">
+                <hr>
+                <div class="col-md-12">
+                    <p class="subtitle-more more-t"><span>More Transports</span></p>
+
+                    <div class="owl-carousel tour-slider" id="transport-carousel">
+                        <?php
+                        $TRANSPORT = $TRANSPORTS->all();
+                        foreach ($TRANSPORT as $transport) {
+                            $transport_photos = $TRANSPORTS_PHOTO->getTransportPhotosById($transport['id']);
+                            $condition = new VehicleCondition($transport['condition']);
+                            $vehicle_type = new VehicleType($transport['vehicle_type']);
+                            $fuel_type = new FuelType($transport['fuel_type'])
+                            ?>
+                            <div  class="index-transport-container">
+                                <?php
+                                foreach ($transport_photos as $key => $transport_photo) {
+                                    if ($key == 0) {
+                                        ?>
+                                        <a href="transportation-view.php?id=<?php echo $transport['id']; ?>">
+                                            <span class="price">
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                            </span>
+                                            <img src="upload/transport/thumb/<?php echo $transport_photo['image_name'] ?>" alt=""/>
+                                        </a>
+
+                                        <?php
+                                    }
+                                }
+                                ?>
+                                <!--                                        <div class="transport-heading"></div>-->
+                                <div class="transport-bot-container">  
+                                    <a href="transportation-view.php?id=<?php echo $transport['id']; ?>">
+                                        <div class="transport-bot-title"> <?php
+                                            echo substr($transport['title'], 0, 23);
+                                            if (strlen($transport['title']) > 23) {
+                                                echo '...';
+                                            }
+                                            ?></div>
+                                        <div class="vehicle-options-container">
+
+                                            <div class="col-md-12">
+                                                <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4">
+                                                    <img class="index-transport-ico" src="images/transport/passenges.png"><div>
+                                                        <span class="transport-ico-txt"><?php echo $transport['no_of_passangers'] ?></span>
+                                                    </div>
+                                                </div>
 
 
+                                                <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4">
+                                                    <img class="index-transport-ico" src="images/transport/001-suitcase.png"><div>
+                                                        <span class="transport-ico-txt"><?php echo $transport['no_of_baggages'] ?></span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4">
+                                                    <img class="index-transport-ico" src="images/transport/004-car.png"><div>
+                                                        <span class="transport-ico-txt"><?php echo $transport['no_of_doors'] ?></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="vehicle-options-bottom">
+                                            <div class="vehicle-options-heading">Vehicle Type : <?php echo $vehicle_type->name ?></div>
+                                            <div class="vehicle-options-heading">Registered Year :  <?php echo $transport['registered_year'] ?></div>
+                                            <div class="vehicle-options-heading">Fuel Type : <?php echo $fuel_type->name; ?></div>
+                                            <div class="vehicle-options-heading">Air Conditioned : 
+                                                <?php
+                                                if ($transport['ac'] == 1) {
+                                                    ?>
+                                                    <span>yes</span>
+                                                    <?php
+                                                } else {
+                                                    ?>
+                                                    <span>no</span>
+                                                    <?php
+                                                }
+                                                ?>
+                                            </div>
+                                            <div class="vehicle-options-heading"><b><?php echo $condition->name ?></b></div>
+                                        </div>
+
+                                    </a>
+
+                                    <div class="read_more">
+
+                                        <a href="transportation-view.php?id=<?php echo $transport['id']; ?>" class="read_more_button">View More
+                                            <i class="fa fa-long-arrow-right"></i></a>
+                                        <div class="clear"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <?php
+                        }
+                        ?>
+
+                    </div>
+                </div>
             </div>
 
         </div>
+
+
 
         <?php
         include './footer.php';
@@ -442,6 +473,34 @@ only screen and (max-width: 760px),
             });
         </script>
 
+        <script>
+            $(document).ready(function () {
+                $('#transport-carousel').owlCarousel({
+
+                    loop: true,
+                    margin: 10,
+                    responsiveClass: true,
+                    autoplay: true,
+                    autoplayTimeout: 2000,
+                    autoplayHoverPause: true,
+                    responsive: {
+                        0: {
+                            items: 1,
+                            nav: true
+                        },
+                        600: {
+                            items: 3,
+                            nav: true
+                        },
+                        1000: {
+                            items: 5,
+                            nav: true,
+                            loop: true
+                        }
+                    }
+                });
+            });
+        </script>
     </body> 
 
 </html>
