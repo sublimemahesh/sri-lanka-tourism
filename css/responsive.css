@@ -161,6 +161,14 @@
     .room-l-wrapper .content{
         left: auto;
     }
+    .transport-booking-box {
+        margin-bottom: 0px;
+    }
+    .panel-responsive {
+        margin-left: 10px;
+        margin-right: 10px;
+        
+    }
 
 }
 
