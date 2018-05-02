@@ -2299,7 +2299,7 @@ hr.style15:after {
 .book-now-btn {
     top: 14px;
     padding: 20px 1px 1px 0px;
-    z-index: 99999999;
+    z-index: 1;
 }
 .book-now-btn a {
     font-size: 20px;
