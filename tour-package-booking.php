@@ -130,7 +130,7 @@ $now = date('Y-m-d H:i:s');
                                         <div class="col-md-6">
                                             <div class="bottom-top">End Date</div>
                                             <div class="formrow">
-                                                <input type="text" name="end_date" id="end_date" style="line-height: 20px;" class="form-control" value="<?php echo date('Y-m-d', strtotime($today . ' + ' . $days . 'days')) ?>">
+                                                <input type="text" name="end_date" id="end_date" style="line-height: 20px;" class="form-control" value="<?php echo date('Y-m-d', strtotime($today . ' + ' . $nights . 'days')) ?>">
                                                 <br>
                                             </div>
                                         </div>
@@ -151,7 +151,7 @@ $now = date('Y-m-d H:i:s');
                                             <input type="hidden" id="visitor" value="<?php echo $VISITOR->id; ?>" name="visitor"/>
                                             <input type="hidden" id="tour_package" value="<?php echo $tourid; ?>" name="tour_package"/>
                                             <input type="hidden" id="date_time_booked" value="<?php echo $now; ?>" name="date_time_booked"/>
-                                            <input type="hidden" id="days" value="<?php echo $days; ?>" name="days"/>
+                                            <input type="hidden" id="days" value="<?php echo $nights; ?>" name="days"/>
                                             <input type="hidden" readonly="true" name="price_per_person" class="form-control input-type-bottom" placeholder="Price Per Person"  value="<?php echo $TOURPACKAGE->price; ?>" required="TRUE">
                                             <input type="submit" name="book" value="Book Now" class="btn btn-info center-block">
                                         </div>
