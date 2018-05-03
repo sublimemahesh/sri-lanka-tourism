@@ -89,9 +89,14 @@ $MEMBER = new Member($TRANSPORTS->member);
                                             <img src="upload/member/member.png" class="img img-responsive" id="profil_pic"/>
                                             <?php
                                         } else {
-                                            ?>
-                                            <img src="upload/member/<?php echo $MEMBER->profile_picture; ?>" class="img-responsive">
-                                            <?php
+                                            if ($MEMBER->facebookID && substr($MEMBER->profile_picture, 0, 5) === "https") {
+                                                ?>
+                                                <img src="<?php echo $MEMBER->profile_picture; ?>" class="img-responsive">
+                                            <?php } else {
+                                                ?>
+                                                <img src="upload/member/<?php echo $MEMBER->profile_picture; ?>" class="img-responsive">
+                                                <?php
+                                            }
                                         }
                                         ?>
                                     </a>
@@ -330,7 +335,7 @@ $MEMBER = new Member($TRANSPORTS->member);
                             $vehicle_type = new VehicleType($transport['vehicle_type']);
                             $fuel_type = new FuelType($transport['fuel_type'])
                             ?>
-                        <div  class="index-transport-container" style="background-color: #ececec;">
+                            <div  class="index-transport-container" style="background-color: #ececec;">
                                 <?php
                                 foreach ($transport_photos as $key => $transport_photo) {
                                     if ($key == 0) {
