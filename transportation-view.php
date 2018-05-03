@@ -36,6 +36,23 @@ $MEMBER = new Member($TRANSPORTS->member);
         <?php
         include './header.php';
         ?>
+        <div id="page">
+            <div class="page-header page-title-left page-title-pattern">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1 class="title hidden-sm hidden-xs"><?php echo $TRANSPORTS->title; ?></h1> 
+                            <ul class="breadcrumb">
+                                <li class="banner-bredcum-1">
+                                    <a href="index.php">Home</a>
+                                </li> 
+                                <li class="active banner-bredcum-2">Transports</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </div>
 
 
 
@@ -60,7 +77,7 @@ $MEMBER = new Member($TRANSPORTS->member);
                 <div class="col-md-4">
                     <div class="sidebar">
 
-                        <div class="widget">
+                        <div class="widget-member">
 
                             <div class="row">
                                 <div class="col-md-5 col-sm-5 col-xs-5">
@@ -83,9 +100,9 @@ $MEMBER = new Member($TRANSPORTS->member);
 
 
                                     <ul class="list-group-transport">
-                                        <li class="list-group-transport-item"><b>Name</b>  <br>dhanusha</li> 
-                                        <li class="list-group-transport-item"><b>Email</b> <br>d@d.com</li>
-                                        <li class="list-group-transport-item"><b>Contact No</b> <br>123</li>
+                                        <li class="list-group-transport-item"><b>Name</b>  <br><?php echo $MEMBER->name; ?></li> 
+                                        <li class="list-group-transport-item"><b>Email</b> <br><?php echo $MEMBER->email; ?></li>
+                                        <li class="list-group-transport-item"><b>Contact No</b> <br><?php echo $MEMBER->contact_number; ?></li>
                                     </ul>
 
 
@@ -95,50 +112,49 @@ $MEMBER = new Member($TRANSPORTS->member);
                             </div>
                         </div>
                     </div>
-                    <div class="transport-facilities details-vehical">
 
-                        <div class=" ">
-                            <h3 class="subtitle fancy"><span>Vehicle Condition</span></h3>
-                            <div class="car-type text-uppercase"><strong> <?php echo $TRANSPORTS->title; ?></strong></div>
-                            <div class="car-name"><strong> <?php echo $CONDITION->name; ?></strong></div>
-                            <div class="row facility-list">
-                                <div class="col-md-2 ">
-                                    <img src="assets/img/transport/people.png" class="facility-img">
-                                    <span><?php echo $TRANSPORTS->no_of_passangers; ?></span>
-                                </div>
-                                <div class="col-md-2">
-                                    <img src="assets/img/transport/luggage.png"class="facility-img">
-                                    <span><?php echo $TRANSPORTS->no_of_baggages; ?></span>
-                                </div>
-                                <div class="col-md-2">
-                                    <img src="assets/img/transport/door.png"class="facility-img">
-                                    <span><?php echo $TRANSPORTS->no_of_doors; ?></span>
-                                </div>
-                                <div class="col-md-6">
-                                    <?php
+
+                    <div class="jbside">
+                        <h3>About This Vehicle</h3>
+                        <ul class="jbdetail">
+                            <li class="row">
+                                <div class="col-md-12 col-xs-12 jb-title"><span> <?php echo $TRANSPORTS->title; ?></span></div>
+                            </li>
+                            <li class="row">
+                                <div class="col-md-6 col-xs-6">Condition</div>
+                                <div class="col-md-6 col-xs-6"><span><?php echo $CONDITION->name; ?></span></div>
+                            </li>
+                            <li class="row">
+                                <div class="col-md-6 col-xs-6">Fuel Type</div>
+                                <div class="col-md-6 col-xs-6"><span><?php echo $FUEL_TYPE->name; ?></span></div>
+                            </li>
+                            <li class="row">
+                                <div class="col-md-9 col-xs-9">No of passengers</div>
+                                <div class="col-md-3 col-xs-3"><span><?php echo $TRANSPORTS->no_of_passangers; ?></span></div>
+                            </li>
+                            <li class="row">
+                                <div class="col-md-6 col-xs-6">No of baggage</div>
+                                <div class="col-md-6 col-xs-6"><span><?php echo $TRANSPORTS->no_of_baggages; ?></span></div>
+                            </li>
+                            <li class="row">
+                                <div class="col-md-6 col-xs-6">No of doors</div>
+                                <div class="col-md-6 col-xs-6"><span><?php echo $TRANSPORTS->no_of_doors; ?></span></div>
+                            </li>
+                            <li class="row">
+                                <div class="col-md-6 col-xs-6">Air Conditioned</div>
+                                <div class="col-md-6 col-xs-6"> <?php
                                     if ($TRANSPORTS->ac == 1) {
                                         ?>
-                                        <img src="assets/img/transport/snow.png"class="facility-img">
-                                        <span>Air Conditioned  </span>
+                                        <span>Yes</span>
                                         <?php
                                     } else {
                                         ?>
-                                        <img src="assets/img/transport/snow.png"class="facility-img">
-                                        <span>Non Air Conditioned </span>
+                                        <span>No</span>
                                         <?php
                                     }
-                                    ?>
-                                </div>
-                            </div>
-                            <div class="row car-details ">
-
-                                <div class="col-md-12 fuel-type">
-                                    <span><strong>Fuel Type:</strong> <?php echo $FUEL_TYPE->name; ?> </span>
-                                </div>
-                            </div>
-
-                        </div>
-
+                                    ?></div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -314,7 +330,7 @@ $MEMBER = new Member($TRANSPORTS->member);
                             $vehicle_type = new VehicleType($transport['vehicle_type']);
                             $fuel_type = new FuelType($transport['fuel_type'])
                             ?>
-                            <div  class="index-transport-container">
+                        <div  class="index-transport-container" style="background-color: #ececec;">
                                 <?php
                                 foreach ($transport_photos as $key => $transport_photo) {
                                     if ($key == 0) {
@@ -504,5 +520,3 @@ $MEMBER = new Member($TRANSPORTS->member);
     </body> 
 
 </html>
-
-
