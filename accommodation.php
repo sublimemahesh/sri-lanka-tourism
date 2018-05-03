@@ -1,6 +1,42 @@
 <?php
 include_once(dirname(__FILE__) . '/class/include.php');
 
+if (!isset($_SESSION)) {
+    session_start();
+}
+
+$SEARCH = new Search(NULL);
+
+$keyword = NULL;
+$type = NULL;
+$district = NULL;
+$city = NULL;
+
+/* set page numbers */
+if (isset($_GET["page"])) {
+    $page = (int) $_GET["page"];
+} else {
+    $page = 1;
+}
+$setLimit = 3;
+$pageLimit = ($page * $setLimit) - $setLimit;
+
+
+/* search */
+if (isset($_GET['keyword'])) {
+    $keyword = $_GET['keyword'];
+}
+if (isset($_GET['type'])) {
+    $type = $_GET['type'];
+}
+if (isset($_GET['district'])) {
+    $district = $_GET['district'];
+}
+if (isset($_GET['city'])) {
+    $city = $_GET['city'];
+}
+
+$ACCOMMODATIONS = $SEARCH->GetAccommodationByKeywords($keyword, $type, $district, $city, $pageLimit, $setLimit);
 
 $ACCOMMODATION_PHOTO = new AccommodationPhoto(NULL);
 ?>
@@ -33,7 +69,6 @@ $ACCOMMODATION_PHOTO = new AccommodationPhoto(NULL);
                     <div class="room-container clearfix">
                         <div class="col-md-9">
                             <?php
-                            $ACCOMMODATIONS = Accommodation::all();
                             foreach ($ACCOMMODATIONS as $accommodation) {
                                 ?>
                                 <div class="room-box1 row animated-box animated-border" >
@@ -73,7 +108,7 @@ $ACCOMMODATION_PHOTO = new AccommodationPhoto(NULL);
                                                 </div>
                                                 <div class="direction icons col-md-7">
                                                     <i class="fa fa-globe"></i>
-                                                    <span class="text-d"><?php echo $accommodation['website']; ?></span>
+                                                    <span class="text-d">website</span>
                                                 </div>
                                             </div>
                                             <div class="details">
@@ -128,7 +163,9 @@ $ACCOMMODATION_PHOTO = new AccommodationPhoto(NULL);
                                 <?php
                             }
                             ?>
-
+                            <div class="row">
+                                <?php $SEARCH->showPaginationAccommodation($keyword, $type, $district, $city, $setLimit, $page); ?>
+                            </div>
                         </div>
                     </div>
             </section>

@@ -7,6 +7,12 @@ if (!isset($_SESSION)) {
 $TRANSPORTSOBJ = new Transports(NULL);
 $TRANSPORTS_PHOTO = new TransportPhoto(NULL);
 $TRANSPORT_RATEOBJ = new TransportRates(NULL);
+$ACCOMMODATION_TYPEOBJ = new AccommodationType(NULL);
+$DISTRICT_OBJ = new District(NULL);
+
+
+$DISTRICT = $DISTRICT_OBJ->all();
+$ACCOMMODATION_TYPE = $ACCOMMODATION_TYPEOBJ->all();
 
 $TOURTYPES = TourType::all();
 ?>
@@ -239,11 +245,12 @@ $TOURTYPES = TourType::all();
                                         <!--                                        <div class="transport-heading"></div>-->
                                         <div class="transport-bot-container">  
                                             <a href="transportation-view.php?id=<?php echo $transport['id']; ?>">
-                                                <div class="transport-bot-title"> <?php echo substr($transport['title'], 0,23);
-                                                        if(strlen($transport['title'])>23){
-                                                            echo '...';
-                                                        }
-                                                        ?></div>
+                                                <div class="transport-bot-title"> <?php
+                                                    echo substr($transport['title'], 0, 23);
+                                                    if (strlen($transport['title']) > 23) {
+                                                        echo '...';
+                                                    }
+                                                    ?></div>
                                                 <div class="vehicle-options-container">
 
                                                     <div class="col-md-12">
@@ -354,7 +361,7 @@ $TOURTYPES = TourType::all();
                                     ?>
                                     <div>
                                         <a href="view-tour-packages.php?type=<?php echo $TOURTYPE['id']; ?>">
-                                            <img src="upload/tour-type/<?php echo $TOURTYPE['picture_name'];?>" alt=""/>
+                                            <img src="upload/tour-type/<?php echo $TOURTYPE['picture_name']; ?>" alt=""/>
                                             <div class="tour-heading pull-left"><?php echo strtoupper($TOURTYPE['name']); ?></div>
                                             <div class="tour-arrow white pull-right"><img src="images/icon/arrow2.png" alt=""/></div>
                                         </a>
@@ -367,63 +374,64 @@ $TOURTYPES = TourType::all();
                         </div>
                         <div id="hotel" class="tab-pane fade">
                             <h3 class="select-op-header text-center">Hotel</h3>
-                            <div id="taxi" class="tab-pane fade in active">
-                                <div class="row">
-                                    <div class="col-md-6 col-sm-6 col-xs-12 taxi-title">
-                                        <span class="span-style">Destination</span>
-                                        <input type="text" name="destination" placeholder="city,airport or address" class="input-text">
+                            <form method="get" name="form" action="accommodation.php" >
+                                <div id="taxi" class="tab-pane fade in active">
+                                    <div class="row">
+                                        <div class="col-md-6 col-sm-6 col-xs-12 taxi-title">
+                                            <span class="span-style">Hotel Name</span>
+                                            <input type="text" name="keyword"  placeholder="Hotel Name" class="input-text">
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-12 taxi-title">
+                                            <span class="span-style">Accommodation type</span>
+                                            <select name="type" class="form-control taxi-combo">
+                                                <option value="" selected="">-- Please select a accommodation type--</option>
+                                                <?php
+                                                foreach ($ACCOMMODATION_TYPE as $accommodation_type) {
+                                                    ?>
+                                                    <option value="<?php echo $accommodation_type['id']; ?>"><?php echo $accommodation_type['name']; ?></option>
+                                                    <?php
+                                                }
+                                                ?>
+                                            </select>
+                                        </div>
                                     </div>
-                                    <div class="col-md-6 col-sm-6 col-xs-12 taxi-title">
-                                        <span class="span-style">Rooms</span>
-                                        <select name="room" class="form-control taxi-combo" id="room">
-                                            <option value="" selected="">1</option>
-                                            <option value="">2</option>
-                                            <option value="">3</option>
-                                            <option value="">4</option>
-                                            <option value="">5</option>
-                                        </select>
+                                    <div class="row">
+                                        <div class="col-md-6 col-sm-6 col-xs-12 taxi-title">
+                                            <span class="span-style">District</span>
+                                            <select name="district" class="form-control taxi-combo">
+                                                <option value="" selected="">-- Please select a District--</option>
+                                                <?php
+                                                foreach ($DISTRICT as $district) {
+                                                    ?>
+                                                    <option value="<?php echo $district['id']; ?>"><?php echo $district['name']; ?></option>
+                                                    <?php
+                                                }
+                                                ?>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-12 taxi-title">
+                                            <span class="span-style">City</span>
+                                            <select name="city" class="form-control taxi-combo">
+                                                <option value="" selected="">-- Please select a District--</option>
+                                                <?php
+                                                $CITY = City::all();
+                                                foreach ($CITY as $city) {
+                                                    ?>
+                                                    <option value="<?php echo $city['id']; ?>"><?php echo $city['name']; ?></option>
+                                                    <?php
+                                                }
+                                                ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12 col-sm-12 col-xs-12 btn-search">
+                                            <button class="btn-style">Search</button>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="row taxi-body">
-                                    <div class="col-md-3 col-sm-6 col-xs-12 taxi-title">
-                                        <span class="span-style">check-in Date</span>
-                                        <input type="text" name="check-in" placeholder="mm/dd/yy" class="check-in" id="datepicker4">
-                                    </div>
-                                    <div class="col-md-3 col-sm-6 col-xs-12 taxi-title">
-                                        <span class="span-style">Check-out Date</span>
-                                        <input type="text" name="check-out" placeholder="mm/dd/yy" class="check-out" id="datepicker5">
-                                    </div>
-                                    <div class="col-md-3  col-sm-6 col-xs-12 taxi-title">
-                                        <span class="span-style">Adult (18+)</span>
-                                        <select name="adult" class="form-control taxi-combo" id="adult">
-                                            <option value="" selected="">1</option>
-                                            <option value="">2</option>
-                                            <option value="">3</option>
-                                            <option value="">4</option>
-                                            <option value="">6</option>
-                                            <option value="">7</option>
-                                            <option value="">8</option>
-                                            <option value="">9</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-3 col-sm-6 col-xs-12 taxi-title">
-                                        <span class="span-style">Child (0 - 17)</span>
-                                        <select name="adult" class="form-control taxi-combo" id="child">
-                                            <option value="" selected="">1</option>
-                                            <option value="">2</option>
-                                            <option value="">3</option>
-                                            <option value="">4</option>
-                                            <option value="">5</option>
-                                            <option value="">6</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12 col-sm-12 col-xs-12 btn-search">
-                                        <button class="btn-style">Search</button>
-                                    </div>
-                                </div>
-                            </div>
+                            </form>
+
                         </div>
                         <div id="offer" class="tab-pane fade">
                             <h3 class="select-op-header text-center">Offer</h3>
