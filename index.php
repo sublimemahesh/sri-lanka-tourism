@@ -411,17 +411,12 @@ $TOURTYPES = TourType::all();
                                         </div>
                                         <div class="col-md-6 col-sm-6 col-xs-12 taxi-title">
                                             <span class="span-style">City</span>
-                                            <select name="city" class="form-control taxi-combo">
-                                                <option value="" selected="">-- Please select a District--</option>
-                                                <?php
-                                                $CITY = City::all();
-                                                foreach ($CITY as $city) {
-                                                    ?>
-                                                    <option value="<?php echo $city['id']; ?>"><?php echo $city['name']; ?></option>
-                                                    <?php
-                                                }
-                                                ?>
-                                            </select>
+
+                                            <input type="text" autocomplete="off" id="city" placeholder="please select your city" class="input-text">
+                                            <div id="suggesstion-box">
+                                                <ul id="city-list" class="city-list"></ul>
+                                            </div>
+                                            <input type="hidden" name="city" value="" id="city-id"/>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -572,7 +567,8 @@ $TOURTYPES = TourType::all();
     <script src="js/bootstrap.min.js"></script>
     <script src="js/bootstrap-datepicker.js" type="text/javascript"></script>
     <script src="js/city-to.js" type="text/javascript"></script>
-    <script src="js/city-from.js" type="text/javascript"></script> 
+    <script src="js/city-from.js" type="text/javascript"></script>
+    <script src="js/city.js" type="text/javascript"></script>
     <script src="js/price-range/ion.rangeSlider.js" type="text/javascript"></script>
     <script src="js/price-range.js" type="text/javascript"></script>
     <script src="js/owl.carousel.min.js" type="text/javascript"></script>
