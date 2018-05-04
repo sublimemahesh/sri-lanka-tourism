@@ -67,7 +67,7 @@ $TRANSPORTS = new Transports($id);
                                             <div class="form-group">
                                                 <div class="form-line">
                                                     <select class="form-control" id="vehicle_type" name="vehicle_type">
-                                                        <option value="<?php echo $TRANSPORTS->vehicle_type?>">
+                                                        <option value="<?php echo $TRANSPORTS->vehicle_type ?>">
                                                             <?php
                                                             $VEHICLE_TYPE = new VehicleType($TRANSPORTS->vehicle_type);
                                                             echo $VEHICLE_TYPE->name;
@@ -130,7 +130,7 @@ $TRANSPORTS = new Transports($id);
                                             <div class="form-group">
                                                 <div class="form-line">
                                                     <select class="form-control" type="text" id="fuel_type_id" autocomplete="off" name="fuel_type_id">
-                                                        <option value="<?php echo $TRANSPORTS->fuel_type?>">
+                                                        <option value="<?php echo $TRANSPORTS->fuel_type ?>">
                                                             <?php
                                                             $FUEL_TYPE = new FuelType($TRANSPORTS->fuel_type);
                                                             echo $FUEL_TYPE->name;
@@ -180,7 +180,14 @@ $TRANSPORTS = new Transports($id);
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <input type="number" id="member_id" class="form-control" placeholder="Enter Member Id" autocomplete="off" name="member_id" value="<?php echo $TRANSPORTS->member; ?>" >
+                                                    <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="member_id" autocomplete="off" name="member_id" required="TRUE">
+                                                        <option selected value="<?php echo $TRANSPORTS->member; ?>"><?php echo $TRANSPORTS->member; ?></option>
+                                                        <?php foreach (Member::all() as $key => $member) {
+                                                            ?>
+                                                            <option value="<?php echo $member['id']; ?>"><?php echo $member['id']; ?></option><?php
+                                                        }
+                                                        ?>
+                                                    </select>
                                                 </div>
                                             </div>
                                         </div>

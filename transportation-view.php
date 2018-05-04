@@ -191,7 +191,7 @@ $MEMBER = new Member($TRANSPORTS->member);
                                     <td  data-column="Picking Up"><?Php echo $CITYFROM->name; ?></td>
                                     <td data-column="Dropping Off"><?Php echo $CITYTO->name; ?></td>
                                     <td data-column="Distance(KM)"><?Php echo $transport_rate['distance'] . ' KM'; ?></td>
-                                    <td data-column="Price(Rs)"><?Php echo 'Rs.' . $transport_rate['price']; ?></td>
+                                    <td data-column="Price(LKR)"><?Php echo 'LKR.' . $transport_rate['price']; ?></td>
                                     <td> <a href="transport-booking.php?rate=<?php echo $transport_rate['id']; ?>&visitor=<?php echo $_SESSION['id']; ?>" class="transport-book-button">
                                             Book Now
                                         </a>

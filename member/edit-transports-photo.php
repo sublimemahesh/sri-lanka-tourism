@@ -85,10 +85,10 @@ $TRANSPORTS_PHOTO = new TransportPhoto($id);
 
                                                         <div class="top-bott50">
                                                             <div class="bottom-top">
-                                                                
+
                                                                 <input type="hidden" id="oldImageName" value="<?php echo $TRANSPORTS_PHOTO->image_name; ?>" name="oldImageName"/>
-                                            <input type="hidden" id="id" value="<?php echo $TRANSPORTS_PHOTO->id; ?>" name="id"/>
-                                            <input type="hidden" id="authToken" value="<?php echo $_SESSION["id"]; ?>" name="memeber"/>
+                                                                <input type="hidden" id="id" value="<?php echo $TRANSPORTS_PHOTO->id; ?>" name="id"/>
+                                                                <input type="hidden" id="authToken" value="<?php echo $_SESSION["id"]; ?>" name="memeber"/>
                                                                 <button name="update-transports-images" type="submit" class="btn btn-info center-block">Change</button>
                                                             </div>
                                                         </div> 

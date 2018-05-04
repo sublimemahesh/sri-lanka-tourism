@@ -24,7 +24,6 @@ if (isset($_POST['add-transports'])) {
     $VALID->check($TRANSPORTS, [
         'title' => ['required' => TRUE],
         'vehicle_type' => ['required' => TRUE],
-        'member' => ['required' => TRUE],
         'registered_number' => ['required' => TRUE],
         'description' => ['required' => TRUE],
     ]);
@@ -52,7 +51,7 @@ if (isset($_POST['add-transports'])) {
 }
 
 if (isset($_POST['edit-transports'])) {
-    
+
     $TRANSPORTS = New Transports($_POST['id']);
     $VALID = new Validator();
 

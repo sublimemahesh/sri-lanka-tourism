@@ -7,8 +7,8 @@ if ($_POST['option'] == 'delete') {
 
     $TRANSPORT_PHOTO = new TransportPhoto($_POST['id']);
 
-    unlink(Helper::getSitePath() . "upload/transport/transport-photo/gallery/" . $TRANSPORT_PHOTO->image_name);
-    unlink(Helper::getSitePath() . "upload/transport/transport-photo/gallery/thumb/" . $TRANSPORT_PHOTO->image_name);
+    unlink(Helper::getSitePath() . "upload/transport/" . $TRANSPORT_PHOTO->image_name);
+    unlink(Helper::getSitePath() . "upload/transport/thumb/" . $TRANSPORT_PHOTO->image_name);
 
     $result = $TRANSPORT_PHOTO->delete();
 

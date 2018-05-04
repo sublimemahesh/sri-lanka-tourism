@@ -66,7 +66,7 @@ $TRANSPORT_PHOTO = new Transports($id);
                                             </div>
                                         </div>
 
-                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+<!--                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                             <label for="short_description">Caption</label>
                                         </div>
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
@@ -75,7 +75,7 @@ $TRANSPORT_PHOTO = new Transports($id);
                                                     <input type="text" id="caption" class="form-control" placeholder="Enter Image Caption" autocomplete="off" name="caption" required="true">
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div>-->
                                     </div>
                                     <div class="row clearfix">
                                         <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5"> 
@@ -94,7 +94,7 @@ $TRANSPORT_PHOTO = new Transports($id);
                                             ?>
                                             <div class="col-md-3"  id="div_<?php echo $transport_photo['id']; ?>">
                                                 <div class="photo-img-container">
-                                                    <img src="../upload/transport/transport-photo/gallery/<?php echo $transport_photo['image_name']; ?>" class="img-responsive ">
+                                                    <img src="../upload/transport/thumb/<?php echo $transport_photo['image_name']; ?>" class="img-responsive ">
                                                 </div>
                                                 <div class="img-caption">
                                                     <p class="maxlinetitle"><?php echo $transport_photo['caption']; ?></p>
@@ -116,7 +116,7 @@ $TRANSPORT_PHOTO = new Transports($id);
                                         }
                                     } else {
                                         ?> 
-                                        <b style="padding-left: 15px;">No Offer photos in the database.</b> 
+                                        <b style="padding-left: 15px;">No Transport photos in the database.</b> 
                                     <?php } ?> 
 
                                 </div>
