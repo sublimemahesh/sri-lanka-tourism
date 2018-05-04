@@ -52,7 +52,7 @@ $TRANSPORT_PHOTO = new TransportPhoto($id);
                             <div class="body row">
                                 <form class="form-horizontal" method="post" action="post-and-get/transport_photo.php" enctype="multipart/form-data"> 
                                     <div class="row clearfix">
-                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+<!--                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                             <label for="caption">caption</label>
                                         </div>
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
@@ -61,7 +61,7 @@ $TRANSPORT_PHOTO = new TransportPhoto($id);
                                                     <input type="text" id="caption" class="form-control"  value="<?php echo $TRANSPORT_PHOTO->caption; ?>"  name="caption"  required="TRUE">
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div>-->
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                             <label for="image">Image</label>
                                         </div>
@@ -69,7 +69,7 @@ $TRANSPORT_PHOTO = new TransportPhoto($id);
                                             <div class="form-group">
                                                 <div class="form-line">
                                                     <input type="file" id="image" class="form-control" value="<?php echo $TRANSPORT_PHOTO->image_name; ?>"  name="image">
-                                                    <img src="../upload/transport/transport-photo/gallery/<?php echo $TRANSPORT_PHOTO->image_name; ?>" id="image" class="view-edit-img img img-responsive img-thumbnail" name="image" alt="old image">
+                                                    <img src="../upload/transport/<?php echo $TRANSPORT_PHOTO->image_name; ?>" id="image" class="view-edit-img img img-responsive img-thumbnail" name="image" alt="old image">
                                                 </div>
                                             </div>
                                         </div>

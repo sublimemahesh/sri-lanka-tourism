@@ -8,10 +8,10 @@ if (isset($_POST['create'])) {
     $VALID = new Validator();
 
     $TRANSPORT_PHOTO->transport_id = $_POST['id'];
-    $TRANSPORT_PHOTO->caption = filter_input(INPUT_POST, 'caption');
+    $TRANSPORT_PHOTO->caption = "";
 
-    $dir_dest = '../../upload/transport/transport-photo/gallery/';
-    $dir_dest_thumb = '../../upload/transport/transport-photo/gallery/thumb/';
+    $dir_dest = '../../upload/transport/';
+    $dir_dest_thumb = '../../upload/transport/thumb/';
 
     $handle = new Upload($_FILES['image']);
 
@@ -25,8 +25,16 @@ if (isset($_POST['create'])) {
         $handle->file_new_name_ext = 'jpg';
         $handle->image_ratio_crop = 'C';
         $handle->file_new_name_body = $img;
-        $handle->image_x = 900;
-        $handle->image_y = 500;
+        $handle->image_watermark = '../../images/watermark/watermark.png';
+        $image_dst_x = $handle->image_dst_x;
+        $image_dst_y = $handle->image_dst_y;
+        $newSize = Helper::calImgResize(600, $image_dst_x, $image_dst_y);
+
+        $image_x = (int) $newSize[0];
+        $image_y = (int) $newSize[1];
+
+        $handle->image_x = $image_x;
+        $handle->image_y = $image_y;
 
         $handle->Process($dir_dest);
 
@@ -43,7 +51,7 @@ if (isset($_POST['create'])) {
         $handle->image_ratio_crop = 'C';
         $handle->file_new_name_body = $img;
         $handle->image_x = 300;
-        $handle->image_y = 175;
+        $handle->image_y = 278;
 
         $handle->Process($dir_dest_thumb);
 
@@ -56,7 +64,6 @@ if (isset($_POST['create'])) {
     $TRANSPORT_PHOTO->image_name = $imgName;
 
     $VALID->check($TRANSPORT_PHOTO, [
-        'caption' => ['required' => TRUE],
         'image_name' => ['required' => TRUE]
     ]);
 
@@ -84,8 +91,9 @@ if (isset($_POST['create'])) {
 
 if (isset($_POST['update'])) {
 
-    $dir_dest = '../../upload/transport/transport-photo/gallery';
-    $dir_dest_thumb = '../../upload/transport/transport-photo/gallery/thumb/';
+    $dir_dest = '../../upload/transport/';
+    $dir_dest_thumb = '../../upload/transport/thumb/';
+
 
     $handle = new Upload($_FILES['image']);
 
@@ -98,8 +106,16 @@ if (isset($_POST['update'])) {
         $handle->file_new_name_ext = FALSE;
         $handle->image_ratio_crop = 'C';
         $handle->file_new_name_body = $img;
-        $handle->image_x = 900;
-        $handle->image_y = 500;
+        $handle->image_watermark = '../../images/watermark/watermark.png';
+        $image_dst_x = $handle->image_dst_x;
+        $image_dst_y = $handle->image_dst_y;
+        $newSize = Helper::calImgResize(600, $image_dst_x, $image_dst_y);
+
+        $image_x = (int) $newSize[0];
+        $image_y = (int) $newSize[1];
+
+        $handle->image_x = $image_x;
+        $handle->image_y = $image_y;
 
         $handle->Process($dir_dest);
 
@@ -116,7 +132,8 @@ if (isset($_POST['update'])) {
         $handle->image_ratio_crop = 'C';
         $handle->file_new_name_body = $img;
         $handle->image_x = 300;
-        $handle->image_y = 175;
+        $handle->image_y = 278;
+
 
         $handle->Process($dir_dest_thumb);
 
@@ -129,11 +146,10 @@ if (isset($_POST['update'])) {
     $TRANSPORT_PHOTO = new TransportPhoto($_POST['id']);
 
     $TRANSPORT_PHOTO->image_name = $_POST['oldImageName'];
-    $TRANSPORT_PHOTO->caption = filter_input(INPUT_POST, 'caption');
+    $TRANSPORT_PHOTO->caption = "";
 
     $VALID = new Validator();
     $VALID->check($TRANSPORT_PHOTO, [
-        'caption' => ['required' => TRUE],
         'image_name' => ['required' => TRUE]
     ]);
 

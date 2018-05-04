@@ -147,9 +147,10 @@ $TRANSPORTS = new Transports($id);
                                                     $TRANSPORT_RATES = TransportRates::GetTransportRatesByTransportId($id);
                                                     if (count($TRANSPORT_RATES) > 0) {
                                                         foreach ($TRANSPORT_RATES as $key => $transport_rates) {
+                                                            $key++
                                                             ?>
                                                             <tr id="row_<?php echo $transport_rates['id']; ?>">
-                                                                <td><?php echo $transport_rates['sort']; ?></td> 
+                                                                <td><?php echo $key ?></td> 
                                                                 <td>
                                                                     <?php
                                                                     $city = new City($transport_rates['location_from']);
@@ -162,7 +163,7 @@ $TRANSPORTS = new Transports($id);
                                                                     echo $CITY->name;
                                                                     ?>
                                                                 </td>
-                                                                <td> $<?php echo $transport_rates['price']; ?></td>
+                                                                <td> LKR. <?php echo $transport_rates['price']; ?></td>
                                                                 <td> 
                                                                     <a href="#"> <button class="glyphicon glyphicon-trash delete-btn delete-transport-rates" data-id="<?php echo $transport_rates['id']; ?>"></button></a>
                                                                     <a href="edit-transport-rates.php?id=<?php echo $transport_rates['id']; ?>"> <button class="glyphicon glyphicon-pencil edit-btn"></button></a>
@@ -185,10 +186,8 @@ $TRANSPORTS = new Transports($id);
                         </div>
                     </div>
                 </div>
-
             </div>
         </section>
-
         <!-- Jquery Core Js -->
         <script src="plugins/jquery/jquery.min.js"></script>
         <script src="plugins/bootstrap/js/bootstrap.js"></script> 

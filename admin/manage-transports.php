@@ -88,18 +88,19 @@ if (isset($_GET['member'])) {
                                             <tbody>
                                                 <?php
                                                 foreach ($transports as $key => $transport) {
+                                                    $key++
                                                     ?>
                                                     <tr id="row_<?php echo $transport['id']; ?>">
-                                                        <td><?php echo $transport['id']; ?></td> 
+                                                        <td><?php echo $key; ?></td> 
                                                         <td>
                                                             <?php
                                                             $VEHICLE_TYPE = new VehicleType($transport['vehicle_type']);
-                                                            echo $VEHICLE_TYPE->name;
+                                                            echo substr($VEHICLE_TYPE->name, 0,20);
                                                             ?>
                                                         </td>
 
-                                                        <td><?php echo $transport['title']; ?></td> 
-                                                        <td><?php echo $transport['registered_number']; ?></td>
+                                                        <td><?php echo substr($transport['title'],0,20);?></td> 
+                                                        <td><?php echo substr($transport['registered_number'], 0,10); ?></td>
                                                         <td>
                                                             <?php
                                                             $FUEL_TYPE = new FuelType($transport['fuel_type']);
@@ -109,7 +110,7 @@ if (isset($_GET['member'])) {
                                                         <td>
                                                             <?php
                                                             $VEHICLE_CONDITIONS = new VehicleCondition($transport['condition']);
-                                                            echo $VEHICLE_CONDITIONS->name;
+                                                            echo substr($VEHICLE_CONDITIONS->name, 0,15);
                                                             ?>
                                                         </td>
                                                         <td>  
