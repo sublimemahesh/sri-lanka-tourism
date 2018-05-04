@@ -49,8 +49,8 @@ if (isset($_POST['add-transports'])) {
         $VALID->addError("Your data was saved successfully", 'success');
         $_SESSION['ERRORS'] = $VALID->errors();
 
-//        header('Location: ../add-transport-rates.php?id=' . $TRANSPORTS->id);
-        header('Location: ../manage-transport.php');
+        header('Location: ../add-transport-rates.php?id=' . $TRANSPORTS->id);
+//        header('Location: ../manage-transport.php');
     } else {
 
         if (!isset($_SESSION)) {
