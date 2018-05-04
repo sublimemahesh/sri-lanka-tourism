@@ -403,7 +403,13 @@ $MEMBER = new Member($TRANSPORTS->member);
                                                 }
                                                 ?>
                                             </div>
-                                            <div class="vehicle-options-heading"><b><?php echo $condition->name ?></b></div>
+                                            <div class="vehicle-options-heading">Condition : <?php
+                                                echo substr($condition->name, 0, 13);
+                                                if (strlen($condition->name) > 13) {
+                                                    echo '...';
+                                                }
+                                                ?>
+                                            </div>
                                         </div>
 
                                     </a>
