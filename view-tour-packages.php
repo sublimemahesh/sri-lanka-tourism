@@ -51,8 +51,6 @@ if (isset($_GET['priceto'])) {
 }
 
 $TOURS = $SEARCH->GetToursByKeywords($keyword, $noofdates, $type, $pricefrom, $priceto, $pageLimit, $setLimit);
-
-
 ?>
 
 <!DOCTYPE html>
@@ -70,7 +68,7 @@ $TOURS = $SEARCH->GetToursByKeywords($keyword, $noofdates, $type, $pricefrom, $p
         <link href="assets/css/styles.css" rel="stylesheet" type="text/css"/>
         <link href="admin/plugins/jquery-ui/jquery-ui.css" rel="stylesheet" type="text/css"/>
         <link href="https://fonts.googleapis.com/css?family=Russo+One|Magra|Ubuntu+Condensed" rel="stylesheet">
-        
+
         <style>
             @media (max-width: 480px) {
                 .carousel .testimonial {
@@ -95,65 +93,75 @@ $TOURS = $SEARCH->GetToursByKeywords($keyword, $noofdates, $type, $pricefrom, $p
                             $result = TourSubSection::CountDaysInTour($id);
                             $days = $result['days'];
                             $night = (int) $days - 1;
-                            
+
                             $MEMBER = new Member($TOUR['member']);
                             $TYPE = new TourType($TOUR['tour_type']);
-                            
                             ?>
                             <div class="tour-pack1 col-md-3 col-sm-4">
                                 <div class="tour-pack">
-                                <div class="tour-img">
-                                    <img src="upload/tour-package/thumb/<?php echo $TOUR['picture_name']; ?>" alt=""/>
-                                </div>
-                                <div class="tour-duration">
-                                    <div class="tour-days pull-left">
-                                        <i class="fa fa-sun-o"></i> 
-                                        <?php
-                                        if ($days < 10) {
-                                            echo '0' . $days;
-                                        } else {
-                                            echo $days;
-                                        }
-                                        ?>
+                                    <div class="tour-img">
+                                        <img src="upload/tour-package/thumb/<?php echo $TOUR['picture_name']; ?>" alt=""/>
                                     </div>
-                                    <div class="tour-nights pull-right">
-                                        <i class="fa fa-moon-o"></i>
-                                        <?php
-                                        if ($night < 10) {
-                                            echo '0' . $night;
-                                        } else {
-                                            echo $night;
-                                        }
-                                        ?>
-                                    </div>
-                                </div>
-                                <div class="tour-dtls">
-                                    <div class="row">
-                                        <a href="#" title="<?php echo $TOUR['name']; ?>"><div class="tour-title col-md-9 pull-left"><?php echo substr($TOUR['name'], 0, 16); ?></div></a>
-                                        <div class="mem-img col-md-3">
-                                            <img src="upload/member/<?php echo $MEMBER->profile_picture; ?>" class="thumbnail  pull-right" title="<?php echo $MEMBER->name; ?>" alt=""/>
+                                    <div class="tour-duration">
+                                        <div class="tour-days pull-left">
+                                            <i class="fa fa-sun-o"></i> 
+                                            <?php
+                                            if ($days < 10) {
+                                                echo '0' . $days;
+                                            } else {
+                                                echo $days;
+                                            }
+                                            ?>
+                                        </div>
+                                        <div class="tour-nights pull-right">
+                                            <i class="fa fa-moon-o"></i>
+                                            <?php
+                                            if ($night < 10) {
+                                                echo '0' . $night;
+                                            } else {
+                                                echo $night;
+                                            }
+                                            ?>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="tour-price pull-left"><i class="fa fa-dollar"></i> LKR <?php echo $TOUR['price']; ?>/=</div>
-                                        <div class="tour-rate pull-right">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
+                                    <div class="tour-dtls">
+                                        <div class="row">
+                                            <a href="#" title="<?php echo $TOUR['name']; ?>">
+                                                <div class="tour-title col-md-9 pull-left">
+                                                    <?php 
+                                                    if(strlen($TOUR['name'])> 18 ) {
+                                                        echo substr($TOUR['name'], 0, 17) . '...';
+                                                    } else {
+                                                        echo $TOUR['name'];
+                                                    }
+                                                    
+                                                    ?>
+                                                </div>
+                                            </a>
+                                            <div class="mem-img col-md-3">
+                                                <img src="upload/member/<?php echo $MEMBER->profile_picture; ?>" class="thumbnail  pull-right" title="<?php echo $MEMBER->name; ?>" alt=""/>
+                                            </div>
                                         </div>
+                                        <div class="row">
+                                            <div class="tour-price pull-left"><i class="fa fa-dollar"></i> LKR <?php echo $TOUR['price']; ?>/=</div>
+                                            <div class="tour-rate pull-right">
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                        </div>
+
+                                        <div class="row tour-desc"><?php echo substr($TOUR['description'], 0, 90) . '...'; ?></div>
+                                        <div class="row">
+                                            <div class="tour-type pull-left"><i class="fa fa-certificate"></i> <?php echo $TYPE->name; ?> Type</div>
+                                            <a href="tour-package-view.php?id=<?php echo $TOUR['id']; ?>"><div class="tour-btn pull-right btn btn-sm blue">Read More<span class="glyphicon glyphicon-eye-open"></span></div></a>
+                                        </div> 
+
                                     </div>
-
-                                    <div class="row tour-desc"><?php echo substr($TOUR['description'], 0, 90) . '...'; ?></div>
-                                    <div class="row">
-                                        <div class="tour-type pull-left"><i class="fa fa-certificate"></i> <?php echo $TYPE->name; ?> Type</div>
-                                        <a href="tour-package-view.php?id=<?php echo $TOUR['id']; ?>"><div class="tour-btn pull-right btn btn-sm blue">Read More<span class="glyphicon glyphicon-eye-open"></span></div></a>
-                                    </div> 
-
                                 </div>
                             </div>
-                    </div>
                             <?php
                         }
                         ?>

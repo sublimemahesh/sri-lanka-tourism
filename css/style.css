@@ -2217,10 +2217,6 @@ hr.style15:after {
 .tour-pack {
     background-color: #fffc;
     height: 385px;
-    box-shadow: 5px 2px 5px 2px #8889;
-
-    /*    opacity: 0.5;
-        filter: alpha(opacity=50);*/
 }
 .tour-pack1.col-md-3 {
     padding: 0px 10px 30px;
@@ -2265,10 +2261,10 @@ hr.style15:after {
 }
 .tour-title {
     font-family: 'Magra', sans-serif;
-    font-size: 25px;
+    font-size: 20px;
     padding-bottom: 5px;
     color: #003366;
-
+    margin-top: 7px;
 }
 .tour-rate {
     color: #ffb300;
@@ -2300,9 +2296,10 @@ hr.style15:after {
     color: #776b6b;
 }
 .book-now-btn {
-    top: 14px;
+    top: 0px;
     padding: 20px 1px 1px 0px;
     z-index: 1;
+    margin-bottom: 25px;
 }
 .book-now-btn a {
     font-size: 20px;
@@ -2542,5 +2539,8 @@ hr.style15:after {
     border: 1px solid #e1e8ed;
     padding: 16px;
     margin-bottom: 20px;
+}
+.tour-package-testimonials {
+    margin: 30px 0px;
 }
 
