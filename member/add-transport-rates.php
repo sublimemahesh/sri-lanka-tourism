@@ -6,6 +6,7 @@ if (isset($_GET['id'])) {
     $id = $_GET['id'];
 }
 $TRANSPORTS = new Transports($id);
+$TRANSPORT_RATES = TransportRates::GetTransportRatesByTransportId($id);
 ?> 
 <!DOCTYPE html>
 <html lang="en">
@@ -91,7 +92,7 @@ $TRANSPORTS = new Transports($id);
                                                         <div class="">
                                                             <div class="col-md-6">
                                                                 <div class="bottom-top">
-                                                                    <label for="distance">Distance</label>
+                                                                    <label for="distance">Distance(KM)</label>
                                                                     <div class="formrow">
                                                                         <input type="text" id="price" class="form-control" placeholder="Enter Distance" autocomplete="off" name="distance" required="true">
                                                                     </div>
@@ -99,7 +100,7 @@ $TRANSPORTS = new Transports($id);
                                                             </div>
                                                             <div class="col-md-6">
                                                                 <div class="bottom-top">
-                                                                    <label for="price">Price</label>
+                                                                    <label for="price">Price(LKR)</label>
                                                                     <div class="formrow">
                                                                         <input type="text" id="price" class="form-control" placeholder="Enter Price" autocomplete="off" name="price" required="true">
                                                                     </div>
@@ -127,35 +128,37 @@ $TRANSPORTS = new Transports($id);
                                         <div class="body">
                                             <div class="table-responsive">
                                                 <div>
-                                                    <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>ID</th>
-                                                                <th>From</th>
-                                                                <th>To</th> 
-                                                                <th>Distance</th>
-                                                                <th>Price</th>
-                                                                <th>Option</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tfoot>
-                                                            <tr>
-                                                                <th>ID</th>
-                                                                <th>From</th>
-                                                                <th>To</th> 
-                                                                <th>Distance</th>
-                                                                <th>Price</th>
-                                                                <th>Option</th>
-                                                            </tr>
-                                                        </tfoot>
-                                                        <tbody>
-                                                            <?php
-                                                            $TRANSPORT_RATES = TransportRates::GetTransportRatesByTransportId($id);
-                                                            if (count($TRANSPORT_RATES) > 0) {
+                                                    <?php
+                                                    if (count($TRANSPORT_RATES) > 0) {
+                                                        ?>
+                                                        <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>ID</th>
+                                                                    <th>From</th>
+                                                                    <th>To</th> 
+                                                                    <th>Distance</th>
+                                                                    <th>Price</th>
+                                                                    <th>Option</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tfoot>
+                                                                <tr>
+                                                                    <th>ID</th>
+                                                                    <th>From</th>
+                                                                    <th>To</th> 
+                                                                    <th>Distance</th>
+                                                                    <th>Price</th>
+                                                                    <th>Option</th>
+                                                                </tr>
+                                                            </tfoot>
+                                                            <tbody>
+                                                                <?php
                                                                 foreach ($TRANSPORT_RATES as $key => $transport_rates) {
+                                                                    $key++
                                                                     ?>
                                                                     <tr id="row_<?php echo $transport_rates['id']; ?>">
-                                                                        <td><?php echo $transport_rates['sort']; ?></td> 
+                                                                        <td><?php echo $key; ?></td> 
                                                                         <td>
                                                                             <?php
                                                                             $city = new City($transport_rates['location_from']);
@@ -169,7 +172,7 @@ $TRANSPORTS = new Transports($id);
                                                                             ?>
                                                                         </td>
                                                                         <td><?php echo $transport_rates['distance']; ?> Km</td>
-                                                                        <td class="text-right"> $ <?php echo $transport_rates['price']; ?>.00</td>
+                                                                        <td class="text-right"> LKR. <?php echo $transport_rates['price']; ?>.00</td>
                                                                         <td> 
                                                                             <a href="#"> 
                                                                                 <button class="btn btn-danger btn-sm all-icon fa fa-trash-o delete-transport-rates" data-id="<?php echo $transport_rates['id']; ?>"></button>
@@ -183,15 +186,17 @@ $TRANSPORTS = new Transports($id);
                                                                     </tr>
                                                                     <?php
                                                                 }
-                                                            } else {
-                                                                ?> 
-                                                            <b style="padding-left: 15px;">No Transports Rates in the database.</b> 
-                                                        <?php } ?> 
-                                                        </tbody>
-                                                    </table>
+                                                                ?>
+                                                            </tbody>
+                                                        </table>
+
+                                                        <?php } else {
+                                                        ?> 
+                                                        <b style="padding-left: 15px;">No Transports Rates in the database.</b> 
+                                                    <?php } ?> 
                                                     <div class="text-right">
-                                                        <a href="add-transport-photo.php?id=<?php echo $TRANSPORTS->id; ?>"> 
-                                                            <button type="button" class="btn btn-round btn-info">Add Transport Image</button>
+                                                        <a href="manage-transport.php"> 
+                                                            <button type="button" class="btn btn-round btn-info">Manage Transport</button>
                                                         </a>
                                                     </div>
                                                 </div>
