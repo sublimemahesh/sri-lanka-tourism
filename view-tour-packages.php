@@ -26,7 +26,7 @@ if (isset($_GET["page"])) {
 } else {
     $page = 1;
 }
-$setLimit = 9;
+$setLimit = 12;
 $pageLimit = ($page * $setLimit) - $setLimit;
 
 /* search */
