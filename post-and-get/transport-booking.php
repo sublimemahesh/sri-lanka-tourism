@@ -4,12 +4,14 @@ include_once(dirname(__FILE__) . '/../class/include.php');
 
 $TRANSPORT_RATE = new TransportRates($_POST['transport_rate']);
 $TRANSPORT = new Transports($TRANSPORT_RATE->transport_id);
+$MEMBER = new Member($TRANSPORT->member);
 $VISITOR = new Visitor($_POST['visitor']);
 $CONDITION = new VehicleCondition($TRANSPORT->condition);
 $TYPE = new VehicleType($TRANSPORT->vehicle_type);
 $FUEL_TYPE = new FuelType($TRANSPORT->fuel_type);
 $CITY_FROM = new City($TRANSPORT_RATE->location_from);
 $CITY_TO = new City($TRANSPORT_RATE->location_to);
+
 
 
 
@@ -67,11 +69,13 @@ if (isset($_POST['book'])) {
             $booking_time = $RESULT->time;
             $message = $RESULT->message;
 
+            $member_email = $MEMBER->email;
+
             $site_link = "http://" . $_SERVER['HTTP_HOST'];
             $website_name = 'www.srilankatourism.travel';
             $comany_name = 'Sri Lanka Tourism';
             $comConNumber = '09137347559';
-            $comEmail = 'dinudhanusha@gmail.com';
+            $comEmail = 'keerthiyaa@gmail.com';
             date_default_timezone_set('Asia/Colombo');
 
             $todayis = date("l, F j, Y, g:i a");
@@ -351,7 +355,9 @@ if (isset($_POST['book'])) {
 
             if (mail($visitor_email, $subject, $html, $headers) &&
                     mail($comEmail, $subject, $html, $headers)) {
-
+                if (!empty($member_email)) {
+                    mail($member_email, $subject, $html, $headers);
+                }
                 $VALID->addError("Booking was completed successfully.please check your email", 'success');
                 $_SESSION['ERRORS'] = $VALID->errors();
                 header('Location: ' . $_SERVER['HTTP_REFERER']);

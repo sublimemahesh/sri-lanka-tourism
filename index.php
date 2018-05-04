@@ -291,7 +291,13 @@ $ARTICLETYPES = ArticleType::all();
                                                         }
                                                         ?>
                                                     </div>
-                                                    <div class="vehicle-options-heading"><b><?php echo $condition->name ?></b></div>
+                                                    <div class="vehicle-options-heading">Condition : <?php
+                                                        echo substr($condition->name, 0, 13);
+                                                        if (strlen($condition->name) > 13) {
+                                                            echo '...';
+                                                        }
+                                                        ?>
+                                                    </div>
                                                 </div>
 
                                             </a>
@@ -306,9 +312,9 @@ $ARTICLETYPES = ArticleType::all();
                                     </div>
 
 
-                                    <?php
-                                }
-                                ?>
+    <?php
+}
+?>
 
                             </div>
                         </div>
@@ -336,9 +342,9 @@ $ARTICLETYPES = ArticleType::all();
                                                 foreach ($TOURTYPES as $TOURTYPE) {
                                                     ?>
                                                     <option value="<?php echo $TOURTYPE['id']; ?>"><?php echo $TOURTYPE['name']; ?></option>
-                                                    <?php
-                                                }
-                                                ?>
+    <?php
+}
+?>
                                             </select>
                                         </div>
                                         <div class="col-md-6 col-sm-6 col-xs-12 taxi-title">
@@ -357,9 +363,9 @@ $ARTICLETYPES = ArticleType::all();
                             </form>
 
                             <div class="owl-carousel tour-slider" id="tour-slider">
-                                <?php
-                                foreach ($TOURTYPES as $TOURTYPE) {
-                                    ?>
+<?php
+foreach ($TOURTYPES as $TOURTYPE) {
+    ?>
                                     <div>
                                         <a href="view-tour-packages.php?type=<?php echo $TOURTYPE['id']; ?>">
                                             <img src="upload/tour-type/<?php echo $TOURTYPE['picture_name']; ?>" alt=""/>
@@ -372,15 +378,15 @@ $ARTICLETYPES = ArticleType::all();
                                             } else {
                                                 ?>
                                                 <div class="tour-heading pull-left" title="<?php echo strtoupper($TOURTYPE['name']); ?>"><?php echo strtoupper($TOURTYPE['name']); ?></div>
-                                                <?php
-                                            }
-                                            ?>
+        <?php
+    }
+    ?>
                                             <div class="tour-arrow white pull-right"><img src="images/icon/arrow2.png" alt=""/></div>
                                         </a>
                                     </div>
-                                    <?php
-                                }
-                                ?>
+    <?php
+}
+?>
                             </div>
 
                         </div>
@@ -401,9 +407,9 @@ $ARTICLETYPES = ArticleType::all();
                                                 foreach ($ACCOMMODATION_TYPE as $accommodation_type) {
                                                     ?>
                                                     <option value="<?php echo $accommodation_type['id']; ?>"><?php echo $accommodation_type['name']; ?></option>
-                                                    <?php
-                                                }
-                                                ?>
+    <?php
+}
+?>
                                             </select>
                                         </div>
                                     </div>
@@ -416,9 +422,9 @@ $ARTICLETYPES = ArticleType::all();
                                                 foreach ($DISTRICT as $district) {
                                                     ?>
                                                     <option value="<?php echo $district['id']; ?>"><?php echo $district['name']; ?></option>
-                                                    <?php
-                                                }
-                                                ?>
+    <?php
+}
+?>
                                             </select>
                                         </div>
                                         <div class="col-md-6 col-sm-6 col-xs-12 taxi-title">
@@ -541,9 +547,9 @@ $ARTICLETYPES = ArticleType::all();
                             </div>
 
                             <div class="owl-carousel article-slider" id="article-slider">
-                                <?php
-                                foreach ($ARTICLETYPES as $ARTICLETYPE) {
-                                    ?>
+<?php
+foreach ($ARTICLETYPES as $ARTICLETYPE) {
+    ?>
                                     <div>
                                         <a href="view-articles.php?type=<?php echo $ARTICLETYPE['id']; ?>">
                                             <img src="upload/article-type/<?php echo $ARTICLETYPE['picture_name']; ?>" alt=""/>
@@ -555,15 +561,15 @@ $ARTICLETYPES = ArticleType::all();
                                             } else {
                                                 ?>
                                                 <div class="article-heading pull-left" title="<?php echo strtoupper($ARTICLETYPE['name']); ?>"><?php echo strtoupper($ARTICLETYPE['name']); ?></div>
-                                                <?php
-                                            }
-                                            ?>
+        <?php
+    }
+    ?>
                                             <div class="article-arrow white pull-right"><img src="images/icon/arrow2.png" alt=""/></div>
                                         </a>
                                     </div>
-                                    <?php
-                                }
-                                ?>
+    <?php
+}
+?>
                             </div>
                         </div>
                         <div id="sea" class="tab-pane fade">
@@ -600,7 +606,7 @@ $ARTICLETYPES = ArticleType::all();
     </div>
 
     <!-- Our Resort Values style-->  
-    <?php include './footer.php'; ?>
+<?php include './footer.php'; ?>
     <script src="js/jquery-2.2.4.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/bootstrap-datepicker.js" type="text/javascript"></script>
