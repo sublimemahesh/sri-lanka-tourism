@@ -59,6 +59,13 @@ $ARTICLE_TYPE = new ArticleType($id);
                                 <h2>
                                     Edit Article Type
                                 </h2>
+                                <ul class="header-dropdown">
+                                    <li class="">
+                                        <a href="manage-article-type.php">
+                                            <i class="material-icons">list</i> 
+                                        </a>
+                                    </li>
+                                </ul>
 
                             </div>
                             <div class="body row">
@@ -76,13 +83,25 @@ $ARTICLE_TYPE = new ArticleType($id);
                                             </div>
                                         </div>
                                     </div>
-
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="picture_name">Image</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    <input type="file" id="image" class="form-control" value="<?php echo $TOUR_TYPE->picture_name; ?>"  name="picture_name">
+                                                    <img src="../upload/article-type/<?php echo $ARTICLE_TYPE->picture_name; ?>" id="image" class="view-edit-img img img-responsive img-thumbnail" name="picture_name" alt="old image">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="row clearfix">
                                         <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
 
                                             <input type="hidden" id="id" value="<?php echo $ARTICLE_TYPE->id; ?>" name="id"/>
                                             <input type="hidden" id="authToken" value="<?php echo $_SESSION["authToken"]; ?>" name="authToken"/>
-
+                                            <input type="hidden" id="oldImageName" value="<?php echo $ARTICLE_TYPE->picture_name; ?>" name="oldImageName"/>
                                             <button type="submit" class="btn btn-primary m-t-15 waves-effect" name="edit-article-type" value="submit">Save Changes</button>
                                         </div>
                                     </div>

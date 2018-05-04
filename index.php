@@ -15,6 +15,7 @@ $DISTRICT = $DISTRICT_OBJ->all();
 $ACCOMMODATION_TYPE = $ACCOMMODATION_TYPEOBJ->all();
 
 $TOURTYPES = TourType::all();
+$ARTICLETYPES = ArticleType::all();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -82,7 +83,7 @@ $TOURTYPES = TourType::all();
                                 </a>
                             </li>
                             <li class="btn-nav ">
-                                <a data-toggle="pill" href="#booking" class="space-adjust top-link-button">
+                                <a data-toggle="pill" href="#article" class="space-adjust top-link-button">
                                     <div>
                                         <img src="images/learning.png" alt=""/>
                                         <span class="select-ico-title">Article</span>
@@ -137,10 +138,10 @@ $TOURTYPES = TourType::all();
                                 </a>
                             </div>
                             <div class="col-xs-2 mobile-view">
-                                <a data-toggle="pill" href="#booking">
+                                <a data-toggle="pill" href="#article">
                                     <div>
                                         <img src="images/learning.png" alt="" class="mobile-view-ico"/>
-                                        <span class="select-ico-title">Booking</span>
+                                        <span class="select-ico-title">Article</span>
                                     </div>
                                 </a>
                             </div>
@@ -148,7 +149,7 @@ $TOURTYPES = TourType::all();
                                 <a data-toggle="pill" href="#sea">
                                     <div>
                                         <img src="images/icon/search11.png" alt="" class="mobile-view-ico"/>
-                                        <span class="select-ico-title">Article</span>
+                                        <span class="select-ico-title">Search</span>
                                     </div>
                                 </a>
                             </div>
@@ -362,7 +363,18 @@ $TOURTYPES = TourType::all();
                                     <div>
                                         <a href="view-tour-packages.php?type=<?php echo $TOURTYPE['id']; ?>">
                                             <img src="upload/tour-type/<?php echo $TOURTYPE['picture_name']; ?>" alt=""/>
-                                            <div class="tour-heading pull-left"><?php echo strtoupper($TOURTYPE['name']); ?></div>
+                                            <!--<div class="tour-heading pull-left"><?php echo strtoupper($TOURTYPE['name']); ?></div>-->
+                                            <?php
+                                            if (strlen($TOURTYPE['name']) > 12) {
+                                                ?>
+                                                <div class="tour-heading pull-left" title="<?php echo strtoupper($TOURTYPE['name']); ?>"><?php echo substr(strtoupper($TOURTYPE['name']), 0, 11) . '...'; ?></div>
+                                                <?php
+                                            } else {
+                                                ?>
+                                                <div class="tour-heading pull-left" title="<?php echo strtoupper($TOURTYPE['name']); ?>"><?php echo strtoupper($TOURTYPE['name']); ?></div>
+                                                <?php
+                                            }
+                                            ?>
                                             <div class="tour-arrow white pull-right"><img src="images/icon/arrow2.png" alt=""/></div>
                                         </a>
                                     </div>
@@ -478,7 +490,7 @@ $TOURTYPES = TourType::all();
                                 </div>
                             </div>
                         </div>
-                        <div id="booking" class="tab-pane fade">
+                        <div id="article" class="tab-pane fade">
                             <h3 class="select-op-header text-center">Booking</h3>
                             <div id="taxi" class="tab-pane fade in active">
                                 <div class="row">
@@ -526,6 +538,32 @@ $TOURTYPES = TourType::all();
                                         <button class="btn-style">Search</button>
                                     </div>
                                 </div>
+                            </div>
+
+                            <div class="owl-carousel article-slider" id="article-slider">
+                                <?php
+                                foreach ($ARTICLETYPES as $ARTICLETYPE) {
+                                    ?>
+                                    <div>
+                                        <a href="view-articles.php?type=<?php echo $ARTICLETYPE['id']; ?>">
+                                            <img src="upload/article-type/<?php echo $ARTICLETYPE['picture_name']; ?>" alt=""/>
+                                            <?php
+                                            if (strlen($ARTICLETYPE['name']) > 12) {
+                                                ?>
+                                                <div class="article-heading pull-left" title="<?php echo strtoupper($ARTICLETYPE['name']); ?>"><?php echo substr(strtoupper($ARTICLETYPE['name']), 0, 11) . '...'; ?></div>
+                                                <?php
+                                            } else {
+                                                ?>
+                                                <div class="article-heading pull-left" title="<?php echo strtoupper($ARTICLETYPE['name']); ?>"><?php echo strtoupper($ARTICLETYPE['name']); ?></div>
+                                                <?php
+                                            }
+                                            ?>
+                                            <div class="article-arrow white pull-right"><img src="images/icon/arrow2.png" alt=""/></div>
+                                        </a>
+                                    </div>
+                                    <?php
+                                }
+                                ?>
                             </div>
                         </div>
                         <div id="sea" class="tab-pane fade">
@@ -637,12 +675,17 @@ $TOURTYPES = TourType::all();
                         nav: true
                     },
                     1000: {
+                        items: 3,
+                        nav: true,
+                        loop: true
+                    },
+                    1200: {
                         items: 5,
                         nav: true,
                         loop: true
                     }
                 }
-            })
+            });
 
             $('#transport-carousel').owlCarousel({
 
@@ -662,6 +705,41 @@ $TOURTYPES = TourType::all();
                         nav: true
                     },
                     1000: {
+                        items: 3,
+                        nav: true,
+                        loop: true
+                    },
+                    1200: {
+                        items: 5,
+                        nav: true,
+                        loop: true
+                    }
+                }
+            });
+
+            $('#article-slider').owlCarousel({
+                loop: true,
+                margin: 10,
+                responsiveClass: true,
+                autoplay: true,
+                autoplayTimeout: 2000,
+                autoplayHoverPause: true,
+                nav: true,
+                responsive: {
+                    0: {
+                        items: 1,
+                        nav: true
+                    },
+                    600: {
+                        items: 3,
+                        nav: true
+                    },
+                    1000: {
+                        items: 3,
+                        nav: true,
+                        loop: true
+                    },
+                    1200: {
                         items: 5,
                         nav: true,
                         loop: true

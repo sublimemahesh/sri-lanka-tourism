@@ -2147,40 +2147,42 @@ hr.style15:after {
 }
 
 /*------Tour Slider ------------*/
-.tour-slider {
+.tour-slider, .article-slider {
     margin-bottom: 30px;
 }
-.tour-heading:hover {
+.tour-heading:hover, .article-heading:hover {
     background-color: #fff9;
     color: #000;
 }
-.tour-heading {
+.tour-heading, .article-heading {
     background-color: #09090980;
     color: #fffc;
     padding: 10px 10px 10px 20px;
     position: relative;
     top: -81px;
-    font-size: 27px;
+    font-size: 15px;
     width: 75%;
+    font-weight: 600;
 }
-.tour-arrow {
+.tour-arrow, .article-arrow {
     top: -81px;
     position: relative;
     margin-right: 11px;
     /*background: #fff9;*/
     background: #09090980;
-    height: 58px;
+    height: 41px;
     width: 39px;
     padding: 5px;
     border-radius: 0px 10px 10px 0px;
 }
-.tour-arrow:hover {
+.tour-arrow:hover, .article-arrow:hover {
     /*background-color: #09090980;*/
     background-color: #fff9;
 
 }
-.tour-arrow img {
-    margin-top: 5px;
+.tour-arrow img, .article-arrow img {
+    margin-top: 0px;
+    height: 94%;
 }
 .owl-nav {
     position: inherit;
@@ -2209,6 +2211,7 @@ hr.style15:after {
     margin: 0% 90% 0% 0%;
     letter-spacing: 0px;
 }
+
 
 /*--------Tour Packages------------*/
 .tour-pack {
