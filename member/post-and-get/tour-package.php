@@ -17,41 +17,45 @@ if (isset($_POST['add-tour-package'])) {
     $dir_dest = '../../upload/tour-package/';
     $dir_dest_thumb = '../../upload/tour-package/thumb/';
 
+
+
     $handle = new Upload($_FILES['picture_name']);
 
-
     $imgName = null;
+    $img = Helper::randamId();
 
     if ($handle->uploaded) {
         $handle->image_resize = true;
+        $handle->file_new_name_body = TRUE;
+        $handle->file_overwrite = TRUE;
         $handle->file_new_name_ext = 'jpg';
         $handle->image_ratio_crop = 'C';
-        $handle->file_new_name_body = Helper::randamId();
+        $handle->file_new_name_body = $img;
         $handle->image_x = 300;
         $handle->image_y = 278;
 
         $handle->Process($dir_dest);
 
-
         if ($handle->processed) {
             $info = getimagesize($handle->file_dst_pathname);
             $imgName = $handle->file_dst_name;
         }
-        if ($handle->uploaded) {
-            $handle->image_resize = true;
-            $handle->file_new_name_ext = 'jpg';
-            $handle->image_ratio_crop = 'C';
-            $handle->file_new_name_body = Helper::randamId();
-            $handle->image_x = 300;
-            $handle->image_y = 206;
-
-            $handle->Process($dir_dest_thumb);
 
 
-            if ($handle->processed) {
-                $info = getimagesize($handle->file_dst_pathname);
-                $imgName = $handle->file_dst_name;
-            }
+        $handle->image_resize = true;
+        $handle->file_new_name_body = TRUE;
+        $handle->file_overwrite = TRUE;
+        $handle->file_new_name_ext = 'jpg';
+        $handle->image_ratio_crop = 'C';
+        $handle->file_new_name_body = $img;
+        $handle->image_x = 300;
+        $handle->image_y = 206;
+
+        $handle->Process($dir_dest_thumb);
+
+        if ($handle->processed) {
+            $info = getimagesize($handle->file_dst_pathname);
+            $imgName = $handle->file_dst_name;
         }
     }
 
