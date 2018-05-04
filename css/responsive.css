@@ -167,7 +167,7 @@
     .panel-responsive {
         margin-left: 10px;
         margin-right: 10px;
-        
+
     }
 
 }
@@ -1173,7 +1173,7 @@
     }
     /*------tour-slider-----*/
     .owl-nav {
-        margin: -207px 0px 100px 0px;
+        margin: -295px 0px 208px 0px;
     }
     .owl-prev {
         margin: 0% 87% 0% 0%;
@@ -1182,15 +1182,19 @@
         margin-top: 1px;
     }
     .tour-heading {
-        padding: 5px 5px 5px 12px;
-        top: -56px;
         font-size: 18px;
         width: 68%;
     }
     .tour-arrow {
-        top: -92px;
-        margin-right: 12px;
-        height: 36px;
+        top: -126px;
+        margin-right: 42px;
+        height: 45px;
+        width: 29px;
+    }
+    .article-arrow {
+        top: -122px;
+        margin-right: 26px;
+        height: 41px;
         width: 29px;
     }
     .tour-pack {
@@ -1210,6 +1214,10 @@
 @media (width: 320px) {
     .tour-arrow {
         margin-right: 13px;
+        top: -81px;
+    }
+    .article-arrow {
+        margin-right: 33px;
         top: -81px;
     }
     .owl-nav {
@@ -1235,6 +1243,9 @@
         margin-right: 20px;
         height: 59px;
     }
+    .article-arrow {
+        margin-right: 43px;
+    }
     .tour-pack {
         height: 412px;
     }
@@ -1253,6 +1264,9 @@
 @media (width: 375px) {
     .tour-arrow {
         margin-right: 23px;
+    }
+    .article-arrow {
+        margin-right: 47px;
     }
     .tour-days {
         margin-top: -60px;
@@ -1281,6 +1295,9 @@
         margin-right: 25px;
         top: -140px;
     }
+    .article-arrow {
+        margin-right: 49px;
+    }
     .owl-nav {
         margin: -474px 0px 286px 0px;
     }
@@ -1301,6 +1318,10 @@
         margin-right: 30px;
         height: 59px;
         top: -140px;
+    }
+    .article-arrow {
+        margin-right: 56px;
+        height: 42px;
     }
     .owl-nav {
         margin: -474px 0px 286px 0px;
@@ -1331,6 +1352,9 @@
     .tour-arrow {
         margin-right: 30px;
         height: 59px;
+    }
+    .article-arrow {
+        margin-right: 57px;
     }
     .owl-nav {
         margin: -474px 0px 286px 0px;

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Description of ArticleType
  *
@@ -8,12 +9,13 @@ class ArticleType {
 
     public $id;
     public $name;
+    public $picture_name;
     public $sort;
 
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`,`name`,`sort` FROM `article_type` WHERE `id`=" . $id;
+            $query = "SELECT `id`,`name`,`picture_name`,`sort` FROM `article_type` WHERE `id`=" . $id;
 
             $db = new Database();
 
@@ -21,6 +23,7 @@ class ArticleType {
 
             $this->id = $result['id'];
             $this->name = $result['name'];
+            $this->picture_name = $result['picture_name'];
             $this->sort = $result['sort'];
             return $this;
         }
@@ -28,8 +31,9 @@ class ArticleType {
 
     public function create() {
 
-        $query = "INSERT INTO `article_type` (`name`,`sort`) VALUES  ('"
+        $query = "INSERT INTO `article_type` (`name`,`picture_name`,`sort`) VALUES  ('"
                 . $this->name . "','"
+                . $this->picture_name . "','"
                 . $this->sort . "')";
 
         $db = new Database();
@@ -63,6 +67,7 @@ class ArticleType {
 
         $query = "UPDATE  `article_type` SET "
                 . "`name` ='" . $this->name . "', "
+                . "`picture_name` ='" . $this->picture_name . "', "
                 . "`sort` ='" . $this->sort . "' "
                 . "WHERE `id` = '" . $this->id . "'";
 
@@ -78,6 +83,8 @@ class ArticleType {
     }
 
     public function delete() {
+
+        unlink(Helper::getSitePath() . "upload/article-type/" . $this->picture_name);
 
         $query = 'DELETE FROM `article_type` WHERE id="' . $this->id . '"';
 
