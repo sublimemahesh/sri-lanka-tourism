@@ -11,11 +11,12 @@ class Feedback {
     public $accommodation;
     public $transport;
     public $tour_package;
+    public $article;
 
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`,`visitor`,`rate`,`title`,`description`,`date_time`,`accommodation`,`transport`,`tour_package` FROM `feedback` WHERE `id`=" . $id;
+            $query = "SELECT `id`,`visitor`,`rate`,`title`,`description`,`date_time`,`accommodation`,`transport`,`tour_package`,`article` FROM `feedback` WHERE `id`=" . $id;
 
             $db = new Database();
 
@@ -30,6 +31,7 @@ class Feedback {
             $this->accommodation = $result['accommodation'];
             $this->transport = $result['transport'];
             $this->tour_package = $result['tour_package'];
+            $this->article = $result['article'];
 
             return $this;
         }
@@ -37,7 +39,7 @@ class Feedback {
 
     public function create() {
 
-        $query = "INSERT INTO `feedback`(`visitor`,`rate`,`title`,`description`,`date_time`,`accommodation`,`transport`,`tour_package`) VALUES  ('"
+        $query = "INSERT INTO `feedback`(`visitor`,`rate`,`title`,`description`,`date_time`,`accommodation`,`transport`,`tour_package`,`article`) VALUES  ('"
                 . $this->visitor . "','"
                 . $this->rate . "','"
                 . $this->title . "','"
@@ -45,7 +47,8 @@ class Feedback {
                 . $this->date_time . "','"
                 . $this->accommodation . "','"
                 . $this->transport . "','"
-                . $this->tour_package . "')";
+                . $this->tour_package . "','"
+                . $this->article . "')";
 
         $db = new Database();
         $result = $db->readQuery($query);
@@ -118,6 +121,21 @@ class Feedback {
     public function getFeedbackByTourPackageID($tour) {
 
         $query = "SELECT * FROM `feedback` WHERE `tour_package` = '" . $tour . "'";
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+        return $array_res;
+    }
+    
+    public function getFeedbackByArticleID($article) {
+
+        $query = "SELECT * FROM `feedback` WHERE `article` = '" . $article . "'";
 
         $db = new Database();
 
