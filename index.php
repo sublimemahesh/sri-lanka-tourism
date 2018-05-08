@@ -511,7 +511,7 @@ $ARTICLETYPES = ArticleType::all();
                                         <div class="col-md-6 col-sm-6 col-xs-12 taxi-title">
                                             <span class="span-style">Article Type</span>
                                             <select class="form-control taxi-combo" id="type" name="type">
-                                                <option> --Please Select a article type-- </option>
+                                                <option value=""> --Please Select a article type-- </option>
                                                 <?php
                                                 foreach ($ARTICLETYPES as $article) {
                                                     ?>
