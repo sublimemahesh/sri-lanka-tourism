@@ -14,7 +14,7 @@ $TOUR_SUB = new TourSubSection($id);
     <head>
         <meta charset="UTF-8">
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <title>Edit Tour Sub Section - www.srilankatourism.travel</title>
+        <title>Edit tour itinerary - www.srilankatourism.travel</title>
         <!-- Favicon-->
         <link rel="icon" href="favicon.ico" type="image/x-icon">
         <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
@@ -45,9 +45,15 @@ $TOUR_SUB = new TourSubSection($id);
                         <div class="card">
                             <div class="header">
                                 <h2>
-                                    Edit Tour Sub Section
+                                    Edit Tour Itinerary
                                 </h2>
-
+                                <ul class="header-dropdown">
+                                    <li class="">
+                                        <a href="view-tour-sub-section.php?id=<?php echo $TOUR_SUB->tour; ?>">
+                                            <i class="material-icons">list</i> 
+                                        </a>
+                                    </li>
+                                </ul>
                             </div>
                             <div class="body row">
                                 <form class="form-horizontal" method="post" action="post-and-get/tour-sub-section.php" enctype="multipart/form-data"> 

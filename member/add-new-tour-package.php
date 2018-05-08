@@ -4,7 +4,6 @@ include_once(dirname(__FILE__) . '/auth.php');
 
 $TOURTYPES = new TourType(NULL);
 $types = $TOURTYPES->all();
-
 ?> 
 <!DOCTYPE html>
 <html lang="en">
@@ -44,7 +43,7 @@ $types = $TOURTYPES->all();
                 <div class="wrapper">
                     <div class="container-fluid">
                         <div class="row  top-bott20"> 
-
+                            
                             <div class="panel panel-default">
                                 <div class="panel-heading"><i class="fa fa-pencil"></i> Create Tour Package</div>
                                 <div class="panel-body">
@@ -57,9 +56,9 @@ $types = $TOURTYPES->all();
                                                             <div class="bottom-top">
                                                                 <label for="tourtype">Tour Type</label>
                                                             </div>
-                                                            <div class="formrow">
+                                                            <div class="">
                                                                 <select name="tourtype" id="tourtype" class="form-control">
-                                                                    <option>Please select a tour type</option>
+                                                                    <option value="">Please select a tour type</option>
                                                                     <?php
                                                                     foreach ($types as $type) {
                                                                         ?>
@@ -74,10 +73,10 @@ $types = $TOURTYPES->all();
 
                                                         <div class="">
                                                             <div class="bottom-top">
-                                                                <label for="name">Name</label>
+                                                                <label for="name">Title</label>
                                                             </div>
-                                                            <div class="formrow">
-                                                                <input type="text" id="name" name="name" class="form-control" placeholder="Please Enter Title">
+                                                            <div class="">
+                                                                <input type="text" id="name" name="name" class="form-control" placeholder="Please enter title">
                                                             </div>
                                                         </div>
 
@@ -85,8 +84,8 @@ $types = $TOURTYPES->all();
                                                             <div class="bottom-top">
                                                                 <label for="price">Price</label>
                                                             </div>
-                                                            <div class="formrow">
-                                                                <input type="text" id="price" class="form-control" placeholder="Enter price" autocomplete="off" name="price">
+                                                            <div class="">
+                                                                <input type="text" id="price" class="form-control" placeholder="Please enter price" autocomplete="off" name="price">
                                                             </div>
 
                                                         </div>
@@ -95,17 +94,17 @@ $types = $TOURTYPES->all();
                                                             <div class="bottom-top">
                                                                 <label for="picture_name">Picture</label>
                                                             </div>
-                                                            <div class="formrow">
+                                                            <div class="">
                                                                 <input type="file" id="picture_name" class="form-control" name="picture_name">
                                                             </div>
                                                         </div>
 
                                                         <div class="">
                                                             <div class="bottom-top">
-                                                                <label for="description">Description</label>
+                                                                <label for="description">Short Description</label>
                                                             </div>
-                                                            <div class="formrow">
-                                                                <textarea type="text" id="description" name="description" class="form-control" placeholder="Please Enter Description"></textarea>
+                                                            <div class="">
+                                                                <input type="text" id="description" class="form-control" placeholder="Please enter short description" autocomplete="off" name="description">
                                                             </div>
                                                         </div>
 
@@ -174,33 +173,7 @@ $types = $TOURTYPES->all();
 
         </script>
         <script src="assets/tinymce/js/tinymce/tinymce.min.js"></script>
-        <script>
-            tinymce.init({
-                selector: "#description",
-                // ===========================================
-                // INCLUDE THE PLUGIN
-                // ===========================================
 
-                plugins: [
-                    "advlist autolink lists link image charmap print preview anchor",
-                    "searchreplace visualblocks code fullscreen",
-                    "insertdatetime media table contextmenu paste"
-                ],
-                // ===========================================
-                // PUT PLUGIN'S BUTTON on the toolbar
-                // ===========================================
-
-                toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image jbimages",
-                // ===========================================
-                // SET RELATIVE_URLS to FALSE (This is required for images to display properly)
-                // ===========================================
-
-                relative_urls: false
-
-            });
-
-
-        </script>
 
     </body>
 

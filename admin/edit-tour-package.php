@@ -87,7 +87,7 @@ $types = $TOURTYPES->all();
                                     </div> 
                                     <div class="row clearfix">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                            <label for="name">Name</label>
+                                            <label for="name">Title</label>
                                         </div>
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group">
@@ -141,12 +141,12 @@ $types = $TOURTYPES->all();
                                     </div>
                                     <div class="row clearfix">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                            <label for="description">Description</label>
+                                            <label for="description">Short Description</label>
                                         </div>
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7"> 
                                             <div class="form-group">
-                                                <div class="form-line">
-                                                    <textarea id="description" name="description" class="form-control" rows="5"><?php echo $TOUR_PACKAGE->description; ?></textarea> 
+                                                <div class="form-line"> 
+                                                    <input type="text" id="description" class="form-control" placeholder="Please enter short description" autocomplete="off" name="description" value="<?php echo $TOUR_PACKAGE->description; ?>">
                                                 </div>
                                             </div>
                                         </div>
@@ -178,35 +178,6 @@ $types = $TOURTYPES->all();
         <script src="js/demo.js"></script>
         <script src="js/add-new-ad.js" type="text/javascript"></script>
 
-
-        <script src="tinymce/js/tinymce/tinymce.min.js"></script>
-        <script>
-            tinymce.init({
-                selector: "#description",
-                // ===========================================
-                // INCLUDE THE PLUGIN
-                // ===========================================
-
-                plugins: [
-                    "advlist autolink lists link image charmap print preview anchor",
-                    "searchreplace visualblocks code fullscreen",
-                    "insertdatetime media table contextmenu paste"
-                ],
-                // ===========================================
-                // PUT PLUGIN'S BUTTON on the toolbar
-                // ===========================================
-
-                toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image jbimages",
-                // ===========================================
-                // SET RELATIVE_URLS to FALSE (This is required for images to display properly)
-                // ===========================================
-
-                relative_urls: false
-
-            });
-
-
-        </script>
     </body>
 
 </html>

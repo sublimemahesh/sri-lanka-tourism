@@ -14,7 +14,7 @@ $TOUR_SUB_PHOTO = new TourSubSectionPhoto($id);
     <head>
         <meta charset="UTF-8">
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <title>Edit Tour Sub Section - www.srilankatourism.travel</title>
+        <title>Edit Tour Itinerary Images - www.srilankatourism.travel</title>
         <!-- Favicon-->
         <link rel="icon" href="favicon.ico" type="image/x-icon">
         <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
@@ -45,7 +45,7 @@ $TOUR_SUB_PHOTO = new TourSubSectionPhoto($id);
                         <div class="card">
                             <div class="header">
                                 <h2>
-                                    Edit Tour Sub Section
+                                    Edit Tour Itinerary Image
                                 </h2>
 
                             </div>
