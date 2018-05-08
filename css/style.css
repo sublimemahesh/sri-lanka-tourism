@@ -2551,3 +2551,9 @@ hr.style15:after {
     margin: 30px 0px;
 }
 
+.rate-star{
+    font-size: 15px
+}
+.rate-star i {
+    color: #ffb300;
+}

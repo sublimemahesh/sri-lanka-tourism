@@ -6,7 +6,7 @@
 <!--                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>-->
                 <h3 class="modal-title" id="lineModalLabel">Visitor Feedback</h3>
             </div>
-            <form  method="post" id="client-comment" action="post-and-get/transport-feedback.php" enctype="multipart/form-data"> 
+            <form  method="post" id="client-comment" action="post-and-get/feedback.php" enctype="multipart/form-data"> 
                 <div class="modal-body"> 
 
                     <div class="form-group">
@@ -17,7 +17,13 @@
                     </div> 
                     <div class="form-group">
                         <label for="name">Rate</label>
-                        <input type="number" name="rate" class="form-control" id="rate" placeholder="Enter rates" required/>
+                        <select name="rate" class="form-control" id="rate" placeholder="Enter rates" required>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select> 
                         <span id="spantitle"></span>
                     </div> 
 
@@ -49,10 +55,10 @@
                     <?php
                     if (isset($_SESSION["login"])) {
                         ?>
-                        <button type="submit" class="btn btn-default" data-dismiss="modal">Close</button>  
+                        <button type="submit" class="btn btn-default btn-position-rel" data-dismiss="modal">Close</button>  
                         <input type="hidden" name="visitor" value="<?php echo $_SESSION['id']; ?>">
                         <input type="hidden" name="transport" value="<?php echo $id ?>">
-                        <button type="submit" class="btn btn-default" name="create" id="create">Save Comment</button>
+                        <button type="submit" class="btn btn-default btn-position-rel" name="create" id="create">Save Comment</button>
                         <input type="hidden" name="save" value="TRUE">
                         <?php
                     } else {
@@ -77,9 +83,9 @@
 <!--                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>-->
                 <h3 class="modal-title" id="lineModalLabel">Visitor Feedback</h3>
             </div>
-            <form  method="post" id="client-comment" action="post-and-get/transport-feedback.php" enctype="multipart/form-data"> 
+            <form  method="post" id="client-comment" action="post-and-get/feedback.php" enctype="multipart/form-data"> 
                 <div class="modal-body"> 
-                   
+
                     <div class="form-group">
                         <label for="name">Title</label>
                         <input type="text" name="title" class="form-control" id="title" placeholder="Enter Title" required/>
@@ -117,7 +123,7 @@
                 </div>
 
                 <div class="modal-footer">
-                    <?php $VIS = new Visitor($_SESSION['id']);?>
+                    <?php $VIS = new Visitor($_SESSION['id']); ?>
                     <button type="submit" class="btn btn-default" data-dismiss="modal">Close</button>  
                     <input type="hidden" name="visitor" value="<?php echo $VIS->id; ?>">
                     <input type="hidden" name="tourpackage" value="<?php echo $tourid; ?>">
@@ -138,9 +144,9 @@
 <!--                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>-->
                 <h3 class="modal-title" id="lineModalLabel">Visitor Feedback</h3>
             </div>
-            <form  method="post" id="client-comment" action="post-and-get/transport-feedback.php" enctype="multipart/form-data"> 
+            <form  method="post" id="client-comment" action="post-and-get/feedback.php" enctype="multipart/form-data"> 
                 <div class="modal-body"> 
-                   
+
                     <div class="form-group">
                         <label for="name">Title</label>
                         <input type="text" name="title" class="form-control" id="title" placeholder="Enter Title" required/>
@@ -178,7 +184,7 @@
                 </div>
 
                 <div class="modal-footer">
-                    <?php $VIS = new Visitor($_SESSION['id']);?>
+                    <?php $VIS = new Visitor($_SESSION['id']); ?>
                     <button type="submit" class="btn btn-default" data-dismiss="modal">Close</button>  
                     <input type="hidden" name="visitor" value="<?php echo $VIS->id; ?>">
                     <input type="hidden" name="transport" value="<?php echo $id ?>">
@@ -199,9 +205,9 @@
 <!--                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>-->
                 <h3 class="modal-title" id="lineModalLabel">Visitor Feedback</h3>
             </div>
-            <form  method="post" id="client-comment" action="post-and-get/transport-feedback.php" enctype="multipart/form-data"> 
+            <form  method="post" id="client-comment" action="post-and-get/feedback.php" enctype="multipart/form-data"> 
                 <div class="modal-body"> 
-                   
+
                     <div class="form-group">
                         <label for="name">Title</label>
                         <input type="text" name="title" class="form-control" id="title" placeholder="Enter Title" required/>
@@ -239,16 +245,14 @@
                 </div>
 
                 <div class="modal-footer">
-                    <?php $VIS = new Visitor($_SESSION['id']);?>
+                    <?php $VIS = new Visitor($_SESSION['id']); ?>
                     <button type="submit" class="btn btn-default" data-dismiss="modal">Close</button>  
                     <input type="hidden" name="visitor" value="<?php echo $VIS->id; ?>">
                     <input type="hidden" name="article" value="<?php echo $id; ?>">
                     <button type="submit" class="btn btn-default" name="create" id="create">Save Comment</button>
                     <input type="hidden" name="save" value="TRUE">
                 </div>
-
             </form>
-
         </div>
     </div>
 </div>

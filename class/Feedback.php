@@ -117,7 +117,7 @@ class Feedback {
         }
         return $array_res;
     }
-    
+
     public function getFeedbackByTourPackageID($tour) {
 
         $query = "SELECT * FROM `feedback` WHERE `tour_package` = '" . $tour . "'";
@@ -132,7 +132,7 @@ class Feedback {
         }
         return $array_res;
     }
-    
+
     public function getFeedbackByArticleID($article) {
 
         $query = "SELECT * FROM `feedback` WHERE `article` = '" . $article . "'";
@@ -146,6 +146,25 @@ class Feedback {
             array_push($array_res, $row);
         }
         return $array_res;
+    }
+
+    public function getRatingByTransport($transport) {
+
+        $query = "SELECT count(visitor) as count, sum(rate) as rate_sum FROM `feedback` WHERE `transport` = '" . $transport . "'";
+
+        $db = new Database();
+
+        $result = mysql_fetch_array($db->readQuery($query));
+        
+        $sum_of_rates = $result['rate_sum'];
+        $count = $result['count'];
+        
+        if (!empty($count)) {
+            $avg = round($sum_of_rates / $count);
+            return $avg;
+        } else {
+            return 0;
+        }
     }
 
 }
