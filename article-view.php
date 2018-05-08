@@ -5,11 +5,12 @@ if (!isset($_SESSION)) {
 }
 $id = $_GET["id"];
 
-$TRANSPORTS = new Transports($id);
-$TRANSPORTS_PHOTO = new TransportPhoto(NULL);
-$TRANSPORT_RATE_OBJ = new TransportRates(NULL);
-$TRANSPORT_RATE = $TRANSPORT_RATE_OBJ->GetTransportRatesByTransportId($id);
-$MEMBER = new Member($TRANSPORTS->member);
+
+$ARTICLES = new Article($id);
+$ARTICLEPHOTOS = new ArticlePhoto(NULL);
+$TYPE = new ArticleType($ARTICLES->article_type);
+$CITY = new City($ARTICLES->city);
+$MEMBER = new Member($ARTICLES->member);
 ?>
 
 <!DOCTYPE html>
@@ -41,31 +42,28 @@ $MEMBER = new Member($TRANSPORTS->member);
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <h1 class="title hidden-sm hidden-xs"><?php echo $TRANSPORTS->title; ?></h1> 
+                            <h1 class="title hidden-sm hidden-xs"><?php echo $ARTICLES->title; ?></h1> 
                             <ul class="breadcrumb">
                                 <li class="banner-bredcum-1">
                                     <a href="index.php">Home</a>
                                 </li> 
-                                <li class="active banner-bredcum-2">Transports</li>
+                                <li class="active banner-bredcum-2">Articles</li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </div> 
         </div>
-
         <div class="container transport-container">
             <div class="row">
                 <div class="col-md-8">
-                    <div id="transport_photos" class="galleria-slider">
+                    <div id="article_photos" class="galleria-slider">
                         <?php
-                        $VIEW_TRANSPORT = TransportPhoto::getTransportPhotosById($id);
-                        foreach ($VIEW_TRANSPORT as $key => $img) {
-                            $FUEL_TYPE = new FuelType($TRANSPORTS->fuel_type);
-                            $CONDITION = new VehicleCondition($TRANSPORTS->condition);
+                        $photos = ArticlePhoto::getArticlePhotosById($id);
+                        foreach ($photos as $key => $img) {
                             ?>
-                            <a href="upload/transport/<?php echo $img['image_name']; ?>">
-                                <img src="upload/transport/thumb/<?php echo $img['image_name']; ?>" data-title="" >
+                            <a href="upload/article/<?php echo $img['image_name']; ?>">
+                                <img src="upload/article/thumb/<?php echo $img['image_name']; ?>" data-title="">
                             </a>
                             <?php
                         }
@@ -74,9 +72,7 @@ $MEMBER = new Member($TRANSPORTS->member);
                 </div>
                 <div class="col-md-4">
                     <div class="sidebar">
-
                         <div class="widget-member">
-
                             <div class="row">
                                 <div class="col-md-5 col-sm-5 col-xs-5">
                                     <div class="posted-title">Posted By </div>  
@@ -100,17 +96,11 @@ $MEMBER = new Member($TRANSPORTS->member);
                                     </a>
                                 </div>
                                 <div class="col-md-7 col-sm-7 col-xs-7">
-
-
                                     <ul class="list-group-transport">
                                         <li class="list-group-transport-item"><b>Name</b>  <br><?php echo $MEMBER->name; ?></li> 
                                         <li class="list-group-transport-item"><b>Email</b> <br><?php echo $MEMBER->email; ?></li>
                                         <li class="list-group-transport-item"><b>Contact No</b> <br><?php echo $MEMBER->contact_number; ?></li>
                                     </ul>
-
-
-
-
                                 </div>
                             </div>
                         </div>
@@ -118,89 +108,35 @@ $MEMBER = new Member($TRANSPORTS->member);
 
 
                     <div class="jbside">
-                        <h3>About This Vehicle</h3>
+                        <h3>About This Article</h3>
                         <ul class="jbdetail">
                             <li class="row">
-                                <div class="col-md-12 col-xs-12 jb-title"><span> <?php echo $TRANSPORTS->title; ?></span></div>
+                                <div class="col-md-12 col-xs-12 jb-title"><span> <?php echo $ARTICLES->title; ?></span></div>
                             </li>
                             <li class="row">
-                                <div class="col-md-6 col-xs-6">Condition</div>
-                                <div class="col-md-6 col-xs-6"><span><?php echo $CONDITION->name; ?></span></div>
+                                <div class="col-md-6 col-xs-6">Article Type</div>
+                                <div class="col-md-6 col-xs-6"><span><?php echo $TYPE->name; ?></span></div>
                             </li>
                             <li class="row">
-                                <div class="col-md-6 col-xs-6">Fuel Type</div>
-                                <div class="col-md-6 col-xs-6"><span><?php echo $FUEL_TYPE->name; ?></span></div>
+                                <div class="col-md-6 col-xs-6">City</div>
+                                <div class="col-md-6 col-xs-6"><span><?php echo $CITY->name; ?></span></div>
                             </li>
                             <li class="row">
-                                <div class="col-md-9 col-xs-9">No of passengers</div>
-                                <div class="col-md-3 col-xs-3"><span><?php echo $TRANSPORTS->no_of_passangers; ?></span></div>
-                            </li>
-                            <li class="row">
-                                <div class="col-md-6 col-xs-6">No of baggage</div>
-                                <div class="col-md-6 col-xs-6"><span><?php echo $TRANSPORTS->no_of_baggages; ?></span></div>
-                            </li>
-                            <li class="row">
-                                <div class="col-md-6 col-xs-6">No of doors</div>
-                                <div class="col-md-6 col-xs-6"><span><?php echo $TRANSPORTS->no_of_doors; ?></span></div>
-                            </li>
-                            <li class="row">
-                                <div class="col-md-6 col-xs-6">Air Conditioned</div>
-                                <div class="col-md-6 col-xs-6"> <?php
-                                    if ($TRANSPORTS->ac == 1) {
-                                        ?>
-                                        <span>Yes</span>
-                                        <?php
-                                    } else {
-                                        ?>
-                                        <span>No</span>
-                                        <?php
-                                    }
-                                    ?></div>
+                                <div class="col-md-6 col-xs-6">Location</div>
+                                <div class="col-md-6 col-xs-6"><span><?php echo $ARTICLES->location; ?></span></div>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
 
-
             <div class="row">
                 <div class="col-md-8">
                     <div class="transport-description">
                         <span>
-                            <?php echo $TRANSPORTS->description; ?>
+                            <?php echo $ARTICLES->description; ?>
                         </span>
                     </div>
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th>Picking Up</th>
-                                <th>Dropping Off</th>
-                                <th>Distance(KM)</th>
-                                <th>Price(LKR)</th>
-                                <th>Option</th>
-
-                        <tbody>
-                            <?php
-                            foreach ($TRANSPORT_RATE as $transport_rate) {
-                                $CITYFROM = new City($transport_rate['location_from']);
-                                $CITYTO = new City($transport_rate['location_to']);
-                                ?>
-                                <tr>
-                                    <td  data-column="Picking Up"><?Php echo $CITYFROM->name; ?></td>
-                                    <td data-column="Dropping Off"><?Php echo $CITYTO->name; ?></td>
-                                    <td data-column="Distance(KM)"><?Php echo $transport_rate['distance'] . ' KM'; ?></td>
-                                    <td data-column="Price(LKR)"><?Php echo 'LKR ' . $transport_rate['price']; ?></td>
-                                    <td> <a href="transport-booking.php?rate=<?php echo $transport_rate['id']; ?>&visitor=<?php echo $_SESSION['id']; ?>" class="transport-book-button">
-                                            Book Now
-                                        </a>
-                                    </td>
-                                </tr>
-                                <?php
-                            }
-                            ?>
-                        </tbody>
-                    </table>
-
                 </div>
                 <div class="col-md-4">
                     <div class="sidebar">
@@ -220,10 +156,10 @@ $MEMBER = new Member($TRANSPORTS->member);
                                 <div class="carousel-inner">
                                     <?php
                                     $FEEDBACK = new Feedback(NULL);
-                                    $TRANSPORT_FEEDBACKS = $FEEDBACK->getFeedbackByTransportID($id);
+                                    $ARTICLE_FEEDBACKS = $FEEDBACK->getFeedbackByArticleID($id);
                                     $li = '';
-                                    foreach ($TRANSPORT_FEEDBACKS as $key => $transport_feedback) {
-                                        $VISITOR = new Visitor($transport_feedback['visitor']);
+                                    foreach ($ARTICLE_FEEDBACKS as $key => $article_feedback) {
+                                        $VISITOR = new Visitor($article_feedback['visitor']);
                                         if ($key === 0) {
                                             $li .= ' <li data-target="#myCarousel" data-slide-to="' . $key . '" class="active">'
                                                     . '</li>';
@@ -232,7 +168,7 @@ $MEMBER = new Member($TRANSPORTS->member);
                                                 <div class="row">
                                                     <div class="col-sm-12">
                                                         <div class="testimonial">
-                                                            <p><?php echo $transport_feedback['description']; ?></p>
+                                                            <p><?php echo $article_feedback['description']; ?></p>
                                                         </div>
                                                         <div class="media">
                                                             <div class="media-left d-flex mr-3">
@@ -241,7 +177,7 @@ $MEMBER = new Member($TRANSPORTS->member);
                                                             <div class="media-body">
                                                                 <div class="overview">
                                                                     <div class="name"><b><?php echo $VISITOR->first_name . ' ' . $VISITOR->second_name ?></b></div>
-                                                                    <div class="details"><?php echo $transport_feedback['title']; ?></div>
+                                                                    <div class="details"><?php echo $article_feedback['title']; ?></div>
                                                                     <div class="star-rating-t">
                                                                         <ul class="list-inline">
                                                                             <li class="list-inline-item"><i class="fa fa-star"></i></li>
@@ -267,7 +203,7 @@ $MEMBER = new Member($TRANSPORTS->member);
                                                 <div class="row">
                                                     <div class="col-sm-12">
                                                         <div class="testimonial">
-                                                            <p><?php echo $transport_feedback['description']; ?></p>
+                                                            <p><?php echo $article_feedback['description']; ?></p>
                                                         </div>
                                                         <div class="media">
                                                             <div class="media-left d-flex mr-3">
@@ -276,7 +212,7 @@ $MEMBER = new Member($TRANSPORTS->member);
                                                             <div class="media-body">
                                                                 <div class="overview">
                                                                     <div class="name"><b><?php echo $VISITOR->first_name . ' ' . $VISITOR->second_name ?></b></div>
-                                                                    <div class="details"><?php echo $transport_feedback['title']; ?></div>
+                                                                    <div class="details"><?php echo $article_feedback['title']; ?></div>
                                                                     <div class="star-rating-t">
                                                                         <ul class="list-inline">
                                                                             <li class="list-inline-item"><i class="fa fa-star"></i></li>
@@ -322,23 +258,24 @@ $MEMBER = new Member($TRANSPORTS->member);
             <div class="row top-margin-30">
                 <hr>
                 <div class="col-md-12">
-                    <p class="subtitle-more more-t"><span>More Transports</span></p>
+                    <p class="subtitle-more more-t"><span>More Articles</span></p>
 
                     <div class="owl-carousel tour-slider" id="transport-carousel">
                         <?php
-                        $TRANSPORT = $TRANSPORTS->all();
-                        foreach ($TRANSPORT as $transport) {
-                            $transport_photos = $TRANSPORTS_PHOTO->getTransportPhotosById($transport['id']);
-                            $condition = new VehicleCondition($transport['condition']);
-                            $vehicle_type = new VehicleType($transport['vehicle_type']);
-                            $fuel_type = new FuelType($transport['fuel_type'])
+                        $ARTICLE = Article::all();
+                        foreach ($ARTICLE as $article) {
+                            $article_type = new ArticleType($article['article_type']);
+                            $city = new ArticleType($article['city']);
+                            $article_photos = $ARTICLEPHOTOS->getArticlePhotosById($article['id']);
                             ?>
                             <div  class="index-transport-container" style="background-color: #ececec;">
                                 <?php
-                                foreach ($transport_photos as $key => $transport_photo) {
+                                foreach ($article_photos as $key => $article_photo) {
+
+
                                     if ($key == 0) {
                                         ?>
-                                        <a href="transportation-view.php?id=<?php echo $transport['id']; ?>">
+                                        <a href="article-view.php?id=<?php echo $article['id']; ?>">
                                             <span class="price">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -346,7 +283,7 @@ $MEMBER = new Member($TRANSPORTS->member);
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
                                             </span>
-                                            <img src="upload/transport/thumb/<?php echo $transport_photo['image_name'] ?>" alt=""/>
+                                            <img src="upload/article/thumb/<?php echo $article_photo['image_name'] ?>" alt=""/>
                                         </a>
 
                                         <?php
@@ -355,66 +292,22 @@ $MEMBER = new Member($TRANSPORTS->member);
                                 ?>
                                 <!--                                        <div class="transport-heading"></div>-->
                                 <div class="transport-bot-container">  
-                                    <a href="transportation-view.php?id=<?php echo $transport['id']; ?>">
+                                    <a href="article-view.php?id=<?php echo $article['id']; ?>">
                                         <div class="transport-bot-title"> <?php
-                                            echo substr($transport['title'], 0, 23);
-                                            if (strlen($transport['title']) > 23) {
+                                            echo substr($article['title'], 0, 23);
+                                            if (strlen($article['title']) > 23) {
                                                 echo '...';
                                             }
-                                            ?></div>
-                                        <div class="vehicle-options-container">
-
-                                            <div class="col-md-12">
-                                                <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4">
-                                                    <img class="index-transport-ico" src="images/transport/passenges.png"><div>
-                                                        <span class="transport-ico-txt"><?php echo $transport['no_of_passangers'] ?></span>
-                                                    </div>
-                                                </div>
-
-
-                                                <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4">
-                                                    <img class="index-transport-ico" src="images/transport/001-suitcase.png"><div>
-                                                        <span class="transport-ico-txt"><?php echo $transport['no_of_baggages'] ?></span>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4">
-                                                    <img class="index-transport-ico" src="images/transport/004-car.png"><div>
-                                                        <span class="transport-ico-txt"><?php echo $transport['no_of_doors'] ?></span>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            ?>
                                         </div>
-                                        <div class="vehicle-options-bottom">
-                                            <div class="vehicle-options-heading">Vehicle Type : <?php echo $vehicle_type->name ?></div>
-                                            <div class="vehicle-options-heading">Registered Year :  <?php echo $transport['registered_year'] ?></div>
-                                            <div class="vehicle-options-heading">Fuel Type : <?php echo $fuel_type->name; ?></div>
-                                            <div class="vehicle-options-heading">Air Conditioned : 
-                                                <?php
-                                                if ($transport['ac'] == 1) {
-                                                    ?>
-                                                    <span>yes</span>
-                                                    <?php
-                                                } else {
-                                                    ?>
-                                                    <span>no</span>
-                                                    <?php
-                                                }
-                                                ?>
-                                            </div>
-                                            <div class="vehicle-options-heading">Condition : <?php
-                                                echo substr($condition->name, 0, 13);
-                                                if (strlen($condition->name) > 13) {
-                                                    echo '...';
-                                                }
-                                                ?>
-                                            </div>
+                                        <div class="article-options-bottom">
+                                            <div class="vehicle-options-heading">Article Type : <?php echo $article_type->name; ?></div>
+                                            <div class="vehicle-options-heading">City :  <?php echo $city->name; ?></div>
+                                            <div class="vehicle-options-heading">Location : <?php echo $article['location']; ?></div>
                                         </div>
-
                                     </a>
-
                                     <div class="read_more">
-
-                                        <a href="transportation-view.php?id=<?php echo $transport['id']; ?>" class="read_more_button">View More
+                                        <a href="article-view.php?id=<?php echo $article['id']; ?>" class="read_more_button">View More
                                             <i class="fa fa-long-arrow-right"></i></a>
                                         <div class="clear"></div>
                                     </div>
@@ -432,8 +325,6 @@ $MEMBER = new Member($TRANSPORTS->member);
 
         </div>
 
-
-
         <?php
         include './footer.php';
         ?>
@@ -445,7 +336,7 @@ $MEMBER = new Member($TRANSPORTS->member);
         <script src="js/galleria.js" type="text/javascript"></script>
         <script src="js/galleria.classic.min.js" type="text/javascript"></script>
         <script type="text/javascript">
-            $('#transport_photos').galleria({
+            $('#article_photos').galleria({
                 responsive: true,
                 height: 500,
                 autoplay: 7000,
@@ -458,7 +349,7 @@ $MEMBER = new Member($TRANSPORTS->member);
         <script>
             jQuery(document).ready(function () {
                 jQuery('#btn-add-comment').click(function () {
-                    jQuery("#myModal").modal('show');
+                    jQuery("#myModalarticle").modal('show');
                 });
 
             });

@@ -10,9 +10,9 @@ if (isset($_POST['add-article'])) {
     $VALID = new Validator();
 
     date_default_timezone_set('Asia/Colombo');
- 
+
     $todayis = date("Y-m-d g:i:s");
- 
+
     $ARTICLE->title = $_POST['title'];
     $ARTICLE->created_date = $_POST['created_date'] . $todayis;
     $ARTICLE->article_type = $_POST['article_type'];
@@ -38,7 +38,7 @@ if (isset($_POST['add-article'])) {
         $VALID->addError("Your data was saved successfully", 'success');
         $_SESSION['ERRORS'] = $VALID->errors();
 
-        header('Location: ' . $_SERVER['HTTP_REFERER']);
+        header('Location: ../view-article-photos.php?id=' . $ARTICLE->id);
     } else {
 
         if (!isset($_SESSION)) {

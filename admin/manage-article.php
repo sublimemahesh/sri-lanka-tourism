@@ -91,12 +91,17 @@ include_once(dirname(__FILE__) . './auth.php');
                                                         </td>
                                                         <td><?php echo $article_t['location']; ?></td>
                                                         <td> 
-                                                            <a href="edit-article.php?id=<?php echo $article_t['id']; ?>" class="op-link"><button class="glyphicon glyphicon-pencil"></button></a>  |  
-
+                                                            <a href="edit-article.php?id=<?php echo $article_t['id']; ?>">
+                                                                <button class="glyphicon glyphicon-pencil edit-btn"></button>
+                                                            </a> 
+                                                            | 
                                                             <a href="#" class="delete-article" data-id="<?php echo $article_t['id']; ?>">
-                                                                <button class="glyphicon glyphicon-trash" data-type="cancel"></button>
+                                                                <button class="glyphicon glyphicon-trash delete-btn" data-type="cancel"></button>
+                                                            </a> 
+                                                            | 
+                                                            <a href="view-article-photos.php?id=<?php echo $article_t['id']; ?>">
+                                                                <button class="glyphicon glyphicon-picture arrange-btn"></button>
                                                             </a>
-
                                                         </td>
                                                     </tr>
                                                     <?php

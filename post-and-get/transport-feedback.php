@@ -30,6 +30,11 @@ if (isset($_POST['save'])) {
     } else {
         $FEEDBACK->accommodation = 0;
     }
+    if (isset($_POST['article'])) {
+        $FEEDBACK->article = $_POST['article'];
+    } else {
+        $FEEDBACK->article = 0;
+    }
     
     $RESULT = $FEEDBACK->create();
 

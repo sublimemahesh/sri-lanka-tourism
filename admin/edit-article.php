@@ -66,7 +66,7 @@ $ARTICLE = new Article($id);
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group place-select">
                                                 <div class="form-line">
-                                                    <select class="form-control show-tick place-select1" type="text" id="article_type" autocomplete="off" name="article_type" disabled="true">
+                                                    <select class="form-control show-tick place-select1" type="text" id="article_type" autocomplete="off" name="article_type">
                                                         <option value="<?php $ARTICLE->id ?>" class="active light-c">
                                                             <?php
                                                             $ARTICLE_TYPE = new ArticleType($ARTICLE->article_type);
@@ -105,7 +105,7 @@ $ARTICLE = new Article($id);
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group place-select">
                                                 <div class="form-line">
-                                                    <select class="form-control show-tick place-select1" type="text" id="city" autocomplete="off" name="city" disabled="true">
+                                                    <select class="form-control show-tick place-select1" type="text" id="city" autocomplete="off" name="city">
                                                         <option value="<?php $ARTICLE->id ?>" class="active light-c">
                                                             <?php
                                                             $CITY = new City($ARTICLE->city);
