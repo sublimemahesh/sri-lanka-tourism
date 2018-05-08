@@ -17,7 +17,7 @@ $TOUR_SUB = new TourSubSection($id);
         <meta name="author" content="Dashboard">
         <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
-        <title>Edit  Tour Sub Section || My Account || www.srilankatourism.travel</title>
+        <title>Edit  Tour Itinerary Date|| My Account || www.srilankatourism.travel</title>
 
         <!-- Bootstrap core CSS -->
         <link href="assets/css/bootstrap.css" rel="stylesheet">
@@ -52,7 +52,7 @@ $TOUR_SUB = new TourSubSection($id);
                             $vali->show_message();
                             ?>
                             <div class="panel panel-default">
-                                <div class="panel-heading"><i class="fa fa-pencil"></i> Edit Transports</div>
+                                <div class="panel-heading"><i class="fa fa-pencil"></i> Edit Tour Itinerary Date</div>
                                 <div class="panel-body">
                                     <div class="body">
                                         <div class="userccount">

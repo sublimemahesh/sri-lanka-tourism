@@ -13,7 +13,7 @@ $TOUR_PACKAGE = new TourPackage($id)
     <head>
         <meta charset="UTF-8">
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <title>Add New Tour Sub Section - www.srilankatourism.travel</title>
+        <title>Add New Tour Itinerary - www.srilankatourism.travel</title>
         <!-- Favicon-->
         <link rel="icon" href="favicon.ico" type="image/x-icon">
         <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
@@ -44,7 +44,7 @@ $TOUR_PACKAGE = new TourPackage($id)
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="card">
                             <div class="header">
-                                <h2>Create Tour Sub Section</h2>
+                                <h2>Create Tour Itinerary</h2>
                                 <ul class="header-dropdown">
                                     <li class="">
                                         <a href="manage-tour-package.php">
@@ -62,7 +62,7 @@ $TOUR_PACKAGE = new TourPackage($id)
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <input type="text" id="title" class="form-control" placeholder="Enter Tour Sub Section" autocomplete="off" name="title" required="true">
+                                                    <input type="text" id="title" class="form-control" placeholder="Enter tour itinerary title" autocomplete="off" name="title" required="true">
                                                 </div>
                                             </div>
                                         </div>

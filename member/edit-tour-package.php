@@ -69,9 +69,9 @@ $types = $TOURTYPES->all();
                                                             <div class="bottom-top">
                                                                 <label for="tourtype">Tour Type</label>
                                                             </div>
-                                                            <div class="formrow">
+                                                            <div class="">
                                                                 <select name="tourtype" id="tourtype" class="form-control">
-                                                                    <option>Please select a tour type</option>
+                                                                    <option value="">Please select a tour type</option>
                                                                     <?php
                                                                     foreach ($types as $type) {
                                                                         ?>
@@ -94,7 +94,7 @@ $types = $TOURTYPES->all();
                                                             <div class="bottom-top">
                                                                 <label for="name">Name</label>
                                                             </div>
-                                                            <div class="formrow">
+                                                            <div class="">
                                                                 <input type="text" id="title" name="name" class="form-control" placeholder="Please Enter Name" value="<?php echo $TOUR_PACKAGE->name; ?>" >
                                                             </div>
                                                         </div>
@@ -103,7 +103,7 @@ $types = $TOURTYPES->all();
                                                             <div class="bottom-top">
                                                                 <label for="price">Price</label>
                                                             </div>
-                                                            <div class="formrow">
+                                                            <div class="">
                                                                 <input type="text" id="price" name="price" class="form-control" placeholder="Please Enter Price" value="<?php echo $TOUR_PACKAGE->price; ?>" >
                                                             </div>
                                                         </div>
@@ -113,9 +113,9 @@ $types = $TOURTYPES->all();
                                                             <div class="bottom-top">
                                                                 <label for="picture_name">Image</label>
                                                             </div>
-                                                            <div class="formrow">
+                                                            <div class="">
                                                                 <input type="file" id="image" class="form-control" value="<?php echo $TOUR_PACKAGE->picture_name; ?>"  name="picture_name">
-                                                                <img src="../upload/tour-package/<?php echo $TOUR_PACKAGE->picture_name; ?>" id="image" class="view-edit-img img img-responsive img-thumbnail" name="picture_name" alt="old image">
+                                                                <img src="../upload/tour-package/<?php echo $TOUR_PACKAGE->picture_name; ?>" id="image" class="view-edit-img img img-responsive img-thumbnail" name="picture_name" alt="old image" style="margin-top:7px;">
                                                             </div>
                                                         </div>
 
@@ -123,8 +123,8 @@ $types = $TOURTYPES->all();
                                                             <div class="bottom-top">
                                                                 <label for="description">Description</label>
                                                             </div>
-                                                            <div class="formrow">
-                                                                <textarea id="description" name="description" class="form-control" rows="5"><?php echo $TOUR_PACKAGE->description; ?></textarea> 
+                                                            <div class="">
+                                                                <input id="description" name="description" class="form-control" value="<?php echo $TOUR_PACKAGE->description; ?>">
                                                             </div>
                                                         </div>
 
@@ -199,34 +199,7 @@ $types = $TOURTYPES->all();
             });
 
         </script>
-        <script src="assets/tinymce/js/tinymce/tinymce.min.js"></script>
-        <script>
-            tinymce.init({
-                selector: "#description",
-                // ===========================================
-                // INCLUDE THE PLUGIN
-                // ===========================================
 
-                plugins: [
-                    "advlist autolink lists link image charmap print preview anchor",
-                    "searchreplace visualblocks code fullscreen",
-                    "insertdatetime media table contextmenu paste"
-                ],
-                // ===========================================
-                // PUT PLUGIN'S BUTTON on the toolbar
-                // ===========================================
-
-                toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image jbimages",
-                // ===========================================
-                // SET RELATIVE_URLS to FALSE (This is required for images to display properly)
-                // ===========================================
-
-                relative_urls: false
-
-            });
-
-
-        </script>
 
     </body>
 

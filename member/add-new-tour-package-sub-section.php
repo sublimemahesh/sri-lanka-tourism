@@ -18,7 +18,7 @@ $TOUR_SUB_PHOTO = new TourSubSectionPhoto(NULL);
         <meta name="author" content="Dashboard">
         <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
-        <title>Tour Package Images || My Account || www.srilankatourism.travel</title>
+        <title>Add New Tour Itinerary Date || My Account || www.srilankatourism.travel</title>
 
         <!-- Bootstrap core CSS -->
         <link href="assets/css/bootstrap.css" rel="stylesheet">
@@ -53,7 +53,7 @@ $TOUR_SUB_PHOTO = new TourSubSectionPhoto(NULL);
                             $vali->show_message();
                             ?>
                             <div class="panel panel-default">
-                                <div class="panel-heading"><i class="fa fa-save"></i> Create Tour Sub Section Package</div>
+                                <div class="panel-heading"><i class="fa fa-save"></i> Create Tour Itinerary Date</div>
                                 <div class="panel-body">
                                     <div class="body">
                                         <div class="userccount">

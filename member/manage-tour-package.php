@@ -15,7 +15,7 @@ $TOUR_PACKAGE_PHOTO = new TourSubSectionPhoto(NULL);
         <meta name="author" content="Dashboard">
         <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
-        <title>Tour Package || My Accout ||  www.srilankatourism.travel</title>
+        <title>Tour Packages || My Accout ||  www.srilankatourism.travel</title>
 
         <link href="assets/css/bootstrap.css" rel="stylesheet">
         <!--external css-->
@@ -46,7 +46,7 @@ $TOUR_PACKAGE_PHOTO = new TourSubSectionPhoto(NULL);
                             $vali->show_message();
                             ?>
                             <div class="panel panel-default">
-                                <div class="panel-heading"><i class="fa fa-pencil"></i> Manage Tour Package</div>
+                                <div class="panel-heading"><i class="fa fa-pencil"></i> Manage Tour Packages</div>
                                 <div class="panel-body">
                                     <div class="body">
                                         <div class="userccount">
@@ -76,7 +76,7 @@ $TOUR_PACKAGE_PHOTO = new TourSubSectionPhoto(NULL);
                                                                                 <button class="dropbtn"><i class="fa fa-bars"></i></button>
                                                                                 <div class="dropdown-content text-left">
                                                                                     <a href="edit-tour-package.php?id=<?php echo $tour_pack['id']; ?>"><i class="hover-menu-icon fa fa-pencil"></i>Edit</a>
-                                                                                    <a href="manage-tour-package-sub-section.php?id=<?php echo $tour_pack['id']; ?>"><i class="hover-menu-icon fa fa-photo"></i>Manage sub sections</a>
+                                                                                    <a href="manage-tour-package-sub-section.php?id=<?php echo $tour_pack['id']; ?>"><i class="hover-menu-icon fa fa-photo"></i>Manage tour itinerary</a>
                                                                                     <a href="#" class="delete-tour-package menu-hover-delete-font delete-accommodation" data-id="<?php echo $tour_pack['id']; ?>"><i class="hover-menu-icon fa fa-file-text-o"></i>Delete</a>
                                                                                 </div>
                                                                             </div>

@@ -41,7 +41,7 @@ if (isset($_POST['create-tour-sub-section'])) {
         $VALID->addError("Your data was saved successfully", 'success');
         $_SESSION['ERRORS'] = $VALID->errors();
 
-        header("location: ../add-new-tour-package-sub-section.php?id=" . $TOURSUBSECTION->tour);
+        header("location: ../manage-tour-package-sub-section.php?id=" . $TOURSUBSECTION->tour);
     } else {
 
         if (!isset($_SESSION)) {

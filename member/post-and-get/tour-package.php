@@ -78,7 +78,7 @@ if (isset($_POST['add-tour-package'])) {
         $VALID->addError("Your data was saved successfully", 'success');
         $_SESSION['ERRORS'] = $VALID->errors();
 
-        header("location: ../manage-tour-package.php?id=" . $TOUR_PACKAGE->id);
+        header("location: ../manage-tour-package-sub-section.php?id=" . $TOUR_PACKAGE->id);
     } else {
 
         if (!isset($_SESSION)) {

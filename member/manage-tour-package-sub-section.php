@@ -54,7 +54,7 @@ $TOUR_SUB_PHOTO = new TourSubSectionPhoto(NULL);
                             ?>
 
                             <div class="panel panel-default">
-                                <div class="panel-heading"><i class="fa fa-save"></i> Create Tour Sub Section Package</div>
+                                <div class="panel-heading"><i class="fa fa-save"></i> Manage Tour Itinerary - <?php echo $TOUR_PACKAGE->name; ?></div>
                                 <div class="panel-body">
                                     <div class="body">
                                         <div class="row clearfix">
@@ -63,7 +63,7 @@ $TOUR_SUB_PHOTO = new TourSubSectionPhoto(NULL);
                                                     <a href="add-new-tour-package-sub-section.php?id=<?php echo $id; ?>">
                                                         <div class="uploadbox uploadphotobx" id="uploadphotobx">
                                                             <i class="fa fa-plus plus-icon" aria-hidden="true"></i>
-                                                            <label class="uploadBox">Click here to add new tour sub section
+                                                            <label class="uploadBox">Click here to create new date
                                                             </label>
                                                         </div>
                                                     </a>

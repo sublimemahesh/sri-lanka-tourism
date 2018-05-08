@@ -86,7 +86,7 @@ $count_feedbacks = count($feedbacks);
                         ?>
                         <div class="nodata">
                             <?php
-                            echo 'No Tour Subsections Available';
+                            echo 'No Tour Itinerary Available';
                             ?>
                         </div>
                         <?php

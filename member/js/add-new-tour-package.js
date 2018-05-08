@@ -1,13 +1,23 @@
 $(document).ready(function () {
 
     $('#create').click(function () {
-        var description = tinyMCE.get('description').getContent(), patt;
-        patt = /^<p>(&nbsp;\s)+(&nbsp;)+<\/p>$/g;
+        
+//        var description = tinyMCE.get('description').getContent(), patt;
+//        patt = /^<p>(&nbsp;\s)+(&nbsp;)+<\/p>$/g;
 
-        if (!$('#name').val() || $('#name').val().length === 0) {
+        if (!$('#tourtype').val() || $('#tourtype').val().length === 0) {
             swal({
                 title: "Error!",
-                text: "Please enter your tour package name",
+                text: "Please select a tour type",
+                type: 'error',
+                timer: 2000,
+                showConfirmButton: false
+            });
+            return false
+        } else if (!$('#name').val() || $('#name').val().length === 0) {
+            swal({
+                title: "Error!",
+                text: "Please enter the tour title",
                 type: 'error',
                 timer: 2000,
                 showConfirmButton: false
@@ -16,7 +26,7 @@ $(document).ready(function () {
         } else if (!$('#price').val() || $('#price').val().length === 0) {
             swal({
                 title: "Error!",
-                text: "Please enter your tour package price",
+                text: "Please enter the price",
                 type: 'error',
                 timer: 2000,
                 showConfirmButton: false
@@ -25,16 +35,16 @@ $(document).ready(function () {
         } else if (!$('#picture_name').val() || $('#picture_name').val().length === 0) {
             swal({
                 title: "Error!",
-                text: "please select at least one image of your tour package",
+                text: "Please select the main image",
                 type: 'error',
                 timer: 2000,
                 showConfirmButton: false
             });
             return false
-        } else if (description === '' || patt.test(content)) {
+        } else if (!$('#description').val() || $('#description').val().length === 0) {
             swal({
                 title: "Error!",
-                text: "please enter tour package description",
+                text: "Please enter the short description",
                 type: 'error',
                 timer: 2000,
                 showConfirmButton: false
