@@ -1,11 +1,11 @@
 $(document).ready(function () {
-    $('#city').keyup(function (e) {
+    $('#article-city').keyup(function (e) {
 
-      
         if (e.which != 38) {
             if (e.which != 40) {
                 if (e.which != 13) {
-                    var keyword = $('#city').val();
+                    var keyword = $('#article-city').val();
+                    
                     $.ajax({
                         type: 'POST',
                         url: 'ajax/city-ajax.php',
@@ -21,8 +21,9 @@ $(document).ready(function () {
                                         html += '<li id="c' + this.id + '" class="city">' + this.name + '</li>';
                                     }
                             });
-                            $('#city-list').empty();
-                            $('#city-list').append(html);
+                            
+                            $('#article-city-list').empty();
+                            $('#article-city-list').append(html);
                         }
                     });
                 }
@@ -30,12 +31,12 @@ $(document).ready(function () {
         }
     });
 
-    $('#city').bind('keypress keydown keyup', function (e) {
+    $('#article-city').bind('keypress keydown keyup', function (e) {
         if (e.keyCode == 13) {
             e.preventDefault();
         }
 
-        var li = $('#city-list .city');
+        var li = $('#article-city-list .city');
         var liSelected;
         if (e.which === 40) {
             if (liSelected) {
@@ -67,29 +68,29 @@ $(document).ready(function () {
             var selected = $('.selected').attr("id");
             var cityname = $('.selected').text();
             var cityId = selected.replace("c", "");
-            $('#city-id').val(cityId);
-            $('#city').val(cityname);
-            $('#city-list').empty();
+            $('#article-city-id').val(cityId);
+            $('#article-city').val(cityname);
+            $('#article-city-list').empty();
 
         }
     });
 
-    $('#city-list').on('click', '.city', function () {
+    $('#article-city-list').on('click', '.city', function () {
         var cityId = this.id;
         var cityName = $(this).text();
-        $('#city-id').val(cityId.replace("c", ""));
-        $('#city').val(cityName);
-        $('#city-list').empty();
+        $('#article-city-id').val(cityId.replace("c", ""));
+        $('#article-city').val(cityName);
+        $('#article-city-list').empty();
     });
     
-    $('#city-list').on('mouseover', '.city', function () {
+    $('#article-city-list').on('mouseover', '.city', function () {
         var cityId = this.id;
         var cityName = $(this).text();
-        $('#city-id').val(cityId.replace("c", ""));
-        $('#city').val(cityName);
+        $('#article-city-id').val(cityId.replace("c", ""));
+        $('#article-city').val(cityName);
     });
 
-    $('#city').bind('keypress keydown keyup', function (e) {
+    $('#article-city').bind('keypress keydown keyup', function (e) {
         if (e.keyCode == 13) {
             e.preventDefault();
         }
