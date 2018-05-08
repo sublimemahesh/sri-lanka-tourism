@@ -115,7 +115,7 @@ class Member {
 
     public function loginByFB($FbId, $password) {
 
-        $query = "SELECT * FROM `member` WHERE `facebookID`= '" . $FbId . "' AND `password`= '" . $password . "'";
+        $query = "SELECT * FROM `member` WHERE `facebookID`= '" . $FbId . "'";
 
         $db = new Database();
 

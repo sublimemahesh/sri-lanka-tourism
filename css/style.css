@@ -1976,11 +1976,12 @@ hr.style15:after {
     border-top: 16px solid transparent; 
     border-bottom: 16px solid transparent; }
 .btn-padding{
-    margin-top: 10px;
+    margin-top: 40px;
+    margin-bottom: 10px;
 }
 .price{
-    padding-left: 36px;
-    font-size: 20px;
+    padding-left: 27px;
+    font-size: 18px;
 }
 .sale-box,.sale-box.two,.sale-box.three{
     position: absolute;

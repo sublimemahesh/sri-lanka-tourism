@@ -20,7 +20,7 @@ if (isset($_GET["page"])) {
 } else {
     $page = 1;
 }
-$setLimit = 3;
+$setLimit = 10;
 $pageLimit = ($page * $setLimit) - $setLimit;
 
 /* search */
@@ -81,7 +81,7 @@ $TRANSPORTS = $SEARCH->GetTransportByLocationFromAndTo($from, $to, $type, $condi
                                             break;
                                         }
                                         ?>
-                                        <div class="col-md-4 room-img " style=" background-color: #E6F9FF;">
+                                        <div class="col-md-4 room-img" style=" background-color: #E6F9FF;">
                                             <a href="transportation-view.php?id=<?php echo $transport['id']; ?>">
                                                 <img class=" vehicle-img" src="upload/transport/thumb/<?php echo $TRANSPORTS_P['image_name']; ?>"/>
                                             </a>
@@ -93,27 +93,14 @@ $TRANSPORTS = $SEARCH->GetTransportByLocationFromAndTo($from, $to, $type, $condi
                                         <div class="col-md-8 m-sec">
                                             <div class="title-box">
                                                 <div class="title"><?php echo $transport['title']; ?></div>
-
-                                                <div class="row driver">
-                                                    <div class="profile col-md-3">
-                                                        <a href="member-view.php?id=<?php echo $MEMBER->id; ?>" class="link">
-                                                            <?php
-                                                            if (empty($MEMBER->profile_picture)) {
-                                                                ?>
-                                                                <img src="upload/member/member.png" class="img img-responsive img-thumbnail" id="profil_pic"/>
-                                                                <?php
-                                                            } else {
-                                                                ?>
-                                                                <img src="upload/member/<?php echo $MEMBER->profile_picture; ?>" class="img-responsive thumbnail">
-                                                                <?php
-                                                            }
-                                                            ?>
-                                                        </a>
+                                                <div class="rates">
+                                                    <div title="Rated 5.00 out of 5" class="star-rating" >
+                                                        <span class="width-80">
+                                                            <strong class="rating">5.00 out of 5 </strong>
+                                                        </span>
                                                     </div>
-                                                    <div class="driver-name col-md-9 text-left"><?php echo $MEMBER->name; ?></div>
-
+                                                    <span class="brackets">(Based on 17 reviews)</span>
                                                 </div>
-
                                             </div>
                                             <div class="amenities">
                                                 <ul class="list-inline clearfix">
@@ -136,18 +123,64 @@ $TRANSPORTS = $SEARCH->GetTransportByLocationFromAndTo($from, $to, $type, $condi
                                                 </ul>
                                             </div>
                                         </div>
-                                        <div class="col-md-4 desc desc-price">
-                                            <div class="rates">
-                                                <div title="Rated 5.00 out of 5" class="star-rating" >
-                                                    <span class="width-80">
-                                                        <strong class="rating">5.00 out of 5 </strong>
-                                                    </span>
+                                        <div class="col-md-4 desc desc-price m-sec">
+                                            <div class="row driver m-sec">
+                                                <div class="profile col-md-5 col-xs-4 col-sm-4">
+                                                    <a href="member-view.php?id=<?php echo $MEMBER->id; ?>" class="link">
+
+
+
+                                                        <?php
+                                                        if (empty($MEMBER->profile_picture)) {
+                                                            ?> 
+                                                            <img src="upload/member/member.png" class="img img-responsive img-thumbnail" id="profil_pic"/>
+                                                            <?php
+                                                        } else {
+
+                                                            if ($MEMBER->facebookID && substr($MEMBER->profile_picture, 0, 5) === "https") {
+                                                                ?>
+                                                                <img src="<?php echo $MEMBER->profile_picture; ?>" class="img-responsive thumbnail">
+                                                                <?php
+                                                            } else {
+                                                                ?>
+                                                                <img src="upload/member/<?php echo $MEMBER->profile_picture; ?>" class="img-responsive thumbnail">
+                                                                <?php
+                                                            }
+                                                        }
+                                                        ?>
+
+
+                                                        <?php
+                                                        if (empty($MEMBER->profile_picture)) {
+                                                            ?>
+
+                                                            <?php
+                                                        } else {
+                                                            ?>
+
+                                                            <?php
+                                                        }
+                                                        ?>
+                                                    </a>
                                                 </div>
-                                                <span class="brackets">(Based on 17 reviews)</span>
+                                                <div class="driver-name col-md-7 col-xs-8 col-sm-8"><div class="driver-name-posted">Posted by </div>
+                                                    <span class="driver-name-span">
+                                                        <?php
+                                                        echo substr($MEMBER->name, 0, 10);
+                                                        if (strlen($MEMBER->name) > 10) {
+                                                            echo '...';
+                                                        }
+                                                        ?>
+
+                                                    </span>
+
+                                                </div>
+
+
                                             </div>
-                                            <div class="bottom-sec">
-                                                <div class="pointer"><strong class="price">US$ 350</strong></div>
-                                                <div class="m-sec btn-padding">
+                                            <div class="bottom-sec m-sec">
+                                                <div class="pointer"><strong class="price">LKR <?php echo $transport['transport_price']; ?></strong></div>
+                                                <div class="btn-padding">
                                                     <a href="transport-booking.php?rate=<?php echo $transport['transport_rate']; ?>&visitor=<?php echo $_SESSION['id']; ?>" class="more-info">Book Now</a> 
                                                 </div>
                                             </div>

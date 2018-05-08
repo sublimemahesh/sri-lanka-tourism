@@ -28,7 +28,7 @@ class Search {
             $where = "WHERE " . implode(' AND ', $w);
         }
 
-        $query = "SELECT transports.*, transport_rates.id AS transport_rate FROM `transports` INNER JOIN transport_rates ON transports.id = transport_rates.transport_id $where LIMIT " . $pageLimit . " , " . $setLimit . "";
+        $query = "SELECT transports.*, transport_rates.id AS transport_rate, transport_rates.price AS transport_price FROM `transports` INNER JOIN transport_rates ON transports.id = transport_rates.transport_id $where LIMIT " . $pageLimit . " , " . $setLimit . "";
 
 
         $db = new Database();
