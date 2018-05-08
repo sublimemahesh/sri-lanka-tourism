@@ -230,11 +230,22 @@ $ARTICLETYPES = ArticleType::all();
                                                 ?>
                                                 <a href="transportation-view.php?id=<?php echo $transport['id']; ?>">
                                                     <span class="price">
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
+                                                        <?php
+                                                        $starNumber = Feedback::getRatingByTransport($transport['id']);
+
+                                                        for ($x = 1; $x <= $starNumber; $x++) {
+                                                            echo '<i class="fa fa-star"></i>';
+                                                        }
+//                                                                            if (strpos($starNumber, '.')) {
+//                                                                                echo '<img src="path/to/half/star.png" />';
+//                                                                                $x++;
+//                                                                            }
+                                                        while ($x <= 5) {
+                                                            echo '<i class="fa fa-star-o"></i>';
+                                                            $x++;
+                                                        }
+                                                        ?>
+
                                                     </span>
                                                     <img src="upload/transport/thumb/<?php echo $transport_photo['image_name'] ?>" alt=""/>
                                                 </a>

@@ -124,6 +124,26 @@ $MEMBER = new Member($TRANSPORTS->member);
                                 <div class="col-md-12 col-xs-12 jb-title"><span> <?php echo $TRANSPORTS->title; ?></span></div>
                             </li>
                             <li class="row">
+                                <div class="col-md-12 cox-xs-12 rate-star">
+                                    <?php
+                                    $starNumber = Feedback::getRatingByTransport($id);
+
+                                    for ($x = 1; $x <= $starNumber; $x++) {
+                                        echo '<i class="fa fa-star"></i>';
+                                    }
+//                                                                            if (strpos($starNumber, '.')) {
+//                                                                                echo '<img src="path/to/half/star.png" />';
+//                                                                                $x++;
+//                                                                            }
+                                    while ($x <= 5) {
+                                        echo '<i class="fa fa-star-o"></i>';
+                                        $x++;
+                                    }
+                                    ?>
+                                </div>
+
+                            </li>
+                            <li class="row">
                                 <div class="col-md-6 col-xs-6">Condition</div>
                                 <div class="col-md-6 col-xs-6"><span><?php echo $CONDITION->name; ?></span></div>
                             </li>
@@ -157,6 +177,8 @@ $MEMBER = new Member($TRANSPORTS->member);
                                     }
                                     ?></div>
                             </li>
+
+
                         </ul>
                     </div>
                 </div>
@@ -236,7 +258,23 @@ $MEMBER = new Member($TRANSPORTS->member);
                                                         </div>
                                                         <div class="media">
                                                             <div class="media-left d-flex mr-3">
-                                                                <img src="upload/visitor/<?php echo $VISITOR->image_name ?>" alt=""/>										
+                                                                <?php
+                                                                if (empty($VISITOR->image_name)) {
+                                                                    ?>
+                                                                    <img src="upload/visitor/member.png"/>
+                                                                    <?php
+                                                                } else {
+
+                                                                    if ($VISITOR->facebookID && substr($VISITOR->image_name, 0, 5) === "https") {
+                                                                        ?>
+                                                                        <img src="<?php echo $VISITOR->image_name; ?>"/>
+                                                                    <?php } else {
+                                                                        ?>
+                                                                        <img src="upload/visitor/<?php echo $VISITOR->image_name; ?>"/>
+                                                                        <?php
+                                                                    }
+                                                                }
+                                                                ?>									
                                                             </div>
                                                             <div class="media-body">
                                                                 <div class="overview">
@@ -271,7 +309,22 @@ $MEMBER = new Member($TRANSPORTS->member);
                                                         </div>
                                                         <div class="media">
                                                             <div class="media-left d-flex mr-3">
-                                                                <img src="upload/visitor/<?php echo $VISITOR->image_name ?>" alt=""/>										
+                                                                <?php
+                                                                if (empty($VISITOR->image_name)) {
+                                                                    ?>
+                                                                    <img src="upload/visitor/member.png"/>
+                                                                    <?php
+                                                                } else {
+                                                                    if ($VISITOR->facebookID && substr($VISITOR->image_name, 0, 5) === "https") {
+                                                                        ?>
+                                                                        <img src="<?php echo $VISITOR->image_name; ?>"/>
+                                                                    <?php } else {
+                                                                        ?>
+                                                                        <img src="upload/visitor/<?php echo $VISITOR->image_name; ?>"/>
+                                                                        <?php
+                                                                    }
+                                                                }
+                                                                ?>
                                                             </div>
                                                             <div class="media-body">
                                                                 <div class="overview">
@@ -279,11 +332,24 @@ $MEMBER = new Member($TRANSPORTS->member);
                                                                     <div class="details"><?php echo $transport_feedback['title']; ?></div>
                                                                     <div class="star-rating-t">
                                                                         <ul class="list-inline">
-                                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                                            <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                                                                            <?php
+                                                                            $starNumber = $transport_feedback['rate'];
+                                                                            for ($x = 1; $x <= $starNumber; $x++) {
+                                                                                echo '<li class = "list-inline-item"><i class = "fa fa-star"></i></li>';
+                                                                            }
+//                                                                            if (strpos($starNumber, '.')) {
+//                                                                                echo '<img src="path/to/half/star.png" />';
+//                                                                                $x++;
+//                                                                            }
+                                                                            while ($x <= 5) {
+                                                                                echo '<li class = "list-inline-item"><i class = "fa fa-star-o"></i></li>';
+                                                                                $x++;
+                                                                            }
+                                                                            ?>
+
+
+
+
                                                                         </ul>
                                                                     </div>
                                                                 </div>										
@@ -340,11 +406,22 @@ $MEMBER = new Member($TRANSPORTS->member);
                                         ?>
                                         <a href="transportation-view.php?id=<?php echo $transport['id']; ?>">
                                             <span class="price">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
+                                                <?php
+                                                $starNumber = Feedback::getRatingByTransport($transport['id']);
+
+                                                for ($x = 1; $x <= $starNumber; $x++) {
+                                                    echo '<i class="fa fa-star"></i>';
+                                                }
+//                                                                            if (strpos($starNumber, '.')) {
+//                                                                                echo '<img src="path/to/half/star.png" />';
+//                                                                                $x++;
+//                                                                            }
+                                                while ($x <= 5) {
+                                                    echo '<i class="fa fa-star-o"></i>';
+                                                    $x++;
+                                                }
+                                                ?>
+
                                             </span>
                                             <img src="upload/transport/thumb/<?php echo $transport_photo['image_name'] ?>" alt=""/>
                                         </a>
