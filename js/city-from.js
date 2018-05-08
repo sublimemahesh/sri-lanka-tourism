@@ -32,7 +32,6 @@ $(document).ready(function () {
         }
     });
 
-
     $('#from').bind('keypress keydown keyup', function (e) {
         if (e.keyCode == 13) {
             e.preventDefault();
@@ -84,17 +83,13 @@ $(document).ready(function () {
         $('#from').val(cityName);
         $('#city-list-from').empty();
     });
+    
     $('#city-list-from').on('mouseover', '.city', function () {
         var cityId = this.id;
         var cityName = $(this).text();
         $('#from-id').val(cityId.replace("c", ""));
         $('#from').val(cityName);
     });
-
-
-
-
-
 
     $('#from').bind('keypress keydown keyup', function (e) {
         if (e.keyCode == 13) {

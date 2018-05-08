@@ -25,6 +25,7 @@ $ARTICLETYPES = ArticleType::all();
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/font-awesome.min.css" rel="stylesheet">
+        <link href="css/owl.carousel.min.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/responsive.css">
         <link href="css/search.css" rel="stylesheet" type="text/css"/>
@@ -33,7 +34,6 @@ $ARTICLETYPES = ArticleType::all();
         <link href="css/price-range/normalize.css" rel="stylesheet" type="text/css"/>
         <link href="css/price-range/ion.rangeSlider.css" rel="stylesheet" type="text/css"/>
         <link href="css/price-range/ion.rangeSlider.skinFlat.css" rel="stylesheet" type="text/css"/>
-        <link href="css/owl.carousel.min.css" rel="stylesheet" type="text/css"/>
 
 
     </head>
@@ -312,9 +312,9 @@ $ARTICLETYPES = ArticleType::all();
                                     </div>
 
 
-    <?php
-}
-?>
+                                    <?php
+                                }
+                                ?>
 
                             </div>
                         </div>
@@ -342,9 +342,9 @@ $ARTICLETYPES = ArticleType::all();
                                                 foreach ($TOURTYPES as $TOURTYPE) {
                                                     ?>
                                                     <option value="<?php echo $TOURTYPE['id']; ?>"><?php echo $TOURTYPE['name']; ?></option>
-    <?php
-}
-?>
+                                                    <?php
+                                                }
+                                                ?>
                                             </select>
                                         </div>
                                         <div class="col-md-6 col-sm-6 col-xs-12 taxi-title">
@@ -363,9 +363,9 @@ $ARTICLETYPES = ArticleType::all();
                             </form>
 
                             <div class="owl-carousel tour-slider" id="tour-slider">
-<?php
-foreach ($TOURTYPES as $TOURTYPE) {
-    ?>
+                                <?php
+                                foreach ($TOURTYPES as $TOURTYPE) {
+                                    ?>
                                     <div>
                                         <a href="view-tour-packages.php?type=<?php echo $TOURTYPE['id']; ?>">
                                             <img src="upload/tour-type/<?php echo $TOURTYPE['picture_name']; ?>" alt=""/>
@@ -378,15 +378,15 @@ foreach ($TOURTYPES as $TOURTYPE) {
                                             } else {
                                                 ?>
                                                 <div class="tour-heading pull-left" title="<?php echo strtoupper($TOURTYPE['name']); ?>"><?php echo strtoupper($TOURTYPE['name']); ?></div>
-        <?php
-    }
-    ?>
+                                                <?php
+                                            }
+                                            ?>
                                             <div class="tour-arrow white pull-right"><img src="images/icon/arrow2.png" alt=""/></div>
                                         </a>
                                     </div>
-    <?php
-}
-?>
+                                    <?php
+                                }
+                                ?>
                             </div>
 
                         </div>
@@ -407,9 +407,9 @@ foreach ($TOURTYPES as $TOURTYPE) {
                                                 foreach ($ACCOMMODATION_TYPE as $accommodation_type) {
                                                     ?>
                                                     <option value="<?php echo $accommodation_type['id']; ?>"><?php echo $accommodation_type['name']; ?></option>
-    <?php
-}
-?>
+                                                    <?php
+                                                }
+                                                ?>
                                             </select>
                                         </div>
                                     </div>
@@ -422,9 +422,9 @@ foreach ($TOURTYPES as $TOURTYPE) {
                                                 foreach ($DISTRICT as $district) {
                                                     ?>
                                                     <option value="<?php echo $district['id']; ?>"><?php echo $district['name']; ?></option>
-    <?php
-}
-?>
+                                                    <?php
+                                                }
+                                                ?>
                                             </select>
                                         </div>
                                         <div class="col-md-6 col-sm-6 col-xs-12 taxi-title">
@@ -497,59 +497,50 @@ foreach ($TOURTYPES as $TOURTYPE) {
                             </div>
                         </div>
                         <div id="article" class="tab-pane fade">
-                            <h3 class="select-op-header text-center">Booking</h3>
-                            <div id="taxi" class="tab-pane fade in active">
-                                <div class="row">
-                                    <div class="col-md-6 col-sm-6 col-xs-12 taxi-title">
-                                        <span class="span-style">Picking Up</span>
-                                        <input type="text" name="piking-up" placeholder="city,airport or address" class="input-text">
+                            <h3 class="select-op-header text-center">Article</h3>
+                            <form method="get" name="form" action="view-articles.php" >
+                                <div id="taxi" class="tab-pane fade in active">
+                                    <div class="row">
+                                        <div class="col-md-12 col-sm-12 col-xs-12 taxi-title">
+                                            <span class="span-style">Keyword</span>
+                                            <input type="text" name="keyword" placeholder="Article title" class="input-text">
+                                        </div>
                                     </div>
-                                    <div class="col-md-6 col-sm-6 col-xs-12 taxi-title">
-                                        <span class="span-style">Dropping Off</span>
-                                        <input type="text" name="dropping-off" placeholder="city,airport or address" class="input-text">
-                                    </div>
-                                </div>
-                                <div class="row taxi-body">
-                                    <div class="col-md-3 col-sm-6 col-xs-12 taxi-title">
-                                        <span class="span-style">Pick-up Date</span>
-                                        <input type="text" name="piking-up" placeholder="mm/dd/yy" class="input-text">
-                                    </div>
-                                    <div class="col-md-3 col-sm-6 col-xs-12 taxi-title">
-                                        <span class="span-style">Time</span>
-                                        <select class="form-control taxi-combo" id="sel-time">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-3 col-sm-6 col-xs-12 taxi-title book-drop-off">
-                                        <span class="span-style">Drop-off Date</span>
-                                        <input type="text" name="piking-up" placeholder="mm/dd/yy" class="input-text">
-                                    </div>
-                                    <div class="col-md-3 col-sm-6 col-xs-12 taxi-title book-time">
-                                        <span class="span-style">Time</span>
-                                        <select class="form-control taxi-combo" id="sel-time">
-                                            <option>00.00</option>
-                                            <option>00.30</option>
-                                            <option>01.00</option>
-                                            <option>01.30</option>
-                                            <option>02.00</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12 col-sm-12 col-xs-12 btn-search">
-                                        <button class="btn-style">Search</button>
-                                    </div>
-                                </div>
-                            </div>
+                                    <div class="row taxi-body">
 
+                                        <div class="col-md-6 col-sm-6 col-xs-12 taxi-title">
+                                            <span class="span-style">Article Type</span>
+                                            <select class="form-control taxi-combo" id="type" name="type">
+                                                <option> --Please Select a article type-- </option>
+                                                <?php
+                                                foreach ($ARTICLETYPES as $article) {
+                                                    ?>
+                                                    <option value="<?php echo $article['id']; ?>"><?php echo $article['name']; ?></option>
+                                                    <?php
+                                                }
+                                                ?>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-12 taxi-title">
+                                            <span class="span-style">Location</span>
+                                            <input type="text" autocomplete="off" id="article-city" placeholder="please select a city" class="input-text">
+                                            <div id="suggesstion-box">
+                                                <ul id="article-city-list" class="city-list"></ul>
+                                            </div>
+                                            <input type="hidden" name="article-city" value="" id="article-city-id"/>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12 col-sm-12 col-xs-12 btn-search">
+                                            <button class="btn-style">Search</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
                             <div class="owl-carousel article-slider" id="article-slider">
-<?php
-foreach ($ARTICLETYPES as $ARTICLETYPE) {
-    ?>
+                                <?php
+                                foreach ($ARTICLETYPES as $ARTICLETYPE) {
+                                    ?>
                                     <div>
                                         <a href="view-articles.php?type=<?php echo $ARTICLETYPE['id']; ?>">
                                             <img src="upload/article-type/<?php echo $ARTICLETYPE['picture_name']; ?>" alt=""/>
@@ -561,15 +552,15 @@ foreach ($ARTICLETYPES as $ARTICLETYPE) {
                                             } else {
                                                 ?>
                                                 <div class="article-heading pull-left" title="<?php echo strtoupper($ARTICLETYPE['name']); ?>"><?php echo strtoupper($ARTICLETYPE['name']); ?></div>
-        <?php
-    }
-    ?>
+                                                <?php
+                                            }
+                                            ?>
                                             <div class="article-arrow white pull-right"><img src="images/icon/arrow2.png" alt=""/></div>
                                         </a>
                                     </div>
-    <?php
-}
-?>
+                                    <?php
+                                }
+                                ?>
                             </div>
                         </div>
                         <div id="sea" class="tab-pane fade">
@@ -606,10 +597,11 @@ foreach ($ARTICLETYPES as $ARTICLETYPE) {
     </div>
 
     <!-- Our Resort Values style-->  
-<?php include './footer.php'; ?>
+    <?php include './footer.php'; ?>
     <script src="js/jquery-2.2.4.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/bootstrap-datepicker.js" type="text/javascript"></script>
+    <script src="js/city-for-article.js" type="text/javascript"></script>
     <script src="js/city-to.js" type="text/javascript"></script>
     <script src="js/city-from.js" type="text/javascript"></script>
     <script src="js/city.js" type="text/javascript"></script>

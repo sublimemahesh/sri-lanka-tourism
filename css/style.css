@@ -2151,6 +2151,9 @@ hr.style15:after {
 .tour-slider, .article-slider {
     margin-bottom: 30px;
 }
+.owl-carousel {
+    z-index: 0;
+}
 .tour-heading:hover, .article-heading:hover {
     background-color: #fff9;
     color: #000;
@@ -2218,6 +2221,9 @@ hr.style15:after {
 .tour-pack {
     background-color: #fffc;
     height: 385px;
+}
+.tour-pack.article-pack {
+    height: 460px;
 }
 .tour-pack1.col-md-3 {
     padding: 0px 10px 30px;
