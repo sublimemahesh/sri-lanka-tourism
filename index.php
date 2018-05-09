@@ -328,6 +328,14 @@ $ARTICLETYPES = ArticleType::all();
                                 ?>
 
                             </div>
+
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 col-xs-12 btn-search">
+                                    <a href="transports.php"><button class="btn-style">View All</button></a> 
+                                </div>
+                            </div>
+
+
                         </div>
                         <div id="tour" class="tab-pane fade">
                             <h3 class="select-op-header text-center">Tour</h3>
@@ -398,6 +406,11 @@ $ARTICLETYPES = ArticleType::all();
                                     <?php
                                 }
                                 ?>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 col-xs-12 btn-search">
+                                    <a href="#"><button class="btn-style">View All</button></a> 
+                                </div>
                             </div>
 
                         </div>
@@ -572,6 +585,11 @@ $ARTICLETYPES = ArticleType::all();
                                     <?php
                                 }
                                 ?>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 col-xs-12 btn-search">
+                                    <a href="view-articles.php"><button class="btn-style">View All</button></a> 
+                                </div>
                             </div>
                         </div>
                         <div id="sea" class="tab-pane fade">

@@ -73,6 +73,7 @@ $TRANSPORTS = $SEARCH->GetTransportByLocationFromAndTo($from, $to, $type, $condi
                                 $FUEL_TYPE = new FuelType($transport['fuel_type']);
                                 $VEHICLE_TYPE = new VehicleType($transport['vehicle_type']);
                                 $MEMBER = new Member($transport['member']);
+                                $starNumber = Feedback::getRatingByTransport($transport['id']);
                                 ?>
                                 <div class="room-box row room-box-new animated-box" data-animation="fadeInUp">
                                     <?php
@@ -93,13 +94,26 @@ $TRANSPORTS = $SEARCH->GetTransportByLocationFromAndTo($from, $to, $type, $condi
                                         <div class="col-md-8 m-sec">
                                             <div class="title-box">
                                                 <div class="title"><?php echo $transport['title']; ?></div>
-                                                <div class="rates">
-                                                    <div title="Rated 5.00 out of 5" class="star-rating" >
-                                                        <span class="width-80">
-                                                            <strong class="rating">5.00 out of 5 </strong>
+                                                <div class="">
+                                                    <div title="Rated <?php echo $starNumber;?> out of 5" class="" >
+                                                        <span class="str" style="color: #FF9800">
+                                                            <?php
+                                                            for ($x = 1; $x <= $starNumber; $x++) {
+                                                                echo '<i class="fa fa-star"></i>';
+                                                            }
+//                                                                            if (strpos($starNumber, '.')) {
+//                                                                                echo '<img src="path/to/half/star.png" />';
+//                                                                                $x++;
+//                                                                            }
+                                                            while ($x <= 5) {
+                                                                echo '<i class="fa fa-star-o"></i>';
+                                                                $x++;
+                                                            }
+                                                            ?>
+
                                                         </span>
                                                     </div>
-                                                    <span class="brackets">(Based on 17 reviews)</span>
+<!--                                                    <span class="brackets">(Based on 17 reviews)</span>-->
                                                 </div>
                                             </div>
                                             <div class="amenities">
