@@ -180,11 +180,17 @@ $MEMBER = new Member($ARTICLES->member);
                                                                     <div class="details"><?php echo $article_feedback['title']; ?></div>
                                                                     <div class="star-rating-t">
                                                                         <ul class="list-inline">
-                                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                                            <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                                                                            <?php
+                                                                            $starNumber = $article_feedback['rate'];
+                                                                            for ($x = 1; $x <= $starNumber; $x++) {
+                                                                                echo '<li class = "list-inline-item"><i class = "fa fa-star"></i></li>';
+                                                                            }
+
+                                                                            while ($x <= 5) {
+                                                                                echo '<li class = "list-inline-item"><i class = "fa fa-star-o"></i></li>';
+                                                                                $x++;
+                                                                            }
+                                                                            ?>
                                                                         </ul>
                                                                     </div>
                                                                 </div>										
@@ -215,11 +221,17 @@ $MEMBER = new Member($ARTICLES->member);
                                                                     <div class="details"><?php echo $article_feedback['title']; ?></div>
                                                                     <div class="star-rating-t">
                                                                         <ul class="list-inline">
-                                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                                            <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                                                                            <?php
+                                                                            $starNumber = $article_feedback['rate'];
+                                                                            for ($x = 1; $x <= $starNumber; $x++) {
+                                                                                echo '<li class = "list-inline-item"><i class = "fa fa-star"></i></li>';
+                                                                            }
+
+                                                                            while ($x <= 5) {
+                                                                                echo '<li class = "list-inline-item"><i class = "fa fa-star-o"></i></li>';
+                                                                                $x++;
+                                                                            }
+                                                                            ?>
                                                                         </ul>
                                                                     </div>
                                                                 </div>										
@@ -277,11 +289,18 @@ $MEMBER = new Member($ARTICLES->member);
                                         ?>
                                         <a href="article-view.php?id=<?php echo $article['id']; ?>">
                                             <span class="price">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
+                                                <?php
+                                                $starNumber1 = Feedback::getRatingByArticle($article['id']);
+
+                                                for ($x = 1; $x <= $starNumber1; $x++) {
+                                                    echo '<i class="fa fa-star"></i>';
+                                                }
+
+                                                while ($x <= 5) {
+                                                    echo '<i class="fa fa-star-o"></i>';
+                                                    $x++;
+                                                }
+                                                ?>
                                             </span>
                                             <img src="upload/article/thumb/<?php echo $article_photo['image_name'] ?>" alt=""/>
                                         </a>

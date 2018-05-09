@@ -33,7 +33,7 @@ $count_feedbacks = count($feedbacks);
         <link href="css/search.css" rel="stylesheet" type="text/css"/>
         <link href="css/datepicker.css" rel="stylesheet" type="text/css"/>
         <link href="assets/css/styles.css" rel="stylesheet" type="text/css"/>
-
+        <link href="css/slider/magnific.popup.css" rel="stylesheet" type="text/css"/>
 
         <link href="https://fonts.googleapis.com/css?family=Russo+One|Magra|Ubuntu+Condensed" rel="stylesheet"> 
     </head>
@@ -68,8 +68,8 @@ $count_feedbacks = count($feedbacks);
                                     foreach ($subsectionphotos as $subsectionphoto) {
                                         ?>
                                         <div class="col-md-3 view-image">
-                                            <a class="example-image-link" href="upload/tour-package/sub-section/<?php echo $subsectionphoto['image_name']; ?>" data-lightbox="example-set" data-title="Click the right half of the image to move forward.">
-                                                <img class="example-image img-responsive image11" src="upload/tour-package/sub-section/thumb/<?php echo $subsectionphoto['image_name']; ?>" alt="<?php echo $subsectionphoto['caption']; ?>" />
+                                            <a href="upload/tour-package/sub-section/<?php echo $subsectionphoto['image_name']; ?>"  title="Single Room" class="popup-gallery">
+                                                <img src="upload/tour-package/sub-section/thumb/<?php echo $subsectionphoto['image_name']; ?>" class="example-image img-responsive image11" alt="Owl Image">
                                                 <div class="middle">
                                                     <i class="fa fa-search-plus"></i>
                                                 </div>
@@ -140,11 +140,17 @@ $count_feedbacks = count($feedbacks);
                                                             <div class="details"><?php echo $feedback['title']; ?></div>
                                                             <div class="star-rating-t">
                                                                 <ul class="list-inline">
-                                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                                    <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                                                                    <?php
+                                                                    $starNumber = $feedback['rate'];
+                                                                    for ($x = 1; $x <= $starNumber; $x++) {
+                                                                        echo '<li class = "list-inline-item"><i class = "fa fa-star"></i></li>';
+                                                                    }
+
+                                                                    while ($x <= 5) {
+                                                                        echo '<li class = "list-inline-item"><i class = "fa fa-star-o"></i></li>';
+                                                                        $x++;
+                                                                    }
+                                                                    ?>
                                                                 </ul>
                                                             </div>
                                                         </div>										
@@ -172,11 +178,17 @@ $count_feedbacks = count($feedbacks);
                                                             <div class="details"><?php echo $feedback['title']; ?></div>
                                                             <div class="star-rating-t">
                                                                 <ul class="list-inline">
-                                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                                    <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                                                                    <?php
+                                                                    $starNumber = $feedback['rate'];
+                                                                    for ($x = 1; $x <= $starNumber; $x++) {
+                                                                        echo '<li class = "list-inline-item"><i class = "fa fa-star"></i></li>';
+                                                                    }
+
+                                                                    while ($x <= 5) {
+                                                                        echo '<li class = "list-inline-item"><i class = "fa fa-star-o"></i></li>';
+                                                                        $x++;
+                                                                    }
+                                                                    ?>
                                                                 </ul>
                                                             </div>
                                                         </div>										
@@ -235,20 +247,20 @@ $count_feedbacks = count($feedbacks);
         ?>
         <script src="js/jquery-2.2.4.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
-        <link href="css/lightbox.min.css" rel="stylesheet" type="text/css"/>
-        <script src="js/lightbox-plus-jquery.min.js" type="text/javascript"></script>
-        <script src="js/jquery.flexslider.js" type="text/javascript"></script>
+        <!--        <link href="css/lightbox.min.css" rel="stylesheet" type="text/css"/>
+                <script src="js/lightbox-plus-jquery.min.js" type="text/javascript"></script>
+                <script src="js/jquery.flexslider.js" type="text/javascript"></script>-->
+
+        <script src="js/slider/magnific.popup.min.js" type="text/javascript"></script>
+        <script src="js/slider/custom.js" type="text/javascript"></script>
         <script>
             jQuery(document).ready(function () {
                 jQuery('#btn-add-comment').click(function () {
                     jQuery("#myModaltour").modal('show');
                 });
-
             });
 
-
             jQuery('#create').click(function (event) {
-
                 event.preventDefault();
 
                 var captchacode = jQuery('#captchacode').val();

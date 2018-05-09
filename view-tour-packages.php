@@ -138,17 +138,43 @@ $TOURS = $SEARCH->GetToursByKeywords($keyword, $noofdates, $type, $pricefrom, $p
                                                 </div>
                                             </a>
                                             <div class="mem-img col-md-3">
-                                                <img src="upload/member/<?php echo $MEMBER->profile_picture; ?>" class="img-responsive thumbnail  pull-right" title="<?php echo $MEMBER->name; ?>" alt=""/>
+                                                <a href="member-view.php?id=<?php echo $MEMBER->id; ?>" class="link">
+                                                    <?php
+                                                    if (empty($MEMBER->profile_picture)) {
+                                                        ?> 
+                                                        <img src="upload/member/member.png" class="img img-responsive img-thumbnail pull-right" id="profil_pic"/>
+                                                        <?php
+                                                    } else {
+
+                                                        if ($MEMBER->facebookID && substr($MEMBER->profile_picture, 0, 5) === "https") {
+                                                            ?>
+                                                            <img src="<?php echo $MEMBER->profile_picture; ?>" class="img-responsive thumbnail pull-right">
+                                                            <?php
+                                                        } else {
+                                                            ?>
+                                                            <img src="upload/member/<?php echo $MEMBER->profile_picture; ?>" class="img-responsive thumbnail pull-right">
+                                                            <?php
+                                                        }
+                                                    }
+                                                    ?>
+                                                </a>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="tour-price pull-left"><i class="fa fa-dollar"></i> LKR <?php echo $TOUR['price']; ?>/=</div>
                                             <div class="tour-rate pull-right">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
+                                                <?php
+                                                $starNumber = Feedback::getRatingByTour($id);
+
+                                                for ($x = 1; $x <= $starNumber; $x++) {
+                                                    echo '<i class="fa fa-star"></i>';
+                                                }
+
+                                                while ($x <= 5) {
+                                                    echo '<i class="fa fa-star-o"></i>';
+                                                    $x++;
+                                                }
+                                                ?>
                                             </div>
                                         </div>
 
@@ -176,7 +202,7 @@ $TOURS = $SEARCH->GetToursByKeywords($keyword, $noofdates, $type, $pricefrom, $p
                     </div>
 
                     <div class="row col-md-offset-3">
-<?php Search::showPaginationTour($keyword, $noofdates, $type, $pricefrom, $priceto, $setLimit, $page); ?>
+                        <?php Search::showPaginationTour($keyword, $noofdates, $type, $pricefrom, $priceto, $setLimit, $page); ?>
                     </div>
                 </div>
             </section>  

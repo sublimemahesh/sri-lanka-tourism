@@ -94,7 +94,13 @@
                     </div> 
                     <div class="form-group">
                         <label for="name">Rate</label>
-                        <input type="number" name="rate" class="form-control" id="rate" placeholder="Enter rates" required/>
+                        <select name="rate" class="form-control" id="rate" placeholder="Enter rates" required>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
                         <span id="spantitle"></span>
                     </div> 
 
@@ -155,7 +161,13 @@
                     </div> 
                     <div class="form-group">
                         <label for="name">Rate</label>
-                        <input type="number" name="rate" class="form-control" id="rate" placeholder="Enter rates" required/>
+                        <select name="rate" class="form-control" id="rate" placeholder="Enter rates" required>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
                         <span id="spantitle"></span>
                     </div> 
 
@@ -216,7 +228,13 @@
                     </div> 
                     <div class="form-group">
                         <label for="name">Rate</label>
-                        <input type="number" name="rate" class="form-control" id="rate" placeholder="Enter rates" required/>
+                        <select name="rate" class="form-control" id="rate" placeholder="Enter rates" required>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
                         <span id="spantitle"></span>
                     </div> 
 
