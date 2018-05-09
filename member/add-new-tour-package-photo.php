@@ -6,6 +6,7 @@ if (isset($_GET['id'])) {
     $id = $_GET['id'];
 }
 $TOUR_SUB = new TourSubSection($id);
+$TOUR = new TourPackage($TOUR_SUB->tour);
 ?> 
 <!DOCTYPE html>
 <html lang="en">
@@ -51,7 +52,7 @@ $TOUR_SUB = new TourSubSection($id);
                             $vali->show_message();
                             ?>
                             <div class="panel panel-default">
-                                <div class="panel-heading"><i class="fa fa-save"></i> Create Tour Package Itinerary Images</div>
+                                <div class="panel-heading"><i class="fa fa-save"></i> Manage Tour Itinerary Images - <?php echo $TOUR->name; ?> - <?php echo $TOUR_SUB->title; ?></div>
                                 <div class="panel-body">
                                     <div class="body">
                                         <div class="userccount">

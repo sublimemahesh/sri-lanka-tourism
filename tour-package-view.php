@@ -68,7 +68,8 @@ $count_feedbacks = count($feedbacks);
                                     foreach ($subsectionphotos as $subsectionphoto) {
                                         ?>
                                         <div class="col-md-3 view-image">
-                                            <a class="example-image-link" href="upload/tour-package/sub-section/thumb/<?php echo $subsectionphoto['image_name']; ?>" data-lightbox="example-set" data-title="Click the right half of the image to move forward."><img class="example-image img-responsive image11" src="upload/tour-package/sub-section/thumb/<?php echo $subsectionphoto['image_name']; ?>" alt="<?php echo $subsectionphoto['caption']; ?>" />
+                                            <a class="example-image-link" href="upload/tour-package/sub-section/<?php echo $subsectionphoto['image_name']; ?>" data-lightbox="example-set" data-title="Click the right half of the image to move forward.">
+                                                <img class="example-image img-responsive image11" src="upload/tour-package/sub-section/thumb/<?php echo $subsectionphoto['image_name']; ?>" alt="<?php echo $subsectionphoto['caption']; ?>" />
                                                 <div class="middle">
                                                     <i class="fa fa-search-plus"></i>
                                                 </div>
@@ -234,7 +235,9 @@ $count_feedbacks = count($feedbacks);
         ?>
         <script src="js/jquery-2.2.4.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
-
+        <link href="css/lightbox.min.css" rel="stylesheet" type="text/css"/>
+        <script src="js/lightbox-plus-jquery.min.js" type="text/javascript"></script>
+        <script src="js/jquery.flexslider.js" type="text/javascript"></script>
         <script>
             jQuery(document).ready(function () {
                 jQuery('#btn-add-comment').click(function () {

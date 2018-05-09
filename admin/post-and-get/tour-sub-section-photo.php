@@ -25,7 +25,7 @@ if (isset($_POST['create'])) {
         $handle->file_new_name_ext = 'jpg';
         $handle->image_ratio_crop = 'C';
         $handle->file_new_name_body = $img;
-        
+        $handle->image_watermark = '../../images/watermark/watermark.png';
         $image_dst_x = $handle->image_dst_x;
         $image_dst_y = $handle->image_dst_y;
         $newSize = Helper::calImgResize(600, $image_dst_x, $image_dst_y);
@@ -106,7 +106,7 @@ if (isset($_POST['update'])) {
         $handle->file_new_name_ext = FALSE;
         $handle->image_ratio_crop = 'C';
         $handle->file_new_name_body = $img;
-        
+        $handle->image_watermark = '../../images/watermark/watermark.png';
         $image_dst_x = $handle->image_dst_x;
         $image_dst_y = $handle->image_dst_y;
         $newSize = Helper::calImgResize(600, $image_dst_x, $image_dst_y);

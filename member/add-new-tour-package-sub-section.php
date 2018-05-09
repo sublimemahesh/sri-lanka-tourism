@@ -53,7 +53,7 @@ $TOUR_SUB_PHOTO = new TourSubSectionPhoto(NULL);
                             $vali->show_message();
                             ?>
                             <div class="panel panel-default">
-                                <div class="panel-heading"><i class="fa fa-save"></i> Create Tour Itinerary Date</div>
+                                <div class="panel-heading"><i class="fa fa-save"></i> Create Tour Itinerary Date - <?php echo $TOUR_PACKAGE->name; ?></div>
                                 <div class="panel-body">
                                     <div class="body">
                                         <div class="userccount">

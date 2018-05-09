@@ -15,7 +15,7 @@ if (isset($_POST['upload-tour-sub-photo'])) {
         $handle->file_new_name_ext = 'jpg';
         $handle->image_ratio_crop = 'C';
         $handle->file_new_name_body = $imgName;
-        $handle->image_watermark = '../../assets/img/logo-watermark.png';
+        $handle->image_watermark = '../../../images/watermark/watermark.png';
 
         $image_dst_x = $handle->image_dst_x;
         $image_dst_y = $handle->image_dst_y;
