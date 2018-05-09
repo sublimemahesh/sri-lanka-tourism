@@ -2220,7 +2220,7 @@ hr.style15:after {
 /*--------Tour Packages------------*/
 .tour-pack {
     background-color: #fffc;
-    height: 385px;
+    height: 380px;
 }
 .tour-pack.article-pack {
     height: 460px;
@@ -2282,6 +2282,7 @@ hr.style15:after {
 }
 .tour-desc {
     text-align: justify;
+    height: 60px;
 }
 .tour-dtls.row.tour-desc {
     margin: 0px;
@@ -2556,4 +2557,7 @@ hr.style15:after {
 }
 .rate-star i {
     color: #ffb300;
+}
+ul.setPaginate {
+    margin: 0px 0px 20px 0px;
 }

@@ -5,8 +5,12 @@
         <group>
             <file>file:/C:/xampp/htdocs/sri-lanka-tourism/transports.php</file>
             <file>file:/C:/xampp/htdocs/sri-lanka-tourism/index.php</file>
+            <file>file:/C:/xampp/htdocs/sri-lanka-tourism/css/style.css</file>
+            <file>file:/C:/xampp/htdocs/sri-lanka-tourism/view-articles.php</file>
             <file>file:/C:/xampp/htdocs/sri-lanka-tourism/view-tour-packages.php</file>
-            <file>file:/C:/xampp/htdocs/sri-lanka-tourism/accommodation.php</file>
+            <file>file:/C:/xampp/htdocs/sri-lanka-tourism/class/Search.php</file>
+            <file>file:/C:/xampp/htdocs/sri-lanka-tourism/js/city-for-article.js</file>
+            <file>file:/C:/xampp/htdocs/sri-lanka-tourism/css/search.css</file>
             <file>file:/C:/xampp/htdocs/sri-lanka-tourism/js/city.js</file>
             <file>file:/C:/xampp/htdocs/sri-lanka-tourism/js/city-from.js</file>
         </group>

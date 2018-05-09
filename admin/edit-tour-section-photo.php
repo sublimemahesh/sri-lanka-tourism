@@ -47,7 +47,13 @@ $TOUR_SUB_PHOTO = new TourSubSectionPhoto($id);
                                 <h2>
                                     Edit Tour Itinerary Image
                                 </h2>
-
+                                <ul class="header-dropdown">
+                                    <li class="">
+                                        <a href="view-tour-sub-section-photos.php?id=<?php echo $TOUR_SUB_PHOTO->tour_sub_section; ?>">
+                                            <i class="material-icons">list</i> 
+                                        </a>
+                                    </li>
+                                </ul>
                             </div>
                             <div class="body row">
                                 <form class="form-horizontal" method="post" action="post-and-get/tour-sub-section-photo.php" enctype="multipart/form-data"> 
@@ -70,7 +76,7 @@ $TOUR_SUB_PHOTO = new TourSubSectionPhoto($id);
                                             <div class="form-group">
                                                 <div class="form-line">
                                                     <input type="file" id="image" class="form-control" value="<?php echo $TOUR_SUB_PHOTO->image_name; ?>"  name="image">
-                                                    <img src="../upload/tour-package/sub-section/gallery/<?php echo $TOUR_SUB_PHOTO->image_name; ?>" id="image" class="view-edit-img img img-responsive img-thumbnail" name="image" alt="old image">
+                                                    <img src="../upload/tour-package/sub-section/thumb/<?php echo $TOUR_SUB_PHOTO->image_name; ?>" id="image" class="view-edit-img img img-responsive img-thumbnail" name="image" alt="old image">
                                                 </div>
                                             </div>
                                         </div>
