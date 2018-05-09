@@ -61,11 +61,11 @@ $TOURS = $SEARCH->GetToursByKeywords($keyword, $noofdates, $type, $pricefrom, $p
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/font-awesome.min.css" rel="stylesheet">
+        <link href="assets/css/styles.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/responsive.css">
         <link href="css/search.css" rel="stylesheet" type="text/css"/>
         <link href="css/datepicker.css" rel="stylesheet" type="text/css"/>
-        <link href="assets/css/styles.css" rel="stylesheet" type="text/css"/>
         <link href="admin/plugins/jquery-ui/jquery-ui.css" rel="stylesheet" type="text/css"/>
         <link href="https://fonts.googleapis.com/css?family=Russo+One|Magra|Ubuntu+Condensed" rel="stylesheet">
 
@@ -126,20 +126,19 @@ $TOURS = $SEARCH->GetToursByKeywords($keyword, $noofdates, $type, $pricefrom, $p
                                     </div>
                                     <div class="tour-dtls">
                                         <div class="row">
-                                            <a href="#" title="<?php echo $TOUR['name']; ?>">
+                                            <a href="tour-package-view.php?id=<?php echo $TOUR['id']; ?>" title="<?php echo $TOUR['name']; ?>">
                                                 <div class="tour-title col-md-9 pull-left">
-                                                    <?php 
-                                                    if(strlen($TOUR['name'])> 18 ) {
+                                                    <?php
+                                                    if (strlen($TOUR['name']) > 18) {
                                                         echo substr($TOUR['name'], 0, 17) . '...';
                                                     } else {
                                                         echo $TOUR['name'];
                                                     }
-                                                    
                                                     ?>
                                                 </div>
                                             </a>
                                             <div class="mem-img col-md-3">
-                                                <img src="upload/member/<?php echo $MEMBER->profile_picture; ?>" class="thumbnail  pull-right" title="<?php echo $MEMBER->name; ?>" alt=""/>
+                                                <img src="upload/member/<?php echo $MEMBER->profile_picture; ?>" class="img-responsive thumbnail  pull-right" title="<?php echo $MEMBER->name; ?>" alt=""/>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -153,9 +152,18 @@ $TOURS = $SEARCH->GetToursByKeywords($keyword, $noofdates, $type, $pricefrom, $p
                                             </div>
                                         </div>
 
-                                        <div class="row tour-desc"><?php echo substr($TOUR['description'], 0, 90) . '...'; ?></div>
+                                        <div class="row tour-desc"><?php echo substr($TOUR['description'], 0, 85) . '...'; ?></div>
                                         <div class="row">
-                                            <div class="tour-type pull-left"><i class="fa fa-certificate"></i> <?php echo $TYPE->name; ?> Type</div>
+                                            <div class="tour-type pull-left" title="<?php echo $TYPE->name . ' Type'; ?>">
+                                                <i class="fa fa-certificate"></i> 
+                                                <?php
+                                                if (strlen($TYPE->name) > 8) {
+                                                    echo substr($TYPE->name, 0, 10) . '...';
+                                                } else {
+                                                    echo $TYPE->name . ' Type';
+                                                }
+                                                ?>
+                                            </div>
                                             <a href="tour-package-view.php?id=<?php echo $TOUR['id']; ?>"><div class="tour-btn pull-right btn btn-sm blue">Read More<span class="glyphicon glyphicon-eye-open"></span></div></a>
                                         </div> 
 
@@ -168,7 +176,7 @@ $TOURS = $SEARCH->GetToursByKeywords($keyword, $noofdates, $type, $pricefrom, $p
                     </div>
 
                     <div class="row col-md-offset-3">
-                        <?php Search::showPaginationTour($keyword, $noofdates, $type, $pricefrom, $priceto, $setLimit, $page); ?>
+<?php Search::showPaginationTour($keyword, $noofdates, $type, $pricefrom, $priceto, $setLimit, $page); ?>
                     </div>
                 </div>
             </section>  
