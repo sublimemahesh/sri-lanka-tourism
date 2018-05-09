@@ -282,11 +282,24 @@ $MEMBER = new Member($TRANSPORTS->member);
                                                                     <div class="details"><?php echo $transport_feedback['title']; ?></div>
                                                                     <div class="star-rating-t">
                                                                         <ul class="list-inline">
-                                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                                            <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                                                                            <?php
+                                                                            $starNumber = $transport_feedback['rate'];
+                                                                            for ($x = 1; $x <= $starNumber; $x++) {
+                                                                                echo '<li class = "list-inline-item"><i class = "fa fa-star"></i></li>';
+                                                                            }
+//                                                                            if (strpos($starNumber, '.')) {
+//                                                                                echo '<img src="path/to/half/star.png" />';
+//                                                                                $x++;
+//                                                                            }
+                                                                            while ($x <= 5) {
+                                                                                echo '<li class = "list-inline-item"><i class = "fa fa-star-o"></i></li>';
+                                                                                $x++;
+                                                                            }
+                                                                            ?>
+
+
+
+
                                                                         </ul>
                                                                     </div>
                                                                 </div>										

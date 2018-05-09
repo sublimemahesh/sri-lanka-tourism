@@ -1,80 +1,260 @@
-<div class="room-box row room-box-new animated-box" data-animation="fadeInUp">
-    <?php
-    foreach ($TRANSPORTS_PHOTO->getTransportPhotosById($transport['id']) as $key => $TRANSPORTS_P) {
-        if ($key == 1) {
-            break;
-        }
-        ?>
-        <div class="col-md-4 room-img " style=" background-color: #E6F9FF;">
-            <a href="transportation-view.php?id=<?php echo $transport['id']; ?>">
-                <img class=" vehicle-img" src="upload/transport/thumb/<?php echo $TRANSPORTS_P['image_name']; ?>"/>
-            </a>
-        </div>
+<?php
+include_once(dirname(__FILE__) . '/class/include.php');
+
+if (!isset($_SESSION)) {
+    session_start();
+}
+
+$SEARCH = new Search(NULL);
+
+$keyword = NULL;
+$type = NULL;
+$district = NULL;
+$city = NULL;
+
+/* set page numbers */
+if (isset($_GET["page"])) {
+    $page = (int) $_GET["page"];
+} else {
+    $page = 1;
+}
+$setLimit = 3;
+$pageLimit = ($page * $setLimit) - $setLimit;
+
+
+/* search */
+if (isset($_GET['keyword'])) {
+    $keyword = $_GET['keyword'];
+}
+if (isset($_GET['type'])) {
+    $type = $_GET['type'];
+}
+if (isset($_GET['district'])) {
+    $district = $_GET['district'];
+}
+if (isset($_GET['city'])) {
+    $city = $_GET['city'];
+}
+
+$ACCOMMODATIONS = $SEARCH->GetAccommodationByKeywords($keyword, $type, $district, $city, $pageLimit, $setLimit);
+$ACCOMMODATION_PHOTO = new AccommodationPhoto(NULL);
+?>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Sri Lanka || Tourism</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/responsive.css">
+        <link href="css/search.css" rel="stylesheet" type="text/css"/>
+        <link href="css/datepicker.css" rel="stylesheet" type="text/css"/>
+        <link href="assets/css/styles.css" rel="stylesheet" type="text/css"/>
+        <link href="admin/plugins/jquery-ui/jquery-ui.css" rel="stylesheet" type="text/css"/>
+        <link href="https://fonts.googleapis.com/css?family=Russo+One|Magra|Ubuntu+Condensed" rel="stylesheet"> 
+        <link href="css/accommodation.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body style="background-color: #ffffff">
+        <!-- Our Resort Values style-->
         <?php
-    }
-    ?>
-    <div class="r-sec col-md-8">
-        <div class="col-md-8 m-sec">
-            <div class="title-box">
-                <div class="title"><?php echo $transport['title']; ?></div>
+        include './header.php';
+        ?>
 
-                <div class="row driver">
-                    <div class="profile col-md-3">
-                        <a href="member-view.php?id=<?php echo $MEMBER->id; ?>" class="link">
-                            <?php
-                            if (empty($MEMBER->profile_picture)) {
-                                ?>
-                                <img src="upload/member/member.png" class="img img-responsive img-thumbnail" id="profil_pic"/>
-                                <?php
-                            } else {
-                                ?>
-                                <img src="upload/member/<?php echo $MEMBER->profile_picture; ?>" class="img-responsive thumbnail">
-                                <?php
-                            }
+
+        <section id="rooms-section" class="row-view">
+            <div class="inner-container container">
+                <div class="room-container clearfix">
+                    <div class="col-md-9">
+                        <?php
+                        foreach ($ACCOMMODATIONS as $accommodation) {
+                            $ACCOMMODATION_TYPE = new AccommodationType($accommodation['type']);
+                            $MEMBER = new Member($accommodation['member']);
                             ?>
-                        </a>
+                            <div class="room">
+                                <div class="ribbon ribbon-top-left"><span><?php echo $accommodation['name']; ?></span>
+                                </div>
+                                <!--ROOM IMAGE-->
+                                <div class="r1 r-com">
+                                    <a href="accommodation-view.php?id=<?php echo $accommodation['id']; ?>" class="">
+                                        <?php
+                                        foreach ($ACCOMMODATION_PHOTO->getAccommodationPhotosById($accommodation['id']) as $key => $ACCOMMODATION_P) {
+                                            if ($key == 1) {
+                                                break;
+                                            }
+                                            ?> 
+                                            <img src="upload/accommodation/thumb/<?php echo $ACCOMMODATION_P['image_name']; ?>">
+                                            <?php
+                                        }
+                                        ?>
+                                    </a>
+                                </div>
+                                <!--ROOM RATING-->
+                                <div class="r2 r-com">
+                                    <h4>
+                                        <?php echo $ACCOMMODATION_TYPE->name; ?>  
+                                    </h4>
+                                    <div class="r2-ratt">
+                                        <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <img src="images/h-trip.png" alt=""> 
+                                    </div>
+                                    <ul>
+                                        <div class="r2-available">LKR 65546</div>
+                                        <li></li>
+                                        <li></li>
+                                    </ul>
+                                </div>
+                                <!--ROOM AMINITIES-->
+                                <div class="r3 r-com">
+                                    <ul class="accommodation-facilities">
+                                        <?php
+                                        $ALL_FACILITIES = AccommodationFacilityDetails::getFacilitiesByAccommodationId($accommodation['id']);
+
+                                        $FACILITIES = explode(",", $ALL_FACILITIES['facility']);
+
+                                        foreach ($FACILITIES as $key => $facility) {
+                                            if ($key == 5) {
+                                                break;
+                                            }
+                                            $ACCOMMODATION_FACILITY = new AccommodationGeneralFacilities($facility);
+                                            ?>
+                                            <li><img src="upload/accommodation-facilities-icons/<?php echo $ACCOMMODATION_FACILITY->image_name ?>" style="width: 15px;">&nbsp;<?php echo $ACCOMMODATION_FACILITY->name ?></li>
+                                            <?php
+                                        }
+                                        ?>
+                                    </ul>
+                                </div>
+
+                                <!--ROOM BOOKING BUTTON-->
+                                <div class="r5 r-com">
+
+                                    <a href="member-view.php?id=<?php echo $MEMBER->id; ?>" class="link">
+                                        <?php
+                                        if (empty($MEMBER->profile_picture)) {
+                                            ?> 
+                                            <img src="upload/member/member.png" class="img img-responsive img-thumbnail" id="profil_pic" style="width: 70px;"/>
+                                            <?php
+                                        } else {
+
+                                            if ($MEMBER->facebookID && substr($MEMBER->profile_picture, 0, 5) === "https") {
+                                                ?>
+                                                <img src="<?php echo $MEMBER->profile_picture; ?>" class="img-responsive thumbnail" style="width: 70px;">
+                                                <?php
+                                            } else {
+                                                ?>
+                                                <img src="upload/member/<?php echo $MEMBER->profile_picture; ?>" class="img-responsive thumbnail" style="width: 70px;">
+                                                <?php
+                                            }
+                                        }
+                                        ?>
+                                    </a>
+
+          <!--                                    <p>Price for 1 night</p>-->
+                                    <a href="room-details-block.html" class="inn-room-book">Book Now</a> </div>
+                            </div>
+                            <?php
+                        }
+                        ?>
+                        <div class="row">
+                            <?php $SEARCH->showPaginationAccommodation($keyword, $type, $district, $city, $setLimit, $page); ?>
+                        </div>
                     </div>
-                    <div class="driver-name col-md-9 text-left"><?php echo $MEMBER->name; ?></div>
+                </div>
+        </section>
 
-                </div>
 
-            </div>
-            <div class="amenities">
-                <ul class="list-inline clearfix">
-                    <li class="col-md-12">
-                        <div class="title">Vehicle Type :</div>
-                        <div class="value"><?php echo $VEHICLE_TYPE->name; ?></div>
-                    </li>
-                    <li class="col-md-12">
-                        <div class="title">Reg: No :</div>
-                        <div class="value"><?php echo $transport['registered_number']; ?></div>
-                    </li>
-                    <li class="col-md-12">
-                        <div class="title">Reg: Year :</div>
-                        <div class="value"><?php echo $transport['registered_year']; ?></div>
-                    </li>
-                    <li class="col-md-12">
-                        <div class="title">Fuel Type :</div>
-                        <div class="value"><?php echo $FUEL_TYPE->name; ?></div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="col-md-4 desc desc-price">
-            <div class="rates">
-                <div title="Rated 5.00 out of 5" class="star-rating" >
-                    <span class="width-80">
-                        <strong class="rating">5.00 out of 5 </strong>
-                    </span>
-                </div>
-                <span class="brackets">(Based on 17 reviews)</span>
-            </div>
-            <div class="bottom-sec">
-                <div class="pointer"><strong class="price">US$ 350</strong></div>
-                <div class="m-sec btn-padding">
-                    <a href="transport-booking.php?rate=<?php echo $transport['transport_rate']; ?>&visitor=<?php echo $_SESSION['id']; ?>" class="more-info">Book Now</a> 
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+
+        <!-- Our Resort Values style-->  
+        <?php
+        include './footer.php';
+        ?>
+        <script src="js/jquery-2.2.4.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="assets/js/jquery-3.1.0.min.js" type="text/javascript"></script>
+        <script src="js/bootstrap-datepicker.js" type="text/javascript"></script>
+        <script src="assets/js/helper.js" type="text/javascript"></script>
+        <script src="assets/js/template.js" type="text/javascript"></script>
+        <script>
+            $(function () {
+                $("#datepicker").datepicker({
+                    autoclose: true,
+                    todayHighlight: true
+                }).datepicker('update', new Date());
+            });
+
+            $(function () {
+                $("#datepicker1").datepicker({
+                    autoclose: true,
+                    todayHighlight: true
+                }).datepicker('update', new Date());
+            });
+
+            $(function () {
+                $("#datepicker2").datepicker({
+                    autoclose: true,
+                    todayHighlight: true
+                }).datepicker('update', new Date());
+            });
+
+            $(function () {
+                $("#datepicker3").datepicker({
+                    autoclose: true,
+                    todayHighlight: true
+                }).datepicker('update', new Date());
+            });
+
+            $(function () {
+                $("#datepicker4").datepicker({
+                    autoclose: true,
+                    todayHighlight: true
+                }).datepicker('update', new Date());
+            });
+
+            $(function () {
+                $("#datepicker5").datepicker({
+                    autoclose: true,
+                    todayHighlight: true
+                }).datepicker('update', new Date());
+            });
+
+
+        </script>
+        <script>
+            var $star_rating = $('.star-rating .fa');
+
+            var SetRatingStar = function () {
+                return $star_rating.each(function () {
+                    if (parseInt($star_rating.siblings('input.rating-value').val()) >= parseInt($(this).data('rating'))) {
+                        return $(this).removeClass('fa-star-o').addClass('fa-star');
+                    } else {
+                        return $(this).removeClass('fa-star').addClass('fa-star-o');
+                    }
+                });
+            };
+
+            $star_rating.on('click', function () {
+                $star_rating.siblings('input.rating-value').val($(this).data('rating'));
+                return SetRatingStar();
+            });
+
+            SetRatingStar();
+            $(document).ready(function () {
+
+            });
+        </script>
+
+
+        <script type="text/javascript">
+
+            $(document).ready(function () {
+
+                $('[data-toggle="tooltip"]').tooltip();
+
+            });
+
+        </script>
+
+
+    </body> 
+
+</html>
