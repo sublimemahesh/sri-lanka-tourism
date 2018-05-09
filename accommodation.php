@@ -37,7 +37,6 @@ if (isset($_GET['city'])) {
 }
 
 $ACCOMMODATIONS = $SEARCH->GetAccommodationByKeywords($keyword, $type, $district, $city, $pageLimit, $setLimit);
-
 $ACCOMMODATION_PHOTO = new AccommodationPhoto(NULL);
 ?>
 <!DOCTYPE html>
@@ -55,121 +54,116 @@ $ACCOMMODATION_PHOTO = new AccommodationPhoto(NULL);
         <link href="assets/css/styles.css" rel="stylesheet" type="text/css"/>
         <link href="admin/plugins/jquery-ui/jquery-ui.css" rel="stylesheet" type="text/css"/>
         <link href="https://fonts.googleapis.com/css?family=Russo+One|Magra|Ubuntu+Condensed" rel="stylesheet"> 
-
+        <link href="css/accommodation.css" rel="stylesheet" type="text/css"/>
     </head>
-    <body>
+    <body style="background-color: #ffffff">
         <!-- Our Resort Values style-->
         <?php
         include './header.php';
         ?>
 
-        <div class="row background-image" style="background-image: url('images/hotel/car.jpg');">
-            <section id="rooms-section" class="row-view">
-                <div class="inner-container container">
-                    <div class="room-container clearfix">
-                        <div class="col-md-9">
-                            <?php
-                            foreach ($ACCOMMODATIONS as $accommodation) {
-                                ?>
-                                <div class="room-box1 row animated-box animated-border" >
-                                    <div class="col-md-3 room-img1 acc-image">
-                                        <a href="accommodation-view.php?id=<?php echo $accommodation['id']; ?>" class="">
+
+        <section id="rooms-section" class="row-view">
+            <div class="inner-container container">
+                <div class="room-container clearfix">
+                    <div class="col-md-9">
+                        <?php
+                        foreach ($ACCOMMODATIONS as $accommodation) {
+                            $ACCOMMODATION_TYPE = new AccommodationType($accommodation['type']);
+                            $MEMBER = new Member($accommodation['member']);
+                            ?>
+                            <div class="room">
+                                <a href="accommodation-view.php?id=<?php echo $accommodation['id']; ?>" class="">
+                                    <div class="ribbon ribbon-top-left"><span><?php echo $accommodation['name']; ?></span>
+                                    </div>
+                                <!--ROOM IMAGE-->
+                                <div class="r1 r-com">
+                                                                         <?php
+                                        foreach ($ACCOMMODATION_PHOTO->getAccommodationPhotosById($accommodation['id']) as $key => $ACCOMMODATION_P) {
+                                            if ($key == 1) {
+                                                break;
+                                            }
+                                            ?> 
+                                            <img src="upload/accommodation/thumb/<?php echo $ACCOMMODATION_P['image_name']; ?>">
                                             <?php
-                                            foreach ($ACCOMMODATION_PHOTO->getAccommodationPhotosById($accommodation['id']) as $key => $ACCOMMODATION_P) {
-                                                if ($key == 1) {
-                                                    break;
-                                                }
-                                                ?> 
-                                                <img src="upload/accommodation/thumb/<?php echo $ACCOMMODATION_P['image_name']; ?>" class="thumbnail img-responsive accommodation-photo">
+                                        }
+                                        ?>
+                                   
+                                </div>
+                                <!--ROOM RATING-->
+                                
+                                <div class="r2 r-com">
+                                    <h4>
+                                        <?php echo $ACCOMMODATION_TYPE->name; ?>  
+                                    </h4>
+                                    <div class="r2-ratt">
+                                        <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <img src="images/h-trip.png" alt=""> 
+                                    </div>
+                                    <ul>
+                                        <div class="r2-available">LKR 65546</div>
+                                        <li></li>
+                                        <li></li>
+                                    </ul>
+                                </div>
+
+                                <!--ROOM AMINITIES-->
+                                <div class="r3 r-com">
+                                    <ul class="accommodation-facilities">
+                                        <?php
+                                        $ALL_FACILITIES = AccommodationFacilityDetails::getFacilitiesByAccommodationId($accommodation['id']);
+
+                                        $FACILITIES = explode(",", $ALL_FACILITIES['facility']);
+
+                                        foreach ($FACILITIES as $key => $facility) {
+                                            if ($key == 5) {
+                                                break;
+                                            }
+                                            $ACCOMMODATION_FACILITY = new AccommodationGeneralFacilities($facility);
+                                            ?>
+                                            <li><img src="upload/accommodation-facilities-icons/<?php echo $ACCOMMODATION_FACILITY->image_name ?>" style="width: 15px;">&nbsp;<?php echo $ACCOMMODATION_FACILITY->name ?></li>
+                                            <?php
+                                        }
+                                        ?>
+                                    </ul>
+                                </div>
+                                  </a>
+                                <!--ROOM BOOKING BUTTON-->
+                                <div class="r5 r-com">
+
+                                    <a href="member-view.php?id=<?php echo $MEMBER->id; ?>" class="link">
+                                        <?php
+                                        if (empty($MEMBER->profile_picture)) {
+                                            ?> 
+                                            <img src="upload/member/member.png" class="img img-responsive img-thumbnail" id="profil_pic" style="width: 70px;"/>
+                                            <?php
+                                        } else {
+
+                                            if ($MEMBER->facebookID && substr($MEMBER->profile_picture, 0, 5) === "https") {
+                                                ?>
+                                                <img src="<?php echo $MEMBER->profile_picture; ?>" class="img-responsive thumbnail" style="width: 70px;">
+                                                <?php
+                                            } else {
+                                                ?>
+                                                <img src="upload/member/<?php echo $MEMBER->profile_picture; ?>" class="img-responsive thumbnail" style="width: 70px;">
                                                 <?php
                                             }
-                                            ?>
-                                        </a>
-                                    </div>
-                                    <div class="r-sec col-md-9">
-                                        <div class="col-md-8 m-sec">
-                                            <div class="title-box row">
-                                                <div class="title col-md-6"><?php echo $accommodation['name']; ?></div>
-                                                <div class="rate-line col-md-4">
-                                                    <div class="star-rating star-rate" >
-                                                        <span class="width-60">
-                                                            <strong class="rating">3.00 out of 3 </strong>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-2 like">
-                                                    <i class="fa fa-thumbs-up"></i>
-                                                </div>
-                                            </div>
-                                            <div class="row location-details">
-                                                <div class="location icons col-md-5">
-                                                    <i class="fa fa-map-marker"></i>
-                                                    <a href="" class="link-sec">Show on Map</a>
-                                                </div>
-                                                <div class="direction icons col-md-7">
-                                                    <i class="fa fa-globe"></i>
-                                                    <span class="text-d">website</span>
-                                                </div>
-                                            </div>
-                                            <div class="details">
-                                                <?php echo substr($accommodation['description'], 0, 100) . '..'; ?>
-                                            </div>
-                                            <div class="row facilities align-center">
-                                                <div class="col-md-2 ">
-                                                    <a href="#" data-toggle="tooltip" title="Spa">
-                                                        <img src="assets/img/hotel/f1.png" class="img-responsive thumbnail">
-                                                    </a>
-                                                </div>
-                                                <div class="col-md-2 img2">
-                                                    <a href="#" data-toggle="tooltip" title="Restuarent">
-                                                        <img src="assets/img/hotel/f2.png" class="img-responsive thumbnail">
-                                                    </a>
-                                                </div>
-                                                <div class="col-md-2 img3">
-                                                    <a href="#" data-toggle="tooltip" title="Beach">
-                                                        <img src="assets/img/hotel/f5.png" class="img-responsive thumbnail">
-                                                    </a>
-                                                </div>
-                                                <div class="col-md-2 img4">
-                                                    <a href="#" data-toggle="tooltip" title="Private Pool">
-                                                        <img src="assets/img/hotel/f4.png" class="img-responsive thumbnail">
-                                                    </a>
-                                                </div>
-                                                <div class="col-md-2 img5">
-                                                    <a href="#" data-toggle="tooltip" title="Garden">
-                                                        <img src="assets/img/hotel/f6.png" class="img-responsive thumbnail"> 
-                                                    </a>
-                                                </div>
+                                        }
+                                        ?>
+                                    </a>
 
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 desc ">
-                                            <div class="row">
-                                                <div class="grade col-md-7" >
-                                                    <strong class="">Excellent</strong>
-                                                    <span class="brackets bottom-word">(reviews)</span>
-                                                </div>
-                                                <div class="score-review col-md-5">
-                                                    <span class="score-rate">8.6</span>
-                                                </div>
-                                            </div>
-                                            <div class="m-sec view-price text-center">
-                                                <a href="accommodation-view.php?id=<?php echo $accommodation['id']; ?>" class="more-info1">View More</a> 
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <?php
-                            }
-                            ?>
-                            <div class="row">
-                                <?php $SEARCH->showPaginationAccommodation($keyword, $type, $district, $city, $setLimit, $page); ?>
+              <!--                                    <p>Price for 1 night</p>-->
+                                    <a href="#" class="inn-room-book">Book Now</a> </div>
                             </div>
+                            <?php
+                        }
+                        ?>
+                        <div class="row">
+                            <?php $SEARCH->showPaginationAccommodation($keyword, $type, $district, $city, $setLimit, $page); ?>
                         </div>
                     </div>
-            </section>
-        </div>
+                </div>
+        </section>
+
 
 
         <!-- Our Resort Values style-->  

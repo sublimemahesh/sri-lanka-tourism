@@ -1,0 +1,369 @@
+.room {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #d1d1d1;
+    padding: 10px;
+    margin-bottom: 25px;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    color: #727070;
+}
+.room h4{
+    margin-top: 0px;
+    margin-bottom: 10px;
+    font-size: 22px;
+}
+
+
+
+.inn-com-list-point {} .inn-com-list-point ul {
+    margin-bottom: 0px;
+}
+.inn-com-list-point ul li {
+    font-size: 18px;
+    line-height: 32px;
+    float: left;
+    padding: 5px 12px;
+    border: 1px solid #e7e7e7;
+    margin: 0px 5px 5px 0px;
+    width: 49%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.inn-com-list-point ul li i {
+    color: #61a019;
+}
+.inn-room-price {
+    background: #f4364f;
+    padding: 7px 25px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-family: 'Quicksand', sans-serif;
+    border-radius: 2px;
+    width: 100%;
+    font-size: 45px;
+    margin-top: 15px;
+    display: table-caption;
+}
+.inn-com-price {} .inn-com-price h4 {} .room {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #d1d1d1;
+    padding: 10px;
+    margin-bottom: 25px;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+.room:hover {
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    transform: scale(1.01);
+}
+.r1 {} .r1 img {
+    width: 100%;
+}
+.r2 {
+    border-right: 1px solid #d1d1d1;
+}
+.r2 h4 {
+    margin-top: 0px;
+    margin-bottom: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #847b7b;
+}
+.r3 {
+
+}
+.r4 {
+
+}
+.r5 {
+
+    border-left: 1px solid #d1d1d1;
+} .r-com {
+    width: 25%;
+    float: left;
+    padding: 10px;
+}
+.r-com ul {
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+.r-com ul li {
+    background-size: 10px;
+    padding-left: 20px;
+    line-height: 28px;
+    color: #716b6b;
+}
+.r2-ratt {
+    margin-bottom: 10px;
+}
+.r2-ratt i {
+    color: #FF9800;
+}
+.r2-ratt img {
+    width: 22px;
+}
+.r2-ratt span {
+    margin-top: -3px;
+    position: absolute;
+    margin-left: 5px;
+}
+.r2-available {
+    background: #4CAF50;
+    display: inline-block;
+    padding: 7px 10px 7px 10px;
+    margin-top: 27px;
+    border-radius: 44px;
+    margin-bottom: 10px;
+    color: #fff;
+    font-size: 15px;
+}
+.room-price {
+    text-decoration: line-through;
+}
+.room-price-1 {
+    /* text-decoration: line-through; */
+
+    font-size: 32px;
+    font-weight: 600;
+    font-family: 'Quicksand', sans-serif;
+    color: #333;
+}
+.room-price span {
+    font-size: 35px;
+}
+.inn-room-book {
+    padding: 7px 25px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-family: 'Quicksand', sans-serif;
+    border-radius: 2px;
+    width: 100%;
+    font-size: 21px;
+    display: table-caption;
+    background: #d0ae64;
+    margin-top: 20px;
+    /* fallback for old browsers */
+
+    background: -webkit-linear-gradient(to right, #d6ae7b, #eacda3);
+    /* Chrome 10-25, Safari 5.1-6 */
+
+    background: linear-gradient(to top, #caa65a, #dbbb75);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.inn-room-book:hover {
+    background: #cc2b5e;
+    /* fallback for old browsers */
+
+    background: -webkit-linear-gradient(to right, #753a88, #cc2b5e);
+    /* Chrome 10-25, Safari 5.1-6 */
+
+    background: linear-gradient(to top, #cc2c5f, #f4364f);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    text-decoration: none;
+}
+.room-1 {
+    width: 47%;
+    float: left;
+    margin: 10px;
+}
+.r-com-1 {
+    width: 100%;
+    border-bottom: 1px solid #d4d4d4;
+    border-right: 0px;
+}
+.r-com-1 ul li {
+    float: left;
+    display: inline-block;
+    padding-right: 20px;
+}
+.r-com-1 h4 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #f4364f;
+}
+.r2-available-1 {
+    margin-top: 0px;
+}
+.r1-1 {
+    border-bottom: 0px solid #d4d4d4;
+}
+.r5-1 {
+    border-bottom: 0px solid #d4d4d4;
+}
+
+
+
+@media screen and (max-width: 992px) {
+    .foot-1 {
+        display: none
+    }
+    .menu-section {
+        display: none
+    }
+    .mm {
+        display: block;
+    }
+    .r-com {
+        width: 100%;
+    }
+    .r2 {
+        border-bottom: 1px solid #d1d1d1;
+        border-right: 0px solid #d1d1d1;
+    }
+    .r3 {
+        border-bottom: 1px solid #d1d1d1;
+        border-right: 0px solid #d1d1d1;
+    }
+    .r4 {
+        border-bottom: 1px solid #d1d1d1;
+        border-right: 0px solid #d1d1d1;
+    }
+    .inn-bod {
+        width: 100%;
+        float: right;
+    }
+    .inn-detail {
+        background-size: 0%;
+        background: none;
+    }
+    .inn-com-list-point ul li {
+        font-size: 14px;
+        width: 48%;
+    }
+    .in-blog h3 {
+        margin-top: 25px;
+    }
+    .log-in-pop-left {
+        width: 100%;
+        padding: 7%;
+    }
+    .log-in-pop-right {
+        width: 100%;
+        padding: 7%;
+    }
+    .offer-r {
+        display: none;
+    }
+    .book-form {
+        margin-top: 0px;
+    }
+    .book-title {
+        padding: 0%;
+        margin-bottom: 30px;
+    }
+    .book-title h2 {
+        margin-bottom: 10px;
+    }
+    .book-title p {
+        color: #ffffff;
+    }
+    .bot-gal {
+        margin-bottom: 40px;
+        position: relative;
+        overflow: hidden;
+    }
+    footer h4 {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        padding-top: 20px;
+    }
+    .foot-sec2 {
+        margin-top: 0px;
+    }
+    .inn-banner {
+        margin-top: 57px;
+        padding: 35px 20px;
+    }
+    .db-left {
+        width: 100%;
+    }
+    .db-cent {
+        width: 100%;
+    }
+    .db-righ {
+        width: 100%;
+        float: right;
+    }
+    .db-left-2 {
+        padding: 20px;
+    }
+    .db-left-2 ul li {
+        width: 25%;
+    }
+    .db-left-2 ul li:nth-child(2) {
+        border-right: 1px solid #f7485f;
+    }
+    .db-left-2 ul li:nth-child(6) {
+        border-right: 1px solid #f7485f;
+        border-bottom: 0px solid #f7485f;
+    }
+    .db-left-2 ul li:nth-child(5) {
+        border-bottom: 0px solid #f7485f;
+    }
+    .dashboard {
+        margin-top: 56px;
+    }
+    .n2-event {
+        margin-bottom: 30px;
+    }
+    .mm-logo a img {
+        padding: 12px 8px 4px 8px;
+    }
+    .about-right {
+        margin-top: 40px;
+    }
+    .new-con {
+        margin-top: 30px;
+    }
+    .re-room-list-2 h4 {
+        margin-top: 20px;
+    }
+    .re-room-list-3 span {
+        display: inline-block;
+        margin-right: 15px;
+    }
+    .events h3 {
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+    .hp-ov-fac img {
+        margin-bottom: 35px;
+    }
+    .hp-view {
+        height: 450px;
+    }
+}
+
+ul:not(.browser-default) {
+
+    padding-left: 0;
+    list-style-type: none;
+
+}
+
+.accommodation-facilities li{
+/*    background: url('../images/h-check.png') no-repeat left center;*/
+}
+.ribbon span{
+    font-size: 20px;
+    color: #153284;
+    font-weight: 600;
+}
+.room a:hover{
+    text-decoration: none;
+}

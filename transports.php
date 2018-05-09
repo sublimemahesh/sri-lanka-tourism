@@ -141,9 +141,6 @@ $TRANSPORTS = $SEARCH->GetTransportByLocationFromAndTo($from, $to, $type, $condi
                                             <div class="row driver m-sec">
                                                 <div class="profile col-md-5 col-xs-4 col-sm-4">
                                                     <a href="member-view.php?id=<?php echo $MEMBER->id; ?>" class="link">
-
-
-
                                                         <?php
                                                         if (empty($MEMBER->profile_picture)) {
                                                             ?> 
