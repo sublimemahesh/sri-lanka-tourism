@@ -56,7 +56,7 @@ $types = $TOURTYPES->all();
                             $vali->show_message();
                             ?>
                             <div class="panel panel-default">
-                                <div class="panel-heading"><i class="fa fa-pencil"></i> Edit Tour Package</div>
+                                <div class="panel-heading"><i class="fa fa-pencil"></i> Edit Tour Package - <?php echo $TOUR_PACKAGE->name; ?></div>
                                 <div class="panel-body">
                                     <div class="body">
                                         <div class="userccount">
