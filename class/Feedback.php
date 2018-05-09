@@ -166,5 +166,43 @@ class Feedback {
             return 0;
         }
     }
+    
+    public function getRatingByTour($tour) {
+
+        $query = "SELECT count(visitor) as count, sum(rate) as rate_sum FROM `feedback` WHERE `tour_package` = '" . $tour . "'";
+
+        $db = new Database();
+
+        $result = mysql_fetch_array($db->readQuery($query));
+        
+        $sum_of_rates = $result['rate_sum'];
+        $count = $result['count'];
+        
+        if (!empty($count)) {
+            $avg = round($sum_of_rates / $count);
+            return $avg;
+        } else {
+            return 0;
+        }
+    }
+    
+    public function getRatingByArticle($article) {
+
+        $query = "SELECT count(visitor) as count, sum(rate) as rate_sum FROM `feedback` WHERE `article` = '" . $article . "'";
+
+        $db = new Database();
+
+        $result = mysql_fetch_array($db->readQuery($query));
+        
+        $sum_of_rates = $result['rate_sum'];
+        $count = $result['count'];
+        
+        if (!empty($count)) {
+            $avg = round($sum_of_rates / $count);
+            return $avg;
+        } else {
+            return 0;
+        }
+    }
 
 }

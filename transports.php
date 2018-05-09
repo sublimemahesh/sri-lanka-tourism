@@ -163,18 +163,6 @@ $TRANSPORTS = $SEARCH->GetTransportByLocationFromAndTo($from, $to, $type, $condi
                                                         }
                                                         ?>
 
-
-                                                        <?php
-                                                        if (empty($MEMBER->profile_picture)) {
-                                                            ?>
-
-                                                            <?php
-                                                        } else {
-                                                            ?>
-
-                                                            <?php
-                                                        }
-                                                        ?>
                                                     </a>
                                                 </div>
                                                 <div class="driver-name col-md-7 col-xs-8 col-sm-8"><div class="driver-name-posted">Posted by </div>

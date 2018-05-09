@@ -93,9 +93,23 @@ $ARTICLES = $SEARCH->GetArticlesByKeywords($keyword, $type, $city, $pageLimit, $
                                         }
                                         ?>
                                     </div>
+                                    <div class="article-rate pull-right">
+                                        <?php
+                                        $starNumber = Feedback::getRatingByArticle($id);
+
+                                        for ($x = 1; $x <= $starNumber; $x++) {
+                                            echo '<i class="fa fa-star"></i>';
+                                        }
+
+                                        while ($x <= 5) {
+                                            echo '<i class="fa fa-star-o"></i>';
+                                            $x++;
+                                        }
+                                        ?>
+                                    </div>
                                     <div class="tour-dtls">
                                         <div class="row">
-                                            <a href="#" title="<?php echo $ARTICLE['title']; ?>">
+                                            <a href="article-view.php?id=<?php echo $ARTICLE['id']; ?>" title="<?php echo $ARTICLE['title']; ?>">
                                                 <div class="tour-title col-md-9 pull-left">
                                                     <?php
                                                     if (strlen($ARTICLE['title']) > 18) {
@@ -107,7 +121,26 @@ $ARTICLES = $SEARCH->GetArticlesByKeywords($keyword, $type, $city, $pageLimit, $
                                                 </div>
                                             </a>
                                             <div class="mem-img col-md-3">
-                                                <img src="upload/member/<?php echo $MEMBER->profile_picture; ?>" class="thumbnail  pull-right" title="<?php echo $MEMBER->name; ?>" alt=""/>
+                                                <a href="member-view.php?id=<?php echo $MEMBER->id; ?>" class="link">
+                                                    <?php
+                                                    if (empty($MEMBER->profile_picture)) {
+                                                        ?> 
+                                                        <img src="upload/member/member.png" class="img img-responsive img-thumbnail pull-right" id="profil_pic"/>
+                                                        <?php
+                                                    } else {
+
+                                                        if ($MEMBER->facebookID && substr($MEMBER->profile_picture, 0, 5) === "https") {
+                                                            ?>
+                                                            <img src="<?php echo $MEMBER->profile_picture; ?>" class="img-responsive thumbnail pull-right">
+                                                            <?php
+                                                        } else {
+                                                            ?>
+                                                            <img src="upload/member/<?php echo $MEMBER->profile_picture; ?>" class="img-responsive thumbnail pull-right">
+                                                            <?php
+                                                        }
+                                                    }
+                                                    ?>
+                                                </a>
                                             </div>
                                         </div>
                                         <div class="row article-city" title="<?php echo $CITY->name; ?>"><i class="fa fa-location-arrow"></i> City: 

@@ -1198,6 +1198,7 @@ hr.style15:after {
     height: auto;
     transition: .5s ease;
     backface-visibility: hidden;
+    margin-top: 6px;
 }
 
 .view-image:hover .image11 {
@@ -2266,6 +2267,14 @@ hr.style15:after {
     margin-left: 0px;
     font-family: Times New Roman;
 }
+.article-rate {
+    background: #fffc;
+    font-size: 17px;
+    border: 1px solid #fff;
+    margin: -27px 0px 0px 0px;
+    position: relative;
+    padding: 0px 6px;
+}
 .tour-title {
     font-family: 'Magra', sans-serif;
     font-size: 20px;
@@ -2273,9 +2282,8 @@ hr.style15:after {
     color: #003366;
     margin-top: 7px;
 }
-.tour-rate {
+.tour-rate, .article-rate {
     color: #ffb300;
-    text-shadow: -1px 0 #e9a504, 0 1px #e9a504, 1px 0 #e9a504, 0 -1px #e9a504;
 }
 .tour-dtls .row {
     margin: 0px 0px 7px 0px;
