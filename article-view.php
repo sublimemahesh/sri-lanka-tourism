@@ -172,7 +172,23 @@ $MEMBER = new Member($ARTICLES->member);
                                                         </div>
                                                         <div class="media">
                                                             <div class="media-left d-flex mr-3">
-                                                                <img src="upload/visitor/<?php echo $VISITOR->image_name ?>" alt=""/>										
+                                                                <?php
+                                                                if (empty($VISITOR->image_name)) {
+                                                                    ?>
+                                                                    <img src="upload/visitor/member.png"/>
+                                                                    <?php
+                                                                } else {
+
+                                                                    if ($VISITOR->facebookID && substr($VISITOR->image_name, 0, 5) === "https") {
+                                                                        ?>
+                                                                        <img src="<?php echo $VISITOR->image_name; ?>"/>
+                                                                    <?php } else {
+                                                                        ?>
+                                                                        <img src="upload/visitor/<?php echo $VISITOR->image_name; ?>"/>
+                                                                        <?php
+                                                                    }
+                                                                }
+                                                                ?>										
                                                             </div>
                                                             <div class="media-body">
                                                                 <div class="overview">
