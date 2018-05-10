@@ -408,7 +408,7 @@ $ARTICLETYPES = ArticleType::all();
                                 ?>
                             </div>
                             <div class="row">
-                                <div class="col-md-12 col-sm-12 col-xs-12 btn-search">
+                                <div class="col-md-12 col-sm-12 col-xs-12 btn-search btn-view">
                                     <a href="#"><button class="btn-style">View All</button></a> 
                                 </div>
                             </div>
@@ -587,7 +587,7 @@ $ARTICLETYPES = ArticleType::all();
                                 ?>
                             </div>
                             <div class="row">
-                                <div class="col-md-12 col-sm-12 col-xs-12 btn-search">
+                                <div class="col-md-12 col-sm-12 col-xs-12 btn-search btn-view1">
                                     <a href="view-articles.php"><button class="btn-style">View All</button></a> 
                                 </div>
                             </div>
@@ -690,7 +690,7 @@ $ARTICLETYPES = ArticleType::all();
                 margin: 10,
                 responsiveClass: true,
                 autoplay: true,
-                autoplayTimeout: 2000,
+                autoplayTimeout: 5000,
                 autoplayHoverPause: true,
                 responsive: {
                     0: {

@@ -56,15 +56,23 @@ $CITY = new City($MEMBER->city);
                                             </div>
 
                                             <div class="col-sm-3 col-md-3 margin-top-40">  
+
                                                 <?php
                                                 if (empty($MEMBER->profile_picture)) {
-                                                    ?>
+                                                    ?> 
                                                     <img src="upload/member/member.png" class="img img-responsive img-thumbnail" id="profil_pic"/>
                                                     <?php
                                                 } else {
-                                                    ?>
-                                                    <img src="upload/member/<?php echo $MEMBER->profile_picture; ?>" class="img img-responsive img-thumbnail" id="profil_pic"/>
-                                                    <?php
+
+                                                    if ($MEMBER->facebookID && substr($MEMBER->profile_picture, 0, 5) === "https") {
+                                                        ?>
+                                                        <img src="<?php echo $MEMBER->profile_picture; ?>" class="img-responsive thumbnail" id="profil_pic">
+                                                        <?php
+                                                    } else {
+                                                        ?>
+                                                        <img src="upload/member/<?php echo $MEMBER->profile_picture; ?>" class="img-responsive thumbnail" id="profil_pic">
+                                                        <?php
+                                                    }
                                                 }
                                                 ?>
                                             </div>
