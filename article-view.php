@@ -111,6 +111,23 @@ $MEMBER = new Member($ARTICLES->member);
                         <h3>About This Article</h3>
                         <ul class="jbdetail">
                             <li class="row">
+                                <div class="col-md-12 cox-xs-12 rate-star">
+                                    <?php
+                                    $starNumber = Feedback::getRatingByArticle($id);
+
+                                    for ($x = 1; $x <= $starNumber; $x++) {
+                                        echo '<i class="fa fa-star"></i>';
+                                    }
+
+                                    while ($x <= 5) {
+                                        echo '<i class="fa fa-star-o"></i>';
+                                        $x++;
+                                    }
+                                    ?>
+                                </div>
+
+                            </li>
+                            <li class="row">
                                 <div class="col-md-12 col-xs-12 jb-title"><span> <?php echo $ARTICLES->title; ?></span></div>
                             </li>
                             <li class="row">
