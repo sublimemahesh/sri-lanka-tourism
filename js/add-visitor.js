@@ -9,11 +9,17 @@ jQuery(document).ready(function () {
             type: "POST",
             data: datastring,
             success: function (result) {
+
                 if (result.status === 'error') {
                     $('#message').text(result.message);
                     return false;
                 } else if (result.status === 'success') {
-                    window.location.replace('visitor-profile.php?message=22');
+                    if (result.back) {
+                        window.location = result.back;
+                    } else {
+                        window.location.replace('visitor-profile.php?message=22');
+                    }
+
                 }
             }
         });

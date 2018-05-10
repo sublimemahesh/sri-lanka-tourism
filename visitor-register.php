@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <?php
 include './class/include.php';
+
+$previous = "javascript:history.go(-1)";
+if (isset($_SERVER['HTTP_REFERER'])) {
+    $previous = $_SERVER['HTTP_REFERER'];
+}
+
 ?>
 <html lang="en">
     <head>
@@ -63,6 +69,13 @@ include './class/include.php';
                                     By clicking Create an account, you agree to our Terms and conditions 
                                 </p>
                             </div>
+                            <?php
+                            if (isset($_GET['back'])) {
+                                ?>
+                                <input type="hidden" class="form-control" name="back" value="<?php echo $previous; ?>">
+                                <?php
+                            }
+                            ?>
                             <input type="hidden" name="save" value="save"/>
                             <div class="buttonreg" id="btnSubmit">Create an account</div>
                         </form>
