@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <?php
 include './class/include.php';
+
+$previous = "javascript:history.go(-1)";
+if (isset($_SERVER['HTTP_REFERER'])) {
+    $previous = $_SERVER['HTTP_REFERER'];
+}
 ?>
 <html lang="en">
     <head>
@@ -15,7 +20,7 @@ include './class/include.php';
         <link href="https://fonts.googleapis.com/css?family=Russo+One|Magra|Ubuntu+Condensed" rel="stylesheet"> 
         <link href="css/visitor-custom.css" rel="stylesheet" type="text/css"/>
 
-       
+
     </head>
     <body style="background-color: #d7d7d7;">
         <!-- Our Resort Values style-->
@@ -36,7 +41,7 @@ include './class/include.php';
                             <?php
                         }
                         ?>
-                            <form action="post-and-get/visitor.php" method="POST">
+                        <form action="post-and-get/visitor.php" method="POST">
                             <input type="text" class="form-control" name="email" placeholder="Email address" autofocus>
                             <br>
                             <input type="password" class="form-control" name="password" placeholder="Password">
@@ -45,6 +50,14 @@ include './class/include.php';
                                     <a class="link" href="forget-password.php"> Forgot Password?</a>
                                 </span>
                             </label>
+                            <?php
+                            if (isset($_GET['back'])) {
+                                ?>
+                                <input type="hidden" class="form-control" name="back" value="<?php echo $previous; ?>">
+                                <?php
+                            }
+                            ?>
+
                             <button class="btn btn-theme btn-block"  name="login" type="submit"><i class="fa fa-lock"></i> SIGN IN</button>
                             <hr class="hr">
                         </form>

@@ -3,6 +3,7 @@
 include_once(dirname(__FILE__) . '/../../class/include.php');
 
 if ($_POST['save']) {
+    $back = $_POST['back'];
 
     header('Content-Type: application/json; charset=UTF8');
     $response = array();
@@ -70,6 +71,7 @@ if ($_POST['save']) {
             if ($VISITOR->id) {
                 $VISITOR->login($VISITOR->email, $VISITOR->password);
                 $response['status'] = 'success';
+                $response['back'] = $back;
                 echo json_encode($response);
             } else {
                 $response['status'] = 'error';

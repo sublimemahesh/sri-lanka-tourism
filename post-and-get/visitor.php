@@ -13,6 +13,7 @@ if (isset($_POST['register'])) {
     $cemail = $_POST['cnfemail'];
 
 
+
     if ($email == $cemail) {
 
         $VISITOR->first_name = filter_input(INPUT_POST, 'first_name');
@@ -62,10 +63,18 @@ if (isset($_POST['login'])) {
 
     $email = filter_var($_POST['email'], FILTER_SANITIZE_STRING);
     $password = md5(filter_var($_POST['password'], FILTER_SANITIZE_STRING));
+    $back = $_POST['back'];
 
     if ($VISITOR->login($email, $password)) {
-        header('Location: ../visitor-profile.php?message=5');
-        exit();
+        if (empty($back)) {
+            header('Location: ../visitor-profile.php?message=5');
+            exit();
+        } else {
+            redirect($back);
+            exit();
+        }
+
+        
     } else {
         header('Location: ../visitor-login.php?message=21');
         exit();
