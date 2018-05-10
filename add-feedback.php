@@ -65,9 +65,6 @@
                         echo 'You must create an visiter account to continue this process';
                     }
                     ?>
-
-
-
                 </div>
 
             </form>
@@ -129,12 +126,19 @@
                 </div>
 
                 <div class="modal-footer">
-                    <?php $VIS = new Visitor($_SESSION['id']); ?>
-                    <button type="submit" class="btn btn-default" data-dismiss="modal">Close</button>  
-                    <input type="hidden" name="visitor" value="<?php echo $VIS->id; ?>">
-                    <input type="hidden" name="tourpackage" value="<?php echo $tourid; ?>">
-                    <button type="submit" class="btn btn-default" name="create" id="create">Save Comment</button>
-                    <input type="hidden" name="save" value="TRUE">
+                    <?php
+                    if (isset($_SESSION["login"])) {
+                        ?>
+                        <button type="submit" class="btn btn-default btn-position-rel" data-dismiss="modal">Close</button>  
+                        <input type="hidden" name="visitor" value="<?php echo $_SESSION['id']; ?>">
+                        <input type="hidden" name="tourpackage" value="<?php echo $tourid; ?>">
+                        <button type="submit" class="btn btn-default btn-position-rel" name="create" id="create">Save Comment</button>
+                        <input type="hidden" name="save" value="TRUE">
+                        <?php
+                    } else {
+                        echo 'You must create an visiter account to continue this process';
+                    }
+                    ?>
                 </div>
 
             </form>
@@ -194,14 +198,21 @@
                                                 </div>-->
                     </div> 
                 </div>
-
+                
                 <div class="modal-footer">
-                    <?php $VIS = new Visitor($_SESSION['id']); ?>
-                    <button type="submit" class="btn btn-default" data-dismiss="modal">Close</button>  
-                    <input type="hidden" name="visitor" value="<?php echo $VIS->id; ?>">
-                    <input type="hidden" name="transport" value="<?php echo $id ?>">
-                    <button type="submit" class="btn btn-default" name="create" id="create">Save Comment</button>
-                    <input type="hidden" name="save" value="TRUE">
+                    <?php
+                    if (isset($_SESSION["login"])) {
+                        ?>
+                        <button type="submit" class="btn btn-default btn-position-rel" data-dismiss="modal">Close</button>  
+                        <input type="hidden" name="visitor" value="<?php echo $_SESSION['id']; ?>">
+                        <input type="hidden" name="accommodation" value="<?php echo $id; ?>">
+                        <button type="submit" class="btn btn-default btn-position-rel" name="create" id="create">Save Comment</button>
+                        <input type="hidden" name="save" value="TRUE">
+                        <?php
+                    } else {
+                        echo 'You must create an visiter account to continue this process';
+                    }
+                    ?>
                 </div>
 
             </form>
@@ -261,14 +272,20 @@
                                                 </div>-->
                     </div> 
                 </div>
-
                 <div class="modal-footer">
-                    <?php $VIS = new Visitor($_SESSION['id']); ?>
-                    <button type="submit" class="btn btn-default" data-dismiss="modal">Close</button>  
-                    <input type="hidden" name="visitor" value="<?php echo $VIS->id; ?>">
-                    <input type="hidden" name="article" value="<?php echo $id; ?>">
-                    <button type="submit" class="btn btn-default" name="create" id="create">Save Comment</button>
-                    <input type="hidden" name="save" value="TRUE">
+                    <?php
+                    if (isset($_SESSION["login"])) {
+                        ?>
+                        <button type="submit" class="btn btn-default btn-position-rel" data-dismiss="modal">Close</button>  
+                        <input type="hidden" name="visitor" value="<?php echo $_SESSION['id']; ?>">
+                        <input type="hidden" name="article" value="<?php echo $id; ?>">
+                        <button type="submit" class="btn btn-default btn-position-rel" name="create" id="create">Save Comment</button>
+                        <input type="hidden" name="save" value="TRUE">
+                        <?php
+                    } else {
+                        echo 'You must create an visiter account to continue this process';
+                    }
+                    ?>
                 </div>
             </form>
         </div>
