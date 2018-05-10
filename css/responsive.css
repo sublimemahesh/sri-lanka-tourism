@@ -709,6 +709,9 @@
     .separate{
         display:  none;
     }
+    .transport-description {
+        margin-bottom: 25px;
+    }
 }
 
 /*(min-width: 360px) and (max-width: 640px)*/
@@ -882,6 +885,7 @@
         text-align: center;
         margin-left: -21px;
     }
+
 }
 
 /*(min-width: 768px) and (max-width: 1024px)*/
@@ -1209,6 +1213,25 @@
     .hovereffect a.info {
         top: -40%;
     }
+    .tour-pack.article-pack {
+        height: 447px;
+    }
+    .tour-desc {
+        height: 70px;
+    }
+    .article-rate {
+        margin: -26px 0px 0px 0px;
+    }
+    .btn-view {
+        margin: -70px 0px 30px 0px;
+    }
+    .btn-view1 {
+        margin: -56px 0px 25px 0px;
+    }
+        .transport-description {
+        margin-bottom: 25px;
+    }
+
 }
 
 @media (width: 320px) {
@@ -1236,12 +1259,23 @@
     .hovereffect a.info {
         top: -21%;
     }
+    .btn-view, .btn-view1 {
+        margin-bottom: 2px;
+        margin-top: -13px;
+    }
+    .tour-pack.article-pack {
+        height: 470px;
+    }
+    .article-rate {
+        margin: -38px 0px 0px 0px;
+        font-size: 22px;
+    }
 }
 
 @media (width: 360px) {
     .tour-arrow {
         margin-right: 20px;
-        height: 59px;
+        height: 41px;
     }
     .article-arrow {
         margin-right: 43px;
@@ -1258,6 +1292,13 @@
     }
     .hovereffect a.info {
         top: -19%;
+    }
+    .tour-pack.article-pack {
+        height: 507px;
+    }
+    .article-rate {
+        margin: -38px 0px 0px 0px;
+        font-size: 22px;
     }
 }
 
@@ -1288,12 +1329,19 @@
     .hovereffect a.info {
         top: -18%;
     }
+    .tour-pack.article-pack {
+        height: 520px;
+    }
+    .article-rate {
+        margin: -38px 0px 0px 0px;
+        font-size: 22px;
+    }
 }
 
 @media (width: 384px) {
     .tour-arrow {
         margin-right: 25px;
-        top: -140px;
+        top: -122px;
     }
     .article-arrow {
         margin-right: 49px;
@@ -1311,13 +1359,34 @@
     .tour-pack {
         height: 427px;
     }
+    .btn-search {
+        margin-bottom: 10px;
+        margin-top: 33px;
+    }
+    .tour-pack.article-pack {
+        height: 530px;
+    }
+    .article-rate {
+        margin: -38px 0px 0px 0px;
+        font-size: 22px;
+    }
+    #transport-carousel {
+        margin-bottom: 91px;
+    }
+}
+
+@media (width: 411px) {
+    .tour-arrow {
+        margin-right: 30px;
+        top: -122px;
+    }
 }
 
 @media (width: 412px) {
     .tour-arrow {
         margin-right: 30px;
-        height: 59px;
-        top: -140px;
+        height: 42px;
+        top: -123px;
     }
     .article-arrow {
         margin-right: 56px;
@@ -1346,12 +1415,22 @@
     .hovereffect a.info {
         top: -16%;
     }
+    .tour-pack.article-pack {
+        height: 526px;
+    }
+    .article-rate {
+        margin: -38px 0px 0px 0px;
+        font-size: 22px;
+    }
+    #transport-carousel {
+        margin-bottom: 91px;
+    }
 }
 
 @media (width: 414px) {
     .tour-arrow {
         margin-right: 30px;
-        height: 59px;
+        height: 41px;
     }
     .article-arrow {
         margin-right: 57px;
@@ -1367,7 +1446,7 @@
         margin-top: -60px;
     }
     .tour-pack {
-        height: 427px;
+        height: 445px;
     }
     .hovereffect a.info {
         font-size: 18px;
@@ -1375,6 +1454,29 @@
     }
     .hovereffect img, .hovereffect:hover img {
         width: 100%
+    }
+    .tour-pack.article-pack {
+        height: 557px;
+    }
+    .article-rate {
+        margin: -38px 0px 0px 0px;
+        font-size: 22px;
+    }
+    #transport-carousel {
+        margin-bottom: 91px;
+    }
+}
+
+@media (width: 768px) {
+    .tour-arrow {
+        margin-right: 8px;
+        height: 42px;
+    }
+    .owl-nav {
+        margin: -291px 0px 90px 0px;
+    }
+    .owl-prev {
+        margin: 0% 84% 0% 0%;
     }
 }
 
@@ -1395,7 +1497,7 @@
         width: 29px;
     }
     .tour-arrow img {
-        margin-top: 4px;
+        margin-top: 1px;
     }
     .tour-pack {
         height: 405px;
@@ -1412,5 +1514,23 @@
     .hovereffect img, .hovereffect:hover img {
         width: 100%
     }
+    .btn-view, .btn-view1 {
+        margin-bottom: 0px;
+        margin-top: -46px;
+    }
+    .tour-pack.article-pack {
+        height: 453px;
+    }
+    .article-rate {
+        margin: -38px 0px 0px 0px;
+        font-size: 22px;
+    }
 }
 
+/*(min-width: 380px) and (max-width: 640px)*/
+
+@media (min-width: 380px) and (max-width: 640px) {
+    .btn-view, .btn-view1 {
+        margin: 80px 0px 15px 0px;
+    }
+}

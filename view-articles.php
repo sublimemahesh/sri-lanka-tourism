@@ -164,12 +164,21 @@ $ARTICLES = $SEARCH->GetArticlesByKeywords($keyword, $type, $city, $pageLimit, $
 
                                         <div class="row tour-desc"><?php echo substr($ARTICLE['description'], 0, 90) . '...'; ?></div>
                                         <div class="row">
-                                            <div class="tour-type pull-left" title="<?php echo $TYPE->name; ?>"><i class="fa fa-certificate"></i> 
+                                            <div class="tour-type pull-left hidden-md hidden-sm visible-lg visible-xs" title="<?php echo $TYPE->name; ?>"><i class="fa fa-certificate"></i> 
                                                 <?php
-                                                if (strlen($TYPE->name) > 13) {
+                                                if (strlen($TYPE->name) > 8) {
                                                     echo substr($TYPE->name, 0, 10) . '...';
                                                 } else {
-                                                    echo $TYPE->name;
+                                                    echo $TYPE->name . ' Type';
+                                                }
+                                                ?>
+                                            </div>
+                                            <div class="tour-type pull-left visible-md visible-sm" title="<?php echo $TYPE->name; ?>"><i class="fa fa-certificate"></i> 
+                                                <?php
+                                                if (strlen($TYPE->name) > 4) {
+                                                    echo substr($TYPE->name, 0, 6) . '...';
+                                                } else {
+                                                    echo $TYPE->name . ' Type';
                                                 }
                                                 ?>
                                             </div>
