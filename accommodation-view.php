@@ -1,7 +1,11 @@
 <?php
 include_once(dirname(__FILE__) . '/class/include.php');
+
+if (!isset($_SESSION)) {
+    session_start();
+}
+
 $id = $_GET["id"];
-$VIEW_ACCOMMODATIONS = new Accommodation($id);
 $ACCOMMODATIONS = new Accommodation($id);
 $ACCOMMODATION_PHOTO = new AccommodationPhoto(NULL);
 $ROOM_VIEW = new RoomFacility($id);
@@ -549,7 +553,7 @@ $CITY = new City($ACCOMMODATIONS->city);
         <script>
             jQuery(document).ready(function () {
                 jQuery('#btn-add-comment').click(function () {
-                    jQuery("#myModal").modal('show');
+                    jQuery("#myModalaccommodation").modal('show');
                 });
 
             });
