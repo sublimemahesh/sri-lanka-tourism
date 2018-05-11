@@ -10,7 +10,6 @@ $TRANSPORTS_PHOTO = new TransportPhoto(NULL);
 $TRANSPORT_RATE_OBJ = new TransportRates(NULL);
 $TRANSPORT_RATE = $TRANSPORT_RATE_OBJ->GetTransportRatesByTransportId($id);
 $MEMBER = new Member($TRANSPORTS->member);
-
 ?>
 
 <!DOCTYPE html>
@@ -121,7 +120,9 @@ $MEMBER = new Member($TRANSPORTS->member);
                             <li class="row">
                                 <div class="col-md-12 cox-xs-12 rate-star">
                                     <?php
-                                    $starNumber = Feedback::getRatingByTransport($id);
+                                    $result = Feedback::getRatingByTransport($id);
+                                    $rate_count = $result['rate_count'];
+                                    $starNumber = round($result['rate_avg']);
 
                                     for ($x = 1; $x <= $starNumber; $x++) {
                                         echo '<i class="fa fa-star"></i>';
@@ -220,7 +221,7 @@ $MEMBER = new Member($TRANSPORTS->member);
                                             <a href="#" class="transport-book-button btn-not-loging">
                                                 Book Now
                                             </a>
-                                            
+
                                             <?php
                                             include './add-booking.php';
                                             ?>
@@ -433,7 +434,9 @@ $MEMBER = new Member($TRANSPORTS->member);
                                         <a href="transportation-view.php?id=<?php echo $transport['id']; ?>">
                                             <span class="price">
                                                 <?php
-                                                $starNumber = Feedback::getRatingByTransport($transport['id']);
+                                                $result = Feedback::getRatingByTransport($transport['id']);
+                                                $rate_count = $result['rate_count'];
+                                                $starNumber = round($result['rate_avg']);
 
                                                 for ($x = 1; $x <= $starNumber; $x++) {
                                                     echo '<i class="fa fa-star"></i>';
@@ -460,11 +463,11 @@ $MEMBER = new Member($TRANSPORTS->member);
                                 <div class="transport-bot-container">  
                                     <a href="transportation-view.php?id=<?php echo $transport['id']; ?>">
                                         <div class="transport-bot-title"> <?php
-                                            echo substr($transport['title'], 0, 23);
-                                            if (strlen($transport['title']) > 23) {
-                                                echo '...';
-                                            }
-                                            ?></div>
+                            echo substr($transport['title'], 0, 23);
+                            if (strlen($transport['title']) > 23) {
+                                echo '...';
+                            }
+                                ?></div>
                                         <div class="vehicle-options-container">
 
                                             <div class="col-md-12">
@@ -505,10 +508,10 @@ $MEMBER = new Member($TRANSPORTS->member);
                                                 ?>
                                             </div>
                                             <div class="vehicle-options-heading">Condition : <?php
-                                                echo substr($condition->name, 0, 13);
-                                                if (strlen($condition->name) > 13) {
-                                                    echo '...';
-                                                }
+                                            echo substr($condition->name, 0, 13);
+                                            if (strlen($condition->name) > 13) {
+                                                echo '...';
+                                            }
                                                 ?>
                                             </div>
                                         </div>
