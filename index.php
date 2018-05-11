@@ -571,7 +571,7 @@ $ARTICLETYPES = ArticleType::all();
                                             <?php
                                             if (strlen($ARTICLETYPE['name']) > 12) {
                                                 ?>
-                                                <div class="article-heading pull-left" title="<?php echo strtoupper($ARTICLETYPE['name']); ?>"><?php echo substr(strtoupper($ARTICLETYPE['name']), 0, 11) . '...'; ?></div>
+                                                <div class="article-heading pull-left" title="<?php echo strtoupper($ARTICLETYPE['name']); ?>"><?php echo substr(strtoupper($ARTICLETYPE['name']), 0, 10) . '...'; ?></div>
                                                 <?php
                                             } else {
                                                 ?>
