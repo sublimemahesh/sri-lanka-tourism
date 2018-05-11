@@ -15,7 +15,7 @@ if (isset($_POST['upload-accommodation-photo'])) {
         $handle->file_new_name_ext = 'jpg';
         $handle->image_ratio_crop = 'C';
         $handle->file_new_name_body = $imgName;
-        $handle->image_watermark = '../../assets/img/logo-watermark.png';
+        $handle->image_watermark = '../../../images/watermark/watermark.png';
 
         $image_dst_x = $handle->image_dst_x;
         $image_dst_y = $handle->image_dst_y;
@@ -47,7 +47,7 @@ if (isset($_POST['upload-accommodation-photo'])) {
                 if ($handle1->processed) {
 
                     $ACCOMMODATION_PHOTO = new AccommodationPhoto(NULL);
-                    $ACCOMMODATION_PHOTO->accommodation= $_POST["accommodation"];
+                    $ACCOMMODATION_PHOTO->accommodation = $_POST["accommodation"];
                     $ACCOMMODATION_PHOTO->image_name = $handle1->file_dst_name;
                     $ACCOMMODATION_PHOTO->caption = "";
 
