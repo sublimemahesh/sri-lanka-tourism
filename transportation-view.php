@@ -10,6 +10,7 @@ $TRANSPORTS_PHOTO = new TransportPhoto(NULL);
 $TRANSPORT_RATE_OBJ = new TransportRates(NULL);
 $TRANSPORT_RATE = $TRANSPORT_RATE_OBJ->GetTransportRatesByTransportId($id);
 $MEMBER = new Member($TRANSPORTS->member);
+
 ?>
 
 <!DOCTYPE html>
@@ -197,6 +198,7 @@ $MEMBER = new Member($TRANSPORTS->member);
                         <tbody>
                             <?php
                             foreach ($TRANSPORT_RATE as $transport_rate) {
+                                $rate = $transport_rate['id'];
                                 $CITYFROM = new City($transport_rate['location_from']);
                                 $CITYTO = new City($transport_rate['location_to']);
                                 ?>
@@ -205,9 +207,27 @@ $MEMBER = new Member($TRANSPORTS->member);
                                     <td data-column="Dropping Off"><?Php echo $CITYTO->name; ?></td>
                                     <td data-column="Distance(KM)"><?Php echo $transport_rate['distance'] . ' KM'; ?></td>
                                     <td data-column="Price(LKR)"><?Php echo 'LKR ' . $transport_rate['price']; ?></td>
-                                    <td> <a href="transport-booking.php?rate=<?php echo $transport_rate['id']; ?>&visitor=<?php echo $_SESSION['id']; ?>" class="transport-book-button">
-                                            Book Now
-                                        </a>
+                                    <td> 
+                                        <?php
+                                        if (isset($_SESSION["login"])) {
+                                            ?>
+                                            <a href="transport-booking.php?rate=<?php echo $transport_rate['id']; ?>&visitor=<?php echo $_SESSION['id']; ?>" class="transport-book-button">
+                                                Book Now
+                                            </a>
+                                            <?php
+                                        } else {
+                                            ?>
+                                            <a href="#" class="transport-book-button btn-not-loging">
+                                                Book Now
+                                            </a>
+                                            
+                                            <?php
+                                            include './add-booking.php';
+                                            ?>
+                                            <?php
+                                        }
+                                        ?>
+
                                     </td>
                                 </tr>
                                 <?php
@@ -606,6 +626,13 @@ $MEMBER = new Member($TRANSPORTS->member);
                             loop: true
                         }
                     }
+                });
+            });
+        </script>
+        <script>
+            jQuery(document).ready(function () {
+                jQuery('.btn-not-loging').click(function () {
+                    jQuery("#myModalTransport").modal('show');
                 });
             });
         </script>
