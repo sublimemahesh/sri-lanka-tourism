@@ -93,9 +93,26 @@ $count_feedbacks = count($feedbacks);
                         <?php
                     }
                     ?>
-                    <div class="col-md-4 col-xs-4 col-md-offset-4 book-now-btn">
-                        <a href="tour-package-booking.php?id=<?php echo $tourid; ?>&visitor=<?php echo $_SESSION['id']; ?>" class="button"><span>Book Now </span></a>
-                    </div>
+
+                    <?php
+                    if (isset($_SESSION["login"])) {
+                        ?>
+                        <div class="col-md-4 col-xs-4 col-md-offset-4 book-now-btn">
+                            <a href="tour-package-booking.php?id=<?php echo $tourid; ?>&visitor=<?php echo $_SESSION['id']; ?>" class="button"><span>Book Now </span></a>
+                        </div>
+                        <?php
+                    } else {
+                        ?>
+                        <div class="col-md-4 col-xs-4 col-md-offset-4 book-now-btn">
+                            <a href="#" class="button btn-not-loging"><span>Book Now </span></a>
+                        </div>
+                        <?php
+                        include './add-booking.php';
+                        ?>
+                        <?php
+                    }
+                    ?>
+
                     <div class="col-sm-12">			
                         <div id="myCarousel" class="carousel slide tour-package-testimonials" data-ride="carousel">
                             <h2 class="tt-comment">Customer <b>Testimonials</b></h2>
@@ -324,7 +341,13 @@ $count_feedbacks = count($feedbacks);
                 });
             });
         </script>
-
+        <script>
+            jQuery(document).ready(function () {
+                jQuery('.btn-not-loging').click(function () {
+                    jQuery("#myModal").modal('show');
+                });
+            });
+        </script>
     </body> 
 
 </html>

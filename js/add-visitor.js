@@ -14,10 +14,11 @@ jQuery(document).ready(function () {
                     $('#message').text(result.message);
                     return false;
                 } else if (result.status === 'success') {
-                    if (result.back) {
-                        window.location = result.back;
-                    } else {
+                    if (result.back === '') {
                         window.location.replace('visitor-profile.php?message=22');
+                        
+                    } else {
+                        window.location = result.back;
                     }
 
                 }
