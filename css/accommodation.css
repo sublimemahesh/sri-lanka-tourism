@@ -367,3 +367,7 @@ ul:not(.browser-default) {
 .room a:hover{
     text-decoration: none;
 }
+.review-no{
+    color: #484747;
+    font-size: 12px;
+}

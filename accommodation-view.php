@@ -118,7 +118,12 @@ $CITY = new City($ACCOMMODATIONS->city);
                             <div class="hp-review">
                                 <div class="hp-review-right">
                                     <h5></h5>
-                                    <p><span>4<i class="fa fa-star" aria-hidden="true"></i></span> Rating</p>
+                                    <?php
+                                    $result = Feedback::getRatingByAccommodation($id);
+                                    $rate_count = $result['rate_count'];
+                                    $starNumber = round($result['rate_avg']);
+                                    ?>
+                                    <p><span><i class="fa fa-star" aria-hidden="true"></i><?php echo $starNumber; ?></span> Rating out of <?php echo $rate_count; ?> reviews</p>
                                 </div>
                             </div>
                             <hr>
@@ -180,8 +185,9 @@ $CITY = new City($ACCOMMODATIONS->city);
                             </ul>
                         </div>
                     </div>
-
                 </div>
+
+
                 <div class="col-md-4">
                     <div class="sidebar">
                         <div class="widget">
@@ -240,24 +246,25 @@ $CITY = new City($ACCOMMODATIONS->city);
                                                                     <div class="details"><?php echo $accommodation_feedback['title']; ?></div>
                                                                     <div class="star-rating-t">
                                                                         <ul class="list-inline">
-                                                                            <?php
-                                                                            $starNumber = $accommodation_feedback['rate'];
-                                                                            for ($x = 1; $x <= $starNumber; $x++) {
-                                                                                echo '<li class = "list-inline-item"><i class = "fa fa-star"></i></li>';
-                                                                            }
+
+
+
+                                                                            <ul class="list-inline">
+                                                                                <?php
+                                                                                $starNumber = $accommodation_feedback['rate'];
+                                                                                for ($x = 1; $x <= $starNumber; $x++) {
+                                                                                    echo '<li class = "list-inline-item"><i class = "fa fa-star"></i></li>';
+                                                                                }
 //                                                                            if (strpos($starNumber, '.')) {
 //                                                                                echo '<img src="path/to/half/star.png" />';
 //                                                                                $x++;
 //                                                                            }
-                                                                            while ($x <= 5) {
-                                                                                echo '<li class = "list-inline-item"><i class = "fa fa-star-o"></i></li>';
-                                                                                $x++;
-                                                                            }
-                                                                            ?>
-
-
-
-
+                                                                                while ($x <= 5) {
+                                                                                    echo '<li class = "list-inline-item"><i class = "fa fa-star-o"></i></li>';
+                                                                                    $x++;
+                                                                                }
+                                                                                ?>
+                                                                            </ul>
                                                                         </ul>
                                                                     </div>
                                                                 </div>										
@@ -317,10 +324,6 @@ $CITY = new City($ACCOMMODATIONS->city);
                                                                                 $x++;
                                                                             }
                                                                             ?>
-
-
-
-
                                                                         </ul>
                                                                     </div>
                                                                 </div>										

@@ -220,4 +220,16 @@ class Feedback {
         }
     }
 
+    public function getRatingByAccommodation($accommodation) {
+
+        $query = "SELECT count(visitor) as count, avg(rate) as rate_avg ,count(rate) as rate_count FROM `feedback` WHERE `accommodation` = '" . $accommodation . "'";
+
+        $db = new Database();
+
+        $result = mysql_fetch_array($db->readQuery($query));
+
+
+        return $result;
+    }
+
 }
