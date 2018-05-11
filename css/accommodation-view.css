@@ -336,7 +336,9 @@
     padding-bottom: 20px;
     margin: 0px;
 }
-.hp-review-right p {} .hp-review-right p span {
+.hp-review-right p {
+    color: #fff;
+} .hp-review-right p span {
     background: #c7a354;
     font-size: 34px;
     color: #fff;

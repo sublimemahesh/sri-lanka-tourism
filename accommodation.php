@@ -76,9 +76,9 @@ $ACCOMMODATION_PHOTO = new AccommodationPhoto(NULL);
                                 <a href="accommodation-view.php?id=<?php echo $accommodation['id']; ?>" class="">
                                     <div class="ribbon ribbon-top-left"><span><?php echo $accommodation['name']; ?></span>
                                     </div>
-                                <!--ROOM IMAGE-->
-                                <div class="r1 r-com">
-                                                                         <?php
+                                    <!--ROOM IMAGE-->
+                                    <div class="r1 r-com">
+                                        <?php
                                         foreach ($ACCOMMODATION_PHOTO->getAccommodationPhotosById($accommodation['id']) as $key => $ACCOMMODATION_P) {
                                             if ($key == 1) {
                                                 break;
@@ -88,45 +88,62 @@ $ACCOMMODATION_PHOTO = new AccommodationPhoto(NULL);
                                             <?php
                                         }
                                         ?>
-                                   
-                                </div>
-                                <!--ROOM RATING-->
-                                
-                                <div class="r2 r-com">
-                                    <h4>
-                                        <?php echo $ACCOMMODATION_TYPE->name; ?>  
-                                    </h4>
-                                    <div class="r2-ratt">
-                                        <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <img src="images/h-trip.png" alt=""> 
+
                                     </div>
-                                    <ul>
-                                        <div class="r2-available">LKR 65546</div>
-                                        <li></li>
-                                        <li></li>
-                                    </ul>
-                                </div>
+                                    <!--ROOM RATING-->
 
-                                <!--ROOM AMINITIES-->
-                                <div class="r3 r-com">
-                                    <ul class="accommodation-facilities">
-                                        <?php
-                                        $ALL_FACILITIES = AccommodationFacilityDetails::getFacilitiesByAccommodationId($accommodation['id']);
-
-                                        $FACILITIES = explode(",", $ALL_FACILITIES['facility']);
-
-                                        foreach ($FACILITIES as $key => $facility) {
-                                            if ($key == 5) {
-                                                break;
-                                            }
-                                            $ACCOMMODATION_FACILITY = new AccommodationGeneralFacilities($facility);
-                                            ?>
-                                            <li><img src="upload/accommodation-facilities-icons/<?php echo $ACCOMMODATION_FACILITY->image_name ?>" style="width: 15px;">&nbsp;<?php echo $ACCOMMODATION_FACILITY->name ?></li>
+                                    <div class="r2 r-com">
+                                        <h4>
+                                            <?php echo $ACCOMMODATION_TYPE->name; ?>  
+                                        </h4>
+                                        <div class="r2-ratt">
                                             <?php
-                                        }
-                                        ?>
-                                    </ul>
-                                </div>
-                                  </a>
+                                            $result = Feedback::getRatingByAccommodation($accommodation['id']);
+                                            $rate_count = $result['rate_count'];
+                                            $starNumber = round($result['rate_avg']);
+                                         
+                                            for ($x = 1; $x <= $starNumber; $x++) {
+                                                echo '<i class="fa fa-star"></i>';
+                                            }
+//                                                                            if (strpos($starNumber, '.')) {
+//                                                                                echo '<img src="path/to/half/star.png" />';
+//                                                                                $x++;
+//                                                                            }
+                                            while ($x <= 5) {
+                                                echo '<i class="fa fa-star-o"></i>';
+                                                $x++;
+                                            }
+                                            ?>
+                                            <p class="review-no">(<?php echo $rate_count;?>Reviews)</p>
+                                        </div>
+                                        <ul>
+                                            <div class="r2-available">LKR 65546</div>
+                                            <li></li>
+                                            <li></li>
+                                        </ul>
+                                    </div>
+
+                                    <!--ROOM AMINITIES-->
+                                    <div class="r3 r-com">
+                                        <ul class="accommodation-facilities">
+                                            <?php
+                                            $ALL_FACILITIES = AccommodationFacilityDetails::getFacilitiesByAccommodationId($accommodation['id']);
+
+                                            $FACILITIES = explode(",", $ALL_FACILITIES['facility']);
+
+                                            foreach ($FACILITIES as $key => $facility) {
+                                                if ($key == 5) {
+                                                    break;
+                                                }
+                                                $ACCOMMODATION_FACILITY = new AccommodationGeneralFacilities($facility);
+                                                ?>
+                                                <li><img src="upload/accommodation-facilities-icons/<?php echo $ACCOMMODATION_FACILITY->image_name ?>" style="width: 15px;">&nbsp;<?php echo $ACCOMMODATION_FACILITY->name ?></li>
+                                                <?php
+                                            }
+                                            ?>
+                                        </ul>
+                                    </div>
+                                </a>
                                 <!--ROOM BOOKING BUTTON-->
                                 <div class="r5 r-com">
 
@@ -151,7 +168,7 @@ $ACCOMMODATION_PHOTO = new AccommodationPhoto(NULL);
                                         ?>
                                     </a>
 
-              <!--                                    <p>Price for 1 night</p>-->
+                      <!--                                    <p>Price for 1 night</p>-->
                                     <a href="#" class="inn-room-book">Book Now</a> </div>
                             </div>
                             <?php
