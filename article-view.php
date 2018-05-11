@@ -5,12 +5,10 @@ if (!isset($_SESSION)) {
 }
 $id = $_GET["id"];
 
-
 $ARTICLES = new Article($id);
 $ARTICLEPHOTOS = new ArticlePhoto(NULL);
 $TYPE = new ArticleType($ARTICLES->article_type);
 $CITY = new City($ARTICLES->city);
-$MEMBER = new Member($ARTICLES->member);
 ?>
 
 <!DOCTYPE html>
@@ -51,6 +49,22 @@ $MEMBER = new Member($ARTICLES->member);
                             </ul>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-md-12 cox-xs-12 rate-star1">
+                            <?php
+                            $starNumber = Feedback::getRatingByArticle($id);
+
+                            for ($x = 1; $x <= $starNumber; $x++) {
+                                echo '<i class="fa fa-star"></i>';
+                            }
+
+                            while ($x <= 5) {
+                                echo '<i class="fa fa-star-o"></i>';
+                                $x++;
+                            }
+                            ?>
+                        </div>
+                    </div>
                 </div>
             </div> 
         </div>
@@ -72,83 +86,46 @@ $MEMBER = new Member($ARTICLES->member);
                 </div>
                 <div class="col-md-4">
                     <div class="sidebar">
-                        <div class="widget-member">
-                            <div class="row">
-                                <div class="col-md-5 col-sm-5 col-xs-5">
-                                    <div class="posted-title">Posted By </div>  
-                                    <a href="member-view.php?id=<?php echo $MEMBER->id; ?>" class="link">
-                                        <?php
-                                        if (empty($MEMBER->profile_picture)) {
-                                            ?>
-                                            <img src="upload/member/member.png" class="img img-responsive" id="profil_pic"/>
-                                            <?php
-                                        } else {
-                                            if ($MEMBER->facebookID && substr($MEMBER->profile_picture, 0, 5) === "https") {
-                                                ?>
-                                                <img src="<?php echo $MEMBER->profile_picture; ?>" class="img-responsive">
-                                            <?php } else {
-                                                ?>
-                                                <img src="upload/member/<?php echo $MEMBER->profile_picture; ?>" class="img-responsive">
-                                                <?php
-                                            }
-                                        }
-                                        ?>
-                                    </a>
-                                </div>
-                                <div class="col-md-7 col-sm-7 col-xs-7">
-                                    <ul class="list-group-transport">
-                                        <li class="list-group-transport-item"><b>Name</b>  <br><?php echo $MEMBER->name; ?></li> 
-                                        <li class="list-group-transport-item"><b>Email</b> <br><?php echo $MEMBER->email; ?></li>
-                                        <li class="list-group-transport-item"><b>Contact No</b> <br><?php echo $MEMBER->contact_number; ?></li>
-                                    </ul>
-                                </div>
-                            </div>
+                        <div class="widget-member map">
+                            <?php
+                            echo $ARTICLES->location;
+                            ?>
                         </div>
-                    </div>
-
-
-                    <div class="jbside">
-                        <h3>About This Article</h3>
-                        <ul class="jbdetail">
-                            <li class="row">
-                                <div class="col-md-12 cox-xs-12 rate-star">
-                                    <?php
-                                    $starNumber = Feedback::getRatingByArticle($id);
-
-                                    for ($x = 1; $x <= $starNumber; $x++) {
-                                        echo '<i class="fa fa-star"></i>';
-                                    }
-
-                                    while ($x <= 5) {
-                                        echo '<i class="fa fa-star-o"></i>';
-                                        $x++;
-                                    }
-                                    ?>
-                                </div>
-
-                            </li>
-                            <li class="row">
-                                <div class="col-md-12 col-xs-12 jb-title"><span> <?php echo $ARTICLES->title; ?></span></div>
-                            </li>
-                            <li class="row">
-                                <div class="col-md-6 col-xs-6">Article Type</div>
-                                <div class="col-md-6 col-xs-6"><span><?php echo $TYPE->name; ?></span></div>
-                            </li>
-                            <li class="row">
-                                <div class="col-md-6 col-xs-6">City</div>
-                                <div class="col-md-6 col-xs-6"><span><?php echo $CITY->name; ?></span></div>
-                            </li>
-                            <li class="row">
-                                <div class="col-md-6 col-xs-6">Location</div>
-                                <div class="col-md-6 col-xs-6"><span><?php echo $ARTICLES->location; ?></span></div>
-                            </li>
-                        </ul>
                     </div>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-md-8">
+                    <div class="row about-article">
+                        <div class="col-md-12">
+                            <h3>About This Article</h3>
+                            <hr />
+                        </div>
+                        <div class="col-md-6">
+                            <div class="col-md-2">Type: </div>
+                            <div class="col-md-10"><?php echo $TYPE->name; ?></div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="col-md-2">City: </div>
+                            <div class="col-md-10"><?php echo $CITY->name; ?></div>
+                        </div>
+
+                        <!--                        <div class="col-md-3 rate-star pull-right">
+                        <?php
+                        $starNumber = Feedback::getRatingByArticle($id);
+
+                        for ($x = 1; $x <= $starNumber; $x++) {
+                            echo '<i class="fa fa-star"></i>';
+                        }
+
+                        while ($x <= 5) {
+                            echo '<i class="fa fa-star-o"></i>';
+                            $x++;
+                        }
+                        ?>
+                                                </div>-->
+                    </div>
                     <div class="transport-description">
                         <span>
                             <?php echo $ARTICLES->description; ?>
@@ -326,7 +303,7 @@ $MEMBER = new Member($ARTICLES->member);
                         $ARTICLE = Article::all();
                         foreach ($ARTICLE as $article) {
                             $article_type = new ArticleType($article['article_type']);
-                            $city = new ArticleType($article['city']);
+                            $city = new City($article['city']);
                             $article_photos = $ARTICLEPHOTOS->getArticlePhotosById($article['id']);
                             ?>
                             <div  class="index-transport-container" style="background-color: #ececec;">
@@ -371,7 +348,6 @@ $MEMBER = new Member($ARTICLES->member);
                                         <div class="article-options-bottom">
                                             <div class="vehicle-options-heading">Article Type : <?php echo $article_type->name; ?></div>
                                             <div class="vehicle-options-heading">City :  <?php echo $city->name; ?></div>
-                                            <div class="vehicle-options-heading">Location : <?php echo $article['location']; ?></div>
                                         </div>
                                     </a>
                                     <div class="read_more">

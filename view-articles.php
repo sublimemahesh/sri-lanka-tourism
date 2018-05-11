@@ -152,15 +152,6 @@ $ARTICLES = $SEARCH->GetArticlesByKeywords($keyword, $type, $city, $pageLimit, $
                                             }
                                             ?>
                                         </div>
-                                        <div class="row article-location" title="<?php echo $ARTICLE['location']; ?>"><i class="fa fa-location-arrow"></i> Location: 
-                                            <?php
-                                            if (strlen($ARTICLE['location']) > 20) {
-                                                echo substr($ARTICLE['location'], 0, 17) . '...';
-                                            } else {
-                                                echo $ARTICLE['location'];
-                                            }
-                                            ?>
-                                        </div>
 
                                         <div class="row tour-desc"><?php echo substr($ARTICLE['description'], 0, 90) . '...'; ?></div>
                                         <div class="row">
