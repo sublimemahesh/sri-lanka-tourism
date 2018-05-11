@@ -1,15 +1,14 @@
 <?php
 include_once(dirname(__FILE__) . '/class/include.php');
-if (!isset($_SESSION)) {
-    session_start();
-}
 $id = $_GET["id"];
-
-$TRANSPORTS = new Transports($id);
-$TRANSPORTS_PHOTO = new TransportPhoto(NULL);
-$TRANSPORT_RATE_OBJ = new TransportRates(NULL);
-$TRANSPORT_RATE = $TRANSPORT_RATE_OBJ->GetTransportRatesByTransportId($id);
-$MEMBER = new Member($TRANSPORTS->member);
+$VIEW_ACCOMMODATIONS = new Accommodation($id);
+$ACCOMMODATIONS = new Accommodation($id);
+$ACCOMMODATION_PHOTO = new AccommodationPhoto(NULL);
+$ROOM_VIEW = new RoomFacility($id);
+$ROOM_PHOTO = new RoomPhoto(NULL);
+$MEMBER = new Member($ACCOMMODATIONS->member);
+$ACCOMMODATION_TYPE = new AccommodationType($ACCOMMODATIONS->type);
+$CITY = new City($ACCOMMODATIONS->city);
 ?>
 
 <!DOCTYPE html>
@@ -30,6 +29,7 @@ $MEMBER = new Member($TRANSPORTS->member);
         <link href="css/comments-style.css" rel="stylesheet" type="text/css"/>
         <link href="https://fonts.googleapis.com/css?family=Russo+One|Magra|Ubuntu+Condensed" rel="stylesheet"> 
         <link href="css/owl.carousel.min.css" rel="stylesheet" type="text/css"/>
+        <link href="css/accommodation-view.css" rel="stylesheet" type="text/css"/>
     </head>
     <body style="background-color: #fff">
         <!-- Our Resort Values style-->
@@ -41,12 +41,12 @@ $MEMBER = new Member($TRANSPORTS->member);
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <h1 class="title hidden-sm hidden-xs"><?php echo $TRANSPORTS->title; ?></h1> 
+                            <h1 class="title hidden-sm hidden-xs"><?php echo $ACCOMMODATIONS->name ?></h1> 
                             <ul class="breadcrumb">
                                 <li class="banner-bredcum-1">
                                     <a href="index.php">Home</a>
                                 </li> 
-                                <li class="active banner-bredcum-2">Transports</li>
+                                <li class="active banner-bredcum-2">Accommodation</li>
                             </ul>
                         </div>
                     </div>
@@ -54,25 +54,21 @@ $MEMBER = new Member($TRANSPORTS->member);
             </div> 
         </div>
 
-
-
         <div class="container transport-container">
             <div class="row">
                 <div class="col-md-8">
-                    <div id="transport_photos" class="galleria-slider">
+                    <div id="accommodation_photos" class="galleria-slider">
                         <?php
-                        $VIEW_TRANSPORT = TransportPhoto::getTransportPhotosById($id);
-                        foreach ($VIEW_TRANSPORT as $key => $img) {
-                            $FUEL_TYPE = new FuelType($TRANSPORTS->fuel_type);
-                            $CONDITION = new VehicleCondition($TRANSPORTS->condition);
+                        $VIEW_ACCOMMODATION = AccommodationPhoto::getAccommodationPhotosById($id);
+                        foreach ($VIEW_ACCOMMODATION as $key => $accommodation) {
                             ?>
-                            <a href="upload/transport/<?php echo $img['image_name']; ?>">
-                                <img src="upload/transport/thumb/<?php echo $img['image_name']; ?>" data-title="" >
+                            <a href="upload/accommodation/<?php echo $accommodation['image_name']; ?>">
+                                <img src="upload/accommodation/thumb/<?php echo $accommodation['image_name']; ?>" data-title="" >
                             </a>
                             <?php
                         }
                         ?>
-                    </div> 
+                    </div>  
                 </div>
                 <div class="col-md-4">
                     <div class="sidebar">
@@ -102,17 +98,11 @@ $MEMBER = new Member($TRANSPORTS->member);
                                     </a>
                                 </div>
                                 <div class="col-md-7 col-sm-7 col-xs-7">
-
-
                                     <ul class="list-group-transport">
                                         <li class="list-group-transport-item"><b>Name</b>  <br><?php echo $MEMBER->name; ?></li> 
                                         <li class="list-group-transport-item"><b>Email</b> <br><?php echo $MEMBER->email; ?></li>
                                         <li class="list-group-transport-item"><b>Contact No</b> <br><?php echo $MEMBER->contact_number; ?></li>
                                     </ul>
-
-
-
-
                                 </div>
                             </div>
                         </div>
@@ -120,44 +110,36 @@ $MEMBER = new Member($TRANSPORTS->member);
 
 
                     <div class="jbside">
-                        <h3>About This Vehicle</h3>
-                        <ul class="jbdetail">
+                        <ul class="jbdetail" style="margin-top: -9px;">
+                            <div class="hp-review">
+                                <div class="hp-review-right">
+                                    <h5></h5>
+                                    <p><span>4<i class="fa fa-star" aria-hidden="true"></i></span> Rating</p>
+                                </div>
+                            </div>
+                            <hr>
                             <li class="row">
-                                <div class="col-md-12 col-xs-12 jb-title"><span> <?php echo $TRANSPORTS->title; ?></span></div>
+                                <div class="col-md-12 col-xs-12 jb-title"><span style="margin-top: 20px;"> <?php echo $ACCOMMODATION_TYPE->name; ?></span></div>
                             </li>
                             <li class="row">
-                                <div class="col-md-6 col-xs-6">Condition</div>
-                                <div class="col-md-6 col-xs-6"><span><?php echo $CONDITION->name; ?></span></div>
+                                <div class="col-md-3 col-xs-3">Location</div>
+                                <div class="col-md-9 col-xs-9"><span><?php echo $CITY->name; ?></span></div>
                             </li>
                             <li class="row">
-                                <div class="col-md-6 col-xs-6">Fuel Type</div>
-                                <div class="col-md-6 col-xs-6"><span><?php echo $FUEL_TYPE->name; ?></span></div>
+                                <div class="col-md-3 col-xs-3">Website</div>
+                                <div class="col-md-9 col-xs-9"><span><?php echo $ACCOMMODATIONS->website; ?></span></div>
                             </li>
                             <li class="row">
-                                <div class="col-md-9 col-xs-9">No of passengers</div>
-                                <div class="col-md-3 col-xs-3"><span><?php echo $TRANSPORTS->no_of_passangers; ?></span></div>
+                                <div class="col-md-3 col-xs-3">Email</div>
+                                <div class="col-md-9 col-xs-9"><span><?php echo $ACCOMMODATIONS->email ?></span></div>
                             </li>
                             <li class="row">
-                                <div class="col-md-6 col-xs-6">No of baggage</div>
-                                <div class="col-md-6 col-xs-6"><span><?php echo $TRANSPORTS->no_of_baggages; ?></span></div>
+                                <div class="col-md-3 col-xs-3">Phone</div>
+                                <div class="col-md-9 col-xs-9"><span><?php echo $ACCOMMODATIONS->phone; ?></span></div>
                             </li>
                             <li class="row">
-                                <div class="col-md-6 col-xs-6">No of doors</div>
-                                <div class="col-md-6 col-xs-6"><span><?php echo $TRANSPORTS->no_of_doors; ?></span></div>
-                            </li>
-                            <li class="row">
-                                <div class="col-md-6 col-xs-6">Air Conditioned</div>
-                                <div class="col-md-6 col-xs-6"> <?php
-                                    if ($TRANSPORTS->ac == 1) {
-                                        ?>
-                                        <span>Yes</span>
-                                        <?php
-                                    } else {
-                                        ?>
-                                        <span>No</span>
-                                        <?php
-                                    }
-                                    ?></div>
+                                <div class="col-md-3 col-xs-3">Address</div>
+                                <div class="col-md-9 col-xs-9"><span><?php echo $ACCOMMODATIONS->address; ?></span></div>
                             </li>
                         </ul>
                     </div>
@@ -169,39 +151,31 @@ $MEMBER = new Member($TRANSPORTS->member);
                 <div class="col-md-8">
                     <div class="transport-description">
                         <span>
-                            <?php echo $TRANSPORTS->description; ?>
+                            <?php echo $ACCOMMODATIONS->description; ?>
                         </span>
                     </div>
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th>Picking Up</th>
-                                <th>Dropping Off</th>
-                                <th>Distance(KM)</th>
-                                <th>Price(Rs)</th>
-                                <th>Option</th>
+                    <div class="hp-section">
+                        <div class="hp-sub-tit">
+                            <h4><span>Our</span> Facilities</h4>
+                        </div>
+                        <div class="hp-amini">
+                            <ul>
 
-                        <tbody>
-                            <?php
-                            foreach ($TRANSPORT_RATE as $transport_rate) {
-                                $CITYFROM = new City($transport_rate['location_from']);
-                                $CITYTO = new City($transport_rate['location_to']);
-                                ?>
-                                <tr>
-                                    <td  data-column="Picking Up"><?Php echo $CITYFROM->name; ?></td>
-                                    <td data-column="Dropping Off"><?Php echo $CITYTO->name; ?></td>
-                                    <td data-column="Distance(KM)"><?Php echo $transport_rate['distance'] . ' KM'; ?></td>
-                                    <td data-column="Price(LKR)"><?Php echo 'LKR.' . $transport_rate['price']; ?></td>
-                                    <td> <a href="transport-booking.php?rate=<?php echo $transport_rate['id']; ?>&visitor=<?php echo $_SESSION['id']; ?>" class="transport-book-button">
-                                            Book Now
-                                        </a>
-                                    </td>
-                                </tr>
                                 <?php
-                            }
-                            ?>
-                        </tbody>
-                    </table>
+                                $ALL_FACILITIES = AccommodationFacilityDetails::getFacilitiesByAccommodationId($id);
+
+                                $FACILITIES = explode(",", $ALL_FACILITIES['facility']);
+
+                                foreach ($FACILITIES as $key => $facility) {
+                                    $ACCOMMODATION_FACILITY = new AccommodationGeneralFacilities($facility);
+                                    ?>
+                                    <li><img src="upload/accommodation-facilities-icons/<?php echo $ACCOMMODATION_FACILITY->image_name ?>" alt=""> <?php echo $ACCOMMODATION_FACILITY->name ?></li>
+                                    <?php
+                                }
+                                ?>
+                            </ul>
+                        </div>
+                    </div>
 
                 </div>
                 <div class="col-md-4">
@@ -222,10 +196,10 @@ $MEMBER = new Member($TRANSPORTS->member);
                                 <div class="carousel-inner">
                                     <?php
                                     $FEEDBACK = new Feedback(NULL);
-                                    $TRANSPORT_FEEDBACKS = $FEEDBACK->getFeedbackByTransportID($id);
+                                    $ACCOMMODATION_FEEDBACKS = $FEEDBACK->getFeedbackByAccommodationID($id);
                                     $li = '';
-                                    foreach ($TRANSPORT_FEEDBACKS as $key => $transport_feedback) {
-                                        $VISITOR = new Visitor($transport_feedback['visitor']);
+                                    foreach ($ACCOMMODATION_FEEDBACKS as $key => $accommodation_feedback) {
+                                        $VISITOR = new Visitor($accommodation_feedback['visitor']);
                                         if ($key === 0) {
                                             $li .= ' <li data-target="#myCarousel" data-slide-to="' . $key . '" class="active">'
                                                     . '</li>';
@@ -234,23 +208,52 @@ $MEMBER = new Member($TRANSPORTS->member);
                                                 <div class="row">
                                                     <div class="col-sm-12">
                                                         <div class="testimonial">
-                                                            <p><?php echo $transport_feedback['description']; ?></p>
+                                                            <p><?php echo $accommodation_feedback['description']; ?></p>
                                                         </div>
                                                         <div class="media">
                                                             <div class="media-left d-flex mr-3">
-                                                                <img src="upload/visitor/<?php echo $VISITOR->image_name ?>" alt=""/>										
+                                                                <?php
+                                                                if (empty($VISITOR->image_name)) {
+                                                                    ?>
+                                                                    <img src="upload/visitor/member.png"/>
+                                                                    <?php
+                                                                } else {
+
+                                                                    if ($VISITOR->facebookID && substr($VISITOR->image_name, 0, 5) === "https") {
+                                                                        ?>
+                                                                        <img src="<?php echo $VISITOR->image_name; ?>"/>
+                                                                    <?php } else {
+                                                                        ?>
+                                                                        <img src="upload/visitor/<?php echo $VISITOR->image_name; ?>"/>
+                                                                        <?php
+                                                                    }
+                                                                }
+                                                                ?>									
                                                             </div>
                                                             <div class="media-body">
                                                                 <div class="overview">
                                                                     <div class="name"><b><?php echo $VISITOR->first_name . ' ' . $VISITOR->second_name ?></b></div>
-                                                                    <div class="details"><?php echo $transport_feedback['title']; ?></div>
+                                                                    <div class="details"><?php echo $accommodation_feedback['title']; ?></div>
                                                                     <div class="star-rating-t">
                                                                         <ul class="list-inline">
-                                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                                            <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                                                                            <?php
+                                                                            $starNumber = $accommodation_feedback['rate'];
+                                                                            for ($x = 1; $x <= $starNumber; $x++) {
+                                                                                echo '<li class = "list-inline-item"><i class = "fa fa-star"></i></li>';
+                                                                            }
+//                                                                            if (strpos($starNumber, '.')) {
+//                                                                                echo '<img src="path/to/half/star.png" />';
+//                                                                                $x++;
+//                                                                            }
+                                                                            while ($x <= 5) {
+                                                                                echo '<li class = "list-inline-item"><i class = "fa fa-star-o"></i></li>';
+                                                                                $x++;
+                                                                            }
+                                                                            ?>
+
+
+
+
                                                                         </ul>
                                                                     </div>
                                                                 </div>										
@@ -269,23 +272,51 @@ $MEMBER = new Member($TRANSPORTS->member);
                                                 <div class="row">
                                                     <div class="col-sm-12">
                                                         <div class="testimonial">
-                                                            <p><?php echo $transport_feedback['description']; ?></p>
+                                                            <p><?php echo $accommodation_feedback['description']; ?></p>
                                                         </div>
                                                         <div class="media">
                                                             <div class="media-left d-flex mr-3">
-                                                                <img src="upload/visitor/<?php echo $VISITOR->image_name ?>" alt=""/>										
+                                                                <?php
+                                                                if (empty($VISITOR->image_name)) {
+                                                                    ?>
+                                                                    <img src="upload/visitor/member.png"/>
+                                                                    <?php
+                                                                } else {
+                                                                    if ($VISITOR->facebookID && substr($VISITOR->image_name, 0, 5) === "https") {
+                                                                        ?>
+                                                                        <img src="<?php echo $VISITOR->image_name; ?>"/>
+                                                                    <?php } else {
+                                                                        ?>
+                                                                        <img src="upload/visitor/<?php echo $VISITOR->image_name; ?>"/>
+                                                                        <?php
+                                                                    }
+                                                                }
+                                                                ?>
                                                             </div>
                                                             <div class="media-body">
                                                                 <div class="overview">
                                                                     <div class="name"><b><?php echo $VISITOR->first_name . ' ' . $VISITOR->second_name ?></b></div>
-                                                                    <div class="details"><?php echo $transport_feedback['title']; ?></div>
+                                                                    <div class="details"><?php echo $accommodation_feedback['title']; ?></div>
                                                                     <div class="star-rating-t">
                                                                         <ul class="list-inline">
-                                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                                            <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                                                                            <?php
+                                                                            $starNumber = $accommodation_feedback['rate'];
+                                                                            for ($x = 1; $x <= $starNumber; $x++) {
+                                                                                echo '<li class = "list-inline-item"><i class = "fa fa-star"></i></li>';
+                                                                            }
+//                                                                            if (strpos($starNumber, '.')) {
+//                                                                                echo '<img src="path/to/half/star.png" />';
+//                                                                                $x++;
+//                                                                            }
+                                                                            while ($x <= 5) {
+                                                                                echo '<li class = "list-inline-item"><i class = "fa fa-star-o"></i></li>';
+                                                                                $x++;
+                                                                            }
+                                                                            ?>
+
+
+
+
                                                                         </ul>
                                                                     </div>
                                                                 </div>										
@@ -322,113 +353,130 @@ $MEMBER = new Member($TRANSPORTS->member);
             </div>
 
             <div class="row top-margin-30">
-                <hr>
                 <div class="col-md-12">
-                    <p class="subtitle-more more-t"><span>More Transports</span></p>
 
-                    <div class="owl-carousel tour-slider" id="transport-carousel">
+                    <div class="head-typo typo-com">
+                        <h2>Rooms</h2>
+                        <div class="row events">
+
+                        </div>
                         <?php
-                        $TRANSPORT = $TRANSPORTS->all();
-                        foreach ($TRANSPORT as $transport) {
-                            $transport_photos = $TRANSPORTS_PHOTO->getTransportPhotosById($transport['id']);
-                            $condition = new VehicleCondition($transport['condition']);
-                            $vehicle_type = new VehicleType($transport['vehicle_type']);
-                            $fuel_type = new FuelType($transport['fuel_type'])
+                        $ROOM = Room::getAccommodationRoomsById($id);
+                        foreach ($ROOM as $rooms) {
                             ?>
-                            <div  class="index-transport-container" style="background-color: #ececec;">
-                                <?php
-                                foreach ($transport_photos as $key => $transport_photo) {
-                                    if ($key == 0) {
-                                        ?>
-                                        <a href="transportation-view.php?id=<?php echo $transport['id']; ?>">
-                                            <span class="price">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </span>
-                                            <img src="upload/transport/thumb/<?php echo $transport_photo['image_name'] ?>" alt=""/>
-                                        </a>
+
+                            <!--EVENT-->
+                            <div class="row events">
+                                <div class="room-title-btn" id="room-title-<?php echo $rooms['id']; ?>" >
+                                    <div class="col-md-2">  
 
                                         <?php
-                                    }
-                                }
-                                ?>
-                                <!--                                        <div class="transport-heading"></div>-->
-                                <div class="transport-bot-container">  
-                                    <a href="transportation-view.php?id=<?php echo $transport['id']; ?>">
-                                        <div class="transport-bot-title"> <?php
-                                            echo substr($transport['title'], 0, 23);
-                                            if (strlen($transport['title']) > 23) {
-                                                echo '...';
+                                        foreach ($ROOM_PHOTO->getRoomPhotosById($rooms['id']) as $key => $room_p) {
+                                            if ($key == 1) {
+                                                break;
                                             }
-                                            ?></div>
-                                        <div class="vehicle-options-container">
+                                            ?> 
+                                            <img src="upload/accommodation/rooms/thumb/<?php echo $room_p['image_name']; ?>" alt="">
+                                            <?php
+                                        }
+                                        ?>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <h3><?php echo $rooms['name']; ?></h3>
+                                        <p>
+                                            Number of Adults : <?php echo $rooms['number_of_adults']; ?>
+                                        </p>
+                                        <p>
+                                            Number of Children : <?php echo $rooms['number_of_children']; ?>
+                                        </p>
+                                        <?php
+                                        $ALL_FACILITIES = RoomFaciliityDetails::getFacilitiesByRoomId($rooms['id']);
 
-                                            <div class="col-md-12">
-                                                <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4">
-                                                    <img class="index-transport-ico" src="images/transport/passenges.png"><div>
-                                                        <span class="transport-ico-txt"><?php echo $transport['no_of_passangers'] ?></span>
-                                                    </div>
-                                                </div>
+                                        $FACILITIES = explode(",", $ALL_FACILITIES['facility']);
+
+                                        foreach ($FACILITIES as $key => $facility) {
+
+                                            $ROOM_FACILITY = new RoomFacility($facility);
+                                            ?>
+                                            <img style="width: 20px;" src="upload/room-facility-icons/<?php echo $ROOM_FACILITY->image_name; ?>">
+                                            <?php
+                                        }
+                                        ?>
 
 
-                                                <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4">
-                                                    <img class="index-transport-ico" src="images/transport/001-suitcase.png"><div>
-                                                        <span class="transport-ico-txt"><?php echo $transport['no_of_baggages'] ?></span>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4">
-                                                    <img class="index-transport-ico" src="images/transport/004-car.png"><div>
-                                                        <span class="transport-ico-txt"><?php echo $transport['no_of_doors'] ?></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="vehicle-options-bottom">
-                                            <div class="vehicle-options-heading">Vehicle Type : <?php echo $vehicle_type->name ?></div>
-                                            <div class="vehicle-options-heading">Registered Year :  <?php echo $transport['registered_year'] ?></div>
-                                            <div class="vehicle-options-heading">Fuel Type : <?php echo $fuel_type->name; ?></div>
-                                            <div class="vehicle-options-heading">Air Conditioned : 
-                                                <?php
-                                                if ($transport['ac'] == 1) {
-                                                    ?>
-                                                    <span>yes</span>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-2 accommoadtion-register-button">
+                                    <a href="#" class="waves-effect waves-light event-regi">Book Now</a> 
+                                </div>
+                                <div id="room-slider-<?php echo $rooms['id']; ?>" class="modal">
+                                    <div class="modal-content">
+                                        <span class="close">&times;</span>
+                                        <div class="row">
+                                            <div class="col-md-9">
+                                                <div class="galleria-slider room-photos">
                                                     <?php
-                                                } else {
+                                                    $VIEW_ROOMS = RoomPhoto::getRoomPhotosById($rooms['id']);
+                                                    foreach ($VIEW_ROOMS as $key => $room_p) {
+                                                        ?>
+                                                        <a href="upload/accommodation/rooms/<?php echo $room_p['image_name']; ?>">
+                                                            <img src="upload/accommodation/rooms/thumb/<?php echo $room_p['image_name']; ?>" data-title="" >
+                                                        </a>
+                                                        <?php
+                                                    }
                                                     ?>
-                                                    <span>no</span>
-                                                    <?php
-                                                }
-                                                ?>
+                                                </div>
                                             </div>
-                                            <div class="vehicle-options-heading">Condition : <?php
-                                                echo substr($condition->name, 0, 13);
-                                                if (strlen($condition->name) > 13) {
-                                                    echo '...';
-                                                }
-                                                ?>
+                                            <div class="col-md-3 inner-facility-section">
+                                                <div class="inner-top-title">
+                                                    <img src="assets/img/facility/bathtub.png" alt=""/>
+                                                    <span>Private Bathroom</span>
+                                                </div>
+                                                <div class="room-area">
+                                                    <strong>Room Size</strong><span> 60m<sup>2</sup></span>
+                                                </div>
+                                                <div class="row">
+                                                    <strong class="inner-facility-title">Room Facilities:</strong>
+                                                    <div class="list-of-facilities">
+                                                        <?php
+                                                        $results = RoomFaciliityDetails::getFacilitiesByRoomId($rooms['id']);
+                                                        $resultroomfacilities = explode(",", $results['facility']);
+                                                        foreach ($resultroomfacilities as $key => $resultRoomFacility) {
+                                                            $RoomFacility = new RoomFacility($resultRoomFacility);
+                                                            ?>
+                                                            <div class="col-md-6">
+                                                                <li><?php echo $RoomFacility->name; ?></li>
+                                                            </div>
+                                                            <?php
+                                                        }
+                                                        ?>
+
+                                                    </div>
+                                                </div>
+                                                <div class="inner-sub">
+                                                    <span style="color: red;">In high demand!</span>
+
+                                                </div>
+                                                <div class="inner-booked">
+                                                    <span>Recently booked or not</span>
+                                                </div>
                                             </div>
+
                                         </div>
-
-                                    </a>
-
-                                    <div class="read_more">
-
-                                        <a href="transportation-view.php?id=<?php echo $transport['id']; ?>" class="read_more_button">View More
-                                            <i class="fa fa-long-arrow-right"></i></a>
-                                        <div class="clear"></div>
                                     </div>
                                 </div>
                             </div>
-
-
+                            <!--END EVENT-->
                             <?php
                         }
                         ?>
-
                     </div>
+
+
+
+
                 </div>
             </div>
 
@@ -447,7 +495,7 @@ $MEMBER = new Member($TRANSPORTS->member);
         <script src="js/galleria.js" type="text/javascript"></script>
         <script src="js/galleria.classic.min.js" type="text/javascript"></script>
         <script type="text/javascript">
-            $('#transport_photos').galleria({
+            $('#accommodation_photos').galleria({
                 responsive: true,
                 height: 500,
                 autoplay: 7000,
@@ -457,6 +505,47 @@ $MEMBER = new Member($TRANSPORTS->member);
                 //                imageCrop: true,
             });
         </script>
+        <script type="text/javascript">
+            $('.room-photos').galleria({
+                responsive: true,
+                height: 500,
+                autoplay: 7000,
+                lightbox: true,
+                showInfo: true,
+
+                //                imageCrop: true,
+            });
+        </script>
+        <script>
+
+            $('.room-title-btn').click(function () {
+                var roomTitleId = this.id;
+                var roomId = roomTitleId.replace('room-title-', '');
+                $('#room-slider-' + roomId).show();
+
+            });
+
+            $('.close').click(function () {
+                $('.modal').hide();
+            });
+
+            $('.owl-carousel').owlCarousel({
+                loop: true,
+                margin: 10,
+                nav: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 3
+                    },
+                    1000: {
+                        items: 4
+                    }
+                }
+            });
+        </script> 
         <script>
             jQuery(document).ready(function () {
                 jQuery('#btn-add-comment').click(function () {
@@ -500,34 +589,6 @@ $MEMBER = new Member($TRANSPORTS->member);
             });
         </script>
 
-        <script>
-            $(document).ready(function () {
-                $('#transport-carousel').owlCarousel({
 
-                    loop: true,
-                    margin: 10,
-                    responsiveClass: true,
-                    autoplay: true,
-                    autoplayTimeout: 2000,
-                    autoplayHoverPause: true,
-                    responsive: {
-                        0: {
-                            items: 1,
-                            nav: true
-                        },
-                        600: {
-                            items: 3,
-                            nav: true
-                        },
-                        1000: {
-                            items: 5,
-                            nav: true,
-                            loop: true
-                        }
-                    }
-                });
-            });
-        </script>
     </body> 
-
 </html>

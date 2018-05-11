@@ -100,17 +100,11 @@ $MEMBER = new Member($TRANSPORTS->member);
                                     </a>
                                 </div>
                                 <div class="col-md-7 col-sm-7 col-xs-7">
-
-
                                     <ul class="list-group-transport">
                                         <li class="list-group-transport-item"><b>Name</b>  <br><?php echo $MEMBER->name; ?></li> 
                                         <li class="list-group-transport-item"><b>Email</b> <br><?php echo $MEMBER->email; ?></li>
                                         <li class="list-group-transport-item"><b>Contact No</b> <br><?php echo $MEMBER->contact_number; ?></li>
                                     </ul>
-
-
-
-
                                 </div>
                             </div>
                         </div>
@@ -200,7 +194,6 @@ $MEMBER = new Member($TRANSPORTS->member);
                                 <th>Distance(KM)</th>
                                 <th>Price(LKR)</th>
                                 <th>Option</th>
-
                         <tbody>
                             <?php
                             foreach ($TRANSPORT_RATE as $transport_rate) {
@@ -208,7 +201,7 @@ $MEMBER = new Member($TRANSPORTS->member);
                                 $CITYTO = new City($transport_rate['location_to']);
                                 ?>
                                 <tr>
-                                    <td  data-column="Picking Up"><?Php echo $CITYFROM->name; ?></td>
+                                    <td data-column="Picking Up"><?Php echo $CITYFROM->name; ?></td>
                                     <td data-column="Dropping Off"><?Php echo $CITYTO->name; ?></td>
                                     <td data-column="Distance(KM)"><?Php echo $transport_rate['distance'] . ' KM'; ?></td>
                                     <td data-column="Price(LKR)"><?Php echo 'LKR ' . $transport_rate['price']; ?></td>

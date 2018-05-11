@@ -25,8 +25,16 @@ if (isset($_POST['create'])) {
         $handle->file_new_name_ext = 'jpg';
         $handle->image_ratio_crop = 'C';
         $handle->file_new_name_body = $img;
-        $handle->image_x = 900;
-        $handle->image_y = 500;
+        $handle->image_watermark = '../../images/watermark/watermark.png';
+        $image_dst_x = $handle->image_dst_x;
+        $image_dst_y = $handle->image_dst_y;
+        $newSize = Helper::calImgResize(600, $image_dst_x, $image_dst_y);
+
+        $image_x = (int) $newSize[0];
+        $image_y = (int) $newSize[1];
+
+        $handle->image_x = $image_x;
+        $handle->image_y = $image_y;
 
         $handle->Process($dir_dest);
 
@@ -34,8 +42,6 @@ if (isset($_POST['create'])) {
             $info = getimagesize($handle->file_dst_pathname);
             $imgName = $handle->file_dst_name;
         }
-
-
         $handle->image_resize = true;
         $handle->file_new_name_body = TRUE;
         $handle->file_overwrite = TRUE;
@@ -43,7 +49,7 @@ if (isset($_POST['create'])) {
         $handle->image_ratio_crop = 'C';
         $handle->file_new_name_body = $img;
         $handle->image_x = 300;
-        $handle->image_y = 175;
+        $handle->image_y = 278;
 
         $handle->Process($dir_dest_thumb);
 
@@ -52,6 +58,7 @@ if (isset($_POST['create'])) {
             $imgName = $handle->file_dst_name;
         }
     }
+
 
     $ACCOMODATION_PHOTO->image_name = $imgName;
 

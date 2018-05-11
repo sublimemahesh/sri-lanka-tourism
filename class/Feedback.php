@@ -118,6 +118,21 @@ class Feedback {
         return $array_res;
     }
 
+    public function getFeedbackByAccommodationID($accommodation) {
+
+        $query = "SELECT * FROM `feedback` WHERE `accommodation` = '" . $accommodation . "'";
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+        return $array_res;
+    }
+
     public function getFeedbackByTourPackageID($tour) {
 
         $query = "SELECT * FROM `feedback` WHERE `tour_package` = '" . $tour . "'";
@@ -155,10 +170,10 @@ class Feedback {
         $db = new Database();
 
         $result = mysql_fetch_array($db->readQuery($query));
-        
+
         $sum_of_rates = $result['rate_sum'];
         $count = $result['count'];
-        
+
         if (!empty($count)) {
             $avg = round($sum_of_rates / $count);
             return $avg;
@@ -166,7 +181,7 @@ class Feedback {
             return 0;
         }
     }
-    
+
     public function getRatingByTour($tour) {
 
         $query = "SELECT count(visitor) as count, sum(rate) as rate_sum FROM `feedback` WHERE `tour_package` = '" . $tour . "'";
@@ -174,10 +189,10 @@ class Feedback {
         $db = new Database();
 
         $result = mysql_fetch_array($db->readQuery($query));
-        
+
         $sum_of_rates = $result['rate_sum'];
         $count = $result['count'];
-        
+
         if (!empty($count)) {
             $avg = round($sum_of_rates / $count);
             return $avg;
@@ -185,7 +200,7 @@ class Feedback {
             return 0;
         }
     }
-    
+
     public function getRatingByArticle($article) {
 
         $query = "SELECT count(visitor) as count, sum(rate) as rate_sum FROM `feedback` WHERE `article` = '" . $article . "'";
@@ -193,10 +208,10 @@ class Feedback {
         $db = new Database();
 
         $result = mysql_fetch_array($db->readQuery($query));
-        
+
         $sum_of_rates = $result['rate_sum'];
         $count = $result['count'];
-        
+
         if (!empty($count)) {
             $avg = round($sum_of_rates / $count);
             return $avg;
