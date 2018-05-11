@@ -73,7 +73,9 @@ $TRANSPORTS = $SEARCH->GetTransportByLocationFromAndTo($from, $to, $type, $condi
                                 $FUEL_TYPE = new FuelType($transport['fuel_type']);
                                 $VEHICLE_TYPE = new VehicleType($transport['vehicle_type']);
                                 $MEMBER = new Member($transport['member']);
-                                $starNumber = Feedback::getRatingByTransport($transport['id']);
+                                $result = Feedback::getRatingByTransport($transport['id']);
+                                $rate_count = $result['rate_count'];
+                                $starNumber = round($result['rate_avg']);
                                 ?>
                                 <div class="room-box row room-box-new animated-box" data-animation="fadeInUp">
                                     <?php
@@ -95,7 +97,7 @@ $TRANSPORTS = $SEARCH->GetTransportByLocationFromAndTo($from, $to, $type, $condi
                                             <div class="title-box">
                                                 <div class="title"><?php echo $transport['title']; ?></div>
                                                 <div class="">
-                                                    <div title="Rated <?php echo $starNumber;?> out of 5" class="" >
+                                                    <div title="Rated <?php echo $starNumber; ?> out of 5" class="" >
                                                         <span class="str" style="color: #FF9800">
                                                             <?php
                                                             for ($x = 1; $x <= $starNumber; $x++) {
@@ -113,7 +115,7 @@ $TRANSPORTS = $SEARCH->GetTransportByLocationFromAndTo($from, $to, $type, $condi
 
                                                         </span>
                                                     </div>
-<!--                                                    <span class="brackets">(Based on 17 reviews)</span>-->
+    <!--                                                    <span class="brackets">(Based on 17 reviews)</span>-->
                                                 </div>
                                             </div>
                                             <div class="amenities">

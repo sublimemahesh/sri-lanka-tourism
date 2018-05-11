@@ -165,21 +165,13 @@ class Feedback {
 
     public function getRatingByTransport($transport) {
 
-        $query = "SELECT count(visitor) as count, sum(rate) as rate_sum FROM `feedback` WHERE `transport` = '" . $transport . "'";
+        $query = "SELECT count(visitor) as visitor_count, avg(rate) as rate_avg ,count(rate) as rate_count FROM `feedback` WHERE `transport` = '" . $transport . "'";
 
         $db = new Database();
 
         $result = mysql_fetch_array($db->readQuery($query));
 
-        $sum_of_rates = $result['rate_sum'];
-        $count = $result['count'];
-
-        if (!empty($count)) {
-            $avg = round($sum_of_rates / $count);
-            return $avg;
-        } else {
-            return 0;
-        }
+        return $result;
     }
 
     public function getRatingByTour($tour) {

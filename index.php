@@ -231,7 +231,10 @@ $ARTICLETYPES = ArticleType::all();
                                                 <a href="transportation-view.php?id=<?php echo $transport['id']; ?>">
                                                     <span class="price">
                                                         <?php
-                                                        $starNumber = Feedback::getRatingByTransport($transport['id']);
+                                                        $result = Feedback::getRatingByTransport($transport['id']);
+                                                        $rate_count = $result['rate_count'];
+                                                        $starNumber = round($result['rate_avg']);
+
 
                                                         for ($x = 1; $x <= $starNumber; $x++) {
                                                             echo '<i class="fa fa-star"></i>';
