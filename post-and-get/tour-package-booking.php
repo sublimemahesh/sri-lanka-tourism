@@ -26,8 +26,6 @@ if (isset($_POST['book'])) {
         'tour_package' => ['required' => TRUE],
         'start_date' => ['required' => TRUE],
         'end_date' => ['required' => TRUE],
-        'no_of_adults' => ['required' => TRUE],
-        'no_of_children' => ['required' => TRUE],
         'price_per_person' => ['required' => TRUE]
     ]);
 

@@ -6,6 +6,9 @@ $previous = "javascript:history.go(-1)";
 if (isset($_SERVER['HTTP_REFERER'])) {
     $previous = $_SERVER['HTTP_REFERER'];
 }
+
+$tourid = $_GET['tourid'];
+
 ?>
 <html lang="en">
     <head>
@@ -52,9 +55,15 @@ if (isset($_SERVER['HTTP_REFERER'])) {
                             </label>
                             <?php
                             if (isset($_GET['back'])) {
-                                ?>
-                                <input type="hidden" class="form-control" name="back" value="<?php echo $previous; ?>">
-                                <?php
+                                if ($_GET['back'] === 'true') {
+                                    ?>
+                                    <input type="hidden" class="form-control" name="back" value="<?php echo $previous; ?>">
+                                    <?php
+                                } elseif ($_GET['back'] === 'tour') {
+                                    ?>
+                                    <input type="hidden" class="form-control" name="back" value="https://www.srilankatourism.travel/tour-package-booking.php?id=<?php echo $tourid;?>">
+                                    <?php
+                                }
                             }
                             ?>
 
