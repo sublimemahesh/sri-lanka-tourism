@@ -507,7 +507,7 @@ $CITY = new City($ACCOMMODATIONS->city);
                 height: 500,
                 autoplay: 7000,
                 lightbox: true,
-                showInfo: true,
+//                showInfo: true,
 
                 //                imageCrop: true,
             });
@@ -518,7 +518,7 @@ $CITY = new City($ACCOMMODATIONS->city);
                 height: 500,
                 autoplay: 7000,
                 lightbox: true,
-                showInfo: true,
+//                showInfo: true,
 
                 //                imageCrop: true,
             });

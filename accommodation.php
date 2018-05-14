@@ -73,7 +73,7 @@ $ACCOMMODATION_PHOTO = new AccommodationPhoto(NULL);
                             $MEMBER = new Member($accommodation['member']);
                             ?>
                             <div class="room">
-                                <a href="accommodation-view.php?id=<?php echo $accommodation['id']; ?>" class="">
+                                <a target="blank" href="accommodation-view.php?id=<?php echo $accommodation['id']; ?>" class="">
                                     <div class="ribbon ribbon-top-left"><span><?php echo $accommodation['name']; ?></span>
                                     </div>
                                     <!--ROOM IMAGE-->
@@ -147,7 +147,7 @@ $ACCOMMODATION_PHOTO = new AccommodationPhoto(NULL);
                                 <!--ROOM BOOKING BUTTON-->
                                 <div class="r5 r-com">
 
-                                    <a href="member-view.php?id=<?php echo $MEMBER->id; ?>" class="link">
+                                    <a target="blank" href="member-view.php?id=<?php echo $MEMBER->id; ?>" class="link">
                                         <?php
                                         if (empty($MEMBER->profile_picture)) {
                                             ?> 
@@ -169,7 +169,7 @@ $ACCOMMODATION_PHOTO = new AccommodationPhoto(NULL);
                                     </a>
 
                       <!--                                    <p>Price for 1 night</p>-->
-                                    <a href="#" class="inn-room-book">Book Now</a> </div>
+                                    <a href="#"><div class="inn-room-book">Book Now</div></a> </div>
                             </div>
                             <?php
                         }
@@ -193,76 +193,7 @@ $ACCOMMODATION_PHOTO = new AccommodationPhoto(NULL);
         <script src="js/bootstrap-datepicker.js" type="text/javascript"></script>
         <script src="assets/js/helper.js" type="text/javascript"></script>
         <script src="assets/js/template.js" type="text/javascript"></script>
-        <script>
-            $(function () {
-                $("#datepicker").datepicker({
-                    autoclose: true,
-                    todayHighlight: true
-                }).datepicker('update', new Date());
-            });
-
-            $(function () {
-                $("#datepicker1").datepicker({
-                    autoclose: true,
-                    todayHighlight: true
-                }).datepicker('update', new Date());
-            });
-
-            $(function () {
-                $("#datepicker2").datepicker({
-                    autoclose: true,
-                    todayHighlight: true
-                }).datepicker('update', new Date());
-            });
-
-            $(function () {
-                $("#datepicker3").datepicker({
-                    autoclose: true,
-                    todayHighlight: true
-                }).datepicker('update', new Date());
-            });
-
-            $(function () {
-                $("#datepicker4").datepicker({
-                    autoclose: true,
-                    todayHighlight: true
-                }).datepicker('update', new Date());
-            });
-
-            $(function () {
-                $("#datepicker5").datepicker({
-                    autoclose: true,
-                    todayHighlight: true
-                }).datepicker('update', new Date());
-            });
-
-
-        </script>
-        <script>
-            var $star_rating = $('.star-rating .fa');
-
-            var SetRatingStar = function () {
-                return $star_rating.each(function () {
-                    if (parseInt($star_rating.siblings('input.rating-value').val()) >= parseInt($(this).data('rating'))) {
-                        return $(this).removeClass('fa-star-o').addClass('fa-star');
-                    } else {
-                        return $(this).removeClass('fa-star').addClass('fa-star-o');
-                    }
-                });
-            };
-
-            $star_rating.on('click', function () {
-                $star_rating.siblings('input.rating-value').val($(this).data('rating'));
-                return SetRatingStar();
-            });
-
-            SetRatingStar();
-            $(document).ready(function () {
-
-            });
-        </script>
-
-
+ 
         <script type="text/javascript">
 
             $(document).ready(function () {
