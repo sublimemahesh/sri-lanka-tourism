@@ -56,7 +56,7 @@ $ACCOMODATION_FACILITY_DETAILS = new AccommodationFacilityDetails(NULL);
                             $vali->show_message();
                             ?>
                             <div class="panel panel-default">
-                                <div class="panel-heading"><i class="fa fa-pencil"></i>Accommodation Facilities</div>
+                                <div class="panel-heading"><i class="fa fa-pencil"></i>Accommodation Facilities - <?php echo $ACCOMODATION->name; ?></div>
                                 <div class="panel-body">
                                     <div class="body">
                                         <div class="userccount">

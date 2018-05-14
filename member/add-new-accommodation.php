@@ -313,6 +313,7 @@ include_once(dirname(__FILE__) . '/auth.php');
         <script src="assets/plugins/jquery-steps/jquery.steps.js" type="text/javascript"></script>
         <script src="js/post-accommodation-image.js" type="text/javascript"></script>
         <script src="assets/js/form-component.js"></script>    
+        <script src="js/add-new-accommodation.js" type="text/javascript"></script>
         <script>
             //custom select box
 
@@ -323,29 +324,29 @@ include_once(dirname(__FILE__) . '/auth.php');
         </script>
         <script src="assets/tinymce/js/tinymce/tinymce.min.js"></script>
         <script>
-               tinymce.init({
-                   selector: "#description",
-                   // ===========================================
-                   // INCLUDE THE PLUGIN
-                   // ===========================================
+            tinymce.init({
+                selector: "#description",
+                // ===========================================
+                // INCLUDE THE PLUGIN
+                // ===========================================
 
-                   plugins: [
-                       "advlist autolink lists link image charmap print preview anchor",
-                       "searchreplace visualblocks code fullscreen",
-                       "insertdatetime media table contextmenu paste"
-                   ],
-                   // ===========================================
-                   // PUT PLUGIN'S BUTTON on the toolbar
-                   // ===========================================
+                plugins: [
+                    "advlist autolink lists link image charmap print preview anchor",
+                    "searchreplace visualblocks code fullscreen",
+                    "insertdatetime media table contextmenu paste"
+                ],
+                // ===========================================
+                // PUT PLUGIN'S BUTTON on the toolbar
+                // ===========================================
 
-                   toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image jbimages",
-                   // ===========================================
-                   // SET RELATIVE_URLS to FALSE (This is required for images to display properly)
-                   // ===========================================
+                toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image jbimages",
+                // ===========================================
+                // SET RELATIVE_URLS to FALSE (This is required for images to display properly)
+                // ===========================================
 
-                   relative_urls: false
+                relative_urls: false
 
-               });
+            });
         </script>
         <script src="js/add-new-accommodation.js" type="text/javascript"></script>
         <script src="assets/plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>

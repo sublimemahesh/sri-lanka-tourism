@@ -61,7 +61,7 @@ $ROOM = new Room($id);
                             ?>
 
                             <div class="panel panel-default">
-                                <div class="panel-heading"><i class="fa fa-save"></i> Create Room Price</div>
+                                <div class="panel-heading"><i class="fa fa-save"></i> Manage Room Avilability - <?php echo $ROOM->name; ?></div>
                                 <div class="panel-body">
                                     <div class="body">
                                         <div class="row mt">

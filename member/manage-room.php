@@ -51,7 +51,7 @@ $ROOM_PHOTO = new RoomPhoto(NULL);
                     <div class="container-fluid">
                         <div class="top-bott20"> 
                             <div class="panel panel-default">
-                                <div class="panel-heading"><i class="fa fa-pencil"></i>Rooms</div>
+                                <div class="panel-heading"><i class="fa fa-pencil"></i>Manage Rooms - <?php echo $ACCOMODATION->name; ?></div>
                                 <div class="panel-body">
                                     <div class="body">
                                         <div class="userccount">

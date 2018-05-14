@@ -54,7 +54,7 @@ if (isset($_POST['create'])) {
         $_SESSION['ERRORS'] = $VALID->errors();
 
 //        header('Location: ' . $_SERVER['HTTP_REFERER']);
-        header("location: ../manage-accommodation.php");
+        header('Location: ../accommodation-room.php?id=' . $ACCOMODATION->id);
     } else {
 
         if (!isset($_SESSION)) {
@@ -62,6 +62,8 @@ if (isset($_POST['create'])) {
         }
 
         $_SESSION['ERRORS'] = $VALID->errors();
+
+
 
         header('Location: ' . $_SERVER['HTTP_REFERER']);
     }

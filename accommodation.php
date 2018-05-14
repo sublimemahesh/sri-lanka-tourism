@@ -18,7 +18,7 @@ if (isset($_GET["page"])) {
 } else {
     $page = 1;
 }
-$setLimit = 3;
+$setLimit = 10;
 $pageLimit = ($page * $setLimit) - $setLimit;
 
 
