@@ -99,10 +99,11 @@
 .r-com ul {
     margin-bottom: 0px;
     margin-top: 0px;
+    padding-left: 0;
 }
 .r-com ul li {
     background-size: 10px;
-    padding-left: 20px;
+    padding-left: 10px;
     line-height: 28px;
     color: #716b6b;
 }
@@ -151,29 +152,34 @@
     font-weight: 600;
     font-family: 'Quicksand', sans-serif;
     border-radius: 2px;
-    width: 100%;
+    width: 100% !important;
     font-size: 21px;
-    display: table-caption;
-    background: #d0ae64;
+   display: inline-block;
+    background: #6a8193;
     margin-top: 20px;
+    text-align: center;
     /* fallback for old browsers */
-
-    background: -webkit-linear-gradient(to right, #d6ae7b, #eacda3);
+    background: -webkit-linear-gradient(to right, #6a8193, #20206e);
     /* Chrome 10-25, Safari 5.1-6 */
 
-    background: linear-gradient(to top, #caa65a, #dbbb75);
+    background: linear-gradient(to top, #6a8193, #20206e);
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 .inn-room-book:hover {
-    background: #cc2b5e;
+    background: #6a8193;
     /* fallback for old browsers */
-
-    background: -webkit-linear-gradient(to right, #753a88, #cc2b5e);
+    color: #fff;
+    background: -webkit-linear-gradient(to right, #6a8193, #20206e);
     /* Chrome 10-25, Safari 5.1-6 */
 
-    background: linear-gradient(to top, #cc2c5f, #f4364f);
+    background: linear-gradient(to top, #6a8193, #20206e);
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     text-decoration: none;
+    background: -webkit-linear-gradient(to right, #6a8193, #6161c2);
+    /* Chrome 10-25, Safari 5.1-6 */
+
+    background: linear-gradient(to top, #6a8193, #6161c2);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 .room-1 {
     width: 47%;
@@ -239,6 +245,9 @@
     .inn-detail {
         background-size: 0%;
         background: none;
+    }
+    .r2-available{
+        margin-top: 10px;
     }
     .inn-com-list-point ul li {
         font-size: 14px;
@@ -347,17 +356,28 @@
     .hp-view {
         height: 450px;
     }
+   
+    .r5 {
+        border-left: 0px solid #d1d1d1;
+    }
+    
+    .inn-room-book {
+        width: 100% !important;
+        margin-right: 0px;
+        margin-left: 0px;
+    }
+    
 }
 
 ul:not(.browser-default) {
 
-    padding-left: 0;
+/*    padding-left: 0;*/
     list-style-type: none;
 
 }
 
 .accommodation-facilities li{
-/*    background: url('../images/h-check.png') no-repeat left center;*/
+    /*    background: url('../images/h-check.png') no-repeat left center;*/
 }
 .ribbon span{
     font-size: 20px;

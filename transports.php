@@ -85,7 +85,7 @@ $TRANSPORTS = $SEARCH->GetTransportByLocationFromAndTo($from, $to, $type, $condi
                                         }
                                         ?>
                                         <div class="col-md-4 room-img" style=" background-color: #E6F9FF;">
-                                            <a href="transportation-view.php?id=<?php echo $transport['id']; ?>">
+                                            <a target="blank" href="transportation-view.php?id=<?php echo $transport['id']; ?>">
                                                 <img class=" vehicle-img" src="upload/transport/thumb/<?php echo $TRANSPORTS_P['image_name']; ?>"/>
                                             </a>
                                         </div>
@@ -113,7 +113,7 @@ $TRANSPORTS = $SEARCH->GetTransportByLocationFromAndTo($from, $to, $type, $condi
                                                             }
                                                             ?>
 
-                                                        </span>
+                                                        </span> (<?php echo $rate_count;?> Reviews)
                                                     </div>
     <!--                                                    <span class="brackets">(Based on 17 reviews)</span>-->
                                                 </div>
@@ -149,7 +149,6 @@ $TRANSPORTS = $SEARCH->GetTransportByLocationFromAndTo($from, $to, $type, $condi
                                                             <img src="upload/member/member.png" class="img img-responsive img-thumbnail" id="profil_pic"/>
                                                             <?php
                                                         } else {
-
                                                             if ($MEMBER->facebookID && substr($MEMBER->profile_picture, 0, 5) === "https") {
                                                                 ?>
                                                                 <img src="<?php echo $MEMBER->profile_picture; ?>" class="img-responsive thumbnail">
@@ -212,74 +211,7 @@ $TRANSPORTS = $SEARCH->GetTransportByLocationFromAndTo($from, $to, $type, $condi
         <script src="js/bootstrap-datepicker.js" type="text/javascript"></script>
         <script src="assets/js/helper.js" type="text/javascript"></script>
         <script src="assets/js/template.js" type="text/javascript"></script>
-        <script>
-            $(function () {
-                $("#datepicker").datepicker({
-                    autoclose: true,
-                    todayHighlight: true
-                }).datepicker('update', new Date());
-            });
 
-            $(function () {
-                $("#datepicker1").datepicker({
-                    autoclose: true,
-                    todayHighlight: true
-                }).datepicker('update', new Date());
-            });
-
-            $(function () {
-                $("#datepicker2").datepicker({
-                    autoclose: true,
-                    todayHighlight: true
-                }).datepicker('update', new Date());
-            });
-
-            $(function () {
-                $("#datepicker3").datepicker({
-                    autoclose: true,
-                    todayHighlight: true
-                }).datepicker('update', new Date());
-            });
-
-            $(function () {
-                $("#datepicker4").datepicker({
-                    autoclose: true,
-                    todayHighlight: true
-                }).datepicker('update', new Date());
-            });
-
-            $(function () {
-                $("#datepicker5").datepicker({
-                    autoclose: true,
-                    todayHighlight: true
-                }).datepicker('update', new Date());
-            });
-
-
-        </script>
-        <script>
-            var $star_rating = $('.star-rating .fa');
-
-            var SetRatingStar = function () {
-                return $star_rating.each(function () {
-                    if (parseInt($star_rating.siblings('input.rating-value').val()) >= parseInt($(this).data('rating'))) {
-                        return $(this).removeClass('fa-star-o').addClass('fa-star');
-                    } else {
-                        return $(this).removeClass('fa-star').addClass('fa-star-o');
-                    }
-                });
-            };
-
-            $star_rating.on('click', function () {
-                $star_rating.siblings('input.rating-value').val($(this).data('rating'));
-                return SetRatingStar();
-            });
-
-            SetRatingStar();
-            $(document).ready(function () {
-
-            });
-        </script>
     </body> 
 
 </html>

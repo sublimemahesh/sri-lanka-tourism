@@ -135,7 +135,7 @@ $MEMBER = new Member($TRANSPORTS->member);
                                         echo '<i class="fa fa-star-o"></i>';
                                         $x++;
                                     }
-                                    ?>
+                                    ?> (<?php echo $rate_count;?> Reviews)
                                 </div>
 
                             </li>
