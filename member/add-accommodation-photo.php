@@ -5,6 +5,7 @@ $id = '';
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 }
+$ACCOMMODATION = new Accommodation($id);
 ?> 
 <!DOCTYPE html>
 <html lang="en">
@@ -53,7 +54,7 @@ if (isset($_GET['id'])) {
                             ?>
 
                             <div class="panel panel-default">
-                                <div class="panel-heading"><i class="fa fa-save"></i> Create Accommodation Images</div>
+                                <div class="panel-heading"><i class="fa fa-save"></i> Manage Accommodation Images - <?php echo $ACCOMMODATION->name; ?></div>
                                 <div class="panel-body">
                                     <div class="body">
                                         <div class="userccount">

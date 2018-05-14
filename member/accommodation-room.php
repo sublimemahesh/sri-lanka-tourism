@@ -60,7 +60,7 @@ $ROOM_FACILITY_DETAILS = new RoomFaciliityDetails(NULL);
                             ?>
 
                             <div class="panel panel-default">
-                                <div class="panel-heading"><i class="fa fa-pencil"></i>Room</div>
+                                <div class="panel-heading"><i class="fa fa-pencil"></i>Add Room - <?php echo $ACCOMODATION->name; ?></div>
                                 <div class="panel-body">
                                     <div class="body">
                                         <div class="userccount">

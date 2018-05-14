@@ -59,20 +59,20 @@ $DifferentSeasons = $ROOMPRICE->getAllDistinctSeasons($id);
                             ?>
 
                             <div class="panel panel-default">
-                                <div class="panel-heading"><i class="fa fa-save"></i> Create Room Price</div>
+                                <div class="panel-heading"><i class="fa fa-save"></i> Manage Room Price - <?php echo $ROOM->name; ?></div>
                                 <div class="panel-body">
                                     <div class="body">
+                                        <div class = "col-md-12 text-left" style="margin-bottom: 25px;">
+                                            <a class = "btn btn-info" href = "add-room-price.php?id=<?php echo $id; ?>&aid=<?php echo $id; ?>">Add New Price</a>
+                                        </div>
                                         <div class="row mt">
-                                            <div class="col-md-12 text-left">
-                                                <a class="btn btn-info" href="add-room-price.php?id=<?php echo $id; ?>&aid=<?php echo $id; ?>">Add New Price</a>
-                                               
-                                            </div>
                                             <div class="col-md-12">
 
-                                                <div class="content-panel">
-                                                    <?php
-                                                    if ($DifferentSeasons) {
-                                                        ?>
+
+                                                <?php
+                                                if ($DifferentSeasons) {
+                                                    ?>
+                                                    <div class="content-panel">
                                                         <table class="table table-striped table-advance table-hover">
                                                             <h4><i class="fa fa-angle-right"></i>Price Seasons of <?php echo $ROOM->name; ?></h4>
                                                             <hr>
@@ -100,12 +100,17 @@ $DifferentSeasons = $ROOMPRICE->getAllDistinctSeasons($id);
                                                                 ?>
                                                             </tbody>
                                                         </table>
-                                                        <?php
-                                                    } else {
-                                                        echo 'No Results in the Database';
-                                                    }
+                                                    </div><!-- /content-panel -->
+                                                    <?php
+                                                } else {
                                                     ?>
-                                                </div><!-- /content-panel -->
+                                                    <div class = "col-md-12 text-left">
+                                                        <a class = "btn btn-info" href = "add-room-price.php?id=<?php echo $id; ?>&aid=<?php echo $id; ?>">Add New Price</a>
+                                                    </div>
+                                                    <?php
+                                                }
+                                                ?>
+
                                             </div><!-- /col-md-12 -->
                                         </div><!-- /row -->
                                     </div>

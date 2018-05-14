@@ -7,7 +7,7 @@ if (isset($_GET['id'])) {
     $id = $_GET['id'];
 }
 $Aid = $_GET['aid'];
-
+$ROOM = new Room($id);
 $ROOM_BASIS = RoomBasis::all();
 
 ?> 
@@ -59,7 +59,7 @@ $ROOM_BASIS = RoomBasis::all();
                             ?>
 
                             <div class="panel panel-default">
-                                <div class="panel-heading"><i class="fa fa-save"></i> Create Room Price</div>
+                                <div class="panel-heading"><i class="fa fa-save"></i> Create Room Price - <?php echo $ROOM->name; ?></div>
                                 <div class="panel-body">
                                     <div class="body">
                                         <div class="userccount">

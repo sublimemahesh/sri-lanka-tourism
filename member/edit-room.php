@@ -55,7 +55,7 @@ $ROOM = new Room($id);
                             ?>
 
                             <div class="panel panel-default">
-                                <div class="panel-heading"><i class="fa fa-save"></i> Create Accommodation Room Images</div>
+                                <div class="panel-heading"><i class="fa fa-save"></i>Edit Room - <?php echo $ROOM->name; ?></div>
                                 <div class="panel-body">
                                     <div class="body">
                                         <div class="userccount">
