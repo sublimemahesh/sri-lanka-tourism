@@ -1893,9 +1893,9 @@ hr.style15:after {
     cursor: pointer;
 }
 .room-title-btn{
-  
+
     cursor: pointer;
-   
+
 }
 .room-title-btn:hover{
     color: #FF9800; 
@@ -2545,7 +2545,7 @@ hr.style15:after {
 .sidebar .widget-member{
     background-color: #2f3b3e;
     border: 1px solid #e1e8ed;
-    padding: 16px;
+    padding: 13px;
     margin-bottom: 20px;
 }
 .widget-member.map iframe {
@@ -2569,10 +2569,10 @@ ul.setPaginate {
     margin: 0px 0px 20px 0px;
 }
 .about-article {
-/*    border: solid 1px #AFAFAF;
-    box-shadow: 0px 0px 4px #6F6F6F;*/
+    /*    border: solid 1px #AFAFAF;
+        box-shadow: 0px 0px 4px #6F6F6F;*/
     margin-bottom: 20px;
-/*    padding:20px;*/
+    /*    padding:20px;*/
 }
 .about-article hr {
     margin-bottom: 20px;
@@ -2591,4 +2591,18 @@ ul.setPaginate {
 }
 .about-article .col-md-2, .about-article .col-md-10 {
     color: #787878;
+}
+.member-name{
+    margin-top: 25px;
+    color: #c5c2c2;
+    font-size: 15px;
+    font-weight: 600;
+    margin-left: -10px;
+}
+.published-by{
+    font-size: 16px;
+    color: #fff;
+    font-weight: 600;
+    margin-left: 15px;
+    margin-bottom: 10px;
 }

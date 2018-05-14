@@ -77,36 +77,34 @@ $CITY = new City($ACCOMMODATIONS->city);
                 <div class="col-md-4">
                     <div class="sidebar">
 
-                        <div class="widget-member">
-
+                         <div class="widget-member">
                             <div class="row">
-                                <div class="col-md-5 col-sm-5 col-xs-5">
-                                    <div class="posted-title">Posted By </div>  
+                                <p class="published-by">Published By</p>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 col-sm-4 col-xs-4">
+
                                     <a href="member-view.php?id=<?php echo $MEMBER->id; ?>" class="link">
                                         <?php
                                         if (empty($MEMBER->profile_picture)) {
                                             ?>
-                                            <img src="upload/member/member.png" class="img img-responsive" id="profil_pic"/>
+                                            <img src="upload/member/member.png" class="img img-responsive img-circle" id="profil_pic"/>
                                             <?php
                                         } else {
                                             if ($MEMBER->facebookID && substr($MEMBER->profile_picture, 0, 5) === "https") {
                                                 ?>
-                                                <img src="<?php echo $MEMBER->profile_picture; ?>" class="img-responsive">
+                                                <img src="<?php echo $MEMBER->profile_picture; ?>" class="img-responsive img-circle">
                                             <?php } else {
                                                 ?>
-                                                <img src="upload/member/<?php echo $MEMBER->profile_picture; ?>" class="img-responsive">
+                                                <img src="upload/member/<?php echo $MEMBER->profile_picture; ?>" class="img-responsive img-circle">
                                                 <?php
                                             }
                                         }
                                         ?>
                                     </a>
                                 </div>
-                                <div class="col-md-7 col-sm-7 col-xs-7">
-                                    <ul class="list-group-transport">
-                                        <li class="list-group-transport-item"><b>Name</b>  <br><?php echo $MEMBER->name; ?></li> 
-                                        <li class="list-group-transport-item"><b>Email</b> <br><?php echo $MEMBER->email; ?></li>
-                                        <li class="list-group-transport-item"><b>Contact No</b> <br><?php echo $MEMBER->contact_number; ?></li>
-                                    </ul>
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                    <div class="member-name"><?php echo $MEMBER->name; ?></div>
                                 </div>
                             </div>
                         </div>
