@@ -135,7 +135,7 @@ $MEMBER = new Member($TRANSPORTS->member);
                                         echo '<i class="fa fa-star-o"></i>';
                                         $x++;
                                     }
-                                    ?> (<?php echo $rate_count;?> Reviews)
+                                    ?> (<?php echo $rate_count; ?> Reviews)
                                 </div>
 
                             </li>
@@ -242,7 +242,7 @@ $MEMBER = new Member($TRANSPORTS->member);
                     <div class="sidebar">
                         <div class="widget">
                             <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                                <h2 class="t-comment">Customer Testimonials</h2>
+                                <h2 class="t-comment">Customer Reviews</h2>
                                 <!-- Carousel indicators -->
 
                                 <!--                                <ol class="carousel-indicators">
@@ -258,135 +258,147 @@ $MEMBER = new Member($TRANSPORTS->member);
                                     $FEEDBACK = new Feedback(NULL);
                                     $TRANSPORT_FEEDBACKS = $FEEDBACK->getFeedbackByTransportID($id);
                                     $li = '';
-                                    foreach ($TRANSPORT_FEEDBACKS as $key => $transport_feedback) {
-                                        $VISITOR = new Visitor($transport_feedback['visitor']);
-                                        if ($key === 0) {
-                                            $li .= ' <li data-target="#myCarousel" data-slide-to="' . $key . '" class="active">'
-                                                    . '</li>';
-                                            ?>  
-                                            <div class="item carousel-item active">
-                                                <div class="row">
-                                                    <div class="col-sm-12">
-                                                        <div class="testimonial">
-                                                            <p><?php echo $transport_feedback['description']; ?></p>
-                                                        </div>
-                                                        <div class="media">
-                                                            <div class="media-left d-flex mr-3">
-                                                                <?php
-                                                                if (empty($VISITOR->image_name)) {
-                                                                    ?>
-                                                                    <img src="upload/visitor/member.png"/>
-                                                                    <?php
-                                                                } else {
+                                    if (!$TRANSPORT_FEEDBACKS) {
+                                        ?>
+                                    <div class="no-reviews">
+                                          <p>No Reviews yet</p>
+                                    </div>
+                                  
+                                        <?php
+                                    } else {
+                                        foreach ($TRANSPORT_FEEDBACKS as $key => $transport_feedback) {
 
-                                                                    if ($VISITOR->facebookID && substr($VISITOR->image_name, 0, 5) === "https") {
-                                                                        ?>
-                                                                        <img src="<?php echo $VISITOR->image_name; ?>"/>
-                                                                    <?php } else {
-                                                                        ?>
-                                                                        <img src="upload/visitor/<?php echo $VISITOR->image_name; ?>"/>
-                                                                        <?php
-                                                                    }
-                                                                }
-                                                                ?>									
+                                            $VISITOR = new Visitor($transport_feedback['visitor']);
+                                            if ($key === 0) {
+                                                $li .= ' <li data-target="#myCarousel" data-slide-to="' . $key . '" class="active">'
+                                                        . '</li>';
+                                                ?>  
+                                                <div class="item carousel-item active">
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <div class="testimonial">
+                                                                <p><?php echo $transport_feedback['description']; ?></p>
                                                             </div>
-                                                            <div class="media-body">
-                                                                <div class="overview">
-                                                                    <div class="name"><b><?php echo $VISITOR->first_name . ' ' . $VISITOR->second_name ?></b></div>
-                                                                    <div class="details"><?php echo $transport_feedback['title']; ?></div>
-                                                                    <div class="star-rating-t">
-                                                                        <ul class="list-inline">
+                                                            <div class="media">
+                                                                <div class="media-left d-flex mr-3">
+                                                                    <?php
+                                                                    if (empty($VISITOR->image_name)) {
+                                                                        ?>
+                                                                        <img src="upload/visitor/member.png"/>
+                                                                        <?php
+                                                                    } else {
+
+                                                                        if ($VISITOR->facebookID && substr($VISITOR->image_name, 0, 5) === "https") {
+                                                                            ?>
+                                                                            <img src="<?php echo $VISITOR->image_name; ?>"/>
+                                                                        <?php } else {
+                                                                            ?>
+                                                                            <img src="upload/visitor/<?php echo $VISITOR->image_name; ?>"/>
                                                                             <?php
-                                                                            $starNumber = $transport_feedback['rate'];
-                                                                            for ($x = 1; $x <= $starNumber; $x++) {
-                                                                                echo '<li class = "list-inline-item"><i class = "fa fa-star"></i></li>';
-                                                                            }
+                                                                        }
+                                                                    }
+                                                                    ?>									
+                                                                </div>
+                                                                <div class="media-body">
+                                                                    <div class="overview">
+                                                                        <div class="name"><b><?php echo $VISITOR->first_name . ' ' . $VISITOR->second_name ?></b></div>
+                                                                        <div class="details"><?php echo $transport_feedback['title']; ?></div>
+                                                                        <div class="star-rating-t">
+                                                                            <ul class="list-inline">
+                                                                                <?php
+                                                                                $starNumber = $transport_feedback['rate'];
+                                                                                for ($x = 1; $x <= $starNumber; $x++) {
+                                                                                    echo '<li class = "list-inline-item"><i class = "fa fa-star"></i></li>';
+                                                                                }
 //                                                                            if (strpos($starNumber, '.')) {
 //                                                                                echo '<img src="path/to/half/star.png" />';
 //                                                                                $x++;
 //                                                                            }
-                                                                            while ($x <= 5) {
-                                                                                echo '<li class = "list-inline-item"><i class = "fa fa-star-o"></i></li>';
-                                                                                $x++;
-                                                                            }
-                                                                            ?>
+                                                                                while ($x <= 5) {
+                                                                                    echo '<li class = "list-inline-item"><i class = "fa fa-star-o"></i></li>';
+                                                                                    $x++;
+                                                                                }
+                                                                                ?>
 
 
 
 
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>										
+                                                                            </ul>
+                                                                        </div>
+                                                                    </div>										
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
 
-                                                </div>			
-                                            </div>
-                                            <?php
-                                        } else {
-                                            $li .= ' <li data-target="#myCarousel" data-slide-to="' . $key . '">'
-                                                    . '</li>';
-                                            ?>
-                                            <div class="item carousel-item">
-                                                <div class="row">
-                                                    <div class="col-sm-12">
-                                                        <div class="testimonial">
-                                                            <p><?php echo $transport_feedback['description']; ?></p>
-                                                        </div>
-                                                        <div class="media">
-                                                            <div class="media-left d-flex mr-3">
-                                                                <?php
-                                                                if (empty($VISITOR->image_name)) {
-                                                                    ?>
-                                                                    <img src="upload/visitor/member.png"/>
+                                                    </div>			
+                                                </div>
+                                                <?php
+                                            } else {
+                                                $li .= ' <li data-target="#myCarousel" data-slide-to="' . $key . '">'
+                                                        . '</li>';
+                                                ?>
+                                                <div class="item carousel-item">
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <div class="testimonial">
+                                                                <p><?php echo $transport_feedback['description']; ?></p>
+                                                            </div>
+                                                            <div class="media">
+                                                                <div class="media-left d-flex mr-3">
                                                                     <?php
-                                                                } else {
-                                                                    if ($VISITOR->facebookID && substr($VISITOR->image_name, 0, 5) === "https") {
+                                                                    if (empty($VISITOR->image_name)) {
                                                                         ?>
-                                                                        <img src="<?php echo $VISITOR->image_name; ?>"/>
-                                                                    <?php } else {
-                                                                        ?>
-                                                                        <img src="upload/visitor/<?php echo $VISITOR->image_name; ?>"/>
+                                                                        <img src="upload/visitor/member.png"/>
                                                                         <?php
-                                                                    }
-                                                                }
-                                                                ?>
-                                                            </div>
-                                                            <div class="media-body">
-                                                                <div class="overview">
-                                                                    <div class="name"><b><?php echo $VISITOR->first_name . ' ' . $VISITOR->second_name ?></b></div>
-                                                                    <div class="details"><?php echo $transport_feedback['title']; ?></div>
-                                                                    <div class="star-rating-t">
-                                                                        <ul class="list-inline">
+                                                                    } else {
+                                                                        if ($VISITOR->facebookID && substr($VISITOR->image_name, 0, 5) === "https") {
+                                                                            ?>
+                                                                            <img src="<?php echo $VISITOR->image_name; ?>"/>
+                                                                        <?php } else {
+                                                                            ?>
+                                                                            <img src="upload/visitor/<?php echo $VISITOR->image_name; ?>"/>
                                                                             <?php
-                                                                            $starNumber = $transport_feedback['rate'];
-                                                                            for ($x = 1; $x <= $starNumber; $x++) {
-                                                                                echo '<li class = "list-inline-item"><i class = "fa fa-star"></i></li>';
-                                                                            }
+                                                                        }
+                                                                    }
+                                                                    ?>
+                                                                </div>
+                                                                <div class="media-body">
+                                                                    <div class="overview">
+                                                                        <div class="name"><b><?php echo $VISITOR->first_name . ' ' . $VISITOR->second_name ?></b></div>
+                                                                        <div class="details"><?php echo $transport_feedback['title']; ?>
+                                                                            <div class="star-rating-t">
+                                                                                <ul class="list-inline">
+                                                                                    <?php
+                                                                                    $starNumber = $transport_feedback['rate'];
+                                                                                    for ($x = 1; $x <= $starNumber; $x++) {
+                                                                                        echo '<li class = "list-inline-item"><i class = "fa fa-star"></i></li>';
+                                                                                    }
 //                                                                            if (strpos($starNumber, '.')) {
 //                                                                                echo '<img src="path/to/half/star.png" />';
 //                                                                                $x++;
 //                                                                            }
-                                                                            while ($x <= 5) {
-                                                                                echo '<li class = "list-inline-item"><i class = "fa fa-star-o"></i></li>';
-                                                                                $x++;
-                                                                            }
-                                                                            ?>
+                                                                                    while ($x <= 5) {
+                                                                                        echo '<li class = "list-inline-item"><i class = "fa fa-star-o"></i></li>';
+                                                                                        $x++;
+                                                                                    }
+                                                                                    ?>
 
 
 
 
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>										
+                                                                                </ul>
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </div>										
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
 
-                                                </div>			
-                                            </div>
-                                            <?php
+                                                    </div>			
+                                                </div>
+                                                <?php
+                                            }
                                         }
                                     }
                                     ?>
@@ -398,9 +410,10 @@ $MEMBER = new Member($TRANSPORTS->member);
                                 <a class="carousel-control right carousel-control-next" href="#myCarousel" data-slide="next">
                                     <i class="fa fa-chevron-right"></i>
                                 </a>
-                                <div class="text-center">
+
+                                <div class="add-comment-button">
                                     <button type="submit" id="btn-add-comment" class="btn btn-info btn-position-rel">
-                                        <i class="fa fa-plus"></i>  Add Your Comment
+                                        <i class="fa fa-plus"></i>  Write your Review
                                     </button>
                                 </div>
                                 <?php
@@ -463,11 +476,11 @@ $MEMBER = new Member($TRANSPORTS->member);
                                 <div class="transport-bot-container">  
                                     <a href="transportation-view.php?id=<?php echo $transport['id']; ?>">
                                         <div class="transport-bot-title"> <?php
-                            echo substr($transport['title'], 0, 23);
-                            if (strlen($transport['title']) > 23) {
-                                echo '...';
-                            }
-                                ?></div>
+                                            echo substr($transport['title'], 0, 23);
+                                            if (strlen($transport['title']) > 23) {
+                                                echo '...';
+                                            }
+                                            ?></div>
                                         <div class="vehicle-options-container">
 
                                             <div class="col-md-12">
@@ -508,10 +521,10 @@ $MEMBER = new Member($TRANSPORTS->member);
                                                 ?>
                                             </div>
                                             <div class="vehicle-options-heading">Condition : <?php
-                                            echo substr($condition->name, 0, 13);
-                                            if (strlen($condition->name) > 13) {
-                                                echo '...';
-                                            }
+                                                echo substr($condition->name, 0, 13);
+                                                if (strlen($condition->name) > 13) {
+                                                    echo '...';
+                                                }
                                                 ?>
                                             </div>
                                         </div>
