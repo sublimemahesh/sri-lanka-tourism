@@ -61,7 +61,7 @@ $ACCOMMODATION_PHOTO = new AccommodationPhoto(NULL);
         ?>
 
         <div class="row background-image" style="background-color: #fff;">
-            <section id="rooms-section" class="row-view  <div class="room-container clearfix">
+            <section id="rooms-section" class="row-view" >
                     <div class="col-md-9">
                         <?php
                         foreach ($ACCOMMODATIONS as $accommodation) {
