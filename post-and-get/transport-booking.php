@@ -167,7 +167,7 @@ if (isset($_POST['book'])) {
                                         <td width="5%">&nbsp;</td>
                                         <td width="90%" valign="middle">
                                             <font style="font-family: Verdana, Geneva, sans-serif; color:#68696a; font-size:14px; " >
-                                                Thank you for visiting ' . $website_name . ' web site and contacting us. You have been chosen to travel from ' . $picking_up . ' to ' . $dropping_off . ' on ' . $booking_date . ' at ' . $booking_time . '.one of representative will be contact you shortly. 
+                                                Thank you for visiting ' . $website_name . ' web site and contacting us. You have been chosen to travel from ' . $picking_up . ' to ' . $dropping_off . ' on ' . $booking_date . ' at ' . $booking_time . '. One of representative will be contact you shortly. 
                                             </font>
                                         </td>
                                         <td width="5%">&nbsp;</td>
@@ -222,7 +222,7 @@ if (isset($_POST['book'])) {
                                             <ul>
                                                 <li>
                                                     <font style="font-family: Verdana, Geneva, sans-serif; color:#68696a; font-size:14px; " >
-                                                        Title : ' . $transport_title . '&nbsp;' . $visitor_l_name . '
+                                                        Title : ' . $transport_title . '
                                                     </font>
                                                 </li>
                                                 <li>

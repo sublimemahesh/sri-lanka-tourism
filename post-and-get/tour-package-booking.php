@@ -60,12 +60,12 @@ if (isset($_POST['book'])) {
             $website_name = 'www.srilankatourism.travel';
             $comany_name = 'Sri Lanka Tourism';
             $comConNumber = '09137347559';
-            $comEmail = 'kavini@sublime.lk';
+            $comEmail = 'keerthiyaa@gmail.com';
             date_default_timezone_set('Asia/Colombo');
 
             $todayis = date("l, F j, Y, g:i a");
 
-            $subject = 'Sri Lanka Tourism - Transport Booking';
+            $subject = 'Sri Lanka Tourism - Tour Package Booking';
             $from = 'noreply@srilankatourism.travel'; // give from email address
 
 
@@ -124,7 +124,7 @@ if (isset($_POST['book'])) {
                                         <td width="2%">&nbsp;</td>
                                         <td width="96%" align="center" style="border-bottom:1px solid #000000" height="50">
                                             <font style="font-family: Verdana, Geneva, sans-serif; color:#0B0B0E; font-size:18px; " >
-                                                <h4>Transport Booking</h4>
+                                                <h4>Tour Package Booking</h4>
                                             </font>
                                         </td>
                                         <td width="2%">&nbsp;</td>
@@ -152,7 +152,7 @@ if (isset($_POST['book'])) {
                                         <td width="5%">&nbsp;</td>
                                         <td width="90%" valign="middle">
                                             <font style="font-family: Verdana, Geneva, sans-serif; color:#68696a; font-size:14px; " >
-                                                Thank you for visiting ' . $website_name . ' web site and contacting us. You have been chosen to travel from ' . $picking_up . ' to ' . $dropping_off . ' on ' . $booking_date . ' at ' . $booking_time . '.one of representative will be contact you shortly. 
+                                                Thank you for visiting ' . $website_name . ' web site and contacting us. One of representative will be contact you shortly. 
                                             </font>
                                         </td>
                                         <td width="5%">&nbsp;</td>
@@ -161,7 +161,7 @@ if (isset($_POST['book'])) {
                                         <td width="5%">&nbsp;<br /><br /></td>
                                         <td width="90%" valign="middle">
                                             <font style="font-family: Verdana, Geneva, sans-serif; color:#68696a; font-size:14px; " >
-                                                The details of your Transport Booking are shown below.
+                                                The details of your tour package booking are shown below.
                                             </font>
                                         </td>
                                         <td width="5%">&nbsp;</td>
@@ -207,7 +207,7 @@ if (isset($_POST['book'])) {
                                             <ul>
                                                 <li>
                                                     <font style="font-family: Verdana, Geneva, sans-serif; color:#68696a; font-size:14px; " >
-                                                        Title : ' . $tour_name . '&nbsp;' . $visitor_l_name . '
+                                                        Title : ' . $tour_name . '
                                                     </font>
                                                 </li>
                                                 <li>
@@ -217,7 +217,7 @@ if (isset($_POST['book'])) {
                                                 </li>
                                                 <li>
                                                     <font style="font-family: Verdana, Geneva, sans-serif; color:#68696a; font-size:14px; " >
-                                                        Price Per Person : ' . $price_per_person . '
+                                                        Price Per Person : LKR: ' . $price_per_person . '
                                                     </font>
                                                 </li>
                                                 <li>
