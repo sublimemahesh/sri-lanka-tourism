@@ -1,0 +1,214 @@
+.rh-feature-box {
+    text-align: left;
+    /*                padding: 20px;*/
+    background: #fff;
+}
+
+.rh-img {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+}
+.rh-img *,
+.rh-img *:before,
+.rh-img *:after {
+    -webkit-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+}
+.rh-img img {
+    max-width: 100%;
+    backface-visibility: hidden;
+    vertical-align: top;
+}
+.rh-img a {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+}
+.rh-feature-box:hover .rh-img img {
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -o-transform: scale(1.2);
+    transform: scale(1.2);
+}
+.rh-img:after{
+    content: '';
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.4);
+    top: 0;
+    left: 0;
+    opacity: 0;
+    -webkit-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+}
+.rh-feature-box:hover .rh-img:after{
+    opacity: 1;
+}
+.rating-star {
+    margin: 0px 0px 0px 0;
+    font-size: 12px;
+    display: -webkit-flex;
+    display: flex;
+
+}
+.rating-star ul {
+    margin: 0 10px 0 -40px;
+}
+.rating-star ul li {
+    float: left;
+    margin: 0 2px 0 0;
+    list-style-type: none
+}
+.feature-detail h4 a{ 
+    color: #333333;
+}
+.feature-detail h4 a:hover{ 
+    color: #333333;
+    text-decoration: none;
+}
+.rh-feature-box .feature-detail span a, .rh-footer-box p, .footer-menu li a {
+    color: #999999;
+}
+.rh-feature-box .feature-detail span a, .rh-footer-box p, .footer-menu li a:hover {
+    list-style-type: none;
+}
+.rating-star span a {
+    font-size: 14px;
+}
+.rating-star ul li i{
+    color: #EDA100;
+}
+.rh-feature-box .feature-detail {
+    padding: 0px 7px 10px;
+    display: inline-block;
+    width: 100%;
+    vertical-align: top;
+}
+.rh-city{
+    padding-top: 5px;
+}
+.rh-feature-box .feature-detail .rh i {
+    float: left;
+    font-size: 16px;
+    line-height: normal;
+    margin-right: 10px;
+    color: #696565;
+}
+.rh-feature-box .feature-detail .rh p {
+    display: block;
+    overflow: hidden;
+    color: #696565;
+}
+.foot-detail-container{
+    /*    margin-top: 20px;*/
+}
+@media screen and (max-width: 991px){
+    /*    .rh-feature-box{
+            padding: 15px;
+        }
+        h4 {
+            font-size: 18px;
+        }
+        .rh-feature-box .feature-detail{
+            padding: 15px 0 5px;
+        }*/
+}
+@media screen and (max-width: 767px){
+    /*    .rh-feature-box{
+            padding: 20px;
+        }
+        .rh-mf-30{
+            margin: 0 0 30px 0;
+        }
+        h4 {
+            font-size: 20px;
+        }
+        .rh-feature-box .feature-detail{
+            padding: 20px 0 10px;
+        }*/
+}
+@media screen and (max-width: 320px){
+    .rh-feature-box{
+        padding: 15px;
+    }
+    h4 {
+        font-size: 18px;
+    }
+    .rh-feature-box .feature-detail{
+        padding: 15px 0 5px;
+    }
+}
+
+.facilities-cont{
+    height: 55px;
+    border: 1px solid #f5f3f3;
+    padding-top: 3px;
+}
+.facility-ico{
+    margin-bottom: 6px
+}
+
+.ar-button{
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: center;
+    display: inline-block;
+    border: 2px solid;
+    border-top-color: currentcolor;
+    border-right-color: currentcolor;
+    border-bottom-color: currentcolor;
+    border-left-color: currentcolor;
+    border-radius: 3px;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+    vertical-align: middle;
+    max-width: 400px;
+    padding: 6px 16px;
+    background-color: #1da1db;
+    color: #fff;
+    border-color: #1da1db;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+
+.ar-button:hover{
+    text-decoration: none;
+}
+.rating-star span{
+    color: #999999;
+}
+.rating-star span:hover{
+    text-decoration: none;
+    color: #999999;
+}
+
+.ac-type{
+    color: #2678d4;
+    font-weight: 700;
+}
+
+.facility-ico-img{
+    width: 20px !important;
+    margin-left: 10px;
+}
