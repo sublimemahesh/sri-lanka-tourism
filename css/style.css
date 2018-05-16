@@ -2144,6 +2144,9 @@ hr.style15:after {
 .tour-slider, .article-slider {
     margin-bottom: 30px;
 }
+.accommodation-slider{
+    margin-bottom: 70px;
+}
 .owl-carousel {
     z-index: 0;
 }

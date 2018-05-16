@@ -7,6 +7,8 @@ if (!isset($_SESSION)) {
 $TRANSPORTSOBJ = new Transports(NULL);
 $TRANSPORTS_PHOTO = new TransportPhoto(NULL);
 $TRANSPORT_RATEOBJ = new TransportRates(NULL);
+$ACCOMMODATION_OBJ = new Accommodation(NULL);
+$ACCOMMODATION_PHOTO = new AccommodationPhoto(NULL);
 $ACCOMMODATION_TYPEOBJ = new AccommodationType(NULL);
 $DISTRICT_OBJ = new District(NULL);
 
@@ -34,8 +36,7 @@ $ARTICLETYPES = ArticleType::all();
         <link href="css/price-range/normalize.css" rel="stylesheet" type="text/css"/>
         <link href="css/price-range/ion.rangeSlider.css" rel="stylesheet" type="text/css"/>
         <link href="css/price-range/ion.rangeSlider.skinFlat.css" rel="stylesheet" type="text/css"/>
-
-
+        <link href="css/index-accommodation-all.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <!-- Our Resort Values style-->
@@ -214,7 +215,7 @@ $ARTICLETYPES = ArticleType::all();
                                     </div>
                                 </div>
                             </form>
-                            <div class="owl-carousel tour-slider" id="transport-carousel">
+                            <div class="owl-carousel tour-slider" id="transport-slider">
                                 <?php
                                 $TRANSPORT = $TRANSPORTSOBJ->all();
                                 foreach ($TRANSPORT as $transport) {
@@ -471,7 +472,111 @@ $ARTICLETYPES = ArticleType::all();
                                     </div>
                                 </div>
                             </form>
+                            <div class="owl-carousel accommodation-slider" id="accommodation-slider">
+                                <?php
+                                $ACCOMMODATION = $ACCOMMODATION_OBJ->all();
+                                foreach ($ACCOMMODATION as $accommodation) {
+                                    $accommodation_photos = $ACCOMMODATION_PHOTO->getAccommodationPhotosById($accommodation['id']);
+                                    $accommodation_type = new AccommodationType($accommodation['type']);
+                                    $accommodaation_city = new City($accommodation['city']);
+                                    ?>
+                                    <div class="rh-mf-30">
+                                        <div class="rh rh-feature-box">
+                                            <a href="accommodation-view.php?id=<?php echo $accommodation['id']; ?>">
+                                                <div class="rh-img">
+                                                    <?php
+                                                    foreach ($accommodation_photos as $key => $accommodation_photo) {
+                                                        if ($key == 0) {
+                                                            ?>
+                                                            <img src="upload/accommodation/thumb/<?php echo $accommodation_photo['image_name'] ?>" alt="feature_1">
+                                                            <?php
+                                                        }
+                                                    }
+                                                    ?>
 
+                                                </div>
+                                            </a>
+                                            <div class="feature-detail">
+                                                <div class="index-ac-title-container" style="height: 45px;">
+                                                    <h4><a href="accommodation-view.php?id=<?php echo $accommodation['id']; ?>"><?php
+                                                            echo substr($accommodation['name'], 0, 40);
+                                                            if (strlen($accommodation['name']) > 40) {
+                                                                echo '...';
+                                                            }
+                                                            ?></a></h4>
+                                                </div>
+
+                                                <div class="rating-star">
+                                                    <ul>
+                                                        <?php
+                                                        $result = Feedback::getRatingByAccommodation($accommodation['id']);
+                                                        $rate_count = $result['rate_count'];
+                                                        $starNumber = round($result['rate_avg']);
+
+                                                        for ($x = 1; $x <= $starNumber; $x++) {
+                                                            echo '<li><i class="fa fa-star" aria-hidden="true"></i></li>';
+                                                        }
+//                                                                            if (strpos($starNumber, '.')) {
+//                                                                                echo '<img src="path/to/half/star.png" />';
+//                                                                                $x++;
+//                                                                            }
+                                                        while ($x <= 5) {
+                                                            echo '<li><i class="fa fa-star-o" aria-hidden="true"></i></li>';
+                                                            $x++;
+                                                        }
+                                                        ?>
+                                                    </ul>
+                                                    <span><?php echo $rate_count; ?> Reviews</span>
+                                                </div>
+                                                <div class="ac-type">
+                                                    <?php echo $accommodation_type->name; ?>
+                                                </div>
+                                                <div class="rh rh-city">
+                                                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                                    <p><?php echo $accommodaation_city->name; ?></p>
+                                                </div>
+                                                <div class="foot-detail-container">
+                                                    <div class="facilities-cont">
+                                                        <?php
+                                                        $ALL_FACILITIES = AccommodationFacilityDetails::getFacilitiesByAccommodationId($accommodation['id']);
+
+                                                        $FACILITIES = explode(",", $ALL_FACILITIES['facility']);
+
+                                                        foreach ($FACILITIES as $key => $facility) {
+                                                            if ($key == 6) {
+                                                                break;
+                                                            }
+                                                            $ACCOMMODATION_FACILITY = new AccommodationGeneralFacilities($facility);
+                                                            ?>
+                                                            <div class="col-md-4 col-xs-4 col-sm-4 facility-ico">
+                                                                <img class="facility-ico-img" src="upload/accommodation-facilities-icons/<?php echo $ACCOMMODATION_FACILITY->image_name ?>">
+                                                            </div>
+                                                            <?php
+                                                        }
+                                                        ?>
+                                                    </div>
+                                                    <div class="text-center">
+                                                        <a href="accommodation-view.php?id=<?php echo $accommodation['id']; ?>" class="ar-button">View More</a>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <?php
+                                }
+                                ?>
+
+
+
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 col-xs-12 btn-search">
+                                    <a href="accommodation.php"><button class="btn-style">View All</button></a> 
+                                </div>
+                            </div>
                         </div>
                         <div id="offer" class="tab-pane fade">
                             <h3 class="select-op-header text-center">Offer</h3>
@@ -717,7 +822,37 @@ $ARTICLETYPES = ArticleType::all();
                 }
             });
 
-            $('#transport-carousel').owlCarousel({
+            $('#accommodation-slider').owlCarousel({
+
+                loop: true,
+                margin: 10,
+                responsiveClass: true,
+                autoplay: true,
+                autoplayTimeout: 2000,
+                autoplayHoverPause: true,
+                responsive: {
+                    0: {
+                        items: 1,
+                        nav: true
+                    },
+                    600: {
+                        items: 3,
+                        nav: true
+                    },
+                    1000: {
+                        items: 3,
+                        nav: true,
+                        loop: true
+                    },
+                    1200: {
+                        items: 4,
+                        nav: true,
+                        loop: true
+                    }
+                }
+            });
+
+            $('#transport-slider').owlCarousel({
 
                 loop: true,
                 margin: 10,
