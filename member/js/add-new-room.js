@@ -103,5 +103,22 @@ $(document).ready(function () {
             return false;
         }
     });
+
+    $('#step-prev-1').click(function () {
+        $('#collapseTwo').collapse("hide");
+        $('#collapseOne').collapse("show");
+        $.scrollTo(100, 0, "slow", "#collapseOne");
+    });
+    $('#step-prev-2').click(function () {
+        $('#collapseThree').collapse("hide");
+        $('#collapseTwo').collapse("show");
+        $.scrollTo(100, 0, "slow", "#collapseTwo");
+    });
+
+    $('#step-prev-3').click(function () {
+        $('#collapseFour').collapse("hide");
+        $('#collapseThree').collapse("show");
+        $.scrollTo(100, 0, "slow", "#collapseThree");
+    });
 });
  

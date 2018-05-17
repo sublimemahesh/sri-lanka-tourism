@@ -61,7 +61,7 @@ if (empty($MEMBER->licence_front) || empty($MEMBER->licence_back)) {
                                                                 <div class="col-xs-12 ol-sm-12 col-md-12 col-lg-12">
                                                                     <div class="panel-group" role="tablist" aria-multiselectable="true">
                                                                         <div class="panel panel-default">
-                                                                            <a role="button" data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                                            <a role="button" data-toggle="collapse">
                                                                                 <div class="panel-heading tab-panel-heading" role="tab" id="headingOne">
                                                                                     <h4 class="panel-title">
                                                                                         Vehicle Details
@@ -138,7 +138,7 @@ if (empty($MEMBER->licence_front) || empty($MEMBER->licence_back)) {
                                                                             </div>
                                                                         </div>
                                                                         <div class="panel panel-default">
-                                                                            <a role="button" data-toggle="collapse" href="#collapseTwo" aria-expanded="true" aria-controls="collapseOne">
+                                                                            <a role="button">
                                                                                 <div class="panel-heading tab-panel-heading" role="tab" id="headingOne">
                                                                                     <h4 class="panel-title">
                                                                                         Vehicle Condition & Facilities
@@ -312,7 +312,12 @@ if (empty($MEMBER->licence_front) || empty($MEMBER->licence_back)) {
                                                                                             </select>
                                                                                         </div>
                                                                                     </div>
-                                                                                    <div class="col-md-12 text-right">
+                                                                                    <div class="col-md-6 col-xs-6 col-sm-6 text-left">
+                                                                                        <a role="button" id="step-prev-1" class="btn btn-info tab-next-button" data-toggle="collapse" aria-expanded="true" aria-controls="collapseTwo">
+                                                                                            << Previous
+                                                                                        </a>
+                                                                                    </div>
+                                                                                    <div class="col-md-6 col-xs6 col-sm-6 text-right">
                                                                                         <a role="button" id="step-2" class="btn btn-info tab-next-button" data-toggle="collapse" aria-expanded="true" aria-controls="collapseTwo">
                                                                                             Next >>
                                                                                         </a>
@@ -321,7 +326,7 @@ if (empty($MEMBER->licence_front) || empty($MEMBER->licence_back)) {
                                                                             </div>
                                                                         </div>
                                                                         <div class="panel panel panel-default">
-                                                                            <a class="collapsed" role="button" data-toggle="collapse" href="#collapseThree" aria-expanded="false"  aria-controls="collapseTwo">
+                                                                            <a class="collapsed" role="button" data-toggle="collapse" aria-expanded="false">
                                                                                 <div class="panel-heading tab-panel-heading" role="tab" id="headingTwo">
                                                                                     <h4 class="panel-title">
                                                                                         Vehicle Photos
@@ -330,30 +335,40 @@ if (empty($MEMBER->licence_front) || empty($MEMBER->licence_back)) {
                                                                             </a>
                                                                             <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
                                                                                 <div class="panel-body">
-                                                                                    <div class="bottom-top col-md-2">
-                                                                                        <div class="formrow">
-                                                                                            <div class="uploadphotobx" id="uploadphotobx"> 
-                                                                                                <i class="fa fa-upload" aria-hidden="true"></i>
-                                                                                                <label class="uploadBox">Click here to Upload photo
-                                                                                                    <input type="file" name="transport-picture" id="transport-picture">
-                                                                                                    <input type="hidden" name="upload-transport-image" id="upload-transport-image" value="TRUE"/>
-                                                                                                </label>
+                                                                                    <div class="row">
+                                                                                        <div class="bottom-top col-md-2">
+                                                                                            <div class="formrow">
+                                                                                                <div class="uploadphotobx" id="uploadphotobx"> 
+                                                                                                    <i class="fa fa-upload" aria-hidden="true"></i>
+                                                                                                    <label class="uploadBox">Click here to Upload photo
+                                                                                                        <input type="file" name="transport-picture" id="transport-picture">
+                                                                                                        <input type="hidden" name="upload-transport-image" id="upload-transport-image" value="TRUE"/>
+                                                                                                    </label>
+                                                                                                </div>
                                                                                             </div>
                                                                                         </div>
+                                                                                        <div id="image-list" style="padding-bottom: 10px;">
+                                                                                        </div>
                                                                                     </div>
-                                                                                    <div id="image-list" style="padding-bottom: 10px;">
+
+
+                                                                                    <div class="col-md-6 col-xs-6 col-sm-6 text-left">
+                                                                                        <a role="button" id="step-prev-2" class="btn btn-info tab-next-button" data-toggle="collapse" aria-expanded="true" aria-controls="collapseTwo">
+                                                                                            << Previous
+                                                                                        </a>
                                                                                     </div>
-                                                                                    <div class="col-md-12 text-right">
+                                                                                    <div class="col-md-6 col-xs-6 col-sm-6 text-right">
                                                                                         <a role="button" id="step-3" class="btn btn-info tab-next-button" data-toggle="collapse"  aria-expanded="true" aria-controls="collapseThree">
                                                                                             Next >>
                                                                                         </a>
                                                                                     </div>
+
+
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                         <div class="panel panel panel-default">
-                                                                            <a class="collapsed" role="button" data-toggle="collapse" href="#collapseFour" aria-expanded="false"
-                                                                               aria-controls="collapseThree">
+                                                                            <a class="collapsed" role="button" data-toggle="collapse"aria-expanded="false">
                                                                                 <div class="panel-heading tab-panel-heading" role="tab" id="headingThree">
                                                                                     <h4 class="panel-title">
                                                                                         Description
@@ -370,7 +385,12 @@ if (empty($MEMBER->licence_front) || empty($MEMBER->licence_back)) {
                                                                                             <textarea type="text" id="description" name="description" class="form-control" placeholder="Please enter more information about your service"></textarea>
                                                                                         </div>
                                                                                     </div>
-                                                                                    <div class="top-bott50 col-md-12">
+                                                                                    <div class="col-md-6 col-xs-6 col-sm-6 text-left">
+                                                                                        <a role="button" id="step-prev-3" class="btn btn-info tab-next-button" data-toggle="collapse" aria-expanded="true" aria-controls="collapseTwo">
+                                                                                            << Previous
+                                                                                        </a>
+                                                                                    </div>
+                                                                                    <div class="col-md-6 col-xs-6 col-sm-6 text-right">
                                                                                         <div class="bottom-top">
                                                                                             <input type="hidden" id="oldDis" value=""/>
 
