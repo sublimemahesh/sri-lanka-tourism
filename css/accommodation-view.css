@@ -755,5 +755,10 @@
     .hp-amini ul li{
         width: 40%
     }
-    
+
+}
+
+.room-border{
+    border-bottom: 2px solid #a57733;
+    padding-bottom: 25px;
 }
