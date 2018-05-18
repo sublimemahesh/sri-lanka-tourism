@@ -77,7 +77,7 @@ $CITY = new City($ACCOMMODATIONS->city);
                 <div class="col-md-4">
                     <div class="sidebar">
 
-                         <div class="widget-member">
+                        <div class="widget-member">
                             <div class="row">
                                 <p class="published-by">Published By</p>
                             </div>
@@ -357,6 +357,7 @@ $CITY = new City($ACCOMMODATIONS->city);
                 </div>
             </div>
 
+
             <div class="row top-margin-30">
                 <div class="col-md-12">
 
@@ -370,108 +371,71 @@ $CITY = new City($ACCOMMODATIONS->city);
                         foreach ($ROOM as $rooms) {
                             ?>
 
-                            <!--EVENT-->
-                            <div class="row events">
-                                <div class="room-title-btn" id="room-title-<?php echo $rooms['id']; ?>" >
-                                    <div class="col-md-2">  
+                            <div data-toggle="collapse" data-target="#demo_<?php echo $rooms['id']; ?>">
 
-                                        <?php
-                                        foreach ($ROOM_PHOTO->getRoomPhotosById($rooms['id']) as $key => $room_p) {
-                                            if ($key == 1) {
-                                                break;
+                                <!--EVENT-->
+                                <div class="row events">
+                                    <div class="room-title-btn" id="room-title-<?php echo $rooms['id']; ?>" >
+                                        <div class="col-md-2">  
+
+                                            <?php
+                                            foreach ($ROOM_PHOTO->getRoomPhotosById($rooms['id']) as $key => $room_p) {
+                                                if ($key == 1) {
+                                                    break;
+                                                }
+                                                ?> 
+                                                <img src="upload/accommodation/rooms/thumb/<?php echo $room_p['image_name']; ?>" alt="">
+                                                <?php
                                             }
-                                            ?> 
-                                            <img src="upload/accommodation/rooms/thumb/<?php echo $room_p['image_name']; ?>" alt="">
-                                            <?php
-                                        }
-                                        ?>
-                                    </div>
-                                    <div class="col-md-8">
-                                        <h3><?php echo $rooms['name']; ?></h3>
-                                        <p>
-                                            Number of Adults : <?php echo $rooms['number_of_adults']; ?>
-                                        </p>
-                                        <p>
-                                            Number of Children : <?php echo $rooms['number_of_children']; ?>
-                                        </p>
-                                        <?php
-                                        $ALL_FACILITIES = RoomFaciliityDetails::getFacilitiesByRoomId($rooms['id']);
-
-                                        $FACILITIES = explode(",", $ALL_FACILITIES['facility']);
-
-                                        foreach ($FACILITIES as $key => $facility) {
-
-                                            $ROOM_FACILITY = new RoomFacility($facility);
                                             ?>
-                                            <img style="width: 20px;" src="upload/room-facility-icons/<?php echo $ROOM_FACILITY->image_name; ?>">
+                                        </div>
+                                        <div class="col-md-8">
+                                            <h3><?php echo $rooms['name']; ?></h3>
+                                            <p>
+                                                Number of Adults : <?php echo $rooms['number_of_adults']; ?>
+                                            </p>
+                                            <p>
+                                                Number of Children : <?php echo $rooms['number_of_children']; ?>
+                                            </p>
                                             <?php
-                                        }
-                                        ?>
+                                            $ALL_FACILITIES = RoomFaciliityDetails::getFacilitiesByRoomId($rooms['id']);
 
+                                            $FACILITIES = explode(",", $ALL_FACILITIES['facility']);
 
-                                    </div>
-                                </div>
+                                            foreach ($FACILITIES as $key => $facility) {
 
-
-                                <div class="col-md-2 accommoadtion-register-button">
-                                    <a href="#" class="waves-effect waves-light event-regi">Book Now</a> 
-                                </div>
-                                <div id="room-slider-<?php echo $rooms['id']; ?>" class="modal">
-                                    <div class="modal-content">
-                                        <span class="close">&times;</span>
-                                        <div class="row">
-                                            <div class="col-md-9">
-                                                <div class="galleria-slider room-photos">
-                                                    <?php
-                                                    $VIEW_ROOMS = RoomPhoto::getRoomPhotosById($rooms['id']);
-                                                    foreach ($VIEW_ROOMS as $key => $room_p) {
-                                                        ?>
-                                                        <a href="upload/accommodation/rooms/<?php echo $room_p['image_name']; ?>">
-                                                            <img src="upload/accommodation/rooms/thumb/<?php echo $room_p['image_name']; ?>" data-title="" >
-                                                        </a>
-                                                        <?php
-                                                    }
-                                                    ?>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3 inner-facility-section">
-                                                <div class="inner-top-title">
-                                                    <img src="assets/img/facility/bathtub.png" alt=""/>
-                                                    <span>Private Bathroom</span>
-                                                </div>
-                                                <div class="room-area">
-                                                    <strong>Room Size</strong><span> 60m<sup>2</sup></span>
-                                                </div>
-                                                <div class="row">
-                                                    <strong class="inner-facility-title">Room Facilities:</strong>
-                                                    <div class="list-of-facilities">
-                                                        <?php
-                                                        $results = RoomFaciliityDetails::getFacilitiesByRoomId($rooms['id']);
-                                                        $resultroomfacilities = explode(",", $results['facility']);
-                                                        foreach ($resultroomfacilities as $key => $resultRoomFacility) {
-                                                            $RoomFacility = new RoomFacility($resultRoomFacility);
-                                                            ?>
-                                                            <div class="col-md-6">
-                                                                <li><?php echo $RoomFacility->name; ?></li>
-                                                            </div>
-                                                            <?php
-                                                        }
-                                                        ?>
-
-                                                    </div>
-                                                </div>
-                                                <div class="inner-sub">
-                                                    <span style="color: red;">In high demand!</span>
-
-                                                </div>
-                                                <div class="inner-booked">
-                                                    <span>Recently booked or not</span>
-                                                </div>
-                                            </div>
-
+                                                $ROOM_FACILITY = new RoomFacility($facility);
+                                                ?>
+                                                <img style="width: 20px;" src="upload/room-facility-icons/<?php echo $ROOM_FACILITY->image_name; ?>">
+                                                <?php
+                                            }
+                                            ?>
                                         </div>
                                     </div>
+                                    <div class="col-md-2 accommoadtion-register-button">
+                                        <a href="#" class="waves-effect waves-light event-regi">Book Now</a> 
+                                    </div>
+
                                 </div>
+                            </div>
+                            <div id="demo_<?php echo $rooms['id']; ?>" class="collapse room-border">
+                                <div class="galleria-slider room-photos">
+                                    <?php
+                                    $VIEW_ROOMS = RoomPhoto::getRoomPhotosById($rooms['id']);
+                                    foreach ($VIEW_ROOMS as $key => $room_p) {
+                                        ?>
+                                        <a href="upload/accommodation/rooms/<?php echo $room_p['image_name']; ?>">
+                                            <img src="upload/accommodation/rooms/thumb/<?php echo $room_p['image_name']; ?>" data-title="" >
+                                        </a>
+                                        <?php
+                                    }
+                                    ?>
+                                </div>
+                                <div class="hp-sub-tit">
+                                    <h4><span>Room</span> Description</h4>
+                                </div>
+                                <?php echo $rooms['description']; ?>
+                                
                             </div>
                             <!--END EVENT-->
                             <?php
@@ -499,6 +463,13 @@ $CITY = new City($ACCOMMODATIONS->city);
         <link href="galleria/themes/classic/galleria.classic.css" rel="stylesheet" type="text/css"/>
         <script src="js/galleria.js" type="text/javascript"></script>
         <script src="js/galleria.classic.min.js" type="text/javascript"></script>
+        <script>
+            $(document).ready(function () {
+                $("button").click(function () {
+                    $("p").toggle();
+                });
+            });
+        </script>
         <script type="text/javascript">
             $('#accommodation_photos').galleria({
                 responsive: true,
