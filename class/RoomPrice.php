@@ -109,6 +109,36 @@ class RoomPrice {
         return $array_res;
     }
 
+    public function getTodayPriceByRoomId($roomId, $date) {
+
+        $query = "SELECT * FROM `room_price` WHERE (`room` = " . $roomId . " AND ('" . $date . "' between `start` and `end`))";
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+        return $array_res;
+    }
+
+    public function getPrice($room,$basis, $date) {
+
+        $db = new Database();
+
+//        $date = date("Y-m-d");
+
+        $query = "SELECT * FROM `room_price` WHERE (`room` = " . $room . " AND `basis` = " . $basis . " AND ('" . $date . "' between `start` and `end`)) ORDER BY `id` DESC LIMIT 1";
+
+        $result = $db->readQuery($query);
+
+        $row = mysql_fetch_assoc($result);
+
+        return $row;
+    }
+
     public function getAllDistinctSeasons($id) {
 
         $db = new Database();
@@ -160,13 +190,13 @@ class RoomPrice {
             return FALSE;
         }
     }
-    
-       public function DeleteSeason($start,$end) {
+
+    public function DeleteSeason($start, $end) {
 
         $db = new Database();
 
         $query = "DELETE FROM `room_price` WHERE `start` = '" . $start . "' AND `end` = '" . $end . "'";
-        
+
         if ($db->readQuery($query)) {
             $row = TRUE;
         } else {
@@ -174,6 +204,5 @@ class RoomPrice {
         }
         return $row;
     }
-
 
 }

@@ -6,7 +6,7 @@ $id = '';
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 }
-$Aid = $_GET['aid'];
+//$Aid = $_GET['aid'];
 $ROOM = new Room($id);
 $ROOM_BASIS = RoomBasis::all();
 

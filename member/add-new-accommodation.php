@@ -128,15 +128,11 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                                                                 <label for="city">City</label>
                                                                                             </div>
                                                                                             <div class="formrow">
-                                                                                                <select class="form-control" autocomplete="off" type="text" id="city" autocomplete="off" name="city" required="TRUE">
-                                                                                                    <option value=""> -- Please Select -- </option>
-                                                                                                    <?php foreach (City::all() as $key => $city) {
-                                                                                                        ?>
-                                                                                                        <option value="<?php echo $city['id']; ?>"><?php echo $city['name']; ?></option><?php
-                                                                                                    }
-                                                                                                    ?>
-                                                                                                </select>
-
+                                                                                                <input type="text" autocomplete="off" id="city" placeholder="please select your city" class="form-control">
+                                                                                                <div id="suggesstion-box">
+                                                                                                    <ul id="city-list" class="city-list"></ul>
+                                                                                                </div>
+                                                                                                <input type="hidden" name="city" value="" id="city-id"/>
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="col-md-12 text-right">
@@ -320,7 +316,7 @@ include_once(dirname(__FILE__) . '/auth.php');
         <script src="assets/js/jquery.tagsinput.js"></script>
 
         <!--custom checkbox & radio-->
-
+        <script src="js/city.js" type="text/javascript"></script>
         <script type="text/javascript" src="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-datepicker/js/bootstrap-datepicker.html"></script>
         <script type="text/javascript" src="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-daterangepicker/date.html"></script>
         <script type="text/javascript" src="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-daterangepicker/daterangepicker-2.html"></script>
@@ -365,6 +361,8 @@ include_once(dirname(__FILE__) . '/auth.php');
         </script>
         <script src="js/add-new-accommodation.js" type="text/javascript"></script>
         <script src="assets/plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>
+
+
     </body>
 
 </html>

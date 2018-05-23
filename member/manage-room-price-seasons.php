@@ -52,12 +52,18 @@ $DifferentSeasons = $ROOMPRICE->getAllDistinctSeasons($id);
                 <div class="wrapper">
                     <div class="container-fluid">
                         <div class="row  top-bott20"> 
+
                             <?php
-                            $vali = new Validator();
+                            if (isset($_GET['message'])) {
 
-                            $vali->show_message();
+                                $MESSAGE = New Message($_GET['message']);
+                                ?>
+                                <div class="alert alert-<?php echo $MESSAGE->status; ?>" role = "alert">
+                                    <?php echo $MESSAGE->description; ?>
+                                </div>
+                                <?php
+                            }
                             ?>
-
                             <div class="panel panel-default">
                                 <div class="panel-heading"><i class="fa fa-save"></i> Manage Room Price - <?php echo $ROOM->name; ?></div>
                                 <div class="panel-body">
@@ -74,7 +80,7 @@ $DifferentSeasons = $ROOMPRICE->getAllDistinctSeasons($id);
                                                     ?>
                                                     <div class="content-panel">
                                                         <table class="table table-striped table-advance table-hover">
-                                                            <h4><i class="fa fa-angle-right"></i>Price Seasons of <?php echo $ROOM->name; ?></h4>
+                                                            <h4>Price Seasons of <?php echo $ROOM->name; ?></h4>
                                                             <hr>
                                                             <thead>
                                                                 <tr>
@@ -104,9 +110,7 @@ $DifferentSeasons = $ROOMPRICE->getAllDistinctSeasons($id);
                                                     <?php
                                                 } else {
                                                     ?>
-                                                    <div class = "col-md-12 text-left">
-                                                        <a class = "btn btn-info" href = "add-room-price.php?id=<?php echo $id; ?>&aid=<?php echo $id; ?>">Add New Price</a>
-                                                    </div>
+                                                    No Price seasons yet
                                                     <?php
                                                 }
                                                 ?>

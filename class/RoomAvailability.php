@@ -255,4 +255,31 @@ class RoomAvailability {
         return $calendar;
     }
 
+    public function createDateRange($startDate, $endDate, $format = "Y-m-d") {
+        $begin = new DateTime($startDate);
+        $end = new DateTime($endDate);
+
+        $interval = new DateInterval('P1D'); // 1 Day
+        $dateRange = new DatePeriod($begin, $interval, $end);
+
+        $range = [];
+        foreach ($dateRange as $date) {
+            $range[] = $date->format($format);
+        }
+
+        return $range;
+    }
+
+    public static function getByDateAndRoom($date, $room) {
+
+        $query = "SELECT * FROM `room_avilability` WHERE date = ' " . $date . " ' AND room = ' " . $room . " ' ";
+        $db = new Database();
+
+
+        $result = mysql_fetch_array($db->readQuery($query));
+
+
+        return $result;
+    }
+
 }
