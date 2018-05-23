@@ -190,7 +190,7 @@ $TRANSPORT_RATES = TransportRates::GetTransportRatesByTransportId($id);
                                                             </tbody>
                                                         </table>
 
-                                                        <?php } else {
+                                                    <?php } else {
                                                         ?> 
                                                         <b style="padding-left: 15px;">No Transports Rates in the database.</b> 
                                                     <?php } ?> 

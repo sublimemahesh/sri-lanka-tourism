@@ -15,7 +15,7 @@ if (isset($_POST['save'])) {
             $ROOMPRICE->room = $_POST['room'];
             $ROOMPRICE->basis = $basis;
             $ROOMPRICE->start = $_POST['start'];
-            $ROOMPRICE->end = $_POST['start'];
+            $ROOMPRICE->end = $_POST['end'];
             $ROOMPRICE->price = $price;
 
             $VALID->check($ROOMPRICE, [
@@ -30,9 +30,10 @@ if (isset($_POST['save'])) {
                 if (!isset($_SESSION)) {
                     session_start();
                 }
-                $VALID->addError("Your data was saved successfully", 'success');
-                $_SESSION['ERRORS'] = $VALID->errors();
-                header('Location: ' . $_SERVER['HTTP_REFERER']);
+//                $VALID->addError("Your data was saved successfully", 'success');
+//                $_SESSION['ERRORS'] = $VALID->errors();
+                header('Location: ../manage-room-price-seasons.php?message=10&id=' . $_POST['room']);
+//                header('Location: ' . $_SERVER['HTTP_REFERER']);
             } else {
 
                 if (!isset($_SESSION)) {
@@ -45,7 +46,4 @@ if (isset($_POST['save'])) {
             }
         }
     }
-
-   
-
 }

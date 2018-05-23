@@ -112,7 +112,7 @@ $city_name = new City($ACCOMODATION->city);
                                                                     <?php foreach (AccommodationType::all() as $key => $type) {
                                                                         ?>
                                                                         <option value="<?php echo $type['id']; ?>"><?php echo $type['name']; ?></option><?php
-                                                                }
+                                                                    }
                                                                     ?>
                                                                 </select>
 
@@ -123,14 +123,11 @@ $city_name = new City($ACCOMODATION->city);
                                                                 <label for="city">City</label>
                                                             </div>
                                                             <div class="formrow">
-                                                                <select class="form-control" autocomplete="off" type="text" id="city" autocomplete="off" name="city" required="TRUE">
-                                                                    <option value="<?php echo $ACCOMODATION->city ?>"><?php echo $city_name->name ?></option>
-                                                                    <?php foreach (City::all() as $key => $city) {
-                                                                        ?>
-                                                                        <option value="<?php echo $city['id']; ?>"><?php echo $city['name']; ?></option><?php
-                                                                }
-                                                                    ?>
-                                                                </select>
+                                                                <input type="text" autocomplete="off" id="city" value="<?php echo $city_name->name; ?>" placeholder="please select city" class="form-control">
+                                                                <div id="suggesstion-box">
+                                                                    <ul id="city-list" class="city-list"></ul>
+                                                                </div>
+                                                                <input type="hidden" name="city" value="<?php echo $city_name->name; ?>" id="city-id"/>
 
                                                             </div>
                                                         </div>
@@ -197,7 +194,7 @@ $city_name = new City($ACCOMODATION->city);
 
         <script type="text/javascript" src="assets/js/bootstrap-inputmask/bootstrap-inputmask.min.js"></script>
 
-
+        <script src="js/city.js" type="text/javascript"></script>
         <script src="assets/js/form-component.js"></script>    
 
 

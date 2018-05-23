@@ -34,6 +34,7 @@ $CITY = new City($ACCOMMODATIONS->city);
         <link href="https://fonts.googleapis.com/css?family=Russo+One|Magra|Ubuntu+Condensed" rel="stylesheet"> 
         <link href="css/owl.carousel.min.css" rel="stylesheet" type="text/css"/>
         <link href="css/accommodation-view.css" rel="stylesheet" type="text/css"/>
+        <link href="css/responsive-table.css" rel="stylesheet" type="text/css"/>
     </head>
     <body style="background-color: #fff">
         <!-- Our Resort Values style-->
@@ -368,18 +369,18 @@ $CITY = new City($ACCOMMODATIONS->city);
                         </div>
                         <?php
                         $ROOM = Room::getAccommodationRoomsById($id);
-                        foreach ($ROOM as $rooms) {
+                        foreach ($ROOM as $room) {
                             ?>
 
-                            <div data-toggle="collapse" data-target="#demo_<?php echo $rooms['id']; ?>">
+                            <div data-toggle="collapse" data-target="#demo_<?php echo $room['id']; ?>">
 
                                 <!--EVENT-->
                                 <div class="row events">
-                                    <div class="room-title-btn" id="room-title-<?php echo $rooms['id']; ?>" >
+                                    <div class="room-title-btn" id="room-title-<?php echo $room['id']; ?>" >
                                         <div class="col-md-2">  
 
                                             <?php
-                                            foreach ($ROOM_PHOTO->getRoomPhotosById($rooms['id']) as $key => $room_p) {
+                                            foreach ($ROOM_PHOTO->getRoomPhotosById($room['id']) as $key => $room_p) {
                                                 if ($key == 1) {
                                                     break;
                                                 }
@@ -390,15 +391,15 @@ $CITY = new City($ACCOMMODATIONS->city);
                                             ?>
                                         </div>
                                         <div class="col-md-8">
-                                            <h3><?php echo $rooms['name']; ?></h3>
+                                            <h3><?php echo $room['name']; ?></h3>
                                             <p>
-                                                Number of Adults : <?php echo $rooms['number_of_adults']; ?>
+                                                Number of Adults : <?php echo $room['number_of_adults']; ?>
                                             </p>
                                             <p>
-                                                Number of Children : <?php echo $rooms['number_of_children']; ?>
+                                                Number of Children : <?php echo $room['number_of_children']; ?>
                                             </p>
                                             <?php
-                                            $ALL_FACILITIES = RoomFaciliityDetails::getFacilitiesByRoomId($rooms['id']);
+                                            $ALL_FACILITIES = RoomFaciliityDetails::getFacilitiesByRoomId($room['id']);
 
                                             $FACILITIES = explode(",", $ALL_FACILITIES['facility']);
 
@@ -413,29 +414,65 @@ $CITY = new City($ACCOMMODATIONS->city);
                                         </div>
                                     </div>
                                     <div class="col-md-2 accommoadtion-register-button">
-                                        <a href="#" class="waves-effect waves-light event-regi">Book Now</a> 
+                                        <a href="accommodation-booking.php?id=<?php echo $id;?>&visitor=<?php echo $_SESSION['id']; ?>" class="waves-effect waves-light event-regi">Book Now</a> 
                                     </div>
 
                                 </div>
                             </div>
-                            <div id="demo_<?php echo $rooms['id']; ?>" class="collapse room-border">
-                                <div class="galleria-slider room-photos">
-                                    <?php
-                                    $VIEW_ROOMS = RoomPhoto::getRoomPhotosById($rooms['id']);
-                                    foreach ($VIEW_ROOMS as $key => $room_p) {
-                                        ?>
-                                        <a href="upload/accommodation/rooms/<?php echo $room_p['image_name']; ?>">
-                                            <img src="upload/accommodation/rooms/thumb/<?php echo $room_p['image_name']; ?>" data-title="" >
-                                        </a>
-                                        <?php
-                                    }
-                                    ?>
+                            <div id="demo_<?php echo $room['id']; ?>" class="collapse room-border">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="galleria-slider room-photos">
+                                            <?php
+                                            $VIEW_ROOMS = RoomPhoto::getRoomPhotosById($room['id']);
+                                            foreach ($VIEW_ROOMS as $key => $room_p) {
+                                                ?>
+                                                <a href="upload/accommodation/rooms/<?php echo $room_p['image_name']; ?>">
+                                                    <img src="upload/accommodation/rooms/thumb/<?php echo $room_p['image_name']; ?>" data-title="" >
+                                                </a>
+                                                <?php
+                                            }
+                                            ?>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="hp-sub-tit">
+                                            <h4><span>Room Price</span> for Today</h4>
+                                        </div>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Basis</th>
+                                                    <th>Price</th>
+                                            <tbody>
+                                                <?php
+                                                $ROOM_PRICE_OBJ = new RoomPrice(NULL);
+                                                $date = date("Y-m-d");
+                                                $ROOM_PRICE = $ROOM_PRICE_OBJ->getTodayPriceByRoomId($room['id'], $date);
+                                                foreach ($ROOM_PRICE as $room_price) {
+                                                    $BASIS = new RoomBasis($room_price['basis']);
+                                                    ?>
+                                                    <tr>
+                                                        <td data-column="Price"><?php echo $BASIS->name; ?></td>
+                                                        <td data-column="Price">LKR <?php echo $room_price['price']; ?>.00</td>
+                                                    </tr>
+                                                    <?php
+                                                }
+                                                ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="hp-sub-tit">
+                                            <h4><span>Description</span></h4>
+                                        </div>
+                                        <?php echo $room['description']; ?>
+                                    </div>
                                 </div>
-                                <div class="hp-sub-tit">
-                                    <h4><span>Room</span> Description</h4>
-                                </div>
-                                <?php echo $rooms['description']; ?>
-                                
+
+
+
                             </div>
                             <!--END EVENT-->
                             <?php

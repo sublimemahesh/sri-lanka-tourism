@@ -48,7 +48,7 @@ if (isset($_POST['create'])) {
         $_SESSION['ERRORS'] = $VALID->errors();
 
 //        header('Location: ' . $_SERVER['HTTP_REFERER']);
-        header("location: ../manage-room.php?id=" . $ACCOMODATION_ROOM->accommodation);
+        header("location: ../manage-room-price-seasons.php?id=" . $ACCOMODATION_ROOM->accommodation);
     } else {
 
         if (!isset($_SESSION)) {

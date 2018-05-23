@@ -169,7 +169,7 @@ $ACCOMMODATION_PHOTO = new AccommodationPhoto(NULL);
                                     </a>
 
                       <!--                                    <p>Price for 1 night</p>-->
-                                    <a href="#"><div class="inn-room-book">Book Now</div></a> </div>
+                                    <a href="accommodation-booking.php?id=<?php echo $accommodation['id'] ?>&visitor=<?php echo $_SESSION['id'];?>"><div class="inn-room-book">Book Now</div></a> </div>
                             </div>
                             <?php
                         }
