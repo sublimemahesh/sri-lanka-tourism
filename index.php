@@ -63,7 +63,7 @@ $ARTICLETYPES = ArticleType::all();
                                 <a data-toggle="pill" href="#tour" class="space-adjust top-link-button"> 
                                     <div>
                                         <img src="images/earth-paradise.png" alt=""/>
-                                        <span class="select-ico-title">Tour</span>
+                                        <span class="select-ico-title">Tours</span>
                                     </div>
                                 </a>
                             </li>
@@ -71,7 +71,7 @@ $ARTICLETYPES = ArticleType::all();
                                 <a data-toggle="pill" href="#hotel" class="space-adjust top-link-button">
                                     <div>
                                         <img src="images/3d-building.png" alt=""/>
-                                        <span class="select-ico-title">Hotel</span>
+                                        <span class="select-ico-title">Hotels</span>
                                     </div>
                                 </a>
                             </li>
@@ -79,7 +79,7 @@ $ARTICLETYPES = ArticleType::all();
                                 <a data-toggle="pill" href="#offer" class="space-adjust top-link-button">
                                     <div>
                                         <img src="images/discount(1).png" alt=""/>
-                                        <span class="select-ico-title">Offer</span>
+                                        <span class="select-ico-title">Offers</span>
                                     </div>
                                 </a>
                             </li>
@@ -87,7 +87,7 @@ $ARTICLETYPES = ArticleType::all();
                                 <a data-toggle="pill" href="#article" class="space-adjust top-link-button">
                                     <div>
                                         <img src="images/learning.png" alt=""/>
-                                        <span class="select-ico-title">Article</span>
+                                        <span class="select-ico-title">Articles</span>
                                     </div>
                                 </a>
                             </li>
@@ -579,54 +579,32 @@ $ARTICLETYPES = ArticleType::all();
                             </div>
                         </div>
                         <div id="offer" class="tab-pane fade">
-                            <h3 class="select-op-header text-center">Offer</h3>
-                            <div id="taxi" class="tab-pane fade in active">
-                                <div class="row">
-                                    <div class="col-md-6 col-sm-6 col-xs-12 taxi-title">
-                                        <span class="span-style">Picking Up</span>
-                                        <input type="text" name="piking-up" placeholder="city,airport or address" class="input-text">
-                                    </div>
-                                    <div class="col-md-6 col-sm-6 col-xs-12 taxi-title ">
-                                        <span class="span-style">Dropping Off</span>
-                                        <input type="text" name="dropping-off" placeholder="city,airport or address" class="input-text">
-                                    </div>
+                            <h3 class="select-op-header text-center">Offers</h3>
+                            <?php
+                            $OFFER_OBJ = Offer::all();
+                            foreach ($OFFER_OBJ as $key => $offer) {
+                                ?>
+                                <div class="col-md-4 col-lg-4">
+                                    <img src="upload/offer/<?php echo $offer['image_name']; ?>" alt="" width="100%"/>
+                                    <!--<div class="tour-heading pull-left"><?php echo strtoupper($offer['name']); ?></div>-->
+                                    <?php
+                                    if (strlen($offer['title']) > 12) {
+                                        ?>
+                                        <div class="offer-heading pull-left" title="<?php echo strtoupper($offer['title']); ?>"><?php echo substr(strtoupper($offer['title']), 0, 11) . '...'; ?></div>
+                                        <?php
+                                    } else {
+                                        ?>
+                                        <div class="offer-heading pull-left" title="<?php echo strtoupper($offer['title']); ?>"><?php echo strtoupper($offer['title']); ?></div>
+                                        <?php
+                                    }
+                                    ?>
+                                    <div class="tour-arrow white pull-right"><img src="images/icon/arrow2.png" alt=""/></div>
+
                                 </div>
-                                <div class="row taxi-body">
-                                    <div class="col-md-3 col-sm-6 col-xs-12 taxi-title">
-                                        <span class="span-style">Pick-up Date</span>
-                                        <input type="text" name="piking-up" placeholder="mm/dd/yy" class="input-text">
-                                    </div>
-                                    <div class="col-md-3 col-sm-6 col-xs-12 taxi-title">
-                                        <span class="span-style">Time</span>
-                                        <select class="form-control taxi-combo" id="sel-time">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-3 col-sm-6 col-xs-12 taxi-title offer-drop-off">
-                                        <span class="span-style">Drop-off Date</span>
-                                        <input type="text" name="piking-up" placeholder="mm/dd/yy" class="input-text">
-                                    </div>
-                                    <div class="col-md-3 col-sm-6 col-xs-12 taxi-title offer-time">
-                                        <span class="span-style">Time</span>
-                                        <select class="form-control taxi-combo" id="sel-time">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12 col-sm-12 col-xs-12 btn-search" class="input-text">
-                                        <button class="btn-style">Search</button>
-                                    </div>
-                                </div>
-                            </div>
+                                <?php
+                            }
+                            ?>
+
                         </div>
                         <div id="article" class="tab-pane fade">
                             <h3 class="select-op-header text-center">Article</h3>
@@ -911,6 +889,7 @@ $ARTICLETYPES = ArticleType::all();
                     }
                 }
             });
+
         });
     </script>
 
