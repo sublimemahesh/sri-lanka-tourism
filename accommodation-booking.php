@@ -185,20 +185,20 @@ $now = date('Y-m-d H:i:s');
                                         <div class = "col-md-6">
                                             <div class = "bottom-top">Number of Adults</div>
                                             <div class = "formrow">
-                                                <input type="number" min="0" name="no_of_passengers" id="no_of_passengers" class="form-control input-type-bottom" placeholder="Maximum Number of people" required = "TRUE">
+                                                <input type="number" min="0" name="no_of_adult" id="no_of_adults" class="form-control input-type-bottom" placeholder="Maximum Number of people" required = "TRUE">
                                             </div>
                                         </div>
                                         <div class = "col-md-6">
                                             <div class = "bottom-top">Number of Children</div>
                                             <div class = "formrow">
-                                                <input type="number" min="0" name="no_of_baggage" class="form-control input-type-bottom" placeholder="Maximum Number of children" required ="TRUE">
+                                                <input type="number" min="0" name="no_of_children" id="no_of_children" class="form-control input-type-bottom" placeholder="Maximum Number of children" required ="TRUE">
                                             </div>
                                         </div>
 
                                         <div class = "col-md-12">
                                             <div class = "bottom-top">Message</div>
                                             <div class = "formrow">
-                                                <textarea class = "form-control input-type-bottom" name = "message" rows = "5"> </textarea>
+                                                <textarea class = "form-control input-type-bottom" name="message" rows="5"> </textarea>
                                                 <br>
                                             </div>
                                         </div>
