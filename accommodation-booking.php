@@ -66,7 +66,7 @@ $now = date('Y-m-d H:i:s');
                             $vali->show_message();
                             ?>
 
-                            <form method="post" action="post-and-get/transport-booking.php" enctype="multipart/form-data">
+                            <form method="post" action="post-and-get/accommodation-booking.php" enctype="multipart/form-data">
 
 
                                 <h4 class="booking-transports-title text-center">Your Details</h4>
@@ -76,21 +76,21 @@ $now = date('Y-m-d H:i:s');
                                         <div class="col-md-6">
                                             <div class="bottom-top">First Name</div>
                                             <div class="formrow">
-                                                <input type="text" readonly="true" name="first_name" class="form-control input-type-bottom" placeholder="Please Enter Your Full Name"  value="<?php echo $VISITOR->first_name; ?>" required="TRUE">
+                                                <input type="text" readonly="true" name="first_name" id="first_name" class="form-control input-type-bottom" placeholder="Please Enter Your Full Name"  value="<?php echo $VISITOR->first_name; ?>" required="TRUE">
                                             </div>
                                         </div>
                                         <!--User Name-->
                                         <div class="col-md-6">
                                             <div class="bottom-top">Second Name</div>
                                             <div class="formrow">
-                                                <input type="text" readonly="true" name="second_name" class="form-control input-type-bottom" placeholder="Please Second Name" required="TRUE" value="<?php echo $VISITOR->second_name; ?>">
+                                                <input type="text" readonly="true" name="second_name" id="second_name" class="form-control input-type-bottom" placeholder="Please Second Name" required="TRUE" value="<?php echo $VISITOR->second_name; ?>">
                                             </div>
                                         </div>
                                         <!--Email-->
                                         <div class="col-md-6">
                                             <div class="bottom-top">Email</div>
                                             <div class="formrow">
-                                                <input type="email" readonly="true" name="email" class="form-control input-type-bottom" placeholder="-" required="TRUE" value="<?php echo $VISITOR->email; ?>">
+                                                <input type="email" readonly="true" name="email" id="email" class="form-control input-type-bottom" placeholder="-" required="TRUE" value="<?php echo $VISITOR->email; ?>">
                                                 <br>
                                             </div>
                                         </div>
@@ -98,7 +98,7 @@ $now = date('Y-m-d H:i:s');
                                         <div class="col-md-6">
                                             <div class="bottom-top">Contact No</div>
                                             <div class="formrow">
-                                                <input type="text" readonly="true" name="contact_number" class="form-control input-type-bottom" placeholder="-" value="<?php echo $VISITOR->contact_number; ?>">
+                                                <input type="text" readonly="true" id="contact_number" name="contact_number" class="form-control input-type-bottom" placeholder="-" value="<?php echo $VISITOR->contact_number; ?>">
                                             </div>
                                         </div> 
 
@@ -110,7 +110,7 @@ $now = date('Y-m-d H:i:s');
                                     <div class="col-md-6">
                                         <div class="bottom-top">Arrival Date</div>
                                         <div class="formrow">
-                                            <input type="text" name="checkin" id="checkin" class="form-control input-type-bottom" required="TRUE" value="<?php echo date("d-m-Y"); ?>">
+                                            <input type="text" name="checkin" id="checkin" class="form-control input-type-bottom" required="TRUE" value="<?php echo date("Y-m-d"); ?>">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -119,7 +119,7 @@ $now = date('Y-m-d H:i:s');
                                             <?php
                                             $depdate = new DateTime();
                                             $depdate->add(new DateInterval('P1D'));
-                                            $dep = $depdate->format('d-m-Y') . "";
+                                            $dep = $depdate->format('Y-m-d') . "";
                                             ?>
                                             <input type="text" name="checkout" id="checkout" value="<?php echo $dep; ?>" class="form-control input-type-bottom" required="TRUE">
                                         </div>
@@ -149,7 +149,7 @@ $now = date('Y-m-d H:i:s');
                                                         <label><?php echo $roombasis['name']; ?></label>
                                                         <input type="hidden" id="<?php echo $roombasis['id']; ?>-available">
                                                         <small class="hidden"> - <span id="<?php echo $ROOM["id"]; ?>-available" class="mainid-<?php echo $ROOM['id']; ?>"><?php echo $available; ?></span> Rooms Available</small>
-                                                        <select id="<?php echo $ROOM['id'] . '-' . $roombasis['id']; ?>" typename="<?php echo $ROOM['name']; ?>" basisname="<?php echo $roombasis['name']; ?>" rtype="<?php echo $ROOM['id']; ?>" rbasis="<?php echo $roombasis['id']; ?>" name="<?php echo $ROOM['id'] . '-' . $roombasis['id']; ?>-price" class="form-control prices-list maintype-of-<?php echo $room['id'] ?> type-of-<?php echo $subroomtype['id'] ?>">
+                                                        <select id="<?php echo $ROOM['id'] . '-' . $roombasis['id']; ?>" typename="<?php echo $ROOM['name']; ?>" basisname="<?php echo $roombasis['name']; ?>" rtype="<?php echo $ROOM['id']; ?>" rbasis="<?php echo $roombasis['id']; ?>" name="roomB[<?php echo $ROOM['id']; ?>][<?php echo $roombasis['id']; ?>]"  class="form-control prices-list maintype-of-<?php echo $ROOM['id'] ?> type-of-<?php echo $roombasis['id'] ?>">
                                                             <option selected="" value="0" each-price="0">- Please Select -</option>
                                                             <?php
                                                             for ($i = 1; $i <= $available; $i++) {
@@ -183,15 +183,15 @@ $now = date('Y-m-d H:i:s');
                                     <div class = "col-sm-12 col-md-12">
 
                                         <div class = "col-md-6">
-                                            <div class = "bottom-top">Number of Passengers</div>
+                                            <div class = "bottom-top">Number of Adults</div>
                                             <div class = "formrow">
-                                                <input type = "number" min = "0" name = "no_of_passengers" id = "no_of_passengers" class = "form-control input-type-bottom" placeholder = "Maximum Number of Passengers" required = "TRUE">
+                                                <input type="number" min="0" name="no_of_passengers" id="no_of_passengers" class="form-control input-type-bottom" placeholder="Maximum Number of people" required = "TRUE">
                                             </div>
                                         </div>
                                         <div class = "col-md-6">
-                                            <div class = "bottom-top">Number of Baggage</div>
+                                            <div class = "bottom-top">Number of Children</div>
                                             <div class = "formrow">
-                                                <input type = "number" min = "0" name = "no_of_baggage" class = "form-control input-type-bottom" placeholder = "Maximum Number of baggage" required = "TRUE">
+                                                <input type="number" min="0" name="no_of_baggage" class="form-control input-type-bottom" placeholder="Maximum Number of children" required ="TRUE">
                                             </div>
                                         </div>
 
@@ -208,10 +208,12 @@ $now = date('Y-m-d H:i:s');
                                 <div class = "row">
                                     <div class = "top-bott50">
                                         <div class = "bottom-top">
-                                            <input type = "hidden" id = "visitor" value = "<?php echo $VISITOR->id; ?>" name = "visitor"/>
-                                            <!--<input type = "hidden" id = "transport_rate" value = "<?php echo $ACCOMMODATION->id; ?>" name = "transport_rate"/> -->
-                                            <input type = "hidden" id = "date_time_booked" value = "<?php echo $now; ?>" name = "date_time_booked"/>
-                                            <input type = "submit" name = "book" value = "Book Now" class = "btn btn-info center-block">
+                                            <input type="hidden" id="visitor" value="<?php echo $VISITOR->id; ?>" name="visitor"/>
+                                            <input type="hidden" id="accommodation" value="<?php echo $ACCOMMODATION->id; ?>" name="transport_rate"/> 
+                                            <input type="hidden" id="total" value="0.00" name="total"/>
+                                            <input type="hidden" id="date_time_booked" value="<?php echo $now; ?>" name="date_time_booked"/>
+                                           
+                                            <input type="submit" id="book" name="book" value="Book Now" class="btn btn-info center-block">
                                         </div>
                                     </div>
                                 </div>
@@ -245,6 +247,11 @@ $now = date('Y-m-d H:i:s');
                                     <li class="list-group-item"><b>Website</b> : <?php echo $ACCOMMODATION->website; ?></li>
                                     <li class="list-group-item"><b>Contact Number</b> : <?php echo $ACCOMMODATION->phone; ?></li>
                                 </ul>
+                                <h4 class="booking-transports-title text-center">Your Price Summary</h4>
+                                <ul class="list-group visitor-list-color">
+                                    <li class="list-group-item">Number of Rooms <b><span id="selected-rooms">0</span></b> </li>
+                                    <li class="list-group-item"><b>Total Amount: </b>LKR <span><span id="total-price">0</span>.00</span>  </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -273,7 +280,7 @@ $now = date('Y-m-d H:i:s');
 
                 /* global setting */
                 var datepickersOpt = {
-                    dateFormat: 'dd-mm-yy',
+                    dateFormat: 'yy-mm-dd',
                     minDate: 0
                 };
 
@@ -284,14 +291,14 @@ $now = date('Y-m-d H:i:s');
                         $("#checkout").datepicker("option", "minDate", minDate);
                         setRooms();
                     },
-                    dateFormat: 'dd-mm-yy'
+                    dateFormat: 'yy-mm-dd'
                 }, datepickersOpt));
 
                 $("#checkout").datepicker($.extend({
                     onSelect: function () {
                         setRooms();
                     },
-                    dateFormat: 'dd-mm-yy'
+                    dateFormat: 'yy-mm-dd'
                 }, datepickersOpt));
             });
 

@@ -42,6 +42,8 @@ include_once(dirname(__FILE__) . '/Feedback.php');
 include_once(dirname(__FILE__) . '/TourType.php');
 include_once(dirname(__FILE__) . '/TourPackageBooking.php');
 include_once(dirname(__FILE__) . '/ArticlePhoto.php');
+include_once(dirname(__FILE__) . '/RoomBooking.php');
+include_once(dirname(__FILE__) . '/BookingRoomDetails.php');
 
 function dd($data) {
     var_dump($data);
