@@ -119,6 +119,21 @@ class Offer {
 
         return $array_res;
     }
+    public function GetOfferByType($id) {
+
+        $query = "SELECT * FROM `offer` WHERE `type` = '" . $id . "' ORDER BY `sort` ASC";
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+
+        return $array_res;
+    }
 
     public function arrange($key, $img) {
         $query = "UPDATE `offer` SET `sort` = '" . $key . "'  WHERE id = '" . $img . "'";
