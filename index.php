@@ -580,30 +580,25 @@ $ARTICLETYPES = ArticleType::all();
                         </div>
                         <div id="offer" class="tab-pane fade">
                             <h3 class="select-op-header text-center">Offers</h3>
-                            <?php
-                            $OFFER_OBJ = Offer::all();
-                            foreach ($OFFER_OBJ as $key => $offer) {
-                                ?>
-                                <div class="col-md-4 col-lg-4">
-                                    <img src="upload/offer/<?php echo $offer['image_name']; ?>" alt="" width="100%"/>
-                                    <!--<div class="tour-heading pull-left"><?php echo strtoupper($offer['name']); ?></div>-->
-                                    <?php
-                                    if (strlen($offer['title']) > 12) {
-                                        ?>
-                                        <div class="offer-heading pull-left" title="<?php echo strtoupper($offer['title']); ?>"><?php echo substr(strtoupper($offer['title']), 0, 11) . '...'; ?></div>
-                                        <?php
-                                    } else {
-                                        ?>
-                                        <div class="offer-heading pull-left" title="<?php echo strtoupper($offer['title']); ?>"><?php echo strtoupper($offer['title']); ?></div>
-                                        <?php
-                                    }
-                                    ?>
+                            <a href="view-offer.php?id=1"><div class="col-md-4 col-lg-4">
+                                    <img src="upload/offer/-662053711_190541087195_1527846862_n.jpg" alt="" width="100%"/>
+                                    <div class="offer-heading pull-left" title="TAXI"><b>TAXI</b></div>
                                     <div class="tour-arrow white pull-right"><img src="images/icon/arrow2.png" alt=""/></div>
-
                                 </div>
-                                <?php
-                            }
-                            ?>
+                            </a>
+                            <a href="view-offer.php?id=2"> <div class="col-md-4 col-lg-4">
+                                    <img src="upload/offer/hotel.jpg" alt="" width="100%"/>
+                                    <div class="offer-heading pull-left" title="HOTEL"><b>HOTEL</b></div>
+                                    <div class="tour-arrow white pull-right"><img src="images/icon/arrow2.png" alt=""/></div>
+                                </div>
+                            </a>
+                            <a href="view-offer.php?id=3">
+                                <div class="col-md-4 col-lg-4">
+                                    <img src="upload/offer/travel.jpg" alt="" width="100%"/>
+                                    <div class="offer-heading pull-left" title="TRAVEL"><b>TRAVEL</b></div>
+                                    <div class="tour-arrow white pull-right"><img src="images/icon/arrow2.png" alt=""/></div>
+                                </div>
+                            </a>
 
                         </div>
                         <div id="article" class="tab-pane fade">
