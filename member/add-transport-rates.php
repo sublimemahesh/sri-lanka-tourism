@@ -65,7 +65,7 @@ $TRANSPORT_RATES = TransportRates::GetTransportRatesByTransportId($id);
                                                                 <div class="bottom-top">
                                                                     <label for="location_from">Location From</label>
                                                                     <div class="formrow">
-                                                                        <input type="text" autocomplete="off" id="from" placeholder="please select picking up city" class="form-control">
+                                                                        <input type="text" autocomplete="off" id="from" placeholder="Please select start location" class="form-control">
                                                                         <input type="hidden" name="from" value="" id="from-id" />
                                                                         <div id="suggesstion-box">
                                                                             <ul id="city-list-from" class="city-list"></ul>
@@ -77,7 +77,7 @@ $TRANSPORT_RATES = TransportRates::GetTransportRatesByTransportId($id);
                                                                 <div class="bottom-top">
                                                                     <label for="location_to">Location To</label>
                                                                     <div class="formrow">
-                                                                        <input type="text" id="to" autocomplete="off" placeholder="please select dropping down city" class="form-control">
+                                                                        <input type="text" id="to" autocomplete="off" placeholder="Please select end location" class="form-control">
                                                                         <div id="suggesstion-box">
                                                                             <ul id="city-list-to" class="city-list"></ul>
                                                                         </div>

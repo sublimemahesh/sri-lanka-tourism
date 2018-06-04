@@ -56,7 +56,7 @@ $TRANSPORTS_PHOTO = new TransportPhoto(NULL);
                                                                 <a href="add-new-transport.php">
                                                                     <div class="uploadbox uploadphotobx" id="uploadphotobx">
                                                                         <i class="fa fa-plus plus-icon" aria-hidden="true"></i>
-                                                                        <label class="uploadBox">Click here to add your vehicle
+                                                                        <label class="uploadBox">Click here to add new vehicle
                                                                         </label>
                                                                     </div>
                                                                 </a>
@@ -65,8 +65,9 @@ $TRANSPORTS_PHOTO = new TransportPhoto(NULL);
                                                         <div id="image-list">
                                                             <?php
                                                             foreach ($TRANSPORTS->getTransportsByMemberId($_SESSION['id']) as $key => $vehicle_t) {
-                                                                ?> <div class="formrow">
+                                                                ?> 
                                                                     <div class="col-md-3" id="div_<?php echo $vehicle_t['id']; ?>">
+                                                                        <div class="formrow">
                                                                         <div>
                                                                             <?php
                                                                             if (count($TRANSPORTS_PHOTO) > 0) {
@@ -86,7 +87,6 @@ $TRANSPORTS_PHOTO = new TransportPhoto(NULL);
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
-
                                                                                     <img class="img-responsive" src="../upload/transport/thumb/<?php echo $TRANSPORTS_P['image_name']; ?>">
                                                                                     <?php
                                                                                 }
