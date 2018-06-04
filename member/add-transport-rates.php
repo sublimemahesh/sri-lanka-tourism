@@ -35,6 +35,17 @@ $TRANSPORT_RATES = TransportRates::GetTransportRatesByTransportId($id);
             .img-thumbnail {
                 max-width: 50% !important;
             }
+
+            .demo {
+                padding: 30px;
+                min-height: 280px;
+            }
+
+            .tab-content{
+                padding: 10px;
+            }
+
+
         </style>
     </head> 
     <body> 
@@ -55,154 +66,201 @@ $TRANSPORT_RATES = TransportRates::GetTransportRatesByTransportId($id);
                                 <div class="panel-heading"><i class="fa fa-save"></i> Create Transport Rates : <?php echo $TRANSPORTS->title; ?></div>
                                 <div class="panel-body">
                                     <div class="body">
-                                        <div class="userccount">
-                                            <div class="formpanel"> 
-                                                <form class="form-horizontal"  method="post" action="post-and-get/transport-rate.php" enctype="multipart/form-data"> 
-                                                    <div class="col-md-12">
 
-                                                        <div class="">
-                                                            <div class="col-md-6">
-                                                                <div class="bottom-top">
-                                                                    <label for="location_from">Location From</label>
-                                                                    <div class="formrow">
-                                                                        <input type="text" autocomplete="off" id="from" placeholder="Please select start location" class="form-control">
-                                                                        <input type="hidden" name="from" value="" id="from-id" />
-                                                                        <div id="suggesstion-box">
-                                                                            <ul id="city-list-from" class="city-list"></ul>
+
+                                        <div class="demo">
+                                            <div role="tabpanel">
+
+                                                <!-- Nav tabs -->
+                                                <ul class="nav nav-tabs nav-justified nav-tabs-dropdown" role="tablist">
+                                                    <li role="presentation" class="active"><a href="#price1" aria-controls="home" role="tab" data-toggle="tab">Transport Rate</a></li>
+                                                    <li role="presentation"><a href="#price2" aria-controls="profile" role="tab" data-toggle="tab">Self Drive Rates</a></li>
+
+                                                </ul>
+
+                                                <!-- Tab panes -->
+                                                <div class="tab-content">
+                                                    <div role="tabpanel" class="tab-pane active" id="price1">
+
+                                                        <div class="userccount">
+                                                            <div class="formpanel"> 
+                                                                <form class="form-horizontal"  method="post" action="post-and-get/transport-rate.php" enctype="multipart/form-data"> 
+                                                                    <div class="col-md-12">
+
+                                                                        <div class="">
+                                                                            <div class="col-md-6">
+                                                                                <div class="bottom-top">
+                                                                                    <label for="location_from">Location From</label>
+                                                                                    <div class="formrow">
+                                                                                        <input type="text" autocomplete="off" id="from" placeholder="Please select start location" class="form-control">
+                                                                                        <input type="hidden" name="from" value="" id="from-id" />
+                                                                                        <div id="suggesstion-box">
+                                                                                            <ul id="city-list-from" class="city-list"></ul>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <div class="bottom-top">
+                                                                                    <label for="location_to">Location To</label>
+                                                                                    <div class="formrow">
+                                                                                        <input type="text" id="to" autocomplete="off" placeholder="Please select end location" class="form-control">
+                                                                                        <div id="suggesstion-box">
+                                                                                            <ul id="city-list-to" class="city-list"></ul>
+                                                                                        </div>
+                                                                                        <input type="hidden" name="to" value="" id="to-id" />
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+
                                                                         </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <div class="bottom-top">
-                                                                    <label for="location_to">Location To</label>
-                                                                    <div class="formrow">
-                                                                        <input type="text" id="to" autocomplete="off" placeholder="Please select end location" class="form-control">
-                                                                        <div id="suggesstion-box">
-                                                                            <ul id="city-list-to" class="city-list"></ul>
+
+
+                                                                        <div class="">
+                                                                            <div class="col-md-6">
+                                                                                <div class="bottom-top">
+                                                                                    <label for="distance">Distance(KM)</label>
+                                                                                    <div class="formrow">
+                                                                                        <input type="text" id="price" class="form-control" placeholder="Enter Distance" autocomplete="off" name="distance" required="true">
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <div class="bottom-top">
+                                                                                    <label for="price">Price(LKR)</label>
+                                                                                    <div class="formrow">
+                                                                                        <input type="text" id="price" class="form-control" placeholder="Enter Price" autocomplete="off" name="price" required="true">
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+
                                                                         </div>
-                                                                        <input type="hidden" name="to" value="" id="to-id" />
-                                                                    </div>
-                                                                </div>
+                                                                        <div class="col-md-12">
+                                                                            <div class="top-bott50">
+                                                                                <div class="bottom-top">
+                                                                                    <input type="hidden" id="id" class="form-control" placeholder="Enter id" autocomplete="off" name="id" required="true">
+                                                                                    <input type="hidden" id="member" name="member" value="<?php echo $_SESSION['id']; ?>"/>
+                                                                                    <input type="hidden" id="id" value="<?php echo $TRANSPORTS->id; ?>" name="id"/>
+                                                                                    <input type="hidden" value="<?php echo $id ?>" name="id" />
+                                                                                    <button name="add-transport-rate" type="submit" class="btn btn-info">Create</button>
+                                                                                </div>
+                                                                            </div>   
+                                                                        </div>
+                                                                    </div>   
+                                                                </form>  
+
+
                                                             </div>
-
                                                         </div>
-
-
-                                                        <div class="">
-                                                            <div class="col-md-6">
-                                                                <div class="bottom-top">
-                                                                    <label for="distance">Distance(KM)</label>
-                                                                    <div class="formrow">
-                                                                        <input type="text" id="price" class="form-control" placeholder="Enter Distance" autocomplete="off" name="distance" required="true">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <div class="bottom-top">
-                                                                    <label for="price">Price(LKR)</label>
-                                                                    <div class="formrow">
-                                                                        <input type="text" id="price" class="form-control" placeholder="Enter Price" autocomplete="off" name="price" required="true">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-                                                        <div class="col-md-12">
-                                                            <div class="top-bott50">
-                                                                <div class="bottom-top">
-                                                                    <input type="hidden" id="id" class="form-control" placeholder="Enter id" autocomplete="off" name="id" required="true">
-                                                                    <input type="hidden" id="member" name="member" value="<?php echo $_SESSION['id']; ?>"/>
-                                                                    <input type="hidden" id="id" value="<?php echo $TRANSPORTS->id; ?>" name="id"/>
-                                                                    <input type="hidden" value="<?php echo $id ?>" name="id" />
-                                                                    <button name="add-transport-rate" type="submit" class="btn btn-info">Create</button>
-                                                                </div>
-                                                            </div>   
-                                                        </div>
-                                                    </div>   
-                                                </form>  
-
-
-                                            </div>
-                                        </div>
-                                        <div class="panel-heading"> Manage Transport Rates</div>
-                                        <div class="body">
-                                            <div class="table-responsive">
-                                                <div>
-                                                    <?php
-                                                    if (count($TRANSPORT_RATES) > 0) {
-                                                        ?>
-                                                        <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th>ID</th>
-                                                                    <th>From</th>
-                                                                    <th>To</th> 
-                                                                    <th>Distance</th>
-                                                                    <th>Price</th>
-                                                                    <th>Option</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tfoot>
-                                                                <tr>
-                                                                    <th>ID</th>
-                                                                    <th>From</th>
-                                                                    <th>To</th> 
-                                                                    <th>Distance</th>
-                                                                    <th>Price</th>
-                                                                    <th>Option</th>
-                                                                </tr>
-                                                            </tfoot>
-                                                            <tbody>
-                                                                <?php
-                                                                foreach ($TRANSPORT_RATES as $key => $transport_rates) {
-                                                                    $key++
-                                                                    ?>
-                                                                    <tr id="row_<?php echo $transport_rates['id']; ?>">
-                                                                        <td><?php echo $key; ?></td> 
-                                                                        <td>
-                                                                            <?php
-                                                                            $city = new City($transport_rates['location_from']);
-                                                                            echo $city->name;
-                                                                            ?>
-                                                                        </td>
-                                                                        <td>
-                                                                            <?php
-                                                                            $CITY = new City($transport_rates['location_to']);
-                                                                            echo $CITY->name;
-                                                                            ?>
-                                                                        </td>
-                                                                        <td><?php echo $transport_rates['distance']; ?> Km</td>
-                                                                        <td class="text-right"> LKR. <?php echo $transport_rates['price']; ?>.00</td>
-                                                                        <td> 
-                                                                            <a href="#"> 
-                                                                                <button class="btn btn-danger btn-sm all-icon fa fa-trash-o delete-transport-rates" data-id="<?php echo $transport_rates['id']; ?>"></button>
-                                                                            </a> |
-
-                                                                            <a href="edit-transport-rate.php?id=<?php echo $transport_rates['id']; ?>">
-                                                                                <button class="btn btn-primary btn-sm all-icon fa fa-pencil"></button>
-                                                                            </a> 
-
-                                                                        </td>
-                                                                    </tr>
+                                                        <div class="panel-heading"> Manage Transport Rates</div>
+                                                        <div class="body">
+                                                            <div class="table-responsive">
+                                                                <div>
                                                                     <?php
-                                                                }
-                                                                ?>
-                                                            </tbody>
-                                                        </table>
+                                                                    if (count($TRANSPORT_RATES) > 0) {
+                                                                        ?>
+                                                                        <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <th>ID</th>
+                                                                                    <th>From</th>
+                                                                                    <th>To</th> 
+                                                                                    <th>Distance</th>
+                                                                                    <th>Price</th>
+                                                                                    <th>Option</th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tfoot>
+                                                                                <tr>
+                                                                                    <th>ID</th>
+                                                                                    <th>From</th>
+                                                                                    <th>To</th> 
+                                                                                    <th>Distance</th>
+                                                                                    <th>Price</th>
+                                                                                    <th>Option</th>
+                                                                                </tr>
+                                                                            </tfoot>
+                                                                            <tbody>
+                                                                                <?php
+                                                                                foreach ($TRANSPORT_RATES as $key => $transport_rates) {
+                                                                                    $key++
+                                                                                    ?>
+                                                                                    <tr id="row_<?php echo $transport_rates['id']; ?>">
+                                                                                        <td><?php echo $key; ?></td> 
+                                                                                        <td>
+                                                                                            <?php
+                                                                                            $city = new City($transport_rates['location_from']);
+                                                                                            echo $city->name;
+                                                                                            ?>
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            <?php
+                                                                                            $CITY = new City($transport_rates['location_to']);
+                                                                                            echo $CITY->name;
+                                                                                            ?>
+                                                                                        </td>
+                                                                                        <td><?php echo $transport_rates['distance']; ?> Km</td>
+                                                                                        <td class="text-right"> LKR. <?php echo $transport_rates['price']; ?>.00</td>
+                                                                                        <td> 
+                                                                                            <a href="#"> 
+                                                                                                <button class="btn btn-danger btn-sm all-icon fa fa-trash-o delete-transport-rates" data-id="<?php echo $transport_rates['id']; ?>"></button>
+                                                                                            </a> |
 
-                                                    <?php } else {
-                                                        ?> 
-                                                        <b style="padding-left: 15px;">No Transports Rates in the database.</b> 
-                                                    <?php } ?> 
-                                                    <div class="text-left">
-                                                        <a href="manage-transport.php"> 
-                                                            <button type="button" class="btn btn-round btn-info"><< Back</button>
-                                                        </a>
+                                                                                            <a href="edit-transport-rate.php?id=<?php echo $transport_rates['id']; ?>">
+                                                                                                <button class="btn btn-primary btn-sm all-icon fa fa-pencil"></button>
+                                                                                            </a> 
+
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                    <?php
+                                                                                }
+                                                                                ?>
+                                                                            </tbody>
+                                                                        </table>
+
+                                                                    <?php } else {
+                                                                        ?> 
+                                                                        <b style="padding-left: 15px;">No Transports Rates in the database.</b> 
+                                                                    <?php } ?> 
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
+                                                    <div role="tabpanel" class="tab-pane" id="price2">
+                                                        <form class="form-horizontal"  method="post" action="post-and-get/rent-a-car.php"> 
+                                                            <div class="col-md-12">
+                                                                <div class="bottom-top">
+                                                                    <label for="distance">Price per day</label>
+                                                                    <div class="formrow">
+                                                                        <input type="text" id="price_p_day" class="form-control" placeholder="Enter price" autocomplete="off" name="price_p_day" required="true">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <div class="bottom-top">
+                                                                    <label for="distance">Price per excess mileage</label>
+                                                                    <div class="formrow">
+                                                                        <input type="text" id="price_p_extra" class="form-control" placeholder="Enter price" autocomplete="off" name="price_p_extra" required="true">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <div class="top-bott50">
+                                                                    <div class="bottom-top">
+                                                                        <input type="hidden" id="id" value="<?php echo $TRANSPORTS->id; ?>" name="id"/>
+                                                                        <button name="update" type="submit" class="btn btn-info">Update</button>
+                                                                    </div>
+                                                                </div>   
+                                                            </div>
+                                                        </form>
+
+                                                    </div>
+
                                                 </div>
                                             </div>
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -260,6 +318,15 @@ $TRANSPORT_RATES = TransportRates::GetTransportRatesByTransportId($id);
                 relative_urls: false
 
             });
+
+            //open and close tab menu
+            $('.nav-tabs-dropdown')
+                    .on("click", "li:not('.active') a", function (event) {
+                        $(this).closest('ul').removeClass("open");
+                    })
+                    .on("click", "li.active a", function (event) {
+                        $(this).closest('ul').toggleClass("open");
+                    });
         </script>
     </body>
 
