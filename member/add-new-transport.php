@@ -395,7 +395,7 @@ if (empty($MEMBER->licence_front) || empty($MEMBER->licence_back)) {
                                                                                             <input type="hidden" id="oldDis" value=""/>
 
                                                                                             <input type="hidden" id="member" name="member" value="<?php echo $_SESSION['id']; ?>"/>
-                                                                                            <button id="create" name="add-transports" type="submit" class="btn btn-info center-block">Create</button>
+                                                                                            <button id="create" name="add-transports" type="submit" class="btn btn-info tab-next-create">Save All Details</button>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>

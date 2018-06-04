@@ -344,6 +344,12 @@ and open the template in the editor.
 }
 
 
+.tab-next-create {
+    margin-top: 20px;
+    margin-right: 0px;
+    margin-bottom: 20px;
+}
+
 
 .uploadphotobx1{
     border: 3px dashed #ddd;

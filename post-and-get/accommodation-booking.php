@@ -88,7 +88,7 @@ if (isset($_POST['book'])) {
             $website_name = 'www.srilankatourism.travel';
             $comany_name = 'Sri Lanka Tourism';
             $comConNumber = '09137347559';
-            $comEmail = 'keerthiyaa@gmail.com';
+            $comEmail = 'dhanusha@sublime.lk';
             date_default_timezone_set('Asia/Colombo');
 
             $todayis = date("l, F j, Y, g:i a");
