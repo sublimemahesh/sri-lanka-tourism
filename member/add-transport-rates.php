@@ -52,7 +52,7 @@ $TRANSPORT_RATES = TransportRates::GetTransportRatesByTransportId($id);
                             $vali->show_message();
                             ?>
                             <div class="panel panel-default">
-                                <div class="panel-heading"><i class="fa fa-save"></i> Create Transport Rates</div>
+                                <div class="panel-heading"><i class="fa fa-save"></i> Create Transport Rates : <?php echo $TRANSPORTS->title; ?></div>
                                 <div class="panel-body">
                                     <div class="body">
                                         <div class="userccount">
@@ -122,9 +122,10 @@ $TRANSPORT_RATES = TransportRates::GetTransportRatesByTransportId($id);
                                                     </div>   
                                                 </form>  
 
+
                                             </div>
                                         </div>
-
+                                        <div class="panel-heading"> Manage Transport Rates</div>
                                         <div class="body">
                                             <div class="table-responsive">
                                                 <div>
@@ -194,9 +195,9 @@ $TRANSPORT_RATES = TransportRates::GetTransportRatesByTransportId($id);
                                                         ?> 
                                                         <b style="padding-left: 15px;">No Transports Rates in the database.</b> 
                                                     <?php } ?> 
-                                                    <div class="text-right">
+                                                    <div class="text-left">
                                                         <a href="manage-transport.php"> 
-                                                            <button type="button" class="btn btn-round btn-info">Manage Transport</button>
+                                                            <button type="button" class="btn btn-round btn-info"><< Back</button>
                                                         </a>
                                                     </div>
                                                 </div>
