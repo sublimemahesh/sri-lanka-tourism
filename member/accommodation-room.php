@@ -273,9 +273,9 @@ $ROOM_FACILITY_DETAILS = new RoomFaciliityDetails(NULL);
                                                                                             </a>
                                                                                         </div>
                                                                                         <div class="col-md-6 col-xs-6 col-sm-6 text-right">
-                                                                                            <div class="bottom-top">
+                                                                                            <div class="">
                                                                                                 <input type="hidden" value="<?php echo $id ?>" name="id" />
-                                                                                                <input name="create" id="create" type="submit" class="btn btn-info center-block" value="Create">
+                                                                                                <input name="create" id="create" type="submit" class="btn btn-info tab-next-create" value="Save All Details">
                                                                                             </div>
                                                                                         </div> 
                                                                                     </div>
