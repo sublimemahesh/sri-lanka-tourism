@@ -55,7 +55,7 @@ $CITYTO = new City($TRANSPORT_RATES->location_to);
                             $vali->show_message();
                             ?>
                             <div class="panel panel-default">
-                                <div class="panel-heading"><i class="fa fa-pencil"></i> Edit Transports</div>
+                                <div class="panel-heading"><i class="fa fa-pencil"></i>Edit Transport Rates</div>
                                 <div class="panel-body">
                                     <div class="body">
                                         <div class="userccount">
