@@ -9,6 +9,8 @@ $TRANSPORTS = new Transports($id);
 $TRANSPORTS_PHOTO = new TransportPhoto(NULL);
 $TRANSPORT_RATE_OBJ = new TransportRates(NULL);
 $TRANSPORT_RATE = $TRANSPORT_RATE_OBJ->GetTransportRatesByTransportId($id);
+$RENT_A_CAR_OBJ = new RentACar(NULL);
+$RENT_A_CAR = $RENT_A_CAR_OBJ->TransportExsist($id);
 $MEMBER = new Member($TRANSPORTS->member);
 ?>
 
@@ -186,6 +188,24 @@ $MEMBER = new Member($TRANSPORTS->member);
                             <?php echo $TRANSPORTS->description; ?>
                         </span>
                     </div>
+                    <?php
+                    if ($RENT_A_CAR) {
+                        ?>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Price Per Day</th>
+                                    <th>Price Per Excess Mileage</th>
+                            <tbody>
+                                <tr>
+                                    <td data-column="Price Per Day">LKR <?Php echo $RENT_A_CAR['price_per_day']; ?></td>
+                                    <td data-column="Price Per Excess Mileage">LKR <?Php echo $RENT_A_CAR['price_per_excess_mileage']; ?></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <?php
+                    }
+                    ?>
                     <table class="table table-bordered">
                         <thead>
                             <tr>

@@ -7,7 +7,19 @@ if (isset($_GET['id'])) {
 }
 $TRANSPORTS = new Transports($id);
 $TRANSPORT_RATES = TransportRates::GetTransportRatesByTransportId($id);
+
+$RENT_A_CAR_OBJ = new RentACar(NULL);
+$RENT_A_CAR = $RENT_A_CAR_OBJ->TransportExsist($id);
+if ($RENT_A_CAR !== FALSE) {
+    $PRICE_P_DAY = $RENT_A_CAR['price_per_day'];
+    $PRICE_P_EX = $RENT_A_CAR['price_per_excess_mileage'];
+} else {
+    $PRICE_P_DAY = '';
+    $PRICE_P_EX = '';
+}
 ?> 
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -233,7 +245,7 @@ $TRANSPORT_RATES = TransportRates::GetTransportRatesByTransportId($id);
                                                                 <div class="bottom-top">
                                                                     <label for="distance">Price per day</label>
                                                                     <div class="formrow">
-                                                                        <input type="text" id="price_p_day" class="form-control" placeholder="Enter price" autocomplete="off" name="price_p_day" required="true">
+                                                                        <input type="text" id="price_p_day" value="<?php echo $PRICE_P_DAY;?>"  class="form-control" placeholder="Enter price" autocomplete="off" name="price_p_day" required="true">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -241,7 +253,7 @@ $TRANSPORT_RATES = TransportRates::GetTransportRatesByTransportId($id);
                                                                 <div class="bottom-top">
                                                                     <label for="distance">Price per excess mileage</label>
                                                                     <div class="formrow">
-                                                                        <input type="text" id="price_p_extra" class="form-control" placeholder="Enter price" autocomplete="off" name="price_p_extra" required="true">
+                                                                        <input type="text" id="price_p_extra" value="<?php echo $PRICE_P_EX;?>" class="form-control" placeholder="Enter price" autocomplete="off" name="price_p_extra" required="true">
                                                                     </div>
                                                                 </div>
                                                             </div>
