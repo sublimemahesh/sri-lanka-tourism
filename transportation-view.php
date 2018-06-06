@@ -189,7 +189,7 @@ $MEMBER = new Member($TRANSPORTS->member);
                         </span>
                     </div>
                     <?php
-                    if ($RENT_A_CAR) {
+                    if ($RENT_A_CAR !== FALSE) {
                         ?>
                         <table class="table table-bordered">
                             <thead>
