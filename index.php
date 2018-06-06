@@ -161,15 +161,15 @@ $ARTICLETYPES = ArticleType::all();
                             <form method="get" name="form" action="transports.php" >
                                 <div class="row">
                                     <div class="col-md-4 col-sm-4 col-xs-12 taxi-title">
-                                        <span class="span-style">With driver or self drive</span>
+                                        <span class="span-style">With Driver or Self Drive</span>
                                         <select class="form-control margin-bot-18 taxi-combo" autocomplete="off" id="driver" type="text" name="driver" autocomplete="off">
-                                            <option value="with_driver">With driver</option>
-                                            <option value="self_driver">Self drive</option>
+                                            <option value="with_driver">With Driver</option>
+                                            <option value="self_driver">Self Drive</option>
                                         </select>
                                     </div>
                                     <div class="col-md-4 col-sm-4 col-xs-12 taxi-title">
                                         <span class="span-style">Picking Up</span>
-                                        <input type="text" autocomplete="off" id="from" placeholder="please select picking up city" class="input-text">
+                                        <input type="text" autocomplete="off" id="from" placeholder="Please Select Pick Up City" class="input-text">
                                         <div id="suggesstion-box">
                                             <ul id="city-list-from" class="city-list"></ul>
                                         </div>
@@ -178,7 +178,7 @@ $ARTICLETYPES = ArticleType::all();
 
                                     <div class="col-md-4 col-sm-4 col-xs-12 taxi-title" id="dropping_off">
                                         <span class="span-style">Dropping Off</span>
-                                        <input type="text" id="to" autocomplete="off" placeholder="please select dropping down city" class="input-text">
+                                        <input type="text" id="to" autocomplete="off" placeholder="Please Select Drop down city" class="input-text">
                                         <div id="suggesstion-box">
                                             <ul id="city-list-to" class="city-list"></ul>
                                         </div>
@@ -214,7 +214,7 @@ $ARTICLETYPES = ArticleType::all();
                                     </div>
                                     <div class="col-md-4 col-sm-6">
                                         <span class="span-style">Number of Passengers</span>
-                                        <input type="text" name="passengers" placeholder="Minimum number of passangers" class="check-out">
+                                        <input type="text" name="passengers" placeholder="Minimum Number of Passangers" class="check-out">
                                     </div>
                                 </div>
                                 <div class="row">
