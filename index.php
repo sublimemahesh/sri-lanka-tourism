@@ -99,10 +99,7 @@ $ARTICLETYPES = ArticleType::all();
                                     </div>
                                 </a>
                             </li>
-
                         </ul>
-
-
                     </div>
                     <div class="mobile-section col-sm-12 col-xs-12 visible-xs visible-sm hidden-lg hidden-md">
                         <div class="mobile" style=" z-index: 900; position: relative;">
@@ -163,7 +160,14 @@ $ARTICLETYPES = ArticleType::all();
                             <h3 class="select-op-header text-center">Taxi</h3>
                             <form method="get" name="form" action="transports.php" >
                                 <div class="row">
-                                    <div class="col-md-6 col-sm-6 col-xs-12 taxi-title">
+                                    <div class="col-md-4 col-sm-4 col-xs-12 taxi-title">
+                                        <span class="span-style">With driver or self drive</span>
+                                        <select class="form-control margin-bot-18 taxi-combo" autocomplete="off" type="text" name="driver" autocomplete="off" name="condition">
+                                            <option value="with_driver">With driver</option>
+                                            <option value="self_driver">Self drive</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4 col-sm-4 col-xs-12 taxi-title">
                                         <span class="span-style">Picking Up</span>
                                         <input type="text" autocomplete="off" id="from" placeholder="please select picking up city" class="input-text">
                                         <div id="suggesstion-box">
@@ -172,7 +176,7 @@ $ARTICLETYPES = ArticleType::all();
                                         <input type="hidden" name="from" value="" id="from-id" />
                                     </div>
 
-                                    <div class="col-md-6 col-sm-6 col-xs-12 taxi-title">
+                                    <div class="col-md-4 col-sm-4 col-xs-12 taxi-title">
                                         <span class="span-style">Dropping Off</span>
                                         <input type="text" id="to" autocomplete="off" placeholder="please select dropping down city" class="input-text">
                                         <div id="suggesstion-box">
@@ -180,6 +184,10 @@ $ARTICLETYPES = ArticleType::all();
                                         </div>
                                         <input type="hidden" name="to" value="" id="to-id" />
                                     </div>
+
+
+
+
                                 </div>
                                 <div class="row taxi-body">
                                     <div class="col-md-4 col-sm-6">
@@ -244,6 +252,7 @@ $ARTICLETYPES = ArticleType::all();
 //                                                                                echo '<img src="path/to/half/star.png" />';
 //                                                                                $x++;
 //                                                                            }
+                                                        
                                                         while ($x <= 5) {
                                                             echo '<i class="fa fa-star-o"></i>';
                                                             $x++;
@@ -314,19 +323,15 @@ $ARTICLETYPES = ArticleType::all();
                                                         ?>
                                                     </div>
                                                 </div>
-
                                             </a>
-
                                             <div class="read_more">
-
                                                 <a href="transportation-view.php?id=<?php echo $transport['id']; ?>" class="read_more_button">View More
-                                                    <i class="fa fa-long-arrow-right"></i></a>
+                                                    <i class="fa fa-long-arrow-right"></i>
+                                                </a>
                                                 <div class="clear"></div>
                                             </div>
                                         </div>
                                     </div>
-
-
                                     <?php
                                 }
                                 ?>

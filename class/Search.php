@@ -153,6 +153,40 @@ class Search {
         echo $setPaginate;
     }
 
+    public function GetTransportBySelfDrive($city, $type, $condition, $passengers, $pageLimit, $setLimit) {
+
+        $w = array();
+        $where = '';
+
+        if (!empty($city)) {
+            $w[] = "`city` = '" . $city . "'";
+        }
+        if (!empty($type)) {
+            $w[] = "`vehicle_type` = '" . $type . "'";
+        }
+        if (!empty($condition)) {
+            $w[] = "`condition` = '" . $condition . "'";
+        }
+        if (!empty($passengers)) {
+            $w[] = "`no_of_passangers` >= '" . $passengers . "'";
+        }
+        if (count($w)) {
+            $where = "WHERE " . implode(' AND ', $w);
+        }
+
+        $query = "SELECT transports.*,`price_per_day` AS price FROM transports INNER JOIN rent_a_car ON transports.id = rent_a_car.transport LEFT OUTER JOIN member on transports.member=member.id $where LIMIT " . $pageLimit . " , " . $setLimit . "";
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+        return $array_res;
+    }
+
     public function GetToursByKeywords($keyword, $noofdates, $type, $pricefrom, $priceto, $pageLimit, $setLimit) {
 
         $w = array();

@@ -12,7 +12,7 @@ $to = NULL;
 $type = NULL;
 $condition = NULL;
 $passengers = NULL;
-
+$driver = NULL;
 
 /* set page numbers */
 if (isset($_GET["page"])) {
@@ -39,8 +39,14 @@ if (isset($_GET['condition'])) {
 if (isset($_GET['passengers'])) {
     $passengers = $_GET['passengers'];
 }
-
-$TRANSPORTS = $SEARCH->GetTransportByLocationFromAndTo($from, $to, $type, $condition, $passengers, $pageLimit, $setLimit);
+if (isset($_GET['driver'])) {
+    $driver = $_GET['driver'];
+    if ($driver == 'self_driver') {
+        $TRANSPORTS = $SEARCH->GetTransportBySelfDrive($from, $type, $condition, $passengers, $pageLimit, $setLimit);
+    } else {
+        $TRANSPORTS = $SEARCH->GetTransportByLocationFromAndTo($from, $to, $type, $condition, $passengers, $pageLimit, $setLimit);
+    }
+}
 ?>
 <html lang="en">
     <head>
@@ -113,7 +119,7 @@ $TRANSPORTS = $SEARCH->GetTransportByLocationFromAndTo($from, $to, $type, $condi
                                                             }
                                                             ?>
 
-                                                        </span> (<?php echo $rate_count;?> Reviews)
+                                                        </span> (<?php echo $rate_count; ?> Reviews)
                                                     </div>
     <!--                                                    <span class="brackets">(Based on 17 reviews)</span>-->
                                                 </div>
@@ -178,12 +184,33 @@ $TRANSPORTS = $SEARCH->GetTransportByLocationFromAndTo($from, $to, $type, $condi
 
 
                                             </div>
-                                            <div class="bottom-sec m-sec">
-                                                <div class="pointer"><strong class="price">LKR <?php echo $transport['transport_price']; ?></strong></div>
-                                                <div class="btn-padding">
-                                                    <a href="transport-booking.php?rate=<?php echo $transport['transport_rate']; ?>&visitor=<?php echo $_SESSION['id']; ?>" class="more-info">Book Now</a> 
-                                                </div>
-                                            </div>
+                                            <?php
+                                            if (isset($_GET['driver'])) {
+                                                $driver = $_GET['driver'];
+                                                if ($driver == 'self_driver') {
+                                                    ?>
+                                                    <div class="bottom-sec m-sec">
+                                                        Price Per Day
+                                                        <div class="pointer"><strong class="price">LKR <?php echo $transport['price']; ?></strong></div>
+                                                        <div class="btn-padding">
+                                                            <a href="rent-a-car-booking.php?transport=<?php echo $transport['id'];?>&visitor=<?php echo $_SESSION['id']; ?>" class="more-info">Book Now</a>
+                                                        </div>
+                                                    </div>
+                                                    <?php
+                                                } else {
+                                                    ?>
+                                                    <div class="bottom-sec m-sec">
+                                                        <div class="pointer"><strong class="price">LKR <?php echo $transport['transport_price']; ?></strong></div>
+                                                        <div class="btn-padding">
+                                                            <a href="transport-booking.php?rate=<?php echo $transport['transport_rate']; ?>&visitor=<?php echo $_SESSION['id']; ?>" class="more-info">Book Now</a> 
+                                                        </div>
+                                                    </div>
+                                                    <?php
+                                                }
+                                            }
+                                            ?>
+
+
                                         </div>
                                     </div>
                                 </div>
