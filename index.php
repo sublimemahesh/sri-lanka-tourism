@@ -162,7 +162,7 @@ $ARTICLETYPES = ArticleType::all();
                                 <div class="row">
                                     <div class="col-md-4 col-sm-4 col-xs-12 taxi-title">
                                         <span class="span-style">With driver or self drive</span>
-                                        <select class="form-control margin-bot-18 taxi-combo" autocomplete="off" type="text" name="driver" autocomplete="off" name="condition">
+                                        <select class="form-control margin-bot-18 taxi-combo" autocomplete="off" id="driver" type="text" name="driver" autocomplete="off">
                                             <option value="with_driver">With driver</option>
                                             <option value="self_driver">Self drive</option>
                                         </select>
@@ -176,7 +176,7 @@ $ARTICLETYPES = ArticleType::all();
                                         <input type="hidden" name="from" value="" id="from-id" />
                                     </div>
 
-                                    <div class="col-md-4 col-sm-4 col-xs-12 taxi-title">
+                                    <div class="col-md-4 col-sm-4 col-xs-12 taxi-title" id="dropping_off">
                                         <span class="span-style">Dropping Off</span>
                                         <input type="text" id="to" autocomplete="off" placeholder="please select dropping down city" class="input-text">
                                         <div id="suggesstion-box">
@@ -252,7 +252,7 @@ $ARTICLETYPES = ArticleType::all();
 //                                                                                echo '<img src="path/to/half/star.png" />';
 //                                                                                $x++;
 //                                                                            }
-                                                        
+
                                                         while ($x <= 5) {
                                                             echo '<i class="fa fa-star-o"></i>';
                                                             $x++;
@@ -893,6 +893,17 @@ $ARTICLETYPES = ArticleType::all();
         });
     </script>
 
+    <script type="text/javascript">
+        $(function () {
+            $("#driver").change(function () {
+                if ($(this).val() == "self_driver") {
+                    $("#dropping_off").hide();
+                } else {
+                    $("#dropping_off").show();
+                }
+            });
+        });
+    </script>
 
 </body> 
 
