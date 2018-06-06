@@ -62,7 +62,7 @@ class TransportBooking {
 
     public function all() {
 
-        $query = "SELECT * FROM `transport_booking` ORDER BY `sort` ASC";
+        $query = "SELECT * FROM `transport_booking` ";
         $db = new Database();
         $result = $db->readQuery($query);
         $array_res = array();

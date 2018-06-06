@@ -71,7 +71,7 @@ class TourPackageBooking {
 
     public function all() {
 
-        $query = "SELECT * FROM `tour_package_booking` ORDER BY `sort` ASC";
+        $query = "SELECT * FROM `tour_package_booking` ";
         $db = new Database();
         $result = $db->readQuery($query);
         $array_res = array();
