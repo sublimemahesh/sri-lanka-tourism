@@ -4,7 +4,6 @@ if (!isset($_SESSION)) {
     session_start();
 }
 $id = $_GET["id"];
-
 $ARTICLES = new Article($id);
 $ARTICLEPHOTOS = new ArticlePhoto(NULL);
 $TYPE = new ArticleType($ARTICLES->article_type);
