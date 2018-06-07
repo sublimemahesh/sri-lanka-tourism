@@ -516,6 +516,38 @@
                 </li>
                 <li>
                     <a href="javascript:void(0);" class="menu-toggle">
+                        <i class="material-icons">event_available</i>
+                        <span>Booking</span>
+                    </a>
+                    <ul class="ml-menu">
+                        <li>
+                            <a href="manage-trasport-booking.php">
+                                <i class="material-icons">directions_car</i>
+                                <span>Transports</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="manage-rentercar-booking.php">
+                                <i class="material-icons">departure_board</i>
+                                <span>Rent a Cars</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="create-offer.php">
+                                <i class="material-icons">airline_seat_individual_suite</i>
+                                <span>Accommodation</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="create-offer.php">
+                                <i class="material-icons">map</i>
+                                <span>Tour Packages</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" class="menu-toggle">
                         <i class="material-icons">chrome_reader_mode</i>
                         <span>Article</span>
                     </a>
