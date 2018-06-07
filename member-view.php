@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <?php
 include './class/include.php';
-include './auth.php';
 
 $id = $_GET["id"];
 $MEMBER = new Member($id);
