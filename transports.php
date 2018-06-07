@@ -7,6 +7,7 @@ if (!isset($_SESSION)) {
 
 $SEARCH = new Search(NULL);
 $TRANSPORTS_PHOTO = new TransportPhoto(NULL);
+
 $from = NULL;
 $to = NULL;
 $type = NULL;
@@ -41,11 +42,12 @@ if (isset($_GET['passengers'])) {
 }
 if (isset($_GET['driver'])) {
     $driver = $_GET['driver'];
-    if ($driver == 'self_driver') {
-        $TRANSPORTS = $SEARCH->GetTransportBySelfDrive($from, $type, $condition, $passengers, $pageLimit, $setLimit);
-    } else {
-        $TRANSPORTS = $SEARCH->GetTransportByLocationFromAndTo($from, $to, $type, $condition, $passengers, $pageLimit, $setLimit);
-    }
+}
+
+if ($driver == 'self_driver') {
+    $TRANSPORTS = $SEARCH->GetTransportBySelfDrive($from, $type, $condition, $passengers, $pageLimit, $setLimit);
+} else {
+    $TRANSPORTS = $SEARCH->GetTransportByLocationFromAndTo($from, $to, $type, $condition, $passengers, $pageLimit, $setLimit);
 }
 ?>
 <html lang="en">
@@ -185,28 +187,25 @@ if (isset($_GET['driver'])) {
 
                                             </div>
                                             <?php
-                                            if (isset($_GET['driver'])) {
-                                                $driver = $_GET['driver'];
-                                                if ($driver == 'self_driver') {
-                                                    ?>
-                                                    <div class="bottom-sec m-sec">
-                                                        Price Per Day
-                                                        <div class="pointer"><strong class="price">LKR <?php echo $transport['price']; ?></strong></div>
-                                                        <div class="btn-padding">
-                                                            <a href="rent-a-car-booking.php?transport=<?php echo $transport['id'];?>&visitor=<?php echo $_SESSION['id']; ?>" class="more-info">Book Now</a>
-                                                        </div>
+                                            if ($driver == 'self_driver') {
+                                                ?>
+                                                <div class="bottom-sec m-sec">
+                                                    Price Per Day
+                                                    <div class="pointer"><strong class="price">LKR <?php echo $transport['price']; ?></strong></div>
+                                                    <div class="btn-padding">
+                                                        <a href="rent-a-car-booking.php?transport=<?php echo $transport['id']; ?>&visitor=<?php echo $_SESSION['id']; ?>" class="more-info">Book Now</a>
                                                     </div>
-                                                    <?php
-                                                } else {
-                                                    ?>
-                                                    <div class="bottom-sec m-sec">
-                                                        <div class="pointer"><strong class="price">LKR <?php echo $transport['transport_price']; ?></strong></div>
-                                                        <div class="btn-padding">
-                                                            <a href="transport-booking.php?rate=<?php echo $transport['transport_rate']; ?>&visitor=<?php echo $_SESSION['id']; ?>" class="more-info">Book Now</a> 
-                                                        </div>
+                                                </div>
+                                                <?php
+                                            } else {
+                                                ?>
+                                                <div class="bottom-sec m-sec">
+                                                    <div class="pointer"><strong class="price">LKR <?php echo $transport['transport_price']; ?></strong></div>
+                                                    <div class="btn-padding">
+                                                        <a href="transport-booking.php?rate=<?php echo $transport['transport_rate']; ?>&visitor=<?php echo $_SESSION['id']; ?>" class="more-info">Book Now</a> 
                                                     </div>
-                                                    <?php
-                                                }
+                                                </div>
+                                                <?php
                                             }
                                             ?>
 
@@ -218,7 +217,13 @@ if (isset($_GET['driver'])) {
                             }
                             ?>
                             <div class="row">
-                                <?php Search::showPagination($from, $to, $type, $condition, $passengers, $setLimit, $page); ?>
+                                <?php
+                                if ($driver == 'self_driver') {
+                                    $TRANSPORTS = Search::showPaginationSelfDrive($from, $type, $condition, $passengers, $setLimit, $setLimit);
+                                } else {
+                                    $TRANSPORTS = Search::showPagination($from, $to, $type, $condition, $passengers, $setLimit, $page);
+                                }
+                                ?>
                             </div>
                         </div>
 
