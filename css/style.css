@@ -2228,7 +2228,7 @@ hr.style15:after {
 
 /*--------Tour Packages------------*/
 .tour-pack {
-    background-color: #fffc;
+    background-color: rgba(255,255,255,0.9);
     height: 380px;
 }
 .tour-pack.article-pack {
