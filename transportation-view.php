@@ -184,8 +184,8 @@ $MEMBER = new Member($TRANSPORTS->member);
             <div class="row">
                 <div class="col-md-8">
                     <div class="transport-description">
-                        <span>
-                            <?php echo $TRANSPORTS->description; ?>
+                        <span >
+                            <p class="p-font" ><?php echo $TRANSPORTS->description; ?></p>
                         </span>
                     </div>
                     <?php
@@ -194,12 +194,12 @@ $MEMBER = new Member($TRANSPORTS->member);
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
-                                    <th>Price Per Day</th>
-                                    <th>Price Per Excess Mileage</th>
+                                    <th class="n-font" >Price Per Day</th>
+                                    <th class="n-font" >Price Per Excess Mileage</th>
                             <tbody>
                                 <tr>
-                                    <td data-column="Price Per Day">LKR <?Php echo $RENT_A_CAR['price_per_day']; ?></td>
-                                    <td data-column="Price Per Excess Mileage">LKR <?Php echo $RENT_A_CAR['price_per_excess_mileage']; ?></td>
+                                    <td data-column="Price Per Day" class="n-font"><b>LKR <?Php echo $RENT_A_CAR['price_per_day']; ?></b></td>
+                                    <td data-column="Price Per Excess Mileage" class="n-font"><b>LKR <?Php echo $RENT_A_CAR['price_per_excess_mileage']; ?></b></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -209,11 +209,11 @@ $MEMBER = new Member($TRANSPORTS->member);
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th>Picking Up</th>
-                                <th>Dropping Off</th>
-                                <th>Distance(KM)</th>
-                                <th>Price(LKR)</th>
-                                <th>Option</th>
+                                <th class="n-font" >Picking Up</th>
+                                <th class="n-font" >Dropping Off</th>
+                                <th class="n-font" >Distance(KM)</th>
+                                <th class="n-font" >Price(LKR)</th>
+                                <th class="n-font" >Option</th>
                         <tbody>
                             <?php
                             foreach ($TRANSPORT_RATE as $transport_rate) {
@@ -222,10 +222,10 @@ $MEMBER = new Member($TRANSPORTS->member);
                                 $CITYTO = new City($transport_rate['location_to']);
                                 ?>
                                 <tr>
-                                    <td data-column="Picking Up"><?Php echo $CITYFROM->name; ?></td>
-                                    <td data-column="Dropping Off"><?Php echo $CITYTO->name; ?></td>
-                                    <td data-column="Distance(KM)"><?Php echo $transport_rate['distance'] . ' KM'; ?></td>
-                                    <td data-column="Price(LKR)"><?Php echo 'LKR ' . $transport_rate['price']; ?></td>
+                                    <td data-column="Picking Up"><b><?Php echo $CITYFROM->name; ?></b></td>
+                                    <td data-column="Dropping Off"><b><?Php echo $CITYTO->name; ?></b></td>
+                                    <td data-column="Distance(KM)"><b><?Php echo $transport_rate['distance'] . ' KM'; ?></b></td>
+                                    <td data-column="Price(LKR)"><b><?Php echo 'LKR ' . $transport_rate['price']; ?></b></td>
                                     <td> 
                                         <?php
                                         if (isset($_SESSION["login"])) {

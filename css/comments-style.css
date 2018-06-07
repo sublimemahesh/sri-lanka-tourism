@@ -17,6 +17,19 @@
     left: 0;
     bottom: -20px;
 }
+.n-font{
+    font-size: 14px;
+}
+
+.p-font{
+    font-size: 18px;
+    color: black;
+    font-weight: 301;
+    position: relative;
+    margin: 0 0 50px 0;
+    text-transform: uppercase;
+    display: inline-block;
+}
 .carousel {
     margin: 0px auto;
 }
