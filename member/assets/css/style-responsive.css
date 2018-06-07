@@ -269,7 +269,7 @@
 @media (max-width: 480px) {
 
     .notify-row, .search, .dont-show , .inbox-head .sr-input, .inbox-head .sr-btn{
-        display: none;
+      
     }
 
     #top_menu .nav > li, ul.top-menu > li {
@@ -296,7 +296,7 @@
     }
 
     .notify-row, .search, .dont-show, .inbox-head .sr-input, .inbox-head .sr-btn {
-        display: none;
+/*        display: none;*/
     }
 
     #top_menu .nav > li, ul.top-menu > li {
