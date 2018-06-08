@@ -664,7 +664,7 @@
     #rooms-section.row-view .room-container .room-box .m-sec {
         padding: 0px 0 0 20px; } }
 .driver {
-   margin-bottom: 18px;
+    margin-bottom: 18px;
 }
 
 .btn-padding{
@@ -1072,7 +1072,13 @@ ul.setPaginate li a{
 .room-img a{
     background-color: transparent;
 }
-
+.icon-bottom{
+    margin-bottom: 3px;
+}
+.style-e{
+    margin-left: 5px;
+    padding-top: 5px;
+}
 @media (min-width: 992px) {
     .btn-padding {
         margin-top: 20px;
@@ -1080,5 +1086,8 @@ ul.setPaginate li a{
     }  
     .bottom-sec {
         padding-top: 50px;
+    }
+    #bottom-sec2{
+        padding-top: 20px;
     }
 }

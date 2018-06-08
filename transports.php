@@ -79,6 +79,7 @@ if ($driver == 'self_driver') {
                             <?php
                             foreach ($TRANSPORTS as $transport) {
                                 $FUEL_TYPE = new FuelType($transport['fuel_type']);
+                                $TRANSPORT_RATE = new TransportRates($transport['transport_rate']);
                                 $VEHICLE_TYPE = new VehicleType($transport['vehicle_type']);
                                 $MEMBER = new Member($transport['member']);
                                 $result = Feedback::getRatingByTransport($transport['id']);
@@ -144,6 +145,15 @@ if ($driver == 'self_driver') {
                                                         <div class="title">Fuel Type :</div>
                                                         <div class="value"><?php echo $FUEL_TYPE->name; ?></div>
                                                     </li>
+                                                    <li class="col-md-12">
+                                                        <div style="width: 15%"> <img class="index-transport-ico icon-bottom" src="images/transport/passenges.png"  ><span class="transport-ico-txt style-e" ><?php echo $transport['no_of_passangers'] ?></span>
+                                                        </div>
+                                                        <div style="width: 15%">  <img class="index-transport-ico icon-bottom" src="images/transport/001-suitcase.png"   ><span class="transport-ico-txt style-e"  ><?php echo $transport['no_of_baggages'] ?></span>
+                                                        </div>
+                                                        <div style="width: 15%"><img class="index-transport-ico icon-bottom" src="images/transport/004-car.png" >
+                                                            <span class="transport-ico-txt style-e"   ><?php echo $transport['no_of_doors'] ?></span>
+                                                        </div>
+                                                    </li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -183,7 +193,19 @@ if ($driver == 'self_driver') {
                                                     </span>
 
                                                 </div>
+                                                <div class="col-md-12" style="margin-top: 20px;">
+                                                    <img src="images/get in.png" alt="" width="30px"/>&nbsp;:<b><?php
+                                                        $cityfrom = new city($TRANSPORT_RATE->location_from);
+                                                        echo substr($cityfrom->name, 0, 10);
+                                                        echo'..';
+                                                        ?></b><br>
+                                                    <img src="images/getout.png" alt="" width="30px"/><b>&nbsp;:<?php
+                                                        $cityto = new City($TRANSPORT_RATE->location_to);
+                                                        echo substr($cityto->name, 0, 10);
+                                                        echo'..';
+                                                        ?></b>
 
+                                                </div>
 
                                             </div>
                                             <?php
@@ -199,7 +221,7 @@ if ($driver == 'self_driver') {
                                                 <?php
                                             } else {
                                                 ?>
-                                                <div class="bottom-sec m-sec">
+                                                <div class="bottom-sec2 m-sec">
                                                     <div class="pointer"><strong class="price">LKR <?php echo $transport['transport_price']; ?></strong></div>
                                                     <div class="btn-padding">
                                                         <a href="transport-booking.php?rate=<?php echo $transport['transport_rate']; ?>&visitor=<?php echo $_SESSION['id']; ?>" class="more-info">Book Now</a> 
