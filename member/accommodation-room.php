@@ -95,7 +95,19 @@ $ROOM_FACILITY_DETAILS = new RoomFaciliityDetails(NULL);
                                                                                                 <label for="Name">Number of Rooms</label>
                                                                                             </div>
                                                                                             <div class="formrow">
-                                                                                                <input type="number" min="0" id="number_of_room" class="form-control" placeholder="Enter Number of Rooms" autocomplete="off" name="number_of_room" required="TRUE">
+                                                                                                <select class="form-control" name="number_of_room" id="number_of_room">
+                                                                                                    <option>- Add Number of Rooms - </option>
+                                                                                                    <option value="1">1</option>
+                                                                                                    <option value="2">2</option>
+                                                                                                    <option value="3">3</option>
+                                                                                                    <option value="4">4</option>
+                                                                                                    <option value="5">5</option>
+                                                                                                    <option value="6">6</option>
+                                                                                                    <option value="7">7</option>
+                                                                                                    <option value="8">8</option>
+                                                                                                    <option value="9">9</option>
+                                                                                                    <option value="10">10</option>
+                                                                                                </select>
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="">
@@ -103,24 +115,57 @@ $ROOM_FACILITY_DETAILS = new RoomFaciliityDetails(NULL);
                                                                                                 <label for="Name">Number of Adults</label>
                                                                                             </div>
                                                                                             <div class="formrow">
-                                                                                                <input type="number" min="0" id="number_of_adults" class="form-control" placeholder="Enter Number of adults" autocomplete="off" name="number_of_adults" required="TRUE">
-                                                                                            </div>
+                                                                                                <select class="form-control" name="number_of_adults" id="number_of_adults">
+                                                                                                    <option>- Add Number of Adults - </option>
+                                                                                                    <option value="1">1</option>
+                                                                                                    <option value="2">2</option>
+                                                                                                    <option value="3">3</option>
+                                                                                                    <option value="4">4</option>
+                                                                                                    <option value="5">5</option>
+                                                                                                    <option value="6">6</option>
+                                                                                                    <option value="7">7</option>
+                                                                                                    <option value="8">8</option>
+                                                                                                    <option value="9">9</option>
+                                                                                                    <option value="10">10</option>
+                                                                                                </select>                                                                                            </div>
                                                                                         </div>
                                                                                         <div class="">
                                                                                             <div class="bottom-top">
                                                                                                 <label for="Name">Number of Children</label>
                                                                                             </div>
                                                                                             <div class="formrow">
-                                                                                                <input type="number" min="0" id="number_of_children" class="form-control" placeholder="Enter Number of Children" autocomplete="off" name="number_of_children" required="TRUE">
-                                                                                            </div>
+                                                                                                <select class="form-control" name="number_of_children" id="number_of_children">
+                                                                                                    <option>- Add Number of Children - </option>
+                                                                                                    <option value="1">1</option>
+                                                                                                    <option value="2">2</option>
+                                                                                                    <option value="3">3</option>
+                                                                                                    <option value="4">4</option>
+                                                                                                    <option value="5">5</option>
+                                                                                                    <option value="6">6</option>
+                                                                                                    <option value="7">7</option>
+                                                                                                    <option value="8">8</option>
+                                                                                                    <option value="9">9</option>
+                                                                                                    <option value="10">10</option>
+                                                                                                </select>                                                                                            </div>
                                                                                         </div>
                                                                                         <div class="">
                                                                                             <div class="bottom-top">
                                                                                                 <label for="Name">Number of Extra Beds</label>
                                                                                             </div>
                                                                                             <div class="formrow">
-                                                                                                <input type="number" min="0" id="number_of_extra_bed" class="form-control" placeholder="Enter Number Of Extra Bed" autocomplete="off" name="number_of_extra_bed" required="TRUE">
-                                                                                            </div>
+                                                                                                <select class="form-control" name="number_of_extra_bed" id="number_of_extra_bed">
+                                                                                                    <option>- Add Number of Extra Beds - </option>
+                                                                                                    <option value="1">1</option>
+                                                                                                    <option value="2">2</option>
+                                                                                                    <option value="3">3</option>
+                                                                                                    <option value="4">4</option>
+                                                                                                    <option value="5">5</option>
+                                                                                                    <option value="6">6</option>
+                                                                                                    <option value="7">7</option>
+                                                                                                    <option value="8">8</option>
+                                                                                                    <option value="9">9</option>
+                                                                                                    <option value="10">10</option>
+                                                                                                </select>                                                                                            </div>
                                                                                         </div>
                                                                                         <div class="">
                                                                                             <div class="bottom-top">
