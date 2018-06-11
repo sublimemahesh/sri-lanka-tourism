@@ -85,7 +85,12 @@ class TourType {
 
     public function delete() {
 
+        
+        $image_type = new TourType(null);
+        
         unlink(Helper::getSitePath() . "upload/tour-type/" . $this->picture_name);
+        unlink(Helper::getSitePath() . "upload/tour-type/thumb/" . $this->picture_name);
+        
         
         $query = 'DELETE FROM `tour_type` WHERE id="' . $this->id . '"';
 
