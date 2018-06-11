@@ -79,7 +79,7 @@ if ($driver == 'self_driver') {
                             <?php
                             foreach ($TRANSPORTS as $transport) {
                                 $FUEL_TYPE = new FuelType($transport['fuel_type']);
-                                $TRANSPORT_RATE = new TransportRates($transport['transport_rate']);
+
                                 $VEHICLE_TYPE = new VehicleType($transport['vehicle_type']);
                                 $MEMBER = new Member($transport['member']);
                                 $result = Feedback::getRatingByTransport($transport['id']);
@@ -157,60 +157,47 @@ if ($driver == 'self_driver') {
                                                 </ul>
                                             </div>
                                         </div>
-                                        <div class="col-md-4 desc desc-price m-sec">
-                                            <div class="row driver m-sec">
-                                                <div class="profile col-md-5 col-xs-4 col-sm-4">
-                                                    <a href="member-view.php?id=<?php echo $MEMBER->id; ?>" class="link">
-                                                        <?php
-                                                        if (empty($MEMBER->profile_picture)) {
-                                                            ?> 
-                                                            <img src="upload/member/member.png" class="img img-responsive img-thumbnail" id="profil_pic"/>
+
+                                        <?php
+                                        if ($driver == 'self_driver') {
+                                            ?>
+                                            <div class="col-md-4 desc desc-price m-sec">
+                                                <div class="row driver m-sec">
+                                                    <div class="profile col-md-5 col-xs-4 col-sm-4">
+                                                        <a href="member-view.php?id=<?php echo $MEMBER->id; ?>" class="link">
                                                             <?php
-                                                        } else {
-                                                            if ($MEMBER->facebookID && substr($MEMBER->profile_picture, 0, 5) === "https") {
-                                                                ?>
-                                                                <img src="<?php echo $MEMBER->profile_picture; ?>" class="img-responsive thumbnail">
+                                                            if (empty($MEMBER->profile_picture)) {
+                                                                ?> 
+                                                                <img src="upload/member/member.png" class="img img-responsive img-thumbnail" id="profil_pic"/>
                                                                 <?php
                                                             } else {
-                                                                ?>
-                                                                <img src="upload/member/<?php echo $MEMBER->profile_picture; ?>" class="img-responsive thumbnail">
-                                                                <?php
+                                                                if ($MEMBER->facebookID && substr($MEMBER->profile_picture, 0, 5) === "https") {
+                                                                    ?>
+                                                                    <img src="<?php echo $MEMBER->profile_picture; ?>" class="img-responsive thumbnail">
+                                                                    <?php
+                                                                } else {
+                                                                    ?>
+                                                                    <img src="upload/member/<?php echo $MEMBER->profile_picture; ?>" class="img-responsive thumbnail">
+                                                                    <?php
+                                                                }
                                                             }
-                                                        }
-                                                        ?>
+                                                            ?>
 
-                                                    </a>
-                                                </div>
-                                                <div class="driver-name col-md-7 col-xs-8 col-sm-8"><div class="driver-name-posted">Posted by </div>
-                                                    <span class="driver-name-span">
-                                                        <?php
-                                                        echo substr($MEMBER->name, 0, 10);
-                                                        if (strlen($MEMBER->name) > 10) {
-                                                            echo '...';
-                                                        }
-                                                        ?>
+                                                        </a>
+                                                    </div>
+                                                    <div class="driver-name col-md-7 col-xs-8 col-sm-8"><div class="driver-name-posted">Posted by </div>
+                                                        <span class="driver-name-span">
+                                                            <?php
+                                                            echo substr($MEMBER->name, 0, 10);
+                                                            if (strlen($MEMBER->name) > 10) {
+                                                                echo '...';
+                                                            }
+                                                            ?>
 
-                                                    </span>
-
-                                                </div>
-                                                <div class="col-md-12" style="margin-top: 20px;">
-                                                    <img src="images/get in.png" alt="" width="30px"/>&nbsp;:<b><?php
-                                                        $cityfrom = new city($TRANSPORT_RATE->location_from);
-                                                        echo substr($cityfrom->name, 0, 10);
-                                                        echo'..';
-                                                        ?></b><br>
-                                                    <img src="images/getout.png" alt="" width="30px"/><b>&nbsp;:<?php
-                                                        $cityto = new City($TRANSPORT_RATE->location_to);
-                                                        echo substr($cityto->name, 0, 10);
-                                                        echo'..';
-                                                        ?></b>
-
+                                                        </span>
+                                                    </div>
                                                 </div>
 
-                                            </div>
-                                            <?php
-                                            if ($driver == 'self_driver') {
-                                                ?>
                                                 <div class="bottom-sec m-sec">
                                                     Price Per Day
                                                     <div class="pointer"><strong class="price">LKR <?php echo $transport['price']; ?></strong></div>
@@ -218,21 +205,79 @@ if ($driver == 'self_driver') {
                                                         <a href="rent-a-car-booking.php?transport=<?php echo $transport['id']; ?>&visitor=<?php echo $_SESSION['id']; ?>" class="more-info">Book Now</a>
                                                     </div>
                                                 </div>
-                                                <?php
-                                            } else {
-                                                ?>
+                                            </div>
+
+                                            <?php
+                                        } else {
+                                            $TRANSPORT_RATE = new TransportRates($transport['transport_rate']);
+                                            ?>
+                                            <div class="col-md-4 desc desc-price m-sec">
+                                                <div class="row driver m-sec">
+                                                    <div class="profile col-md-5 col-xs-4 col-sm-4">
+                                                        <a href="member-view.php?id=<?php echo $MEMBER->id; ?>" class="link">
+                                                            <?php
+                                                            if (empty($MEMBER->profile_picture)) {
+                                                                ?> 
+                                                                <img src="upload/member/member.png" class="img img-responsive img-thumbnail" id="profil_pic"/>
+                                                                <?php
+                                                            } else {
+                                                                if ($MEMBER->facebookID && substr($MEMBER->profile_picture, 0, 5) === "https") {
+                                                                    ?>
+                                                                    <img src="<?php echo $MEMBER->profile_picture; ?>" class="img-responsive thumbnail">
+                                                                    <?php
+                                                                } else {
+                                                                    ?>
+                                                                    <img src="upload/member/<?php echo $MEMBER->profile_picture; ?>" class="img-responsive thumbnail">
+                                                                    <?php
+                                                                }
+                                                            }
+                                                            ?>
+
+                                                        </a>
+                                                    </div>
+                                                    <div class="driver-name col-md-7 col-xs-8 col-sm-8"><div class="driver-name-posted">Posted by </div>
+                                                        <span class="driver-name-span">
+                                                            <?php
+                                                            echo substr($MEMBER->name, 0, 10);
+                                                            if (strlen($MEMBER->name) > 10) {
+                                                                echo '...';
+                                                            }
+                                                            ?>
+
+                                                        </span>
+
+                                                    </div>
+                                                    <div class="col-md-12" style="margin-top: 20px;">
+                                                        <img src="images/get in.png" alt="" width="30px"/>&nbsp;:<b><?php
+                                                            $cityfrom = new city($TRANSPORT_RATE->location_from);
+                                                            echo substr($cityfrom->name, 0, 10);
+                                                            echo'..';
+                                                            ?></b><br>
+                                                        <img src="images/getout.png" alt="" width="30px"/><b>&nbsp;:<?php
+                                                            $cityto = new City($TRANSPORT_RATE->location_to);
+                                                            echo substr($cityto->name, 0, 10);
+                                                            echo'..';
+                                                            ?></b>
+
+                                                    </div>
+
+                                                </div>
+
                                                 <div class="bottom-sec2 m-sec">
                                                     <div class="pointer"><strong class="price">LKR <?php echo $transport['transport_price']; ?></strong></div>
                                                     <div class="btn-padding">
                                                         <a href="transport-booking.php?rate=<?php echo $transport['transport_rate']; ?>&visitor=<?php echo $_SESSION['id']; ?>" class="more-info">Book Now</a> 
                                                     </div>
                                                 </div>
-                                                <?php
-                                            }
-                                            ?>
 
 
-                                        </div>
+                                            </div>
+                                            <?php
+                                        }
+                                        ?>
+
+
+
                                     </div>
                                 </div>
                                 <?php

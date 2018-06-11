@@ -30,6 +30,15 @@
     text-transform: uppercase;
     display: inline-block;
 }
+.p-font2{
+    font-size: 28px;
+    color: black;
+    font-weight: 301;
+    position: relative;
+   
+    text-transform: uppercase;
+    display: inline-block;
+}
 .carousel {
     margin: 0px auto;
 }

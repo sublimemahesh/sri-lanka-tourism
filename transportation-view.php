@@ -191,6 +191,7 @@ $MEMBER = new Member($TRANSPORTS->member);
                     <?php
                     if ($RENT_A_CAR !== FALSE) {
                         ?>
+                    <h4 class="text-left text-bottom "><b>Self drive</b></h4>
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
@@ -206,6 +207,7 @@ $MEMBER = new Member($TRANSPORTS->member);
                         <?php
                     }
                     ?>
+                    <h4 class="text-left text-bottom " ><b>With Driver</b></h4>
                     <table class="table table-bordered">
                         <thead>
                             <tr>
