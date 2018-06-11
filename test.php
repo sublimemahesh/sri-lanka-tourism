@@ -1,218 +1,271 @@
-<html>
+<?php
+include_once(dirname(__FILE__) . '/class/include.php');
+
+if (!isset($_SESSION)) {
+    session_start();
+}
+
+$SEARCH = new Search(NULL);
+$TRANSPORTS_PHOTO = new TransportPhoto(NULL);
+
+$from = NULL;
+$to = NULL;
+$type = NULL;
+$condition = NULL;
+$passengers = NULL;
+$driver = NULL;
+
+/* set page numbers */
+if (isset($_GET["page"])) {
+    $page = (int) $_GET["page"];
+} else {
+    $page = 1;
+}
+$setLimit = 10;
+$pageLimit = ($page * $setLimit) - $setLimit;
+
+/* search */
+if (isset($_GET['from'])) {
+    $from = $_GET['from'];
+}
+if (isset($_GET['to'])) {
+    $to = $_GET['to'];
+}
+if (isset($_GET['type'])) {
+    $type = $_GET['type'];
+}
+if (isset($_GET['condition'])) {
+    $condition = $_GET['condition'];
+}
+if (isset($_GET['passengers'])) {
+    $passengers = $_GET['passengers'];
+}
+if (isset($_GET['driver'])) {
+    $driver = $_GET['driver'];
+}
+
+if ($driver == 'self_driver') {
+    $TRANSPORTS = $SEARCH->GetTransportBySelfDrive($from, $type, $condition, $passengers, $pageLimit, $setLimit);
+} else {
+    $TRANSPORTS = $SEARCH->GetTransportByLocationFromAndTo($from, $to, $type, $condition, $passengers, $pageLimit, $setLimit);
+}
+?>
+<html lang="en">
     <head>
-        <title>' . "Coralsands Hotel - Repay Payment" . '</title>
-        <style type="text/css">
-            table {
-                border: 1px solid #d0d0d0;
-            }
-            th {
-                border-bottom: 1px solid #d0d0d0;
-                padding: 15px 10px 10px 25px;
-                text-align: left;
-                margin: 0px;
-            }
-            td {
-                padding: 10px 10px 5px 10px;
-                text-align: left;
-                margin: 0px;
-            }
-            ul {
-                list-style-type: square;
-                margin: 0px 20px 30px 200px;
-            }
-            li {
-                padding: 5px;
-            }
-            img {
-                width: 120px;
-                margin: 0px auto;
-            }
-            .bdr {
-                border-left: 1px solid #d0d0d0;
-            }
-            .bdr-top {
-                border-top: 1px solid #d0d0d0;
-            }
-            .bb {
-                font-weight: bold;
-            }
-            .right {
-                text-align: right;
-            }
-            .table {
-                margin-left:150px;
-            }
-            .topic {
-                font-size:22px;
-                text-align:center;
-                color:#E7AB14;
-            }
-            .sal {
-                margin-left:100px;
-            }
-            .desc {
-                margin-left:150px;
-                text-align:justify;
-                margin-right:100px;
-            }
-            .bor {
-                border:1px solid #000;
-            }
-            .booking-details {
-                margin-left:150px;
-                border: none !important;
-                margin-right:100px;
-            }
-            .footer{
-                width:100%;
-                margin-top: 20px;
-                background-color:#E7AB14;
-                color: #fff;
-                padding-top:20px;
-                padding-bottom:30px;
-            }
-            .footer-tr {
-                font-size: 15px;
-                line-height: 2px;
-            }
-            .footer-td1 {
-                width: 150px;
-            }
-            .footer-td2 {
-                width: 35%;
-            }
-            @media (max-width: 480px) {
-                ul { font-size: 14px; }
-                td { font-size: 12px; }
-                .table {margin-left:0px;}
-                .desc {margin-left:20px; text-align:justify; margin-right:10px;}
-                .sal {margin-left:10px;}
-                .booking-details {margin-left:10px; border: none !important; margin-right:10px;}
-                ul {list-style-type: square; margin: 0px 20px 30px 10px;}
-                .footer-tr {font-size: 15px; line-height: 15px;}
-                .footer-td1 { width: 0px;}
-                .footer-td2 {width: 50%;}
-                .table-td1 {width: 20%;}
-            }
+        <meta charset="UTF-8">
+        <title>Sri Lanka || Tourism</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/responsive.css">
+        <link href="css/search.css" rel="stylesheet" type="text/css"/>
+        <link href="css/datepicker.css" rel="stylesheet" type="text/css"/>
+        <link href="assets/css/styles.css" rel="stylesheet" type="text/css"/>
+        <link href="https://fonts.googleapis.com/css?family=Russo+One|Magra|Ubuntu+Condensed" rel="stylesheet"> 
 
-        </style>
     </head>
-    <body class="bor">
-        <div style="width: 100%; text-align: center; font-size: 20px; margin: 10px 0px 30px 0px;">
-            <!--            <b style="font-size: 25px; text-decoration: underline;">Coral Sands Hotel</b><br/>-->
-            <img src="http://' . $site . '/images/logo/logo.png" alt="Coral Sands"/><br/>
-            <span><a href="" style="text-decoration:none;color: #000;">No.326, Galle Rd, Hikkaduwa, Sri Lanka</a></span><br/>
-            <span>Email: coralsands@stmail&#173;.lk</span><br/>
-            <span>Phone: +94 91 227 7513 / +94 91 227 7436</span>
+    <body>
+        <!-- Our Resort Values style-->
+        <?php
+        include './header.php';
+        ?>
+
+        <div class="row background-image" style="background-color: #fff;">
+            <section id="rooms-section" class="row-view">
+                <div class="inner-container container">
+                    <div class="room-container clearfix">
+                        <div class="col-md-9">
+                            <?php
+                            foreach ($TRANSPORTS as $transport) {
+                                $FUEL_TYPE = new FuelType($transport['fuel_type']);
+                                $TRANSPORT_RATE = new TransportRates($transport['transport_rate']);
+                                $VEHICLE_TYPE = new VehicleType($transport['vehicle_type']);
+                                $MEMBER = new Member($transport['member']);
+                                $result = Feedback::getRatingByTransport($transport['id']);
+                                $rate_count = $result['rate_count'];
+                                $starNumber = round($result['rate_avg']);
+                                ?>
+                                <div class="room-box row room-box-new animated-box" data-animation="fadeInUp">
+                                    <?php
+                                    foreach ($TRANSPORTS_PHOTO->getTransportPhotosById($transport['id']) as $key => $TRANSPORTS_P) {
+                                        if ($key == 1) {
+                                            break;
+                                        }
+                                        ?>
+                                        <div class="col-md-4 room-img" style=" background-color: #E6F9FF;">
+                                            <a target="blank" href="transportation-view.php?id=<?php echo $transport['id']; ?>">
+                                                <img class=" vehicle-img" src="upload/transport/thumb/<?php echo $TRANSPORTS_P['image_name']; ?>"/>
+                                            </a>
+                                        </div>
+                                        <?php
+                                    }
+                                    ?>
+                                    <div class="r-sec col-md-8">
+                                        <div class="col-md-8 m-sec">
+                                            <div class="title-box">
+                                                <div class="title"><?php echo $transport['title']; ?></div>
+                                                <div class="">
+                                                    <div title="Rated <?php echo $starNumber; ?> out of 5" class="" >
+                                                        <span class="str" style="color: #FF9800">
+                                                            <?php
+                                                            for ($x = 1; $x <= $starNumber; $x++) {
+                                                                echo '<i class="fa fa-star"></i>';
+                                                            }
+//                                                                            if (strpos($starNumber, '.')) {
+//                                                                                echo '<img src="path/to/half/star.png" />';
+//                                                                                $x++;
+//                                                                            }
+                                                            while ($x <= 5) {
+                                                                echo '<i class="fa fa-star-o"></i>';
+                                                                $x++;
+                                                            }
+                                                            ?>
+
+                                                        </span> (<?php echo $rate_count; ?> Reviews)
+                                                    </div>
+    <!--                                                    <span class="brackets">(Based on 17 reviews)</span>-->
+                                                </div>
+                                            </div>
+                                            <div class="amenities">
+                                                <ul class="list-inline clearfix">
+                                                    <li class="col-md-12">
+                                                        <div class="title">Vehicle Type :</div>
+                                                        <div class="value"><?php echo $VEHICLE_TYPE->name; ?></div>
+                                                    </li>
+                                                    <li class="col-md-12">
+                                                        <div class="title">Reg: No :</div>
+                                                        <div class="value"><?php echo $transport['registered_number']; ?></div>
+                                                    </li>
+                                                    <li class="col-md-12">
+                                                        <div class="title">Reg: Year :</div>
+                                                        <div class="value"><?php echo $transport['registered_year']; ?></div>
+                                                    </li>
+                                                    <li class="col-md-12">
+                                                        <div class="title">Fuel Type :</div>
+                                                        <div class="value"><?php echo $FUEL_TYPE->name; ?></div>
+                                                    </li>
+                                                    <li class="col-md-12">
+                                                        <div style="width: 15%"> <img class="index-transport-ico icon-bottom" src="images/transport/passenges.png"  ><span class="transport-ico-txt style-e" ><?php echo $transport['no_of_passangers'] ?></span>
+                                                        </div>
+                                                        <div style="width: 15%">  <img class="index-transport-ico icon-bottom" src="images/transport/001-suitcase.png"   ><span class="transport-ico-txt style-e"  ><?php echo $transport['no_of_baggages'] ?></span>
+                                                        </div>
+                                                        <div style="width: 15%"><img class="index-transport-ico icon-bottom" src="images/transport/004-car.png" >
+                                                            <span class="transport-ico-txt style-e"   ><?php echo $transport['no_of_doors'] ?></span>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 desc desc-price m-sec">
+                                            <div class="row driver m-sec">
+                                                <div class="profile col-md-5 col-xs-4 col-sm-4">
+                                                    <a href="member-view.php?id=<?php echo $MEMBER->id; ?>" class="link">
+                                                        <?php
+                                                        if (empty($MEMBER->profile_picture)) {
+                                                            ?> 
+                                                            <img src="upload/member/member.png" class="img img-responsive img-thumbnail" id="profil_pic"/>
+                                                            <?php
+                                                        } else {
+                                                            if ($MEMBER->facebookID && substr($MEMBER->profile_picture, 0, 5) === "https") {
+                                                                ?>
+                                                                <img src="<?php echo $MEMBER->profile_picture; ?>" class="img-responsive thumbnail">
+                                                                <?php
+                                                            } else {
+                                                                ?>
+                                                                <img src="upload/member/<?php echo $MEMBER->profile_picture; ?>" class="img-responsive thumbnail">
+                                                                <?php
+                                                            }
+                                                        }
+                                                        ?>
+
+                                                    </a>
+                                                </div>
+                                                <div class="driver-name col-md-7 col-xs-8 col-sm-8"><div class="driver-name-posted">Posted by </div>
+                                                    <span class="driver-name-span">
+                                                        <?php
+                                                        echo substr($MEMBER->name, 0, 10);
+                                                        if (strlen($MEMBER->name) > 10) {
+                                                            echo '...';
+                                                        }
+                                                        ?>
+
+                                                    </span>
+
+                                                </div>
+                                                <div class="col-md-12" style="margin-top: 20px;">
+                                                    <img src="images/get in.png" alt="" width="30px"/>&nbsp;:<b><?php
+                                                        $cityfrom = new city($TRANSPORT_RATE->location_from);
+                                                        echo substr($cityfrom->name, 0, 10);
+                                                        echo'..';
+                                                        ?></b><br>
+                                                    <img src="images/getout.png" alt="" width="30px"/><b>&nbsp;:<?php
+                                                        $cityto = new City($TRANSPORT_RATE->location_to);
+                                                        echo substr($cityto->name, 0, 10);
+                                                        echo'..';
+                                                        ?></b>
+
+                                                </div>
+
+                                            </div>
+                                            <?php
+                                            if ($driver == 'self_driver') {
+                                                ?>
+                                                <div class="bottom-sec m-sec">
+                                                    Price Per Day
+                                                    <div class="pointer"><strong class="price">LKR <?php echo $transport['price']; ?></strong></div>
+                                                    <div class="btn-padding">
+                                                        <a href="rent-a-car-booking.php?transport=<?php echo $transport['id']; ?>&visitor=<?php echo $_SESSION['id']; ?>" class="more-info">Book Now</a>
+                                                    </div>
+                                                </div>
+                                                <?php
+                                            } else {
+                                                ?>
+                                                <div class="bottom-sec2 m-sec">
+                                                    <div class="pointer"><strong class="price">LKR <?php echo $transport['transport_price']; ?></strong></div>
+                                                    <div class="btn-padding">
+                                                        <a href="transport-booking.php?rate=<?php echo $transport['transport_rate']; ?>&visitor=<?php echo $_SESSION['id']; ?>" class="more-info">Book Now</a> 
+                                                    </div>
+                                                </div>
+                                                <?php
+                                            }
+                                            ?>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php
+                            }
+                            ?>
+                            <div class="row">
+                                <?php
+                                if ($driver == 'self_driver') {
+                                    $TRANSPORTS = Search::showPaginationSelfDrive($from, $type, $condition, $passengers, $setLimit, $setLimit);
+                                } else {
+                                    $TRANSPORTS = Search::showPagination($from, $to, $type, $condition, $passengers, $setLimit, $page);
+                                }
+                                ?>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
         </div>
-        <h2 class="topic">Booking Confirmation | Coral Sands Hotel - Hikkaduwa | #1001' . $bookingid . '</h2>
-        <h4 class="sal"><strong>Dear ' . $BOOKING->name . '</strong></h4>
-        <div class="desc">
-            <p>Thank you for making an online booking with Coral Sands Hotel. Your booking reference is :  #1001' . $bookingid . ' Your booking is subject to the terms & conditions listed on the website. This is your booking confirmation and is not valid as an accommodation voucher.</p>
-            <p>A separate accommodation voucher has been issued and e-mailed to you with respect to this reservation. Please produce a copy on arrival.</p>
-            <p>The holder of the Credit Card used to make the booking should be present at the time of check-in</p>
-        </div>
 
-        <table class="booking-details">
-           
-            <tr>
-                <td colspan="2"><strong><u>Customer Details</u></strong></td>
-            </tr>
-            <tr>
-                <td>Customer name</td>
-                <td>: ' . $BOOKING->name . '</td>
-            </tr>
-            <tr>
-                <td>Country</td>
-                <td>: ' . $BOOKING->country . '</td>
-            </tr>
-            <tr>
-                <td>Email</td>
-                <td>: ' . $BOOKING->email . '</td>
-            </tr>
-            <tr>
-                <td>Mobile Number</td>
-                <td>: ' . $BOOKING->contact . '</td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td colspan="2"><strong><u>Accommodation Details</u></strong></td>
-            </tr>
-            <tr>
-                <td>Hotel name</td>
-                <td>: Coral Sands Hotel</td>
-            </tr>
-            <tr>
-                <td>Hotel Address</td>
-                <td>: <a href="" style="text-decoration:none;color: #000;">No.326, Galle Rd, Hikkaduwa, Sri Lanka</a></td>
-            </tr>
-            <tr>
-                <td>Phone</td>
-                <td>: +94 91 227 7513</td>
-            </tr>
-            <tr>
-                <td>Email</td>
-                <td>: coralsands@stmail&#173;.lk</td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td colspan="2"><strong><u>Booking Summary</u></strong></td>
-            </tr>
-            <tr>
-                <td>Arrival date</td>
-                <td>: ' . $BOOKING->checkin . '</td>
-            </tr>
-            <tr>
-                <td>Departure date</td>
-                <td>: ' . $BOOKING->checkout . '</td>
-            </tr>
-        </table>
 
-        <br>
-        <table class="table">
-            <tr>
-                <th class="table-td1">Rooms</th>
-                <th class="table-td1">Room Type</th>
-                <th class="table-td1">Meal Type</th> 
-                <th class="table-td1">Room Rate (USD)</th>
-            </tr>' . $tr . '
-        </table>
-     
-        <table class="booking-details">
-            <tr>
-                <td colspan="2"><strong><u>Total Booking Cost</u></strong></td>
-            </tr>
-            <tr>
-                <td>Total Accommodation Amount</td>
-                <td>: US $ ' . number_format($totRoomPrice * $nights, 2) . '</td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-            </tr>
-        </table>
-        <table class="footer">
-            <tr>
-                <td class="footer-td1"></td>
-                <td colspan="2" style="font-size: 15px;"><strong>Thank You !</strong></td>
-            </tr>
-            <tr class="footer-tr">
-                <td></td>
-                <td class="footer-td2">Coral Sands Hotel</td>
-                <td>Phone: +94 91 227 7513</td>
-            </tr>
-            <tr class="footer-tr">
-                <td></td>
-                <td><a href="" style="text-decoration:none;color: #fff;">No.326, Galle Rd, Hikkaduwa, Sri Lanka</a></td>
-                <td>Email: coralsands@stmail&#173;.lk</td>
-            </tr>
+        <!-- Our Resort Values style-->  
+        <?php
+        include './footer.php';
+        ?>
+        <script src="js/jquery-2.2.4.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="assets/js/jquery-3.1.0.min.js" type="text/javascript"></script>
+        <script src="js/bootstrap-datepicker.js" type="text/javascript"></script>
+        <script src="assets/js/helper.js" type="text/javascript"></script>
+        <script src="assets/js/template.js" type="text/javascript"></script>
 
-        </table>
-    </body>
-</html>'
+    </body> 
+
+</html>

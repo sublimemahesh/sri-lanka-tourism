@@ -2632,3 +2632,7 @@ ul.setPaginate {
     margin-left: 15px;
     margin-bottom: 10px;
 }
+.text-bottom{
+    margin-bottom: -40px;
+    color: #0999f9;
+}
