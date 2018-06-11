@@ -40,7 +40,6 @@ if (isset($_POST['add-tour-package'])) {
             $imgName = $handle->file_dst_name;
         }
 
-
         $handle->image_resize = true;
         $handle->file_new_name_body = TRUE;
         $handle->file_overwrite = TRUE;
@@ -50,7 +49,7 @@ if (isset($_POST['add-tour-package'])) {
         $handle->image_x = 300;
         $handle->image_y = 206;
 
-        $handle->Process($dir_dest_thumb);
+            $handle->Process($dir_dest_thumb);
 
         if ($handle->processed) {
             $info = getimagesize($handle->file_dst_pathname);

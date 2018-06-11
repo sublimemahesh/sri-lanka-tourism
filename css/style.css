@@ -22,7 +22,7 @@
 
 
 
-body {
+.body {
     font-family: "Open Sans", sans-serif;
     height: 100%;
     overflow-x: hidden;
@@ -2165,6 +2165,16 @@ hr.style15:after {
     top: -81px;
     font-size: 15px;
     width: 75%;
+    font-weight: 600;
+}
+.erty {
+    background-color: #09090980;
+    color: #fffc;
+    padding: 10px 10px 10px 20px;
+    position: relative;
+    top: -81px;
+    font-size: 15px;
+    width: 45%;
     font-weight: 600;
 }
 .offer-heading, .article-heading {

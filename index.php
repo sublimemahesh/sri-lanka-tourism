@@ -418,7 +418,7 @@ $ARTICLETYPES = ArticleType::all();
                             </div>
                             <div class="row">
                                 <div class="col-md-12 col-sm-12 col-xs-12 btn-search btn-view">
-                                    <a href="#"><button class="btn-style">View All</button></a> 
+                                    <a href="view-alltour.php"><button class="btn-style">View All</button></a> 
                                 </div>
                             </div>
 
