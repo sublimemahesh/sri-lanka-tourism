@@ -24,6 +24,9 @@ if (isset($_POST['login'])) {
 if (isset($_POST['update'])) {
 
     $MEMBER = new Member($_POST['id']);
+    $language = implode(",", $_POST['langOpt']);
+
+
 
     $MEMBER->profile_picture = $imgName;
     $MEMBER->name = mysql_real_escape_string($_POST['name']);
@@ -34,6 +37,7 @@ if (isset($_POST['update'])) {
     $MEMBER->driving_licence_number = filter_input(INPUT_POST, 'driving_licence_number');
     $MEMBER->home_address = filter_input(INPUT_POST, 'home_address');
     $MEMBER->city = filter_input(INPUT_POST, 'city');
+    $MEMBER->languages = $language;
     $MEMBER->contact_number = mysql_real_escape_string($_POST['contact_number']);
     $MEMBER->about_me = filter_input(INPUT_POST, 'about_me');
 

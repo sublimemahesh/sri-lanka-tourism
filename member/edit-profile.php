@@ -26,6 +26,7 @@ $MEMBER = new Member($_SESSION['id']);
         <link href="assets/css/style.css" rel="stylesheet">
         <link href="assets/css/style-responsive.css" rel="stylesheet">
         <link href="assets/css/custom.css" rel="stylesheet" type="text/css"/>
+        <link href="assets/css/jquery.multiselect.css" rel="stylesheet" type="text/css"/>
         <style>
             .img-thumbnail {
                 max-width: 50% !important;
@@ -132,10 +133,36 @@ $MEMBER = new Member($_SESSION['id']);
                                                                     ?>
 
 
-                                                                        <a href="manage-licence-photos.php">Upload</a>
+                                                                    <a href="manage-licence-photos.php">Upload</a>
                                                                 </div>
                                                             </div>
                                                             <!--Home Address-->
+
+                                                            <div class="">
+                                                                <div class="bottom-top">Languages</div>
+                                                                <div class="formrow"> 
+                                                                    <select name="langOpt[]" class="form-control" multiple id="langOpt">
+                                                                        <?php
+                                                                        $languages = new Languages(NULL);
+                                                                        $all_languages = $languages->all();
+                                                                        foreach ($all_languages as $lang) {
+                                                                            $currntLanguages = $MEMBER->languages;
+
+                                                                            if (false !== array_search($lang['id'], explode(",", $currntLanguages))) {
+                                                                                ?>
+                                                                                <option value="<?php echo $lang['id']; ?>" selected="TRUE"><?php echo $lang['name']; ?></option>
+                                                                                <?php
+                                                                            } else {
+                                                                                ?>
+                                                                                <option value="<?php echo $lang['id']; ?>"><?php echo $lang['name']; ?></option>
+                                                                                <?php
+                                                                            }
+                                                                        }
+                                                                        ?>        
+                                                                    </select>
+                                                                </div>
+                                                            </div> 
+
                                                             <div class="">
                                                                 <div class="bottom-top">Home Address</div>
                                                                 <div class="formrow">
@@ -248,6 +275,7 @@ $MEMBER = new Member($_SESSION['id']);
 
         <script src="assets/js/form-component.js"></script>    
         <script src="js/profile.js" type="text/javascript"></script>
+        <script src="assets/js/jquery.multiselect.js" type="text/javascript"></script>
 
         <script>
             //custom select box
@@ -266,6 +294,14 @@ $MEMBER = new Member($_SESSION['id']);
                 $('select.styled').customSelect();
             });
 
+        </script>
+
+        <script>
+            $('#langOpt').multiselect({
+                columns: 1,
+                placeholder: 'Select Languages',
+                search: true
+            });
         </script>
 
     </body>

@@ -98,7 +98,6 @@ $TOUR_TYPE = new TourType($id);
 
                                     <div class="row clearfix">
                                         <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
-
                                             <input type="hidden" id="id" value="<?php echo $TOUR_TYPE->id; ?>" name="id"/>
                                             <input type="hidden" id="authToken" value="<?php echo $_SESSION["authToken"]; ?>" name="authToken"/>
                                             <input type="hidden" id="oldImageName" value="<?php echo $TOUR_TYPE->picture_name; ?>" name="oldImageName"/>
