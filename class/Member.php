@@ -19,6 +19,7 @@ class Member {
     public $home_address;
     public $city;
     public $profile_picture;
+    public $languages;
     public $password;
     public $facebookID;
     public $resetcode;
@@ -29,7 +30,7 @@ class Member {
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`,`name`,`email`,`nic_number`,`date_of_birthday`,`contact_number`,`driving_licence_number`,`licence_front`,`licence_back`,`home_address`,`city`,`profile_picture`,`facebookID`,`resetcode`,`about_me`,`status`,`rank` FROM `member` WHERE `id`=" . $id;
+            $query = "SELECT `id`,`name`,`email`,`nic_number`,`date_of_birthday`,`contact_number`,`driving_licence_number`,`licence_front`,`licence_back`,`home_address`,`city`,`profile_picture`,`languages`,`facebookID`,`resetcode`,`about_me`,`status`,`rank` FROM `member` WHERE `id`=" . $id;
 
             $db = new Database();
 
@@ -47,6 +48,7 @@ class Member {
             $this->home_address = $result['home_address'];
             $this->city = $result['city'];
             $this->profile_picture = $result['profile_picture'];
+            $this->languages = $result['languages'];
             $this->facebookID = $result['facebookID'];
             $this->resetcode = $result['resetcode'];
             $this->about_me = $result['about_me'];
@@ -61,7 +63,7 @@ class Member {
 
 
 
-        $query = "INSERT INTO `member` (`name`,`email`,`nic_number`,`date_of_birthday`,`contact_number`,`driving_licence_number`,`licence_front`,`licence_back`,`home_address`,`city`,`profile_picture`,`password`,`status`,`rank`) VALUES  ('"
+        $query = "INSERT INTO `member`(`name`,`email`,`nic_number`,`date_of_birthday`,`contact_number`,`driving_licence_number`,`licence_front`,`licence_back`,`home_address`,`city`,`profile_picture`,`languages`,`password`,`status`,`rank`) VALUES  ('"
                 . $this->name . "','"
                 . $this->email . "','"
                 . $this->nic_number . "','"
@@ -73,6 +75,7 @@ class Member {
                 . $this->home_address . "','"
                 . $this->city . "','"
                 . $this->profile_picture . "','"
+                . $this->languages . "','"
                 . $this->password . "','"
                 . $this->status . "','"
                 . $this->rank . "')";
@@ -257,6 +260,7 @@ class Member {
                 . "`licence_back` ='" . $this->licence_back . "', "
                 . "`home_address` ='" . $this->home_address . "', "
                 . "`city` ='" . $this->city . "', "
+                . "`languages` ='" . $this->languages . "', "
                 . "`status` ='" . $this->status . "', "
                 . "`about_me` ='" . $this->about_me . "', "
                 . "`rank` ='" . $this->rank . "' "
