@@ -303,7 +303,5 @@ $MEMBER = new Member($_SESSION['id']);
                 search: true
             });
         </script>
-
     </body>
-
 </html>
