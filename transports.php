@@ -124,7 +124,7 @@ if ($driver == 'self_driver') {
 
                                                         </span> (<?php echo $rate_count; ?> Reviews)
                                                     </div>
-    <!--                                                    <span class="brackets">(Based on 17 reviews)</span>-->
+                                                        <span class="brackets">(Based on 17 reviews)</span>
                                                 </div>
                                             </div>
                                             <div class="amenities">
@@ -145,7 +145,7 @@ if ($driver == 'self_driver') {
                                                         <div class="title">Fuel Type :</div>
                                                         <div class="value"><?php echo $FUEL_TYPE->name; ?></div>
                                                     </li>
-                                                    <li class="col-md-12">
+                                                    <li class="col-md-12 col-xs-12 " style="margin-top:10px;">
                                                         <div style="width: 15%"> <img class="index-transport-ico icon-bottom" src="images/transport/passenges.png"  ><span class="transport-ico-txt style-e" ><?php echo $transport['no_of_passangers'] ?></span>
                                                         </div>
                                                         <div style="width: 15%">  <img class="index-transport-ico icon-bottom" src="images/transport/001-suitcase.png"   ><span class="transport-ico-txt style-e"  ><?php echo $transport['no_of_baggages'] ?></span>
@@ -247,7 +247,11 @@ if ($driver == 'self_driver') {
                                                         </span>
 
                                                     </div>
-                                                    <div class="col-md-12" style="margin-top: 20px;">
+                                                   
+
+                                                </div>
+                                                
+                                                 <div class="col-md-12  icon-bottom" >
                                                         <img src="images/get in.png" alt="" width="30px"/>&nbsp;:<b><?php
                                                             $cityfrom = new city($TRANSPORT_RATE->location_from);
                                                             echo substr($cityfrom->name, 0, 10);
@@ -261,12 +265,10 @@ if ($driver == 'self_driver') {
 
                                                     </div>
 
-                                                </div>
-
-                                                <div class="bottom-sec2 m-sec">
+                                                <div class="bottom-sec2 m-sec col-md-12">
                                                     <div class="pointer"><strong class="price">LKR <?php echo $transport['transport_price']; ?></strong></div>
                                                     <div class="btn-padding">
-                                                        <a href="transport-booking.php?rate=<?php echo $transport['transport_rate']; ?>&visitor=<?php echo $_SESSION['id']; ?>" class="more-info">Book Now</a> 
+                                                        <a href="transport-booking.php?rate=<?php echo $transport['transport_rate']; ?>&visitor=<?php echo $_SESSION['id']; ?>" class="more-info2">Book Now</a> 
                                                     </div>
                                                 </div>
 
