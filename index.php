@@ -39,14 +39,16 @@ $ARTICLETYPES = ArticleType::all();
         <link href="css/index-accommodation-all.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
+        
         <!-- Our Resort Values style-->
         <?php
         include './header.php';
         ?>
-
+        <div class="container-fluid">
         <div class="row background-image" style="background-image: url('images/hotel/back.jpg');">
             <div class="container body-style">
-                <div class="text-center">
+             
+                <div class=" text-center">
                     <div class=" col-md-12 hidden-sm hidden-xs">
 
                         <ul class="nav nav-pills center-block" style="width:650px;">
@@ -708,9 +710,10 @@ $ARTICLETYPES = ArticleType::all();
                         </div>
                     </div>
                 </div>
+                
             </div>
         </div>
-    </div>
+        </div>
 
     <!-- Our Resort Values style-->  
     <?php include './footer.php'; ?>
