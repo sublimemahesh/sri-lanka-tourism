@@ -921,6 +921,16 @@ span.score-rate{
     -webkit-transition: all 0.3s ease;
     -o-transition: all 0.3s ease;
     transition: all 0.3s ease; }
+.more-info2 {
+    color: #222222;
+    padding: 8px 35px;
+    background: #c8eef3;
+    /*        display: inline-block;
+            border: 1px solid #c8eef3;*/
+    -webkit-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease; }
+
 #rooms-section.row-view .room-container .room-box1 .m-sec .more-info:hover {
     color: #c8eef3;
     background: #222222; }
@@ -929,7 +939,9 @@ span.score-rate{
     line-height: 30px;
     color: #000;
 }
-
+.icon-bottom{
+    margin-bottom: 10px;
+}
 .room-container {
     margin: 50px -15px 0; }
 .room-container .room-box1 {
