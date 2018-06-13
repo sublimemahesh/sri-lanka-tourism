@@ -833,7 +833,7 @@
         text-decoration: none;
     }
     .mobile-view-ico{
-        width: 25px;
+        width: 27px;
     }
 
     .tab-content{
@@ -1534,3 +1534,20 @@
         margin: 80px 0px 15px 0px;
     }
 }
+/*landscape responsive
+*/
+@media (min-width:360px) and (max-width: 640px) {
+  .sec-header-pad{
+        padding-top: 0em;
+    }
+}
+    /*
+
+@media (min-width:360px) and (max-width: 640px) {
+    .padding-l{
+    margin-left: 5px;    
+    }
+    .text-top{
+        padding-top: 10px;
+    }
+}*/

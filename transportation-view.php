@@ -224,10 +224,10 @@ $MEMBER = new Member($TRANSPORTS->member);
                                 $CITYTO = new City($transport_rate['location_to']);
                                 ?>
                                 <tr>
-                                    <td data-column="Picking Up"><b><?Php echo $CITYFROM->name; ?></b></td>
-                                    <td data-column="Dropping Off"><b><?Php echo $CITYTO->name; ?></b></td>
-                                    <td data-column="Distance(KM)"><b><?Php echo $transport_rate['distance'] . ' KM'; ?></b></td>
-                                    <td data-column="Price(LKR)"><b><?Php echo 'LKR ' . $transport_rate['price']; ?></b></td>
+                                    <td data-column="Picking Up" class="n-font"><b><?Php echo $CITYFROM->name; ?></b></td>
+                                    <td data-column="Dropping Off" class="n-font"><b><?Php echo $CITYTO->name; ?></b></td>
+                                    <td data-column="Distance(KM)" class="n-font"><b><?Php echo $transport_rate['distance'] . ' KM'; ?></b></td>
+                                    <td data-column="Price(LKR)" class="n-font"><b><?Php echo 'LKR ' . $transport_rate['price']; ?></b></td>
                                     <td> 
                                         <?php
                                         if (isset($_SESSION["login"])) {
