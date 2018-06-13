@@ -70,9 +70,9 @@ if ($driver == 'self_driver') {
         <?php
         include './header.php';
         ?>
-
+        <div class="container-fluid">
         <div class="row background-image" style="background-color: #fff;">
-            <section id="rooms-section" class="row-view">
+          <div id="rooms-section" class="row-view">
                 <div class="inner-container container">
                     <div class="room-container clearfix">
                         <div class="col-md-9">
@@ -298,9 +298,9 @@ if ($driver == 'self_driver') {
 
                     </div>
                 </div>
-            </section>
+            </div>
         </div>
-
+        </div>
 
         <!-- Our Resort Values style-->  
         <?php
