@@ -835,7 +835,7 @@
     .mobile-view-ico{
         width: 22px;
         margin-bottom: -3px;
-       
+
     }
     .body-style{
         border-radius: 0px;
@@ -1233,7 +1233,7 @@
     .btn-view1 {
         margin: -56px 0px 25px 0px;
     }
-        .transport-description {
+    .transport-description {
         margin-bottom: 25px;
     }
 
@@ -1541,18 +1541,175 @@
 }
 /*landscape responsive
 */
-@media (min-width:360px) and (max-width: 640px) {
-  .sec-header-pad{
-        padding-top: 0em;
+@media (min-width:460px) and (max-width: 640px) {
+    .logo{
+        width: 75%;
+    }
+    .sec-header-pad{
+        padding-top: 0px;
+    }
+    .sec-header-pad h3{
+        color: #FFFFFF;
+        font: 400 1.15em/1.8em "Open Sans", sans-serif;
+        font-style: normal;
+        margin: -30px 0 -2.1em;
+        padding: 0;
+        font-style: italic;
+        position: relative;
+
+    }
+    .add-your{
+        vertical-align: bottom;
+    }
+    .mobile-view{
+        margin-left: 22px;
+    }
+    .owl-nav{
+        text-align: right;
+    }
+    .body-style{
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+}
+@media (min-width:540px) and (max-width: 640px) {
+    .logo{
+        width: 60%;
+    }
+    .sec-header-pad{
+        padding-top: 0px;
+    }
+    .owl-nav{
+        text-align: right;
+    }
+    .mobile-view{
+        margin-left: 35px;
+    }
+    .body-style{
+        margin-top: 0px;
+        margin-bottom: 0px;
     }
 }
-    /*
+@media (min-width:640px)  {
+    .logo{
+        width: 50%;
+        margin-top: 5px;
+    }
+    .owl-nav{
+        text-align: right;
+    }
+    .body-style{
+        margin-top: 0px;
+        margin-bottom: 0px;
+        border-radius: 0px;
+    }
+    .sec-header-pad{
+        padding-top: 0px;
+    }
+    .mobile-view{
+        background-color: rgba(0,51,102,.80);
+        padding-left: 5px;
+        padding-right: 5px;
+        border: 1px solid;
+        border-radius: 6px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        margin-top: 20px;
+        width: 65px;
+        height: 60px;
+        margin-left: 32px;
+    }
+    .m-padding{
+        position: relative;
+        display: block;
+        padding: 21px 25px;
+    }
+    .fa-facebook {
+        background: #3B5998;
+        color: white;
+        padding-top: 5px;
+        padding-right: 8px;
+        padding-left: 8px;
+        padding-bottom: 5px;
+        font-size: 20px;
+        text-align: center;
+    }
 
-@media (min-width:360px) and (max-width: 640px) {
-    .padding-l{
-    margin-left: 5px;    
+    .fa-twitter{
+        background: #55ACEE;
+        color: white;
+        padding-top: 5px;
+        padding-right: 6px;
+        padding-left: 6px;
+        padding-bottom: 5px;
+        font-size: 20px;
+        text-align: center;
     }
-    .text-top{
-        padding-top: 10px;
+    .fa-linkedin{
+        background: #007bb5;
+        color: white;
+        padding-top: 5px;
+        padding-right: 7px;
+        padding-left: 7px;
+        padding-bottom: 5px;
+        font-size: 20px;
+        text-align: center;
     }
-}*/
+    .fa-instagram{
+        background: #125688;
+        color: white;
+        padding-top: 5px;
+        padding-right: 7px;
+        padding-left: 7px;
+        padding-bottom: 5px;
+        font-size: 20px;
+        text-align: center;
+
+    }
+    .sec-header h2{
+        color: #FFFFFF;
+        font: 400 1.15em/1.8em "Open Sans", sans-serif;
+        margin: 2px 0 0.9em;
+        padding: 0;
+        position: relative;
+        color: #FFFFFF;
+        font: 2.33em/1em 'Ubuntu Condensed', sans-serif;
+    }
+    .sec-header h3{
+        color: #FFFFFF;
+        font: 400 1.15em/1.8em "Open Sans", sans-serif;
+        font-style: normal;
+        margin: -32px 0 -1.1em;
+        padding: 0;
+        font-style: italic;
+        position: relative; 
+    }
+    .add-your{
+        vertical-align: bottom;
+    }
+    @media (min-width:770px) and (max-width:955px) {
+        .sec-header-pad{
+            padding-top: 70px;
+        }
+        .owl-nav{
+            text-align: right;
+        }
+        .social-icon{
+            margin-top: 20px;
+        }
+    }
+
+    @media (min-width:640px) and (max-width:1600px) {
+
+        .social-icon{
+            margin-top: 20px;
+        }
+        .owl-nav{
+            text-align: right;
+        }
+
+
+    }
+
+

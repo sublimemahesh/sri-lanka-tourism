@@ -108,7 +108,7 @@
                     <li><a data-original-title="Twitter" href="#"><i class="fa fa-twitter"></i></a></li>
                     <li><a data-original-title="Linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
                     <li><a data-original-title="instagram" href="#"><i class="fa fa-instagram"></i></a></li>
-                    <li> <a class="head-link-hover" href="member/index.php"><div class="button-member-mobile" style="vertical-align:middle"><span>Add Your Business</span></div></a> </li>
+                    <li> <a class="head-link-hover" href="member/index.php"><div class="button-member-mobile add-your" ><span>Add Your Business</span></div></a> </li>
                 </ul>
             </div>
         </div>
