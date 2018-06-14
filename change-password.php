@@ -41,7 +41,7 @@ if (!isset($_SESSION)) {
                     <div class="panel panel-default margin-panel">
 
                         <div class="panel-heading"><i class="fa fa-user"></i>Change Password</div>
-                        <div class="panel-body">  <div class="body">
+                        <div class="panel-body">  <div class="">
                                 <div class="col-md-12">
                                     <div class="row">
                                         <div class="col-sm-12 col-md-12 visitor-prof-margin text-center">  

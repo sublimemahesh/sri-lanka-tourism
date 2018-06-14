@@ -32,7 +32,7 @@ if (!isset($_SESSION)) {
                     <div class="panel panel-default margin-panel">
 
                         <div class="panel-heading"><i class="fa fa-user"></i>Edit Profile</div>
-                        <div class="panel-body">  <div class="body">
+                        <div class="panel-body">  <div class="">
                                 <div class="col-md-12">
                                     <?php
                                     $vali = new Validator();

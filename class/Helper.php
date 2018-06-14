@@ -13,12 +13,9 @@ class Helper {
     }
 
     public function calImgResize($newHeight, $width, $height) {
-
         $percent = $newHeight / $height;
         $result1 = $percent * 100;
-
         $result2 = $width * $result1 / 100;
-
         return array($result2, $newHeight);
     }
 
@@ -27,5 +24,4 @@ class Helper {
       $path = str_replace('class', '', dirname(__FILE__));
         return $path;
     }
-
 }
