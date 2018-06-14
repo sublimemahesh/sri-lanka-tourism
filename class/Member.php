@@ -23,6 +23,7 @@ class Member {
     public $password;
     public $facebookID;
     public $resetcode;
+    public $authToken;
     public $about_me;
     public $rank;
     public $status;
@@ -30,7 +31,7 @@ class Member {
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`,`name`,`email`,`nic_number`,`date_of_birthday`,`contact_number`,`driving_licence_number`,`licence_front`,`licence_back`,`home_address`,`city`,`profile_picture`,`languages`,`facebookID`,`resetcode`,`about_me`,`status`,`rank` FROM `member` WHERE `id`=" . $id;
+            $query = "SELECT `id`,`name`,`email`,`nic_number`,`date_of_birthday`,`contact_number`,`driving_licence_number`,`licence_front`,`licence_back`,`home_address`,`city`,`profile_picture`,`languages`,`facebookID`,`resetcode`,`authToken`,`about_me`,`status`,`rank` FROM `member` WHERE `id`=" . $id;
 
             $db = new Database();
 
@@ -51,6 +52,7 @@ class Member {
             $this->languages = $result['languages'];
             $this->facebookID = $result['facebookID'];
             $this->resetcode = $result['resetcode'];
+            $this->authToken = $result['authToken'];
             $this->about_me = $result['about_me'];
             $this->rank = $result['rank'];
             $this->status = $result['status'];
@@ -128,8 +130,10 @@ class Member {
             return FALSE;
         } else {
             $this->id = $result['id'];
+            $this->setAuthToken($result['id']);
             $member = $this->__construct($this->id);
-
+            $this->setUserSession($member);
+      
             if (!isset($_SESSION)) {
                 session_start();
                 session_unset($_SESSION);
@@ -145,7 +149,7 @@ class Member {
 
     public function login($useremail, $password) {
 
-        $query = "SELECT * FROM `member` WHERE `email`= '" . $useremail . "' AND `password`= '" . $password . "'";
+        $query = "SELECT `id`,`name`,`email`,`profile_picture` FROM `member` WHERE `email`= '" . $useremail . "' AND `password`= '" . $password . "'";
 
         $db = new Database();
 
@@ -156,31 +160,71 @@ class Member {
         } else {
 
             $this->id = $result['id'];
+            $this->setAuthToken($result['id']);
             $member = $this->__construct($this->id);
 
-            if (!isset($_SESSION)) {
-                session_start();
-                session_unset($_SESSION);
-            }
+            $this->setUserSession($member);
 
-            $_SESSION["login"] = TRUE;
-
-            $_SESSION["id"] = $member->id;
-            $_SESSION["name"] = $member->name;
-            $_SESSION["email"] = $member->email;
-            $_SESSION["nic_number"] = $member->nic_number;
-            $_SESSION["date_of_birthday"] = $member->date_of_birthday;
-            $_SESSION["contact_number"] = $member->contact_number;
-            $_SESSION["driving_licence_number"] = $member->driving_licence_number;
-            $_SESSION["home_address"] = $member->home_address;
-            $_SESSION["city"] = $member->city;
-            $_SESSION["profile_picture"] = $member->profile_picture;
-            $_SESSION["status"] = $member->status;
-            $_SESSION["rank"] = $member->rank;
-
-            return TRUE;
+            return $member;
         }
     }
+
+    private function setAuthToken($id) {
+
+        $authToken = md5(uniqid(rand(), true));
+
+        $query = "UPDATE `member` SET `authToken` ='" . $authToken . "' WHERE `id`='" . $id . "'";
+
+        $db = new Database();
+
+        if ($db->readQuery($query)) {
+
+            return $authToken;
+        } else {
+            return FALSE;
+        }
+    }
+
+    private function setUserSession($member) {
+
+        if (!isset($_SESSION)) {
+            session_start();
+            session_unset($_SESSION);
+        }
+
+        $_SESSION["login"] = TRUE;
+        $_SESSION["id"] = $member->id;
+        $_SESSION["name"] = $member->name;
+        $_SESSION["email"] = $member->email;
+        $_SESSION["profile_picture"] = $member->profile_picture;
+        $_SESSION["authToken"] = $member->authToken;
+    }
+
+//    public function authenticate() {
+//
+//        if (!isset($_SESSION)) {
+//            session_start();
+//        }
+//
+//        $id = NULL;
+//
+//        if (isset($_SESSION["id"])) {
+//            $id = $_SESSION["id"];
+//        }
+//
+//        $query = "SELECT `id` FROM `member` WHERE `id`= '" . $id . "'";
+//
+//        $db = new Database();
+//
+//        $result = mysql_fetch_array($db->readQuery($query));
+//
+//        if (!$result) {
+//            return FALSE;
+//        } else {
+//
+//            return TRUE;
+//        }
+//    }
 
     public function authenticate() {
 
@@ -189,12 +233,17 @@ class Member {
         }
 
         $id = NULL;
+        $authToken = NULL;
 
         if (isset($_SESSION["id"])) {
             $id = $_SESSION["id"];
         }
 
-        $query = "SELECT `id` FROM `member` WHERE `id`= '" . $id . "'";
+        if (isset($_SESSION["authToken"])) {
+            $authToken = $_SESSION["authToken"];
+        }
+
+        $query = "SELECT `id` FROM `member` WHERE `id`= '" . $id . "' AND `authToken`= '" . $authToken . "'";
 
         $db = new Database();
 
@@ -227,6 +276,7 @@ class Member {
         unset($_SESSION["username"]);
         unset($_SESSION["password"]);
         unset($_SESSION["status"]);
+        unset($_SESSION["authToken"]);
         unset($_SESSION["rank"]);
         unset($_SESSION["login"]);
 
