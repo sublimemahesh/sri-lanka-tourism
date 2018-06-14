@@ -7,8 +7,11 @@ if (isset($_SERVER['HTTP_REFERER'])) {
     $previous = $_SERVER['HTTP_REFERER'];
 }
 
-$tourid = $_GET['tourid'];
-$rate = $_GET['rate'];
+if (isset($_GET['tourid'])) {
+    $tourid = $_GET['tourid'];
+} elseif (isset($_GET['rate'])) {
+    $rate = $_GET['rate'];
+}
 ?>
 <html lang="en">
     <head>
