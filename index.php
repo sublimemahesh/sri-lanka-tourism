@@ -38,7 +38,14 @@ $ARTICLETYPES = ArticleType::all();
         <link href="css/price-range/ion.rangeSlider.skinFlat.css" rel="stylesheet" type="text/css"/>
         <link href="css/index-accommodation-all.css" rel="stylesheet" type="text/css"/>
     </head>
+    <style>
+        .owl -carousel.owl -stage, .owl -carousel.owl -drag.owl -item{
+            -ms-touch-action: auto;
+            touch-action: auto;
+        }
+    </style>
     <body>
+        
 
         <!-- Our Resort Values style-->
         <?php
@@ -731,43 +738,36 @@ $ARTICLETYPES = ArticleType::all();
                     todayHighlight: true
                 }).datepicker('update', new Date());
             });
-
             $(function () {
                 $("#datepicker1").datepicker({
                     autoclose: true,
                     todayHighlight: true
                 }).datepicker('update', new Date());
             });
-
             $(function () {
                 $("#datepicker2").datepicker({
                     autoclose: true,
                     todayHighlight: true
                 }).datepicker('update', new Date());
             });
-
             $(function () {
                 $("#datepicker3").datepicker({
                     autoclose: true,
                     todayHighlight: true
                 }).datepicker('update', new Date());
             });
-
             $(function () {
                 $("#datepicker4").datepicker({
                     autoclose: true,
                     todayHighlight: true
                 }).datepicker('update', new Date());
             });
-
             $(function () {
                 $("#datepicker5").datepicker({
                     autoclose: true,
                     todayHighlight: true
                 }).datepicker('update', new Date());
             });
-
-
         </script> 
         <script>
             $(document).ready(function () {
@@ -779,14 +779,28 @@ $ARTICLETYPES = ArticleType::all();
                     autoplay: true,
                     autoplayTimeout: 5000,
                     autoplayHoverPause: true,
+                    Vertical: true,
+                    mouseDrag: true,
+                    touchDrag: true,
+                    animateOut: 'slideOutUp',
+                    animateIn: 'slideInUp',
                     responsive: {
                         0: {
                             items: 1,
-                            nav: true
+                            nav: true,
+                            Vertical: true,
+                            mouseDrag: true,
+                            touchDrag: true,
                         },
                         600: {
                             items: 3,
-                            nav: true
+                            nav: true,
+                            Vertical: true,
+                            mouseDrag: true,
+                            touchDrag: true,
+                            animateOut: 'slideOutUp',
+                            animateIn: 'slideInUp'
+
                         },
                         1000: {
                             items: 3,
@@ -799,8 +813,8 @@ $ARTICLETYPES = ArticleType::all();
                             loop: true
                         }
                     }
-                });
 
+                });
                 $('#accommodation-slider').owlCarousel({
 
                     loop: true,
@@ -830,7 +844,6 @@ $ARTICLETYPES = ArticleType::all();
                         }
                     }
                 });
-
                 $('#transport-slider').owlCarousel({
 
                     loop: true,
@@ -860,7 +873,6 @@ $ARTICLETYPES = ArticleType::all();
                         }
                     }
                 });
-
                 $('#article-slider').owlCarousel({
                     loop: true,
                     margin: 10,
@@ -890,7 +902,6 @@ $ARTICLETYPES = ArticleType::all();
                         }
                     }
                 });
-
             });
         </script>
 
