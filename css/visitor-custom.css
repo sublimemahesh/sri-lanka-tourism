@@ -43,6 +43,18 @@ and open the template in the editor.
     background-color: #fff;
     color: #000;
 }
+
+.create-ac-register{
+    text-align: center;
+}
+.create-account{
+    font-size: 20px;
+    color: #23527c;
+}
+
+.create-account:hover{
+  text-decoration: none;
+}
 .visitor-prof-margin{
     margin-top: 40px;
 }

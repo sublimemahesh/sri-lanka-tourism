@@ -2,16 +2,24 @@
 <?php
 include './class/include.php';
 
-$previous = "javascript:history.go(-1)";
-if (isset($_SERVER['HTTP_REFERER'])) {
-    $previous = $_SERVER['HTTP_REFERER'];
+//$previous = "javascript:history.go(-1)";
+//if (isset($_SERVER['HTTP_REFERER'])) {
+//    $previous = $_SERVER['HTTP_REFERER'];
+//}
+if (!isset($_SESSION)) {
+    session_start();
 }
 
-if (isset($_GET['tourid'])) {
-    $tourid = $_GET['tourid'];
-} elseif (isset($_GET['rate'])) {
-    $rate = $_GET['rate'];
+$back_url = '';
+if (isset($_SESSION["back_url"])) {
+    $back_url = $_SESSION["back_url"];
 }
+
+//if (isset($_GET['tourid'])) {
+//    $tourid = $_GET['tourid'];
+//} elseif (isset($_GET['rate'])) {
+//    $rate = $_GET['rate'];
+//}
 ?>
 <html lang="en">
     <head>
@@ -56,25 +64,9 @@ if (isset($_GET['tourid'])) {
                                     <a class="link" href="forget-password.php"> Forgot Password?</a>
                                 </span>
                             </label>
-                            <?php
-                            if (isset($_GET['back'])) {
-                                if ($_GET['back'] === 'true') {
-                                    ?>
-                                    <input type="hidden" class="form-control" name="back" value="<?php echo $previous; ?>">
-                                    <?php
-                                } elseif ($_GET['back'] === 'tour') {
-                                    ?>
-                                    <!--<input type="hidden" class="form-control" name="back" value="https://localhost/sri-lanka-tourism/tour-package-booking.php?id=<?php echo $tourid; ?>">-->
-                                    <input type="hidden" class="form-control" name="back" value="https://www.srilankatourism.travel/tour-package-booking.php?id=<?php echo $tourid; ?>">
-                                    <?php
-                                } elseif ($_GET['back'] === 'transport') {
-                                    ?>
-                                    <!--<input type="hidden" class="form-control" name="back" value="http://localhost/sri-lanka-tourism/transport-booking.php?rate=<?php echo $rate; ?>">-->
-                                    <input type="hidden" class="form-control" name="back" value="https://www.srilankatourism.travel/transport-booking.php?rate=<?php echo $rate; ?>">
-                                    <?php
-                                }
-                            }
-                            ?>
+
+                            <input type="hidden" class="form-control"  name="back_url" value="<?php echo $back_url ?>">
+
 
                             <button class="btn btn-theme btn-block"  name="login" type="submit"><i class="fa fa-lock"></i> SIGN IN</button>
                             <hr class="hr">
@@ -86,11 +78,10 @@ if (isset($_GET['tourid'])) {
                             <button class="btn btn-danger social-log-buttons-1" type="submit"><i class="fa fa-google-plus"></i> Google</button>
                         </div>
                         <hr class="hr">
-                        <div class="registration">
+                        <div class="registration create-ac-register">
                             <p class="font-padding">Don't have an account yet?</p>
                             <label class="checkbox">
-                                <a class="link" href="visitor-register.php"> Create an account</a>
-
+                                <a class="link create-account" href="visitor-register.php"> Create an account</a>
                             </label>
                         </div>
 
