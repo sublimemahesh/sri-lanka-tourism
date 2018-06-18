@@ -4,7 +4,6 @@ if (!isset($_SESSION)) {
     session_start();
 }
 $id = $_GET["id"];
-
 $TRANSPORTS = new Transports($id);
 $TRANSPORTS_PHOTO = new TransportPhoto(NULL);
 $TRANSPORT_RATE_OBJ = new TransportRates(NULL);
