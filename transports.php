@@ -202,7 +202,7 @@ if ($driver == 'self_driver') {
                                                     Price Per Day
                                                     <div class="pointer"><strong class="price">LKR <?php echo $transport['price']; ?></strong></div>
                                                     <div class="btn-padding">
-                                                        <a href="rent-a-car-booking.php?transport=<?php echo $transport['id']; ?>&visitor=<?php echo $_SESSION['id']; ?>" class="more-info">Book Now</a>
+                                                        <a href="rent-a-car-booking.php?transport=<?php echo $transport['id'];?>" class="more-info">Book Now</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -268,7 +268,7 @@ if ($driver == 'self_driver') {
                                                 <div class="bottom-sec2 m-sec col-md-12">
                                                     <div class="pointer"><strong class="price">LKR <?php echo $transport['transport_price']; ?></strong></div>
                                                     <div class="btn-padding">
-                                                        <a href="transport-booking.php?rate=<?php echo $transport['transport_rate']; ?>&visitor=<?php echo $_SESSION['id']; ?>" class="more-info2">Book Now</a> 
+                                                        <a href="transport-booking.php?rate=<?php echo $transport['transport_rate'];?>" class="more-info2">Book Now</a> 
                                                     </div>
                                                 </div>
 
