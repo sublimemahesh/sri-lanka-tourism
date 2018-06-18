@@ -94,24 +94,10 @@ $count_feedbacks = count($feedbacks);
                     }
                     ?>
 
-                    <?php
-                    if (isset($_SESSION["login"])) {
-                        ?>
-                        <div class="col-md-4 col-xs-4 col-md-offset-4 book-now-btn">
-                            <a href="tour-package-booking.php?id=<?php echo $tourid; ?>&visitor=<?php echo $_SESSION['id']; ?>" class="button"><span>Book Now </span></a>
-                        </div>
-                        <?php
-                    } else {
-                        ?>
-                        <div class="col-md-4 col-xs-4 col-md-offset-4 book-now-btn">
-                            <a href="#" class="button btn-not-loging"><span>Book Now </span></a>
-                        </div>
-                        <?php
-                        include './add-booking.php';
-                        ?>
-                        <?php
-                    }
-                    ?>
+
+                    <div class="col-md-4 col-xs-4 col-md-offset-4 book-now-btn">
+                        <a href="tour-package-booking.php?tour=<?php echo $tourid;?>" class="button"><span>Book Now </span></a>
+                    </div>
 
                     <div class="col-sm-12">			
                         <div id="myCarousel" class="carousel slide tour-package-testimonials" data-ride="carousel">
