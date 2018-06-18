@@ -1,24 +1,28 @@
 <!DOCTYPE html>
 <?php
 include './class/include.php';
-include './auth.php';
-if (isset($_GET['visitor'])) {
-    $VISITOR = $_GET['visitor'];
+if (isset($_GET['tour'])) {
+    $TOUR = $_GET['tour'];
 }
-if (isset($_GET['id'])) {
-    $tourid = $_GET['id'];
+if (!isset($_SESSION)) {
+    session_start();
+}
+if (!isset($_SESSION["login"])) {
+    $_SESSION["back_url"] = 'http://www.srilankatourism.travel/tour-package-booking.php?tour=' . $TOUR;
+    redirect('visitor-login.php?message=24');
+} else {
+    $VISITOR = $_SESSION["id"];
 }
 
 $VISITOR = new Visitor($VISITOR);
 
-$TOURPACKAGE = new TourPackage($tourid);
+$TOURPACKAGE = new TourPackage($TOUR);
 $TYPE = new TourType($TOURPACKAGE->tourtype);
 $MEMBER = new Member($TOURPACKAGE->member);
 
-$result = TourSubSection::CountDaysInTour($tourid);
+$result = TourSubSection::CountDaysInTour($TOUR);
 $days = $result['days'];
 $nights = (int) $days - 1;
-
 
 $today = date("Y-m-d", time());
 date_default_timezone_set('Asia/Colombo');
@@ -149,7 +153,7 @@ $now = date('Y-m-d H:i:s');
                                     <div class="top-bott50">
                                         <div class="bottom-top">
                                             <input type="hidden" id="visitor" value="<?php echo $VISITOR->id; ?>" name="visitor"/>
-                                            <input type="hidden" id="tour_package" value="<?php echo $tourid; ?>" name="tour_package"/>
+                                            <input type="hidden" id="tour_package" value="<?php echo $TOUR; ?>" name="tour_package"/>
                                             <input type="hidden" id="date_time_booked" value="<?php echo $now; ?>" name="date_time_booked"/>
                                             <input type="hidden" id="days" value="<?php echo $nights; ?>" name="days"/>
                                             <input type="hidden" readonly="true" name="price_per_person" class="form-control input-type-bottom" placeholder="Price Per Person"  value="<?php echo $TOURPACKAGE->price; ?>" required="TRUE">

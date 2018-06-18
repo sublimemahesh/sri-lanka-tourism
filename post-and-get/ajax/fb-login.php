@@ -32,16 +32,22 @@ if (isset($_POST['memberLogin'])) {
 
         $res = $VISITOR->createByFB($name, $email, $picture, $visitorID, $password);
 
-        if ($back <> '') {
-            $response['message'] = 'success-cr';
-            $response['back'] = $back;
-            unset($_SESSION["back_url"]);
+        if ($res === false) {
+            $response['message'] = 'error-log';
+            echo json_encode($response);
+            exit();
         } else {
-            $response['message'] = 'success-cr';
-            $response['back'] = '';
+            if ($back <> '') {
+                $response['message'] = 'success-cre';
+                $response['back'] = $back;
+                unset($_SESSION["back_url"]);
+            } else {
+                $response['message'] = 'success-cre';
+                $response['back'] = '';
+            }
+            echo json_encode($response);
+            exit();
         }
-        echo json_encode($response);
-        exit();
     } else {
         $res = $VISITOR->loginByFB($visitorID, $password);
         if ($res === false) {
