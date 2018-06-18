@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <?php
 include './class/include.php';
-include './auth.php';
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
+
+if (isset($_GET['accommodation'])) {
+    $id = $_GET['accommodation'];
 }
-if (isset($_GET['visitor'])) {
-    $VISITOR = $_GET['visitor'];
+if (!isset($_SESSION)) {
+    session_start();
 }
+if (!isset($_SESSION["login"])) {
+    $_SESSION["back_url"] = 'http://www.srilankatourism.travel/accommodation-booking.php?accommodation=' . $id;
+    redirect('visitor-login.php?message=24');
+} else {
+    $VISITOR = $_SESSION["id"];
+}
+
 $ACCOMMODATION = new Accommodation($id);
 $VISITOR = new Visitor($VISITOR);
 

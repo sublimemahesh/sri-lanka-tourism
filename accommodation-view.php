@@ -371,9 +371,7 @@ $CITY = new City($ACCOMMODATIONS->city);
                         $ROOM = Room::getAccommodationRoomsById($id);
                         foreach ($ROOM as $room) {
                             ?>
-
                             <div data-toggle="collapse" data-target="#demo_<?php echo $room['id']; ?>">
-
                                 <!--EVENT-->
                                 <div class="row events">
                                     <div class="room-title-btn" id="room-title-<?php echo $room['id']; ?>" >
@@ -414,7 +412,7 @@ $CITY = new City($ACCOMMODATIONS->city);
                                         </div>
                                     </div>
                                     <div class="col-md-2 accommoadtion-register-button">
-                                        <a href="accommodation-booking.php?id=<?php echo $id;?>&visitor=<?php echo $_SESSION['id']; ?>" class="waves-effect waves-light event-regi">Book Now</a> 
+                                        <a href="accommodation-booking.php?accommodation=<?php echo $id;?>" class="waves-effect waves-light event-regi">Book Now</a> 
                                     </div>
 
                                 </div>
