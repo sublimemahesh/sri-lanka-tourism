@@ -191,7 +191,7 @@ $MEMBER = new Member($TRANSPORTS->member);
                     <?php
                     if ($RENT_A_CAR !== FALSE) {
                         ?>
-                    <h4 class="text-left text-bottom "><b>Self drive</b></h4>
+                        <h4 class="text-left text-bottom "><b>Self drive</b></h4>
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
@@ -229,26 +229,9 @@ $MEMBER = new Member($TRANSPORTS->member);
                                     <td data-column="Distance(KM)" class="n-font"><b><?Php echo $transport_rate['distance'] . ' KM'; ?></b></td>
                                     <td data-column="Price(LKR)" class="n-font"><b><?Php echo 'LKR ' . $transport_rate['price']; ?></b></td>
                                     <td> 
-                                        <?php
-                                        if (isset($_SESSION["login"])) {
-                                            ?>
-                                            <a href="transport-booking.php?rate=<?php echo $transport_rate['id']; ?>&visitor=<?php echo $_SESSION['id']; ?>" class="transport-book-button">
-                                                Book Now
-                                            </a>
-                                            <?php
-                                        } else {
-                                            ?>
-                                            <a href="#" class="transport-book-button btn-not-loging">
-                                                Book Now
-                                            </a>
-
-                                            <?php
-                                            include './add-booking.php';
-                                            ?>
-                                            <?php
-                                        }
-                                        ?>
-
+                                        <a href="transport-booking.php?rate=<?php echo $transport_rate['id']; ?>" class="transport-book-button">
+                                            Book Now
+                                        </a>
                                     </td>
                                 </tr>
                                 <?php

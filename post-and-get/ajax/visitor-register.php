@@ -3,8 +3,8 @@
 include_once(dirname(__FILE__) . '/../../class/include.php');
 
 if ($_POST['save']) {
-    if (isset($_POST['back'])) {
-        $back = $_POST['back'];
+    if (isset($_POST['back_url'])) {
+        $back = $_POST['back_url'];
     } else {
         $back = "";
     }
@@ -76,9 +76,9 @@ if ($_POST['save']) {
             if ($VISITOR->id) {
                 $VISITOR->login($VISITOR->email, $VISITOR->password);
                 if ($back <> '') {
-                    $back1 = $back . '&visitor=' . $_SESSION["id"];
                     $response['status'] = 'success';
-                    $response['back'] = $back1;
+                    $response['back'] = $back;
+                    unset($_SESSION["back_url"]);
                 } else {
                     $response['status'] = 'success';
                     $response['back'] = '';

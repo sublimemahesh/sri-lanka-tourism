@@ -31,7 +31,7 @@ function checkLoginState() {
     var name;
     var email;
     var picture;
-    
+
     FB.login(function (response) {
         if (response.authResponse) {
             accessToken = response.authResponse.accessToken;
@@ -59,13 +59,23 @@ function checkLoginState() {
                         memberLogin: '1'
                     },
                     dataType: "JSON",
-                    success: function (jsonStr) {
-                        if (jsonStr.message = "success-log") {
-                            window.location.replace("visitor-profile.php");
-                        }
-                        if (jsonStr.message = "success-cre") {
+                    success: function (result) {
+                       
+                        if (result.message === 'success-log') {
 
-                            window.location.replace("visitor-profile.php");
+                            if (result.back === '') {
+                                window.location.replace("visitor-profile.php");
+                            } else {
+                                window.location = result.back;
+                            }
+
+                        } else if (result.message === 'success-cre') {
+                            if (result.back === '') {
+                                window.location.replace('visitor-profile.php?message=22');
+                            } else {
+                                window.location = result.back;
+                            }
+
                         }
                     }
                 });

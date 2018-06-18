@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <?php
 include './class/include.php';
-include './auth.php';
-if (isset($_GET['visitor'])) {
-    $VISITOR = $_GET['visitor'];
-}
 if (isset($_GET['rate'])) {
     $RATE = $_GET['rate'];
 }
+if (!isset($_SESSION)) {
+    session_start();
+}
+if (!isset($_SESSION["login"])) {
+    $_SESSION["back_url"] = 'http://www.srilankatourism.travel/transport-booking.php?rate=' . $RATE;
+    redirect('visitor-login.php?message=24');
+} else {
+    $VISITOR = $_SESSION["id"];
+}
+
 
 $TRANSPORT_RATE = new TransportRates($RATE);
 $VISITOR = new Visitor($VISITOR);

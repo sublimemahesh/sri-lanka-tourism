@@ -2,14 +2,13 @@
 <?php
 include './class/include.php';
 
-$previous = "javascript:history.go(-1)";
-if (isset($_SERVER['HTTP_REFERER'])) {
-    $previous = $_SERVER['HTTP_REFERER'];
+if (!isset($_SESSION)) {
+    session_start();
 }
-if (isset($_GET['tourid'])) {
-    $tourid = $_GET['tourid'];
-} elseif (isset($_GET['rate'])) {
-    $rate = $_GET['rate'];
+
+$back_url = '';
+if (isset($_SESSION["back_url"])) {
+    $back_url = $_SESSION["back_url"];
 }
 ?>
 <html lang="en">
@@ -73,25 +72,7 @@ if (isset($_GET['tourid'])) {
                                     By clicking Create an account, you agree to our Terms and conditions 
                                 </p>
                             </div>
-                            <?php
-                            if (isset($_GET['back'])) {
-                                if ($_GET['back'] === 'true') {
-                                    ?>
-                                    <input type="hidden" class="form-control" name="back" value="<?php echo $previous; ?>">
-                                    <?php
-                                } elseif ($_GET['back'] === 'tour') {
-                                    ?>
-                                    <!--<input type="hidden" class="form-control" name="back" value="https://localhost/sri-lanka-tourism/tour-package-booking.php?id=<?php echo $tourid; ?>">-->
-                                    <input type="hidden" class="form-control" name="back" value="https://www.srilankatourism.travel/tour-package-booking.php?id=<?php echo $tourid; ?>">
-                                    <?php
-                                } elseif ($_GET['back'] === 'transport') {
-                                    ?>
-                                    <!--<input type="hidden" class="form-control" name="back" value="http://localhost/sri-lanka-tourism/transport-booking.php?rate=<?php echo $rate; ?>">-->
-                                    <input type="hidden" class="form-control" name="back" value="https://www.srilankatourism.travel/transport-booking.php?rate=<?php echo $rate; ?>">
-                                    <?php
-                                }
-                            }
-                            ?>
+                            <input type="hidden" class="form-control"  name="back_url" value="<?php echo $back_url ?>">
                             <input type="hidden" name="save" value="save"/>
                             <div class="buttonreg" id="btnSubmit">Create an account</div>
                         </form>
