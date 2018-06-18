@@ -188,7 +188,7 @@ $now = date('Y-m-d H:i:s');
                             <div class="panel-heading">SELECTED VEHICLE</div>
                             <div class="panel-body">
                                 <h4 class="booking-transports-title text-center"><?php echo $TRANSPORT->title; ?></h4>
-                                <p class="text-center"><?php echo $CONDITION->name; ?></p>
+
                                 <div class="transport-booking-img">
                                     <?php
                                     foreach ($TRANSPORTS_PHOTO->getTransportPhotosById($TRANSPORT->id) as $key => $TRANSPORTS_P) {
@@ -203,6 +203,7 @@ $now = date('Y-m-d H:i:s');
                                 </div>
 
                                 <ul class="list-group visitor-list-color">
+                                    <li class="list-group-item"><b>Condition</b> : <?php echo $CONDITION->name; ?></li> 
                                     <li class="list-group-item"><b>Vehicle Type</b> : <?php echo $TYPE->name; ?></li> 
                                     <li class="list-group-item"><b>Registered Year</b> : <?php echo $TRANSPORT->registered_year; ?></li> 
                                     <li class="list-group-item"><b>Registered Number</b> : <?php echo $TRANSPORT->registered_number; ?></li> 
