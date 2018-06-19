@@ -146,9 +146,9 @@ if ($driver == 'self_driver') {
                                                         <div class="value"><?php echo $FUEL_TYPE->name; ?></div>
                                                     </li>
                                                     <li class="col-md-12 col-xs-12 " style="margin-top:10px;">
-                                                        <div style="width: 15%"> <img class="index-transport-ico icon-bottom" src="images/transport/passenges.png"  ><span class="transport-ico-txt style-e" ><?php echo $transport['no_of_passangers'] ?></span>
+                                                        <div style="width: 15%"> <img class="index-transport-ico icon-bottom" src="images/transport/passenges.png"><span class="transport-ico-txt style-e" ><?php echo $transport['no_of_passangers'] ?></span>
                                                         </div>
-                                                        <div style="width: 15%">  <img class="index-transport-ico icon-bottom" src="images/transport/001-suitcase.png"   ><span class="transport-ico-txt style-e"  ><?php echo $transport['no_of_baggages'] ?></span>
+                                                        <div style="width: 15%">  <img class="index-transport-ico icon-bottom" src="images/transport/001-suitcase.png"><span class="transport-ico-txt style-e"  ><?php echo $transport['no_of_baggages'] ?></span>
                                                         </div>
                                                         <div style="width: 15%"><img class="index-transport-ico icon-bottom" src="images/transport/004-car.png" >
                                                             <span class="transport-ico-txt style-e"   ><?php echo $transport['no_of_doors'] ?></span>
