@@ -1,13 +1,21 @@
 <!DOCTYPE html>
 <?php
 include './class/include.php';
-include './auth.php';
-if (isset($_GET['visitor'])) {
-    $VISITOR = $_GET['visitor'];
-}
+
 if (isset($_GET['transport'])) {
     $TRANSPORT_ID = $_GET['transport'];
 }
+
+if (!isset($_SESSION)) {
+    session_start();
+}
+if (!isset($_SESSION["login"])) {
+    $_SESSION["back_url"] = 'http://www.srilankatourism.travel/rent-a-car-booking.php?transport=' . $TRANSPORT_ID;
+    redirect('visitor-login.php?message=24');
+} else {
+    $VISITOR = $_SESSION["id"];
+}
+
 
 $VISITOR = new Visitor($VISITOR);
 $TRANSPORT = new Transports($TRANSPORT_ID);
