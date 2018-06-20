@@ -174,6 +174,17 @@ class Feedback {
         return $result;
     }
 
+    public function getRatingByTour1($tour) {
+
+        $query = "SELECT count(visitor) as visitor_count, avg(rate) as rate_avg,count(rate) as rate_count FROM `feedback` WHERE `tour_package` = '" . $tour . "'";
+
+        $db = new Database();
+
+        $result = mysql_fetch_array($db->readQuery($query));
+
+        return $result;
+    }
+
     public function getRatingByTour($tour) {
 
         $query = "SELECT count(visitor) as count, sum(rate) as rate_sum FROM `feedback` WHERE `tour_package` = '" . $tour . "'";

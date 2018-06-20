@@ -17,6 +17,19 @@ if (isset($_GET["transport"])) {
     $FEEDBACK = new Feedback(NULL);
     $TRANSPORT_FEEDBACKS = $FEEDBACK->getFeedbackByTransportID($transport);
 }
+if (isset($_GET["tour"])) {
+
+    $tour = $_GET["tour"];
+    $TOUR = new TourPackage($tour);
+    $TOUR_TYPE = new TourType($TOUR->tourtype);
+//    $FUEL_TYPE = new FuelType($TRANSPORT->fuel_type);
+//
+    $result = Feedback::getRatingByTour1($tour);
+    $rate_count = $result['rate_count'];
+    $starNumber = round($result['rate_avg']);
+    $FEEDBACK = new Feedback(NULL);
+    $TOUR_FEEDBACKS = $FEEDBACK->getFeedbackByTourPackageID($tour);
+}
 ?>
 
 
@@ -143,7 +156,7 @@ if (isset($_GET["transport"])) {
                                         include './add-feedback.php';
                                         ?>
                                         <div class="action">
-                                            <div class="add-to-cart btn btn-info btn-position-rel" id="btn-add-comment">Add Your Comment</div>
+                                            <div class="add-to-cart btn btn-info btn-position-rel" id="btn-add-transport-comment">Add Your Comment</div>
                                         </div>
 
                                     </div>
@@ -222,6 +235,148 @@ if (isset($_GET["transport"])) {
     }
     ?>
 
+    <?php
+    if (isset($_GET["tour"])) {
+        ?>
+        <div id="page">
+            <div class="page-header page-title-left page-title-pattern">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1 class="title hidden-sm hidden-xs">All Reviews</h1> 
+                            <ul class="breadcrumb">
+                                <li class="banner-bredcum-1">
+                                    <a href="index.php">Home</a>
+                                </li> 
+                                <li class="active banner-bredcum-2">All Reviews</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </div>
+        <div class="container">
+            <div class="row" style="background-color: #fff; ">
+                <div class="container">
+
+                    <div class="card">
+                        <div class="container-fliud">
+                            <div class="wrapper row">
+                                <div class="preview col-md-3">
+
+                                    <div class="preview-pic">
+                                        <div class="tab-pane active" id="pic-1">
+                                            <img src="upload/tour-package/thumb/<?php echo $TOUR->picture_name; ?>" /></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="row col-md-12">
+                                        <h3 class="product-title"><?php echo $TOUR->name; ?></h3>
+                                        <div class="review-all-type"><?php echo $TOUR_TYPE->name; ?></div> 
+                                    </div>
+                                    <div class="all-rw-detail-container col-md-6">
+                                        <div class="review-more-detail">
+                                            <span><?php echo $TOUR->description; ?></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <h4>Average user rating</h4>
+                                        <h2 class="bold padding-bottom-7"><?php echo $starNumber . '.0'; ?><small>/ 5</small></h2>
+                                        <div class="room-star-rates">
+                                            <?php
+                                            for ($x = 1; $x <= $starNumber; $x++) {
+                                                echo '<i class="fa fa-star"></i>';
+                                            }
+//                                                                            if (strpos($starNumber, '.')) {
+//                                                                                echo '<img src="path/to/half/star.png" />';
+//                                                                                $x++;
+//                                                                            }
+                                            while ($x <= 5) {
+                                                echo '<i class="fa fa-star-o"></i>';
+                                                $x++;
+                                            }
+                                            ?>
+
+                                        </div>
+                                        <?php
+                                        include './add-feedback.php';
+                                        ?>
+                                        <div class="action">
+                                            <div class="add-to-cart btn btn-info btn-position-rel" id="btn-add-tour-comment">Add Your Comment</div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="testimonials-acc">
+                        <?php
+                        if (!$TOUR_FEEDBACKS) {
+                            ?>
+
+                            <p>No Reviews yet</p>
+
+                            <?php
+                        } else {
+                            foreach ($TOUR_FEEDBACKS as $key => $tour_feedback) {
+                                $VISITOR = new Visitor($tour_feedback['visitor']);
+                                ?>  
+                                <div class = "active item testimonial-all-box">
+                                    <div class = "carousel-info">
+                                        <?php
+                                        if (empty($VISITOR->image_name)) {
+                                            ?>
+                                            <img src="upload/visitor/member.png" class="pull-left"/>
+                                            <?php
+                                        } else {
+
+                                            if ($VISITOR->facebookID && substr($VISITOR->image_name, 0, 5) === "https") {
+                                                ?>
+                                                <img src="<?php echo $VISITOR->image_name; ?>" class="pull-left"/>
+                                            <?php } else {
+                                                ?>
+                                                <img alt="" src="upload/visitor/<?php echo $VISITOR->image_name; ?>" class="pull-left">
+                                                <?php
+                                            }
+                                        }
+                                        ?>	
+
+                                        <div class = "pull-left">
+                                            <span class = "testimonials-name"><?php echo $VISITOR->first_name . ' ' . $VISITOR->second_name ?></span>
+                                            <div class="room-star-rates">
+                                                <?php
+                                                $starNumberVisitor = $tour_feedback['rate'];
+                                                for ($x = 1; $x <= $starNumberVisitor; $x++) {
+                                                    echo '<i class = "fa fa-star"></i>';
+                                                }
+//                                                                         
+                                                while ($x <= 5) {
+                                                    echo '<i class = "fa fa-star-o"></i>';
+                                                    $x++;
+                                                }
+                                                ?>
+                                            </div>
+                                            <span class="testimonials-post"><?php echo $tour_feedback['title']; ?></span>
+                                        </div>
+                                    </div>
+                                    <blockquote><p><?php echo $tour_feedback['description']; ?></p></blockquote>
+                                </div>
+                                <?php
+                            }
+                        }
+                        ?>
+                    </div>
+                </div> <!-- /container -->
+            </div>            
+        </div>
+        <?php
+    }
+    ?>
+
 
     <!-- Our Resort Values style-->  
     <?php
@@ -239,12 +394,23 @@ if (isset($_GET["transport"])) {
             var log_stat = $('#login-stat').val();
 
 
-            jQuery('#btn-add-comment').click(function () {
+            jQuery('#btn-add-transport-comment').click(function () {
 
                 if (log_stat == '0') {
                     window.location = "visitor-login.php?message=24";
                 } else {
                     jQuery("#myModal").modal('show');
+                }
+
+
+            });
+
+            jQuery('#btn-add-tour-comment').click(function () {
+
+                if (log_stat == '0') {
+                    window.location = "visitor-login.php?message=24";
+                } else {
+                   jQuery("#myModaltour").modal('show');
                 }
 
 

@@ -3,7 +3,6 @@
 //----------------------CAPTCHACODE---------------------
 session_start();
 
-
 $response = array();
 if ($_SESSION['CAPTCHACODE'] != $_POST['captchacode']) {
     $response['status'] = 'incorrect';

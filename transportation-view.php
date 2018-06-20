@@ -414,11 +414,11 @@ $MEMBER = new Member($TRANSPORTS->member);
                                 </a>
 
                                 <div class="add-comment-button">
-                                    <a href="all-reviews.php?transport=<?php echo $id;?>" class="btn btn-info btn-position-rel">
+                                    <a href="all-reviews.php?transport=<?php echo $id; ?>" class="btn btn-info btn-position-rel">
                                         <i class="fa fa-arrow-right"></i>  View All Reviews
                                     </a>
                                 </div>
-                             
+
                             </div>
                         </div>
                     </div>
@@ -463,7 +463,6 @@ $MEMBER = new Member($TRANSPORTS->member);
                                                     $x++;
                                                 }
                                                 ?>
-
                                             </span>
                                             <img src="upload/transport/thumb/<?php echo $transport_photo['image_name'] ?>" alt=""/>
                                         </a>
@@ -579,14 +578,10 @@ $MEMBER = new Member($TRANSPORTS->member);
                 jQuery('#btn-add-comment').click(function () {
                     jQuery("#myModal").modal('show');
                 });
-
             });
-
-
             jQuery('#create').click(function (event) {
 
                 event.preventDefault();
-
                 var captchacode = jQuery('#captchacode').val();
 
                 jQuery.ajax({
