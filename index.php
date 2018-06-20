@@ -45,7 +45,7 @@ $ARTICLETYPES = ArticleType::all();
         }
     </style>
     <body>
-        
+
 
         <!-- Our Resort Values style-->
         <?php
@@ -792,6 +792,10 @@ $ARTICLETYPES = ArticleType::all();
                             mouseDrag: true,
                             touchDrag: true,
                         },
+                        400: {
+                            items: 2,
+                            nav: true
+                        },
                         600: {
                             items: 3,
                             nav: true,
@@ -828,6 +832,10 @@ $ARTICLETYPES = ArticleType::all();
                             items: 1,
                             nav: true
                         },
+                        400: {
+                            items: 2,
+                            nav: true
+                        },
                         600: {
                             items: 3,
                             nav: true
@@ -857,6 +865,10 @@ $ARTICLETYPES = ArticleType::all();
                             items: 1,
                             nav: true
                         },
+                        400: {
+                            items: 2,
+                            nav: true
+                        },
                         600: {
                             items: 2,
                             nav: true
@@ -884,6 +896,10 @@ $ARTICLETYPES = ArticleType::all();
                     responsive: {
                         0: {
                             items: 1,
+                            nav: true
+                        },
+                        400: {
+                            items: 2,
                             nav: true
                         },
                         600: {

@@ -718,6 +718,8 @@
     .transport-description {
         margin-bottom: 25px;
     }
+
+
 }
 
 /*(min-width: 360px) and (max-width: 640px)*/
@@ -914,11 +916,11 @@
         padding-top: 7px;
         margin-left: 9px;
     }
-   
+
 
 }
 @media (min-width: 380px) and (max-width: 640px) {
- .c-padding{
+    .c-padding{
         margin-top: 10px;
     }
 }
@@ -989,7 +991,7 @@
     .fa-envelope-o{
         font-size: 14px;
     }
-   
+
     .search-form .form-group {
         float: right !important;
         transition: all 0.35s, border-radius 0s;
@@ -1741,11 +1743,11 @@
         .c-sec-header-pad{
             padding-top: 20px;
         }
-       
+
     }
     @media (min-width:800px) and (max-width:700px) {
         .c-sec-header-pad{
             padding-top: 35px;
         }
     }
- 
+    
