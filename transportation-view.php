@@ -414,13 +414,11 @@ $MEMBER = new Member($TRANSPORTS->member);
                                 </a>
 
                                 <div class="add-comment-button">
-                                    <button type="submit" id="btn-add-comment" class="btn btn-info btn-position-rel">
-                                        <i class="fa fa-plus"></i>  Write your Review
-                                    </button>
+                                    <a href="all-reviews.php?transport=<?php echo $id;?>" class="btn btn-info btn-position-rel">
+                                        <i class="fa fa-arrow-right"></i>  View All Reviews
+                                    </a>
                                 </div>
-                                <?php
-                                include './add-feedback.php';
-                                ?>
+                             
                             </div>
                         </div>
                     </div>
