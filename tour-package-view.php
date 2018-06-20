@@ -96,7 +96,7 @@ $count_feedbacks = count($feedbacks);
 
 
                     <div class="col-md-4 col-xs-4 col-md-offset-4 book-now-btn">
-                        <a href="tour-package-booking.php?tour=<?php echo $tourid;?>" class="button"><span>Book Now </span></a>
+                        <a href="tour-package-booking.php?tour=<?php echo $tourid; ?>" class="button"><span>Book Now </span></a>
                     </div>
 
                     <div class="col-sm-12">			
@@ -243,10 +243,10 @@ $count_feedbacks = count($feedbacks);
                             <a class="carousel-control right carousel-control-next" href="#myCarousel" data-slide="next">
                                 <i class="fa fa-chevron-right"></i>
                             </a>
-                            <div class="text-center">
-                                <button type="submit" id="btn-add-comment" class="btn btn-info">
-                                    <i class="fa fa-plus"></i>  Add Your Comment
-                                </button>
+                            <div class="add-comment-button">
+                                <a href="all-reviews.php?tour=<?php echo $tourid; ?>" class="btn btn-info btn-position-rel">
+                                    <i class="fa fa-arrow-right"></i>  View All Reviews
+                                </a>
                             </div>
                             <?php
                             include './add-feedback.php';

@@ -100,7 +100,7 @@ $TOURS = $SEARCH->GetToursByKeywords($keyword, $noofdates, $type, $pricefrom, $p
                             <div class="tour-pack1 col-md-3 col-sm-4">
                                 <div class="tour-pack">
                                     <div class="tour-img">
-                                        <img src="upload/tour-package/thumb/<?php echo $TOUR['picture_name']; ?>" alt=""/>
+                                        <img src="upload/tour-package/thumb/<?php echo $TOUR['picture_name'];?>" alt=""/>
                                     </div>
                                     <div class="tour-duration">
                                         <div class="tour-days pull-left">
