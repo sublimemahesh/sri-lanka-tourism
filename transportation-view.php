@@ -75,7 +75,6 @@ $MEMBER = new Member($TRANSPORTS->member);
                 </div>
                 <div class="col-md-4">
                     <div class="sidebar">
-
                         <div class="widget-member">
                             <div class="row">
                                 <p class="published-by">Published By</p>
@@ -412,13 +411,11 @@ $MEMBER = new Member($TRANSPORTS->member);
                                 <a class="carousel-control right carousel-control-next" href="#myCarousel" data-slide="next">
                                     <i class="fa fa-chevron-right"></i>
                                 </a>
-
                                 <div class="add-comment-button">
                                     <a href="all-reviews.php?transport=<?php echo $id; ?>" class="btn btn-info btn-position-rel">
                                         <i class="fa fa-arrow-right"></i>  View All Reviews
                                     </a>
                                 </div>
-
                             </div>
                         </div>
                     </div>

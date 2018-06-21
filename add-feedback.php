@@ -167,16 +167,16 @@ if (isset($_GET["transport"])) {
     <?php
 }
 ?>
-<div id="myModalaccommodation" class="modal fade">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-<!--                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>-->
-                <h3 class="modal-title" id="lineModalLabel">Visitor Feedback</h3>
-            </div>
-            <?php
-            if (isset($_SESSION["login"])) {
-                ?>
+<?php if (isset($_GET["accommodation"])) {
+    ?>
+    <div id="myModalaccommodation" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+    <!--                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>-->
+                    <h3 class="modal-title" id="lineModalLabel">Visitor Feedback</h3>
+                </div>
+
                 <form  method="post" id="client-comment" action="post-and-get/feedback.php" enctype="multipart/form-data"> 
                     <div class="modal-body"> 
 
@@ -217,30 +217,34 @@ if (isset($_GET["transport"])) {
                     </div>
 
                     <div class="modal-footer">
+                        <?php
+                        if (!isset($_SESSION["login"])) {
+//                            $_SESSION["back_url"] = 'http://www.srilankatourism.travel/all-reviews.php?accommodation=' . $accommodation;
+                            $_SESSION["back_url"] = 'http://localhost/sri-lanka-tourism/all-reviews.php?accommodation=' . $accommodation;
+                            ?>
+                            <input type="hidden" id="login-stat" value="0">
+                            <?php
+                        } else {
+                            ?>
+                            <?php
+                            $VISITOR_ID = $_SESSION["id"];
+                        }
+                        ?>
                         <button type="submit" class="btn btn-default btn-position-rel" data-dismiss="modal">Close</button>  
-                        <input type="hidden" name="visitor" value="<?php echo $_SESSION['id']; ?>">
-                        <input type="hidden" name="accommodation" value="<?php echo $id; ?>">
+                        <input type="hidden" name="visitor" value="<?php echo $VISITOR_ID; ?>">
+                        <input type="hidden" name="accommodation" value="<?php echo $accommodation; ?>">
                         <button type="submit" class="btn btn-default btn-position-rel" name="create" id="create">Save Comment</button>
                         <input type="hidden" name="save" value="TRUE">
                     </div>
 
                 </form>
-                <?php
-            } else {
-                ?>
-                <h4>Please login or create an account to continue this process.</h4>
-                <div class="row">
-                    <a href="visitor-register.php?back=true" class="col-md-offset-4 btn btn-default btn-position-rel">Register</a>
-                    <a href="visitor-login.php?back=true" class="btn btn-default btn-position-rel">Login</a>
-                </div>
 
-                <?php
-            }
-            ?>
+            </div>
         </div>
     </div>
-</div>
-
+    <?php
+}
+?>
 <div id="myModalarticle" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">

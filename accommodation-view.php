@@ -344,10 +344,10 @@ $CITY = new City($ACCOMMODATIONS->city);
                                 <a class="carousel-control right carousel-control-next" href="#myCarousel" data-slide="next">
                                     <i class="fa fa-chevron-right"></i>
                                 </a>
-                                <div class="text-center">
-                                    <button type="submit" id="btn-add-comment" class="btn btn-info btn-position-rel">
-                                        <i class="fa fa-plus"></i>  Add Your Comment
-                                    </button>
+                                <div class="add-comment-button">
+                                    <a href="all-reviews.php?accommodation=<?php echo $id; ?>" class="btn btn-info btn-position-rel">
+                                        <i class="fa fa-arrow-right"></i>  View All Reviews
+                                    </a>
                                 </div>
                                 <?php
                                 include './add-feedback.php';
@@ -412,7 +412,7 @@ $CITY = new City($ACCOMMODATIONS->city);
                                         </div>
                                     </div>
                                     <div class="col-md-2 accommoadtion-register-button">
-                                        <a href="accommodation-booking.php?accommodation=<?php echo $id;?>" class="waves-effect waves-light event-regi">Book Now</a> 
+                                        <a href="accommodation-booking.php?accommodation=<?php echo $id; ?>" class="waves-effect waves-light event-regi">Book Now</a> 
                                     </div>
 
                                 </div>
