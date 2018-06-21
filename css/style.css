@@ -2172,41 +2172,22 @@ hr.style15:after {
 }
 .c-button-member-mobile{
     display: inline-block;
-
     border-radius: 0px;
-
     background-color: #fff;
-
     border: none;
-
     color: #000;
-
     text-align: center;
-
     font-size: 15px;
-
     padding: 1px;
-
-    width: 123px;
-
+    width: 125px;
     transition: all 0.5s;
-
     cursor: pointer;
-
-    margin-top: -5px;
-
+    margin-top: -10px;
     font-family: 'Ubuntu Condensed', sans-serif;
-
     float: right;
-
     padding: 3px;
-
-    height: 40px;
-
-    padding: 10px;
-
-
-
+    height: 38px;
+    padding: 9px;
 }
 .button-member-mobile:hover {
     color: #2e08a8;
@@ -2721,4 +2702,8 @@ ul.setPaginate {
 }
 .p-o{
     padding: 0px;
+}
+
+.c-list-style{
+    list-style-type: none;
 }
