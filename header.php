@@ -127,7 +127,7 @@
     <div class="col-md-2">
         <div class="sec-header sec-header-pad ">
             <ul>
-                <li> 
+                <li class="c-list-style"> 
                     <a class="head-link-hover" href="member/index.php">
                         <div class="c-button-member-mobile add-your" >
                             <span>Add Your Business</span>

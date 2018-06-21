@@ -219,8 +219,8 @@ if (isset($_GET["transport"])) {
                     <div class="modal-footer">
                         <?php
                         if (!isset($_SESSION["login"])) {
-//                            $_SESSION["back_url"] = 'http://www.srilankatourism.travel/all-reviews.php?accommodation=' . $accommodation;
-                            $_SESSION["back_url"] = 'http://localhost/sri-lanka-tourism/all-reviews.php?accommodation=' . $accommodation;
+                            $_SESSION["back_url"] = 'http://www.srilankatourism.travel/all-reviews.php?accommodation=' . $accommodation;
+//                            $_SESSION["back_url"] = 'http://localhost/sri-lanka-tourism/all-reviews.php?accommodation=' . $accommodation;
                             ?>
                             <input type="hidden" id="login-stat" value="0">
                             <?php
