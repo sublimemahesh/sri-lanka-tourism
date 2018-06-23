@@ -10,18 +10,16 @@ include_once(dirname(__FILE__) . '/../class/include.php');
         <meta name="description" content="">
         <meta name="author" content="Dashboard">
         <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-
         <title>Register - www.srilankatourism.travel</title>
-
         <!-- Bootstrap core CSS -->
         <link href="assets/css/bootstrap.css" rel="stylesheet">
         <!--external css-->
         <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-
         <!-- Custom styles for this template -->
         <link href="assets/css/style.css" rel="stylesheet">
         <link href="assets/css/style-responsive.css" rel="stylesheet">
         <link href="assets/css/custom-member-login.css" rel="stylesheet" type="text/css"/>
+        <meta name="google-signin-client_id" content="911987649395-lsjuodldj81ip80fl21841h98dg5cekf.apps.googleusercontent.com">
     </head>
 
     <body style="background-color: #d7d7d7;">
@@ -89,7 +87,9 @@ include_once(dirname(__FILE__) . '/../class/include.php');
                             <p>or you can sign in via your social network</p>
                             <button class="fb btn btn-facebook social-log-buttons" id="fb-login" type="submit"><i class="fa fa-facebook"></i> Facebook</button>
                             <button class="btn btn-twitter social-log-buttons" type="submit"><i class="fa fa-twitter"></i> Twitter</button>
-                            <button class="btn btn-danger social-log-buttons" type="submit"><i class="fa fa-google-plus"></i> Google</button>
+                            <div class="g-signin2" data-onsuccess="onSignIn"></div>
+
+<!--                            <button class="btn btn-danger social-log-buttons" data-onsuccess="onSignIn" type="submit"><i class="fa fa-google-plus"></i> Google</button>-->
                         </div>
                         <hr style="margin-bottom: 0;">
                         <form method="post" id="register"> 
@@ -117,11 +117,16 @@ include_once(dirname(__FILE__) . '/../class/include.php');
         <div class="login-footer">
         </div>
 
+
+    
         <script src="assets/js/jquery.js"></script>
         <script src="assets/js/bootstrap.min.js"></script>
 
         <script src="js/add-member.js" type="text/javascript"></script>
         <script src="js/fb-login-scripts.js" type="text/javascript"></script>
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+
     </body>
 
 </html>

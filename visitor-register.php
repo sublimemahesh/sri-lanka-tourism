@@ -30,12 +30,15 @@ if (isset($_SESSION["back_url"])) {
         <link href="css/datepicker.css" rel="stylesheet" type="text/css"/>
         <link href="css/visitor-custom.css" rel="stylesheet" type="text/css"/>
         <link href="https://fonts.googleapis.com/css?family=Russo+One|Magra|Ubuntu+Condensed" rel="stylesheet"> 
+
+        <meta name="google-signin-client_id" content="911987649395-lsjuodldj81ip80fl21841h98dg5cekf.apps.googleusercontent.com">
+<!--        <script src = "https://plus.google.com/js/client:platform.js" async defer></script>-->
+        <link href="css/custom-google-button.css" rel="stylesheet" type="text/css"/>
     </head>
+
     <body style="background-color: #efefef;">
         <!-- Our Resort Values style-->
         <?php include './header.php' ?>
-
-
 
         <div class="member-log-body">
             <div class="container">
@@ -55,12 +58,36 @@ if (isset($_SESSION["back_url"])) {
                 </div>
                 <div class="col-md-6">
                     <div class="margin-l-20">
-                        <div class="">
-                            <p class="social-title-container">or you can sign in via your social network</p>
-                            <button class="fb btn btn-facebook social-log-buttons" id="fb-login" type="submit"><i class="fa fa-facebook font-fb"></i> Facebook</button>
-                            <button class="btn btn-danger social-log-buttons" type="submit"><i class="fa fa-google-plus"></i> Google</button>
-                            <button class="btn btn-danger social-log-buttons" type="submit"><i class="fa fa-google-plus"></i> Google</button>
+                        <p class="social-title-container">or you can sign in via your social network</p>
+                        <div class="row">
+
+                            <div class="col-md-4">
+                                <button class="fb btn btn-facebook social-log-buttons" id="fb-login" type="submit"><i class="fa fa-facebook font-fb"></i> Facebook</button>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="">
+                                    <div class="g-signin2" data-onsuccess="onSignIn" id="google-sign-in">
+                                    </div>
+                                    <!--                            <div class="button" style="padding: 0px;font-size: 16px;margin: 0px;width: 150px;">
+                                                                    <button id="google-login" class="btn btn-danger social-log-buttons g-signin"
+                                                                            data-scope="email"
+                                                                            data-clientid="911987649395-lsjuodldj81ip80fl21841h98dg5cekf.apps.googleusercontent.com"
+                                                                            data-callback="onSignInCallback"
+                                                                            data-theme="dark"
+                                                                            data-cookiepolicy="single_host_origin" type="submit"><i class="fa fa-google-plus"></i> Google
+                                                                    </button>
+                                                                </div>-->
+                                    <!--                            <button class="btn btn-success social-log-buttons" type="submit"><i class="fa fa-google-plus"></i> Google</button>-->
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                            </div>
                         </div>
+
+
+
+
                         <hr class="hr" style="margin-bottom: 0;">
                         <form method="post" id="register"> 
                             <div class="error-msg">
@@ -96,5 +123,19 @@ if (isset($_SESSION["back_url"])) {
         <script src="js/bootstrap-datepicker.js" type="text/javascript"></script>
         <script src="js/add-visitor.js" type="text/javascript"></script>
         <script src="js/fb-login-scripts.js" type="text/javascript"></script>
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <script src="js/google-login.js" type="text/javascript"></script>
     </body> 
+
+
+    <!--<a href="#" onclick="signOut();">Sign out</a>
+    <script>
+      function signOut() {
+        var auth2 = gapi.auth2.getAuthInstance();
+        auth2.signOut().then(function () {
+          console.log('User signed out.');
+        });
+      }
+    </script>-->
+
 </html>

@@ -19,15 +19,15 @@ if (isset($_POST['memberLogin'])) {
     $name = $_POST["name"];
     $email = $_POST["email"];
     $picture = $_POST["picture"];
-    $password = substr(explode(".", $_POST["signedRequest"])[1], -7);
+    $password = $_POST["userID"];
 
     $VISITOR = New Visitor(NULL);
 
-    $isFbIdIsEx = $VISITOR->isFbIdIsEx($visitorID);
+    $isFbIdIsEx = $VISITOR->isGoogleIdIsEx($visitorID);
 
     if ($isFbIdIsEx == false) {
 
-        $res = $VISITOR->createByFB($name, $email, $picture, $visitorID, $password);
+        $res = $VISITOR->createByGoogle($name, $email, $picture, $visitorID, $password);
 
         if ($res === false) {
             $response['message'] = 'error-log';
@@ -46,7 +46,7 @@ if (isset($_POST['memberLogin'])) {
             exit();
         }
     } else {
-        $res = $VISITOR->loginByFB($visitorID, $password);
+        $res = $VISITOR->loginByGoogle($visitorID, $password);
         if ($res === false) {
             $response['message'] = 'error-log';
             echo json_encode($response);

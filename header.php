@@ -57,12 +57,14 @@
                             </a>
                         </div>
                     </div>
-                <?php } else {
+                    <?php
+                } elseif ($VISITOR->googleID && substr($VISITOR->image_name, 0, 5) === "https") {
                     ?>
+
                     <div class="visitor-login-name">
                         <?php echo 'Hi ' . $VISITOR->first_name . '..'; ?>
                     </div>
-                    <img class="img-circle add-user-logged" id="visitor_pic" src="upload/visitor/<?php echo $VISITOR->image_name; ?>" alt="" />
+                    <img class="img-circle add-user-logged" id="visitor_pic" src="<?php echo $VISITOR->image_name; ?>" alt="" />
                     <div class="dropdown-content">
                         <a href="visitor-profile.php">
                             <i class="fa fa-user"></i>
@@ -75,19 +77,37 @@
                     </div>
                 </div>
                 <?php
-            }
-        }
-    } else {
-        ?>
-        <div class="col-md-6 col-sm-6 col-xs-6">
-            <div class="pull-right">
-                <a href="visitor-login.php" ><img class="add-user" src="images/icon/user(1).png" alt="" /></a>
-                <a href="visitor-register.php"><img class="user-t" src="images/icon/user(2).png" alt="" /></a>
+            } else {
+                ?>
+                <div class="visitor-login-name">
+                <?php echo 'Hi ' . $VISITOR->first_name . '..'; ?>
+                </div>
+                <img class="img-circle add-user-logged" id="visitor_pic" src="upload/visitor/<?php echo $VISITOR->image_name; ?>" alt="" />
+                <div class="dropdown-content">
+                    <a href="visitor-profile.php">
+                        <i class="fa fa-user"></i>
+                        My profile
+                    </a>
+                    <a href="post-and-get/logout.php">
+                        <i class="fa fa-power-off"></i>
+                        Log out
+                    </a>
+                </div>
             </div>
-        </div>
-        <?php
+            <?php
+        }
     }
+} else {
     ?>
+    <div class="col-md-6 col-sm-6 col-xs-6">
+        <div class="pull-right">
+            <a href="visitor-login.php" ><img class="add-user" src="images/icon/user(1).png" alt="" /></a>
+            <a href="visitor-register.php"><img class="user-t" src="images/icon/user(2).png" alt="" /></a>
+        </div>
+    </div>
+    <?php
+}
+?>
 </div>
 <hr style="padding-top: -10px !important;">
 <div class=" hidden-sm hidden-xs " >
