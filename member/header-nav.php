@@ -117,6 +117,10 @@ $MEMBER = new Member($_SESSION['id']);
                     ?>
                     <p class="centered"><a href="./"><img src="<?php echo $MEMBER->profile_picture; ?>" id="profil_pic1" class="img-circle" width="60"></a></p>
                     <?php
+                } elseif ($MEMBER->googleID && substr($MEMBER->profile_picture, 0, 5) === "https") {
+                    ?>
+                    <p class="centered"><a href="./"><img src="<?php echo $MEMBER->profile_picture; ?>" id="profil_pic1" class="img-circle" width="60"></a></p>
+                    <?php
                 } else {
                     ?>
                     <p class="centered"><a href="./"><img src="../upload/member/<?php echo $MEMBER->profile_picture; ?>" id="profil_pic1" class="img-circle" width="60"></a></p>

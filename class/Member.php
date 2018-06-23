@@ -22,6 +22,7 @@ class Member {
     public $languages;
     public $password;
     public $facebookID;
+    public $googleID;
     public $resetcode;
     public $authToken;
     public $about_me;
@@ -31,7 +32,7 @@ class Member {
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`,`name`,`email`,`nic_number`,`date_of_birthday`,`contact_number`,`driving_licence_number`,`licence_front`,`licence_back`,`home_address`,`city`,`profile_picture`,`languages`,`facebookID`,`resetcode`,`authToken`,`about_me`,`status`,`rank` FROM `member` WHERE `id`=" . $id;
+            $query = "SELECT `id`,`name`,`email`,`nic_number`,`date_of_birthday`,`contact_number`,`driving_licence_number`,`licence_front`,`licence_back`,`home_address`,`city`,`profile_picture`,`languages`,`facebookID`,`googleID`,`resetcode`,`authToken`,`about_me`,`status`,`rank` FROM `member` WHERE `id`=" . $id;
 
             $db = new Database();
 
@@ -51,6 +52,7 @@ class Member {
             $this->profile_picture = $result['profile_picture'];
             $this->languages = $result['languages'];
             $this->facebookID = $result['facebookID'];
+            $this->googleID = $result['googleID'];
             $this->resetcode = $result['resetcode'];
             $this->authToken = $result['authToken'];
             $this->about_me = $result['about_me'];
@@ -133,7 +135,7 @@ class Member {
             $this->setAuthToken($result['id']);
             $member = $this->__construct($this->id);
             $this->setUserSession($member);
-      
+
             if (!isset($_SESSION)) {
                 session_start();
                 session_unset($_SESSION);
@@ -512,6 +514,73 @@ class Member {
     public function isFbIdIsEx($userID) {
 
         $query = "SELECT * FROM `member` WHERE `facebookID` = '" . $userID . "'";
+
+        $db = new Database();
+
+        $result = mysql_fetch_array($db->readQuery($query));
+
+        if ($result === false) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public function createByGoogle($name, $email, $picture, $googleID, $password) {
+//        date_default_timezone_set('Asia/Colombo');
+//
+//        $createdAt = date('Y-m-d H:i:s');
+
+        $query = "INSERT INTO `member` (`name`,`email`,`profile_picture`,`googleID`,`password`) VALUES  ('" . $name . "', '" . $email . "', '" . $picture . "', '" . $googleID . "', '" . $password . "')";
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+
+        $last_id = mysql_insert_id();
+
+        if ($result) {
+
+            $this->loginByGoogle($googleID, $password);
+
+            return $this->__construct($last_id);
+        } else {
+            return FALSE;
+        }
+    }
+
+    public function loginByGoogle($googleID, $password) {
+
+        $query = "SELECT * FROM `member` WHERE `googleID`= '" . $googleID . "'";
+
+        $db = new Database();
+
+        $result = mysql_fetch_array($db->readQuery($query));
+
+        if (!$result) {
+            return FALSE;
+        } else {
+            $this->id = $result['id'];
+            $this->setAuthToken($result['id']);
+            $member = $this->__construct($this->id);
+            $this->setUserSession($member);
+
+            if (!isset($_SESSION)) {
+                session_start();
+                session_unset($_SESSION);
+            }
+
+            $_SESSION["login"] = TRUE;
+
+            $_SESSION["id"] = $member->id;
+
+            return TRUE;
+        }
+    }
+
+    public function isGoogleIdIsEx($googleID) {
+
+        $query = "SELECT * FROM `member` WHERE `googleID` = '" . $googleID . "'";
 
         $db = new Database();
 

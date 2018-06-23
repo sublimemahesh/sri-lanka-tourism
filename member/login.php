@@ -19,7 +19,8 @@ include_once(dirname(__FILE__) . '/../class/include.php');
         <link href="assets/css/style.css" rel="stylesheet">
         <link href="assets/css/style-responsive.css" rel="stylesheet">
         <link href="assets/css/custom-member-login.css" rel="stylesheet" type="text/css"/>
-        <meta name="google-signin-client_id" content="911987649395-lsjuodldj81ip80fl21841h98dg5cekf.apps.googleusercontent.com">
+        <script src="https://apis.google.com/js/api:client.js"></script>
+        <script src="js/google-login.js" type="text/javascript"></script>
     </head>
 
     <body style="background-color: #d7d7d7;">
@@ -87,7 +88,10 @@ include_once(dirname(__FILE__) . '/../class/include.php');
                             <p>or you can sign in via your social network</p>
                             <button class="fb btn btn-facebook social-log-buttons" id="fb-login" type="submit"><i class="fa fa-facebook"></i> Facebook</button>
                             <button class="btn btn-twitter social-log-buttons" type="submit"><i class="fa fa-twitter"></i> Twitter</button>
-                            <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                            <button id="customBtn"  class="btn btn-danger social-log-buttons" type="submit"><i class="fa fa-google-plus"></i> Google</button>
+
+                            <script>startApp();</script>  
+                            <div class="text-danger" id="google-error-display"></div>
 
 <!--                            <button class="btn btn-danger social-log-buttons" data-onsuccess="onSignIn" type="submit"><i class="fa fa-google-plus"></i> Google</button>-->
                         </div>
@@ -118,7 +122,7 @@ include_once(dirname(__FILE__) . '/../class/include.php');
         </div>
 
 
-    
+
         <script src="assets/js/jquery.js"></script>
         <script src="assets/js/bootstrap.min.js"></script>
 

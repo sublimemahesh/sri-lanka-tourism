@@ -81,11 +81,6 @@ if (isset($_SESSION["back_url"])) {
                             <button class="fb btn btn-facebook social-log-buttons-1" id="fb-login" type="submit"><i class="fa fa-facebook font-fb"></i> Facebook</button>
                             
                                 <button id="customBtn"  class="btn btn-danger social-log-buttons-1" type="submit"><i class="fa fa-google-plus"></i> Google</button>
-<!--                                    <span class="label">Sign in with:</span>
-                              <div >
-                                  <span class="icon"></span>
-                                  <span class="buttonText">Google</span>
-                              </div>-->
                           
                             <script>startApp();</script>  
                             <div class="text-danger" id="google-error-display"></div>
