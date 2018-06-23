@@ -1,10 +1,4 @@
 <?php
-
-/**
- * Description of Visitor
- *
- * @author official
- */
 class Visitor {
 
     public $id;
@@ -348,7 +342,7 @@ class Visitor {
 
         $query = "INSERT INTO `visitor` (`first_name`,`email`,`image_name`,`facebookID`,`password`) VALUES  ('" . $name . "', '" . $email . "', '" . $picture . "', '" . $visitorID . "', '" . $password . "')";
 
-        $db = new Database();
+       $db = new Database();
 
         $result = $db->readQuery($query);
 
@@ -455,5 +449,4 @@ class Visitor {
             return TRUE;
         }
     }
-
 }

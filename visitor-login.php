@@ -37,7 +37,8 @@ if (isset($_SESSION["back_url"])) {
         <link href="css/search.css" rel="stylesheet" type="text/css"/>
         <link href="https://fonts.googleapis.com/css?family=Russo+One|Magra|Ubuntu+Condensed" rel="stylesheet"> 
         <link href="css/visitor-custom.css" rel="stylesheet" type="text/css"/>
-
+        <script src="https://apis.google.com/js/api:client.js"></script>
+        <script src="js/google-login.js" type="text/javascript"></script>
 
     </head>
     <body style="background-color: #d7d7d7;">
@@ -78,8 +79,16 @@ if (isset($_SESSION["back_url"])) {
                         <div class="login-social-link centered">
                             <p class="font-padding">or you can sign in via your social network</p>
                             <button class="fb btn btn-facebook social-log-buttons-1" id="fb-login" type="submit"><i class="fa fa-facebook font-fb"></i> Facebook</button>
-                            <button class="btn btn-danger social-log-buttons-1" type="submit"><i class="fa fa-google-plus"></i> Google</button>
-                            <button class="btn btn-danger social-log-buttons-1" type="submit"><i class="fa fa-google-plus"></i> Google</button>
+                            
+                                <button id="customBtn"  class="btn btn-danger social-log-buttons-1" type="submit"><i class="fa fa-google-plus"></i> Google</button>
+<!--                                    <span class="label">Sign in with:</span>
+                              <div >
+                                  <span class="icon"></span>
+                                  <span class="buttonText">Google</span>
+                              </div>-->
+                          
+                            <script>startApp();</script>  
+                            <div class="text-danger" id="google-error-display"></div>
                         </div>
                         <hr class="hr">
                         <div class="registration create-ac-register">
