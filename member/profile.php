@@ -82,7 +82,7 @@ $MEMBER = new Member($_SESSION['id']);
                                                     <?php
                                                     if (empty($MEMBER->profile_picture)) {
                                                         ?>
-                                                    <img src="../upload/member/member.png" class="img img-responsive img-thumbnail" id="profil_pic"/>
+                                                        <img src="../upload/member/member.png" class="img img-responsive img-thumbnail" id="profil_pic"/>
                                                         <?php
                                                     } else {
 
@@ -90,9 +90,13 @@ $MEMBER = new Member($_SESSION['id']);
                                                             ?>
                                                             <img src="<?php echo $MEMBER->profile_picture; ?>" class="img img-responsive img-thumbnail" id="profil_pic"/>
                                                             <?php
+                                                        } elseif ($MEMBER->googleID && substr($MEMBER->profile_picture, 0, 5) === "https") {
+                                                            ?>
+                                                            <img src="<?php echo $MEMBER->profile_picture; ?>" class="img img-responsive img-thumbnail" id="profil_pic"/>
+                                                            <?php
                                                         } else {
                                                             ?>
-                                                            <img src="../upload/member/<?php echo $MEMBER->profile_picture; ?>" class="img img-responsive img-thumbnail" id="profil_pic"/>
+                                                           <img src="../upload/member/<?php echo $MEMBER->profile_picture; ?>" class="img img-responsive img-thumbnail" id="profil_pic"/>
                                                             <?php
                                                         }
                                                     }

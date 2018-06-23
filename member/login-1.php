@@ -1,6 +1,3 @@
-
-
-
 <?php
 include_once(dirname(__FILE__) . '/../class/include.php');
 ?>
@@ -25,6 +22,8 @@ include_once(dirname(__FILE__) . '/../class/include.php');
         <link href="assets/css/style.css" rel="stylesheet">
         <link href="assets/css/style-responsive.css" rel="stylesheet">
         <link href="assets/css/custom-member-login.css" rel="stylesheet" type="text/css"/>
+        <script src="https://apis.google.com/js/api:client.js"></script>
+        <script src="js/google-login.js" type="text/javascript"></script>
     </head>
 
     <body style="background-color: #d7d7d7;">
@@ -59,8 +58,12 @@ include_once(dirname(__FILE__) . '/../class/include.php');
                         <div class="login-social-link centered">
                             <p>or you can sign in via your social network</p>
                             <button class="fb btn btn-facebook social-log-buttons-1" id="fb-login" type="submit"><i class="fa fa-facebook"></i> Facebook</button>
-                            <button class="btn btn-twitter social-log-buttons-1" type="submit"><i class="fa fa-twitter"></i> Twitter</button>
-                            <button class="btn btn-danger social-log-buttons-1" type="submit"><i class="fa fa-google-plus"></i> Google</button>
+                              <button id="customBtn"  class="btn btn-danger social-log-buttons-1" type="submit"><i class="fa fa-google-plus"></i> Google</button>
+
+                            <script>startApp();</script>  
+                            <div class="text-danger" id="google-error-display"></div>
+
+                           
                         </div>
                         <div class="registration">
                             Don't have an account yet?<br/>
