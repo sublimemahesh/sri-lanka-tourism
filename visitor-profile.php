@@ -2,8 +2,6 @@
 <?php
 include './class/include.php';
 include './auth.php';
-
-
 ?>
 <html lang="en">
     <head>
@@ -56,7 +54,12 @@ include './auth.php';
                                                 if ($VISITOR->facebookID && substr($VISITOR->image_name, 0, 5) === "https") {
                                                     ?>
                                                     <img src="<?php echo $VISITOR->image_name; ?>" class="img img-responsive img-thumbnail" id="profil_pic"/>
-                                                <?php } else {
+                                                    <?php
+                                                } elseif ($VISITOR->googleID && substr($VISITOR->image_name, 0, 5) === "https") {
+                                                    ?>
+                                                     <img src="<?php echo $VISITOR->image_name; ?>" class="img img-responsive img-thumbnail" id="profil_pic"/>
+                                                    <?php
+                                                } else {
                                                     ?>
                                                     <img src="upload/visitor/<?php echo $VISITOR->image_name; ?>" class="img img-responsive img-thumbnail" id="profil_pic"/>
                                                     <?php
@@ -101,7 +104,7 @@ include './auth.php';
 
 
         <!-- Our Resort Values style-->  
-        <?php include './footer.php' ?>
+<?php include './footer.php' ?>
 
         <script src="js/jquery-2.2.4.min.js"></script>
         <script src="js/bootstrap.min.js"></script>

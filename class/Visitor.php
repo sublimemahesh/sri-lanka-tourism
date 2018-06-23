@@ -17,12 +17,13 @@ class Visitor {
     public $contact_number;
     public $image_name;
     public $facebookID;
+    public $googleID;
     public $resetcode;
 
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`,`first_name`,`second_name`,`email`,`password`,`address`,`city`,`contact_number`,`image_name`,`facebookID`,`resetcode` FROM `visitor` WHERE `id`=" . $id;
+            $query = "SELECT `id`,`first_name`,`second_name`,`email`,`password`,`address`,`city`,`contact_number`,`image_name`,`facebookID`,`googleID`,`resetcode` FROM `visitor` WHERE `id`=" . $id;
 
             $db = new Database();
 
@@ -38,6 +39,7 @@ class Visitor {
             $this->contact_number = $result['contact_number'];
             $this->image_name = $result['image_name'];
             $this->facebookID = $result['facebookID'];
+            $this->googleID  = $result['googleID'];
             $this->resetcode = $result['resetcode'];
 
             return $this;
@@ -365,6 +367,71 @@ class Visitor {
     public function loginByFB($visitorID, $password) {
 
         $query = "SELECT * FROM `visitor` WHERE `facebookID`= '" . $visitorID . "' AND `password`= '" . $password . "'";
+
+        $db = new Database();
+
+        $result = mysql_fetch_array($db->readQuery($query));
+
+        if (!$result) {
+            return FALSE;
+        } else {
+            $this->id = $result['id'];
+            $visitor = $this->__construct($this->id);
+
+            if (!isset($_SESSION)) {
+                session_start();
+                session_unset($_SESSION);
+            }
+
+            $_SESSION["login"] = TRUE;
+
+            $_SESSION["id"] = $visitor->id;
+
+            return TRUE;
+        }
+    }
+
+    public function isGoogleIdIsEx($visitorID) {
+
+        $query = "SELECT * FROM `visitor` WHERE `googleID` = '" . $visitorID . "'";
+
+        $db = new Database();
+
+        $result = mysql_fetch_array($db->readQuery($query));
+
+        if ($result === false) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public function createByGoogle($name, $email, $picture, $visitorID, $password) {
+//        date_default_timezone_set('Asia/Colombo');
+//
+//        $createdAt = date('Y-m-d H:i:s');
+
+        $query = "INSERT INTO `visitor` (`first_name`,`email`,`image_name`,`googleID`,`password`) VALUES  ('" . $name . "', '" . $email . "', '" . $picture . "', '" . $visitorID . "', '" . $password . "')";
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+
+        $last_id = mysql_insert_id();
+
+        if ($result) {
+
+            $this->loginByGoogle($visitorID, $password);
+
+            return $this->__construct($last_id);
+        } else {
+            return FALSE;
+        }
+    }
+
+    public function loginByGoogle($visitorID, $password) {
+
+        $query = "SELECT * FROM `visitor` WHERE `googleID`= '" . $visitorID . "' AND `password`= '" . $password . "'";
 
         $db = new Database();
 
