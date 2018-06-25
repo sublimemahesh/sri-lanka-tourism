@@ -8,10 +8,12 @@ if (isset($_POST['create-offer'])) {
     $OFFER = new Offer(NULL);
     $VALID = new Validator();
 
-    $OFFER->title = filter_input(INPUT_POST, 'title');
-    $OFFER->description = filter_input(INPUT_POST, 'description');
-    $OFFER->type = filter_input(INPUT_POST, 'type');
-    $OFFER->url = filter_input(INPUT_POST, 'url');
+    $OFFER->title = $_POST['title'];
+    $OFFER->description = $_POST['description'];
+    $OFFER->price = $_POST['price'];
+    $OFFER->discount = $_POST['discount'];
+    $OFFER->type = $_POST['type'];
+    $OFFER->url = $_POST['url'];
 
     $dir_dest = '../../upload/offer/';
 
@@ -24,8 +26,8 @@ if (isset($_POST['create-offer'])) {
         $handle->file_new_name_ext = 'jpg';
         $handle->image_ratio_crop = 'C';
         $handle->file_new_name_body = Helper::randamId();
-        $handle->image_x = 240;
-        $handle->image_y = 240;
+        $handle->image_x = 500;
+        $handle->image_y = 300;
 
         $handle->Process($dir_dest);
 
@@ -81,8 +83,8 @@ if (isset($_POST['update-offer'])) {
         $handle->file_new_name_ext = FALSE;
         $handle->image_ratio_crop = 'C';
         $handle->file_new_name_body = $_POST ["oldImageName"];
-        $handle->image_x = 240;
-        $handle->image_y = 240;
+        $handle->image_x = 500;
+        $handle->image_y = 300;
 
         $handle->Process($dir_dest);
 
@@ -94,11 +96,12 @@ if (isset($_POST['update-offer'])) {
 
     $OFFER = new Offer($_POST['id']);
 
-    $OFFER->image_name = $_POST["oldImageName"];
-    $OFFER->title = mysql_real_escape_string($_POST['title']);
-    $OFFER->description = mysql_real_escape_string($_POST['description']);
-    $OFFER->type = mysql_real_escape_string($_POST['type']);
-    $OFFER->url = mysql_real_escape_string($_POST['url']);
+    $OFFER->title = $_POST['title'];
+    $OFFER->description = $_POST['description'];
+    $OFFER->price = $_POST['price'];
+    $OFFER->discount = $_POST['discount'];
+    $OFFER->type = $_POST['type'];
+    $OFFER->url = $_POST['url'];
 
     $VALID = new Validator();
     $VALID->check($OFFER, [

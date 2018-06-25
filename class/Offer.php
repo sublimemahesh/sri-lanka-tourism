@@ -13,12 +13,14 @@ class Offer {
     public $description;
     public $type;
     public $url;
+    public $price;
+    public $discount;
     public $sort;
 
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`,`title`,`image_name`,`description`,`type`,`sort`,`url` FROM `offer` WHERE `id`=" . $id;
+            $query = "SELECT `id`,`title`,`image_name`,`description`,`type`,`url`,`price`,`discount`,`sort` FROM `offer` WHERE `id`=" . $id;
 
             $db = new Database();
 
@@ -30,6 +32,8 @@ class Offer {
             $this->description = $result['description'];
             $this->type = $result['type'];
             $this->url = $result['url'];
+            $this->price = $result['price'];
+            $this->discount = $result['discount'];
             $this->sort = $result['sort'];
 
             return $this;
@@ -38,13 +42,15 @@ class Offer {
 
     public function create() {
 
-        $query = "INSERT INTO `offer` (`title`,`image_name`,`description`,`type`,`sort`,`url`) VALUES  ('"
+        $query = "INSERT INTO `offer` (`title`,`image_name`,`description`,`type`,`url`,`price`,`discount`,`sort`) VALUES  ('"
                 . $this->title . "','"
                 . $this->image_name . "','"
                 . $this->description . "','"
                 . $this->type . "','"
-                . $this->sort . "','"
-                . $this->url . "')";
+                . $this->url . "','"
+                . $this->price . "','"
+                . $this->discount . "','"
+                . $this->sort . "')";
 
         $db = new Database();
 
@@ -80,8 +86,10 @@ class Offer {
                 . "`image_name` ='" . $this->image_name . "', "
                 . "`description` ='" . $this->description . "', "
                 . "`type` ='" . $this->type . "', "
-                . "`sort` ='" . $this->sort . "', "
-                . "`url` ='" . $this->url . "' "
+                . "`url` ='" . $this->url . "', "
+                . "`price` ='" . $this->price . "', "
+                . "`discount` ='" . $this->discount . "', "
+                . "`sort` ='" . $this->sort . "' "
                 . "WHERE `id` = '" . $this->id . "'";
 
         $db = new Database();
@@ -119,6 +127,7 @@ class Offer {
 
         return $array_res;
     }
+
     public function GetOfferByType($id) {
 
         $query = "SELECT * FROM `offer` WHERE `type` = '" . $id . "' ORDER BY `sort` ASC";

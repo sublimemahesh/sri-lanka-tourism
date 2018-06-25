@@ -63,6 +63,22 @@ $OFFER = new Offer($id);
                             </div>
                             <div class="body row">
                                 <form class="form-horizontal" method="post" action="post-and-get/offer.php" enctype="multipart/form-data"> 
+
+
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="type">Type</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group">
+                                                <select class="form-control" name="type">
+                                              <option <?php if ($OFFER->type == 1){echo "selected";}?> value="1">Taxi</option>
+                                                    <option <?php if ($OFFER->type == 2){echo "selected";}?> value="2">Tours</option>
+                                                    <option <?php if ($OFFER->type == 3){echo "selected";}?> value="3">Hotel</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="row clearfix">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                             <label for="title">Title</label>
@@ -87,33 +103,32 @@ $OFFER = new Offer($id);
                                             </div>
                                         </div>
                                     </div> 
+
                                     <div class="row clearfix">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                            <label for="type">Type</label>
+                                            <label for="Price">Price</label>
                                         </div>
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group">
-                                                <select class="form-control" name="type">
-                                                    <option value="type">
-                                                        <?php
-                                                        if ($OFFER->type == 1) {
-                                                            echo "Tours";
-                                                        } elseif ($OFFER->type == 2) {
-                                                            echo "Accommodation";
-                                                        } elseif ($OFFER->type == 3) {
-                                                            echo "Transport";
-                                                        } else {
-                                                            echo "-- Please select --";
-                                                        }
-                                                        ?>
-                                                    </option>
-                                                    <option value="1">Tours</option>
-                                                    <option value="2">Accommodation</option>
-                                                    <option value="3">Transport</option>
-                                                </select>
+                                                <div class="form-line">
+                                                    <input type="number" id="price" class="form-control" placeholder="Price witout discount" value="<?php echo $OFFER->price; ?>" autocomplete="off" name="price" required="TRUE">
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> 
+
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="Price">Discount</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    <input type="number" value="<?php echo $OFFER->discount; ?>" id="discount" class="form-control" placeholder="add your discount percentage" autocomplete="off" name="discount" required="TRUE">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> 
                                     <div class="row clearfix">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                             <label for="image_name">Image</label>
