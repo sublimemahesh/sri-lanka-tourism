@@ -1,0 +1,309 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jun 25, 2018, 11:39:18 AM
+    Author     : Sublime
+*/
+
+
+.hotel-inner,
+.tour-inner {
+    background: #f8f8f8;
+}
+
+.hotel-list-content{
+    padding-top: 50px;
+}
+
+.hotel-item {
+    background: #fff;
+    margin-bottom: 20px;
+    position: relative;
+    box-shadow: 4px 3px 5px 0px rgba(0, 0, 0, 0.03);
+}
+
+.hotel-item:hover,
+.package-wiget:hover {
+    -webkit-box-shadow: 1px 0px 5px 0px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 1px 0px 5px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 1px 0px 5px 0px rgba(0, 0, 0, 0.2);
+}
+
+.hotel-item .hotel-image {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    margin-bottom: 0;
+    width: 35%;
+    display: table-cell;
+}
+
+/*            .hotel-item .hotel-image:before {
+                content: '';
+                position: absolute;
+                z-index: 2;
+                top: 0;
+                right: -15%;
+                height: 100%;
+                width: 30%;
+                -webkit-transform: skew(15deg);
+                -moz-transform: skew(15deg);
+                -ms-transform: skew(15deg);
+                -o-transform: skew(15deg);
+                transform: skew(15deg);
+                background: #fff;
+            }
+
+            .hotel-item .hotel-image .img {
+                position: relative;
+                z-index: 1;
+            }
+
+            .hotel-item .hotel-image .img:before,
+            .hotel-item .hotel-image .img:after {
+                content: '';
+                z-index: 1;
+                top: 0;
+                height: 100%;
+                width: 100%;
+              
+                -webkit-transition: all 0.35s;
+                -moz-transition: all 0.35s;
+                -o-transition: all 0.35s;
+                transition: all 0.35s;
+            }
+
+            .hotel-item .hotel-image .img:before {
+                left: 0;
+                background: #ffc107;
+                opacity: 0;
+            }*/
+
+.hotel-item:hover .hotel-image .img:before {
+    opacity: 0.3;
+}
+
+.hotel-item .hotel-image .img:after {
+    right: -90%;
+    opacity: 0.2;
+    background: #ffffff;
+    -webkit-transform: scale3d(1.9, 1.4, 1) rotate3d(0, 0, 1, 101deg) translate3d(0, -22%, 0);
+    -moz-transform: scale3d(1.9, 1.4, 1) rotate3d(0, 0, 1, 101deg) translate3d(0, -22%, 0);
+    transform: scale3d(1.9, 1.4, 1) rotate3d(0, 0, 1, 101deg) translate3d(0, -22%, 0);
+}
+
+.hotel-item:hover .hotel-image .img:after {
+    -webkit-transform: scale3d(1.9, 1.4, 1) rotate3d(0, 0, 1, 101deg) translate3d(0, 130%, 0);
+    -moz-transform: scale3d(1.9, 1.4, 1) rotate3d(0, 0, 1, 101deg) translate3d(0, 130%, 0);
+    transform: scale3d(1.9, 1.4, 1) rotate3d(0, 0, 1, 101deg) translate3d(0, 130%, 0);
+}
+
+.hotel-item .hotel-body {
+    padding: 10px;
+    width: 42%;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.hotel-item .hotel-body .ratting i {
+    font-size: 11px;
+}
+
+.hotel-item .hotel-body h3 {
+  margin: 0px 0px 15px 0px;
+    font-weight: 600;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #2a0a92;
+}
+
+.hotel-item .hotel-body p {
+    color: #696767;
+    font-size: 14px;
+    line-height: 21px;
+}
+
+.hotel-item .hotel-body .free-service i {
+    font-size: 18px;
+    margin-right: 10px;
+    color: #868686;
+    cursor: pointer;
+}
+
+.hotel-right {
+    width: 23%;
+    text-align: center;
+    background: #fff;
+    padding: 15px;
+    display: table-cell;
+    vertical-align: middle;
+    border-left: 1px solid #ddd;
+}
+
+.hotel-person {
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0px;
+}
+.old-discount-price{
+    color: #b70505;
+}
+.hotel-person span {
+    display: block;
+    font-size: 25px;
+    margin: 15px 0px 13px 2px;
+    font-weight: 700;
+    color: #616aae;
+}
+
+.hotel-item .thm-btn {
+    margin-top: 20px;
+}
+
+.hotel-item .thm-btn {
+    margin-top: 20px;
+}
+
+.thm-btn {
+    padding: 12px 30px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 13px;
+    border: 0;
+    text-align: center;
+    border-radius: 4px;
+    text-decoration: none;
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px transparent;
+    position: relative;
+    background-color: #2e7bc6  !important;
+}
+
+
+
+
+.ribbon {
+    position: absolute;
+    z-index: 3;
+    overflow: hidden;
+    width: 75px;
+    height: 75px;
+    text-align: center;
+}
+
+.ribbon span {
+    font-size: 10px;
+    font-weight: 700;
+    color: #FFF;
+    text-transform: uppercase;
+    line-height: 20px;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    width: 100px;
+    display: block;
+    background: #f94141;
+    background: linear-gradient(#f94141 0, #f94141 100%);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, .25);
+    position: absolute;
+    top: 19px;
+    left: -21px;
+}
+
+.ribbon2 {
+    position: absolute;
+    z-index: 3;
+    overflow: hidden;
+    width: 75px;
+    height: 75px;
+    text-align: center;
+}
+
+.ribbon2 span {
+    font-size: 12px;
+    font-weight: 700;
+    color: #FFF;
+    text-transform: uppercase;
+    line-height: 20px;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    width: 100px;
+    display: block;
+    background: #f94141;
+    background: linear-gradient(#f94141 0, #f94141 100%);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, .25);
+    position: absolute;
+    top: 19px;
+    left: -21px;
+}
+
+.thm-btn:hover{
+        text-decoration: none;
+}
+.thm-btn::before {
+    content: '';
+    position: absolute;
+    border: white solid 3px;
+    border-radius: 4px;
+    top: 3px;
+    left: 3px;
+    right: 3px;
+    bottom: 3px;
+    opacity: 0;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: opacity;
+    transition-property: opacity;
+}
+
+
+@media(max-width:767px) {
+    .hotel-item .hotel-image {
+        width: 100%;
+        display: inline-block;
+    }
+    .hotel-item .hotel-image::before {
+        display: none;
+    }
+    .hotel-item .hotel-image img {
+        width: 100%;
+    }
+    .hotel-item .hotel-body {
+        width: 100%;
+        display: block;
+    }
+    .hotel-right {
+        text-align: left;
+        border-left: 0;
+        padding-top: 0;
+    }
+    .hotel-person span {
+        margin: 0;
+        display: inline-block;
+    }
+
+
+}
+
+
+@media(min-width:991px) and (max-width:1199px) {
+    .hotel-item .hotel-image::before {
+        display: none;
+    }
+    .hotel-item .hotel-body h3 {
+        font-size: 16px;
+    }
+    .hotel-item .hotel-body p {
+        font-size: 12px;
+        line-height: 18px;
+    }
+    .hotel-item .hotel-body .free-service i {
+        font-size: 14px;
+    }
+}

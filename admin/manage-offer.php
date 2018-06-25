@@ -81,11 +81,11 @@ $OFFER = new Offer(NULL)
                                                     <p class="maxlinetitle">
                                                         <b>Type :</b> <?php
                                                         if ($offer['type'] == 1) {
-                                                            echo "Tours";
+                                                            echo "Taxi";
                                                         } elseif ($offer['type'] == 2) {
-                                                            echo "Accommodation";
+                                                            echo "Tours";
                                                         } elseif ($offer['type'] == 3) {
-                                                            echo "Transport";
+                                                            echo "Hotel";
                                                         }
                                                         ?>
                                                     </p>  
