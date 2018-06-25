@@ -1,10 +1,4 @@
 <?php
-
-/**
- * Description of Offer
- *
- * @author official
- */
 class Offer {
 
     public $id;
@@ -150,5 +144,4 @@ class Offer {
         $result = $db->readQuery($query);
         return $result;
     }
-
 }

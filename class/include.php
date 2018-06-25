@@ -47,7 +47,8 @@ include_once(dirname(__FILE__) . '/BookingRoomDetails.php');
 include_once(dirname(__FILE__) . '/RentACar.php');
 include_once(dirname(__FILE__) . '/RentACarBooking.php');
 include_once(dirname(__FILE__) . '/Languages.php');
-
+include_once(dirname(__FILE__) . '/Offer.php');
+include_once(dirname(__FILE__) . '/OfferBooking.php');
 
 function dd($data) {
     var_dump($data);
