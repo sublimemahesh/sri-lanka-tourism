@@ -14,6 +14,7 @@ if (isset($_POST['create-offer'])) {
     $OFFER->discount = $_POST['discount'];
     $OFFER->type = $_POST['type'];
     $OFFER->url = $_POST['url'];
+    $OFFER->is_active = $_POST['active'];
 
     $dir_dest = '../../upload/offer/';
 
@@ -102,6 +103,7 @@ if (isset($_POST['update-offer'])) {
     $OFFER->discount = $_POST['discount'];
     $OFFER->type = $_POST['type'];
     $OFFER->url = $_POST['url'];
+    $OFFER->is_active = $_POST['active'];
 
     $VALID = new Validator();
     $VALID->check($OFFER, [

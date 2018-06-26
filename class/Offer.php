@@ -1,4 +1,5 @@
 <?php
+
 class Offer {
 
     public $id;
@@ -9,12 +10,13 @@ class Offer {
     public $url;
     public $price;
     public $discount;
+    public $is_active;
     public $sort;
 
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`,`title`,`image_name`,`description`,`type`,`url`,`price`,`discount`,`sort` FROM `offer` WHERE `id`=" . $id;
+            $query = "SELECT `id`,`title`,`image_name`,`description`,`type`,`url`,`price`,`discount`,`is_active`,`sort` FROM `offer` WHERE `id`=" . $id;
 
             $db = new Database();
 
@@ -28,6 +30,7 @@ class Offer {
             $this->url = $result['url'];
             $this->price = $result['price'];
             $this->discount = $result['discount'];
+            $this->is_active = $result['is_active'];
             $this->sort = $result['sort'];
 
             return $this;
@@ -36,7 +39,7 @@ class Offer {
 
     public function create() {
 
-        $query = "INSERT INTO `offer` (`title`,`image_name`,`description`,`type`,`url`,`price`,`discount`,`sort`) VALUES  ('"
+        $query = "INSERT INTO `offer` (`title`,`image_name`,`description`,`type`,`url`,`price`,`discount`,`is_active`,`sort`) VALUES  ('"
                 . $this->title . "','"
                 . $this->image_name . "','"
                 . $this->description . "','"
@@ -44,6 +47,7 @@ class Offer {
                 . $this->url . "','"
                 . $this->price . "','"
                 . $this->discount . "','"
+                . $this->is_active . "','"
                 . $this->sort . "')";
 
         $db = new Database();
@@ -73,6 +77,34 @@ class Offer {
         return $array_res;
     }
 
+      public function activeOffers() {
+
+        $query = "SELECT * FROM `offer` WHERE is_active = '1'";
+        $db = new Database();
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+
+        return $array_res;
+    }
+
+    public function inactiveOffers() {
+
+        $query = "SELECT * FROM `offer` WHERE is_active = '0'";
+        $db = new Database();
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+
+        return $array_res;
+    }
+    
     public function update() {
 
         $query = "UPDATE  `offer` SET "
@@ -83,13 +115,14 @@ class Offer {
                 . "`url` ='" . $this->url . "', "
                 . "`price` ='" . $this->price . "', "
                 . "`discount` ='" . $this->discount . "', "
+                . "`is_active` ='" . $this->is_active . "', "
                 . "`sort` ='" . $this->sort . "' "
                 . "WHERE `id` = '" . $this->id . "'";
 
         $db = new Database();
 
         $result = $db->readQuery($query);
-
+       
         if ($result) {
             return $this->__construct($this->id);
         } else {
@@ -144,4 +177,5 @@ class Offer {
         $result = $db->readQuery($query);
         return $result;
     }
+
 }

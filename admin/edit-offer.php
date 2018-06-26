@@ -72,9 +72,21 @@ $OFFER = new Offer($id);
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group">
                                                 <select class="form-control" name="type">
-                                              <option <?php if ($OFFER->type == 1){echo "selected";}?> value="1">Taxi</option>
-                                                    <option <?php if ($OFFER->type == 2){echo "selected";}?> value="2">Tours</option>
-                                                    <option <?php if ($OFFER->type == 3){echo "selected";}?> value="3">Hotel</option>
+                                                    <option <?php
+                                                    if ($OFFER->type == 1) {
+                                                        echo "selected";
+                                                    }
+                                                    ?> value="1">Taxi</option>
+                                                    <option <?php
+                                                    if ($OFFER->type == 2) {
+                                                        echo "selected";
+                                                    }
+                                                    ?> value="2">Tours</option>
+                                                    <option <?php
+                                                    if ($OFFER->type == 3) {
+                                                        echo "selected";
+                                                    }
+                                                    ?> value="3">Hotel</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -155,6 +167,20 @@ $OFFER = new Offer($id);
                                         </div>
                                     </div>
 
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7"> 
+                                            <div class="form-group">
+                                                <input class="filled-in chk-col-pink" type="checkbox" <?php
+                                                if ($OFFER->is_active == 1) {
+                                                    echo 'checked';
+                                                }
+                                                ?> name="active" value="1" id="rememberme" />
+                                                <label for="rememberme">Activate</label>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="col-md-12">
 
                                         <div class="row clearfix">
