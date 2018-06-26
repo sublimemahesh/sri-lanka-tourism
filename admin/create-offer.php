@@ -61,7 +61,6 @@ include_once(dirname(__FILE__) . './auth.php');
                             </div>
                             <div class="body">
                                 <form class="form-horizontal"  method="post" action="post-and-get/offer.php" enctype="multipart/form-data"> 
-
                                     <div class="row clearfix">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                             <label for="type">Type</label>

@@ -31,12 +31,14 @@ $OFFER_OBJ = New Offer(null);
                     <div class="col-sm-12 col-md-12">
                         <div class="hotel-list-content">
                             <?php
-                            foreach($OFFER_OBJ->GetActiveOfferByType($id) as $offer) {
+                            foreach ($OFFER_OBJ->GetActiveOfferByType($id) as $offer) {
                                 $discount = $offer['discount'];
                                 $price = $offer['price'];
                                 $new_price = $price - (($discount / 100) * $price);
+                                $MEMBER = new Member($offer['member']);
                                 ?>
                                 <div class="hotel-item">
+
                                     <div class="ribbon"><span><?php echo $offer['discount'] ?>% off</span></div>
                                     <!-- hotel Image-->
                                     <div class="hotel-image">
@@ -52,8 +54,31 @@ $OFFER_OBJ = New Offer(null);
                                         <?php echo $offer['description'] ?>
                                     </div>
                                     <div class="hotel-right"> 
-                                        <div class="hotel-person"><strike class="old-discount-price">LKR <?php echo $offer['price'] ?>.00</strike> <span class="color-blue">LKR <?php echo $new_price; ?>.00</span></div>
-                                        <a class="thm-btn" href="offer-booking.php?offer=<?php echo $offer['id'];?>">Get your offer</a>
+                                        <div>
+                                            <a target="blank" href="member-view.php?id=<?php echo $MEMBER->id; ?>" class="link">
+                                            <?php
+                                            if (empty($MEMBER->profile_picture)) {
+                                                ?> 
+                                                <img src="upload/member/member.png" class="img-responsive thumbnail offer-member-img"/>
+                                                <?php
+                                            } else {
+
+                                                if ($MEMBER->facebookID && substr($MEMBER->profile_picture, 0, 5) === "https") {
+                                                    ?>
+                                                    <img src="<?php echo $MEMBER->profile_picture; ?>" class="img-responsive thumbnail offer-member-img">
+                                                    <?php
+                                                } else {
+                                                    ?>
+                                                    <img src="upload/member/<?php echo $MEMBER->profile_picture; ?>" class="img-responsive thumbnail offer-member-img">
+                                                    <?php
+                                                }
+                                            }
+                                            ?>
+                                            </a>
+                                        </div>
+
+                                        <div class="hotel-person"><span class="color-blue">LKR <?php echo $new_price; ?>.00</span><strike class="old-discount-price">LKR <?php echo $offer['price'] ?>.00</strike> </div>
+                                        <a class="thm-btn" href="offer-booking.php?offer=<?php echo $offer['id']; ?>">Get your offer</a>
                                     </div>
                                 </div>
                             <?php } ?>
