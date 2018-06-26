@@ -19,8 +19,10 @@ include_once(dirname(__FILE__) . '/../class/include.php');
         <link href="assets/css/style.css" rel="stylesheet">
         <link href="assets/css/style-responsive.css" rel="stylesheet">
         <link href="assets/css/custom-member-login.css" rel="stylesheet" type="text/css"/>
+        <link href="assets/css/h-f-styles.css" rel="stylesheet" type="text/css"/>
         <script src="https://apis.google.com/js/api:client.js"></script>
         <script src="js/google-login.js" type="text/javascript"></script>
+
     </head>
 
     <body style="background-color: #d7d7d7;">
@@ -118,14 +120,11 @@ include_once(dirname(__FILE__) . '/../class/include.php');
             </div>
 
         </div>
-        <div class="login-footer">
-        </div>
-
-
-
+      <?php
+                    include './index-footer.php';
+              ?> 
         <script src="assets/js/jquery.js"></script>
         <script src="assets/js/bootstrap.min.js"></script>
-
         <script src="js/add-member.js" type="text/javascript"></script>
         <script src="js/fb-login-scripts.js" type="text/javascript"></script>
         <script src="https://apis.google.com/js/platform.js" async defer></script>
