@@ -13,6 +13,7 @@ if (isset($_POST['create-offer'])) {
     $OFFER->price = $_POST['price'];
     $OFFER->discount = $_POST['discount'];
     $OFFER->type = $_POST['type'];
+    $OFFER->member = 0;
     $OFFER->url = $_POST['url'];
     $OFFER->is_active = $_POST['active'];
 
@@ -103,6 +104,7 @@ if (isset($_POST['update-offer'])) {
     $OFFER->discount = $_POST['discount'];
     $OFFER->type = $_POST['type'];
     $OFFER->url = $_POST['url'];
+    $OFFER->member = 0;
     $OFFER->is_active = $_POST['active'];
 
     $VALID = new Validator();

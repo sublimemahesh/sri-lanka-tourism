@@ -113,7 +113,7 @@ and open the template in the editor.
 }
 
 .hotel-item .hotel-body h3 {
-  margin: 0px 0px 15px 0px;
+    margin: 0px 0px 15px 0px;
     font-weight: 600;
     font-size: 16px;
     text-transform: uppercase;
@@ -193,27 +193,34 @@ and open the template in the editor.
     position: absolute;
     z-index: 3;
     overflow: hidden;
-    width: 75px;
-    height: 75px;
+    width: 150px;
+    height: 150px;
     text-align: center;
+
+}
+
+.offer-member-img{
+    width: 25%;
+    display: inline-block;
+    margin-top: -30px;
 }
 
 .ribbon span {
-    font-size: 10px;
+    font-size: 21px;
     font-weight: 700;
     color: #FFF;
     text-transform: uppercase;
-    line-height: 20px;
+    line-height: 30px;
     transform: rotate(-45deg);
     -webkit-transform: rotate(-45deg);
-    width: 100px;
+    width: 180px;
     display: block;
     background: #f94141;
     background: linear-gradient(#f94141 0, #f94141 100%);
     text-shadow: 1px 1px 2px rgba(0, 0, 0, .25);
     position: absolute;
-    top: 19px;
-    left: -21px;
+    top: 27px;
+    left: -50px;
 }
 
 .ribbon2 {
@@ -244,7 +251,7 @@ and open the template in the editor.
 }
 
 .thm-btn:hover{
-        text-decoration: none;
+    text-decoration: none;
 }
 .thm-btn::before {
     content: '';
