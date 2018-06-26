@@ -31,7 +31,7 @@ $OFFER_OBJ = New Offer(null);
                     <div class="col-sm-12 col-md-12">
                         <div class="hotel-list-content">
                             <?php
-                            foreach($OFFER_OBJ->GetOfferByType($id) as $offer) {
+                            foreach($OFFER_OBJ->GetActiveOfferByType($id) as $offer) {
                                 $discount = $offer['discount'];
                                 $price = $offer['price'];
                                 $new_price = $price - (($discount / 100) * $price);

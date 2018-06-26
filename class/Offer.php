@@ -4,6 +4,7 @@ class Offer {
 
     public $id;
     public $title;
+    public $member;
     public $image_name;
     public $description;
     public $type;
@@ -16,7 +17,7 @@ class Offer {
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`,`title`,`image_name`,`description`,`type`,`url`,`price`,`discount`,`is_active`,`sort` FROM `offer` WHERE `id`=" . $id;
+            $query = "SELECT `id`,`member`,`title`,`image_name`,`description`,`type`,`url`,`price`,`discount`,`is_active`,`sort` FROM `offer` WHERE `id`=" . $id;
 
             $db = new Database();
 
@@ -24,6 +25,7 @@ class Offer {
 
             $this->id = $result['id'];
             $this->title = $result['title'];
+            $this->member = $result['member'];
             $this->image_name = $result['image_name'];
             $this->description = $result['description'];
             $this->type = $result['type'];
@@ -39,8 +41,9 @@ class Offer {
 
     public function create() {
 
-        $query = "INSERT INTO `offer` (`title`,`image_name`,`description`,`type`,`url`,`price`,`discount`,`is_active`,`sort`) VALUES  ('"
+        $query = "INSERT INTO `offer` (`title`,`member`,`image_name`,`description`,`type`,`url`,`price`,`discount`,`is_active`,`sort`) VALUES  ('"
                 . $this->title . "','"
+                . $this->member . "','"
                 . $this->image_name . "','"
                 . $this->description . "','"
                 . $this->type . "','"
@@ -50,6 +53,7 @@ class Offer {
                 . $this->is_active . "','"
                 . $this->sort . "')";
 
+    
         $db = new Database();
 
         $result = $db->readQuery($query);
@@ -77,7 +81,7 @@ class Offer {
         return $array_res;
     }
 
-      public function activeOffers() {
+    public function activeOffers() {
 
         $query = "SELECT * FROM `offer` WHERE is_active = '1'";
         $db = new Database();
@@ -104,7 +108,7 @@ class Offer {
 
         return $array_res;
     }
-    
+
     public function update() {
 
         $query = "UPDATE  `offer` SET "
@@ -122,7 +126,7 @@ class Offer {
         $db = new Database();
 
         $result = $db->readQuery($query);
-       
+
         if ($result) {
             return $this->__construct($this->id);
         } else {
@@ -155,6 +159,22 @@ class Offer {
         return $array_res;
     }
 
+    public function GetActiveOfferByType($id) {
+
+        $query = "SELECT * FROM `offer` WHERE `type` = '" . $id . "' AND is_active = '1' ORDER BY `sort` ASC";
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+
+        return $array_res;
+    }
+
     public function GetOfferByType($id) {
 
         $query = "SELECT * FROM `offer` WHERE `type` = '" . $id . "' ORDER BY `sort` ASC";
@@ -168,6 +188,21 @@ class Offer {
             array_push($array_res, $row);
         }
 
+        return $array_res;
+    }
+
+    public function getOfferByMemberId($member) {
+
+        $query = "SELECT * FROM `offer` WHERE `member`= $member";
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
         return $array_res;
     }
 
