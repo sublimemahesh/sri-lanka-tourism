@@ -176,6 +176,16 @@ $MEMBER = new Member($_SESSION['id']);
                                     <li><a  href="manage-tour-package.php">Manage Tour Packages</a></li>
                                 </ul>-->
             </li> 
+            <li class="sub-menu">
+                <a href="manage-offer.php" >
+                    <i class="fa fa-gift"></i>
+                    <span>Offers</span>
+                </a>
+                <!--                <ul class="sub">
+                                    <li><a  href="add-new-tour-package.php">Add New Tour Packages</a></li>
+                                    <li><a  href="manage-tour-package.php">Manage Tour Packages</a></li>
+                                </ul>-->
+            </li> 
         </ul>
     </div>
 </aside>
