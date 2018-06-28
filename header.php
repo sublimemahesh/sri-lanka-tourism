@@ -5,11 +5,11 @@
                 <div class="pull-left">
                     <div class="contact-detail">
                         <i class="fa fa-phone">
-                            <span class="details">0757522415</span>
+                            <span class="details"><a href="tel:+94718905282">+94 71 890 5282</a></span>
                         </i>
                         <span class="separate hidden-sm hidden-xs">||</span>
                         <i class="fa fa-envelope-o hidden-sm hidden-xs">
-                            <span class="details">srilankatourism.com</span>
+                            <span class="details"><a href="mailto:keerthiyaa@gmail.com">keerthiyaa@gmail.com</a></span>
                         </i>
                     </div>
                 </div>

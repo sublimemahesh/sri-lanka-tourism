@@ -713,6 +713,14 @@ hr{
     font-size: 12px;
 
 }
+.details a:hover{
+    text-decoration: none;
+    color: #B3B3B9;
+}
+.details a:active{
+    text-decoration: none;
+    color: #B3B3B9;
+}
 .icons{
     font-size: 14px;
     color: #000;
