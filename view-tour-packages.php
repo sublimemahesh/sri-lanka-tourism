@@ -68,14 +68,7 @@ $TOURS = $SEARCH->GetToursByKeywords($keyword, $noofdates, $type, $pricefrom, $p
         <link href="css/datepicker.css" rel="stylesheet" type="text/css"/>
         <link href="admin/plugins/jquery-ui/jquery-ui.css" rel="stylesheet" type="text/css"/>
         <link href="https://fonts.googleapis.com/css?family=Russo+One|Magra|Ubuntu+Condensed" rel="stylesheet">
-
-        <style>
-            @media (max-width: 480px) {
-                .carousel .testimonial {
-                    margin: 0px;
-                }
-            }
-        </style>
+        <link href="css/tour-package-styles.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <!-- Our Resort Values style-->
@@ -86,121 +79,127 @@ $TOURS = $SEARCH->GetToursByKeywords($keyword, $noofdates, $type, $pricefrom, $p
         <div class="row background-image" style="background-image: url('images/hotel/sea.jpg');">
             <section>
                 <div class="container inner-container1 inner-tour-pack">
-                    <div class="row">
-                        <?php
-                        foreach ($TOURS as $TOUR) {
-                            $id = $TOUR['id'];
-                            $result = TourSubSection::CountDaysInTour($id);
-                            $days = $result['days'];
-                            $night = (int) $days - 1;
+                    <?php
+                    foreach ($TOURS as $TOUR) {
+                        $id = $TOUR['id'];
+                        $result = TourSubSection::CountDaysInTour($id);
+                        $days = $result['days'];
+                        $night = (int) $days - 1;
 
-                            $MEMBER = new Member($TOUR['member']);
-                            $TYPE = new TourType($TOUR['tour_type']);
-                            ?>
-                            <div class="tour-pack1 col-md-3 col-sm-4">
-                                <div class="tour-pack">
-                                    <div class="tour-img">
-                                        <img src="upload/tour-package/thumb/<?php echo $TOUR['picture_name'];?>" alt=""/>
-                                    </div>
-                                    <div class="tour-duration">
-                                        <div class="tour-days pull-left">
-                                            <i class="fa fa-sun-o"></i> 
+                        $MEMBER = new Member($TOUR['member']);
+                        $TYPE = new TourType($TOUR['tour_type']);
+                        ?>
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <div class="listing-box">
+                                <div class="listing-box-thumb">
+                                    <span class="price-list">LKR <?php echo $TOUR['price']; ?></span>
+                                    <img src="upload/tour-package/thumb/<?php echo $TOUR['picture_name']; ?>" alt="">
+                                </div>
+                                <div class="listing-rate-share">
+                                    <a href="member-view.php?id=<?php echo $MEMBER->id; ?>" title="Member">
+                                        <?php
+                                        if (empty($MEMBER->profile_picture)) {
+                                            ?> 
+                                            <img src="upload/member/member.png" class="img-circle img-responsive"/>
                                             <?php
-                                            if ($days < 10) {
-                                                echo '0' . $days;
-                                            } else {
-                                                echo $days;
-                                            }
-                                            ?>
-                                        </div>
-                                        <div class="tour-nights pull-right">
-                                            <i class="fa fa-moon-o"></i>
-                                            <?php
-                                            if ($night < 10) {
-                                                echo '0' . $night;
-                                            } else {
-                                                echo $night;
-                                            }
-                                            ?>
-                                        </div>
-                                    </div>
-                                    <div class="tour-dtls">
-                                        <div class="row">
-                                            <a href="tour-package-view.php?id=<?php echo $TOUR['id']; ?>" title="<?php echo $TOUR['name']; ?>">
-                                                <div class="tour-title col-md-9 pull-left">
-                                                    <?php
-                                                    if (strlen($TOUR['name']) > 18) {
-                                                        echo substr($TOUR['name'], 0, 17) . '...';
-                                                    } else {
-                                                        echo $TOUR['name'];
-                                                    }
-                                                    ?>
-                                                </div>
-                                            </a>
-                                            <div class="mem-img col-md-3">
-                                                <a href="member-view.php?id=<?php echo $MEMBER->id; ?>" class="link">
-                                                    <?php
-                                                    if (empty($MEMBER->profile_picture)) {
-                                                        ?> 
-                                                        <img src="upload/member/member.png" class="img img-responsive img-thumbnail pull-right" id="profil_pic"/>
-                                                        <?php
-                                                    } else {
+                                        } else {
 
-                                                        if ($MEMBER->facebookID && substr($MEMBER->profile_picture, 0, 5) === "https") {
-                                                            ?>
-                                                            <img src="<?php echo $MEMBER->profile_picture; ?>" class="img-responsive thumbnail pull-right">
-                                                            <?php
-                                                        } else {
-                                                            ?>
-                                                            <img src="upload/member/<?php echo $MEMBER->profile_picture; ?>" class="img-responsive thumbnail pull-right">
-                                                            <?php
-                                                        }
-                                                    }
-                                                    ?>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="tour-price pull-left"><i class="fa fa-dollar"></i> LKR <?php echo $TOUR['price']; ?>/=</div>
-                                            <div class="tour-rate pull-right">
-                                                <?php
-                                                $starNumber = Feedback::getRatingByTour($id);
-
-                                                for ($x = 1; $x <= $starNumber; $x++) {
-                                                    echo '<i class="fa fa-star"></i>';
-                                                }
-
-                                                while ($x <= 5) {
-                                                    echo '<i class="fa fa-star-o"></i>';
-                                                    $x++;
-                                                }
+                                            if ($MEMBER->facebookID && substr($MEMBER->profile_picture, 0, 5) === "https") {
                                                 ?>
-                                            </div>
-                                        </div>
-
-                                        <div class="row tour-desc"><?php echo substr($TOUR['description'], 0, 85) . '...'; ?></div>
-                                        <div class="row">
-                                            <div class="tour-type pull-left" title="<?php echo $TYPE->name . ' Type'; ?>">
-                                                <i class="fa fa-certificate"></i> 
+                                                <img src="<?php echo $MEMBER->profile_picture; ?>" class="img-circle img-responsive">
                                                 <?php
-                                                if (strlen($TYPE->name) > 8) {
-                                                    echo substr($TYPE->name, 0, 10) . '...';
-                                                } else {
-                                                    echo $TYPE->name . ' Type';
-                                                }
+                                            } elseif ($MEMBER->googleID && substr($MEMBER->profile_picture, 0, 5) === "https") {
                                                 ?>
-                                            </div>
-                                            <a href="tour-package-view.php?id=<?php echo $TOUR['id']; ?>"><div class="tour-btn pull-right btn btn-sm blue">Read More<span class="glyphicon glyphicon-eye-open"></span></div></a>
-                                        </div> 
-
+                                                <img src="<?php echo $MEMBER->profile_picture; ?>" class="img-circle img-responsive">
+                                                <?php
+                                            } {
+                                                ?>
+                                                <img src="upload/member/<?php echo $MEMBER->profile_picture; ?>" class="img-circle img-responsive">
+                                                <?php
+                                            }
+                                        }
+                                        ?>
+                                    </a>
+                                    <div style="color: #898abc;font-size: 14px;font-weight: 600;margin-top: 7px;">
+                                        <?php
+                                        if (strlen($TYPE->name) > 9) {
+                                            echo substr($TYPE->name, 0, 9) . '...';
+                                        } else {
+                                            echo $TYPE->name . ' Type';
+                                        }
+                                        ?>
                                     </div>
                                 </div>
-                            </div>
-                            <?php
-                        }
-                        ?>
-                    </div>
+                                <div class="tour-bottom-container">
+                                    <div style="padding: 0px 0px 10px 20px;">
+                                        <div class="tour-title"><a href="tour-package-view.php?id=<?php echo $TOUR['id']; ?>" title="">
+                                                <?php
+                                                if (strlen($TOUR['name']) > 27) {
+                                                    echo substr($TOUR['name'], 0, 27) . '...';
+                                                } else {
+                                                    echo $TOUR['name'];
+                                                }
+                                                ?>
+                                            </a></div>  
+                                        <div class="" style="color: #9aa590; margin-top: 5px;">
+                                            <span><i class="fa fa-clock-o"></i> <?php
+                                                if ($days < 10) {
+                                                    echo $days;
+                                                } else {
+                                                    echo $days;
+                                                }
+                                                ?> Days
 
+                                                <?php
+                                                if ($night < 10) {
+                                                    echo $night;
+                                                } else {
+                                                    echo $night;
+                                                }
+                                                ?>  Nights</span>
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="col-md-6">
+
+                                        <div class="rated-list">
+                                            <?php
+                                            $starNumber = Feedback::getRatingByTour($id);
+
+                                            for ($x = 1; $x <= $starNumber; $x++) {
+                                                echo '<b class="fa fa-star"></b>';
+                                            }
+
+                                            while ($x <= 5) {
+                                                echo ' <b class="fa fa-star-o"></b>';
+                                                $x++;
+                                            }
+                                            ?>
+                                            (12 Reviews)
+                                        </div> 
+                                    </div>
+                                    <div class="col-md-6"><a href="tour-package-view.php?id=<?php echo $TOUR['id']; ?>">
+                                            <div class="tour-view-more-btn">
+                                                View More
+                                            </div>
+                                        </a>
+
+                                    </div>
+
+
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                        <?php
+                    }
+                    ?>
+
+                    <div class="row"></div>
                     <div class="row col-md-offset-3">
                         <?php Search::showPaginationTour($keyword, $noofdates, $type, $pricefrom, $priceto, $setLimit, $page); ?>
                     </div>

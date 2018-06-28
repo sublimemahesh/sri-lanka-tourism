@@ -17,8 +17,6 @@ if (isset($_POST['add-tour-package'])) {
     $dir_dest = '../../upload/tour-package/';
     $dir_dest_thumb = '../../upload/tour-package/thumb/';
 
-
-
     $handle = new Upload($_FILES['picture_name']);
 
     $imgName = null;

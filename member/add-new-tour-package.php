@@ -43,7 +43,7 @@ $types = $TOURTYPES->all();
                 <div class="wrapper">
                     <div class="container-fluid">
                         <div class="row  top-bott20"> 
-                            
+
                             <div class="panel panel-default">
                                 <div class="panel-heading"><i class="fa fa-pencil"></i> Create Tour Package</div>
                                 <div class="panel-body">
@@ -58,7 +58,7 @@ $types = $TOURTYPES->all();
                                                             </div>
                                                             <div class="">
                                                                 <select name="tourtype" id="tourtype" class="form-control">
-                                                                    <option value="">Please select a tour type</option>
+                                                                    <option value="">Please Select The Tour Type</option>
                                                                     <?php
                                                                     foreach ($types as $type) {
                                                                         ?>
@@ -73,10 +73,10 @@ $types = $TOURTYPES->all();
 
                                                         <div class="">
                                                             <div class="bottom-top">
-                                                                <label for="name">Title</label>
+                                                                <label for="name">Title or Name of The Tour </label>
                                                             </div>
                                                             <div class="">
-                                                                <input type="text" id="name" name="name" class="form-control" placeholder="Please enter title">
+                                                                <input type="text" id="name" name="name" class="form-control" placeholder="Please Enter Title/Name">
                                                             </div>
                                                         </div>
 
@@ -85,28 +85,25 @@ $types = $TOURTYPES->all();
                                                                 <label for="price">Price</label>
                                                             </div>
                                                             <div class="">
-                                                                <input type="text" id="price" class="form-control" placeholder="Please enter price" autocomplete="off" name="price">
+                                                                <input type="text" id="price" class="form-control" placeholder="Please Enter Price" autocomplete="off" name="price">
                                                             </div>
 
                                                         </div>
 
                                                         <div class="">
                                                             <div class="bottom-top">
-                                                                <label for="picture_name">Picture</label>
+                                                                <label for="picture_name">Please Select The Main Picture</label>
                                                             </div>
                                                             <div class="">
                                                                 <input type="file" id="picture_name" class="form-control" name="picture_name">
                                                             </div>
                                                         </div>
 
+
                                                         <div class="">
-                                                            <div class="bottom-top">
-                                                                <label for="description">Short Description</label>
-                                                            </div>
-                                                            <div class="">
-                                                                <input type="text" id="description" class="form-control" placeholder="Please enter short description" autocomplete="off" name="description">
-                                                            </div>
+                                                            <input type="hidden" value="-" name="description">
                                                         </div>
+
 
                                                         <div class="top-bott50">
                                                             <div class="bottom-top">
