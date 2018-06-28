@@ -101,18 +101,18 @@ and open the template in the editor.
     transform: scale3d(1.9, 1.4, 1) rotate3d(0, 0, 1, 101deg) translate3d(0, 130%, 0);
 }
 
-.hotel-item .hotel-body {
+.hotel-item .offer-body {
     padding: 10px;
     width: 42%;
     display: table-cell;
     vertical-align: middle;
 }
 
-.hotel-item .hotel-body .ratting i {
+.hotel-item .offer-body .ratting i {
     font-size: 11px;
 }
 
-.hotel-item .hotel-body h3 {
+.hotel-item .offer-body h3 {
     margin: 0px 0px 15px 0px;
     font-weight: 600;
     font-size: 16px;
@@ -121,13 +121,13 @@ and open the template in the editor.
     color: #2a0a92;
 }
 
-.hotel-item .hotel-body p {
+.hotel-item .offer-body p {
     color: #696767;
     font-size: 14px;
     line-height: 21px;
 }
 
-.hotel-item .hotel-body .free-service i {
+.hotel-item .offer-body .free-service i {
     font-size: 18px;
     margin-right: 10px;
     color: #868686;
@@ -200,9 +200,8 @@ and open the template in the editor.
 }
 
 .offer-member-img{
-    width: 25%;
-    display: inline-block;
-    margin-top: -30px;
+    width: 50px;
+    display: block;
 }
 
 .ribbon span {
@@ -281,7 +280,7 @@ and open the template in the editor.
     .hotel-item .hotel-image img {
         width: 100%;
     }
-    .hotel-item .hotel-body {
+    .hotel-item .offer-body {
         width: 100%;
         display: block;
     }
@@ -291,7 +290,7 @@ and open the template in the editor.
         padding-top: 0;
     }
     .hotel-person span {
-        margin: 0;
+        /*        margin: 0;*/
         display: inline-block;
     }
 
@@ -303,14 +302,14 @@ and open the template in the editor.
     .hotel-item .hotel-image::before {
         display: none;
     }
-    .hotel-item .hotel-body h3 {
+    .hotel-item .offer-body h3 {
         font-size: 16px;
     }
-    .hotel-item .hotel-body p {
+    .hotel-item .offer-body p {
         font-size: 12px;
         line-height: 18px;
     }
-    .hotel-item .hotel-body .free-service i {
+    .hotel-item .offer-body .free-service i {
         font-size: 14px;
     }
 }

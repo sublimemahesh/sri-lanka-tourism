@@ -42,12 +42,11 @@ if (isset($_POST['book'])) {
 
     if ($VALID->passed()) {
         $RESULT = $TRANSPORT_BOOKING->create();
-
+        
         if (!isset($_SESSION)) {
             session_start();
         }
-
-
+        
         if ($RESULT) {
 
             $visitor_f_name = $VISITOR->first_name;
