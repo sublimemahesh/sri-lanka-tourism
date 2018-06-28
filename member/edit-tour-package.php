@@ -119,17 +119,10 @@ $types = $TOURTYPES->all();
                                                             </div>
                                                         </div>
 
+
                                                         <div class="">
-                                                            <div class="bottom-top">
-                                                                <label for="description">Description</label>
-                                                            </div>
-                                                            <div class="">
-                                                                <input id="description" name="description" class="form-control" value="<?php echo $TOUR_PACKAGE->description; ?>">
-                                                            </div>
+                                                            <input type="hidden" name="description"  value="-">
                                                         </div>
-
-
-
 
                                                         <div class="top-bott50">
                                                             <div class="bottom-top">

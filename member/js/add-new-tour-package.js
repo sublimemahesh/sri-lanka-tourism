@@ -41,15 +41,6 @@ $(document).ready(function () {
                 showConfirmButton: false
             });
             return false
-        } else if (!$('#description').val() || $('#description').val().length === 0) {
-            swal({
-                title: "Error!",
-                text: "Please enter the short description",
-                type: 'error',
-                timer: 2000,
-                showConfirmButton: false
-            });
-            return false;
         } else {
             return true;
         }
