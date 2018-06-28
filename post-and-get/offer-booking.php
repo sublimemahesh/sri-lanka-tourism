@@ -14,6 +14,9 @@ if (isset($_POST['book'])) {
     $OFFER = new Offer($offer);
     $VISITOR = new Visitor($visitor);
 
+    $MEMBER = new Member($OFFER->member);
+    $member_email = $MEMBER->email;
+
     $OFFER_BOOKING = new OfferBooking(NULL);
 
     $OFFER_BOOKING->visitor = $visitor;
@@ -306,11 +309,15 @@ if (isset($_POST['book'])) {
         </table>
     </body>
 </html>';
+        
         if (mail($visitor_email, $subject, $html, $headers) &&
                 mail($comEmail, $subject, $html, $headers)) {
+            if (!$member_email == NULL) {
+                mail($member_email, $subject, $html, $headers);
+            }
             $VALID->addError("Booking was completed successfully.please check your email", 'success');
             $_SESSION['ERRORS'] = $VALID->errors();
-            header('Location: ../offer-booking.php?message=25&offer='.$OFFER->id);
+            header('Location: ../offer-booking.php?message=25&offer=' . $OFFER->id);
         } else {
             $VALID->addError("There was an error.please try again !", 'danger');
             $_SESSION['ERRORS'] = $VALID->errors();
