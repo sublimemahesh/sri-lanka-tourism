@@ -46,7 +46,7 @@ if (isset($_POST['book'])) {
         $site_link = "http://" . $_SERVER['HTTP_HOST'];
         $website_name = 'www.srilankatourism.travel';
         $comany_name = 'Sri Lanka Tourism';
-        $comConNumber = '09137347559';
+        $comConNumber = '+94 71 890 5282';
         $comEmail = 'keerthiyaa@gmail.com';
         date_default_timezone_set('Asia/Colombo');
 
