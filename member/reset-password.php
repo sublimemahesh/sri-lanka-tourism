@@ -77,7 +77,6 @@ include_once(dirname(__FILE__) . '/../class/include.php');
                                 <a class="create-account" href="login.php"> Create an account</a>
                             </label>
                         </div>
-
                     </div>
                     <div>	  
 

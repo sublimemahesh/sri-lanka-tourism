@@ -73,7 +73,6 @@ if (isset($_POST['edit-transports'])) {
     $VALID->check($TRANSPORTS, [
         'title' => ['required' => TRUE],
         'vehicle_type' => ['required' => TRUE],
-        'member' => ['required' => TRUE],
         'registered_number' => ['required' => TRUE],
         'description' => ['required' => TRUE],
     ]);

@@ -104,18 +104,6 @@ $types = $TOURTYPES->all();
                                     </div> 
                                     <div class="row clearfix">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                            <label for="member">Member ID</label>
-                                        </div>
-                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                                            <div class="form-group">
-                                                <div class="form-line">
-                                                    <input type="number" id="member" class="form-control" placeholder="Enter member id" autocomplete="off" name="member" required="TRUE">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div> 
-                                    <div class="row clearfix">
-                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                             <label for="picture_name">Picture</label>
                                         </div>
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7"> 
@@ -128,22 +116,15 @@ $types = $TOURTYPES->all();
                                     </div>
 
                                     <div class="row clearfix">
-                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                            <label for="description">Short Description</label>
-                                        </div>
-                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                                            <div class="form-group">
-                                                <div class="form-line">
-                                                    <input type="text" id="description" class="form-control" placeholder="Enter short description" autocomplete="off" name="description" required="TRUE">
-                                                    <input type="hidden" value="1" name="active" />
-                                                </div>
-                                            </div>
 
-                                        </div>
+                                        <input type="hidden" id="description" value="-" name="description">
+                                        <input type="hidden" value="1" name="active" />
+
                                     </div>
 
                                     <div class="row clearfix">
                                         <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5"> 
+                                            <input type="hidden" id="member" name="member" value="0">
                                             <input type="submit" name="add-tour-package" class="btn btn-primary m-t-15 waves-effect" value="Add tour package"/>
                                         </div>
                                     </div>

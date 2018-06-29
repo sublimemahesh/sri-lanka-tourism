@@ -18,8 +18,8 @@ if (isset($_POST['add-tour-package'])) {
     $dir_dest = '../../upload/tour-package/';
     $dir_dest_thumb = '../../upload/tour-package/thumb/';
 
-    $handle = new Upload($_FILES['picture_name']); 
-    
+    $handle = new Upload($_FILES['picture_name']);
+
     $imgName = null;
     $img = Helper::randamId();
 
@@ -49,7 +49,7 @@ if (isset($_POST['add-tour-package'])) {
         $handle->image_x = 300;
         $handle->image_y = 206;
 
-            $handle->Process($dir_dest_thumb);
+        $handle->Process($dir_dest_thumb);
 
         if ($handle->processed) {
             $info = getimagesize($handle->file_dst_pathname);
@@ -62,8 +62,7 @@ if (isset($_POST['add-tour-package'])) {
     $VALID->check($TOUR_PACKAGE, [
         'name' => ['required' => TRUE],
         'description' => ['required' => TRUE],
-        'picture_name' => ['required' => TRUE],
-        'member' => ['required' => TRUE]
+        'picture_name' => ['required' => TRUE]
     ]);
 
 
@@ -146,8 +145,7 @@ if (isset($_POST['update'])) {
     $VALID->check($TOUR_PACKAGE, [
         'name' => ['required' => TRUE],
         'description' => ['required' => TRUE],
-        'picture_name' => ['required' => TRUE],
-        'member' => ['required' => TRUE]
+        'picture_name' => ['required' => TRUE]
     ]);
 
 
