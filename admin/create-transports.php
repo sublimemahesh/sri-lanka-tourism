@@ -148,26 +148,6 @@ include_once(dirname(__FILE__) . './auth.php');
 
                                     <div class="row clearfix">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                            <label for="title">Member Id</label>
-                                        </div>
-                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                                            <div class="form-group">
-                                                <div class="form-line">
-                                                    <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="member_id" autocomplete="off" name="member_id" required="TRUE">
-                                                        <option value=""> -- Please Select -- </option>
-                                                        <?php foreach (Member::all() as $key => $member) {
-                                                            ?>
-                                                            <option value="<?php echo $member['id']; ?>"><?php echo $member['id']; ?></option><?php
-                                                        }
-                                                        ?>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row clearfix">
-                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                             <label for="title">No of Passangers</label>
                                         </div>
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
@@ -226,6 +206,7 @@ include_once(dirname(__FILE__) . './auth.php');
                                             <div class="form-line">
                                                 <textarea id="description" name="description" class="form-control" rows="5"></textarea> 
                                                 <input type="hidden" value="1" name="active" />
+                                                <input type="hidden"id="member_id" value="0" name="member_id"/>
                                             </div>
 
                                         </div>

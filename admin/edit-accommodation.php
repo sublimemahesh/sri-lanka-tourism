@@ -188,18 +188,6 @@ $member_name = new Member($ACCOMODATION->member);
                                     </div> 
                                     <div class="row clearfix">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                            <label for="name">Member</label>
-                                        </div>
-                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                                            <div class="form-group">
-                                                <div class="form-line">
-                                                    <input type="number" id="member" class="form-control" placeholder="Enter Member ID" value="<?php echo $ACCOMODATION->member; ?>" autocomplete="off" name="member" required="TRUE">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div> 
-                                    <div class="row clearfix">
-                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                             <label for="name">Rank</label>
                                         </div>
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
@@ -225,10 +213,9 @@ $member_name = new Member($ACCOMODATION->member);
 
                                     <div class="row clearfix">
                                         <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
-
+                                            <input type="hidden" id="member" value="0" name="member">
                                             <input type="hidden" id="id" value="<?php echo $ACCOMODATION->id; ?>" name="id"/>
                                             <input type="hidden" id="authToken" value="<?php echo $_SESSION["authToken"]; ?>" name="authToken"/>
-
                                             <button type="submit" class="btn btn-primary m-t-15 waves-effect" name="update" value="submit">Save Changes</button>
                                         </div>
                                     </div>

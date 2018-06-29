@@ -114,21 +114,6 @@ $types = $TOURTYPES->all();
                                     </div>
                                     <div class="row clearfix">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                            <label for="member">Member Id</label>
-                                        </div>
-                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                                            <div class="form-group">
-                                                <div class="form-line">
-                                                    <input type="text" id="member" class="form-control"  value="<?php echo $TOUR_PACKAGE->member; ?>"  name="member"  required="TRUE">
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="row clearfix">
-                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                             <label for="picture_name">Image</label>
                                         </div>
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">                                                                         <div class="form-group">
@@ -139,20 +124,10 @@ $types = $TOURTYPES->all();
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row clearfix">
-                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                            <label for="description">Short Description</label>
-                                        </div>
-                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7"> 
-                                            <div class="form-group">
-                                                <div class="form-line"> 
-                                                    <input type="text" id="description" class="form-control" placeholder="Please enter short description" autocomplete="off" name="description" value="<?php echo $TOUR_PACKAGE->description; ?>">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
 
                                     <div class="col-md-8 col-md-offset-2">
+                                        <input type="hidden" id="member" value="0"  name="member">
+                                        <input type="hidden" id="description" autocomplete="off" name="description" value="-">
                                         <input type="hidden" id="oldImageName" value="<?php echo $TOUR_PACKAGE->picture_name; ?>" name="oldImageName"/>
                                         <input type="hidden" id="id" value="<?php echo $TOUR_PACKAGE->id; ?>" name="id"/>
 <!--                                            <input type="hidden" id="authToken" value="<?php echo $_SESSION["authToken"]; ?>" name="authToken"/>-->

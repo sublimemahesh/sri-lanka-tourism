@@ -25,7 +25,6 @@ if (isset($_POST['create'])) {
         'phone' => ['required' => TRUE],
         'city' => ['required' => TRUE],
         'type' => ['required' => TRUE],
-        'member' => ['required' => TRUE],
         'address' => ['required' => TRUE],
         'description' => ['required' => TRUE]
     ]);
@@ -39,7 +38,7 @@ if (isset($_POST['create'])) {
         $VALID->addError("Your data was saved successfully", 'success');
         $_SESSION['ERRORS'] = $VALID->errors();
 
-        header("location: ../view-accommodation-facilities.php?id=". $ACCOMODATION->id);
+        header("location: ../view-accommodation-facilities.php?id=" . $ACCOMODATION->id);
     } else {
 
         if (!isset($_SESSION)) {
