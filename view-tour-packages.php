@@ -88,7 +88,6 @@ $TOURS = $SEARCH->GetToursByKeywords($keyword, $noofdates, $type, $pricefrom, $p
 
                         $MEMBER = new Member($TOUR['member']);
                         $TYPE = new TourType($TOUR['tour_type']);
-                      
                         ?>
                         <div class="col-md-3 col-sm-6 col-xs-12">
                             <div class="listing-box">
@@ -99,24 +98,29 @@ $TOURS = $SEARCH->GetToursByKeywords($keyword, $noofdates, $type, $pricefrom, $p
                                 <div class="listing-rate-share">
                                     <a href="member-view.php?id=<?php echo $MEMBER->id; ?>" title="<?php echo $MEMBER->name; ?>">
                                         <?php
-                                        if (empty($MEMBER->profile_picture)) {
-                                            ?> 
-                                            <img src="upload/member/member.png" class="img-circle img-responsive vis-member-border"/>
+                                        if (empty($MEMBER->id)) {
+                                            ?>
+                                            <img src="images/admin-member-img.png" class="img-circle img-responsive vis-member-border"/>
                                             <?php
                                         } else {
-
-                                            if ($MEMBER->facebookID && substr($MEMBER->profile_picture, 0, 5) === "https") {
-                                                ?>
-                                                <img src="<?php echo $MEMBER->profile_picture; ?>" class="img-circle img-responsive vis-member-border">
+                                            if (empty($MEMBER->profile_picture)) {
+                                                ?> 
+                                                <img src="upload/member/member.png" class="img-circle img-responsive vis-member-border"/>
                                                 <?php
-                                            } elseif ($MEMBER->googleID && substr($MEMBER->profile_picture, 0, 5) === "https") {
-                                                ?>
-                                                <img src="<?php echo $MEMBER->profile_picture; ?>" class="img-circle img-responsive vis-member-border">
-                                                <?php
-                                            } else { 
-                                                ?>
-                                                <img src="upload/member/<?php echo $MEMBER->profile_picture; ?>" class="img-circle img-responsive vis-member-border">
-                                                <?php
+                                            } else {
+                                                if ($MEMBER->facebookID && substr($MEMBER->profile_picture, 0, 5) === "https") {
+                                                    ?>
+                                                    <img src="<?php echo $MEMBER->profile_picture; ?>" class="img-circle img-responsive vis-member-border">
+                                                    <?php
+                                                } elseif ($MEMBER->googleID && substr($MEMBER->profile_picture, 0, 5) === "https") {
+                                                    ?>
+                                                    <img src="<?php echo $MEMBER->profile_picture; ?>" class="img-circle img-responsive vis-member-border">
+                                                    <?php
+                                                } else {
+                                                    ?>
+                                                    <img src="upload/member/<?php echo $MEMBER->profile_picture; ?>" class="img-circle img-responsive vis-member-border">
+                                                    <?php
+                                                }
                                             }
                                         }
                                         ?>
@@ -148,7 +152,7 @@ $TOURS = $SEARCH->GetToursByKeywords($keyword, $noofdates, $type, $pricefrom, $p
                                                 if ($days == 0) {
                                                     echo '1 Day';
                                                 } else {
-                                                    echo $days . ' Days - ' . $night .' Nights';
+                                                    echo $days . ' Days - ' . $night . ' Nights';
                                                 }
                                                 ?>
                                             </span>

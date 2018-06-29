@@ -56,25 +56,31 @@ $OFFER_OBJ = New Offer(null);
                                     <div class="hotel-right"> 
                                         <div>
                                             <a target="blank" href="member-view.php?id=<?php echo $MEMBER->id; ?>" class="link">
+
                                                 <?php
-                                                if (empty($MEMBER->profile_picture)) {
-                                                    ?> 
-                                                    <img src="upload/member/member.png" class="img-responsive thumbnail offer-member-img"/>
+                                                if (empty($MEMBER->id)) {
+                                                    ?>
+                                                    <img src="images/admin-member-img.png" class="img-circle img-responsive vis-member-border offer-member-img"/>
                                                     <?php
                                                 } else {
-
-                                                    if ($MEMBER->facebookID && substr($MEMBER->profile_picture, 0, 5) === "https") {
-                                                        ?>
-                                                        <img src="<?php echo $MEMBER->profile_picture; ?>" class="img-responsive thumbnail offer-member-img">
+                                                    if (empty($MEMBER->profile_picture)) {
+                                                        ?> 
+                                                        <img src="upload/member/member.png" class="img-circle img-responsive vis-member-border offer-member-img"/>
                                                         <?php
-                                                    } elseif ($MEMBER->googleID && substr($MEMBER->profile_picture, 0, 5) === "https") {
-                                                        ?>
-                                                        <img src="<?php echo $MEMBER->profile_picture; ?>" class="img-responsive thumbnail offer-member-img">
-                                                        <?php
-                                                    } {
-                                                        ?>
-                                                        <img src="upload/member/<?php echo $MEMBER->profile_picture; ?>" class="img-responsive thumbnail offer-member-img">
-                                                        <?php
+                                                    } else {
+                                                        if ($MEMBER->facebookID && substr($MEMBER->profile_picture, 0, 5) === "https") {
+                                                            ?>
+                                                            <img src="<?php echo $MEMBER->profile_picture; ?>" class="img-circle img-responsive vis-member-border offer-member-img">
+                                                            <?php
+                                                        } elseif ($MEMBER->googleID && substr($MEMBER->profile_picture, 0, 5) === "https") {
+                                                            ?>
+                                                            <img src="<?php echo $MEMBER->profile_picture; ?>" class="img-circle img-responsive vis-member-border offer-member-img">
+                                                            <?php
+                                                        } else {
+                                                            ?>
+                                                            <img src="upload/member/<?php echo $MEMBER->profile_picture; ?>" class="img-circle img-responsive vis-member-border offer-member-img">
+                                                            <?php
+                                                        }
                                                     }
                                                 }
                                                 ?>

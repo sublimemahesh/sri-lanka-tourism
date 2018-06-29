@@ -41,7 +41,6 @@ $CITY = new City($MEMBER->city);
                                                 <li class="list-group-item"><b>Email</b> : <?php echo $MEMBER->email; ?></li>
                                                 <li class="list-group-item"><b>Contact No</b> : <?php echo $MEMBER->contact_number; ?></li>
                                                 <li class="list-group-item"> <b>Date Of Birth</b> : <?php echo $MEMBER->date_of_birthday; ?></li>
-                                                <li class="list-group-item"> <b>Contact Number</b> : <?php echo $MEMBER->contact_number; ?></li>
                                                 <li class="list-group-item"> <b>Home Address</b> : <?php echo $MEMBER->home_address; ?></li>
                                                 <li class="list-group-item"> <b>City</b> :
                                                     <?php
@@ -61,7 +60,7 @@ $CITY = new City($MEMBER->city);
                                                         }
                                                         echo implode(",", $resultstr);
                                                     } else {
-                                                        echo ''; 
+                                                        echo '';
                                                     }
                                                     ?>
                                                 </li>
@@ -72,24 +71,34 @@ $CITY = new City($MEMBER->city);
 
                                         <div class="col-sm-3 col-md-3 margin-top-40">  
 
-<?php
-if (empty($MEMBER->profile_picture)) {
-    ?> 
-                                                <img src="upload/member/member.png" class="img img-responsive img-thumbnail" id="profil_pic"/>
+                                            <?php
+                                            if (empty($MEMBER->id)) {
+                                                ?>
+                                                <img src="images/admin-member-img.png"  class="img-responsive thumbnail"/>
                                                 <?php
                                             } else {
-
-                                                if ($MEMBER->facebookID && substr($MEMBER->profile_picture, 0, 5) === "https") {
-                                                    ?>
-                                                    <img src="<?php echo $MEMBER->profile_picture; ?>" class="img-responsive thumbnail" id="profil_pic">
+                                                if (empty($MEMBER->profile_picture)) {
+                                                    ?> 
+                                                    <img src="upload/member/member.png" class="img-responsive thumbnail" />
                                                     <?php
                                                 } else {
-                                                    ?>
-                                                    <img src="upload/member/<?php echo $MEMBER->profile_picture; ?>" class="img-responsive thumbnail" id="profil_pic">
-                                                    <?php
+                                                    if ($MEMBER->facebookID && substr($MEMBER->profile_picture, 0, 5) === "https") {
+                                                        ?>
+                                                        <img src="<?php echo $MEMBER->profile_picture; ?>" class="img-responsive thumbnail" >
+                                                        <?php
+                                                    } elseif ($MEMBER->googleID && substr($MEMBER->profile_picture, 0, 5) === "https") {
+                                                        ?>
+                                                        <img src="<?php echo $MEMBER->profile_picture; ?>" class="img-responsive thumbnail">
+                                                        <?php
+                                                    } else {
+                                                        ?>
+                                                        <img src="upload/member/<?php echo $MEMBER->profile_picture; ?>" class="img-responsive thumbnail">
+                                                        <?php
+                                                    }
                                                 }
                                             }
                                             ?>
+
                                         </div>
 
                                     </div>
@@ -106,7 +115,7 @@ if (empty($MEMBER->profile_picture)) {
 
 
         <!-- Our Resort Values style-->  
-<?php include './footer.php' ?>
+        <?php include './footer.php' ?>
 
         <script src="js/jquery-2.2.4.min.js"></script>
         <script src="js/bootstrap.min.js"></script>

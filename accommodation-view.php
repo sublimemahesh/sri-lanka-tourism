@@ -87,21 +87,33 @@ $CITY = new City($ACCOMMODATIONS->city);
 
                                     <a href="member-view.php?id=<?php echo $MEMBER->id; ?>" class="link">
                                         <?php
-                                        if (empty($MEMBER->profile_picture)) {
+                                        if (empty($MEMBER->id)) {
                                             ?>
-                                            <img src="upload/member/member.png" class="img img-responsive img-circle" id="profil_pic"/>
+                                            <img src="images/admin-member-img.png"  class="img-responsive img-circle"/>
                                             <?php
                                         } else {
-                                            if ($MEMBER->facebookID && substr($MEMBER->profile_picture, 0, 5) === "https") {
-                                                ?>
-                                                <img src="<?php echo $MEMBER->profile_picture; ?>" class="img-responsive img-circle">
-                                            <?php } else {
-                                                ?>
-                                                <img src="upload/member/<?php echo $MEMBER->profile_picture; ?>" class="img-responsive img-circle">
+                                            if (empty($MEMBER->profile_picture)) {
+                                                ?> 
+                                                <img src="upload/member/member.png" class="img-responsive img-circle" />
                                                 <?php
+                                            } else {
+                                                if ($MEMBER->facebookID && substr($MEMBER->profile_picture, 0, 5) === "https") {
+                                                    ?>
+                                                    <img src="<?php echo $MEMBER->profile_picture; ?>" class="img-responsive img-circle" >
+                                                    <?php
+                                                } elseif ($MEMBER->googleID && substr($MEMBER->profile_picture, 0, 5) === "https") {
+                                                    ?>
+                                                    <img src="<?php echo $MEMBER->profile_picture; ?>" class="img-responsive img-circle">
+                                                    <?php
+                                                } else {
+                                                    ?>
+                                                    <img src="upload/member/<?php echo $MEMBER->profile_picture; ?>" class="img-responsive img-circle">
+                                                    <?php
+                                                }
                                             }
                                         }
                                         ?>
+
                                     </a>
                                 </div>
                                 <div class="col-md-8 col-sm-8 col-xs-8">
