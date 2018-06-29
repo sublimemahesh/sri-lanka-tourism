@@ -2715,3 +2715,7 @@ ul.setPaginate {
 .c-list-style{
     list-style-type: none;
 }
+
+.vis-member-border{
+    border: 2px solid #747474;
+}

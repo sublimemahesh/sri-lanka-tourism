@@ -88,6 +88,7 @@ $TOURS = $SEARCH->GetToursByKeywords($keyword, $noofdates, $type, $pricefrom, $p
 
                         $MEMBER = new Member($TOUR['member']);
                         $TYPE = new TourType($TOUR['tour_type']);
+                      
                         ?>
                         <div class="col-md-3 col-sm-6 col-xs-12">
                             <div class="listing-box">
@@ -100,21 +101,21 @@ $TOURS = $SEARCH->GetToursByKeywords($keyword, $noofdates, $type, $pricefrom, $p
                                         <?php
                                         if (empty($MEMBER->profile_picture)) {
                                             ?> 
-                                            <img src="upload/member/member.png" class="img-circle img-responsive"/>
+                                            <img src="upload/member/member.png" class="img-circle img-responsive vis-member-border"/>
                                             <?php
                                         } else {
 
                                             if ($MEMBER->facebookID && substr($MEMBER->profile_picture, 0, 5) === "https") {
                                                 ?>
-                                                <img src="<?php echo $MEMBER->profile_picture; ?>" class="img-circle img-responsive">
+                                                <img src="<?php echo $MEMBER->profile_picture; ?>" class="img-circle img-responsive vis-member-border">
                                                 <?php
                                             } elseif ($MEMBER->googleID && substr($MEMBER->profile_picture, 0, 5) === "https") {
                                                 ?>
-                                                <img src="<?php echo $MEMBER->profile_picture; ?>" class="img-circle img-responsive">
+                                                <img src="<?php echo $MEMBER->profile_picture; ?>" class="img-circle img-responsive vis-member-border">
                                                 <?php
                                             } else { 
                                                 ?>
-                                                <img src="upload/member/<?php echo $MEMBER->profile_picture; ?>" class="img-circle img-responsive">
+                                                <img src="upload/member/<?php echo $MEMBER->profile_picture; ?>" class="img-circle img-responsive vis-member-border">
                                                 <?php
                                             }
                                         }
@@ -145,7 +146,7 @@ $TOURS = $SEARCH->GetToursByKeywords($keyword, $noofdates, $type, $pricefrom, $p
                                             <span><i class="fa fa-clock-o"></i> 
                                                 <?php
                                                 if ($days == 0) {
-                                                    echo '-';
+                                                    echo '1 Day';
                                                 } else {
                                                     echo $days . ' Days - ' . $night .' Nights';
                                                 }
