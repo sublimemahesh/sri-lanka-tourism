@@ -50,7 +50,7 @@ $types = $TOURTYPES->all();
                             ?>
 
                             <div class="panel panel-default">
-                                <div class="panel-heading"><i class="fa fa-pencil"></i> Create Tour Package</div>
+                                <div class="panel-heading"><i class="fa fa-pencil"></i> Create Offer</div>
                                 <div class="panel-body">
                                     <div class="body">
                                         <div class="userccount">

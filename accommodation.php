@@ -101,7 +101,7 @@ $ACCOMMODATION_PHOTO = new AccommodationPhoto(NULL);
                                             $result = Feedback::getRatingByAccommodation($accommodation['id']);
                                             $rate_count = $result['rate_count'];
                                             $starNumber = round($result['rate_avg']);
-                                         
+
                                             for ($x = 1; $x <= $starNumber; $x++) {
                                                 echo '<i class="fa fa-star"></i>';
                                             }
@@ -114,7 +114,7 @@ $ACCOMMODATION_PHOTO = new AccommodationPhoto(NULL);
                                                 $x++;
                                             }
                                             ?>
-                                            <p class="review-no">(<?php echo $rate_count;?>Reviews)</p>
+                                            <p class="review-no">(<?php echo $rate_count; ?>Reviews)</p>
                                         </div>
                                         <ul>
                                             <div class="r2-available">LKR 65546</div>
@@ -149,26 +149,35 @@ $ACCOMMODATION_PHOTO = new AccommodationPhoto(NULL);
 
                                     <a target="blank" href="member-view.php?id=<?php echo $MEMBER->id; ?>" class="link">
                                         <?php
-                                        if (empty($MEMBER->profile_picture)) {
-                                            ?> 
-                                            <img src="upload/member/member.png" class="img img-responsive img-thumbnail" id="profil_pic" style="width: 70px;"/>
+                                        if (empty($MEMBER->id)) {
+                                            ?>
+                                            <img src="images/admin-member-img.png" class="img-circle img-responsive vis-member-border" style="width: 70px"/>
                                             <?php
                                         } else {
-
-                                            if ($MEMBER->facebookID && substr($MEMBER->profile_picture, 0, 5) === "https") {
-                                                ?>
-                                                <img src="<?php echo $MEMBER->profile_picture; ?>" class="img-responsive thumbnail" style="width: 70px;">
+                                            if (empty($MEMBER->profile_picture)) {
+                                                ?> 
+                                                <img src="upload/member/member.png" class="img-circle img-responsive vis-member-border" style="width: 70px"/>
                                                 <?php
                                             } else {
-                                                ?>
-                                                <img src="upload/member/<?php echo $MEMBER->profile_picture; ?>" class="img-responsive thumbnail" style="width: 70px;">
-                                                <?php
+                                                if ($MEMBER->facebookID && substr($MEMBER->profile_picture, 0, 5) === "https") {
+                                                    ?>
+                                                    <img src="<?php echo $MEMBER->profile_picture; ?>" class="img-circle img-responsive vis-member-border" style="width: 70px">
+                                                    <?php
+                                                } elseif ($MEMBER->googleID && substr($MEMBER->profile_picture, 0, 5) === "https") {
+                                                    ?>
+                                                    <img src="<?php echo $MEMBER->profile_picture; ?>" class="img-circle img-responsive vis-member-border" style="width: 70px">
+                                                    <?php
+                                                } else {
+                                                    ?>
+                                                    <img src="upload/member/<?php echo $MEMBER->profile_picture; ?>" class="img-circle img-responsive vis-member-border" style="width: 70px">
+                                                    <?php
+                                                }
                                             }
                                         }
                                         ?>
                                     </a>
 
-                      <!--                                    <p>Price for 1 night</p>-->
+                              <!--                                    <p>Price for 1 night</p>-->
                                     <a href="accommodation-booking.php?accommodation=<?php echo $accommodation['id'] ?>"><div class="inn-room-book">Book Now</div></a> </div>
                             </div>
                             <?php
@@ -193,7 +202,7 @@ $ACCOMMODATION_PHOTO = new AccommodationPhoto(NULL);
         <script src="js/bootstrap-datepicker.js" type="text/javascript"></script>
         <script src="assets/js/helper.js" type="text/javascript"></script>
         <script src="assets/js/template.js" type="text/javascript"></script>
- 
+
         <script type="text/javascript">
 
             $(document).ready(function () {

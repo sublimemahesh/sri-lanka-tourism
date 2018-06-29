@@ -71,187 +71,207 @@ if ($driver == 'self_driver') {
         include './header.php';
         ?>
         <div class="container-fluid">
-        <div class="row background-image" style="background-color: #fff;">
-          <div id="rooms-section" class="row-view">
-                <div class="inner-container container">
-                    <div class="room-container clearfix">
-                        <div class="col-md-9">
-                            <?php
-                            foreach ($TRANSPORTS as $transport) {
-                                $FUEL_TYPE = new FuelType($transport['fuel_type']);
+            <div class="row background-image" style="background-color: #fff;">
+                <div id="rooms-section" class="row-view">
+                    <div class="inner-container container">
+                        <div class="room-container clearfix">
+                            <div class="col-md-9">
+                                <?php
+                                foreach ($TRANSPORTS as $transport) {
+                                    $FUEL_TYPE = new FuelType($transport['fuel_type']);
 
-                                $VEHICLE_TYPE = new VehicleType($transport['vehicle_type']);
-                                $MEMBER = new Member($transport['member']);
-                                $result = Feedback::getRatingByTransport($transport['id']);
-                                $rate_count = $result['rate_count'];
-                                $starNumber = round($result['rate_avg']);
-                                ?>
-                                <div class="room-box row room-box-new animated-box" data-animation="fadeInUp">
-                                    <?php
-                                    foreach ($TRANSPORTS_PHOTO->getTransportPhotosById($transport['id']) as $key => $TRANSPORTS_P) {
-                                        if ($key == 1) {
-                                            break;
+                                    $VEHICLE_TYPE = new VehicleType($transport['vehicle_type']);
+                                    $MEMBER = new Member($transport['member']);
+                                    $result = Feedback::getRatingByTransport($transport['id']);
+                                    $rate_count = $result['rate_count'];
+                                    $starNumber = round($result['rate_avg']);
+                                    ?>
+                                    <div class="room-box row room-box-new animated-box" data-animation="fadeInUp">
+                                        <?php
+                                        foreach ($TRANSPORTS_PHOTO->getTransportPhotosById($transport['id']) as $key => $TRANSPORTS_P) {
+                                            if ($key == 1) {
+                                                break;
+                                            }
+                                            ?>
+                                            <div class="col-md-4 room-img" style=" background-color: #E6F9FF;">
+                                                <a target="blank" href="transportation-view.php?id=<?php echo $transport['id']; ?>">
+                                                    <img class=" vehicle-img" src="upload/transport/thumb/<?php echo $TRANSPORTS_P['image_name']; ?>"/>
+                                                </a>
+                                            </div>
+                                            <?php
                                         }
                                         ?>
-                                        <div class="col-md-4 room-img" style=" background-color: #E6F9FF;">
-                                            <a target="blank" href="transportation-view.php?id=<?php echo $transport['id']; ?>">
-                                                <img class=" vehicle-img" src="upload/transport/thumb/<?php echo $TRANSPORTS_P['image_name']; ?>"/>
-                                            </a>
-                                        </div>
-                                        <?php
-                                    }
-                                    ?>
-                                    <div class="r-sec col-md-8">
-                                        <div class="col-md-8 m-sec">
-                                            <div class="title-box">
-                                                <div class="title"><?php echo $transport['title']; ?></div>
-                                                <div class="">
-                                                    <div title="Rated <?php echo $starNumber; ?> out of 5" class="" >
-                                                        <span class="str" style="color: #FF9800">
-                                                            <?php
-                                                            for ($x = 1; $x <= $starNumber; $x++) {
-                                                                echo '<i class="fa fa-star"></i>';
-                                                            }
+                                        <div class="r-sec col-md-8">
+                                            <div class="col-md-8 m-sec">
+                                                <div class="title-box">
+                                                    <div class="title"><?php echo $transport['title']; ?></div>
+                                                    <div class="">
+                                                        <div title="Rated <?php echo $starNumber; ?> out of 5" class="" >
+                                                            <span class="str" style="color: #FF9800">
+                                                                <?php
+                                                                for ($x = 1; $x <= $starNumber; $x++) {
+                                                                    echo '<i class="fa fa-star"></i>';
+                                                                }
 //                                                                            if (strpos($starNumber, '.')) {
 //                                                                                echo '<img src="path/to/half/star.png" />';
 //                                                                                $x++;
 //                                                                            }
-                                                            while ($x <= 5) {
-                                                                echo '<i class="fa fa-star-o"></i>';
-                                                                $x++;
-                                                            }
-                                                            ?>
-
-                                                        </span> (<?php echo $rate_count; ?> Reviews)
-                                                    </div>
-                                                        <span class="brackets">(Based on 17 reviews)</span>
-                                                </div>
-                                            </div>
-                                            <div class="amenities">
-                                                <ul class="list-inline clearfix">
-                                                    <li class="col-md-12">
-                                                        <div class="title">Vehicle Type :</div>
-                                                        <div class="value"><?php echo $VEHICLE_TYPE->name; ?></div>
-                                                    </li>
-                                                    <li class="col-md-12">
-                                                        <div class="title">Reg: No :</div>
-                                                        <div class="value"><?php echo $transport['registered_number']; ?></div>
-                                                    </li>
-                                                    <li class="col-md-12">
-                                                        <div class="title">Reg: Year :</div>
-                                                        <div class="value"><?php echo $transport['registered_year']; ?></div>
-                                                    </li>
-                                                    <li class="col-md-12">
-                                                        <div class="title">Fuel Type :</div>
-                                                        <div class="value"><?php echo $FUEL_TYPE->name; ?></div>
-                                                    </li>
-                                                    <li class="col-md-12 col-xs-12 " style="margin-top:10px;">
-                                                        <div style="width: 15%"> <img class="index-transport-ico icon-bottom" src="images/transport/passenges.png"><span class="transport-ico-txt style-e" ><?php echo $transport['no_of_passangers'] ?></span>
-                                                        </div>
-                                                        <div style="width: 15%">  <img class="index-transport-ico icon-bottom" src="images/transport/001-suitcase.png"><span class="transport-ico-txt style-e"  ><?php echo $transport['no_of_baggages'] ?></span>
-                                                        </div>
-                                                        <div style="width: 15%"><img class="index-transport-ico icon-bottom" src="images/transport/004-car.png" >
-                                                            <span class="transport-ico-txt style-e"   ><?php echo $transport['no_of_doors'] ?></span>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-
-                                        <?php
-                                        if ($driver == 'self_driver') {
-                                            ?>
-                                            <div class="col-md-4 desc desc-price m-sec">
-                                                <div class="row driver m-sec">
-                                                    <div class="profile col-md-5 col-xs-4 col-sm-4">
-                                                        <a href="member-view.php?id=<?php echo $MEMBER->id; ?>" class="link">
-                                                            <?php
-                                                            if (empty($MEMBER->profile_picture)) {
-                                                                ?> 
-                                                                <img src="upload/member/member.png" class="img img-responsive img-thumbnail" id="profil_pic"/>
-                                                                <?php
-                                                            } else {
-                                                                if ($MEMBER->facebookID && substr($MEMBER->profile_picture, 0, 5) === "https") {
-                                                                    ?>
-                                                                    <img src="<?php echo $MEMBER->profile_picture; ?>" class="img-responsive thumbnail">
-                                                                    <?php
-                                                                } else {
-                                                                    ?>
-                                                                    <img src="upload/member/<?php echo $MEMBER->profile_picture; ?>" class="img-responsive thumbnail">
-                                                                    <?php
+                                                                while ($x <= 5) {
+                                                                    echo '<i class="fa fa-star-o"></i>';
+                                                                    $x++;
                                                                 }
-                                                            }
-                                                            ?>
+                                                                ?>
 
-                                                        </a>
-                                                    </div>
-                                                    <div class="driver-name col-md-7 col-xs-8 col-sm-8"><div class="driver-name-posted">Posted by </div>
-                                                        <span class="driver-name-span">
-                                                            <?php
-                                                            echo substr($MEMBER->name, 0, 10);
-                                                            if (strlen($MEMBER->name) > 10) {
-                                                                echo '...';
-                                                            }
-                                                            ?>
-
-                                                        </span>
+                                                            </span> (<?php echo $rate_count; ?> Reviews)
+                                                        </div>
+    <!--                                                        <span class="brackets">(Based on 17 reviews)</span>-->
                                                     </div>
                                                 </div>
-
-                                                <div class="bottom-sec m-sec">
-                                                    Price Per Day
-                                                    <div class="pointer"><strong class="price">LKR <?php echo $transport['price']; ?></strong></div>
-                                                    <div class="btn-padding">
-                                                        <a href="rent-a-car-booking.php?transport=<?php echo $transport['id'];?>" class="more-info">Book Now</a>
-                                                    </div>
+                                                <div class="amenities">
+                                                    <ul class="list-inline clearfix">
+                                                        <li class="col-md-12">
+                                                            <div class="title">Vehicle Type :</div>
+                                                            <div class="value"><?php echo $VEHICLE_TYPE->name; ?></div>
+                                                        </li>
+                                                        <li class="col-md-12">
+                                                            <div class="title">Reg: No :</div>
+                                                            <div class="value"><?php echo $transport['registered_number']; ?></div>
+                                                        </li>
+                                                        <li class="col-md-12">
+                                                            <div class="title">Reg: Year :</div>
+                                                            <div class="value"><?php echo $transport['registered_year']; ?></div>
+                                                        </li>
+                                                        <li class="col-md-12">
+                                                            <div class="title">Fuel Type :</div>
+                                                            <div class="value"><?php echo $FUEL_TYPE->name; ?></div>
+                                                        </li>
+                                                        <li class="col-md-12 col-xs-12 " style="margin-top:10px;">
+                                                            <div style="width: 15%"> <img class="index-transport-ico icon-bottom" src="images/transport/passenges.png"><span class="transport-ico-txt style-e" ><?php echo $transport['no_of_passangers'] ?></span>
+                                                            </div>
+                                                            <div style="width: 15%">  <img class="index-transport-ico icon-bottom" src="images/transport/001-suitcase.png"><span class="transport-ico-txt style-e"  ><?php echo $transport['no_of_baggages'] ?></span>
+                                                            </div>
+                                                            <div style="width: 15%"><img class="index-transport-ico icon-bottom" src="images/transport/004-car.png" >
+                                                                <span class="transport-ico-txt style-e"   ><?php echo $transport['no_of_doors'] ?></span>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
                                                 </div>
                                             </div>
 
                                             <?php
-                                        } else {
-                                            $TRANSPORT_RATE = new TransportRates($transport['transport_rate']);
-                                            ?>
-                                            <div class="col-md-4 desc desc-price m-sec">
-                                                <div class="row driver m-sec">
-                                                    <div class="profile col-md-5 col-xs-4 col-sm-4">
-                                                        <a href="member-view.php?id=<?php echo $MEMBER->id; ?>" class="link">
-                                                            <?php
-                                                            if (empty($MEMBER->profile_picture)) {
-                                                                ?> 
-                                                                <img src="upload/member/member.png" class="img img-responsive img-thumbnail" id="profil_pic"/>
+                                            if ($driver == 'self_driver') {
+                                                ?>
+                                                <div class="col-md-4 desc desc-price m-sec">
+                                                    <div class="row driver m-sec">
+                                                        <div class="profile col-md-5 col-xs-4 col-sm-4">
+                                                            <a href="member-view.php?id=<?php echo $MEMBER->id; ?>" class="link">
                                                                 <?php
-                                                            } else {
-                                                                if ($MEMBER->facebookID && substr($MEMBER->profile_picture, 0, 5) === "https") {
+                                                                if (empty($MEMBER->id)) {
                                                                     ?>
-                                                                    <img src="<?php echo $MEMBER->profile_picture; ?>" class="img-responsive thumbnail">
+                                                                    <img src="images/admin-member-img.png" class="img-circle img-responsive vis-member-border"/>
                                                                     <?php
                                                                 } else {
-                                                                    ?>
-                                                                    <img src="upload/member/<?php echo $MEMBER->profile_picture; ?>" class="img-responsive thumbnail">
-                                                                    <?php
+                                                                    if (empty($MEMBER->profile_picture)) {
+                                                                        ?> 
+                                                                        <img src="upload/member/member.png" class="img-circle img-responsive vis-member-border"/>
+                                                                        <?php
+                                                                    } else {
+                                                                        if ($MEMBER->facebookID && substr($MEMBER->profile_picture, 0, 5) === "https") {
+                                                                            ?>
+                                                                            <img src="<?php echo $MEMBER->profile_picture; ?>" class="img-circle img-responsive vis-member-border">
+                                                                            <?php
+                                                                        } elseif ($MEMBER->googleID && substr($MEMBER->profile_picture, 0, 5) === "https") {
+                                                                            ?>
+                                                                            <img src="<?php echo $MEMBER->profile_picture; ?>" class="img-circle img-responsive vis-member-border">
+                                                                            <?php
+                                                                        } else {
+                                                                            ?>
+                                                                            <img src="upload/member/<?php echo $MEMBER->profile_picture; ?>" class="img-circle img-responsive vis-member-border">
+                                                                            <?php
+                                                                        }
+                                                                    }
                                                                 }
-                                                            }
-                                                            ?>
+                                                                ?>
 
-                                                        </a>
+                                                            </a>
+                                                        </div>
+                                                        <div class="driver-name col-md-7 col-xs-8 col-sm-8"><div class="driver-name-posted">Posted by </div>
+                                                            <span class="driver-name-span">
+                                                                <?php
+                                                                echo substr($MEMBER->name, 0, 10);
+                                                                if (strlen($MEMBER->name) > 10) {
+                                                                    echo '...';
+                                                                }
+                                                                ?>
+
+                                                            </span>
+                                                        </div>
                                                     </div>
-                                                    <div class="driver-name col-md-7 col-xs-8 col-sm-8"><div class="driver-name-posted">Posted by </div>
-                                                        <span class="driver-name-span">
-                                                            <?php
-                                                            echo substr($MEMBER->name, 0, 10);
-                                                            if (strlen($MEMBER->name) > 10) {
-                                                                echo '...';
-                                                            }
-                                                            ?>
 
-                                                        </span>
-
+                                                    <div class="bottom-sec m-sec">
+                                                        Price Per Day
+                                                        <div class="pointer"><strong class="price">LKR <?php echo $transport['price']; ?></strong></div>
+                                                        <div class="btn-padding">
+                                                            <a href="rent-a-car-booking.php?transport=<?php echo $transport['id']; ?>" class="more-info">Book Now</a>
+                                                        </div>
                                                     </div>
-                                                   
-
                                                 </div>
-                                                
-                                                 <div class="col-md-12  icon-bottom" >
+
+                                                <?php
+                                            } else {
+                                                $TRANSPORT_RATE = new TransportRates($transport['transport_rate']);
+                                                ?>
+                                                <div class="col-md-4 desc desc-price m-sec">
+                                                    <div class="row driver m-sec">
+                                                        <div class="profile col-md-5 col-xs-4 col-sm-4">
+                                                            <a href="member-view.php?id=<?php echo $MEMBER->id; ?>" class="link">
+                                                                <?php
+                                                                if (empty($MEMBER->id)) {
+                                                                    ?>
+                                                                    <img src="images/admin-member-img.png" class="img-circle img-responsive vis-member-border"/>
+                                                                    <?php
+                                                                } else {
+                                                                    if (empty($MEMBER->profile_picture)) {
+                                                                        ?> 
+                                                                        <img src="upload/member/member.png" class="img-circle img-responsive vis-member-border"/>
+                                                                        <?php
+                                                                    } else {
+                                                                        if ($MEMBER->facebookID && substr($MEMBER->profile_picture, 0, 5) === "https") {
+                                                                            ?>
+                                                                            <img src="<?php echo $MEMBER->profile_picture; ?>" class="img-circle img-responsive vis-member-border">
+                                                                            <?php
+                                                                        } elseif ($MEMBER->googleID && substr($MEMBER->profile_picture, 0, 5) === "https") {
+                                                                            ?>
+                                                                            <img src="<?php echo $MEMBER->profile_picture; ?>" class="img-circle img-responsive vis-member-border">
+                                                                            <?php
+                                                                        } else {
+                                                                            ?>
+                                                                            <img src="upload/member/<?php echo $MEMBER->profile_picture; ?>" class="img-circle img-responsive vis-member-border">
+                                                                            <?php
+                                                                        }
+                                                                    }
+                                                                }
+                                                                ?>
+
+                                                            </a>
+                                                        </div>
+                                                        <div class="driver-name col-md-7 col-xs-8 col-sm-8"><div class="driver-name-posted">Posted by </div>
+                                                            <span class="driver-name-span">
+                                                                <?php
+                                                                echo substr($MEMBER->name, 0, 10);
+                                                                if (strlen($MEMBER->name) > 10) {
+                                                                    echo '...';
+                                                                }
+                                                                ?>
+
+                                                            </span>
+
+                                                        </div>
+
+
+                                                    </div>
+
+                                                    <div class="col-md-12  icon-bottom" >
                                                         <img src="images/get in.png" alt="" width="30px"/>&nbsp;:<b><?php
                                                             $cityfrom = new city($TRANSPORT_RATE->location_from);
                                                             echo substr($cityfrom->name, 0, 10);
@@ -265,41 +285,41 @@ if ($driver == 'self_driver') {
 
                                                     </div>
 
-                                                <div class="bottom-sec2 m-sec col-md-12">
-                                                    <div class="pointer"><strong class="price">LKR <?php echo $transport['transport_price']; ?></strong></div>
-                                                    <div class="btn-padding">
-                                                        <a href="transport-booking.php?rate=<?php echo $transport['transport_rate'];?>" class="more-info2">Book Now</a> 
+                                                    <div class="bottom-sec2 m-sec col-md-12">
+                                                        <div class="pointer"><strong class="price">LKR <?php echo $transport['transport_price']; ?></strong></div>
+                                                        <div class="btn-padding">
+                                                            <a href="transport-booking.php?rate=<?php echo $transport['transport_rate']; ?>" class="more-info2">Book Now</a> 
+                                                        </div>
                                                     </div>
+
+
                                                 </div>
-
-
-                                            </div>
-                                            <?php
-                                        }
-                                        ?>
+                                                <?php
+                                            }
+                                            ?>
 
 
 
+                                        </div>
                                     </div>
-                                </div>
-                                <?php
-                            }
-                            ?>
-                            <div class="row">
-                                <?php
-                                if ($driver == 'self_driver') {
-                                    $TRANSPORTS = Search::showPaginationSelfDrive($from, $type, $condition, $passengers, $setLimit, $setLimit);
-                                } else {
-                                    $TRANSPORTS = Search::showPagination($from, $to, $type, $condition, $passengers, $setLimit, $page);
+                                    <?php
                                 }
                                 ?>
+                                <div class="row">
+                                    <?php
+                                    if ($driver == 'self_driver') {
+                                        $TRANSPORTS = Search::showPaginationSelfDrive($from, $type, $condition, $passengers, $setLimit, $setLimit);
+                                    } else {
+                                        $TRANSPORTS = Search::showPagination($from, $to, $type, $condition, $passengers, $setLimit, $page);
+                                    }
+                                    ?>
+                                </div>
                             </div>
-                        </div>
 
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
         </div>
 
         <!-- Our Resort Values style-->  
