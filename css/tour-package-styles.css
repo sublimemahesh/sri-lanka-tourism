@@ -109,12 +109,19 @@
 
     color: #ffffff;
     font-family: Roboto;
-    font-size: 14px;
+    font-size: 13px;
     padding: 6px 15px;
     position: absolute;
     right: 20px;
     top: 20px;
     z-index: 1;
+    font-weight: 600;
+}
+.tour-type-name{
+    color: #898abc;
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 7px;
 }
 .listing-box-title {
     bottom: 0;

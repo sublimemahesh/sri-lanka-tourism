@@ -76,7 +76,7 @@ $TOURS = $SEARCH->GetToursByKeywords($keyword, $noofdates, $type, $pricefrom, $p
         include './header.php';
         ?>
 
-        <div class="row background-image" style="background-image: url('images/hotel/sea.jpg');">
+        <div class="background-image" style="background-image: url('images/hotel/sea.jpg');">
             <section>
                 <div class="container inner-container1 inner-tour-pack">
                     <?php
@@ -96,7 +96,7 @@ $TOURS = $SEARCH->GetToursByKeywords($keyword, $noofdates, $type, $pricefrom, $p
                                     <img src="upload/tour-package/thumb/<?php echo $TOUR['picture_name']; ?>" alt="">
                                 </div>
                                 <div class="listing-rate-share">
-                                    <a href="member-view.php?id=<?php echo $MEMBER->id; ?>" title="Member">
+                                    <a href="member-view.php?id=<?php echo $MEMBER->id; ?>" title="<?php echo $MEMBER->name; ?>">
                                         <?php
                                         if (empty($MEMBER->profile_picture)) {
                                             ?> 
@@ -112,7 +112,7 @@ $TOURS = $SEARCH->GetToursByKeywords($keyword, $noofdates, $type, $pricefrom, $p
                                                 ?>
                                                 <img src="<?php echo $MEMBER->profile_picture; ?>" class="img-circle img-responsive">
                                                 <?php
-                                            } {
+                                            } else { 
                                                 ?>
                                                 <img src="upload/member/<?php echo $MEMBER->profile_picture; ?>" class="img-circle img-responsive">
                                                 <?php
@@ -120,12 +120,12 @@ $TOURS = $SEARCH->GetToursByKeywords($keyword, $noofdates, $type, $pricefrom, $p
                                         }
                                         ?>
                                     </a>
-                                    <div style="color: #898abc;font-size: 14px;font-weight: 600;margin-top: 7px;">
+                                    <div class="tour-type-name">
                                         <?php
                                         if (strlen($TYPE->name) > 9) {
                                             echo substr($TYPE->name, 0, 9) . '...';
                                         } else {
-                                            echo $TYPE->name . ' Type';
+                                            echo $TYPE->name;
                                         }
                                         ?>
                                     </div>
@@ -142,45 +142,43 @@ $TOURS = $SEARCH->GetToursByKeywords($keyword, $noofdates, $type, $pricefrom, $p
                                                 ?>
                                             </a></div>  
                                         <div class="" style="color: #9aa590; margin-top: 5px;">
-                                            <span><i class="fa fa-clock-o"></i> <?php
-                                                if ($days < 10) {
-                                                    echo $days;
-                                                } else {
-                                                    echo $days;
-                                                }
-                                                ?> Days
-
+                                            <span><i class="fa fa-clock-o"></i> 
                                                 <?php
-                                                if ($night < 10) {
-                                                    echo $night;
+                                                if ($days == 0) {
+                                                    echo '-';
                                                 } else {
-                                                    echo $night;
+                                                    echo $days . ' Days - ' . $night .' Nights';
                                                 }
-                                                ?>  Nights</span>
+                                                ?>
+                                            </span>
                                         </div>
 
                                     </div>
 
 
-                                    <div class="col-md-6">
+                                    <div class="col-md-6 col-sm-6 col-xs-6">
 
                                         <div class="rated-list">
                                             <?php
-                                            $starNumber = Feedback::getRatingByTour($id);
+                                            $star_result = Feedback::getRatingByTour1($id);
+                                            $rate_count = $star_result['rate_count'];
+                                            $starNumber = round($star_result['rate_avg']);
 
                                             for ($x = 1; $x <= $starNumber; $x++) {
                                                 echo '<b class="fa fa-star"></b>';
                                             }
-
                                             while ($x <= 5) {
                                                 echo ' <b class="fa fa-star-o"></b>';
                                                 $x++;
                                             }
                                             ?>
-                                            (12 Reviews)
+                                            <div>
+                                                (<?php echo $rate_count; ?> Reviews)
+                                            </div>
+
                                         </div> 
                                     </div>
-                                    <div class="col-md-6"><a href="tour-package-view.php?id=<?php echo $TOUR['id']; ?>">
+                                    <div class="col-md-6 col-sm-6 col-xs-6"><a href="tour-package-view.php?id=<?php echo $TOUR['id']; ?>">
                                             <div class="tour-view-more-btn">
                                                 View More
                                             </div>
