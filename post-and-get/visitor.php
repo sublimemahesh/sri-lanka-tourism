@@ -65,6 +65,8 @@ if (isset($_POST['login'])) {
     $email = filter_var($_POST['email'], FILTER_SANITIZE_STRING);
     $password = md5(filter_var($_POST['password'], FILTER_SANITIZE_STRING));
 
+    $check_old_visitor = $VISITOR->
+    
     $result = $VISITOR->login($email, $password);
     
     $back = $_POST['back_url'];

@@ -101,7 +101,7 @@ include_once(dirname(__FILE__) . '/../class/include.php');
                         <div class="registration">
                             Don't have an account yet?<br/>
                             <label class="checkbox">
-                                <a href="login.php"> Create an account</a>
+                                <a class="create-account" href="login.php"> Create an account</a>
 
                             </label>
                         </div>

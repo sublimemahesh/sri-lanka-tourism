@@ -15,6 +15,8 @@ jQuery(document).ready(function () {
                     return false;
                 } else if (result.status === 'success') {
                     window.location.replace('profile.php?message=22');
+                } else if (result.status === 'registered') {
+                    window.location.replace('forgot-password.php?message=26');
                 }
             }
         });

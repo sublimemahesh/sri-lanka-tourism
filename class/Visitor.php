@@ -1,4 +1,5 @@
 <?php
+
 class Visitor {
 
     public $id;
@@ -33,7 +34,7 @@ class Visitor {
             $this->contact_number = $result['contact_number'];
             $this->image_name = $result['image_name'];
             $this->facebookID = $result['facebookID'];
-            $this->googleID  = $result['googleID'];
+            $this->googleID = $result['googleID'];
             $this->resetcode = $result['resetcode'];
 
             return $this;
@@ -342,7 +343,7 @@ class Visitor {
 
         $query = "INSERT INTO `visitor` (`first_name`,`email`,`image_name`,`facebookID`,`password`) VALUES  ('" . $name . "', '" . $email . "', '" . $picture . "', '" . $visitorID . "', '" . $password . "')";
 
-       $db = new Database();
+        $db = new Database();
 
         $result = $db->readQuery($query);
 
@@ -449,4 +450,5 @@ class Visitor {
             return TRUE;
         }
     }
+
 }

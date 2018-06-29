@@ -67,7 +67,10 @@ a, a:hover, a:focus {
     text-decoration: none;
 }	
 
-
+.create-account {
+    font-size: 20px;
+    color: #23527c;
+}
 
 /*Theme Backgrounds*/
 
