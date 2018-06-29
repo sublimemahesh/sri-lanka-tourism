@@ -9,7 +9,6 @@ if ($_POST['save']) {
         $back = "";
     }
 
-
     header('Content-Type: application/json; charset=UTF8');
     $response = array();
 
@@ -57,7 +56,7 @@ if ($_POST['save']) {
         $VISITOR = new Visitor(NULL);
         $result = $VISITOR->checkEmail($_POST['email']);
         if ($result) {
-            $response['status'] = 'error';
+            $response['status'] = 'registered';
             $response['message'] = "The email address you entered is already in use.";
             echo json_encode($response);
             exit();

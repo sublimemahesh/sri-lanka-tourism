@@ -52,7 +52,7 @@ if ($_POST['save']) {
         $MEMBER = new Member(NULL);
         $result = $MEMBER->checkEmail($_POST['email']);
         if ($result) {
-            $response['status'] = 'error';
+            $response['status'] = 'registered';
             $response['message'] = "The email address you entered is already in use.";
             echo json_encode($response);
             exit();

@@ -16,11 +16,12 @@ jQuery(document).ready(function () {
                 } else if (result.status === 'success') {
                     if (result.back === '') {
                         window.location.replace('visitor-profile.php?message=22');
-                        
+
                     } else {
                         window.location = result.back;
                     }
-
+                } else if (result.status === 'registered') {
+                    window.location.replace('forget-password.php?message=26');
                 }
             }
         });
