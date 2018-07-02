@@ -68,7 +68,7 @@ if(isset($_SERVER['HTTP_REFERER'])) {
                             $vali->show_message();
                             ?>
                             <div class="panel panel-default">
-                                <div class="panel-heading"><i class="fa fa-pencil"></i>Manage Your Driving Licence Photos</div>
+                                <div class="panel-heading"><i class="fa fa-pencil"></i>Manage Your Driving License Photos</div>
                                 <div class="panel-body">
                                     <div class="body">
                                         <div class="userccount">
@@ -77,7 +77,7 @@ if(isset($_SERVER['HTTP_REFERER'])) {
                                                 <div class="col-md-12 top-bott50">
                                                     <div class="col-md-6">
                                                         <div>
-                                                            <div class="bottom-top">Front side of your driving licence</div>
+                                                            <div class="bottom-top">Front side of your driving license</div>
                                                             <?php
                                                             if (empty($MEMBER->licence_front)) {
                                                                 ?>

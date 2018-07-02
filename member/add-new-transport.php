@@ -3,7 +3,7 @@ include_once(dirname(__FILE__) . '/../class/include.php');
 include_once(dirname(__FILE__) . '/auth.php');
 $MEMBER = new Member($_SESSION['id']);
 if (empty($MEMBER->licence_front) || empty($MEMBER->licence_back)) {
-    redirect('manage-licence-photos.php?message=24');
+    redirect('manage-licence-photos.php?message=27');
 }
 ?> 
 <!DOCTYPE html>
