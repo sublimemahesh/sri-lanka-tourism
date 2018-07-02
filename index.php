@@ -593,21 +593,21 @@ $ARTICLETYPES = ArticleType::all();
                             <div id="offer" class="tab-pane fade">
                                 <h3 class="select-op-header text-center">Offers</h3>
                                 <a href="view-offer.php?id=1"><div class="col-md-4 col-lg-4">
-                                        <img src="upload/offer/-662053711_190541087195_1527846862_n.jpg" alt="" width="100%"/>
+                                        <img src="images/offers/kdh.jpg" alt="" width="100%"/>
                                         <div class="offer-heading pull-left" title="TAXI"><b>TAXI</b></div>
                                         <div class="tour-arrow white pull-right"><img src="images/icon/arrow2.png" alt=""/></div>
                                     </div>
                                 </a>
                                 <a href="view-offer.php?id=2"> <div class="col-md-4 col-lg-4">
-                                        <img src="upload/offer/hotel.jpg" alt="" width="100%"/>
-                                        <div class="offer-heading pull-left" title="HOTEL"><b>HOTEL</b></div>
+                                        <img src="images/offers/BACKPACKERS-ARE-WELCOME-TO-YATOURS-IN-SRI-LANKA-new.jpg" alt="" width="100%"/>
+                                        <div class="offer-heading pull-left" title="TOURS"><b>TOURS</b></div>
                                         <div class="tour-arrow white pull-right"><img src="images/icon/arrow2.png" alt=""/></div>
                                     </div>
                                 </a>
                                 <a href="view-offer.php?id=3">
                                     <div class="col-md-4 col-lg-4">
-                                        <img src="upload/offer/travel.jpg" alt="" width="100%"/>
-                                        <div class="offer-heading pull-left" title="TRAVEL"><b>TRAVEL</b></div>
+                                        <img src="images/offers/017_thaprobaneNight.jpg" alt="" width="100%"/>
+                                        <div class="offer-heading pull-left" title="TRAVEL"><b>HOTEL</b></div>
                                         <div class="tour-arrow white pull-right"><img src="images/icon/arrow2.png" alt=""/></div>
                                     </div>
                                 </a>
@@ -719,6 +719,7 @@ $ARTICLETYPES = ArticleType::all();
             </div>
         </div>
 
+       
         <!-- Our Resort Values style-->  
         <?php include './footer.php'; ?>
         <script src="js/jquery-2.2.4.min.js"></script>
