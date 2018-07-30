@@ -8,6 +8,7 @@ if (isset($_GET['id'])) {
 }
 $TOUR_PACKAGE = new TourPackage($id);
 $TOUR_SUB_PHOTO = new TourSubSectionPhoto(NULL);
+$tour_dates = TourSubSection::GetTourSubSectionByTourPackage($id);
 ?> 
 <html lang="en">
 
@@ -34,6 +35,9 @@ $TOUR_SUB_PHOTO = new TourSubSectionPhoto(NULL);
             .img-thumbnail {
                 max-width: 50% !important;
             }
+            .form-horizontal {
+                padding-bottom: 10px;
+            }
         </style>
     </head> 
     <body> 
@@ -54,65 +58,126 @@ $TOUR_SUB_PHOTO = new TourSubSectionPhoto(NULL);
                             ?>
 
                             <div class="panel panel-default">
-                                <div class="panel-heading"><i class="fa fa-save"></i> Manage Tour Itinerary - <?php echo $TOUR_PACKAGE->name; ?></div>
+                                <div class="panel-heading">
+                                    <i class="fa fa-save"></i>
+                                    Manage Tour Itinerary - <?php echo $TOUR_PACKAGE->name; ?>
+                                </div>
                                 <div class="panel-body">
                                     <div class="body">
-                                        <div class="row clearfix">
-                                            <div class="col-md-3">
-                                                <div class="formrow">
-                                                    <a href="add-new-tour-package-sub-section.php?id=<?php echo $id; ?>">
-                                                        <div class="uploadbox uploadphotobx" id="uploadphotobx">
-                                                            <i class="fa fa-plus plus-icon" aria-hidden="true"></i>
-                                                            <label class="uploadBox">Click here to create new date
-                                                            </label>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>  
-                                            <?php
-                                            $TOUR_SUB = TourSubSection::GetTourSubSectionByTourPackage($id);
-                                            if (count($TOUR_SUB) > 0) {
-                                                foreach ($TOUR_SUB as $key => $tour_s) {
-                                                    ?>
-                                                    <div class="col-md-3" id="div_<?php echo $tour_s['id']; ?>">
-        <!--                                                        <p class="maxlinetitle"><?php echo $tour_s['sort']; ?></p>-->
-                                                        <div class="">
-                                                            <?php
-                                                            if (count($TOUR_SUB_PHOTO) > 0) {
-                                                                foreach ($TOUR_SUB_PHOTO->getTourSubSectionPhotosById($tour_s['id']) as $key => $tour_sub_p) {
-                                                                    if ($key == 1) {
-                                                                        break;
+                                        <div class="userccount">
+                                            <div class="formpanel"> 
+                                                <!--                                                <form class="form-horizontal"  method="post" action="#" enctype="multipart/form-data" id="form-tours">-->
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> 
+                                                    <div class="body">
+                                                        <div class="row clearfix">
+                                                            <div class="col-xs-12 ol-sm-12 col-md-12 col-lg-12">
+                                                                <div class="panel-group" role="tablist" aria-multiselectable="true">
+                                                                    <?php
+                                                                    foreach ($tour_dates as $key => $date) {
+                                                                        ?>
+                                                                        <form class="form-horizontal"  method="post" action="#" enctype="multipart/form-data" id="form-tours-<?php echo $date['sort']; ?>">
+                                                                            <div class="panel panel-default">
+                                                                                <a role="button">
+                                                                                    <div class="panel-heading tab-panel-heading" role="tab" id="heading-<?php echo $date['sort']; ?>">
+                                                                                        <h4 class="panel-title">
+                                                                                            Day <?php echo $date['sort']; ?>
+                                                                                        </h4>
+                                                                                    </div>
+                                                                                </a>
+                                                                                <div id="collapse-<?php echo $date['sort']; ?>" class="tour-dates panel-collapse collapse <?php
+                                                                                if ($key === 0) {
+                                                                                    echo 'in';
+                                                                                }
+                                                                                ?>" role="tabpanel" aria-labelledby="heading-<?php echo $date['sort']; ?>" subid="<?php echo $date['id']; ?>" sort="<?php echo $date['sort']; ?>">
+                                                                                    <div class="panel-body">
+
+                                                                                        <div class="col-md-12">
+                                                                                            <div class="bottom-top">
+                                                                                                <label for="title">Title</label>
+                                                                                            </div>
+                                                                                            <div class="formrow">
+                                                                                                <input type="text" id="title-<?php echo $date['sort']; ?>" class="form-control title" placeholder="Enter Title" autocomplete="off" name="title" required="true">
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="col-md-12">
+                                                                                            <div class="bottom-top">
+                                                                                                <label for="description">Description</label>
+                                                                                            </div>
+                                                                                            <div class="formrow">
+                                                                                                <textarea type="text" id="description-<?php echo $date['sort']; ?>" name="description" class="form-control description" placeholder="Please Enter Description"></textarea>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="col-md-12">
+                                                                                            <div class="bottom-top col-md-2">
+                                                                                                <div class="formrow">
+                                                                                                    <div class="uploadphotobx" id="uploadphotobx"> 
+                                                                                                        <i class="fa fa-upload" aria-hidden="true"></i>
+                                                                                                        <label class="uploadBox">Click here to Upload photo
+                                                                                                            <input type="file" name="tour-sub-picture" id="tour-sub-picture-<?php echo $date['id']; ?>" class="tour-sub-picture" sort="<?php echo $date['sort']; ?>" value="" disabled="">
+                                                                                                            <input type="hidden" name="upload-tour-sub-image" id="upload-tour-sub-image-<?php echo $date['sort']; ?>" value="TRUE"/>
+                                                                                                            <input type="hidden"  name="sort" id="sort" value="<?php echo $date['sort']; ?>"/>
+                                                                                                        </label>
+                                                                                                    </div>
+                                                                                                </div>
+
+
+                                                                                            </div>
+                                                                                            <div id="image-list-<?php echo $date['id']; ?>" class="image-list"></div>
+                                                                                        </div>
+
+                                                                                        <div class="col-md-6 col-xs-6 col-sm-6 text-left">
+                                                                                            <a role="button" id="step-prev-<?php echo $date['sort'] - 1; ?>" class="btn btn-info tab-prev-button <?php
+                                                                                            if ($key === 0) {
+                                                                                                echo 'hidden';
+                                                                                            }
+                                                                                            ?>" data-toggle="collapse" aria-expanded="true" aria-controls="collapse-<?php echo $date['sort']; ?>" sort="<?php echo $date['sort']; ?>">
+                                                                                                << Previous
+                                                                                            </a>
+                                                                                        </div>
+                                                                                        <div class="col-md-6 col-xs6 col-sm-6 text-right <?php
+                                                                                        if (count($tour_dates) == $date['sort']) {
+                                                                                            echo 'hidden';
+                                                                                        } else {
+                                                                                            echo 'visible';
+                                                                                        }
+                                                                                        ?>">
+                                                                                            <a role="button" id="step-<?php echo $date['sort']; ?>" class="btn btn-info tab-next-button" data-toggle="collapse" aria-expanded="true" aria-controls="collapse-<?php echo $date['sort']; ?>" sort="<?php echo $date['sort']; ?>">
+                                                                                                Next >>
+                                                                                            </a>
+                                                                                        </div>
+                                                                                        <div class="col-md-6 col-xs-6 col-sm-6 text-right <?php
+                                                                                        if (count($tour_dates) == $date['sort']) {
+                                                                                            echo 'visible';
+                                                                                        } else {
+                                                                                            echo 'hidden';
+                                                                                        }
+                                                                                        ?>">
+                                                                                            <div class="bottom-top">
+                                                                                                <input type="hidden" id="oldDis" value=""/>
+
+                                                                                                <input type="hidden" id="member" name="member" value="<?php echo $_SESSION['id']; ?>"/>
+                                                                                                <input type="hidden" id="tour" name="tour" value="<?php echo $id; ?>"/>
+                                                                                                <input type="hidden" id="toursubsection" name="toursubsection" value="<?php echo $date['id']; ?>"/>
+                                                                                                <input type="hidden" id="tourdates" name="tourdates" value="<?php echo count($tour_dates); ?>"/>
+                                                                                                <button id="create" name="add-transports" type="submit" class="btn btn-info tab-next-create" sort="<?php echo $date['sort']; ?>">Save All Details</button>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
+                                                                        <?php
                                                                     }
                                                                     ?>
-                                                                    <div class="menu-button-hover">
-                                                                        <div class="dropdown">
-                                                                            <button class="dropbtn"><i class="fa fa-bars"></i></button>
-                                                                            <div class="dropdown-content text-left">
-                                                                                <a href="edit-tour-sub-section.php?id=<?php echo $tour_s['id']; ?>"><i class="hover-menu-icon fa fa-pencil"></i>Edit</a>
-                                                                                <a href="add-new-tour-package-photo.php?id=<?php echo $tour_s['id']; ?>"><i class="hover-menu-icon fa fa-photo"></i>Manage photos</a>
-                                                                                <a href="#" class="delete-tour-sub-section menu-hover-delete-font delete-accommodation" data-id="<?php echo $tour_s['id']; ?>"><i class="hover-menu-icon fa fa-file-text-o"></i>Delete</a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <img class="img-responsive" src="../upload/tour-package/sub-section/thumb/<?php echo $tour_sub_p['image_name']; ?>">
-                                                                    <?php
-                                                                }
-                                                            } else {
-                                                                ?> 
-                                                                <b style="padding-left: 15px;">No Accommodation Image.</b> 
-                                                            <?php } ?>
-                                                        </div> 
-                                                        <p class="maxlinetitle"><?php echo $tour_s['title']; ?></p>
-                                                    </div>
-                                                    <?php
-                                                }
-                                            } else {
-                                                ?> 
 
-                                            <?php } ?> 
-                                        </div>
-                                        <div class="text-right">
-                                            <a href="manage-tour-package.php"><button type="button" class="btn btn-round btn-info">Manage Tour Package</button></a>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div> 
+                                                </div> 
+                                                <!--</form>-->
+                                            </div>  
                                         </div>
                                     </div>
                                 </div>
@@ -147,47 +212,56 @@ $TOUR_SUB_PHOTO = new TourSubSectionPhoto(NULL);
 
         <!--custom checkbox & radio-->
 
-        <script type="text/javascript" src="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-datepicker/js/bootstrap-datepicker.html"></script>
+<!--        <script type="text/javascript" src="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-datepicker/js/bootstrap-datepicker.html"></script>
         <script type="text/javascript" src="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-daterangepicker/date.html"></script>
-        <script type="text/javascript" src="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-daterangepicker/daterangepicker-2.html"></script>
+        <script type="text/javascript" src="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-daterangepicker/daterangepicker-2.html"></script>-->
         <script src="assets/plugins/jquery-steps/jquery.steps.js" type="text/javascript"></script>
         <script type="text/javascript" src="assets/js/bootstrap-inputmask/bootstrap-inputmask.min.js"></script>
-        <script src="js/post-transport-image.js" type="text/javascript"></script>
+        <!--<script src="js/post-transport-image.js" type="text/javascript"></script>-->
         <script src="assets/js/form-component.js"></script>    
         <script src="assets/plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>
         <script src="delete/js/tour-sub-section.js" type="text/javascript"></script>
         <script src="js/post-tour-package-images.js" type="text/javascript"></script>
+        <script src="js/tour-subsection.js" type="text/javascript"></script>
         <script>
             //custom select box
 
-            $(function () {
-                $('select.styled').customSelect();
-            });
+//            $(function () {
+//                $('select.styled').customSelect();
+//            });
 
         </script>
         <script src="assets/tinymce/js/tinymce/tinymce.min.js"></script>
         <script>
-            tinymce.init({
-                selector: "#description",
-                // ===========================================
-                // INCLUDE THE PLUGIN
-                // ===========================================
+            $(document).ready(function () {
+                var tourdates = $('#tourdates').val();
+                var i;
+                for (i = 1; i <= tourdates; i++) {
+                    tinymce.init({
+                        selector: "#description-" + i,
+                        // ===========================================
+                        // INCLUDE THE PLUGIN
+                        // ===========================================
 
-                plugins: [
-                    "advlist autolink lists link image charmap print preview anchor",
-                    "searchreplace visualblocks code fullscreen",
-                    "insertdatetime media table contextmenu paste"
-                ],
-                // ===========================================
-                // PUT PLUGIN'S BUTTON on the toolbar
-                // ===========================================
+                        plugins: [
+                            "advlist autolink lists link image charmap print preview anchor",
+                            "searchreplace visualblocks code fullscreen",
+                            "insertdatetime media table contextmenu paste"
+                        ],
+                        // ===========================================
+                        // PUT PLUGIN'S BUTTON on the toolbar
+                        // ===========================================
 
-                toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image jbimages",
-                // ===========================================
-                // SET RELATIVE_URLS to FALSE (This is required for images to display properly)
-                // ===========================================
-                relative_urls: false
+                        toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image jbimages",
+                        // ===========================================
+                        // SET RELATIVE_URLS to FALSE (This is required for images to display properly)
+                        // ===========================================
+                        relative_urls: false
+                    });
+                }
             });
+
+
         </script>
     </body>
 </html>

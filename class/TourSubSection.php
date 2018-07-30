@@ -140,5 +140,22 @@ class TourSubSection {
 
         return $result;
     }
+    
+//    public function updateByTourIdAndSort() {
+//
+//        $query = "UPDATE  `tour_sub_section` SET "
+//                . "`title` ='" . $this->title . "', "
+//                . "`description` ='" . $this->description . "' "
+//                . "WHERE `tour` = '" . $this->tour . "' AND `sort` = '" . $this->sort . "'";
+//
+//        $db = new Database();
+//        $result = $db->readQuery($query);
+//
+//        if ($result) {
+//            return $this->__construct($this->id);
+//        } else {
+//            return FALSE;
+//        }
+//    }
 
 }

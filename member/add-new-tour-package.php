@@ -98,6 +98,16 @@ $types = $TOURTYPES->all();
                                                                 <input type="file" id="picture_name" class="form-control" name="picture_name">
                                                             </div>
                                                         </div>
+                                                        
+                                                        <div class="">
+                                                            <div class="bottom-top">
+                                                                <label for="noofdates">Number of Dates</label>
+                                                            </div>
+                                                            <div class="">
+                                                                <input type="text" id="noofdates" class="form-control" placeholder="Please Enter Number of Dates" autocomplete="off" name="no_of_dates">
+                                                            </div>
+
+                                                        </div>
 
 
                                                         <div class="">
