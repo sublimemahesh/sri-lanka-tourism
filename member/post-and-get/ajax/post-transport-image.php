@@ -3,7 +3,7 @@
 include_once(dirname(__FILE__) . '/../../../class/include.php');
 
 if (isset($_POST['upload-transport-image'])) {
-
+    dd($_FILES['transport-picture']);
     $folder = '../../../upload/transport/';
     $imgName = Helper::randamId();
 

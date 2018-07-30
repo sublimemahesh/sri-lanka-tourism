@@ -8,6 +8,9 @@ if (isset($_POST['add-tour-package'])) {
     $TOUR_PACKAGE = new TourPackage(NULL);
     $VALID = new Validator();
 
+    $noofdays = $_POST['no_of_dates'];
+    
+    
     $TOUR_PACKAGE->tourtype = filter_input(INPUT_POST, 'tourtype');
     $TOUR_PACKAGE->name = filter_input(INPUT_POST, 'name');
     $TOUR_PACKAGE->price = filter_input(INPUT_POST, 'price');
@@ -68,7 +71,19 @@ if (isset($_POST['add-tour-package'])) {
 
 
     if ($VALID->passed()) {
-        $TOUR_PACKAGE->create();
+        $result = $TOUR_PACKAGE->create();
+        
+        if($result) {
+            
+            for($i = 1; $i <= $noofdays; $i++) {
+                $TOUR_SUBSECTION = new TourSubSection(NULL);
+                
+                $TOUR_SUBSECTION->tour = $result->id;
+                $TOUR_SUBSECTION->sort = $i;
+                
+                $TOUR_SUBSECTION->create();
+            }
+        }
 
         if (!isset($_SESSION)) {
             session_start();

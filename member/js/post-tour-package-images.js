@@ -1,37 +1,175 @@
-$(document).ready(function () {
+$(document).ready(function (e) {
 
-    $('#tour-sub-picture').change(function () {
+    var tourid = $('#tour').val();
 
+    $.ajax({
+        type: 'POST',
+        url: 'post-and-get/ajax/post-tour-package-images.php',
+        dataType: "json",
+        data: {
+            tour: tourid,
+            option: 'GETTOURSUBSECTIONDETAILS'
+        },
+        success: function (subsections) {
+            $.each(subsections, function (key, subsection) {
+                $('#title-' + subsection.sort).val(subsection.title);
+                $('#description-' + subsection.sort).val(subsection.description);
+
+                var subid = subsection.id;
+                $.ajax({
+                    type: 'POST',
+                    url: 'post-and-get/ajax/post-tour-package-images.php',
+                    dataType: "json",
+                    data: {
+                        subsection: subid,
+                        option: 'GETSUBSECTIONPHOTOS'
+                    },
+                    success: function (photos) {
+
+                        $.each(photos, function (key, photo) {
+                            var html = '';
+                            html += '<div class="col-md-2 bottom-top" id="col_' + photo.id + '" style="padding-bottom: 3px;">';
+                            html += '<img src="../upload/tour-package/sub-section/thumb/' + photo.image_name + '"  class="img img-responsive">';
+                            html += '<input type="hidden" name="tour-packages-images[]" value="' + photo.image_name + '"/>';
+                            html += '<i class="img-tour-package-delete delete-icon btn btn-danger btn-md fa fa-trash-o"  id="' + photo.id + '"></i>';
+                            html += '</div>';
+
+                            $('#image-list-' + photo.tour_sub_section).prepend(html);
+                        });
+                    }
+                });
+
+                $.ajax({
+                    type: 'POST',
+                    url: 'post-and-get/ajax/post-tour-package-images.php',
+                    dataType: "json",
+                    data: {
+                        subsection: subid,
+                        option: 'GETSUBSECTIONPHOTOCOUNT'
+                    },
+                    success: function (count) {
+
+                        if (count.count < 4) {
+                            $('#tour-sub-picture-' + count.subid).prop('disabled', false);
+                        } else {
+                            $('#tour-sub-picture-' + count.subid).prop('disabled', true);
+                        }
+                    }
+                });
+
+
+            });
+        }
+    });
+
+
+
+
+    $('.tour-sub-picture').change(function () {
+
+
+        var sort = $(this).attr('sort');
+        var subid = $('#toursubsection').val();
         $('#loading').show();
-        var formData = new FormData($('#form-tour-sub-section-package')[0]);
+        var formData = new FormData($('#form-tours-' + sort)[0]);
 
         $.ajax({
-            url: "post-and-get/ajax/post-tour-package-images.php",
             type: "POST",
+            url: "post-and-get/ajax/post-tour-package-images.php",
+            dataType: 'json',
             data: formData,
             async: false,
-            dataType: 'json',
+
             success: function (mess) {
 
-                var arr = mess.filename.split('.');
+//                var arr = mess.filename.split('.');
 
                 var html = '';
-                html += '<div class="col-md-2 bottom-top" id="col_' + arr[0] + '" style="padding-bottom: 3px;">';
+                html += '<div class="col-md-2 bottom-top" id="col_' + mess.id + '" style="padding-bottom: 3px;">';
                 html += '<img src="../upload/tour-package/sub-section/thumb/' + mess.filename + '"  class="img img-responsive">';
                 html += '<input type="hidden" name="tour-packages-images[]" value="' + mess.filename + '"/>';
-                html += '<i class="img-tour-package-delete delete-icon btn btn-danger btn-md fa fa-trash-o"  id="' + arr[0] + '"></i>';
+                html += '<i class="img-tour-package-delete delete-icon btn btn-danger btn-md fa fa-trash-o"  id="' + mess.id + '"></i>';
                 html += '</div>';
-                $('#image-list').prepend(html);
+
+                $('#image-list-' + mess.toursubsection).prepend(html);
                 $('#loading').hide();
+
+                $.ajax({
+                    type: 'POST',
+                    url: 'post-and-get/ajax/post-tour-package-images.php',
+                    dataType: "json",
+                    data: {
+                        subsection: mess.toursubsection,
+                        option: 'GETSUBSECTIONPHOTOCOUNT'
+                    },
+                    success: function (count) {
+
+                        if (count.count < 4) {
+                            $('#tour-sub-picture-' + count.subid).prop('disabled', false);
+                        } else {
+                            $('#tour-sub-picture-' + count.subid).prop('disabled', true);
+                        }
+                    }
+                });
+
             },
             cache: false,
             contentType: false,
             processData: false
         });
+
+
     });
 
-    $('#image-list').on('click', '.img-tour-package-delete', function () {
 
-        $('#col_' + this.id).remove();
+
+
+    $('.image-list').on('click', '.img-tour-package-delete', function () {
+
+        var photoid = this.id;
+
+        $.ajax({
+            type: 'POST',
+            url: 'post-and-get/ajax/post-tour-package-images.php',
+            dataType: "json",
+            data: {
+                photoid: photoid,
+                option: 'DELETEIMAGE'
+            },
+            success: function (result) {
+                if (result.status == 'TRUE') {
+                    swal({
+                        title: "Deleted!",
+                        text: "Photo has been deleted.",
+                        type: 'success',
+                        timer: 2000,
+                        showConfirmButton: false
+                    });
+                    $('#col_' + result.id).remove();
+
+                    $.ajax({
+                        type: 'POST',
+                        url: 'post-and-get/ajax/post-tour-package-images.php',
+                        dataType: "json",
+                        data: {
+                            subsection: result.subid,
+                            option: 'GETSUBSECTIONPHOTOCOUNT'
+                        },
+                        success: function (count) {
+
+                            if (count.count < 4) {
+                                $('#tour-sub-picture-' + count.subid).prop('disabled', false);
+                            } else {
+                                $('#tour-sub-picture-' + count.subid).prop('disabled', true);
+                            }
+                        }
+                    });
+                }
+
+            }
+        });
+
+
+
     });
 });
