@@ -1,5 +1,5 @@
 <?php
-include_once(dirname(__FILE__) . '/class/include.php');
+include './class/include.php';
 if (!isset($_SESSION)) {
     session_start();
 }
@@ -55,7 +55,15 @@ $MEMBER = new Member($TRANSPORTS->member);
             </div> 
         </div>
 
+
+
         <div class="container transport-container">
+            <div class="col-md-12">
+                <?php
+                $vali = new Validator();
+                $vali->show_message();
+                ?>
+            </div>
             <div class="row">
                 <div class="col-md-8">
                     <div id="transport_photos" class="galleria-slider">
@@ -82,7 +90,7 @@ $MEMBER = new Member($TRANSPORTS->member);
                             <div class="row">
                                 <div class="col-md-4 col-sm-4 col-xs-4">
 
-                                <a href="member-view.php?id=<?php echo $MEMBER->id; ?>" class="link">
+                                    <a href="member-view.php?id=<?php echo $MEMBER->id; ?>" class="link">
                                         <?php
                                         if (empty($MEMBER->id)) {
                                             ?>
@@ -428,6 +436,27 @@ $MEMBER = new Member($TRANSPORTS->member);
                                         <i class="fa fa-arrow-right"></i>  View All Reviews
                                     </a>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="sidebar">
+                        <div class="widget">
+                            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                                <h2 class="t-comment">Send a Message</h2>
+                                <form id="send-message" method="post" enctype="multipart/form-data" action="post-and-get/visitor-messages.php">
+                                    <textarea name="message" row="5" required="TRUE" id="message"></textarea>
+                                    <div class="add-comment-button">
+                                        <input type="hidden" name="member" value="<?php echo $TRANSPORTS->member; ?>">
+                                        <input type="hidden" name="visitor" value="<?php echo $_SESSION['id']; ?>">
+                                        <input type="hidden" name="sender" value="visitor">
+                                        <button type="submit" name="visitor-message" class="btn btn-info btn-position-rel">
+                                            <i class="fa fa-arrow-right"></i>  Send Message
+                                        </button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>

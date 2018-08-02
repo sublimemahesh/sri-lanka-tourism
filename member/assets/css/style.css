@@ -2288,6 +2288,18 @@ img#profil_pic1 {
     padding: 8px 8px 8px 8px;
     margin-right: 10px;
 }
+.sub-menu > a > .fa-envelop {
+    font-size: 21px !important;
+    border: 1px solid #c1c1c1 !important;
+    padding: 8px 8px 8px 8px;
+    margin-right: 10px;
+}
+.sub-menu > a > .fa-comment-o {
+    font-size: 21px !important;
+    border: 1px solid #c1c1c1 !important;
+    padding: 8px 8px 8px 8px;
+    margin-right: 10px;
+}
 .panel-heading > .fa{ 
     font-size: 14px !important;
     border: 1px solid #c1c1c1 !important;

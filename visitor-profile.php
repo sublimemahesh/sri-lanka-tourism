@@ -95,6 +95,7 @@ include './auth.php';
 <!--                        <li><a href="manage-ads.php"><i class="fa fa-desktop" aria-hidden="true"></i> col 2</a>
                         </li><li><a href="manage-active-ads.php"><i class="fa fa-laptop" aria-hidden="true"></i> col 1</a></li>-->
                         <li><a href="change-password.php"><i class="fa fa-lock" aria-hidden="true"></i> Change Password</a></li>
+                        <li><a href="visitor-message.php"><i class="fa fa-comment" aria-hidden="true"></i> Messages</a></li>
                         <li><a href="post-and-get/logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
                     </ul>
                 </div>

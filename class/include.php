@@ -49,6 +49,7 @@ include_once(dirname(__FILE__) . '/RentACarBooking.php');
 include_once(dirname(__FILE__) . '/Languages.php');
 include_once(dirname(__FILE__) . '/Offer.php');
 include_once(dirname(__FILE__) . '/OfferBooking.php');
+include_once(dirname(__FILE__) . '/MemberAndVisitorMessages.php');
 
 function dd($data) {
     var_dump($data);

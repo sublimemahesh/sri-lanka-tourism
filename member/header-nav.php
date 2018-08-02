@@ -186,6 +186,12 @@ $MEMBER = new Member($_SESSION['id']);
                                     <li><a  href="manage-tour-package.php">Manage Tour Packages</a></li>
                                 </ul>-->
             </li> 
+            <li class="sub-menu">
+                <a href="member-message.php" >
+                    <i class="fa fa-comment-o"></i>
+                    <span>Messages</span>
+                </a>
+            </li> 
         </ul>
     </div>
 </aside>
