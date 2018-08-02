@@ -2719,3 +2719,6 @@ ul.setPaginate {
 .vis-member-border{
     border: 2px solid #747474;
 }
+#message {
+    width: 100%;
+}
