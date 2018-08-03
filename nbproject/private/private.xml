@@ -3,13 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/sri-lanka-tourism/visitor-message.php</file>
-            <file>file:/C:/xampp/htdocs/sri-lanka-tourism/css/member-visitor-messages_1.css</file>
-            <file>file:/C:/xampp/htdocs/sri-lanka-tourism/transportation-view.php</file>
+            <file>file:/C:/xampp/htdocs/sri-lanka-tourism/member/post-and-get/member-messages.php</file>
+            <file>file:/C:/xampp/htdocs/sri-lanka-tourism/member/assets/css/member-visitor-messages.css</file>
+            <file>file:/C:/xampp/htdocs/sri-lanka-tourism/post-and-get/tour-package-booking.php</file>
+            <file>file:/C:/xampp/htdocs/sri-lanka-tourism/post-and-get/visitor-messages.php</file>
             <file>file:/C:/xampp/htdocs/sri-lanka-tourism/class/MemberAndVisitorMessages.php</file>
-            <file>file:/C:/xampp/htdocs/sri-lanka-tourism/visitor-message_2.php</file>
-            <file>file:/C:/xampp/htdocs/sri-lanka-tourism/header.php</file>
             <file>file:/C:/xampp/htdocs/sri-lanka-tourism/css/member-visitor-messages.css</file>
+            <file>file:/C:/xampp/htdocs/sri-lanka-tourism/post-and-get/accommodation-booking.php</file>
         </group>
     </open-files>
 </project-private>

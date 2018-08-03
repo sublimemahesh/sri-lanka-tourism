@@ -496,6 +496,14 @@ $CITY = new City($ACCOMMODATIONS->city);
                 </div>
             </div>
 
+            <div class="row top-margin-30">
+                <div class="col-md-12 col-md-offset-4 message-now">
+                    <a href="visitor-message.php?id=<?php echo $ACCOMMODATIONS->member; ?>" class="btn btn-info btn-lg col-md-4 message-now-btn">
+                        <i class="fa fa-comment-o"></i> Message Now
+                    </a>
+                </div>
+            </div>
+
         </div>
 
 

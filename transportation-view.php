@@ -441,7 +441,7 @@ $MEMBER = new Member($TRANSPORTS->member);
                     </div>
                 </div>
 
-                <div class="col-md-4">
+<!--                <div class="col-md-4">
                     <div class="sidebar">
                         <div class="widget">
                             <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -460,9 +460,17 @@ $MEMBER = new Member($TRANSPORTS->member);
                             </div>
                         </div>
                     </div>
+                </div>-->
+            </div>
+            
+            <div class="row top-margin-30">
+                <div class="col-md-12 col-md-offset-4 message-now">
+                    <a href="visitor-message.php?id=<?php echo $TRANSPORTS->member; ?>" class="btn btn-info btn-lg col-md-4 message-now-btn">
+                        <i class="fa fa-comment-o"></i> Message Now
+                    </a>
                 </div>
             </div>
-
+            
             <div class="row top-margin-30">
                 <hr>
                 <div class="col-md-12">

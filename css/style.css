@@ -2722,3 +2722,17 @@ ul.setPaginate {
 #message {
     width: 100%;
 }
+.message-now-btn {
+    border: 1px solid #46b8da;
+    /*border-radius: 6px;*/
+    width: 215px;
+}
+.message-now-btn:hover {
+    border: 1px solid #46b8da;
+    /*border-radius: 6px;*/
+    width: 215px;
+    color: #46b8da;
+}
+.message-now {
+    text-align: center;
+}
