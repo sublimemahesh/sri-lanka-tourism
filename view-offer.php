@@ -19,6 +19,11 @@ $OFFER_OBJ = New Offer(null);
         <link href="assets/css/styles.css" rel="stylesheet" type="text/css"/>
         <link href="https://fonts.googleapis.com/css?family=Russo+One|Magra|Ubuntu+Condensed" rel="stylesheet"> 
         <link href="css/offer-styles.css" rel="stylesheet" type="text/css"/>
+        <style>
+            .message-now-btn {
+                width: 50px;
+            }
+        </style>
     </head>
     <body>
         <!-- Our Resort Values style-->
@@ -89,6 +94,10 @@ $OFFER_OBJ = New Offer(null);
 
                                         <div class="hotel-person"><span class="color-blue">LKR <?php echo $new_price; ?>.00</span><strike class="old-discount-price">LKR <?php echo $offer['price'] ?>.00</strike> </div>
                                         <a class="thm-btn" href="offer-booking.php?offer=<?php echo $offer['id']; ?>">Get your offer</a>
+
+                                        <a href="visitor-message.php?id=<?php echo $MEMBER->id; ?>" class="thm-btn thm-msg" title="Send Message">
+                                            <i class="fa fa-comment-o"></i>
+                                        </a>
                                     </div>
                                 </div>
                             <?php } ?>

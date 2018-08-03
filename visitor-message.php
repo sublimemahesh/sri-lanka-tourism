@@ -1,5 +1,6 @@
 <?php
 include './class/include.php';
+//include './auth.php';
 if (!isset($_SESSION)) {
     session_start();
 }
@@ -8,7 +9,14 @@ if (isset($_GET['id'])) {
     $memberid = $_GET['id'];
 }
 
-$visitorid = $_SESSION['id'];
+if (!isset($_SESSION["login"])) {
+    $site_link = "http://" . $_SERVER['HTTP_HOST'];
+    $_SESSION["back_url"] = $site_link.'/sri-lanka-tourism/visitor-message.php?id='.$memberid ;
+    redirect('visitor-login.php?message=24');
+} else {
+    $visitorid = $_SESSION['id'];
+}
+
 
 $VISITOR = new Visitor($visitorid);
 $MEM = new Member($memberid);

@@ -169,7 +169,7 @@ and open the template in the editor.
 }
 
 .thm-btn {
-    padding: 12px 30px;
+    padding: 12px 24px;
     color: #fff;
     font-weight: 700;
     font-size: 13px;
@@ -185,9 +185,9 @@ and open the template in the editor.
     position: relative;
     background-color: #2e7bc6  !important;
 }
-
-
-
+.thm-msg {
+    font-size: 18px;
+}
 
 .ribbon {
     position: absolute;

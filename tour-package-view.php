@@ -95,8 +95,15 @@ $count_feedbacks = count($feedbacks);
                     ?>
 
 
-                    <div class="col-md-4 col-xs-4 col-md-offset-4 book-now-btn">
-                        <a href="tour-package-booking.php?tour=<?php echo $tourid; ?>" class="button"><span>Book Now </span></a>
+                    <div class="row top-margin-30">
+                        <div class="col-md-4 col-xs-4 col-md-offset-2 book-now-btn">
+                            <a href="tour-package-booking.php?tour=<?php echo $tourid; ?>" class="button"><span>Book Now </span></a>
+                        </div>
+                        <div class="col-md-4 col-xs-4 book-now-btn">
+                            <a href="visitor-message.php?id=<?php echo $TOURPACK->member; ?>" class="button">
+                                <span>Message Now</span>
+                            </a>
+                        </div>
                     </div>
 
                     <div class="col-sm-12">			
