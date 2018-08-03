@@ -7,7 +7,7 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
-if (isset($_SESSION["login"])) {
+if (isset($_SESSION["vislogin"])) {
     redirect('visitor-profile.php');
 }
 

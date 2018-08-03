@@ -7,6 +7,7 @@ class Visitor {
     public $second_name;
     public $email;
     public $password;
+    public $authToken;
     public $address;
     public $city;
     public $contact_number;
@@ -18,7 +19,7 @@ class Visitor {
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`,`first_name`,`second_name`,`email`,`password`,`address`,`city`,`contact_number`,`image_name`,`facebookID`,`googleID`,`resetcode` FROM `visitor` WHERE `id`=" . $id;
+            $query = "SELECT `id`,`first_name`,`second_name`,`email`,`password`,`authToken`,`address`,`city`,`contact_number`,`image_name`,`facebookID`,`googleID`,`resetcode` FROM `visitor` WHERE `id`=" . $id;
 
             $db = new Database();
 
@@ -29,6 +30,7 @@ class Visitor {
             $this->second_name = $result['second_name'];
             $this->email = $result['email'];
             $this->password = $result['password'];
+            $this->authToken = $result['authToken'];
             $this->address = $result['address'];
             $this->city = $result['city'];
             $this->contact_number = $result['contact_number'];
@@ -131,7 +133,7 @@ class Visitor {
                 session_unset($_SESSION);
             }
 
-            $_SESSION["login"] = TRUE;
+            $_SESSION["vislogin"] = TRUE;
 
             $_SESSION["id"] = $visitor->id;
             $_SESSION["first_name"] = $visitor->first_name;
@@ -148,12 +150,17 @@ class Visitor {
         }
 
         $id = NULL;
+        $authToken = NULL;
 
         if (isset($_SESSION["id"])) {
             $id = $_SESSION["id"];
         }
 
-        $query = "SELECT `id` FROM `visitor` WHERE `id`= '" . $id . "'";
+        if (isset($_SESSION["authToken"])) {
+            $authToken = $_SESSION["authToken"];
+        }
+
+        $query = "SELECT `id` FROM `visitor` WHERE `id`= '" . $id . "' AND `authToken`= '" . $authToken . "'";
 
         $db = new Database();
 
@@ -177,8 +184,8 @@ class Visitor {
         unset($_SESSION["first_name"]);
         unset($_SESSION["second_name"]);
         unset($_SESSION["email"]);
-        unset($_SESSION["login"]);
-
+        unset($_SESSION["vislogin"]);
+        unset($_SESSION["authToken"]);
         return TRUE;
     }
 
@@ -321,9 +328,9 @@ class Visitor {
         }
     }
 
-    public function isFbIdIsEx($visitorID) {
+    public function isFbIdIsEx($userID) {
 
-        $query = "SELECT * FROM `visitor` WHERE `facebookID` = '" . $visitorID . "'";
+        $query = "SELECT * FROM `visitor` WHERE `facebookID` = '" . $userID . "'";
 
         $db = new Database();
 
@@ -336,12 +343,12 @@ class Visitor {
         }
     }
 
-    public function createByFB($name, $email, $picture, $visitorID, $password) {
+    public function createByFB($name, $email, $picture, $fbID, $password) {
 //        date_default_timezone_set('Asia/Colombo');
 //
 //        $createdAt = date('Y-m-d H:i:s');
 
-        $query = "INSERT INTO `visitor` (`first_name`,`email`,`image_name`,`facebookID`,`password`) VALUES  ('" . $name . "', '" . $email . "', '" . $picture . "', '" . $visitorID . "', '" . $password . "')";
+        $query = "INSERT INTO `visitor` (`first_name`,`email`,`image_name`,`facebookID`,`password`) VALUES  ('" . $name . "', '" . $email . "', '" . $picture . "', '" . $fbID . "', '" . $password . "')";
 
         $db = new Database();
 
@@ -351,7 +358,7 @@ class Visitor {
 
         if ($result) {
 
-            $this->loginByFB($visitorID, $password);
+            $this->loginByFB($fbID, $password);
 
             return $this->__construct($last_id);
         } else {
@@ -359,9 +366,9 @@ class Visitor {
         }
     }
 
-    public function loginByFB($visitorID, $password) {
+    public function loginByFB($FbId, $password) {
 
-        $query = "SELECT * FROM `visitor` WHERE `facebookID`= '" . $visitorID . "' AND `password`= '" . $password . "'";
+        $query = "SELECT * FROM `visitor` WHERE `facebookID`= '" . $FbId . "'";
 
         $db = new Database();
 
@@ -371,19 +378,52 @@ class Visitor {
             return FALSE;
         } else {
             $this->id = $result['id'];
+            $this->setAuthToken($result['id']);
             $visitor = $this->__construct($this->id);
+            $this->setUserSession($visitor);
 
             if (!isset($_SESSION)) {
                 session_start();
                 session_unset($_SESSION);
             }
 
-            $_SESSION["login"] = TRUE;
+            $_SESSION["vislogin"] = TRUE;
 
             $_SESSION["id"] = $visitor->id;
 
             return TRUE;
         }
+    }
+
+    private function setAuthToken($id) {
+
+        $authToken = md5(uniqid(rand(), true));
+
+        $query = "UPDATE `visitor` SET `authToken` ='" . $authToken . "' WHERE `id`='" . $id . "'";
+
+        $db = new Database();
+
+        if ($db->readQuery($query)) {
+
+            return $authToken;
+        } else {
+            return FALSE;
+        }
+    }
+
+    private function setUserSession($visitor) {
+
+        if (!isset($_SESSION)) {
+            session_start();
+            session_unset($_SESSION);
+        }
+
+        $_SESSION["vislogin"] = TRUE;
+        $_SESSION["id"] = $visitor->id;
+        $_SESSION["first_name"] = $visitor->first_name;
+        $_SESSION["email"] = $visitor->email;
+        $_SESSION["image_name"] = $visitor->image_name;
+        $_SESSION["authToken"] = $visitor->authToken;
     }
 
     public function isGoogleIdIsEx($visitorID) {
@@ -424,9 +464,9 @@ class Visitor {
         }
     }
 
-    public function loginByGoogle($visitorID, $password) {
+    public function loginByGoogle($googleID, $password) {
 
-        $query = "SELECT * FROM `visitor` WHERE `googleID`= '" . $visitorID . "' AND `password`= '" . $password . "'";
+        $query = "SELECT * FROM `visitor` WHERE `googleID`= '" . $googleID . "'";
 
         $db = new Database();
 
@@ -436,19 +476,20 @@ class Visitor {
             return FALSE;
         } else {
             $this->id = $result['id'];
+            $this->setAuthToken($result['id']);
             $visitor = $this->__construct($this->id);
+            $this->setUserSession($visitor);
 
             if (!isset($_SESSION)) {
                 session_start();
                 session_unset($_SESSION);
             }
 
-            $_SESSION["login"] = TRUE;
+            $_SESSION["vislogin"] = TRUE;
 
             $_SESSION["id"] = $visitor->id;
 
             return TRUE;
         }
     }
-
 }

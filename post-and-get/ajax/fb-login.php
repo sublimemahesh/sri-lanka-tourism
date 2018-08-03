@@ -3,7 +3,6 @@ header('Content-Type: application/json; charset=UTF8');
 include_once(dirname(__FILE__) . '/../../class/include.php');
 
 if (isset($_POST['memberLogin'])) {
-
     $back = "";
     if (!isset($_SESSION)) {
         session_start();
