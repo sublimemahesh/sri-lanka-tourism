@@ -15,7 +15,7 @@
                 </div>
             </div>
             <?php
-            if (isset($_SESSION["login"])) {
+            if (isset($_SESSION["vislogin"])) {
                 ?>
                 <div class="dropdown" style="float: right;">
                     <?php
