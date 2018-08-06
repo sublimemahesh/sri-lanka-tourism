@@ -701,4 +701,36 @@ class Search {
         echo $setPaginate;
     }
 
+    public function searchByKeywordAndType($keyword, $type) {
+
+//        $query1 = 'SELECT * FROM `transports` WHERE `title` LIKE "%' . $keyword . '%"';
+        $query1 = 'SELECT transports.*, transport_rates.id AS transport_rate, transport_rates.price AS transport_price FROM `transports` INNER JOIN transport_rates ON transports.id = transport_rates.transport_id WHERE `title` LIKE "%' . $keyword . '%" LIMIT 20';
+        $query2 = 'SELECT * FROM `tour_package` WHERE `name` LIKE "%' . $keyword . '%" LIMIT 21';
+        $query3 = 'SELECT * FROM `accommodation` WHERE `name` LIKE "%' . $keyword . '%" LIMIT 20';
+        $query4 = 'SELECT * FROM `offer` WHERE `title` LIKE "%' . $keyword . '%" LIMIT 20';
+        $query5 = 'SELECT * FROM `article` WHERE `title` LIKE "%' . $keyword . '%" LIMIT 20';
+
+        $db = new Database();
+
+        if ($type == 'taxi') {
+            $result = $db->readQuery($query1);
+        } else if ($type == 'tour') {
+            $result = $db->readQuery($query2);
+        } else if ($type == 'hotel') {
+            $result = $db->readQuery($query3);
+        } else if ($type == 'offer') {
+            $result = $db->readQuery($query4);
+        } else if ($type == 'article') {
+            $result = $db->readQuery($query5);
+        } else if ($type == 'all') {
+            $result = $db->readQuery($query);
+        }
+
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+        return $array_res;
+    }
 }

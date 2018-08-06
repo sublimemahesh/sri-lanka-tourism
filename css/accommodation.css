@@ -391,3 +391,8 @@ ul:not(.browser-default) {
     color: #484747;
     font-size: 12px;
 }
+.ribbon1 span {
+    font-size: 20px;
+    color: #153284;
+    font-weight: 600;
+}
