@@ -49,6 +49,7 @@ if (isset($_POST['member-message'])) {
             $message = $RESULT->messages;
             $datetime = $RESULT->date_and_time;
             $visitor_email = $VISITOR->email;
+            $member_id = $RESULT->member;
             $site_link = "http://" . $_SERVER['HTTP_HOST'];
             $website_name = 'www.srilankatourism.travel';
             $comany_name = 'Sri Lanka Tourism';
@@ -88,7 +89,7 @@ if (isset($_POST['member-message'])) {
                                                             </tr>
                                                             <tr>
                                                                 <td style="border-collapse:collapse" valign="middle" align="center">
-                                                                    <img alt="Logo" src="' . $site_link . '/sri-lanka-tourism/images/booking/logo.png" style="outline:none;text-decoration:none;border:none" class="CToWUd" height="55px" align="middle">
+                                                                    <img alt="Logo" src="' . $site_link . '/images/booking/logo.png" style="outline:none;text-decoration:none;border:none" class="CToWUd" height="55px" align="middle">
                                                                 </td>
                                                             </tr>           
                                                             <tr>
@@ -133,7 +134,7 @@ if (isset($_POST['member-message'])) {
                                                                                                             <tbody>
                                                                                                                 <tr>
                                                                                                                     <td style="border-collapse:collapse" width="40" valign="top" align="right">
-                                                                                                                        <img style="outline:none;text-decoration:none;border:none;display:block;border-radius:12px" src="' . $site_link . '/sri-lanka-tourism/upload/member/' . $member_image_name . '" class="CToWUd" width="60">
+                                                                                                                        <img style="outline:none;text-decoration:none;border:none;display:block;border-radius:12px" src="' . $site_link . '/upload/member/' . $member_image_name . '" class="CToWUd" width="60">
                                                                                                                     </td>
                                                                                                                     <td style="border-collapse:collapse" width="8" valign="top"></td>
                                                                                                                     <td style="border-collapse:collapse;min-width:100%" width="400" valign="top">
@@ -167,7 +168,7 @@ if (isset($_POST['member-message'])) {
                                                                                                 <tr>
                                                                                                     <td style="border-collapse:collapse" align="center">
 
-                                                                                                        <a href="#" style="text-decoration:none;color:#24c7ff;text-align:center;font-size:16px;font-family:Helvetica,Arial,sans-serif;color:#ffffff;text-decoration:none;color:#ffffff;text-decoration:none;padding:10px;border-radius:6px;border:1px solid #24c7ff;display:inline-block;width:266px;background-color:#24c7ff; margin-top: 15px;" target="_blank"> 
+                                                                                                        <a href="' . $site_link . 'visitor-message.php?id=' . $member_id . '" style="text-decoration:none;color:#24c7ff;text-align:center;font-size:16px;font-family:Helvetica,Arial,sans-serif;color:#ffffff;text-decoration:none;color:#ffffff;text-decoration:none;padding:10px;border-radius:6px;border:1px solid #24c7ff;display:inline-block;width:266px;background-color:#24c7ff; margin-top: 15px;" target="_blank"> 
                                                                                                          Read the message
                                                                                                         </a>
                                                                                                     </td>

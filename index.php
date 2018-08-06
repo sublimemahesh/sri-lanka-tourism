@@ -687,23 +687,23 @@ $ARTICLETYPES = ArticleType::all();
                             </div>
                             <div id="sea" class="tab-pane fade">
                                 <h3 class="select-op-header text-center">Search</h3>
-                                <form method="get" name="form" action="view-search.php" >
+                                <form method="get" name="form" action="view-search.php">
                                     <div id="taxi" class="tab-pane fade in active">
                                         <div class="row">
                                             <div class="col-md-6 col-sm-6 col-xs-12 taxi-title">
                                                 <span class="span-style">What are you looking for</span>
-                                                <input type="text" name="keyword" placeholder="What are you looking for" class="input-text">
+                                                <input type="text" name="keyword" placeholder="What are you looking for" class="input-text" autocomplete="off">
                                             </div>
                                             <div class="col-md-6 col-sm-6 col-xs-12 taxi-title">
                                                 <span class="span-style">Types</span>
-                                                <select name="type" class="form-control taxi-combo" id="tourtypes">
+                                                <select name="type" class="form-control taxi-combo" id="tourtypes" required>
                                                     <option value="" selected="">-- Please select a type--</option>
                                                     <option value="all">All</option>
                                                     <option value="taxi">Taxi</option>
-                                                    <option value="tours">Tours</option>
-                                                    <option value="hotels">Hotels</option>
-                                                    <option value="offers">Offers</option>
-                                                    <option value="articles">Articles</option>
+                                                    <option value="tour">Tours</option>
+                                                    <option value="hotel">Hotels</option>
+                                                    <option value="offer">Offers</option>
+                                                    <option value="article">Articles</option>
 
                                                 </select>
                                             </div>
