@@ -10,8 +10,8 @@ if (isset($_GET['id'])) {
 }
 
 if (!isset($_SESSION["login"])) {
-    $site_link = "http://" . $_SERVER['HTTP_HOST'];
-    $_SESSION["back_url"] = $site_link.'/sri-lanka-tourism/visitor-message.php?id='.$memberid ;
+    $site_link = "https://" . $_SERVER['HTTP_HOST'];
+    $_SESSION["back_url"] = $site_link.'/visitor-message.php?id='.$memberid ;
     redirect('visitor-login.php?message=24');
 } else {
     $visitorid = $_SESSION['id'];
