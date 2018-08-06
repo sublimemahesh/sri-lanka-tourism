@@ -59,6 +59,7 @@ if (isset($_POST['register'])) {
 }
 
 if (isset($_POST['login'])) {
+    
 
     $VISITOR = new Visitor(NULL);
 
@@ -69,7 +70,7 @@ if (isset($_POST['login'])) {
     
     $result = $VISITOR->login($email, $password);
     
-    $back = $_POST['back_url'];
+    $back = $_SESSION["back_url"];
     
     if ($result) {
         if (empty($back)) {
