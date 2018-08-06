@@ -1,0 +1,87 @@
+/* Global Styles */
+@import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css';
+*, *:before, *:after {
+    -webkit-box-sizing: border-box !important;
+    -moz-box-sizing: border-box !important;
+    box-sizing: border-box !important;
+}
+body {
+    width: 100%;
+    height: 100%;
+    font-family: "Source Sans Pro",  "Helvetica Neue",  Helvetica,  Arial,  sans-serif;
+    overflow-x: hidden;
+    position:relative;
+}
+html {
+    width: 100%;
+    height: 100%;
+}
+
+a:hover{
+    text-decoration:none;
+}
+/*page styling*/
+.bs-callout {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: #eee;
+    border-image: none;
+    border-radius: 3px;
+    border-style: solid;
+    border-width: 2px 2px 2px 2px;
+    margin-bottom: 5px;
+    padding: 20px;
+}
+.bs-right-panel{
+    padding: 10px;
+    width:100%;
+    float:none;
+    text-align:center;
+    margin:0 auto;
+}
+.bs-right-panel img{
+    width:100%;
+    margin:0;
+    padding:0;
+
+}
+.bs-callout:last-child {
+    margin-bottom: 25px;
+}
+.bs-callout h4,
+.bs-callout h5 {
+    margin-bottom: 10px;
+    margin-top: 5px;
+    font-weight: 600;
+}
+
+/*.bs-callout-danger {
+    border-left-color: #d9534f;
+}*/
+
+.bs-callout-danger h4,
+.bs-callout-danger h5{
+    color: #d9534f;
+}
+
+.header-title {
+    color: #fff;
+}
+.title-thin {
+    font-weight: 300;
+}
+.service-item {
+    margin-bottom: 30px;
+}
+.tab-style{
+    width: 20%;
+    text-align: center;
+}
+.search-taxi{
+    margin-left: 120px;
+}
+.nav-padding{
+    margin-bottom: 10px;
+}
