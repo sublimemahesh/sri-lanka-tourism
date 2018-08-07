@@ -697,8 +697,7 @@ $ARTICLETYPES = ArticleType::all();
                                             <div class="col-md-6 col-sm-6 col-xs-12 taxi-title">
                                                 <span class="span-style">Types</span>
                                                 <select name="type" class="form-control taxi-combo" id="tourtypes" required>
-                                                    <option value="" selected="">-- Please select a type--</option>
-                                                    <option value="all">All</option>
+                                                    <option value="all" selected>All</option>
                                                     <option value="taxi">Taxi</option>
                                                     <option value="tour">Tours</option>
                                                     <option value="hotel">Hotels</option>

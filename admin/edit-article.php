@@ -29,7 +29,7 @@ $ARTICLE = new Article($id);
 
     <body class="theme-red">
         <?php
-        include '/navigation-and-header.php';
+        include 'navigation-and-header.php';
         ?>
 
         <section class="content">
