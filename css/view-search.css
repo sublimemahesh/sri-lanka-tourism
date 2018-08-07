@@ -113,7 +113,25 @@ a:hover{
     color: #555;
     background-color: #fff;
     border: 1px solid #ddd;
-        border-bottom-color: rgb(221, 221, 221);
+    border-bottom-color: rgb(221, 221, 221);
     border-bottom-color: transparent;
     cursor: default;
+}
+@media (min-width: 320px) and (max-width: 480px) {
+    .nav > li > a {
+        margin-top: 0px;
+        padding: 10px 3px;
+        border-radius: 0px;
+        background-color: #003366;
+        list-style: none;
+        display: initial;
+    }
+    .nav {
+        padding-left: 0px;
+    }
+    #firstnav {
+        width: 32px;
+    }
+    
+
 }

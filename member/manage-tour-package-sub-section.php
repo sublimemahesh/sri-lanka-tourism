@@ -263,5 +263,6 @@ $tour_dates = TourSubSection::GetTourSubSectionByTourPackage($id);
 
 
         </script>
+        
     </body>
 </html>

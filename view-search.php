@@ -69,7 +69,7 @@ if ($type == 'all') {
                                         <!-- Nav tabs -->
                                         <div class="col-md-12">
                                             <ul class="nav nav-tabs nav-padding" role="tablist">
-                                                <li class="nav-item tab-style">
+                                                <li class="nav-item tab-style" id="firstnav">
                                                     <a class="nav-link" data-toggle="tab" href="#taxi" id="navtaxi" role="tab">Taxi</a>
                                                 </li>
                                                 <li class="nav-item tab-style">
