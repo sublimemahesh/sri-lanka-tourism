@@ -51,6 +51,12 @@ $(document).ready(function () {
 
                 }
             });
+            
+            $('#tags-field-' + sort).keypress(function (event) {
+                if (event.which == '13') {
+                    event.preventDefault();
+                }
+            });
 
 //            $('#tags-field-' + sort).keypress(function (event) {
 //                if (event.which == '13') {
