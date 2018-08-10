@@ -2736,3 +2736,13 @@ ul.setPaginate {
 .message-now {
     text-align: center;
 }
+.locations span a {
+    background-color: #fff;
+    color: #059fc0;
+}
+.loc-title {
+    font-weight: 600;
+}
+.locations {
+    margin-bottom: 15px;
+}

@@ -11,12 +11,13 @@ class TourSubSection {
     public $tour;
     public $title;
     public $description;
+    public $locations;
     public $sort;
 
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`,`tour`,`title`,`description`,`sort` FROM `tour_sub_section` WHERE `id`=" . $id;
+            $query = "SELECT `id`,`tour`,`title`,`description`,`locations`,`sort` FROM `tour_sub_section` WHERE `id`=" . $id;
 
             $db = new Database();
 
@@ -26,6 +27,7 @@ class TourSubSection {
             $this->tour = $result['tour'];
             $this->title = $result['title'];
             $this->description = $result['description'];
+            $this->locations = $result['locations'];
             $this->sort = $result['sort'];
 
             return $this;
@@ -64,10 +66,11 @@ class TourSubSection {
     }
 
     public function update() {
-
+        
         $query = "UPDATE  `tour_sub_section` SET "
                 . "`title` ='" . $this->title . "', "
-                . "`description` ='" . $this->description . "' "
+                . "`description` ='" . $this->description . "', "
+                . "`locations` ='" . $this->locations . "' "
                 . "WHERE `id` = '" . $this->id . "'";
 
         $db = new Database();

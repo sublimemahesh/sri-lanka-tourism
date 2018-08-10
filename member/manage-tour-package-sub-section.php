@@ -30,7 +30,9 @@ $tour_dates = TourSubSection::GetTourSubSectionByTourPackage($id);
         <link href="assets/css/style.css" rel="stylesheet">
         <link href="assets/css/style-responsive.css" rel="stylesheet">
         <link href="assets/css/custom.css" rel="stylesheet" type="text/css"/>
-
+        <link href="assets/multiselect/multi-select.css" rel="stylesheet" type="text/css"/>
+        <link href="assets/css/tagging.css" rel="stylesheet" type="text/css"/>
+        <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
         <style>
             .img-thumbnail {
                 max-width: 50% !important;
@@ -97,6 +99,20 @@ $tour_dates = TourSubSection::GetTourSubSectionByTourPackage($id);
                                                                                             </div>
                                                                                             <div class="formrow">
                                                                                                 <input type="text" id="title-<?php echo $date['sort']; ?>" class="form-control title" placeholder="Enter Title" autocomplete="off" name="title" required="true">
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="col-md-12">
+                                                                                            <div class="bottom-top">
+                                                                                                <label for="title">Locations</label>
+                                                                                            </div>
+                                                                                            <div class="formrow">
+                                                                                                <ul class="tags" id="tags-<?php echo $date['sort']; ?>" sort="<?php echo $date['sort']; ?>">
+                                                                                                    <div class="tag-list" id="tag-list-<?php echo $date['sort']; ?>"></div>
+                                                                                                    <li class="tagAdd taglist">
+                                                                                                        <input type="text" id="tags-field-<?php echo $date['sort']; ?>" sort="<?php echo $date['sort']; ?>" class="tags-field" autocomplete="off">
+                                                                                                    </li>
+                                                                                                </ul>
+                                                                                                <div id="select-box-<?php echo $date['sort']; ?>"></div>
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="col-md-12">
@@ -212,19 +228,16 @@ $tour_dates = TourSubSection::GetTourSubSectionByTourPackage($id);
 
         <!--custom checkbox & radio-->
 
-<!--        <script type="text/javascript" src="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-datepicker/js/bootstrap-datepicker.html"></script>
-        <script type="text/javascript" src="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-daterangepicker/date.html"></script>
-        <script type="text/javascript" src="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-daterangepicker/daterangepicker-2.html"></script>-->
         <script src="assets/plugins/jquery-steps/jquery.steps.js" type="text/javascript"></script>
         <script type="text/javascript" src="assets/js/bootstrap-inputmask/bootstrap-inputmask.min.js"></script>
-        <!--<script src="js/post-transport-image.js" type="text/javascript"></script>-->
         <script src="assets/js/form-component.js"></script>    
         <script src="assets/plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>
         <script src="delete/js/tour-sub-section.js" type="text/javascript"></script>
         <script src="js/post-tour-package-images.js" type="text/javascript"></script>
         <script src="js/tour-subsection.js" type="text/javascript"></script>
+        <script src="js/tagging.js" type="text/javascript"></script>
         <script>
-            //custom select box
+                                                                                                            //custom select box
 
 //            $(function () {
 //                $('select.styled').customSelect();
@@ -233,36 +246,36 @@ $tour_dates = TourSubSection::GetTourSubSectionByTourPackage($id);
         </script>
         <script src="assets/tinymce/js/tinymce/tinymce.min.js"></script>
         <script>
-            $(document).ready(function () {
-                var tourdates = $('#tourdates').val();
-                var i;
-                for (i = 1; i <= tourdates; i++) {
-                    tinymce.init({
-                        selector: "#description-" + i,
-                        // ===========================================
-                        // INCLUDE THE PLUGIN
-                        // ===========================================
+                                                                                                            $(document).ready(function () {
+                                                                                                                var tourdates = $('#tourdates').val();
+                                                                                                                var i;
+                                                                                                                for (i = 1; i <= tourdates; i++) {
+                                                                                                                    tinymce.init({
+                                                                                                                        selector: "#description-" + i,
+                                                                                                                        // ===========================================
+                                                                                                                        // INCLUDE THE PLUGIN
+                                                                                                                        // ===========================================
 
-                        plugins: [
-                            "advlist autolink lists link image charmap print preview anchor",
-                            "searchreplace visualblocks code fullscreen",
-                            "insertdatetime media table contextmenu paste"
-                        ],
-                        // ===========================================
-                        // PUT PLUGIN'S BUTTON on the toolbar
-                        // ===========================================
+                                                                                                                        plugins: [
+                                                                                                                            "advlist autolink lists link image charmap print preview anchor",
+                                                                                                                            "searchreplace visualblocks code fullscreen",
+                                                                                                                            "insertdatetime media table contextmenu paste"
+                                                                                                                        ],
+                                                                                                                        // ===========================================
+                                                                                                                        // PUT PLUGIN'S BUTTON on the toolbar
+                                                                                                                        // ===========================================
 
-                        toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image jbimages",
-                        // ===========================================
-                        // SET RELATIVE_URLS to FALSE (This is required for images to display properly)
-                        // ===========================================
-                        relative_urls: false
-                    });
-                }
-            });
+                                                                                                                        toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image jbimages",
+                                                                                                                        // ===========================================
+                                                                                                                        // SET RELATIVE_URLS to FALSE (This is required for images to display properly)
+                                                                                                                        // ===========================================
+                                                                                                                        relative_urls: false
+                                                                                                                    });
+                                                                                                                }
+                                                                                                            });
 
 
         </script>
-        
+
     </body>
 </html>

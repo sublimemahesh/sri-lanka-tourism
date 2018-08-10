@@ -1,7 +1,6 @@
 $(document).ready(function (e) {
 
     var tourid = $('#tour').val();
-
     $.ajax({
         type: 'POST',
         url: 'post-and-get/ajax/post-tour-package-images.php',
@@ -14,6 +13,35 @@ $(document).ready(function (e) {
             $.each(subsections, function (key, subsection) {
                 $('#title-' + subsection.sort).val(subsection.title);
                 $('#description-' + subsection.sort).val(subsection.description);
+                var tags = subsection.locations;
+                var locations = tags.split(',');
+
+                $.each(locations, function (key, location) {
+                    $.ajax({
+                        type: 'POST',
+                        url: 'post-and-get/ajax/post-tour-package-images.php',
+                        dataType: "json",
+                        data: {
+                            location: location,
+                            option: 'GETLOCATIONNAME'
+                        },
+                        success: function (location) {
+                            var loc = location.location;
+                            if (loc.length !== 0) {
+                                var html = '';
+
+                                html += '<li class="addedTag addedTag-' + subsection.sort + ' saveValue" id="addedTag-' + location.id + '">' + location.location + '<span onclick="$(this).parent().remove();" class="tagRemove">x</span>';
+                                html += '<input type="hidden" class="h-tags" name="tags[]" value="' + location.id + '">';
+                                html += '</li>';
+
+                                $('#tag-list-' + subsection.sort).append(html);
+                            }
+                        }
+
+                    });
+                });
+
+
 
                 var subid = subsection.id;
                 $.ajax({
@@ -33,7 +61,6 @@ $(document).ready(function (e) {
                             html += '<input type="hidden" name="tour-packages-images[]" value="' + photo.image_name + '"/>';
                             html += '<i class="img-tour-package-delete delete-icon btn btn-danger btn-md fa fa-trash-o"  id="' + photo.id + '"></i>';
                             html += '</div>';
-
                             $('#image-list-' + photo.tour_sub_section).prepend(html);
                         });
                     }
@@ -72,14 +99,12 @@ $(document).ready(function (e) {
         var subid = $('#toursubsection').val();
         $('#loading').show();
         var formData = new FormData($('#form-tours-' + sort)[0]);
-
         $.ajax({
             type: "POST",
             url: "post-and-get/ajax/post-tour-package-images.php",
             dataType: 'json',
             data: formData,
             async: false,
-
             success: function (mess) {
 
 //                var arr = mess.filename.split('.');
@@ -90,10 +115,8 @@ $(document).ready(function (e) {
                 html += '<input type="hidden" name="tour-packages-images[]" value="' + mess.filename + '"/>';
                 html += '<i class="img-tour-package-delete delete-icon btn btn-danger btn-md fa fa-trash-o"  id="' + mess.id + '"></i>';
                 html += '</div>';
-
                 $('#image-list-' + mess.toursubsection).prepend(html);
                 $('#loading').hide();
-
                 $.ajax({
                     type: 'POST',
                     url: 'post-and-get/ajax/post-tour-package-images.php',
@@ -127,7 +150,6 @@ $(document).ready(function (e) {
     $('.image-list').on('click', '.img-tour-package-delete', function () {
 
         var photoid = this.id;
-
         $.ajax({
             type: 'POST',
             url: 'post-and-get/ajax/post-tour-package-images.php',

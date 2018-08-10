@@ -105,5 +105,19 @@ class Article {
 
         return $db->readQuery($query);
     }
+    
+    public function getLocationsByKeyword($keyword) {
+        
+        $query = "SELECT * FROM `article` WHERE `location` LIKE '%".$keyword."%' ORDER BY `sort` ASC";
+        $db = new Database();
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+
+        return $array_res;
+    }
 
 }

@@ -164,4 +164,12 @@ if ($_POST['option'] == 'GETSUBSECTIONPHOTOCOUNT') {
     exit();
 }
 
+if ($_POST['option'] == 'GETLOCATIONNAME') {
+
+    $ARTICLE = new Article($_POST['location']);
+    
+    echo json_encode($ARTICLE);
+    exit();
+}
+
 
