@@ -10,7 +10,8 @@ foreach ($_POST['data'] as $data) {
         $TOURSUBSECTION->id = $data['id'];
         $TOURSUBSECTION->title = $data['title'];
         $TOURSUBSECTION->description = $data['description'];
-
+        $TOURSUBSECTION->locations = $data['tags'];
+        
         $result = $TOURSUBSECTION->update();
     
 }

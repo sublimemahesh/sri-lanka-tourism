@@ -48,6 +48,7 @@ $count_feedbacks = count($feedbacks);
                     <div class="tourpack">
                         <h1><?php echo strtoupper($TOURPACK->name); ?></h1>
                         <span class="text-justify"><?php echo $TOURPACK->description; ?></span>
+
                     </div>
                     <?php
                     if ($subsections) {
@@ -62,6 +63,28 @@ $count_feedbacks = count($feedbacks);
                                 </div>
                                 <div class="view-tour-description">
                                     <?php echo $subsection['description']; ?> 
+                                </div>
+                                <div class="locations">
+                                    <span class="loc-title">Locations: </span>
+                                    <?Php
+                                    $locations = $subsection['locations'];
+                                    $loc_arr = explode(',', $locations);
+
+                                    for ($i = 0; $i < count($loc_arr); $i++) {
+                                        $ARTICLES = new Article($loc_arr[$i]);
+                                        if ($i == count($loc_arr) - 1) {
+                                            ?>
+                                            <span><a href="article-view.php?id=<?php echo $ARTICLES->id; ?>"><?php echo $ARTICLES->location; ?></a></span>
+
+                                            <?php
+                                        } else {
+                                            ?>
+                                            <span><a href="article-view.php?id=<?php echo $ARTICLES->id; ?>"><?php echo $ARTICLES->location; ?></a>, </span>
+
+                                            <?php
+                                        }
+                                    }
+                                    ?>
                                 </div>
                                 <div>
                                     <?php
@@ -339,6 +362,8 @@ $count_feedbacks = count($feedbacks);
                 jQuery('.btn-not-loging').click(function () {
                     jQuery("#myModal").modal('show');
                 });
+
+
             });
         </script>
     </body> 

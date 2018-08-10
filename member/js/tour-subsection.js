@@ -1,41 +1,51 @@
 $(document).ready(function () {
 
     $('.tab-next-button').click(function (e) {
-        
+
         var sort = $(this).attr('sort');
         var next = parseInt(sort) + 1;
 
-        
-            var description = tinyMCE.get('description-' + sort).getContent(), patt;
-            patt = /^<p>(&nbsp;\s)+(&nbsp;)+<\/p>$/g;
 
-            if (!$('#title-' + sort).val() || $('#title-' + sort).val().length === 0) {
+        var description = tinyMCE.get('description-' + sort).getContent(), patt;
+        patt = /^<p>(&nbsp;\s)+(&nbsp;)+<\/p>$/g;
 
-                swal({
-                    title: "Error!",
-                    text: "Please enter your title",
-                    type: 'error',
-                    timer: 2000,
-                    showConfirmButton: false
-                });
-                return false;
-            } else if (description === '' || patt.test(content)) {
+        if (!$('#title-' + sort).val() || $('#title-' + sort).val().length === 0) {
 
-                swal({
-                    title: "Error!",
-                    text: "please enter tour subsection description",
-                    type: 'error',
-                    timer: 2000,
-                    showConfirmButton: false
-                });
-                return false;
-            } else {
-                $('#collapse-' + sort).collapse("hide");
-                $('#collapse-' + next).collapse("show");
-                $.scrollTo(100, 0, "slow", "#collapse-" + next);
+            swal({
+                title: "Error!",
+                text: "Please enter your title",
+                type: 'error',
+                timer: 2000,
+                showConfirmButton: false
+            });
+            return false;
+        } else if (description === '' || patt.test(content)) {
 
-            }
-       
+            swal({
+                title: "Error!",
+                text: "please enter tour subsection description",
+                type: 'error',
+                timer: 2000,
+                showConfirmButton: false
+            });
+            return false;
+        } else if (!$('.addedTag-' + sort).text() || $('.addedTag-' + sort).val().length === 0) {
+
+            swal({
+                title: "Error!",
+                text: "please select a location",
+                type: 'error',
+                timer: 2000,
+                showConfirmButton: false
+            });
+            return false;
+        } else {
+            $('#collapse-' + sort).collapse("hide");
+            $('#collapse-' + next).collapse("show");
+            $.scrollTo(100, 0, "slow", "#collapse-" + next);
+
+        }
+
 
     });
 
@@ -43,9 +53,9 @@ $(document).ready(function () {
         var sort = $(this).attr('sort');
         var prev = parseInt(sort) - 1;
 
-            $('#collapse-' + sort).collapse("hide");
-            $('#collapse-' + prev).collapse("show");
-            $.scrollTo(100, 0, "slow", "#collapse-" + prev);
+        $('#collapse-' + sort).collapse("hide");
+        $('#collapse-' + prev).collapse("show");
+        $.scrollTo(100, 0, "slow", "#collapse-" + prev);
 
     });
 
@@ -76,13 +86,23 @@ $(document).ready(function () {
                 showConfirmButton: false
             });
             return false;
+        } else if (!$('.addedTag-' + sort).text() || $('.addedTag-' + sort).val().length === 0) {
+
+            swal({
+                title: "Error!",
+                text: "please select a location",
+                type: 'error',
+                timer: 2000,
+                showConfirmButton: false
+            });
+            return false;
         } else {
 
             var data = [];
-            var tourid, subid, title, description;
+            var tourid, subid, title, description,tag, tags;
 
             $(".panel-group .panel .tour-dates").each(function (index) {
-
+                tags = '';
                 tourid = $(this).find('#tour').val();
                 sort = $(this).attr('sort');
                 subid = $(this).attr('subid');
@@ -90,12 +110,24 @@ $(document).ready(function () {
                 description = tinyMCE.get('description-' + sort).getContent(), patt;
                 patt = /^<p>(&nbsp;\s)+(&nbsp;)+<\/p>$/g;
 
-                
+                $("#tags-" + sort + " .addedTag.saveValue").each(function (index) {
+                    tag = $(this).find('.h-tags').val();
+                    tags = tags + tag + ",";
+                    
+                });
+
+
+                var lastIndex = tags.lastIndexOf(",")
+
+                var tag1 = tags.substring(0, lastIndex);
+//                var tag2 = tags.substring(lastIndex + 1);
+
                 data.push({
                     tour: tourid,
                     id: subid,
                     title: title,
-                    description: description
+                    description: description,
+                    tags: tag1
                 });
             });
 
@@ -133,6 +165,8 @@ $(document).ready(function () {
             }
         });
     }
+    
+    
 
 });
  
