@@ -73,16 +73,16 @@ if ($type == 'all') {
                                                     <a class="nav-link" data-toggle="tab" href="#taxi" id="navtaxi" role="tab">Taxi</a>
                                                 </li>
                                                 <li class="nav-item tab-style">
-                                                    <a class="nav-link navbtn" data-toggle="tab" href="#tours" role="tab">Tours</a>
+                                                    <a class="nav-link navbtn" id="tour-tab" data-toggle="tab" href="#tours" role="tab">Tours</a>
                                                 </li>
                                                 <li class="nav-item tab-style">
-                                                    <a class="nav-link navbtn" data-toggle="tab" href="#hotels" role="tab">Hotels</a>
+                                                    <a class="nav-link navbtn" id="hotel-tab" data-toggle="tab" href="#hotels" role="tab">Hotels</a>
                                                 </li>
                                                 <li class="nav-item tab-style">
-                                                    <a class="nav-link navbtn" data-toggle="tab" href="#offers" role="tab">Offers</a>
+                                                    <a class="nav-link navbtn" id="offer-tab" data-toggle="tab" href="#offers" role="tab">Offers</a>
                                                 </li>
                                                 <li class="nav-item tab-style">
-                                                    <a class="nav-link navbtn" data-toggle="tab" href="#articles" role="tab">Articles</a>
+                                                    <a class="nav-link navbtn" id="article-tab" data-toggle="tab" href="#articles" role="tab">Articles</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -265,7 +265,7 @@ if ($type == 'all') {
                                             </div>
 
                                             <div class="tab-pane fade" id="tours" name="tours" role="tabpanel">
-                                                <div class="col-md-12">
+                                                <!--<div class="col-md-12">-->
                                                     <?php
                                                     $SEARCHDETAILS = $SEARCH->searchByKeywordAndType($keyword, 'tour');
                                                     if ($SEARCHDETAILS) {
@@ -397,7 +397,7 @@ if ($type == 'all') {
                                                         <?php
                                                     }
                                                     ?>
-                                                </div>
+                                                <!--</div>-->
                                             </div>
 
                                             <div class="tab-pane fade" id="hotels" name="hotels" role="tabpanel">
@@ -1356,6 +1356,7 @@ if ($type == 'all') {
                                         }
                                     }
                                     ?>
+                                        <input type="hidden" id="type" value="<?php echo $type; ?>"
                                 </div>
                             </div>
                         </div>
@@ -1386,7 +1387,10 @@ if ($type == 'all') {
 
                 $('.navbtn').click(function () {
                     $('#navtaxi').removeClass('active');
-                })
+                });
+                
+                
+                
             });
         </script>
     </body> 
