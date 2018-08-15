@@ -704,11 +704,11 @@ class Search {
     public function searchByKeywordAndType($keyword, $type) {
 
 //        $query1 = 'SELECT * FROM `transports` WHERE `title` LIKE "%' . $keyword . '%"';
-        $query1 = 'SELECT transports.*, transport_rates.id AS transport_rate, transport_rates.price AS transport_price FROM `transports` INNER JOIN transport_rates ON transports.id = transport_rates.transport_id WHERE `title` LIKE "%' . $keyword . '%" LIMIT 20';
-        $query2 = 'SELECT * FROM `tour_package` WHERE `name` LIKE "%' . $keyword . '%" LIMIT 21';
-        $query3 = 'SELECT * FROM `accommodation` WHERE `name` LIKE "%' . $keyword . '%" LIMIT 20';
+        $query1 = 'SELECT transports.*, transport_rates.id AS transport_rate, transport_rates.price AS transport_price FROM `transports` INNER JOIN transport_rates ON transports.id = transport_rates.transport_id WHERE transports.title LIKE "%' . $keyword . '%" OR transport_rates.location_from In(SELECT `id` FROM `city` WHERE `name` LIKE "%' . $keyword . '%") OR transport_rates.location_to In(SELECT `id` FROM `city` WHERE `name` LIKE "%' . $keyword . '%") LIMIT 20';
+        $query2 = 'SELECT * FROM `tour_package` WHERE `name` LIKE "%' . $keyword . '%" OR id in(SELECT tour FROM `tour_sub_section` WHERE `title` like "%' . $keyword . '%" or `description` like "%' . $keyword . '%") LIMIT 21';
+        $query3 = 'SELECT * FROM `accommodation` WHERE `name` LIKE "%' . $keyword . '%" OR `city` in(SELECT `id` FROM `city` WHERE `name` LIKE "%' . $keyword . '%") LIMIT 20';
         $query4 = 'SELECT * FROM `offer` WHERE `title` LIKE "%' . $keyword . '%" LIMIT 20';
-        $query5 = 'SELECT * FROM `article` WHERE `title` LIKE "%' . $keyword . '%" LIMIT 20';
+        $query5 = 'SELECT * FROM `article` WHERE `title` LIKE "%' . $keyword . '%" OR `location` LIKE "%' . $keyword . '%" LIMIT 20';
 
         $db = new Database();
 
@@ -731,6 +731,7 @@ class Search {
         while ($row = mysql_fetch_array($result)) {
             array_push($array_res, $row);
         }
+        
         return $array_res;
     }
 }
