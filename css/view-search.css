@@ -22,15 +22,15 @@ a:hover{
 }
 /*page styling*/
 .bs-callout {
-    -moz-border-bottom-colors: none;
+/*    -moz-border-bottom-colors: none;
     -moz-border-left-colors: none;
     -moz-border-right-colors: none;
-    -moz-border-top-colors: none;
-    border-color: #eee;
+    -moz-border-top-colors: none;*/
+    /*border-color: #eee;*/
     border-image: none;
-    border-radius: 3px;
-    border-style: solid;
-    border-width: 2px 2px 2px 2px;
+    /*border-radius: 3px;*/
+    /*border-style: solid;*/
+    /*border-width: 2px 2px 2px 2px;*/
     margin-bottom: 5px;
     padding: 20px;
 }
@@ -55,6 +55,7 @@ a:hover{
     margin-bottom: 10px;
     margin-top: 5px;
     font-weight: 600;
+    margin-left: 29px;
 }
 
 /*.bs-callout-danger {
@@ -107,7 +108,10 @@ a:hover{
     margin-top: 10px;
 }
 .hotel-item1:first-child {
-    margin-top: 125px;
+    margin: 125px 16px 0px 16px;
+}
+.hotel-item1 {
+    margin: 10px 16px 0px 16px;
 }
 .nav-tabs > li > a.active, .nav-tabs > li > a.active:hover, .nav-tabs > li > a.active:focus {
     color: #555;
@@ -116,6 +120,12 @@ a:hover{
     border-bottom-color: rgb(221, 221, 221);
     border-bottom-color: transparent;
     cursor: default;
+}
+#rooms-section.row-view .room-container .room-box {
+    padding: 0px 16px;
+}
+.room {
+    margin: 10px 16px;
 }
 @media (min-width: 320px) and (max-width: 480px) {
     .nav > li > a {
