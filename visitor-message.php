@@ -8,8 +8,7 @@ $memberid = '';
 if (isset($_GET['id'])) {
     $memberid = $_GET['id'];
 }
-
-if (!isset($_SESSION["login"])) {
+if (!isset($_SESSION["vislogin"])) {
     $site_link = "https://" . $_SERVER['HTTP_HOST'];
     $_SESSION["back_url"] = $site_link.'/visitor-message.php?id='.$memberid ;
     redirect('visitor-login.php?message=24');

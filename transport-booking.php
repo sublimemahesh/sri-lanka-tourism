@@ -7,8 +7,9 @@ if (isset($_GET['rate'])) {
 if (!isset($_SESSION)) {
     session_start();
 }
-if (!isset($_SESSION["login"])) {
-    $_SESSION["back_url"] = 'http://www.srilankatourism.travel/transport-booking.php?rate=' . $RATE;
+if (!isset($_SESSION["vislogin"])) {
+    $site_link = "https://" . $_SERVER['HTTP_HOST'];
+    $_SESSION["back_url"] = $site_link . '/transport-booking.php?rate=' . $RATE;
     redirect('visitor-login.php?message=24');
 } else {
     $VISITOR = $_SESSION["id"];

@@ -34,7 +34,7 @@ if (isset($_POST['register'])) {
         ]);
 
         if ($VALID->passed()) {
-            
+
             $VISITOR->create();
 
             if (!isset($_SESSION)) {
@@ -59,19 +59,21 @@ if (isset($_POST['register'])) {
 }
 
 if (isset($_POST['login'])) {
-    
+
 
     $VISITOR = new Visitor(NULL);
 
     $email = filter_var($_POST['email'], FILTER_SANITIZE_STRING);
     $password = md5(filter_var($_POST['password'], FILTER_SANITIZE_STRING));
-
+    $back = $_POST['back_url'];
 //    $check_old_visitor = $VISITOR->
-    
+
     $result = $VISITOR->login($email, $password);
-    
-    $back = $_SESSION["back_url"];
-    
+
+    if (!isset($_SESSION)) {
+        session_start();
+    }
+
     if ($result) {
         if (empty($back)) {
             header('Location: ../visitor-profile.php?message=5');

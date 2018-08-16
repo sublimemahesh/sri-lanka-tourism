@@ -7,7 +7,7 @@ if (isset($_GET['tour'])) {
 if (!isset($_SESSION)) {
     session_start();
 }
-if (!isset($_SESSION["login"])) {
+if (!isset($_SESSION["vislogin"])) {
     $_SESSION["back_url"] = 'http://www.srilankatourism.travel/tour-package-booking.php?tour=' . $TOUR;
     redirect('visitor-login.php?message=24');
 } else {

@@ -82,8 +82,6 @@ if ($_POST['save']) {
                     $response['status'] = 'success';
                     $response['back'] = '';
                 }
-
-
                 echo json_encode($response);
             } else {
                 $response['status'] = 'error';

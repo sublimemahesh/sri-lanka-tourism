@@ -60,7 +60,7 @@ if (isset($_GET["transport"])) {
                         <button type="submit" class="btn btn-default btn-position-rel" data-dismiss="modal">Close</button>  
 
                         <?php
-                        if (!isset($_SESSION["login"])) {
+                        if (!isset($_SESSION["vislogin"])) {
                             $_SESSION["back_url"] = 'http://www.srilankatourism.travel/all-reviews.php?transport=' . $transport;
 //                        $_SESSION["back_url"] = 'http://localhost/sri-lanka-tourism/all-reviews.php?transport='.$transport;
                             ?>
@@ -142,7 +142,7 @@ if (isset($_GET["transport"])) {
 
                     <div class="modal-footer">
                         <?php
-                        if (!isset($_SESSION["login"])) {
+                        if (!isset($_SESSION["vislogin"])) {
                             $_SESSION["back_url"] = 'http://www.srilankatourism.travel/all-reviews.php?tour=' . $tour;
 //                        $_SESSION["back_url"] = 'http://localhost/sri-lanka-tourism/all-reviews.php?tour=' . $tour;
                             ?>
@@ -218,7 +218,7 @@ if (isset($_GET["transport"])) {
 
                     <div class="modal-footer">
                         <?php
-                        if (!isset($_SESSION["login"])) {
+                        if (!isset($_SESSION["vislogin"])) {
                             $_SESSION["back_url"] = 'http://www.srilankatourism.travel/all-reviews.php?accommodation=' . $accommodation;
 //                            $_SESSION["back_url"] = 'http://localhost/sri-lanka-tourism/all-reviews.php?accommodation=' . $accommodation;
                             ?>
@@ -317,7 +317,6 @@ if (isset($_GET["transport"])) {
                     <a href="visitor-register.php?back=true" class="col-md-offset-4 btn btn-default btn-position-rel">Register</a>
                     <a href="visitor-login.php?back=true" class="btn btn-default btn-position-rel">Login</a>
                 </div>
-
                 <?php
             }
             ?>
