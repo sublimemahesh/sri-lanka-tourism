@@ -8,7 +8,7 @@ if (isset($_GET['accommodation'])) {
 if (!isset($_SESSION)) {
     session_start();
 }
-if (!isset($_SESSION["login"])) {
+if (!isset($_SESSION["vislogin"])) {
     $_SESSION["back_url"] = 'http://www.srilankatourism.travel/accommodation-booking.php?accommodation=' . $id;
     redirect('visitor-login.php?message=24');
 } else {
