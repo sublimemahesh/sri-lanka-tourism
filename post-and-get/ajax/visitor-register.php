@@ -47,6 +47,11 @@ if ($_POST['save']) {
         $response['message'] = "Your email and confirm email does not match.";
         echo json_encode($response);
         exit();
+    } else if (empty($_POST['contact_number'])) {
+        $response['status'] = 'error';
+        $response['message'] = "Please enter contact number.";
+        echo json_encode($response);
+        exit();
     } else if (empty($_POST['password'])) {
         $response['status'] = 'error';
         $response['message'] = "Please enter the password.";
@@ -70,6 +75,7 @@ if ($_POST['save']) {
             $VISITOR->second_name = filter_input(INPUT_POST, 's_name');
             $VISITOR->email = $email;
             $VISITOR->password = $pw;
+            $VISITOR->contact_number = filter_input(INPUT_POST, 'contact_number');
             $VISITOR->create();
 
             if ($VISITOR->id) {
