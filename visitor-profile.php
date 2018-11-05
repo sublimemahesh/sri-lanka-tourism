@@ -2,6 +2,13 @@
 <?php
 include './class/include.php';
 include './auth.php';
+
+if (!isset($_SESSION)) {
+    session_start();
+}
+if (isset($_SESSION['isPhoneVerified'])) {
+    $isPhoneVerified = $_SESSION['isPhoneVerified'];
+}
 ?>
 <html lang="en">
     <head>
@@ -25,22 +32,23 @@ include './auth.php';
 
         <div class="container">
             <div class="row top-bott20">
+                <div class="col-md-12">
+                    <?php
+                    if (isset($_GET['message'])) {
+                        $message = new Message($_GET['message']);
+                        ?>
+                        <div class="alert alert-success"><?php echo $message->description; ?></div>
 
+                        <?php
+                    }
+                    ?> 
+                </div>
+                <div class="col-md-12 verified-alert"></div>
                 <div class="col-md-9">
                     <div class="panel panel-default margin-panel">
                         <div class="panel-heading"><i class="fa fa-user"></i>Visitor Profile</div>
                         <div class="panel-body">  <div class="">
-                                <div class="col-md-12">
-                                    <?php
-                                    if (isset($_GET['message'])) {
-                                        $message = new Message($_GET['message']);
-                                        ?>
-                                        <div class="alert alert-success"><?php echo $message->description; ?></div>
 
-                                        <?php
-                                    }
-                                    ?> 
-                                </div>
                                 <div class="col-md-12">
                                     <div class="row">
                                         <div class="col-sm-3 col-md-4 visitor-prof-margin">  
@@ -57,7 +65,7 @@ include './auth.php';
                                                     <?php
                                                 } elseif ($VISITOR->googleID && substr($VISITOR->image_name, 0, 5) === "https") {
                                                     ?>
-                                                     <img src="<?php echo $VISITOR->image_name; ?>" class="img img-responsive img-thumbnail" id="profil_pic"/>
+                                                    <img src="<?php echo $VISITOR->image_name; ?>" class="img img-responsive img-thumbnail" id="profil_pic"/>
                                                     <?php
                                                 } else {
                                                     ?>
@@ -92,24 +100,24 @@ include './auth.php';
                     <ul class="usernavdash">
                         <li><a href="visitor-profile.php"><i class="fa fa-tachometer" aria-hidden="true"></i> My Profile</a></li>
                         <li><a href="edit-profile.php"><i class="fa fa-user" aria-hidden="true"></i> Edit Profile</a></li>
-<!--                        <li><a href="manage-ads.php"><i class="fa fa-desktop" aria-hidden="true"></i> col 2</a>
-                        </li><li><a href="manage-active-ads.php"><i class="fa fa-laptop" aria-hidden="true"></i> col 1</a></li>-->
                         <li><a href="change-password.php"><i class="fa fa-lock" aria-hidden="true"></i> Change Password</a></li>
                         <li><a href="visitor-message.php"><i class="fa fa-comment" aria-hidden="true"></i> Messages</a></li>
                         <li><a href="post-and-get/logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
                     </ul>
                 </div>
-
+                <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" >
             </div>
         </div>
 
 
+
         <!-- Our Resort Values style-->  
-<?php include './footer.php' ?>
+        <?php include './footer.php' ?>
 
         <script src="js/jquery-2.2.4.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/bootstrap-datepicker.js" type="text/javascript"></script>
         <script src="post-and-get/js/visitor-profile.js" type="text/javascript"></script>
+        <script src="js/display-contact-number-verification-alert.js" type="text/javascript"></script>
     </body> 
 </html>

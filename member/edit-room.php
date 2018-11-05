@@ -8,6 +8,9 @@ if (isset($_GET['id'])) {
 }
 $Aid = $_GET['aid'];
 $ROOM = new Room($id);
+if (isset($_SESSION['isPhoneVerified'])) {
+    $isPhoneVerified = $_SESSION['isPhoneVerified'];
+}
 ?> 
 
 <html lang="en">
@@ -45,6 +48,7 @@ $ROOM = new Room($id);
             ?>
             <!--main content start-->
             <section id="main-content">
+                <div class="col-md-12 verified-alert"></div> 
                 <div class="wrapper">
                     <div class="container-fluid">
                         <div class="row  top-bott20"> 
@@ -53,7 +57,6 @@ $ROOM = new Room($id);
 
                             $vali->show_message();
                             ?>
-
                             <div class="panel panel-default">
                                 <div class="panel-heading"><i class="fa fa-save"></i>Edit Room - <?php echo $ROOM->name; ?></div>
                                 <div class="panel-body">
@@ -121,6 +124,7 @@ $ROOM = new Room($id);
                                                         <div class="top-bott50">
                                                             <div class="bottom-top">
                                                                 <input type="hidden" value="<?php echo $id ?>" name="id" />
+                                                                <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" >
                                                                 <button name="update" type="submit" class="btn btn-info center-block">Save</button>
                                                             </div>
                                                         </div> 
@@ -152,7 +156,6 @@ $ROOM = new Room($id);
 
         <script type="text/javascript" src="assets/js/bootstrap-inputmask/bootstrap-inputmask.min.js"></script>
         <script src="assets/plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>
-
         <script src="delete/js/accommodation-photo.js" type="text/javascript"></script>
         <script>
             //custom select box
@@ -162,6 +165,7 @@ $ROOM = new Room($id);
             });
 
         </script>
+        <script src="js/display-contact-number-verification-alert.js" type="text/javascript"></script>
         <script src="assets/tinymce/js/tinymce/tinymce.min.js"></script>
         <script>
             tinymce.init({

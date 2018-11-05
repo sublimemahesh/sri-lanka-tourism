@@ -97,7 +97,7 @@ if (isset($_SESSION["back_url"])) {
                             <input id="s_name" name="s_name" placeholder="Enter Your Second Name" autocomplete="off" class="inputbox" type="text">
                             <input id="email" name="email" placeholder="Enter Your Email" autocomplete="off" class="inputbox" type="text">
                             <input id="cnfemail" name="cnfemail" placeholder="Confirm Email" autocomplete="off"class="inputbox" type="text">
-                            <input id="contact_no" name="contact_number" placeholder="Enter Your Phone Number" autocomplete="off" class="inputbox" type="text">
+                            <input id="contact_no" name="contact_number" placeholder="+94xxxxxxxxx" autocomplete="off" class="inputbox" type="text">
                             <input id="password" name="password" placeholder="Enter Password" autocomplete="off" class="inputbox" type="password">
 
                             <div class="policy-container">

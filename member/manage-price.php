@@ -10,20 +10,20 @@ $ROOMBASIS = $ROOM_BASISOBJ->all();
 
 $ROOMPRICE = new RoomPrice(NULL);
 $DETAILS = $ROOMPRICE->getAllFromDateRange($start, $end);
+
+if (isset($_SESSION['isPhoneVerified'])) {
+    $isPhoneVerified = $_SESSION['isPhoneVerified'];
+}
 ?> 
 
 <html lang="en">
-
     <head>
-
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="Dashboard">
         <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-
         <title>Accommodation Room Images || My Account || www.srilankatourism.travel</title>
-
         <!-- Bootstrap core CSS -->
         <link href="assets/css/bootstrap.css" rel="stylesheet">
         <link href="assets/jquery-ui/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
@@ -49,15 +49,14 @@ $DETAILS = $ROOMPRICE->getAllFromDateRange($start, $end);
             ?>
             <!--main content start-->
             <section id="main-content">
+                <div class="col-md-12 verified-alert"></div> 
                 <div class="wrapper">
                     <div class="container-fluid">
                         <div class="row  top-bott20"> 
                             <?php
                             $vali = new Validator();
-
                             $vali->show_message();
                             ?>
-
                             <div class="panel panel-default">
                                 <div class="panel-heading"><i class="fa fa-save"></i> Create Room Price</div>
                                 <div class="panel-body">
@@ -99,6 +98,7 @@ $DETAILS = $ROOMPRICE->getAllFromDateRange($start, $end);
                                                         echo 'No Results in the Database';
                                                     }
                                                     ?>
+                                                    <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" >
                                                 </div><!-- /content-panel -->
                                             </div><!-- /col-md-12 -->
                                             <div class="col-md-2"></div>
@@ -107,41 +107,38 @@ $DETAILS = $ROOMPRICE->getAllFromDateRange($start, $end);
                                 </div>
                             </div>
                         </div>
-                        </section>
-                        <?php
-                        include './footer.php';
-                        ?>
-                        </section>
+                    </div>
+                </div>
+            </section>
+            <?php
+            include './footer.php';
+            ?>
+        </section>
+        <script src="assets/js/jquery.js"></script>
+        <script src="assets/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
+        <script src="assets/js/bootstrap.min.js"></script>
+        <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
+        <script src="assets/js/jquery.scrollTo.min.js"></script>
+        <script src="assets/js/common-scripts.js"></script>
+        <script type="text/javascript" src="assets/js/bootstrap-inputmask/bootstrap-inputmask.min.js"></script>
+        <script src="assets/plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>
+        <script src="js/manage-prices.js" type="text/javascript"></script>
+        <script src="js/display-contact-number-verification-alert.js" type="text/javascript"></script>
+        <script>
+            $(function () {
+                var dateToday = new Date();
+                /* global setting */
+                var datepickersOpt = {
+                    dateFormat: 'yy-mm-dd',
+                    minDate: dateToday
+                };
+                $(".datepicker").datepicker($.extend(datepickersOpt));
+            });
 
-                        <script src="assets/js/jquery.js"></script>
-                        <script src="assets/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
-                        <script src="assets/js/bootstrap.min.js"></script>
-                        <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
-                        <script src="assets/js/jquery.scrollTo.min.js"></script>
-                        <script src="assets/js/common-scripts.js"></script>
-
-                        <script type="text/javascript" src="assets/js/bootstrap-inputmask/bootstrap-inputmask.min.js"></script>
-                        <script src="assets/plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>
-                        <script src="js/manage-prices.js" type="text/javascript"></script>
-                        <script>
-                            $(function () {
-                                var dateToday = new Date();
-                                /* global setting */
-                                var datepickersOpt = {
-                                    dateFormat: 'yy-mm-dd',
-                                    minDate: dateToday
-                                };
-
-                                $(".datepicker").datepicker($.extend(datepickersOpt));
-
-                            });
-
-                            //custom select box
-                            $(function () {
-                                $('select.styled').customSelect();
-                            });
-                        </script>
-
-                        </body>
-
-                        </html>
+            //custom select box
+            $(function () {
+                $('select.styled').customSelect();
+            });
+        </script>
+    </body>
+</html>

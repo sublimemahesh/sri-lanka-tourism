@@ -2,6 +2,10 @@
 include_once(dirname(__FILE__) . '/../class/include.php');
 include_once(dirname(__FILE__) . '/auth.php');
 
+if(isset($_SESSION['isPhoneVerified'])) {
+    $isPhoneVerified = $_SESSION['isPhoneVerified'];
+}
+
 $TOURTYPES = new TourType(NULL);
 $types = $TOURTYPES->all();
 ?> 
@@ -40,6 +44,7 @@ $types = $TOURTYPES->all();
             ?>
             <!--main content start-->
             <section id="main-content">
+                <div class="col-md-12 verified-alert"></div> 
                 <div class="wrapper">
                     <div class="container-fluid">
                         <div class="row  top-bott20"> 
@@ -48,7 +53,6 @@ $types = $TOURTYPES->all();
 
                             $vali->show_message();
                             ?>
-
                             <div class="panel panel-default">
                                 <div class="panel-heading"><i class="fa fa-pencil"></i> Create Offer</div>
                                 <div class="panel-body">
@@ -122,6 +126,7 @@ $types = $TOURTYPES->all();
                                                             <div class="bottom-top">
                                                                 <input type="hidden" id="member" name="member" value="<?php echo $_SESSION['id']; ?>"/>
                                                                 <input type="submit" id="add-offer" name="create-offer" class="btn btn-info center-block" value="Create offer"/>
+                                                            <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" >
                                                             </div>
                                                         </div> 
                                                     </div>  
@@ -158,17 +163,15 @@ $types = $TOURTYPES->all();
 
         <!--custom switch-->
         <script src="assets/js/bootstrap-switch.js"></script>
-
         <!--custom tagsinput-->
         <script src="assets/js/jquery.tagsinput.js"></script>
-
         <!--custom checkbox & radio-->
-
         <script type="text/javascript" src="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-datepicker/js/bootstrap-datepicker.html"></script>
         <script type="text/javascript" src="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-daterangepicker/date.html"></script>
         <script type="text/javascript" src="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-daterangepicker/daterangepicker-2.html"></script>
         <script type="text/javascript" src="assets/js/bootstrap-inputmask/bootstrap-inputmask.min.js"></script>
-        <script src="assets/js/form-component.js"></script>    
+        <script src="assets/js/form-component.js"></script>
+        <script src="js/display-contact-number-verification-alert.js" type="text/javascript"></script>
         <script>
             //custom select box
             $(function () {

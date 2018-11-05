@@ -9,11 +9,12 @@ if (isset($_GET['id'])) {
 $ROOM = new Room($id);
 $ROOM_FACILITY = new RoomFacility(NULL);
 $ROOM_FACILITY_DETAILS = new RoomFaciliityDetails(NULL);
+if (isset($_SESSION['isPhoneVerified'])) {
+    $isPhoneVerified = $_SESSION['isPhoneVerified'];
+}
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
-
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -47,12 +48,12 @@ $ROOM_FACILITY_DETAILS = new RoomFaciliityDetails(NULL);
             ?>
             <!--main content start-->
             <section id="main-content">
+                <div class="col-md-12 verified-alert"></div> 
                 <div class="wrapper">
                     <div class="container-fluid">
                         <div class="row  top-bott20"> 
                             <?php
                             $vali = new Validator();
-
                             $vali->show_message();
                             ?>
                             <div class="panel panel-default">
@@ -105,6 +106,7 @@ $ROOM_FACILITY_DETAILS = new RoomFaciliityDetails(NULL);
                                                                 </tbody>
                                                             </table>
                                                             <div class="text-center"> 
+                                                                <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" >
                                                                 <input type="hidden" id="room_id" value="<?php echo $ROOM->id; ?>" name="room_id"/>
                                                                 <input type="submit" name="save-changes" class="btn btn-primary m-t-15 waves-effect" value="Save Changes"/>
                                                             </div>
@@ -116,53 +118,36 @@ $ROOM_FACILITY_DETAILS = new RoomFaciliityDetails(NULL);
                                     </div>
                                 </div>
                             </div> 
-
-
                         </div>
                     </div>
                 </div>
             </section>
-
-
-
-
             <?php
             include './footer.php';
             ?>
         </section>
-
         <!-- js placed at the end of the document so the pages load faster -->
         <script src="assets/js/jquery.js"></script>
         <script src="assets/js/bootstrap.min.js"></script>
         <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
         <script src="assets/js/jquery.scrollTo.min.js"></script>
         <script src="assets/js/jquery.nicescroll.js" type="text/javascript"></script>
-
-
         <!--common script for all pages-->
         <script src="assets/js/common-scripts.js"></script>
 
         <!--script for this page-->
         <script src="assets/js/jquery-ui-1.9.2.custom.min.js"></script>
-
         <!--custom switch-->
         <script src="assets/js/bootstrap-switch.js"></script>
-
         <!--custom tagsinput-->
         <script src="assets/js/jquery.tagsinput.js"></script>
-
         <!--custom checkbox & radio-->
-
         <script type="text/javascript" src="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-datepicker/js/bootstrap-datepicker.html"></script>
         <script type="text/javascript" src="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-daterangepicker/date.html"></script>
         <script type="text/javascript" src="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-daterangepicker/daterangepicker-2.html"></script>
-
         <script type="text/javascript" src="assets/js/bootstrap-inputmask/bootstrap-inputmask.min.js"></script>
-
-
         <script src="assets/js/form-component.js"></script>    
-
-
+        <script src="js/display-contact-number-verification-alert.js" type="text/javascript"></script>
         <script>
             //custom select box
 
@@ -171,7 +156,5 @@ $ROOM_FACILITY_DETAILS = new RoomFaciliityDetails(NULL);
             });
 
         </script>
-
     </body>
-
 </html>

@@ -9,6 +9,10 @@ if (isset($_GET['id'])) {
 $TOUR_PACKAGE = new TourPackage($id);
 $TOUR_SUB_PHOTO = new TourSubSectionPhoto(NULL);
 $tour_dates = TourSubSection::GetTourSubSectionByTourPackage($id);
+
+if (isset($_SESSION['isPhoneVerified'])) {
+    $isPhoneVerified = $_SESSION['isPhoneVerified'];
+}
 ?> 
 <html lang="en">
 
@@ -50,15 +54,14 @@ $tour_dates = TourSubSection::GetTourSubSectionByTourPackage($id);
             ?>
             <!--main content start-->
             <section id="main-content">
+                <div class="col-md-12 verified-alert"></div> 
                 <div class="wrapper">
                     <div class="container-fluid">
                         <div class="row  top-bott20"> 
                             <?php
                             $vali = new Validator();
-
                             $vali->show_message();
                             ?>
-
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <i class="fa fa-save"></i>
@@ -175,6 +178,7 @@ $tour_dates = TourSubSection::GetTourSubSectionByTourPackage($id);
                                                                                                 <input type="hidden" id="tour" name="tour" value="<?php echo $id; ?>"/>
                                                                                                 <input type="hidden" id="toursubsection" name="toursubsection" value="<?php echo $date['id']; ?>"/>
                                                                                                 <input type="hidden" id="tourdates" name="tourdates" value="<?php echo count($tour_dates); ?>"/>
+                                                                                                <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" >
                                                                                                 <button id="create" name="add-transports" type="submit" class="btn btn-info tab-next-create" sort="<?php echo $date['sort']; ?>">Save All Details</button>
                                                                                             </div>
                                                                                         </div>
@@ -185,8 +189,6 @@ $tour_dates = TourSubSection::GetTourSubSectionByTourPackage($id);
                                                                         <?php
                                                                     }
                                                                     ?>
-
-
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -206,7 +208,7 @@ $tour_dates = TourSubSection::GetTourSubSectionByTourPackage($id);
             include './footer.php';
             ?>
         </section>
-
+        <script src="js/display-contact-number-verification-alert.js" type="text/javascript"></script>
         <script src="assets/js/jquery.js"></script>
         <script src="assets/js/bootstrap.min.js"></script>
         <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
@@ -237,7 +239,7 @@ $tour_dates = TourSubSection::GetTourSubSectionByTourPackage($id);
         <script src="js/tour-subsection.js" type="text/javascript"></script>
         <script src="js/tagging.js" type="text/javascript"></script>
         <script>
-                                                                                                            //custom select box
+            //custom select box
 
 //            $(function () {
 //                $('select.styled').customSelect();
@@ -246,33 +248,33 @@ $tour_dates = TourSubSection::GetTourSubSectionByTourPackage($id);
         </script>
         <script src="assets/tinymce/js/tinymce/tinymce.min.js"></script>
         <script>
-                                                                                                            $(document).ready(function () {
-                                                                                                                var tourdates = $('#tourdates').val();
-                                                                                                                var i;
-                                                                                                                for (i = 1; i <= tourdates; i++) {
-                                                                                                                    tinymce.init({
-                                                                                                                        selector: "#description-" + i,
-                                                                                                                        // ===========================================
-                                                                                                                        // INCLUDE THE PLUGIN
-                                                                                                                        // ===========================================
+            $(document).ready(function () {
+                var tourdates = $('#tourdates').val();
+                var i;
+                for (i = 1; i <= tourdates; i++) {
+                    tinymce.init({
+                        selector: "#description-" + i,
+                        // ===========================================
+                        // INCLUDE THE PLUGIN
+                        // ===========================================
 
-                                                                                                                        plugins: [
-                                                                                                                            "advlist autolink lists link image charmap print preview anchor",
-                                                                                                                            "searchreplace visualblocks code fullscreen",
-                                                                                                                            "insertdatetime media table contextmenu paste"
-                                                                                                                        ],
-                                                                                                                        // ===========================================
-                                                                                                                        // PUT PLUGIN'S BUTTON on the toolbar
-                                                                                                                        // ===========================================
+                        plugins: [
+                            "advlist autolink lists link image charmap print preview anchor",
+                            "searchreplace visualblocks code fullscreen",
+                            "insertdatetime media table contextmenu paste"
+                        ],
+                        // ===========================================
+                        // PUT PLUGIN'S BUTTON on the toolbar
+                        // ===========================================
 
-                                                                                                                        toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image jbimages",
-                                                                                                                        // ===========================================
-                                                                                                                        // SET RELATIVE_URLS to FALSE (This is required for images to display properly)
-                                                                                                                        // ===========================================
-                                                                                                                        relative_urls: false
-                                                                                                                    });
-                                                                                                                }
-                                                                                                            });
+                        toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image jbimages",
+                        // ===========================================
+                        // SET RELATIVE_URLS to FALSE (This is required for images to display properly)
+                        // ===========================================
+                        relative_urls: false
+                    });
+                }
+            });
 
 
         </script>

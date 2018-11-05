@@ -1,4 +1,6 @@
 <?php
+require_once('ESMSWS.php');
+
 
 class Helper {
 
@@ -21,7 +23,30 @@ class Helper {
 
     public function getSitePath() {
 //      return substr_replace(dirname(__FILE__), '', 70);
-      $path = str_replace('class', '', dirname(__FILE__));
+        $path = str_replace('class', '', dirname(__FILE__));
         return $path;
     }
+
+    public function sendSMS($phoneno, $message) {
+        
+        if (strlen($phoneno) == 12) {
+            $reciepientno = substr($phoneno, 1, 12);
+        };
+        
+        $id = '';
+        $username = 'esmsusr_adl';
+        $password = 'Keerthi@1994';
+        $customer = '';
+        $alias = 'TRAVEL SL';
+        $recipient = $reciepientno; // All local number should be in 94XXXXXXXXX
+        
+//==================== Create a new session =================//
+        $session = createSession($id, $username, $password, $customer);
+        
+        $sendmsg = sendMessages($session, $alias, $message, array($recipient)); // This is to send English/alphanumeric messages;
+//=========== Close the session ============================//
+        closeSession($session);
+        return $sendmsg;
+    }
+
 }

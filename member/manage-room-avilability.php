@@ -11,6 +11,10 @@ $month = $_GET['month'];
 $strmonth = date("F", mktime(0, 0, 0, $month, 10));
 
 $ROOM = new Room($id);
+
+if (isset($_SESSION['isPhoneVerified'])) {
+    $isPhoneVerified = $_SESSION['isPhoneVerified'];
+}
 ?> 
 
 <html lang="en">
@@ -51,15 +55,14 @@ $ROOM = new Room($id);
             ?>
             <!--main content start-->
             <section id="main-content">
+                <div class="col-md-12 verified-alert"></div> 
                 <div class="wrapper">
                     <div class="container-fluid">
                         <div class="row  top-bott20"> 
                             <?php
                             $vali = new Validator();
-
                             $vali->show_message();
                             ?>
-
                             <div class="panel panel-default">
                                 <div class="panel-heading"><i class="fa fa-save"></i> Manage Room Avilability - <?php echo $ROOM->name; ?></div>
                                 <div class="panel-body">
@@ -102,8 +105,8 @@ $ROOM = new Room($id);
                                                         <a class="arrows" id="right-arrow" href="manage-room-avilability.php?<?php echo $para; ?>">
                                                             <i class="fa fa-angle-right"></i>
                                                         </a>
+                                                        <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" >
                                                     </div>
-
                                                 </div>
                                             </div><!-- /col-md-12 -->
                                         </div><!-- /row -->
@@ -111,24 +114,22 @@ $ROOM = new Room($id);
                                 </div>
                             </div>
                         </div>
-                        </section>
-                        <?php
-                        include './footer.php';
-                        ?>
-                        </section>
-
-                        <script src="assets/js/jquery.js"></script>
-                        <script src="assets/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
-                        <script src="assets/js/bootstrap.min.js"></script>
-                        <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
-                        <script src="assets/js/jquery.scrollTo.min.js"></script>
-                        <script src="assets/js/common-scripts.js"></script>
-
-
-                        <script type="text/javascript" src="assets/js/bootstrap-inputmask/bootstrap-inputmask.min.js"></script>
-                        <script src="assets/plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>
-                        <script src="js/room-availability.js" type="text/javascript"></script>
-
-                        </body>
-
-                        </html>
+                    </div>
+                </div>
+            </section>
+            <?php
+            include './footer.php';
+            ?>
+        </section>
+        <script src="assets/js/jquery.js"></script>
+        <script src="assets/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
+        <script src="assets/js/bootstrap.min.js"></script>
+        <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
+        <script src="assets/js/jquery.scrollTo.min.js"></script>
+        <script src="assets/js/common-scripts.js"></script>
+        <script type="text/javascript" src="assets/js/bootstrap-inputmask/bootstrap-inputmask.min.js"></script>
+        <script src="assets/plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>
+        <script src="js/room-availability.js" type="text/javascript"></script>
+        <script src="js/display-contact-number-verification-alert.js" type="text/javascript"></script>
+    </body>
+</html>

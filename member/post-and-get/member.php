@@ -72,3 +72,40 @@ if (isset($_POST['update'])) {
         header('Location: ' . $_SERVER['HTTP_REFERER']);
     }
 }
+
+if (isset($_POST['resendCode'])) {
+    $MEMBER = new Member($_POST['id']);
+
+    $contct_number = $MEMBER->contact_number;
+    $code = Member::generatePhoneNoVerifyCode($MEMBER->id);
+    $messge = "Your Sri Lanka Tourism Verification code is " . $code;
+
+    $sendmsg = Helper::sendSMS($contct_number, $messge);
+
+    if ($sendmsg) {
+        header('Location: ../phone-verification-page.php?message=31');
+    } else {
+        header('Location: ' . $_SERVER['HTTP_REFERER'] . '?message=14');
+    }
+};
+
+if (isset($_POST['updatenumber'])) {
+    $MEMBER = new Member($_POST['id']);
+
+    $MEMBER->contact_number = $_POST['contactno'];
+
+    $RESULT = $MEMBER->updateContactNumber();
+    if ($RESULT) {
+        $contct_number =  $MEMBER->contact_number;
+        $code = Member::generatePhoneNoVerifyCode($MEMBER->id);
+        $messge = "Your Sri Lanka Tourism Verification code is " . $code;
+
+        $sendmsg = Helper::sendSMS($contct_number, $messge);
+
+        if ($sendmsg) {
+            header('Location: ../phone-verification-page.php?message=31');
+        } else {
+            header('Location: ' . $_SERVER['HTTP_REFERER'] . '?message=14');
+        }
+    }
+};

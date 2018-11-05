@@ -346,6 +346,12 @@ if (isset($_POST['book'])) {
 
             if (mail($visitor_email, $subject, $html, $headers) &&
                     mail($comEmail, $subject, $html, $headers)) {
+                
+                $TOUR = new TourPackage($RESULT->tour_package);
+                $MEMBER = new Member($TOUR->member);
+                $phoneno = $MEMBER->contact_number;
+                $message = "Your have a new tour booking in Sri Lanka Tourism";
+                $sendmsg = Helper::sendSMS($phoneno, $message);
 
                 $VALID->addError("Booking was completed successfully.please check your email", 'success');
                 $_SESSION['ERRORS'] = $VALID->errors();

@@ -8,6 +8,9 @@ if (isset($_GET['id'])) {
 $TRANSPORT_RATES = new TransportRates($id);
 $CITYFROM = new City($TRANSPORT_RATES->location_from);
 $CITYTO = new City($TRANSPORT_RATES->location_to);
+if (isset($_SESSION['isPhoneVerified'])) {
+    $isPhoneVerified = $_SESSION['isPhoneVerified'];
+}
 ?>
 
 <!DOCTYPE html>
@@ -46,6 +49,7 @@ $CITYTO = new City($TRANSPORT_RATES->location_to);
             ?>
             <!--main content start-->
             <section id="main-content">
+                <div class="col-md-12 verified-alert"></div> 
                 <div class="wrapper">
                     <div class="container-fluid">
                         <div class="row  top-bott20"> 
@@ -60,11 +64,8 @@ $CITYTO = new City($TRANSPORT_RATES->location_to);
                                     <div class="body">
                                         <div class="userccount">
                                             <div class="formpanel"> 
-
-
                                                 <form class="form-horizontal" method="post" action="post-and-get/transport-rate.php" enctype="multipart/form-data"> 
                                                     <div class="col-md-12">
-
                                                         <div class="">
                                                             <div class="col-md-6">
                                                                 <div class="bottom-top">
@@ -117,6 +118,7 @@ $CITYTO = new City($TRANSPORT_RATES->location_to);
                                                             <div class="bottom-top">
                                                                 <input type="hidden" id="id" value="<?php echo $TRANSPORT_RATES->id; ?>" name="id"/>
                                                                 <input type="hidden" id="authToken" value="<?php echo $_SESSION["id"]; ?>" name="memeber"/>
+                                                                <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" >
                                                                 <button name="update-transport-rate" type="submit" class="btn btn-info center-block">Change</button>
                                                             </div>
                                                         </div> 
@@ -163,14 +165,11 @@ $CITYTO = new City($TRANSPORT_RATES->location_to);
         <script type="text/javascript" src="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-datepicker/js/bootstrap-datepicker.html"></script>
         <script type="text/javascript" src="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-daterangepicker/date.html"></script>
         <script type="text/javascript" src="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-daterangepicker/daterangepicker-2.html"></script>
-
         <script type="text/javascript" src="assets/js/bootstrap-inputmask/bootstrap-inputmask.min.js"></script>
-
-
         <script src="assets/js/form-component.js"></script>    
-
         <script src="js/city-from.js" type="text/javascript"></script>
         <script src="js/city-to.js" type="text/javascript"></script>
+        <script src="js/display-contact-number-verification-alert.js" type="text/javascript"></script>
         <script>
             //custom select box
 

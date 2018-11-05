@@ -14,9 +14,16 @@ jQuery(document).ready(function () {
                     $('#message').text(result.message);
                     return false;
                 } else if (result.status === 'success') {
-                    window.location.replace('profile.php?message=22');
+                    window.location.replace('phone-verification-page.php');
+                } else if (result.status === 'notdelivered') {
+                    if (result.back === '') {
+                        window.location.replace('profile.php?message=22');
+
+                    } else {
+                        window.location = result.back;
+                    }
                 } else if (result.status === 'registered') {
-                    window.location.replace('forgot-password.php?message=26');
+                    window.location.replace('forget-password.php?message=26');
                 }
             }
         });

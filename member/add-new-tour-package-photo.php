@@ -1,6 +1,10 @@
 <?php
 include_once(dirname(__FILE__) . '/../class/include.php');
 include_once(dirname(__FILE__) . '/auth.php');
+
+if(isset($_SESSION['isPhoneVerified'])) {
+    $isPhoneVerified = $_SESSION['isPhoneVerified'];
+}
 $id = '';
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
@@ -43,6 +47,7 @@ $TOUR = new TourPackage($TOUR_SUB->tour);
             ?>
             <!--main content start-->
             <section id="main-content">
+                <div class="col-md-12 verified-alert"></div> 
                 <div class="wrapper">
                     <div class="container-fluid">
                         <div class="row  top-bott20"> 
@@ -99,6 +104,7 @@ $TOUR = new TourPackage($TOUR_SUB->tour);
                                         <div class="text-right">
                                             <a href="manage-tour-package.php"><button type="button" class="btn btn-round btn-info">Manage Tour Package</button></a>
                                         </div>
+                                        <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" >
                                     </div>
                                 </div>
                             </div>
@@ -122,7 +128,7 @@ $TOUR = new TourPackage($TOUR_SUB->tour);
         
         <script src="delete/js/tour-package-photo.js" type="text/javascript"></script>
         <script src="js/add-new-tour-sub-photo.js" type="text/javascript"></script>
-        
+        <script src="js/display-contact-number-verification-alert.js" type="text/javascript"></script>
         <script>
 
             $(function () {

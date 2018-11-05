@@ -10,6 +10,10 @@ $ROOM = new Room($id);
 $ROOMPRICE = new RoomPrice(NULL);
 $details = $ROOMPRICE->all();
 $DifferentSeasons = $ROOMPRICE->getAllDistinctSeasons($id);
+
+if (isset($_SESSION['isPhoneVerified'])) {
+    $isPhoneVerified = $_SESSION['isPhoneVerified'];
+}
 ?> 
 
 <html lang="en">
@@ -49,10 +53,10 @@ $DifferentSeasons = $ROOMPRICE->getAllDistinctSeasons($id);
             ?>
             <!--main content start-->
             <section id="main-content">
+                <div class="col-md-12 verified-alert"></div> 
                 <div class="wrapper">
                     <div class="container-fluid">
                         <div class="row  top-bott20"> 
-
                             <?php
                             if (isset($_GET['message'])) {
 
@@ -73,8 +77,6 @@ $DifferentSeasons = $ROOMPRICE->getAllDistinctSeasons($id);
                                         </div>
                                         <div class="row mt">
                                             <div class="col-md-12">
-
-
                                                 <?php
                                                 if ($DifferentSeasons) {
                                                     ?>
@@ -114,48 +116,48 @@ $DifferentSeasons = $ROOMPRICE->getAllDistinctSeasons($id);
                                                     <?php
                                                 }
                                                 ?>
-
+                                                <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" >
                                             </div><!-- /col-md-12 -->
                                         </div><!-- /row -->
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        </section>
-                        <?php
-                        include './footer.php';
-                        ?>
-                        </section>
+                    </div>
+                </div>
+            </section>
+            <?php
+            include './footer.php';
+            ?>
+        </section>
 
-                        <script src="assets/js/jquery.js"></script>
-                        <script src="assets/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
-                        <script src="assets/js/bootstrap.min.js"></script>
-                        <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
-                        <script src="assets/js/jquery.scrollTo.min.js"></script>
-                        <script src="assets/js/common-scripts.js"></script>
+        <script src="assets/js/jquery.js"></script>
+        <script src="assets/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
+        <script src="assets/js/bootstrap.min.js"></script>
+        <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
+        <script src="assets/js/jquery.scrollTo.min.js"></script>
+        <script src="assets/js/common-scripts.js"></script>
+        <script type="text/javascript" src="assets/js/bootstrap-inputmask/bootstrap-inputmask.min.js"></script>
+        <script src="assets/plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>
+        <script src="delete/js/price-season.js" type="text/javascript"></script>
+        <script src="js/display-contact-number-verification-alert.js" type="text/javascript"></script>
+        <script>
+            $(function () {
+                var dateToday = new Date();
+                /* global setting */
+                var datepickersOpt = {
+                    dateFormat: 'yy-mm-dd',
+                    minDate: dateToday
+                };
 
-                        <script type="text/javascript" src="assets/js/bootstrap-inputmask/bootstrap-inputmask.min.js"></script>
-                        <script src="assets/plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>
-                        <script src="delete/js/price-season.js" type="text/javascript"></script>
-                        <script>
-                            $(function () {
-                                var dateToday = new Date();
-                                /* global setting */
-                                var datepickersOpt = {
-                                    dateFormat: 'yy-mm-dd',
-                                    minDate: dateToday
-                                };
+                $(".datepicker").datepicker($.extend(datepickersOpt));
 
-                                $(".datepicker").datepicker($.extend(datepickersOpt));
+            });
 
-                            });
-
-                            //custom select box
-                            $(function () {
-                                $('select.styled').customSelect();
-                            });
-                        </script>
-
-                        </body>
-
-                        </html>
+            //custom select box
+            $(function () {
+                $('select.styled').customSelect();
+            });
+        </script>
+    </body>
+</html>

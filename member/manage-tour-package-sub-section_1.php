@@ -8,6 +8,10 @@ if (isset($_GET['id'])) {
 }
 $TOUR_PACKAGE = new TourPackage($id);
 $TOUR_SUB_PHOTO = new TourSubSectionPhoto(NULL);
+
+if (isset($_SESSION['isPhoneVerified'])) {
+    $isPhoneVerified = $_SESSION['isPhoneVerified'];
+}
 ?> 
 <html lang="en">
 
@@ -44,15 +48,14 @@ $TOUR_SUB_PHOTO = new TourSubSectionPhoto(NULL);
             ?>
             <!--main content start-->
             <section id="main-content">
+                <div class="col-md-12 verified-alert"></div> 
                 <div class="wrapper">
                     <div class="container-fluid">
                         <div class="row  top-bott20"> 
                             <?php
                             $vali = new Validator();
-
                             $vali->show_message();
                             ?>
-
                             <div class="panel panel-default">
                                 <div class="panel-heading"><i class="fa fa-save"></i> Manage Tour Itinerary - <?php echo $TOUR_PACKAGE->name; ?></div>
                                 <div class="panel-body">
@@ -114,6 +117,7 @@ $TOUR_SUB_PHOTO = new TourSubSectionPhoto(NULL);
                                         <div class="text-right">
                                             <a href="manage-tour-package.php"><button type="button" class="btn btn-round btn-info">Manage Tour Package</button></a>
                                         </div>
+                                        <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" >
                                     </div>
                                 </div>
                             </div>
@@ -125,7 +129,7 @@ $TOUR_SUB_PHOTO = new TourSubSectionPhoto(NULL);
             include './footer.php';
             ?>
         </section>
-
+        <script src="js/display-contact-number-verification-alert.js" type="text/javascript"></script>
         <script src="assets/js/jquery.js"></script>
         <script src="assets/js/bootstrap.min.js"></script>
         <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>

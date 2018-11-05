@@ -5,6 +5,9 @@ include './auth.php';
 if (!isset($_SESSION)) {
     session_start();
 }
+if (isset($_SESSION['isPhoneVerified'])) {
+    $isPhoneVerified = $_SESSION['isPhoneVerified'];
+}
 ?>
 <html lang="en">
     <head>
@@ -28,17 +31,19 @@ if (!isset($_SESSION)) {
 
         <div class="container">
             <div class="row top-bott20">
+                <div class="col-md-12">
+                    <?php
+                    $vali = new Validator();
+                    $vali->show_message();
+                    ?>
+                </div>
+                <div class="col-md-12 verified-alert"></div>
                 <div class="col-md-9">
                     <div class="panel panel-default margin-panel">
 
                         <div class="panel-heading"><i class="fa fa-user"></i>Edit Profile</div>
                         <div class="panel-body">  <div class="">
-                                <div class="col-md-12">
-                                    <?php
-                                    $vali = new Validator();
-                                    $vali->show_message();
-                                    ?>
-                                </div>
+
                                 <div class="col-md-12">
                                     <div class="row">
                                         <div class="col-sm-12 col-md-12 visitor-prof-margin text-center">  
@@ -111,6 +116,7 @@ if (!isset($_SESSION)) {
                                                     <div class="top-bott50">
                                                         <div class="bottom-top">
                                                             <input type="hidden" id="id" value="<?php echo $VISITOR->id; ?>" name="id"/>
+                                                            <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" >
                                                             <button type="submit" name="update" class="btn btn-info center-block">Save Changes</button>
                                                         </div>
                                                     </div> 
@@ -127,13 +133,12 @@ if (!isset($_SESSION)) {
                     <ul class="usernavdash">
                         <li><a href="visitor-profile.php"><i class="fa fa-tachometer" aria-hidden="true"></i> My Profile</a></li>
                         <li><a href="edit-profile.php"><i class="fa fa-user" aria-hidden="true"></i> Edit Profile</a></li>
-<!--                        <li><a href="manage-ads.php"><i class="fa fa-desktop" aria-hidden="true"></i> col 2</a>
-                        </li><li><a href="manage-active-ads.php"><i class="fa fa-laptop" aria-hidden="true"></i> col 1</a></li>-->
                         <li><a href="change-password.php"><i class="fa fa-lock" aria-hidden="true"></i> Change Password</a></li>
+                        <li><a href="visitor-message.php"><i class="fa fa-comment" aria-hidden="true"></i> Messages</a></li>
                         <li><a href="post-and-get/logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
                     </ul>
                 </div>
-
+                
             </div>
         </div>
 
@@ -145,5 +150,6 @@ if (!isset($_SESSION)) {
         <script src="js/bootstrap.min.js"></script>
         <script src="js/bootstrap-datepicker.js" type="text/javascript"></script>
         <script src="post-and-get/js/visitor-profile.js" type="text/javascript"></script>
+        <script src="js/display-contact-number-verification-alert.js" type="text/javascript"></script>
     </body> 
 </html>

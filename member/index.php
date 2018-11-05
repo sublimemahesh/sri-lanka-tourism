@@ -2,7 +2,12 @@
 include_once(dirname(__FILE__) . '/../class/include.php');
 include_once(dirname(__FILE__) . './auth.php');
 $TRANSPORT_BOOKINGS = new TransportBooking(NULL);
-
+if (!isset($_SESSION)) {
+    session_start();
+}
+if (isset($_SESSION['isPhoneVerified'])) {
+    $isPhoneVerified = $_SESSION['isPhoneVerified'];
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -48,6 +53,7 @@ $TRANSPORT_BOOKINGS = new TransportBooking(NULL);
                     <div class="row">
                         <div class="col-lg-9 main-chart">
                             <div class="dashboard-container">
+                                <div class="col-md-12 verified-alert"></div>
                                 <div class="row margin-top-dashboard">
                                     <div class="col-md-4 mb">
                                         <div class="info-box bg-cyan hover-expand-effect">
@@ -191,7 +197,7 @@ $TRANSPORT_BOOKINGS = new TransportBooking(NULL);
                                     </p>
                                 </div>
                             </div>
-
+                            <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" >
                         </div>
                     </div>
                 </section>
@@ -220,7 +226,7 @@ $TRANSPORT_BOOKINGS = new TransportBooking(NULL);
         <!--script for this page-->
         <script src="assets/js/sparkline-chart.js"></script>    
         <script src="assets/js/zabuto_calendar.js"></script>	
-
+        <script src="js/display-contact-number-verification-alert.js" type="text/javascript"></script>
         <script type="application/javascript">
             $(document).ready(function () {
             $("#date-popover").popover({html: true, trigger: "manual"});

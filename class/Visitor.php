@@ -15,11 +15,13 @@ class Visitor {
     public $facebookID;
     public $googleID;
     public $resetcode;
+    public $phoneVerificationCode;
+    public $isPhoneVerified;
 
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`,`first_name`,`second_name`,`email`,`password`,`authToken`,`address`,`city`,`contact_number`,`image_name`,`facebookID`,`googleID`,`resetcode` FROM `visitor` WHERE `id`=" . $id;
+            $query = "SELECT `id`,`first_name`,`second_name`,`email`,`password`,`authToken`,`address`,`city`,`contact_number`,`image_name`,`facebookID`,`googleID`,`resetcode`,`phone_verification_code`,`isPhoneVerified` FROM `visitor` WHERE `id`=" . $id;
 
             $db = new Database();
 
@@ -38,7 +40,8 @@ class Visitor {
             $this->facebookID = $result['facebookID'];
             $this->googleID = $result['googleID'];
             $this->resetcode = $result['resetcode'];
-
+            $this->phoneVerificationCode = $result['phone_verification_code'];
+            $this->isPhoneVerified = $result['isPhoneVerified'];
             return $this;
         }
     }
@@ -139,6 +142,7 @@ class Visitor {
             $_SESSION["first_name"] = $visitor->first_name;
             $_SESSION["second_name"] = $visitor->second_name;
             $_SESSION["email"] = $visitor->email;
+            $_SESSION["isPhoneVerified"] = $visitor->isPhoneVerified;
             return TRUE;
         }
     }
@@ -424,6 +428,7 @@ class Visitor {
         $_SESSION["email"] = $visitor->email;
         $_SESSION["image_name"] = $visitor->image_name;
         $_SESSION["authToken"] = $visitor->authToken;
+        $_SESSION["isPhoneVerified"] = $visitor->isPhoneVerified;
     }
 
     public function isGoogleIdIsEx($visitorID) {
@@ -492,4 +497,62 @@ class Visitor {
             return TRUE;
         }
     }
+
+    public function generatePhoneNoVerifyCode($id) {
+
+        $rand = rand(10000, 99990);
+
+        $query = "UPDATE  `visitor` SET "
+                . "`phone_verification_code` ='" . $rand . "' "
+                . "WHERE `id` = '" . $id . "'";
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+
+        if ($result) {
+            return $rand;
+        } else {
+            return FALSE;
+        }
+    }
+
+    public function updateVerifiedStatus() {
+
+        $query = "UPDATE  `visitor` SET "
+                . "`isPhoneVerified` = 1 "
+                . "WHERE `id` = '" . $this->id . "'";
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+        if ($result) {
+            unset($_SESSION["isPhoneVerified"]);
+            $_SESSION["isPhoneVerified"] = 1;
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
+    
+    public function updateContactNumber() {
+
+        $query = "UPDATE  `visitor` SET "
+                . "`contact_number` = '" . $this->contact_number . "' "
+                . "WHERE `id` = '" . $this->id . "'";
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+        
+        if ($result) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
+
 }

@@ -1,6 +1,7 @@
 jQuery(document).ready(function () {
 
     $("#btnSubmit").click(function (e) {
+        
         var datastring = $("#register").serialize();
         $.ajax({
             url: "post-and-get/ajax/visitor-register.php",
@@ -14,6 +15,8 @@ jQuery(document).ready(function () {
                     $('#message').text(result.message);
                     return false;
                 } else if (result.status === 'success') {
+                    window.location.replace('phone-verification-page.php');
+                }else if (result.status === 'notdelivered') {
                     if (result.back === '') {
                         window.location.replace('visitor-profile.php?message=22');
 

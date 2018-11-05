@@ -9,7 +9,7 @@ $username='esmsusr_adl';
 $password='Keerthi@1994';
 $customer='';
 $mask='TRAVEL SL';
-$Message='Test By Kavini123456';
+$Message='Test By Kavini';
 //serviceTest($id,$username,$password,$customer);
 
 $session=createSession($id,$username,$password,$customer);

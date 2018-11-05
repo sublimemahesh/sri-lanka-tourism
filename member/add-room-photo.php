@@ -8,6 +8,9 @@ if (isset($_GET['id'])) {
 }
 $Aid = $_GET['aid'];
 $ROOM = new Room($id);
+if (isset($_SESSION['isPhoneVerified'])) {
+    $isPhoneVerified = $_SESSION['isPhoneVerified'];
+}
 ?> 
 
 <html lang="en">
@@ -46,6 +49,7 @@ $ROOM = new Room($id);
             ?>
             <!--main content start-->
             <section id="main-content">
+                <div class="col-md-12 verified-alert"></div> 
                 <div class="wrapper">
                     <div class="container-fluid">
                         <div class="row  top-bott20"> 
@@ -54,7 +58,6 @@ $ROOM = new Room($id);
 
                             $vali->show_message();
                             ?>
-
                             <div class="panel panel-default">
                                 <div class="panel-heading"><i class="fa fa-save"></i> Manage Room Photos - <?php echo $ROOM->name; ?></div>
                                 <div class="panel-body">
@@ -102,6 +105,7 @@ $ROOM = new Room($id);
                                         <div class="text-right">
                                             <a href="manage-room.php?id=<?php echo $Aid; ?>"><button type="button" class="btn btn-round btn-info">Manage Rooms</button></a>
                                         </div>
+                                        <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" >
                                     </div>
                                 </div>
                             </div>
@@ -124,7 +128,7 @@ $ROOM = new Room($id);
         <script src="assets/plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>
         <script src="delete/js/room-photo.js" type="text/javascript"></script>
         <script src="js/add-room-photo.js" type="text/javascript"></script>
-
+        <script src="js/display-contact-number-verification-alert.js" type="text/javascript"></script>
         <script>
             //custom select box
             $(function () {

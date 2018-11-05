@@ -28,74 +28,12 @@
 
 
 function getClient() {
-    var_dump(111);
+//    var_dump(111);
 
-    try {
-        ini_set("soap.wsdl_cache_enabled", "0");
-//        $client = new SoapClient("http://smeapps.mobitel.lk:8585/EnterpriseSMSV2/EnterpriseSMSWS?wsdl");
-//        var_dump($client);
-
-        $opts = array(
-            'http' => array(
-                'user_agent' => 'PHPSoapClient'
-            )
-        );
-        $context = stream_context_create($opts);
-
-        $wsdlUrl = 'http://smeapps.mobitel.lk:8585/EnterpriseSMSV2/EnterpriseSMSWS?wsdl';
-        $soapClientOptions = array(
-            'stream_context' => $context,
-            'cache_wsdl' => WSDL_CACHE_NONE
-        );
-
-        $client = new SoapClient($wsdlUrl, $soapClientOptions);
-        var_dump($client);
-    } catch (Exception $e) {
-        var_dump($e->getMessage());
-        var_dump($client->__getLastRequest());
-        var_dump($client->__getLastResponse());
-    }
-
-//    ini_set("soap.wsdl_cache_enabled", "0");
-//    $client = new SoapClient("http://smeapps.mobitel.lk:8585/EnterpriseSMSV2/EnterpriseSMSWS?wsdl");
+    ini_set("soap.wsdl_cache_enabled", "0");
+    $client = new SoapClient("http://smeapps.mobitel.lk:8585/EnterpriseSMSV2/EnterpriseSMSWS?wsdl");
 //    var_dump($client);
-
     return $client;
-//    $context = stream_context_create([
-//        'ssl' => [
-//            // set some SSL/TLS specific options
-//            'verify_peer' => false,
-//            'verify_peer_name' => false,
-//            'allow_self_signed' => true
-//        ],
-//        'ciphers' => 'AES256-SHA'
-//    ]);
-////    $client = new SoapClient("http://smeapps.mobitel.lk:8585/EnterpriseSMSV2/EnterpriseSMSWS?wsdl");
-//    $client = new SoapClient(null, [
-//        'location' => 'http://smeapps.mobitel.lk:8585/EnterpriseSMSV2/EnterpriseSMSWS?wsdl',
-//        'uri' => '...',
-//        'soap_version' => SOAP_1_1,
-//        'stream_context' => $context
-//    ]);
-//    
-//    
-//    $client = new SoapClient("http://smeapps.mobitel.lk:8585/EnterpriseSMSV2/EnterpriseSMSWS?wsdl", array(
-//        "trace" => 1,
-//        "location" => "http://smeapps.mobitel.lk:8585/EnterpriseSMSV2/",
-//        'exceptions' => 1,
-//        'soap_version' => SOAP_1_1,
-//        "stream_context" => stream_context_create(
-//                array(
-//                    'ssl' => array(
-//                        'verify_peer' => false,
-//                        'verify_peer_name' => false,
-//                    )
-//                )
-//        )
-//            )
-//    );
-//    var_dump($client);
-//    return $client;
 }
 
 //serviceTest
@@ -131,17 +69,9 @@ function createSession($id, $username, $password, $customer) {
     $createSession->arg0 = $user;
 
     $createSessionResponse = new stdClass();
-
-//    $createSessionResponse = $client->createSession($createSession);
-    try {
-        $response = $client->createSession($createSession);
-        var_dump(111);
-    } catch (Exception $e) {
-        var_dump($e->getMessage());
-        var_dump($client->__getLastRequest());
-        var_dump($client->__getLastResponse());
-    }
-    var_dump(111);
+    var_dump($createSessionResponse);
+    $createSessionResponse = $client->createSession($createSession);
+    
 //    var_dump($createSessionResponse->return);
     return $createSessionResponse->return;
 }

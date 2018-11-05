@@ -2,6 +2,10 @@
 include_once(dirname(__FILE__) . '/../class/include.php');
 include_once(dirname(__FILE__) . '/auth.php');
 $MEMBER = new Member($_SESSION['id']);
+
+if(isset($_SESSION['isPhoneVerified'])) {
+    $isPhoneVerified = $_SESSION['isPhoneVerified'];
+}
 if (empty($MEMBER->licence_front) || empty($MEMBER->licence_back)) {
     redirect('manage-licence-photos.php?message=27');
 }
@@ -42,9 +46,10 @@ if (empty($MEMBER->licence_front) || empty($MEMBER->licence_back)) {
             ?>
             <!--main content start-->
             <section id="main-content">
+                <div class="col-md-12 verified-alert"></div> 
                 <div class="wrapper">
                     <div class="container-fluid">
-                        <div class="row top-bott20"> 
+                        <div class="row top-bott20">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <i class="fa fa-plus"></i> 
@@ -512,6 +517,7 @@ if (empty($MEMBER->licence_front) || empty($MEMBER->licence_back)) {
 
                                                                                             <input type="hidden" id="member" name="member" value="<?php echo $_SESSION['id']; ?>"/>
                                                                                             <button id="create" name="add-transports" type="submit" class="btn btn-info tab-next-create">Save All Details</button>
+                                                                                        <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" >
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -562,7 +568,7 @@ if (empty($MEMBER->licence_front) || empty($MEMBER->licence_back)) {
         <script type="text/javascript" src="assets/js/bootstrap-inputmask/bootstrap-inputmask.min.js"></script>
         <script src="js/post-transport-image.js" type="text/javascript"></script>
         <script src="assets/js/form-component.js"></script>    
-
+<script src="js/display-contact-number-verification-alert.js" type="text/javascript"></script>
         <script src="assets/tinymce/js/tinymce/tinymce.min.js"></script>
         <script>
             tinymce.init({

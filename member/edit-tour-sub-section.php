@@ -5,6 +5,9 @@ $id = '';
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 }
+if (isset($_SESSION['isPhoneVerified'])) {
+    $isPhoneVerified = $_SESSION['isPhoneVerified'];
+}
 $TOUR_SUB = new TourSubSection($id);
 $TOUR = new TourPackage($TOUR_SUB->tour);
 ?> 
@@ -44,6 +47,7 @@ $TOUR = new TourPackage($TOUR_SUB->tour);
             ?>
             <!--main content start-->
             <section id="main-content">
+                <div class="col-md-12 verified-alert"></div> 
                 <div class="wrapper">
                     <div class="container-fluid">
                         <div class="row  top-bott20"> 
@@ -84,6 +88,7 @@ $TOUR = new TourPackage($TOUR_SUB->tour);
                                                                 <div class="bottom-top">
                                                                     <input type="hidden" id="id" value="<?php echo $TOUR_SUB->id; ?>" name="id"/>
                                                                     <input type="hidden" id="authToken" value="<?php echo $_SESSION["id"]; ?>" name="memeber"/>
+                                                                    <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" >
                                                                     <button name="edit-tour-sub-section" type="submit" class="btn btn-info center-block">Change</button>
                                                                 </div>
                                                             </div> 
@@ -130,13 +135,9 @@ $TOUR = new TourPackage($TOUR_SUB->tour);
         <script type="text/javascript" src="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-datepicker/js/bootstrap-datepicker.html"></script>
         <script type="text/javascript" src="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-daterangepicker/date.html"></script>
         <script type="text/javascript" src="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-daterangepicker/daterangepicker-2.html"></script>
-
         <script type="text/javascript" src="assets/js/bootstrap-inputmask/bootstrap-inputmask.min.js"></script>
-
-
-        <script src="assets/js/form-component.js"></script>    
-
-
+        <script src="assets/js/form-component.js"></script>   
+        <script src="js/display-contact-number-verification-alert.js" type="text/javascript"></script>
         <script>
             //custom select box
 

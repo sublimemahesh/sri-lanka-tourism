@@ -1,8 +1,8 @@
 <?php
 include_once(dirname(__FILE__) . '/../class/include.php');
 include_once(dirname(__FILE__) . './auth.php');
-if (!isset($_SESSION)) {
-    session_start();
+if (isset($_SESSION['isPhoneVerified'])) {
+    $isPhoneVerified = $_SESSION['isPhoneVerified'];
 }
 $visitorid = '';
 if (isset($_GET['id'])) {
@@ -14,6 +14,7 @@ $memberid = $_SESSION['id'];
 $MEMBER = new Member($memberid);
 $VISITOR = new Visitor($visitorid);
 $DISTINCTVISITORS = MemberAndVisitorMessages::getDistinctVisitorsByMemberId($memberid);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -63,11 +64,10 @@ $DISTINCTVISITORS = MemberAndVisitorMessages::getDistinctVisitorsByMemberId($mem
             ?>
             <!--main content start-->
             <section id="main-content">
+                <div class="col-md-12 verified-alert"></div> 
                 <section class="wrapper">
-
                     <div id="frame">
                         <div id="sidepanel">
-
                             <div id="profile">
                                 <div class="wrap">
                                     <?php
@@ -367,6 +367,7 @@ $DISTINCTVISITORS = MemberAndVisitorMessages::getDistinctVisitorsByMemberId($mem
                                         <input type="hidden" name="member" value="<?php echo $_SESSION['id']; ?>">
                                         <input type="hidden" name="visitor" id="visitor" value="<?php echo $visitorid; ?>">
                                         <input type="hidden" name="sender" value="member">
+                                        <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" >
                                         <button type="submit" name="member-message" id="member-message" class="btn btn-info btn-position-rel">
                                             <i class="fa fa-paper-plane" aria-hidden="true"></i>
                                         </button>
@@ -427,5 +428,6 @@ $DISTINCTVISITORS = MemberAndVisitorMessages::getDistinctVisitorsByMemberId($mem
         <script src="assets/js/common-scripts.js"></script>
         <script src="js/member-message.js" type="text/javascript"></script>
         <script src="js/member-visitor-messages.js" type="text/javascript"></script>
+        <script src="js/display-contact-number-verification-alert.js" type="text/javascript"></script>
     </body>
 </html>

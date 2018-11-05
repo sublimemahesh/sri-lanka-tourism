@@ -1,6 +1,10 @@
 <?php
 include_once(dirname(__FILE__) . '/../class/include.php');
 include_once(dirname(__FILE__) . '/auth.php');
+
+if (isset($_SESSION['isPhoneVerified'])) {
+    $isPhoneVerified = $_SESSION['isPhoneVerified'];
+}
 ?> 
 <!DOCTYPE html>
 <html lang="en">
@@ -40,9 +44,10 @@ include_once(dirname(__FILE__) . '/auth.php');
             ?>
             <!--main content start-->
             <section id="main-content">
+                <div class="col-md-12 verified-alert"></div> 
                 <div class="wrapper">
                     <div class="container-fluid">
-                        <div class="row  top-bott20"> 
+                        <div class="row  top-bott20">
                             <div class="panel panel-default">
                                 <div class="panel-heading"><i class="fa fa-pencil"></i>Create Accommodation</div>
                                 <div class="panel-body">
@@ -269,6 +274,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                                                             <div class="">
                                                                                                 <input type="hidden" id="member" name="member" value="<?php echo $_SESSION['id']; ?>"/>
                                                                                                 <button name="create" id="create" type="submit" class="btn btn-info tab-next-create">Save All Details</button>
+                                                                                                <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" >
                                                                                             </div>
                                                                                         </div> 
                                                                                     </div>
@@ -301,20 +307,15 @@ include_once(dirname(__FILE__) . '/auth.php');
         <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
         <script src="assets/js/jquery.scrollTo.min.js"></script>
         <script src="assets/js/jquery.nicescroll.js" type="text/javascript"></script>
-
-
+        <script src="js/display-contact-number-verification-alert.js" type="text/javascript"></script>
         <!--common script for all pages-->
         <script src="assets/js/common-scripts.js"></script>
-
         <!--script for this page-->
         <script src="assets/js/jquery-ui-1.9.2.custom.min.js"></script>
-
         <!--custom switch-->
         <script src="assets/js/bootstrap-switch.js"></script>
-
         <!--custom tagsinput-->
         <script src="assets/js/jquery.tagsinput.js"></script>
-
         <!--custom checkbox & radio-->
         <script src="js/city.js" type="text/javascript"></script>
         <script type="text/javascript" src="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-datepicker/js/bootstrap-datepicker.html"></script>
@@ -327,11 +328,9 @@ include_once(dirname(__FILE__) . '/auth.php');
         <script src="js/add-new-accommodation.js" type="text/javascript"></script>
         <script>
             //custom select box
-
             $(function () {
                 $('select.styled').customSelect();
             });
-
         </script>
         <script src="assets/tinymce/js/tinymce/tinymce.min.js"></script>
         <script>
@@ -361,8 +360,5 @@ include_once(dirname(__FILE__) . '/auth.php');
         </script>
         <script src="js/add-new-accommodation.js" type="text/javascript"></script>
         <script src="assets/plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>
-
-
     </body>
-
 </html>

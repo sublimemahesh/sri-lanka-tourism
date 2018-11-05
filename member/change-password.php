@@ -2,6 +2,9 @@
 include_once(dirname(__FILE__) . '/../class/include.php');
 include_once(dirname(__FILE__) . '/auth.php');
 
+if (isset($_SESSION['isPhoneVerified'])) {
+    $isPhoneVerified = $_SESSION['isPhoneVerified'];
+}
 $MEMBER = new Member($_SESSION['id']);
 ?> 
 <!DOCTYPE html>
@@ -40,6 +43,7 @@ $MEMBER = new Member($_SESSION['id']);
             ?>
             <!--main content start-->
             <section id="main-content">
+                <div class="col-md-12 verified-alert"></div> 
                 <div class="wrapper">
                     <div class="container-fluid">
                         <div class="row  top-bott20"> 
@@ -54,7 +58,6 @@ $MEMBER = new Member($_SESSION['id']);
                                 <?php
                             }
                             ?> 
-
                             <div class="panel panel-default">
                                 <div class="panel-heading"><i class="fa fa-pencil"></i> Change Password</div>
                                 <div class="panel-body">
@@ -64,7 +67,7 @@ $MEMBER = new Member($_SESSION['id']);
 
                                                 <form method="post" action="post-and-get/change-password.php">
                                                     <div class="col-md-12">
-                                  
+
                                                         <div class="">
                                                             <div class="bottom-top">Current Password</div>
                                                             <div class="formrow">
@@ -90,6 +93,7 @@ $MEMBER = new Member($_SESSION['id']);
                                                                 <input type="hidden" id="memeberId" name="memeberId" value="fds"/>
                                                                 <button name="changePassword" type="submit" class="btn btn-info center-block">Change Password</button>
                                                                 <input type="hidden" id="id" value="<?php echo $MEMBER->id; ?>" name="id"> 
+                                                                <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" >
                                                             </div>
                                                         </div> 
                                                     </div>  
@@ -99,16 +103,10 @@ $MEMBER = new Member($_SESSION['id']);
                                     </div>
                                 </div>
                             </div> 
-
-
                         </div>
                     </div>
                 </div>
             </section>
-
-
-
-
             <?php
             include './footer.php';
             ?>
@@ -139,12 +137,9 @@ $MEMBER = new Member($_SESSION['id']);
         <script type="text/javascript" src="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-datepicker/js/bootstrap-datepicker.html"></script>
         <script type="text/javascript" src="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-daterangepicker/date.html"></script>
         <script type="text/javascript" src="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-daterangepicker/daterangepicker-2.html"></script>
-
         <script type="text/javascript" src="assets/js/bootstrap-inputmask/bootstrap-inputmask.min.js"></script>
-
-
         <script src="assets/js/form-component.js"></script>    
-
+        <script src="js/display-contact-number-verification-alert.js" type="text/javascript"></script>
 
         <script>
             //custom select box

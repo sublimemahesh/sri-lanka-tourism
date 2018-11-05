@@ -7,6 +7,9 @@ if (isset($_GET['id'])) {
     $id = $_GET['id'];
 }
 $TRANSPORTS = new Transports($id);
+if (isset($_SESSION['isPhoneVerified'])) {
+    $isPhoneVerified = $_SESSION['isPhoneVerified'];
+}
 ?> 
 <!DOCTYPE html>
 <html lang="en">
@@ -40,6 +43,7 @@ $TRANSPORTS = new Transports($id);
             ?>
             <!--main content start-->
             <section id="main-content">
+                <div class="col-md-12 verified-alert"></div> 
                 <div class="wrapper">
                     <div class="container-fluid">
                         <div class="row  top-bott20"> 
@@ -324,13 +328,13 @@ $TRANSPORTS = new Transports($id);
                                                                 <textarea type="text" id="description" name="description" class="form-control" placeholder="Please Enter Description"><?php echo $TRANSPORTS->description; ?></textarea>
                                                             </div>
                                                         </div>
-
                                                         <div class="top-bott50">
                                                             <div class="bottom-top">
                                                                 <input type="hidden" id="oldDis" value=""/>
 
                                                                 <input type="hidden" id="member" name="member" value="<?php echo $_SESSION['id']; ?>"/>
                                                                 <input type="hidden" id="id" value="<?php echo $TRANSPORTS->id; ?>" name="id"/>
+                                                                <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" >
                                                                 <button name="edit-transports" type="submit" class="btn btn-info center-block">Change</button>
                                                             </div>
                                                         </div> 
@@ -365,25 +369,17 @@ $TRANSPORTS = new Transports($id);
 
         <!--script for this page-->
         <script src="assets/js/jquery-ui-1.9.2.custom.min.js"></script>
-
         <!--custom switch-->
         <script src="assets/js/bootstrap-switch.js"></script>
-
         <!--custom tagsinput-->
         <script src="assets/js/jquery.tagsinput.js"></script>
-
         <!--custom checkbox & radio-->
-
         <script type="text/javascript" src="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-datepicker/js/bootstrap-datepicker.html"></script>
         <script type="text/javascript" src="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-daterangepicker/date.html"></script>
         <script type="text/javascript" src="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-daterangepicker/daterangepicker-2.html"></script>
-
         <script type="text/javascript" src="assets/js/bootstrap-inputmask/bootstrap-inputmask.min.js"></script>
-
-
         <script src="assets/js/form-component.js"></script>    
-
-
+        <script src="js/display-contact-number-verification-alert.js" type="text/javascript"></script>
         <script>
             //custom select box
 
