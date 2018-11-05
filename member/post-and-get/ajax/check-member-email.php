@@ -47,6 +47,11 @@ if ($_POST['save']) {
         $response['message'] = "Please enter your contact number.";
         echo json_encode($response);
         exit();
+    } else if (substr_count($_POST['contact_number'], '-') > 0 || substr_count($_POST['contact_number'], ' ') > 0 || substr_count($_POST['contact_number'], '(') > 0 || substr_count($_POST['contact_number'], ')') > 0) {
+        $response['status'] = 'error';
+        $response['message'] = "Please enter contact number without any characters except + as +123456789";
+        echo json_encode($response);
+        exit();
     } else if (empty($_POST['password'])) {
         $response['status'] = 'error';
         $response['message'] = "Please enter the password.";
@@ -75,18 +80,18 @@ if ($_POST['save']) {
             $MEMBER->create();
 
             if ($MEMBER->id) {
-               $login = $MEMBER->login($MEMBER->email, $MEMBER->password);
+                $login = $MEMBER->login($MEMBER->email, $MEMBER->password);
                 if ($login) {
                     $mid = $MEMBER->id;
                     $phoneno = $MEMBER->contact_number;
-                    
+
                     $code = Member::generatePhoneNoVerifyCode($mid);
                     $message = "Your Sri Lanka Tourism Verification code is " . $code;
                     $sendmsg = Helper::sendSMS($phoneno, $message);
-                    
+
                     if ($sendmsg) {
                         $response['status'] = 'success';
-                       
+
                         if (!isset($_SESSION)) {
                             session_start();
                         }

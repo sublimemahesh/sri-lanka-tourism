@@ -16,7 +16,6 @@ $back_url = '';
 if (isset($_SESSION["back_url"])) {
     $back_url = $_SESSION["back_url"];
 }
-
 ?>
 <html lang="en">
     <head>
@@ -34,6 +33,7 @@ if (isset($_SESSION["back_url"])) {
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
         <script src="https://apis.google.com/js/api:client.js"></script>
         <script src="js/google-login.js" type="text/javascript"></script>
+        <link href="plugins/tel-input/build/css/intlTelInput.css" rel="stylesheet" type="text/css"/>
         <!--
                 <meta name="google-signin-client_id" content="911987649395-lsjuodldj81ip80fl21841h98dg5cekf.apps.googleusercontent.com">-->
         <!--        <script src = "https://plus.google.com/js/client:platform.js" async defer></script>-->
@@ -98,7 +98,7 @@ if (isset($_SESSION["back_url"])) {
                             <input id="s_name" name="s_name" placeholder="Enter Your Second Name" autocomplete="off" class="inputbox" type="text">
                             <input id="email" name="email" placeholder="Enter Your Email" autocomplete="off" class="inputbox" type="text">
                             <input id="cnfemail" name="cnfemail" placeholder="Confirm Email" autocomplete="off"class="inputbox" type="text">
-                            <input id="contact_no" name="contact_number" placeholder="+94xxxxxxxxx" autocomplete="off" class="inputbox" type="text">
+                            <input id="contact_no" name="contact_number" autocomplete="off" class="inputbox" type="text">
                             <input id="password" name="password" placeholder="Enter Password" autocomplete="off" class="inputbox" type="password">
 
                             <div class="policy-container">
@@ -124,6 +124,14 @@ if (isset($_SESSION["back_url"])) {
         <script src="js/bootstrap-datepicker.js" type="text/javascript"></script>
         <script src="js/add-visitor.js" type="text/javascript"></script>
         <script src="js/fb-login-scripts.js" type="text/javascript"></script>
+        <script src="plugins/tel-input/build/js/intlTelInput.js" type="text/javascript"></script>
+        <script>
+                                    $("#contact_no").intlTelInput({
+                                        autoFormat: false,
+                                        autoHideDialCode: false,
+                                        responsiveDropdown: true
+                                    });
+        </script>
     </body> 
 
 

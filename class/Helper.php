@@ -28,10 +28,11 @@ class Helper {
     }
 
     public function sendSMS($phoneno, $message) {
-        
-        if (strlen($phoneno) == 12) {
-            $reciepientno = substr($phoneno, 1, 12);
-        };
+        if (substr_count ($_POST['contact_number'], '+') == 1) {
+            $reciepientno = substr($phoneno, 1, strlen($phoneno));
+        } else {
+            $reciepientno = $phoneno;
+        }
         
         $id = '';
         $username = 'esmsusr_adl';
