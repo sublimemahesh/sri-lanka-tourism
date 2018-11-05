@@ -38,7 +38,7 @@ if (isset($_POST['book'])) {
 
     if ($VALID->passed()) {
         $RESULT = $TRANSPORT_BOOKING->create();
-
+        
         if (!isset($_SESSION)) {
             session_start();
         }
@@ -357,12 +357,12 @@ if (isset($_POST['book'])) {
                 }
 
                 $RATE = new TransportRates($RESULT->transport_rate);
-                $TRANSPORT = new Transport($RATE->transport_id);
+                $TRANSPORT = new Transports($RATE->transport_id);
                 $MEMBER = new Member($TRANSPORT->member);
                 $phoneno = $MEMBER->contact_number;
                 $message = "Your have a new transport booking in Sri Lanka Tourism";
                 $sendmsg = Helper::sendSMS($phoneno, $message);
-
+                
                 $VALID->addError("Booking was completed successfully.please check your email", 'success');
                 $_SESSION['ERRORS'] = $VALID->errors();
                 header('Location: ' . $_SERVER['HTTP_REFERER']);

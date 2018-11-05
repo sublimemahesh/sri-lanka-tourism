@@ -97,8 +97,9 @@ if ($_POST['save']) {
                         }
                         $_SESSION['registered'] = TRUE;
                         if ($back <> '') {
-                            $_SESSION['back'] = $back;
-                            unset($_SESSION["back_url"]);
+                            $response['back'] = $back;
+                        } else {
+                            $response['back'] = '';
                         }
                         echo json_encode($response);
                         exit();
@@ -110,6 +111,7 @@ if ($_POST['save']) {
                             $response['back'] = '';
                         }
                     }
+                    
                     echo json_encode($response);
                     exit();
                 }
