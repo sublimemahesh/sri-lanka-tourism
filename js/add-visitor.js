@@ -15,7 +15,11 @@ jQuery(document).ready(function () {
                     $('#message').text(result.message);
                     return false;
                 } else if (result.status === 'success') {
-                    window.location.replace('phone-verification-page.php');
+                    if (result.back === '') {
+                        window.location.replace('phone-verification-page.php?message=31');
+                    } else {
+                        window.location = result.back;
+                    }
                 }else if (result.status === 'notdelivered') {
                     if (result.back === '') {
                         window.location.replace('visitor-profile.php?message=22');
