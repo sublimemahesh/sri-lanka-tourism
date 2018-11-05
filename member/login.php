@@ -22,7 +22,7 @@ include_once(dirname(__FILE__) . '/../class/include.php');
         <link href="assets/css/h-f-styles.css" rel="stylesheet" type="text/css"/>
         <script src="https://apis.google.com/js/api:client.js"></script>
         <script src="js/google-login.js" type="text/javascript"></script>
-
+        <link href="../plugins/tel-input/build/css/intlTelInput.css" rel="stylesheet" type="text/css"/>
     </head>
 
     <body style="background-color: #d7d7d7;">
@@ -30,7 +30,7 @@ include_once(dirname(__FILE__) . '/../class/include.php');
         <div class="header-base">
             <div class="container">
                 <div class="col-md-6">
-                    <img class="memeber-hed-logo hidden-sm hidden-xs" src="../images/logo-intro2.png">
+                    <a href="../"><img class="memeber-hed-logo hidden-sm hidden-xs" src="../images/logo-intro2.png"></a>
                 </div>
                 <div class="col-md-6">
                     <form action="post-and-get/member.php" method="POST">
@@ -106,7 +106,7 @@ include_once(dirname(__FILE__) . '/../class/include.php');
                             <input id="name" name="name" placeholder="Enter Your Name" autocomplete="off" class="inputbox" type="text">
                             <input id="email" name="email" placeholder="Enter Your Email" autocomplete="off" class="inputbox" type="text">
                             <input id="cnfemail" name="cnfemail" placeholder="Confirm Email" autocomplete="off"class="inputbox" type="text">
-                            <input id="contact_no" name="contact_number" placeholder="+94xxxxxxxxx" autocomplete="off" class="inputbox" type="text">
+                            <input id="contact_no" name="contact_number" autocomplete="off" class="inputbox" type="text">
                             <input id="password" name="password" placeholder="Enter Password" autocomplete="off" class="inputbox" type="password">
 
                             <div class="policy-container">
@@ -120,15 +120,22 @@ include_once(dirname(__FILE__) . '/../class/include.php');
             </div>
 
         </div>
-      <?php
-                    include './index-footer.php';
-              ?> 
+        <?php
+        include './index-footer.php';
+        ?> 
         <script src="assets/js/jquery.js"></script>
         <script src="assets/js/bootstrap.min.js"></script>
         <script src="js/add-member.js" type="text/javascript"></script>
         <script src="js/fb-login-scripts.js" type="text/javascript"></script>
         <script src="https://apis.google.com/js/platform.js" async defer></script>
-
+        <script src="../plugins/tel-input/build/js/intlTelInput.min.js" type="text/javascript"></script>
+        <script>
+                                $("#contact_no").intlTelInput({
+                                    autoFormat: false,
+                                    autoHideDialCode: false,
+                                    responsiveDropdown: true
+                                });
+        </script>
 
     </body>
 

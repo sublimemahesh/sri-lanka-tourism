@@ -9,6 +9,7 @@ if ($_POST['save']) {
         $back = "";
     }
 
+
     header('Content-Type: application/json; charset=UTF8');
     $response = array();
 
@@ -50,6 +51,11 @@ if ($_POST['save']) {
     } else if (empty($_POST['contact_number'])) {
         $response['status'] = 'error';
         $response['message'] = "Please enter contact number.";
+        echo json_encode($response);
+        exit();
+    } else if (substr_count ($_POST['contact_number'], '-') > 0 || substr_count ($_POST['contact_number'], ' ') > 0 || substr_count ($_POST['contact_number'], '(') > 0 || substr_count ($_POST['contact_number'], ')') > 0) {
+        $response['status'] = 'error';
+        $response['message'] = "Please enter contact number without any characters except + as +123456789";
         echo json_encode($response);
         exit();
     } else if (empty($_POST['password'])) {
@@ -111,7 +117,7 @@ if ($_POST['save']) {
                             $response['back'] = '';
                         }
                     }
-                    
+
                     echo json_encode($response);
                     exit();
                 }

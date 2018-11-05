@@ -110,6 +110,10 @@
 .forget-password-link a{
     color: #fff;
 }
+.intl-tel-input {
+    width: 100%;
+    margin-top: 15px;
+}
 @media (min-width: 320px) and (max-width: 640px) {
     .member-login-btn-container {
         padding-top: 0px !important;
