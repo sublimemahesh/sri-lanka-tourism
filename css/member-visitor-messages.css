@@ -524,6 +524,33 @@ input[type="text"] {
     margin-bottom: 0px;
 }
 
+
+/*----------Alert -----------------*/
+.verify-link a {
+    background: none;
+    color: #a94442;
+    text-decoration: none;
+}
+.verify-link a:hover {
+    background: none;
+    color: #dd9695;
+    text-decoration: none;
+}
+#submitPIN {
+    margin-top: 20px;
+}
+.verified-alert1 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.verified-alert .alert{
+    margin-bottom: 0px;
+}
+.info-icon {
+    margin-right: 15px;
+    font-size: 18px;
+}
+
 @media screen and (max-width: 360px) {
     #frame {
         width: 300px;

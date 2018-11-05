@@ -52,6 +52,7 @@ if (isset($_POST['register'])) {
 
             $_SESSION['ERRORS'] = $VALID->errors();
         }
+        
         header('Location: ../visitor-login.php?message=19');
     } else {
         header('Location: ../visitor-register.php?message=20');
@@ -156,3 +157,40 @@ if (isset($_POST['changePassword'])) {
         exit();
     }
 }
+
+if (isset($_POST['resendCode'])) {
+    $VISITOR = new Visitor($_POST['id']);
+
+    $contct_number = $VISITOR->contact_number;
+    $code = Visitor::generatePhoneNoVerifyCode($VISITOR->id);
+    $messge = "Your Sri Lanka Tourism Verification code is " . $code;
+
+    $sendmsg = Helper::sendSMS($contct_number, $messge);
+
+    if ($sendmsg) {
+        header('Location: ../phone-verification-page.php?message=31');
+    } else {
+        header('Location: ' . $_SERVER['HTTP_REFERER'] . '?message=14');
+    }
+};
+
+if (isset($_POST['updatenumber'])) {
+    $VISITOR = new Visitor($_POST['id']);
+
+    $VISITOR->contact_number = $_POST['contactno'];
+
+    $RESULT = $VISITOR->updateContactNumber();
+    if ($RESULT) {
+        $contct_number =  $VISITOR->contact_number;
+        $code = Visitor::generatePhoneNoVerifyCode($VISITOR->id);
+        $messge = "Your Sri Lanka Tourism Verification code is " . $code;
+
+        $sendmsg = Helper::sendSMS($contct_number, $messge);
+
+        if ($sendmsg) {
+            header('Location: ../phone-verification-page.php?message=31');
+        } else {
+            header('Location: ' . $_SERVER['HTTP_REFERER'] . '?message=14');
+        }
+    }
+};

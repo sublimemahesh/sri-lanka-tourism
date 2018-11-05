@@ -2,6 +2,12 @@
 include_once(dirname(__FILE__) . '/../class/include.php');
 include_once(dirname(__FILE__) . './auth.php');
 
+if (!isset($_SESSION)) {
+    session_start();
+}
+if (isset($_SESSION['isPhoneVerified'])) {
+    $isPhoneVerified = $_SESSION['isPhoneVerified'];
+}
 $MEMBER = new Member($_SESSION['id']);
 ?>
 <!DOCTYPE html>
@@ -40,6 +46,7 @@ $MEMBER = new Member($_SESSION['id']);
             ?>
             <!--main content start-->
             <section id="main-content">
+                <div class="col-md-12 verified-alert"></div>
                 <div class="wrapper">
                     <div class="container-fluid">
                         <div class="row top-bott20">
@@ -52,7 +59,7 @@ $MEMBER = new Member($_SESSION['id']);
                                 <?php
                             }
                             ?>
-
+                            
                             <div class="panel panel-default">
                                 <div class="panel-heading"><i class="fa fa-user"></i>   My Profile</div>
                                 <div class="panel-body">  <div class="body">
@@ -96,7 +103,7 @@ $MEMBER = new Member($_SESSION['id']);
                                                             <?php
                                                         } else {
                                                             ?>
-                                                           <img src="../upload/member/<?php echo $MEMBER->profile_picture; ?>" class="img img-responsive img-thumbnail" id="profil_pic"/>
+                                                            <img src="../upload/member/<?php echo $MEMBER->profile_picture; ?>" class="img img-responsive img-thumbnail" id="profil_pic"/>
                                                             <?php
                                                         }
                                                     }
@@ -110,6 +117,7 @@ $MEMBER = new Member($_SESSION['id']);
                                                         <input type="file" name="pro-picture" id="pro-picture" />
                                                         <input type="hidden" name="upload-profile-image" id="upload-profile-image"/>
                                                         <input type="hidden" name="member" id="member" value="<?php echo $MEMBER->id; ?>"/>
+                                                        <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" >
                                                     </form>
                                                 </div>
 
@@ -155,6 +163,7 @@ $MEMBER = new Member($_SESSION['id']);
 
         <script src="assets/js/form-component.js"></script>    
         <script src="js/profile.js" type="text/javascript"></script>
+        <script src="js/display-contact-number-verification-alert.js" type="text/javascript"></script>
         <script>
             //custom select box
 

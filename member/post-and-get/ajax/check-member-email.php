@@ -2,11 +2,15 @@
 
 include_once(dirname(__FILE__) . '/../../../class/include.php');
 
-
 if ($_POST['save']) {
 
     header('Content-Type: application/json; charset=UTF8');
     $response = array();
+    if (isset($_POST['back_url'])) {
+        $back = $_POST['back_url'];
+    } else {
+        $back = "";
+    }
 
     if (empty($_POST['name'])) {
         $response['status'] = 'error';
@@ -60,8 +64,6 @@ if ($_POST['save']) {
 
             $MEMBER = new Member(NULL);
 
-            $MEMBER = new Member(NULL);
-
             $pw = md5($_POST['password']);
             $email = $_POST['email'];
             $cemail = $_POST['cnfemail'];
@@ -73,9 +75,41 @@ if ($_POST['save']) {
             $MEMBER->create();
 
             if ($MEMBER->id) {
-                $MEMBER->login($MEMBER->email, $MEMBER->password);
-                $response['status'] = 'success';
-                echo json_encode($response);
+               $login = $MEMBER->login($MEMBER->email, $MEMBER->password);
+                if ($login) {
+                    $mid = $MEMBER->id;
+                    $phoneno = $MEMBER->contact_number;
+                    
+                    $code = Member::generatePhoneNoVerifyCode($mid);
+                    $message = "Your Sri Lanka Tourism Verification code is " . $code;
+                    $sendmsg = Helper::sendSMS($phoneno, $message);
+                    
+                    if ($sendmsg) {
+                        $response['status'] = 'success';
+                       
+                        if (!isset($_SESSION)) {
+                            session_start();
+                        }
+                        $_SESSION['registered'] = TRUE;
+                        if ($back <> '') {
+                            $_SESSION['back'] = $back;
+                            unset($_SESSION["back_url"]);
+                        } else {
+                            $_SESSION['back'] = '';
+                        }
+                        echo json_encode($response);
+                        exit();
+                    } else {
+                        $response['status'] = 'notdelivered';
+                        if ($back <> '') {
+                            $response['back'] = $back;
+                        } else {
+                            $response['back'] = '';
+                        }
+                    }
+                    echo json_encode($response);
+                    exit();
+                }
             } else {
                 $response['status'] = 'error';
                 $response['message'] = "Oops. Something went wrong, Please try again.";

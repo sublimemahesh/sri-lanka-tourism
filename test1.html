@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <a href="test.php">Test</a>
+    </body>
+</html>
+
+Header set Content-Security-Policy: upgrade-insecure-requests
+
+RewriteEngine on
+RewriteCond   %{SERVER_PORT} ^80$
+RewriteCond %{HTTP_HOST} ^sublime.lk$ [OR]
+RewriteCond %{HTTP_HOST} ^www.sublime.lk$
+RewriteRule   ^(.*)$ https://%{SERVER_NAME}%{REQUEST_URI} [L,R]
+
+RewriteEngine On
+RewriteCond %{HTTP_HOST} !^www\.
+RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]

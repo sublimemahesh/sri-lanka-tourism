@@ -13,6 +13,12 @@ if (!isset($_SESSION["vislogin"])) {
 } else {
     $VISITOR = $_SESSION["id"];
 }
+if (isset($_SESSION['isPhoneVerified'])) {
+    $isPhoneVerified = $_SESSION['isPhoneVerified'];
+}
+if (isset($_SESSION['member'])) {
+    $member = 'member';
+}
 
 $VISITOR = new Visitor($VISITOR);
 

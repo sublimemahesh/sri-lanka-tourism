@@ -1,6 +1,10 @@
 <?php
 include_once(dirname(__FILE__) . '/../class/include.php');
 include_once(dirname(__FILE__) . '/auth.php');
+
+if(isset($_SESSION['isPhoneVerified'])) {
+    $isPhoneVerified = $_SESSION['isPhoneVerified'];
+}
 $id = '';
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
@@ -44,6 +48,7 @@ $TOUR_SUB_PHOTO = new TourSubSectionPhoto(NULL);
             ?>
             <!--main content start-->
             <section id="main-content">
+                <div class="col-md-12 verified-alert"></div> 
                 <div class="wrapper">
                     <div class="container-fluid">
                         <div class="row  top-bott20"> 
@@ -102,6 +107,7 @@ $TOUR_SUB_PHOTO = new TourSubSectionPhoto(NULL);
                                         <div class="col-md-12 text-right">
                                             <a href="manage-tour-package.php"><button type="button" class="btn btn-round btn-info">Manage Tour Package</button></a>
                                         </div>
+                                        <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" >
                                     </div>
                                 </div>
                             </div>
@@ -131,12 +137,9 @@ $TOUR_SUB_PHOTO = new TourSubSectionPhoto(NULL);
 
         <!--custom switch-->
         <script src="assets/js/bootstrap-switch.js"></script>
-
         <!--custom tagsinput-->
         <script src="assets/js/jquery.tagsinput.js"></script>
-
         <!--custom checkbox & radio-->
-
         <script type="text/javascript" src="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-datepicker/js/bootstrap-datepicker.html"></script>
         <script type="text/javascript" src="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-daterangepicker/date.html"></script>
         <script type="text/javascript" src="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-daterangepicker/daterangepicker-2.html"></script>
@@ -147,6 +150,7 @@ $TOUR_SUB_PHOTO = new TourSubSectionPhoto(NULL);
         <script src="assets/plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>
         <script src="delete/js/tour-sub-section.js" type="text/javascript"></script>
         <script src="js/post-tour-package-images.js" type="text/javascript"></script>
+        <script src="js/display-contact-number-verification-alert.js" type="text/javascript"></script>
         <script>
             //custom select box
             $(function () {

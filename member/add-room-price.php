@@ -9,7 +9,9 @@ if (isset($_GET['id'])) {
 //$Aid = $_GET['aid'];
 $ROOM = new Room($id);
 $ROOM_BASIS = RoomBasis::all();
-
+if (isset($_SESSION['isPhoneVerified'])) {
+    $isPhoneVerified = $_SESSION['isPhoneVerified'];
+}
 ?> 
 
 <html lang="en">
@@ -49,6 +51,7 @@ $ROOM_BASIS = RoomBasis::all();
             ?>
             <!--main content start-->
             <section id="main-content">
+                <div class="col-md-12 verified-alert"></div> 
                 <div class="wrapper">
                     <div class="container-fluid">
                         <div class="row  top-bott20"> 
@@ -57,7 +60,6 @@ $ROOM_BASIS = RoomBasis::all();
 
                             $vali->show_message();
                             ?>
-
                             <div class="panel panel-default">
                                 <div class="panel-heading"><i class="fa fa-save"></i> Create Room Price - <?php echo $ROOM->name; ?></div>
                                 <div class="panel-body">
@@ -91,7 +93,7 @@ $ROOM_BASIS = RoomBasis::all();
                                                                             </div>
                                                                             <div class="formrow col-md-6">
                                                                                 <input min="0" type="number" style="width: 100%" class="form-control"  name="basis[<?php echo $roombasis['id']; ?>]" id="price">
-                                                                                <input type="hidden" name="room" value="<?php echo $id;?>">
+                                                                                <input type="hidden" name="room" value="<?php echo $id; ?>">
                                                                             </div>
                                                                         </div>
 
@@ -108,6 +110,7 @@ $ROOM_BASIS = RoomBasis::all();
                                                                                                     </div>-->
                                                     <div class="text-left">
                                                         <button type="submit" name="save" class="btn btn-round btn-info">Save</button>
+                                                        <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" >
                                                     </div>
                                                 </div>
                                             </form>
@@ -116,41 +119,41 @@ $ROOM_BASIS = RoomBasis::all();
                                 </div>
                             </div>
                         </div>
-                        </section>
-                        <?php
-                        include './footer.php';
-                        ?>
-                        </section>
+                    </div>
+                </div>
+            </section>
+            <?php
+            include './footer.php';
+            ?>
+        </section>
 
-                        <script src="assets/js/jquery.js"></script>
-                        <script src="assets/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
-                        <script src="assets/js/bootstrap.min.js"></script>
-                        <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
-                        <script src="assets/js/jquery.scrollTo.min.js"></script>
-                        <script src="assets/js/common-scripts.js"></script>
+        <script src="assets/js/jquery.js"></script>
+        <script src="assets/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
+        <script src="assets/js/bootstrap.min.js"></script>
+        <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
+        <script src="assets/js/jquery.scrollTo.min.js"></script>
+        <script src="assets/js/common-scripts.js"></script>
 
-                        <script type="text/javascript" src="assets/js/bootstrap-inputmask/bootstrap-inputmask.min.js"></script>
-                        <script src="assets/plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>
+        <script type="text/javascript" src="assets/js/bootstrap-inputmask/bootstrap-inputmask.min.js"></script>
+        <script src="assets/plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>
+        <script src="js/display-contact-number-verification-alert.js" type="text/javascript"></script>
+        <script>
+            $(function () {
+                var dateToday = new Date();
+                /* global setting */
+                var datepickersOpt = {
+                    dateFormat: 'yy-mm-dd',
+                    minDate: dateToday
+                };
 
-                        <script>
-                            $(function () {
-                                var dateToday = new Date();
-                                /* global setting */
-                                var datepickersOpt = {
-                                    dateFormat: 'yy-mm-dd',
-                                    minDate: dateToday
-                                };
+                $(".datepicker").datepicker($.extend(datepickersOpt));
 
-                                $(".datepicker").datepicker($.extend(datepickersOpt));
+            });
 
-                            });
-
-                            //custom select box
-                            $(function () {
-                                $('select.styled').customSelect();
-                            });
-                        </script>
-
-                        </body>
-
-                        </html>
+            //custom select box
+            $(function () {
+                $('select.styled').customSelect();
+            });
+        </script>
+    </body>
+</html>

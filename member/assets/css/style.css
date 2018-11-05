@@ -2680,3 +2680,17 @@ img#profil_pic1 {
 .margin-top-dashboard{
     margin-top: 40px;
 }
+.verify-link a {
+    background: none;
+    color: #a94442;
+    text-decoration: none;
+}
+.verify-link a:hover {
+    background: none;
+    color: #dd9695;
+    text-decoration: none;
+}
+.info-icon {
+    margin-right: 15px;
+    font-size: 18px;
+}

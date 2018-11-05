@@ -4,13 +4,16 @@ include './class/include.php';
 if (!isset($_SESSION)) {
     session_start();
 }
+if (isset($_SESSION['isPhoneVerified'])) {
+    $isPhoneVerified = $_SESSION['isPhoneVerified'];
+}
 $memberid = '';
 if (isset($_GET['id'])) {
     $memberid = $_GET['id'];
 }
 if (!isset($_SESSION["vislogin"])) {
     $site_link = "https://" . $_SERVER['HTTP_HOST'];
-    $_SESSION["back_url"] = $site_link.'/visitor-message.php?id='.$memberid ;
+    $_SESSION["back_url"] = $site_link . '/visitor-message.php?id=' . $memberid;
     redirect('visitor-login.php?message=24');
 } else {
     $visitorid = $_SESSION['id'];
@@ -51,7 +54,9 @@ $DISTINCTMEMBERS = MemberAndVisitorMessages::getDistinctMembersByVisitorId($visi
         <div class="container-fluid">
             <div class="row background-image" style="background-image: url('images/hotel/back.jpg');">
                 <div class="container">
+                    <div class="col-md-12 verified-alert"></div>
                     <div id="frame">
+
                         <div id="sidepanel">
 
                             <div id="profile">
@@ -119,9 +124,11 @@ $DISTINCTMEMBERS = MemberAndVisitorMessages::getDistinctMembersByVisitorId($visi
                                         $MEMBER = new Member($MESSAGE->member);
                                         ?>
                                         <a href="visitor-message.php?id=<?php echo $MESSAGE->member; ?>">
-                                            <li class="contact <?php if ($MESSAGE->member == $memberid) {
-                                        echo 'active';
-                                    } ?>">
+                                            <li class="contact <?php
+                                            if ($MESSAGE->member == $memberid) {
+                                                echo 'active';
+                                            }
+                                            ?>">
                                                 <div class="wrap">
     <!--//                                                    <span class="contact-status online"></span>-->
                                                     <?php
@@ -357,8 +364,7 @@ $DISTINCTMEMBERS = MemberAndVisitorMessages::getDistinctMembersByVisitorId($visi
                                 </div>
                             </div>
                         </div>
-
-
+                        <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" >
                     </div>
 
                 </div>
@@ -375,7 +381,7 @@ $DISTINCTMEMBERS = MemberAndVisitorMessages::getDistinctMembersByVisitorId($visi
                 if (($hours == 24)) {
                     $new_hour = "00";
                     $part = "AM";
-                } else if($hours == 12) { 
+                } else if ($hours == 12) {
                     $new_hour = $hours;
                     $part = "PM";
                 } else {
@@ -386,18 +392,15 @@ $DISTINCTMEMBERS = MemberAndVisitorMessages::getDistinctMembersByVisitorId($visi
                 $new_hour = $hours;
                 $part = "AM";
             }
-
-
             return $new_hour . ":" . $mins . " " . $part;
         }
         ?>
 
-<?php include './footer.php'; ?>
+        <?php include './footer.php'; ?>
         <script src="js/jquery-2.2.4.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/member-visitor-messages.js" type="text/javascript"></script>
         <script src="js/visitor-message.js" type="text/javascript"></script>
-
+        <script src="js/display-contact-number-verification-alert.js" type="text/javascript"></script>
     </body> 
-
 </html>

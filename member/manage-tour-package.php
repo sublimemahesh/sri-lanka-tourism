@@ -4,6 +4,10 @@ include_once(dirname(__FILE__) . '/auth.php');
 
 $TOUR_PACKAGE = new TourPackage(NULL);
 $TOUR_PACKAGE_PHOTO = new TourSubSectionPhoto(NULL);
+
+if (isset($_SESSION['isPhoneVerified'])) {
+    $isPhoneVerified = $_SESSION['isPhoneVerified'];
+}
 ?> 
 <!DOCTYPE html>
 <html lang="en">
@@ -38,6 +42,7 @@ $TOUR_PACKAGE_PHOTO = new TourSubSectionPhoto(NULL);
             ?>
             <!--main content start-->
             <section id="main-content">
+                <div class="col-md-12 verified-alert"></div> 
                 <div class="wrapper">
                     <div class="container-fluid">
                         <div class="top-bott20"> 
@@ -87,6 +92,7 @@ $TOUR_PACKAGE_PHOTO = new TourSubSectionPhoto(NULL);
                                                                 <?php
                                                             }
                                                             ?>  
+                                                            <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" >
                                                         </div>
                                                     </div>  
                                                 </div>  
@@ -99,7 +105,6 @@ $TOUR_PACKAGE_PHOTO = new TourSubSectionPhoto(NULL);
                     </div>
                 </div>
             </section>
-
             <?php
             include './footer.php';
             ?>
@@ -111,10 +116,9 @@ $TOUR_PACKAGE_PHOTO = new TourSubSectionPhoto(NULL);
         <script src="assets/js/jquery.scrollTo.min.js"></script>
         <script src="assets/js/common-scripts.js"></script>
         <script src="assets/js/jquery-ui-1.9.2.custom.min.js"></script>
-
         <script type="text/javascript" src="assets/js/bootstrap-inputmask/bootstrap-inputmask.min.js"></script>
         <script src="assets/plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>
-
+        <script src="js/display-contact-number-verification-alert.js" type="text/javascript"></script>
         <script src="delete/js/tour-package.js" type="text/javascript"></script>
         <script>
             //custom select box
@@ -151,5 +155,4 @@ $TOUR_PACKAGE_PHOTO = new TourSubSectionPhoto(NULL);
             });
         </script>
     </body>
-
 </html>

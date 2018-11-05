@@ -28,11 +28,13 @@ class Member {
     public $about_me;
     public $rank;
     public $status;
+    public $phoneVerificationCode;
+    public $isPhoneVerified;
 
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`,`name`,`email`,`nic_number`,`date_of_birthday`,`contact_number`,`driving_licence_number`,`licence_front`,`licence_back`,`home_address`,`city`,`profile_picture`,`languages`,`facebookID`,`googleID`,`resetcode`,`authToken`,`about_me`,`status`,`rank` FROM `member` WHERE `id`=" . $id;
+            $query = "SELECT `id`,`name`,`email`,`nic_number`,`date_of_birthday`,`contact_number`,`driving_licence_number`,`licence_front`,`licence_back`,`home_address`,`city`,`profile_picture`,`languages`,`facebookID`,`googleID`,`resetcode`,`authToken`,`about_me`,`status`,`rank`,`phone_verification_code`,`isPhoneVerified` FROM `member` WHERE `id`=" . $id;
 
             $db = new Database();
 
@@ -58,6 +60,8 @@ class Member {
             $this->about_me = $result['about_me'];
             $this->rank = $result['rank'];
             $this->status = $result['status'];
+            $this->phoneVerificationCode = $result['phone_verification_code'];
+            $this->isPhoneVerified = $result['isPhoneVerified'];
 
             return $this;
         }
@@ -200,6 +204,8 @@ class Member {
         $_SESSION["email"] = $member->email;
         $_SESSION["profile_picture"] = $member->profile_picture;
         $_SESSION["authToken"] = $member->authToken;
+        $_SESSION["isPhoneVerified"] = $member->isPhoneVerified;
+        $_SESSION["member"] = TRUE;
     }
 
 //    public function authenticate() {
@@ -281,7 +287,7 @@ class Member {
         unset($_SESSION["authToken"]);
         unset($_SESSION["rank"]);
         unset($_SESSION["login"]);
-
+        unset($_SESSION["isPhoneVerified"]);
         return TRUE;
     }
 
@@ -590,6 +596,63 @@ class Member {
             return false;
         } else {
             return true;
+        }
+    }
+
+    public function generatePhoneNoVerifyCode($id) {
+
+        $rand = rand(10000, 99990);
+
+        $query = "UPDATE  `member` SET "
+                . "`phone_verification_code` ='" . $rand . "' "
+                . "WHERE `id` = '" . $id . "'";
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+
+        if ($result) {
+            return $rand;
+        } else {
+            return FALSE;
+        }
+    }
+
+    public function updateVerifiedStatus() {
+
+        $query = "UPDATE  `member` SET "
+                . "`isPhoneVerified` = 1 "
+                . "WHERE `id` = '" . $this->id . "'";
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+        if ($result) {
+            unset($_SESSION["isPhoneVerified"]);
+            $_SESSION["isPhoneVerified"] = 1;
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
+    
+    public function updateContactNumber() {
+
+        $query = "UPDATE  `member` SET "
+                . "`contact_number` = '" . $this->contact_number . "' "
+                . "WHERE `id` = '" . $this->id . "'";
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+        
+        if ($result) {
+            return TRUE;
+        } else {
+            return FALSE;
         }
     }
 

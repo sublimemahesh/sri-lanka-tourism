@@ -2,10 +2,6 @@
 
 include_once(dirname(__FILE__) . '/../class/include.php');
 
-
-
-
-
 if (isset($_POST['book'])) {
 
 
@@ -42,11 +38,11 @@ if (isset($_POST['book'])) {
 
     if ($VALID->passed()) {
         $RESULT = $TRANSPORT_BOOKING->create();
-        
+
         if (!isset($_SESSION)) {
             session_start();
         }
-        
+
         if ($RESULT) {
 
             $visitor_f_name = $VISITOR->first_name;
@@ -359,6 +355,14 @@ if (isset($_POST['book'])) {
                 if (!empty($member_email)) {
                     mail($member_email, $subject, $html, $headers);
                 }
+
+                $RATE = new TransportRates($RESULT->transport_rate);
+                $TRANSPORT = new Transport($RATE->transport_id);
+                $MEMBER = new Member($TRANSPORT->member);
+                $phoneno = $MEMBER->contact_number;
+                $message = "Your have a new transport booking in Sri Lanka Tourism";
+                $sendmsg = Helper::sendSMS($phoneno, $message);
+
                 $VALID->addError("Booking was completed successfully.please check your email", 'success');
                 $_SESSION['ERRORS'] = $VALID->errors();
                 header('Location: ' . $_SERVER['HTTP_REFERER']);
@@ -721,7 +725,14 @@ if (isset($_POST['book-rent-a-car'])) {
                 if (!empty($member_email)) {
                     mail($member_email, $subject, $html, $headers);
                 }
-                $VALID->addError("Booking was completed successfully.please check your email", 'success');
+                
+                $TRANSPORT = new Transport($RESULT->transport);
+                $MEMBER = new Member($TRANSPORT->member);
+                $phoneno = $MEMBER->contact_number;
+                $message = "Your have a new rent a car booking in Sri Lanka Tourism";
+                $sendmsg = Helper::sendSMS($phoneno, $message);
+
+                $VALID->addError("Booking was completed successfully. Please check your email", 'success');
                 $_SESSION['ERRORS'] = $VALID->errors();
                 header('Location: ' . $_SERVER['HTTP_REFERER']);
             } else {

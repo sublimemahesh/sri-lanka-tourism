@@ -1,6 +1,10 @@
 <?php
 include_once(dirname(__FILE__) . '/../class/include.php');
 include_once(dirname(__FILE__) . '/auth.php');
+
+if (isset($_SESSION['isPhoneVerified'])) {
+    $isPhoneVerified = $_SESSION['isPhoneVerified'];
+}
 $id = '';
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
@@ -43,6 +47,7 @@ $ACCOMMODATION = new Accommodation($id);
             ?>
             <!--main content start-->
             <section id="main-content">
+                <div class="col-md-12 verified-alert"></div> 
                 <div class="loading" id="loading">Loading&#8230;</div>
                 <div class="wrapper">
                     <div class="container-fluid">
@@ -52,7 +57,6 @@ $ACCOMMODATION = new Accommodation($id);
 
                             $vali->show_message();
                             ?>
-
                             <div class="panel panel-default">
                                 <div class="panel-heading"><i class="fa fa-save"></i> Manage Accommodation Images - <?php echo $ACCOMMODATION->name; ?></div>
                                 <div class="panel-body">
@@ -100,6 +104,7 @@ $ACCOMMODATION = new Accommodation($id);
                                         <div class="text-right">
                                             <a href="manage-accommodation.php"><button type="button" class="btn btn-round btn-info">Manage Accommodation</button></a>
                                         </div>
+                                        <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" >
                                     </div>
                                 </div>
                             </div>
@@ -131,6 +136,7 @@ $ACCOMMODATION = new Accommodation($id);
             });
 
         </script>
+        <script src="js/display-contact-number-verification-alert.js" type="text/javascript"></script>
         <script src="assets/tinymce/js/tinymce/tinymce.min.js"></script>
         <script>
             tinymce.init({

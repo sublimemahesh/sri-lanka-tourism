@@ -6,6 +6,9 @@ if (isset($_GET['id'])) {
     $id = $_GET['id'];
 }
 $TRANSPORTS = new Transports($id);
+if (isset($_SESSION['isPhoneVerified'])) {
+    $isPhoneVerified = $_SESSION['isPhoneVerified'];
+}
 ?> 
 <!DOCTYPE html>
 <html lang="en">
@@ -36,6 +39,7 @@ $TRANSPORTS = new Transports($id);
             ?>
             <!--main content start-->
             <section id="main-content">
+                <div class="col-md-12 verified-alert"></div> 
                 <div class="wrapper">
                     <div class="container-fluid">
                         <div class="row top-bott20"> 
@@ -44,7 +48,6 @@ $TRANSPORTS = new Transports($id);
 
                             $vali->show_message();
                             ?>
-
                             <div class="panel panel-default">
                                 <div class="panel-heading"><i class="fa fa-save"></i> Create Transport Images</div>
                                 <div class="panel-body">
@@ -92,6 +95,7 @@ $TRANSPORTS = new Transports($id);
                                         <div class="text-right">
                                             <a href="manage-transport.php"><button type="button" class="btn btn-round btn-info">Manage Transport</button></a>
                                         </div>
+                                        <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" >
                                     </div>
                                 </div>
                             </div>
@@ -115,7 +119,7 @@ $TRANSPORTS = new Transports($id);
 
         <script src="delete/js/transports-photo.js" type="text/javascript"></script>
         <script src="js/add-transport-photo.js" type="text/javascript"></script>
-
+        <script src="js/display-contact-number-verification-alert.js" type="text/javascript"></script>
         <script>
 
             $(function () {

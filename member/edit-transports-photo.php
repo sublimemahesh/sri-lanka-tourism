@@ -7,6 +7,9 @@ if (isset($_GET['id'])) {
     $id = $_GET['id'];
 }
 $TRANSPORTS_PHOTO = new TransportPhoto($id);
+if (isset($_SESSION['isPhoneVerified'])) {
+    $isPhoneVerified = $_SESSION['isPhoneVerified'];
+}
 ?> 
 <!DOCTYPE html>
 <html lang="en">
@@ -44,6 +47,7 @@ $TRANSPORTS_PHOTO = new TransportPhoto($id);
             ?>
             <!--main content start-->
             <section id="main-content">
+                <div class="col-md-12 verified-alert"></div> 
                 <div class="wrapper">
                     <div class="container-fluid">
                         <div class="row  top-bott20"> 
@@ -58,11 +62,8 @@ $TRANSPORTS_PHOTO = new TransportPhoto($id);
                                     <div class="body">
                                         <div class="userccount">
                                             <div class="formpanel"> 
-
                                                 <form class="form-horizontal" method="post" action="post-and-get/transport-photo.php" enctype="multipart/form-data"> 
                                                     <div class="col-md-12">
-
-
                                                         <div class="bottom-top">
                                                             <label for="caption">Title</label>
                                                             <div class="form-group">
@@ -71,7 +72,6 @@ $TRANSPORTS_PHOTO = new TransportPhoto($id);
                                                                 </div>
                                                             </div>
                                                         </div>
-
                                                         <div class="">
                                                             <label for="image">Image</label>
                                                             <div class="form-group">
@@ -80,19 +80,16 @@ $TRANSPORTS_PHOTO = new TransportPhoto($id);
                                                                     <img src="../upload/transport/transport-photo/gallery/<?php echo $TRANSPORTS_PHOTO->image_name; ?>" id="image" class="view-edit-img img img-responsive img-thumbnail" name="image" alt="old image">
                                                                 </div>
                                                             </div>
-
                                                         </div>
-
                                                         <div class="top-bott50">
                                                             <div class="bottom-top">
-
                                                                 <input type="hidden" id="oldImageName" value="<?php echo $TRANSPORTS_PHOTO->image_name; ?>" name="oldImageName"/>
                                                                 <input type="hidden" id="id" value="<?php echo $TRANSPORTS_PHOTO->id; ?>" name="id"/>
                                                                 <input type="hidden" id="authToken" value="<?php echo $_SESSION["id"]; ?>" name="memeber"/>
+                                                                <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" >
                                                                 <button name="update-transports-images" type="submit" class="btn btn-info center-block">Change</button>
                                                             </div>
                                                         </div> 
-
                                                     </div>  
                                                 </form>  
                                             </div>
@@ -132,17 +129,12 @@ $TRANSPORTS_PHOTO = new TransportPhoto($id);
         <script src="assets/js/jquery.tagsinput.js"></script>
 
         <!--custom checkbox & radio-->
-
         <script type="text/javascript" src="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-datepicker/js/bootstrap-datepicker.html"></script>
         <script type="text/javascript" src="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-daterangepicker/date.html"></script>
         <script type="text/javascript" src="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-daterangepicker/daterangepicker-2.html"></script>
-
         <script type="text/javascript" src="assets/js/bootstrap-inputmask/bootstrap-inputmask.min.js"></script>
-
-
         <script src="assets/js/form-component.js"></script>    
-
-
+        <script src="js/display-contact-number-verification-alert.js" type="text/javascript"></script>
         <script>
             //custom select box
 

@@ -2,6 +2,9 @@
 include_once(dirname(__FILE__) . '/../class/include.php');
 include_once(dirname(__FILE__) . '/auth.php');
 
+if (isset($_SESSION['isPhoneVerified'])) {
+    $isPhoneVerified = $_SESSION['isPhoneVerified'];
+}
 $TRANSPORTS = new Transports(NULL);
 $TRANSPORTS_PHOTO = new TransportPhoto(NULL);
 ?> 
@@ -36,6 +39,7 @@ $TRANSPORTS_PHOTO = new TransportPhoto(NULL);
             ?>
             <!--main content start-->
             <section id="main-content">
+                <div class="col-md-12 verified-alert"></div> 
                 <div class="wrapper">
                     <div class="container-fluid">
                         <div class="top-bott20"> 
@@ -66,8 +70,8 @@ $TRANSPORTS_PHOTO = new TransportPhoto(NULL);
                                                             <?php
                                                             foreach ($TRANSPORTS->getTransportsByMemberId($_SESSION['id']) as $key => $vehicle_t) {
                                                                 ?> 
-                                                                    <div class="col-md-3" id="div_<?php echo $vehicle_t['id']; ?>">
-                                                                        <div class="formrow">
+                                                                <div class="col-md-3" id="div_<?php echo $vehicle_t['id']; ?>">
+                                                                    <div class="formrow">
                                                                         <div>
                                                                             <?php
                                                                             if (count($TRANSPORTS_PHOTO) > 0) {
@@ -103,6 +107,7 @@ $TRANSPORTS_PHOTO = new TransportPhoto(NULL);
                                                                 <?php
                                                             }
                                                             ?>  
+                                                            <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" >
                                                         </div>
                                                     </div>  
                                                 </div>  
@@ -127,11 +132,9 @@ $TRANSPORTS_PHOTO = new TransportPhoto(NULL);
         <script src="assets/js/jquery.scrollTo.min.js"></script>
         <script src="assets/js/common-scripts.js"></script>
         <script src="assets/js/jquery-ui-1.9.2.custom.min.js"></script>
-
+        <script src="js/display-contact-number-verification-alert.js" type="text/javascript"></script>
         <script type="text/javascript" src="assets/js/bootstrap-inputmask/bootstrap-inputmask.min.js"></script>
         <script src="assets/plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>
-
-
         <script src="delete/js/transports.js" type="text/javascript"></script>
         <script>
             //custom select box
@@ -168,5 +171,4 @@ $TRANSPORTS_PHOTO = new TransportPhoto(NULL);
             });
         </script>
     </body>
-
 </html>

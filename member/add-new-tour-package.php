@@ -2,6 +2,10 @@
 include_once(dirname(__FILE__) . '/../class/include.php');
 include_once(dirname(__FILE__) . '/auth.php');
 
+if(isset($_SESSION['isPhoneVerified'])) {
+    $isPhoneVerified = $_SESSION['isPhoneVerified'];
+}
+
 $TOURTYPES = new TourType(NULL);
 $types = $TOURTYPES->all();
 ?> 
@@ -40,10 +44,10 @@ $types = $TOURTYPES->all();
             ?>
             <!--main content start-->
             <section id="main-content">
+                <div class="col-md-12 verified-alert"></div> 
                 <div class="wrapper">
                     <div class="container-fluid">
-                        <div class="row  top-bott20"> 
-
+                        <div class="row  top-bott20">
                             <div class="panel panel-default">
                                 <div class="panel-heading"><i class="fa fa-pencil"></i> Create Tour Package</div>
                                 <div class="panel-body">
@@ -119,6 +123,7 @@ $types = $TOURTYPES->all();
                                                             <div class="bottom-top">
                                                                 <input type="hidden" id="member" name="member" value="<?php echo $_SESSION['id']; ?>"/>
                                                                 <input type="submit" id="create" name="add-tour-package" class="btn btn-info center-block" value="Add tour package"/>
+                                                            <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" >
                                                             </div>
                                                         </div> 
                                                     </div>  
@@ -169,8 +174,7 @@ $types = $TOURTYPES->all();
 
 
         <script src="assets/js/form-component.js"></script>    
-
-
+<script src="js/display-contact-number-verification-alert.js" type="text/javascript"></script>
         <script>
             //custom select box
 

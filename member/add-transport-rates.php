@@ -17,8 +17,10 @@ if ($RENT_A_CAR !== FALSE) {
     $PRICE_P_DAY = '';
     $PRICE_P_EX = '';
 }
+if (isset($_SESSION['isPhoneVerified'])) {
+    $isPhoneVerified = $_SESSION['isPhoneVerified'];
+}
 ?> 
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -67,6 +69,7 @@ if ($RENT_A_CAR !== FALSE) {
             ?>
             <!--main content start-->
             <section id="main-content">
+                <div class="col-md-12 verified-alert"></div> 
                 <div class="wrapper">
                     <div class="container-fluid">
                         <div class="row  top-bott20"> 
@@ -245,7 +248,7 @@ if ($RENT_A_CAR !== FALSE) {
                                                                 <div class="bottom-top">
                                                                     <label for="distance">Price per day</label>
                                                                     <div class="formrow">
-                                                                        <input type="text" id="price_p_day" value="<?php echo $PRICE_P_DAY;?>"  class="form-control" placeholder="Enter price" autocomplete="off" name="price_p_day" required="true">
+                                                                        <input type="text" id="price_p_day" value="<?php echo $PRICE_P_DAY; ?>"  class="form-control" placeholder="Enter price" autocomplete="off" name="price_p_day" required="true">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -253,7 +256,7 @@ if ($RENT_A_CAR !== FALSE) {
                                                                 <div class="bottom-top">
                                                                     <label for="distance">Price per excess mileage</label>
                                                                     <div class="formrow">
-                                                                        <input type="text" id="price_p_extra" value="<?php echo $PRICE_P_EX;?>" class="form-control" placeholder="Enter price" autocomplete="off" name="price_p_extra" required="true">
+                                                                        <input type="text" id="price_p_extra" value="<?php echo $PRICE_P_EX; ?>" class="form-control" placeholder="Enter price" autocomplete="off" name="price_p_extra" required="true">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -262,6 +265,7 @@ if ($RENT_A_CAR !== FALSE) {
                                                                     <div class="bottom-top">
                                                                         <input type="hidden" id="id" value="<?php echo $TRANSPORTS->id; ?>" name="id"/>
                                                                         <button name="update" type="submit" class="btn btn-info">Update</button>
+                                                                        <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" >
                                                                     </div>
                                                                 </div>   
                                                             </div>
@@ -297,6 +301,7 @@ if ($RENT_A_CAR !== FALSE) {
         <script src="delete/js/transport-rate.js" type="text/javascript"></script>
         <script src="js/city-from.js" type="text/javascript"></script>
         <script src="js/city-to.js" type="text/javascript"></script>
+        <script src="js/display-contact-number-verification-alert.js" type="text/javascript"></script>
         <script>
             //custom select box
 

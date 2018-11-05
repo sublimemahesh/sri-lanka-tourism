@@ -76,19 +76,52 @@ if ($_POST['save']) {
             $VISITOR->email = $email;
             $VISITOR->password = $pw;
             $VISITOR->contact_number = filter_input(INPUT_POST, 'contact_number');
+//            dd($VISITOR->contact_number);
             $VISITOR->create();
 
+
             if ($VISITOR->id) {
-                $VISITOR->login($VISITOR->email, $VISITOR->password);
-                if ($back <> '') {
-                    $response['status'] = 'success';
-                    $response['back'] = $back;
-                    unset($_SESSION["back_url"]);
-                } else {
-                    $response['status'] = 'success';
-                    $response['back'] = '';
+                $login = $VISITOR->login($VISITOR->email, $VISITOR->password);
+                if ($login) {
+                    $vid = $VISITOR->id;
+                    $phoneno = $VISITOR->contact_number;
+                    $code = Visitor::generatePhoneNoVerifyCode($vid);
+                    $message = "Your Sri Lanka Tourism Verification code is " . $code;
+                    $sendmsg = Helper::sendSMS($phoneno, $message);
+
+                    if ($sendmsg) {
+                        $response['status'] = 'success';
+
+                        if (!isset($_SESSION)) {
+                            session_start();
+                        }
+                        $_SESSION['registered'] = TRUE;
+                        if ($back <> '') {
+                            $_SESSION['back'] = $back;
+                            unset($_SESSION["back_url"]);
+                        }
+                        echo json_encode($response);
+                        exit();
+                    } else {
+                        $response['status'] = 'notdelivered';
+                        if ($back <> '') {
+                            $response['back'] = $back;
+                        } else {
+                            $response['back'] = '';
+                        }
+                    }
+                    echo json_encode($response);
+                    exit();
                 }
-                echo json_encode($response);
+//                if ($back <> '') {
+//                    $response['status'] = 'success';
+//                    $response['back'] = $back;
+//                    unset($_SESSION["back_url"]);
+//                } else {
+//                    $response['status'] = 'success';
+//                    $response['back'] = '';
+//                }
+//                echo json_encode($response);
             } else {
                 $response['status'] = 'error';
                 $response['message'] = "Oops. Something went wrong, Please try again.";

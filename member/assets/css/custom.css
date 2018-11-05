@@ -526,3 +526,63 @@ and open the template in the editor.
     background: #1f5e9c !important;
     color: white !important;
 }
+.verification-page-title {
+    color: #f0522e;
+    padding-left: 15px;
+    font: 2.33em/1em 'Ubuntu Condensed', sans-serif;
+}
+.verification-page-details hr {
+    margin: 0 0 20px 15px;
+    border-top: 2px solid #f47728;
+}
+.verify-link a {
+    background: none;
+    color: #a94442;
+    text-decoration: none;
+}
+.verify-link a:hover {
+    background: none;
+    color: #dd9695;
+    text-decoration: none;
+}
+.margin-panel {
+    margin-top: 40px;
+    padding: 50px;
+}
+#submitPIN {
+    margin-top: 20px;
+}
+.verified-alert1 {
+    margin: 70px 0px 0px;
+}
+.verified-alert .alert{
+    margin-bottom: 0px;
+}
+.info-icon {
+    margin-right: 15px;
+    font-size: 18px;
+}
+.contact-number {
+    padding: 10px 20px;
+    background: #ccc;
+    font-size: 15px;
+    font-weight: 600;
+    border: 1px solid #eee;padding: 10px 20px;
+    background: #ccc;
+    font-size: 15px;
+    font-weight: 600;
+    border: 1px solid #eee;
+}
+.view-number {
+    padding: 30px 20px;
+    border: 2px solid #ccc;
+    margin: 0px 200px 20px;
+    border-radius: 10px;
+}
+#updatenumber {
+    margin-top: 20px;
+}
+.p-hidden {
+    font-weight: 600;
+    margin-bottom: 20px;
+}
