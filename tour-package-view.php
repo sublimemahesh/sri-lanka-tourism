@@ -1,30 +1,26 @@
 <?php
 include_once(dirname(__FILE__) . '/class/include.php');
-
 if (!isset($_SESSION)) {
     session_start();
 }
 $tourid = $_GET['id'];
 $TOURPACK = new TourPackage($tourid);
-
-
 $TOURSUBSECTION = new TourSubSection(NULL);
 $subsections = $TOURSUBSECTION->GetTourSubSectionByTourPackage($tourid);
-
 $PACKAGES = new TourPackage(NULL);
 $packages = $PACKAGES->getTourPackagesByTourType($TOURPACK->tourtype);
-
 $TOURPACKAGEFEEDBACK = new Feedback(NULL);
 $feedbacks = $TOURPACKAGEFEEDBACK->getFeedbackByTourPackageID($tourid);
-
 $count_feedbacks = count($feedbacks);
 ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Sri Lanka || Tourism</title>
+        <title><?php echo $TOURPACK->name; ?> || Tour Packages || Sri Lanka || Tourism</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="keywords" content="sri lanka tourism, tourism in sri lanka, Sri Lanka, tours in sri lanka,<?php echo $TOURPACK->name; ?>, taxi in sri lanka, tourism sri lanka, rent a cars in sri lanka, tour packages in sri lanka, holiday in sri lanka, visit sri lanka, tour packages offers, offers in tour packages, articles in sri lanka, destination in sri lanka, tour plans for sri lanka, sri lanka tour plans, round tours in sri lanka, one day tour in sri lanka, wild life in sri lanka, scenic places in sri lanka, thills in sri lanka, heritage places in sri lanka, day tours, classic tours, wild tours, packages, packages in sri lanka, economic tour packages in sri lanka">
+        <meta name="description" content="The team Sri Lanka Tourism crew is privileged to show you and to take you around the most beautiful places in Sri Lanka. You can Plan your tour with Sri Lanka Tourism and, tours are judiciously planned and customized to meet your needs. And also, Sri Lanka Tourism features well established taxi service and hotel service. So your trip will be everything you imagined and much more.">
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/font-awesome.min.css" rel="stylesheet">
         <link href="css/comments-style.css" rel="stylesheet" type="text/css"/>
@@ -41,14 +37,12 @@ $count_feedbacks = count($feedbacks);
         <?php
         include './header.php';
         ?>
-
         <div class="row background-image" style="background-color: #fff;">
             <div class="container tour-view-container">
                 <div class="col-md-9">
                     <div class="tourpack">
                         <h1><?php echo strtoupper($TOURPACK->name); ?></h1>
                         <span class="text-justify"><?php echo $TOURPACK->description; ?></span>
-
                     </div>
                     <?php
                     if ($subsections) {
@@ -59,7 +53,6 @@ $count_feedbacks = count($feedbacks);
                                 <h4 class="tour-day"><?php echo $subsection['title']; ?></h4>
                                 <hr class="style15">
                                 <div class="view-tour-title">
-        <!--                                    <strong>Day 01 - Start at Negombo</strong>-->
                                 </div>
                                 <div class="view-tour-description">
                                     <?php echo $subsection['description']; ?> 
@@ -69,18 +62,15 @@ $count_feedbacks = count($feedbacks);
                                     <?Php
                                     $locations = $subsection['locations'];
                                     $loc_arr = explode(',', $locations);
-
                                     for ($i = 0; $i < count($loc_arr); $i++) {
                                         $ARTICLES = new Article($loc_arr[$i]);
                                         if ($i == count($loc_arr) - 1) {
                                             ?>
                                             <span><a href="article-view.php?id=<?php echo $ARTICLES->id; ?>"><?php echo $ARTICLES->location; ?></a></span>
-
                                             <?php
                                         } else {
                                             ?>
                                             <span><a href="article-view.php?id=<?php echo $ARTICLES->id; ?>"><?php echo $ARTICLES->location; ?></a>, </span>
-
                                             <?php
                                         }
                                     }
@@ -101,7 +91,6 @@ $count_feedbacks = count($feedbacks);
                                         <?php
                                     }
                                     ?>
-
                                 </div>
                             </div>
                             <?php
@@ -116,8 +105,6 @@ $count_feedbacks = count($feedbacks);
                         <?php
                     }
                     ?>
-
-
                     <div class="row top-margin-30">
                         <div class="col-md-4 col-xs-4 col-md-offset-2 book-now-btn">
                             <a href="tour-package-booking.php?tour=<?php echo $tourid; ?>" class="button"><span>Book Now </span></a>
@@ -128,7 +115,6 @@ $count_feedbacks = count($feedbacks);
                             </a>
                         </div>
                     </div>
-
                     <div class="col-sm-12">			
                         <div id="myCarousel" class="carousel slide tour-package-testimonials" data-ride="carousel">
                             <h2 class="tt-comment">Customer <b>Testimonials</b></h2>
@@ -151,9 +137,7 @@ $count_feedbacks = count($feedbacks);
                                 <?php
                                 $li = '';
                                 foreach ($feedbacks as $key => $feedback) {
-
                                     $VISITOR = new Visitor($feedback['visitor']);
-
                                     if ($key === 0) {
                                         $li .= ' <li data-target="#myCarousel" data-slide-to="' . $key . '" class="active">'
                                                 . '</li>';
@@ -171,7 +155,6 @@ $count_feedbacks = count($feedbacks);
                                                             <img src="upload/visitor/member.png"/>
                                                             <?php
                                                         } else {
-
                                                             if ($VISITOR->facebookID && substr($VISITOR->image_name, 0, 5) === "https") {
                                                                 ?>
                                                                 <img src="<?php echo $VISITOR->image_name; ?>"/>
@@ -225,7 +208,6 @@ $count_feedbacks = count($feedbacks);
                                                             <img src="upload/visitor/member.png"/>
                                                             <?php
                                                         } else {
-
                                                             if ($VISITOR->facebookID && substr($VISITOR->image_name, 0, 5) === "https") {
                                                                 ?>
                                                                 <img src="<?php echo $VISITOR->image_name; ?>"/>
@@ -301,21 +283,14 @@ $count_feedbacks = count($feedbacks);
                         <?php
                     }
                     ?>
-
                 </div>
             </div>
         </div>
-
-
         <?php
         include './footer.php';
         ?>
         <script src="js/jquery-2.2.4.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
-        <!--        <link href="css/lightbox.min.css" rel="stylesheet" type="text/css"/>
-                <script src="js/lightbox-plus-jquery.min.js" type="text/javascript"></script>
-                <script src="js/jquery.flexslider.js" type="text/javascript"></script>-->
-
         <script src="js/slider/magnific.popup.min.js" type="text/javascript"></script>
         <script src="js/slider/custom.js" type="text/javascript"></script>
         <script>
@@ -327,9 +302,7 @@ $count_feedbacks = count($feedbacks);
 
             jQuery('#create').click(function (event) {
                 event.preventDefault();
-
                 var captchacode = jQuery('#captchacode').val();
-
                 jQuery.ajax({
                     url: "visitor-feedback/captchacode.php",
                     cache: false,
@@ -337,19 +310,15 @@ $count_feedbacks = count($feedbacks);
                     type: "POST",
                     data: {
                         captchacode: captchacode
-
                     },
                     success: function (html) {
                         var status = html.status;
                         var msg = html.msg;
-
                         if (status == "incorrect") {
-
                             jQuery("#capspan").addClass("notvalidated");
                             jQuery("#capspan").html(msg);
                             jQuery("#capspan").show();
                             jQuery("#capspan").fadeOut(2000);
-
                         } else if (status == "correct") {
                             jQuery('#client-comment').submit();
                         }
@@ -362,10 +331,7 @@ $count_feedbacks = count($feedbacks);
                 jQuery('.btn-not-loging').click(function () {
                     jQuery("#myModal").modal('show');
                 });
-
-
             });
         </script>
     </body> 
-
 </html>

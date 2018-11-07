@@ -1,7 +1,9 @@
 $(document).ready(function () {
 
     $('#front-picture').change(function () {
-        $('#loading').show();
+        $('.box').jmspinner('large');
+        $('.box').addClass('well');
+        $('.box').css('z-index','9999');
         var formData = new FormData($('#frontForm')[0]);
 
         $.ajax({
@@ -13,7 +15,9 @@ $(document).ready(function () {
             success: function (mess) {
 
                 $("#front_pic").attr("src", "../upload/transport/licence/" + mess.filename);
-                $('#loading').hide();
+                $('.box').jmspinner(false);
+                $('.box').removeClass('well');
+                $('.box').css('z-index','-1111');
                 location.reload()
             },
             cache: false,
@@ -24,7 +28,9 @@ $(document).ready(function () {
     });
 
     $('#back-picture').change(function () {
-        $('#loading').show();
+        $('.box').jmspinner('large');
+        $('.box').addClass('well');
+        $('.box').css('z-index','9999');
         var formData = new FormData($('#backForm')[0]);
 
         $.ajax({
@@ -36,7 +42,9 @@ $(document).ready(function () {
             success: function (mess) {
 
                 $("#back_pic").attr("src", "../upload/transport/licence/" + mess.filename);
-                $('#loading').hide();
+                $('.box').jmspinner(false);
+                $('.box').removeClass('well');
+                $('.box').css('z-index','-1111');
                 location.reload()
             },
             cache: false,

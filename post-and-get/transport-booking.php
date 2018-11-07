@@ -31,8 +31,7 @@ if (isset($_POST['book'])) {
     $VALID->check($TRANSPORT_BOOKING, [
         'date' => ['required' => TRUE],
         'time' => ['required' => TRUE],
-        'no_of_passengers' => ['required' => TRUE],
-        'no_of_baggage' => ['required' => TRUE]
+        'no_of_passengers' => ['required' => TRUE]
     ]);
 
 

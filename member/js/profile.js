@@ -1,7 +1,10 @@
 $(document).ready(function () {
 
     $('#pro-picture').change(function () {
-        $('#loading').show();
+        $('.box').jmspinner('large');
+        $('.box').addClass('well');
+        $('.box').css('z-index','9999');
+        
         var formData = new FormData($('#upForm')[0]);
 
         $.ajax({
@@ -14,7 +17,9 @@ $(document).ready(function () {
 
                 $("#profil_pic").attr("src", "../upload/member/" + mess.filename);
                 $("#profil_pic1").attr("src", "../upload/member/" + mess.filename);
-                $('#loading').hide();
+                $('.box').jmspinner(false);
+                $('.box').removeClass('well');
+                $('.box').css('z-index','-1111');
 
             },
             cache: false,

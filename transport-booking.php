@@ -14,8 +14,6 @@ if (!isset($_SESSION["vislogin"])) {
 } else {
     $VISITOR = $_SESSION["id"];
 }
-
-
 $TRANSPORT_RATE = new TransportRates($RATE);
 $VISITOR = new Visitor($VISITOR);
 $TRANSPORT = new Transports($TRANSPORT_RATE->transport_id);
@@ -23,11 +21,8 @@ $TRANSPORTS_PHOTO = new TransportPhoto(NULL);
 $CONDITION = new VehicleCondition($TRANSPORT->condition);
 $TYPE = new VehicleType($TRANSPORT->vehicle_type);
 $FUEL_TYPE = new FuelType($TRANSPORT->fuel_type);
-
 $CITY_FROM = new City($TRANSPORT_RATE->location_from);
 $CITY_TO = new City($TRANSPORT_RATE->location_to);
-
-
 $today = date("Y-m-d", time());
 date_default_timezone_set('Asia/Colombo');
 $now = date('Y-m-d H:i:s');
@@ -35,8 +30,10 @@ $now = date('Y-m-d H:i:s');
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Sri Lanka || Tourism</title>
+        <title><?php echo $TRANSPORT->title; ?> || Transports || Sri Lanka || Tourism</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="keywords" content="sri lanka tourism, tourism in sri lanka, Sri Lanka, tours in sri lanka, <?php echo $TRANSPORT->title; ?>, transport booking, vehicle booking, rent a car booking, taxi in sri lanka, tourism sri lanka, rent a cars in sri lanka, transports in sri lanka, transport ways in sri lanka, sri lanka transports, vehicles in sri lanka, self driving vehicles, vehicle with chauffeur diver, luxuary vehicles, economy vehicles, hiring vehicles, hiring taxi">
+        <meta name="description" content="The team Sri Lanka Tourism crew is privileged to show you and to take you around the most beautiful places in Sri Lanka. You can Plan your tour with Sri Lanka Tourism and, tours are judiciously planned and customized to meet your needs. And also, Sri Lanka Tourism features well established taxi service and hotel service. So your trip will be everything you imagined and much more.">
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href="css/font-awesome.min.css" rel="stylesheet">
         <link rel="stylesheet" href="css/style.css">
@@ -62,17 +59,13 @@ $now = date('Y-m-d H:i:s');
         <div class="container">
             <div class="row top-bott20">
                 <div class="col-md-9">
-
                     <div class="body">
-
                         <div class="transport-booking-box margin-panel">
                             <?php
                             $vali = new Validator();
                             $vali->show_message();
                             ?>
-
                             <form method="post" action="post-and-get/transport-booking.php" enctype="multipart/form-data">
-
                                 <div class="row panel panel-default booking-panel-default">
                                     <div class="col-md-6">
                                         <div class="bottom-top">Picking Up</div>
@@ -119,15 +112,11 @@ $now = date('Y-m-d H:i:s');
                                                 <input type="text" readonly="true" name="contact_number" class="form-control input-type-bottom" placeholder="-" value="<?php echo $VISITOR->contact_number; ?>">
                                             </div>
                                         </div> 
-
                                     </div>
-
                                 </div>
-
                                 <h4 class="booking-transports-title text-center">Vehicle Booking Details</h4>
                                 <div class="row panel panel-default booking-panel-default">
                                     <div class="col-sm-12 col-md-12">
-
                                         <div class="col-md-6">
                                             <div class="bottom-top">Number of Passengers</div>
                                             <div class="formrow">
@@ -140,7 +129,6 @@ $now = date('Y-m-d H:i:s');
                                                 <input type="number" min="0" name="no_of_baggage" class="form-control input-type-bottom" placeholder="Maximum Number of baggage" required="TRUE">
                                             </div>
                                         </div>
-
                                         <div class="col-md-6">
                                             <div class="bottom-top">Booking Date</div>
                                             <div class="formrow">
@@ -148,7 +136,6 @@ $now = date('Y-m-d H:i:s');
                                                 <br>
                                             </div>
                                         </div>
-
                                         <div class="col-md-6">
                                             <div class="bottom-top">Booking Time</div>
                                             <div class="formrow">
@@ -156,7 +143,6 @@ $now = date('Y-m-d H:i:s');
                                                 <br>
                                             </div>
                                         </div>
-
                                         <div class="col-md-12">
                                             <div class="bottom-top">Message</div>
                                             <div class="formrow">
@@ -165,7 +151,6 @@ $now = date('Y-m-d H:i:s');
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
                                 <div class="row">
                                     <div class="top-bott50">
@@ -179,9 +164,7 @@ $now = date('Y-m-d H:i:s');
                                 </div>
                             </form>
                         </div>
-
                     </div>
-
                 </div>
                 <div class="col-md-3">
                     <div class="row top-bott20">
@@ -189,7 +172,6 @@ $now = date('Y-m-d H:i:s');
                             <div class="panel-heading">SELECTED VEHICLE</div>
                             <div class="panel-body">
                                 <h4 class="booking-transports-title text-center"><?php echo $TRANSPORT->title; ?></h4>
-
                                 <div class="transport-booking-img">
                                     <?php
                                     foreach ($TRANSPORTS_PHOTO->getTransportPhotosById($TRANSPORT->id) as $key => $TRANSPORTS_P) {
@@ -202,7 +184,6 @@ $now = date('Y-m-d H:i:s');
                                     }
                                     ?>
                                 </div>
-
                                 <ul class="list-group visitor-list-color">
                                     <li class="list-group-item"><b>Condition</b> : <?php echo $CONDITION->name; ?></li> 
                                     <li class="list-group-item"><b>Vehicle Type</b> : <?php echo $TYPE->name; ?></li> 
@@ -226,10 +207,8 @@ $now = date('Y-m-d H:i:s');
                 </div>
             </div>
         </div>
-
         <!-- Our Resort Values style-->  
         <?php include './footer.php' ?>
-
         <script src="js/jquery-2.2.4.min.js"></script>
         <script src="assets/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
         <script src="js/bootstrap.min.js"></script>
@@ -242,9 +221,7 @@ $now = date('Y-m-d H:i:s');
                     dateFormat: 'yy-mm-dd',
                     minDate: dateToday
                 };
-
                 $(".datepicker").datepicker($.extend(datepickersOpt));
-
             });
 
             $(function () {

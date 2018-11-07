@@ -228,26 +228,7 @@ input[type="password"] {
 .forget-password-link a{
     color: #fff;
 }
-@media (min-width: 320px) and (max-width: 640px) {
-    .member-login-btn-container {
-        padding-top: 0px !important;
-    }
-    .member-img {
-        margin-left: 55px !important;
-        width: 60% !important;
-    }
-    .buttonreg{
-        margin-bottom: 50px;
-        width: 100%;
-    }
-    .margin-l-20 {
-        margin-left: 0px;
-    }
-    .social-log-buttons{
-        width: 100%;
-    }
 
-}
 .btn::after {
     content: "";
     position: relative;
@@ -357,7 +338,7 @@ p{
     border-radius: 10px;
 }
 #updatenumber {
-    margin-top: 20px;
+    /*margin-top: 20px;*/
 }
 .verification-page-details h5 a {
     background: none;
@@ -370,4 +351,51 @@ p{
 .intl-tel-input {
     width: 100%;
     margin-bottom: 18px;
+}
+.top-bott20 {
+    margin-top: 10px;
+}
+.resend-contact-title {
+    text-align: right;
+}
+.intl-tel-input {
+    width: 100%;
+}
+@media (min-width: 320px) and (max-width: 640px) {
+    .member-login-btn-container {
+        padding-top: 0px !important;
+    }
+    .member-img {
+        margin-left: 55px !important;
+        width: 60% !important;
+    }
+    .buttonreg{
+        margin-bottom: 50px;
+        width: 100%;
+    }
+    .margin-l-20 {
+        margin-left: 0px;
+    }
+    .social-log-buttons{
+        width: 100%;
+    }
+    .view-number {
+        margin: 0px 0px 20px;
+    }
+    .resend-contact-title {
+        text-align: center;
+    }
+    .resend-contact-no {
+        margin-top: 15px;
+        text-align: center;
+    }
+
+}
+@media (min-width: 640px) and (max-width: 1000px) {
+    .view-number {
+        margin: 0px 96px 20px;
+    }
+    .intl-tel-input .country-list {
+        width: 340px;
+    }
 }

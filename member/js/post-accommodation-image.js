@@ -1,6 +1,8 @@
 $(document).ready(function () {
     $('#accommodation-picture').change(function () {
-        $('#loading').show();
+        $('.box').jmspinner('large');
+        $('.box').addClass('well');
+        $('.box').css('z-index','9999');
         var formData = new FormData($('#form-accommodation')[0]);
         $.ajax({
             url: "post-and-get/ajax/post-accommodation-images.php",
@@ -20,7 +22,9 @@ $(document).ready(function () {
                 html += '</div>';
                 $('#image-list').prepend(html);
 
-                $('#loading').hide();
+                $('.box').jmspinner(false);
+                $('.box').removeClass('well');
+                $('.box').css('z-index','-1111');
             },
             cache: false,
             contentType: false,

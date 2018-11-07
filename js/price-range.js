@@ -27,7 +27,7 @@ $(document).ready(function () {
                             to: max,
                             type: 'double',
                             step: 1,
-                            prefix: "LKR ",
+                            prefix: "USD ",
                             grid: true
                         });
 

@@ -1,10 +1,8 @@
 <?php
 include_once(dirname(__FILE__) . '/class/include.php');
-
 if (!isset($_SESSION)) {
     session_start();
 }
-
 $id = $_GET["id"];
 $ACCOMMODATIONS = new Accommodation($id);
 $ACCOMMODATION_PHOTO = new AccommodationPhoto(NULL);
@@ -14,13 +12,14 @@ $MEMBER = new Member($ACCOMMODATIONS->member);
 $ACCOMMODATION_TYPE = new AccommodationType($ACCOMMODATIONS->type);
 $CITY = new City($ACCOMMODATIONS->city);
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Sri Lanka || Tourism</title>
+        <title><?php echo $ACCOMMODATIONS->name; ?> || Hotels || Sri Lanka || Tourism</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="keywords" content="sri lanka tourism, tourism in sri lanka, Sri Lanka, <?php echo $ACCOMMODATIONS->name; ?>, tours in sri lanka, holiday in sri lanka, visit sri lanka, accommodations, hotels, villas, apartments, accommodations in sri lanka, hotels in sri lanka, villas in sri lanka, apartments in sri lanka, budget hotels in sri lanka, economy in sri lanka, budget accommodations in sri lanka, economy accommodations in sri lanka">
+        <meta name="description" content="The team Sri Lanka Tourism crew is privileged to show you and to take you around the most beautiful places in Sri Lanka. You can Plan your tour with Sri Lanka Tourism and, tours are judiciously planned and customized to meet your needs. And also, Sri Lanka Tourism features well established taxi service and hotel service. So your trip will be everything you imagined and much more.">
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href="css/font-awesome.min.css" rel="stylesheet">
         <link rel="stylesheet" href="css/style.css">
@@ -58,7 +57,6 @@ $CITY = new City($ACCOMMODATIONS->city);
                 </div>
             </div> 
         </div>
-
         <div class="container transport-container">
             <div class="row">
                 <div class="col-md-8">
@@ -77,14 +75,12 @@ $CITY = new City($ACCOMMODATIONS->city);
                 </div>
                 <div class="col-md-4">
                     <div class="sidebar">
-
                         <div class="widget-member">
                             <div class="row">
                                 <p class="published-by">Published By</p>
                             </div>
                             <div class="row">
                                 <div class="col-md-4 col-sm-4 col-xs-4">
-
                                     <a href="member-view.php?id=<?php echo $MEMBER->id; ?>" class="link">
                                         <?php
                                         if (empty($MEMBER->id)) {
@@ -113,7 +109,6 @@ $CITY = new City($ACCOMMODATIONS->city);
                                             }
                                         }
                                         ?>
-
                                     </a>
                                 </div>
                                 <div class="col-md-8 col-sm-8 col-xs-8">
@@ -122,8 +117,6 @@ $CITY = new City($ACCOMMODATIONS->city);
                             </div>
                         </div>
                     </div>
-
-
                     <div class="jbside">
                         <ul class="jbdetail" style="margin-top: -9px;">
                             <div class="hp-review">
@@ -165,8 +158,6 @@ $CITY = new City($ACCOMMODATIONS->city);
                     </div>
                 </div>
             </div>
-
-
             <div class="row">
                 <div class="col-md-8">
                     <div class="transport-description">
@@ -180,12 +171,9 @@ $CITY = new City($ACCOMMODATIONS->city);
                         </div>
                         <div class="hp-amini">
                             <ul>
-
                                 <?php
                                 $ALL_FACILITIES = AccommodationFacilityDetails::getFacilitiesByAccommodationId($id);
-
                                 $FACILITIES = explode(",", $ALL_FACILITIES['facility']);
-
                                 foreach ($FACILITIES as $key => $facility) {
                                     $ACCOMMODATION_FACILITY = new AccommodationGeneralFacilities($facility);
                                     ?>
@@ -197,22 +185,11 @@ $CITY = new City($ACCOMMODATIONS->city);
                         </div>
                     </div>
                 </div>
-
-
                 <div class="col-md-4">
                     <div class="sidebar">
                         <div class="widget">
                             <div id="myCarousel" class="carousel slide" data-ride="carousel">
                                 <h2 class="t-comment">Customer Testimonials</h2>
-                                <!-- Carousel indicators -->
-
-                                <!--                                <ol class="carousel-indicators">
-                                                                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                                                                    <li data-target="#myCarousel" data-slide-to="1"></li>
-                                                                    <li data-target="#myCarousel" data-slide-to="2"></li>
-                                                                </ol>   -->
-
-
                                 <!-- Wrapper for carousel items -->
                                 <div class="carousel-inner">
                                     <?php
@@ -257,19 +234,12 @@ $CITY = new City($ACCOMMODATIONS->city);
                                                                     <div class="details"><?php echo $accommodation_feedback['title']; ?></div>
                                                                     <div class="star-rating-t">
                                                                         <ul class="list-inline">
-
-
-
                                                                             <ul class="list-inline">
                                                                                 <?php
                                                                                 $starNumber = $accommodation_feedback['rate'];
                                                                                 for ($x = 1; $x <= $starNumber; $x++) {
                                                                                     echo '<li class = "list-inline-item"><i class = "fa fa-star"></i></li>';
                                                                                 }
-//                                                                            if (strpos($starNumber, '.')) {
-//                                                                                echo '<img src="path/to/half/star.png" />';
-//                                                                                $x++;
-//                                                                            }
                                                                                 while ($x <= 5) {
                                                                                     echo '<li class = "list-inline-item"><i class = "fa fa-star-o"></i></li>';
                                                                                     $x++;
@@ -282,7 +252,6 @@ $CITY = new City($ACCOMMODATIONS->city);
                                                             </div>
                                                         </div>
                                                     </div>
-
                                                 </div>			
                                             </div>
                                             <?php
@@ -326,10 +295,6 @@ $CITY = new City($ACCOMMODATIONS->city);
                                                                             for ($x = 1; $x <= $starNumber; $x++) {
                                                                                 echo '<li class = "list-inline-item"><i class = "fa fa-star"></i></li>';
                                                                             }
-//                                                                            if (strpos($starNumber, '.')) {
-//                                                                                echo '<img src="path/to/half/star.png" />';
-//                                                                                $x++;
-//                                                                            }
                                                                             while ($x <= 5) {
                                                                                 echo '<li class = "list-inline-item"><i class = "fa fa-star-o"></i></li>';
                                                                                 $x++;
@@ -341,7 +306,6 @@ $CITY = new City($ACCOMMODATIONS->city);
                                                             </div>
                                                         </div>
                                                     </div>
-
                                                 </div>			
                                             </div>
                                             <?php
@@ -369,15 +333,11 @@ $CITY = new City($ACCOMMODATIONS->city);
                     </div>
                 </div>
             </div>
-
-
             <div class="row top-margin-30">
                 <div class="col-md-12">
-
                     <div class="head-typo typo-com">
                         <h2>Rooms</h2>
                         <div class="row events">
-
                         </div>
                         <?php
                         $ROOM = Room::getAccommodationRoomsById($id);
@@ -388,7 +348,6 @@ $CITY = new City($ACCOMMODATIONS->city);
                                 <div class="row events">
                                     <div class="room-title-btn" id="room-title-<?php echo $room['id']; ?>" >
                                         <div class="col-md-2">  
-
                                             <?php
                                             foreach ($ROOM_PHOTO->getRoomPhotosById($room['id']) as $key => $room_p) {
                                                 if ($key == 1) {
@@ -426,7 +385,6 @@ $CITY = new City($ACCOMMODATIONS->city);
                                     <div class="col-md-2 accommoadtion-register-button">
                                         <a href="accommodation-booking.php?accommodation=<?php echo $id; ?>" class="waves-effect waves-light event-regi">Book Now</a> 
                                     </div>
-
                                 </div>
                             </div>
                             <div id="demo_<?php echo $room['id']; ?>" class="collapse room-border">
@@ -464,7 +422,7 @@ $CITY = new City($ACCOMMODATIONS->city);
                                                     ?>
                                                     <tr>
                                                         <td data-column="Price"><?php echo $BASIS->name; ?></td>
-                                                        <td data-column="Price">LKR <?php echo $room_price['price']; ?>.00</td>
+                                                        <td data-column="Price">USD <?php echo $room_price['price']; ?>.00</td>
                                                     </tr>
                                                     <?php
                                                 }
@@ -472,7 +430,6 @@ $CITY = new City($ACCOMMODATIONS->city);
                                             </tbody>
                                         </table>
                                     </div>
-
                                     <div class="col-md-12">
                                         <div class="hp-sub-tit">
                                             <h4><span>Description</span></h4>
@@ -480,22 +437,14 @@ $CITY = new City($ACCOMMODATIONS->city);
                                         <?php echo $room['description']; ?>
                                     </div>
                                 </div>
-
-
-
                             </div>
                             <!--END EVENT-->
                             <?php
                         }
                         ?>
                     </div>
-
-
-
-
                 </div>
             </div>
-
             <div class="row top-margin-30">
                 <div class="col-md-12 col-md-offset-4 message-now">
                     <a href="visitor-message.php?id=<?php echo $ACCOMMODATIONS->member; ?>" class="btn btn-info btn-lg col-md-4 message-now-btn">
@@ -503,11 +452,7 @@ $CITY = new City($ACCOMMODATIONS->city);
                     </a>
                 </div>
             </div>
-
         </div>
-
-
-
         <?php
         include './footer.php';
         ?>
@@ -530,10 +475,7 @@ $CITY = new City($ACCOMMODATIONS->city);
                 responsive: true,
                 height: 500,
                 autoplay: 7000,
-                lightbox: true,
-//                showInfo: true,
-
-                //                imageCrop: true,
+                lightbox: true
             });
         </script>
         <script type="text/javascript">
@@ -541,25 +483,18 @@ $CITY = new City($ACCOMMODATIONS->city);
                 responsive: true,
                 height: 500,
                 autoplay: 7000,
-                lightbox: true,
-//                showInfo: true,
-
-                //                imageCrop: true,
+                lightbox: true
             });
         </script>
         <script>
-
             $('.room-title-btn').click(function () {
                 var roomTitleId = this.id;
                 var roomId = roomTitleId.replace('room-title-', '');
                 $('#room-slider-' + roomId).show();
-
             });
-
             $('.close').click(function () {
                 $('.modal').hide();
             });
-
             $('.owl-carousel').owlCarousel({
                 loop: true,
                 margin: 10,
@@ -582,16 +517,10 @@ $CITY = new City($ACCOMMODATIONS->city);
                 jQuery('#btn-add-comment').click(function () {
                     jQuery("#myModalaccommodation").modal('show');
                 });
-
             });
-
-
             jQuery('#create').click(function (event) {
-
                 event.preventDefault();
-
                 var captchacode = jQuery('#captchacode').val();
-
                 jQuery.ajax({
                     url: "visitor-feedback/captchacode.php",
                     cache: false,
@@ -599,19 +528,15 @@ $CITY = new City($ACCOMMODATIONS->city);
                     type: "POST",
                     data: {
                         captchacode: captchacode
-
                     },
                     success: function (html) {
                         var status = html.status;
                         var msg = html.msg;
-
                         if (status == "incorrect") {
-
                             jQuery("#capspan").addClass("notvalidated");
                             jQuery("#capspan").html(msg);
                             jQuery("#capspan").show();
                             jQuery("#capspan").fadeOut(2000);
-
                         } else if (status == "correct") {
                             jQuery('#client-comment').submit();
                         }

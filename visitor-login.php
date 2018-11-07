@@ -2,10 +2,6 @@
 <?php
 include './class/include.php';
 
-//$previous = "javascript:history.go(-1)";
-//if (isset($_SERVER['HTTP_REFERER'])) {
-//    $previous = $_SERVER['HTTP_REFERER'];
-//}
 if (!isset($_SESSION)) {
     session_start();
 }
@@ -18,12 +14,6 @@ $back_url = '';
 if (isset($_SESSION["back_url"])) {
     $back_url = $_SESSION["back_url"];
 }
-
-//if (isset($_GET['tourid'])) {
-//    $tourid = $_GET['tourid'];
-//} elseif (isset($_GET['rate'])) {
-//    $rate = $_GET['rate'];
-//}
 ?>
 <html lang="en">
     <head>
@@ -39,7 +29,6 @@ if (isset($_SESSION["back_url"])) {
         <link href="css/visitor-custom.css" rel="stylesheet" type="text/css"/>
         <script src="https://apis.google.com/js/api:client.js"></script>
         <script src="js/google-login.js" type="text/javascript"></script>
-
     </head>
     <body style="background-color: #d7d7d7;">
         <!-- Our Resort Values style-->
@@ -79,9 +68,9 @@ if (isset($_SESSION["back_url"])) {
                         <div class="login-social-link centered">
                             <p class="font-padding">or you can sign in via your social network</p>
                             <button class="fb btn btn-facebook social-log-buttons-1" id="fb-login" type="submit"><i class="fa fa-facebook font-fb"></i> Facebook</button>
-                            
-                                <button id="customBtn"  class="btn btn-danger social-log-buttons-1" type="submit"><i class="fa fa-google-plus"></i> Google</button>
-                          
+
+                            <button id="customBtn"  class="btn btn-danger social-log-buttons-1" type="submit"><i class="fa fa-google-plus"></i> Google</button>
+
                             <script>startApp();</script>  
                             <div class="text-danger" id="google-error-display"></div>
                         </div>

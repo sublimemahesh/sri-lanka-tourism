@@ -458,7 +458,12 @@ if (isset($_POST['book'])) {
                 if (!empty($member_email)) {
                     mail($member_email, $subject, $html, $headers);
                 }
-                $VALID->addError("Booking was completed successfully.please check your email", 'success');
+                $ACCOMMODATION = new Accommodation($result->accommodation_id);
+                $MEMBER = new Member($ACCOMMODATION->member);
+                $phoneno = $MEMBER->contact_number;
+                $message = "Your have a new accommodation booking in Sri Lanka Tourism";
+                $sendmsg = Helper::sendSMS($phoneno, $message);
+                $VALID->addError("Booking was completed successfully. Please check your email", 'success');
                 $_SESSION['ERRORS'] = $VALID->errors();
                 header('Location: ' . $_SERVER['HTTP_REFERER']);
             } else {

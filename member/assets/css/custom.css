@@ -586,3 +586,9 @@ and open the template in the editor.
     font-weight: 600;
     margin-bottom: 20px;
 }
+.resend-contact-title {
+    text-align: right;
+}
+.intl-tel-input {
+    width: 100%;
+}

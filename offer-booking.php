@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <?php
 include './class/include.php';
-
 if (isset($_GET['offer'])) {
     $id = $_GET['offer'];
 }
@@ -14,15 +13,11 @@ if (!isset($_SESSION["vislogin"])) {
 } else {
     $VISITOR = $_SESSION["id"];
 }
-
 $OFFER = new Offer($id);
 $VISITOR = new Visitor($VISITOR);
-
 $discount = $OFFER->discount;
 $price = $OFFER->price;
-
 $new_price = $price - (($discount / 100) * $price);
-
 $today = date("Y-m-d", time());
 date_default_timezone_set('Asia/Colombo');
 $now = date('Y-m-d H:i:s');
@@ -30,8 +25,10 @@ $now = date('Y-m-d H:i:s');
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Sri Lanka || Tourism</title>
+        <title>Offers || Sri Lanka || Tourism</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="keywords" content="sri lanka tourism, tourism in sri lanka, Sri Lanka, offers, get offers, get my offers, inquiry for offers, tour packages offers, tour offers, tour offers in sri lanka, pakage offers, package offers in sri lanka, trip offers in sri lanka, taxi offers, taxi offers in sri lanka, vehicle offers, transport offers, transport offers in sri lanka, hotel offers, hotel offers in sri lanka, accommodation offers in sri lanka, accommodation offers, villa offers, apartment offers, villa offers in sri lanka">
+        <meta name="description" content="The team Sri Lanka Tourism crew is privileged to show you and to take you around the most beautiful places in Sri Lanka. You can Plan your tour with Sri Lanka Tourism and, tours are judiciously planned and customized to meet your needs. And also, Sri Lanka Tourism features well established taxi service and hotel service. So your trip will be everything you imagined and much more.">
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href="css/font-awesome.min.css" rel="stylesheet">
         <link rel="stylesheet" href="css/style.css">
@@ -57,9 +54,7 @@ $now = date('Y-m-d H:i:s');
         <div class="container">
             <div class="row top-bott20">
                 <div class="col-md-9">
-
                     <div class="body">
-
                         <div class="transport-booking-box margin-panel">
                             <?php
                             $vali = new Validator();
@@ -71,14 +66,11 @@ $now = date('Y-m-d H:i:s');
                                     $message = new Message($_GET['message']);
                                     ?>
                                     <div class="alert alert-success"><?php echo $message->description; ?></div>
-
                                     <?php
                                 }
                                 ?> 
                             </div>
                             <form method="post" action="post-and-get/offer-booking.php" enctype="multipart/form-data">
-
-
                                 <h4 class="booking-transports-title text-center">Your Details</h4>
                                 <div class="row panel panel-default booking-panel-default">
                                     <div class="col-sm-12 col-md-12">
@@ -111,13 +103,9 @@ $now = date('Y-m-d H:i:s');
                                                 <input type="text" readonly="true" id="contact_number" name="contact_number" class="form-control input-type-bottom" placeholder="-" value="<?php echo $VISITOR->contact_number; ?>">
                                             </div>
                                         </div> 
-
                                     </div>
-
                                 </div>
                                 <h4 class="booking-transports-title text-center">Message</h4>
-
-
                                 <div class = "row panel panel-default booking-panel-default">
                                     <div class = "col-sm-12 col-md-12">
                                         <div class = "col-md-12">
@@ -128,7 +116,6 @@ $now = date('Y-m-d H:i:s');
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
                                 <div class = "row">
                                     <div class = "top-bott50">
@@ -143,9 +130,7 @@ $now = date('Y-m-d H:i:s');
                                 </div>
                             </form>
                         </div>
-
                     </div>
-
                 </div>
                 <div class="col-md-3">
                     <div class="row top-bott20">
@@ -153,13 +138,9 @@ $now = date('Y-m-d H:i:s');
                             <div class="panel-heading">SELECTED OFFER</div>
                             <div class="panel-body">
                                 <h4 class="booking-transports-title text-center"><?php echo $OFFER->title; ?></h4>
-
                                 <div class="transport-booking-img">
-
                                     <img src="upload/offer/<?php echo $OFFER->image_name ?>" class="img img-responsive img-thumbnail" id="profil_pic"/>
-
                                 </div>
-
                                 <ul class="list-group visitor-list-color">
                                     <li class="list-group-item"><b>Type</b> : <?php
                                         if ($OFFER->type == 1) {
@@ -170,9 +151,9 @@ $now = date('Y-m-d H:i:s');
                                             echo 'Hotel';
                                         }
                                         ?></li> 
-                                    <li class="list-group-item"><b>Old Price</b> : LKR <?php echo $OFFER->price; ?>.00</li> 
+                                    <li class="list-group-item"><b>Old Price</b> : USD <?php echo $OFFER->price; ?>.00</li> 
                                     <li class="list-group-item"><b>Discount</b> : <?php echo $OFFER->discount ?> %</li> 
-                                    <li class="list-group-item"><b>New Price</b> :LKR <?php echo $new_price; ?>.00</li> 
+                                    <li class="list-group-item"><b>New Price</b> :USD <?php echo $new_price; ?>.00</li> 
                                 </ul>
                             </div>
                         </div>
@@ -180,10 +161,8 @@ $now = date('Y-m-d H:i:s');
                 </div>
             </div>
         </div>
-
         <!-- Our Resort Values style-->  
         <?php include './footer.php' ?>
-
         <script src="js/jquery-2.2.4.min.js"></script>
         <script src="assets/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
         <script src="js/bootstrap.min.js"></script>
@@ -199,13 +178,11 @@ $now = date('Y-m-d H:i:s');
             });
 
             $(function () {
-
                 /* global setting */
                 var datepickersOpt = {
                     dateFormat: 'yy-mm-dd',
                     minDate: 0
                 };
-
                 $("#checkin").datepicker($.extend({
                     onSelect: function () {
                         var minDate = $(this).datepicker('getDate');
@@ -223,11 +200,8 @@ $now = date('Y-m-d H:i:s');
                     dateFormat: 'yy-mm-dd'
                 }, datepickersOpt));
             });
-
         </script>
-
         <script>
-
             $(function () {
                 $('input[type="time"][value="now"]').each(function () {
                     var d = new Date(),
@@ -242,8 +216,6 @@ $now = date('Y-m-d H:i:s');
                     });
                 });
             });
-
-
         </script>
     </body> 
 </html>

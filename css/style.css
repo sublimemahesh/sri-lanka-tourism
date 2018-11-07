@@ -2246,7 +2246,7 @@ hr.style15:after {
     position: relative;
     top: -81px;
     font-size: 15px;
-    width: 45%;
+    width: 75%;
     font-weight: 600;
 }
 .tour-arrow, .article-arrow {
@@ -2259,6 +2259,9 @@ hr.style15:after {
     width: 39px;
     padding: 5px;
     border-radius: 0px 10px 10px 0px;
+}
+.offer-arrow {
+    margin-right: 40px;
 }
 .tour-arrow:hover, .article-arrow:hover {
     /*background-color: #09090980;*/
@@ -2293,7 +2296,7 @@ hr.style15:after {
     -moz-box-shadow: 10px 10px 10px #000;
 }
 .owl-prev {
-    margin: 0% 87% 0% 0%;
+    margin: 0% 93% 0% 0%;
     letter-spacing: 0px;
 }
 

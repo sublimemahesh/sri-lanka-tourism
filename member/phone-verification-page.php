@@ -27,15 +27,13 @@ $MEMBER = new Member($_SESSION['id']);
         <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
         <link rel="stylesheet" type="text/css" href="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-datepicker/css/datepicker.html" />
         <link rel="stylesheet" type="text/css" href="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-daterangepicker/daterangepicker.html" />
-
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Russo+One|Magra|Ubuntu+Condensed" rel="stylesheet"> 
         <link href="http://fonts.googleapis.com/css?family=Ruda:400,700,900" type="text/css">
-
         <!-- Custom styles for this template --> 
         <link href="assets/css/style.css" rel="stylesheet">
-        <link href="assets/css/style-responsive.css" rel="stylesheet">
         <link href="assets/css/custom.css" rel="stylesheet" type="text/css"/>
+        <link href="assets/css/style-responsive.css" rel="stylesheet">
     </head>
 
     <body>

@@ -222,6 +222,17 @@ class Feedback {
             return 0;
         }
     }
+    
+    public function getRatingByArticleToAllReviews($article) {
+
+        $query = "SELECT count(visitor) as visitor_count, avg(rate) as rate_avg ,count(rate) as rate_count FROM `feedback` WHERE `article` = '" . $article . "'";
+
+        $db = new Database();
+
+        $result = mysql_fetch_array($db->readQuery($query));
+
+        return $result;
+    }
 
     public function getRatingByAccommodation($accommodation) {
 

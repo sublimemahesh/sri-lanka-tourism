@@ -1,17 +1,13 @@
 <?php
 include_once(dirname(__FILE__) . '/class/include.php');
-
 if (!isset($_SESSION)) {
     session_start();
 }
-
 $SEARCH = new Search(NULL);
-
 $keyword = NULL;
 $type = NULL;
 $district = NULL;
 $city = NULL;
-
 /* set page numbers */
 if (isset($_GET["page"])) {
     $page = (int) $_GET["page"];
@@ -20,8 +16,6 @@ if (isset($_GET["page"])) {
 }
 $setLimit = 10;
 $pageLimit = ($page * $setLimit) - $setLimit;
-
-
 /* search */
 if (isset($_GET['keyword'])) {
     $keyword = $_GET['keyword'];
@@ -35,7 +29,6 @@ if (isset($_GET['district'])) {
 if (isset($_GET['city'])) {
     $city = $_GET['city'];
 }
-
 $ACCOMMODATIONS = $SEARCH->GetAccommodationByKeywords($keyword, $type, $district, $city, $pageLimit, $setLimit);
 $ACCOMMODATION_PHOTO = new AccommodationPhoto(NULL);
 ?>
@@ -43,8 +36,10 @@ $ACCOMMODATION_PHOTO = new AccommodationPhoto(NULL);
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Sri Lanka || Tourism</title>
+        <title>Hotels || Sri Lanka || Tourism</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="keywords" content="sri lanka tourism, tourism in sri lanka, Sri Lanka, tours in sri lanka, holiday in sri lanka, visit sri lanka, accommodations, hotels, villas, apartments, accommodations in sri lanka, hotels in sri lanka, villas in sri lanka, apartments in sri lanka, budget hotels in sri lanka, economy in sri lanka, budget accommodations in sri lanka, economy accommodations in sri lanka">
+        <meta name="description" content="The team Sri Lanka Tourism crew is privileged to show you and to take you around the most beautiful places in Sri Lanka. You can Plan your tour with Sri Lanka Tourism and, tours are judiciously planned and customized to meet your needs. And also, Sri Lanka Tourism features well established taxi service and hotel service. So your trip will be everything you imagined and much more.">
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/font-awesome.min.css" rel="stylesheet">
         <link rel="stylesheet" href="css/style.css">
@@ -61,8 +56,6 @@ $ACCOMMODATION_PHOTO = new AccommodationPhoto(NULL);
         <?php
         include './header.php';
         ?>
-
-
         <section id="rooms-section" class="row-view">
             <div class="inner-container container">
                 <div class="room-container clearfix">
@@ -71,6 +64,12 @@ $ACCOMMODATION_PHOTO = new AccommodationPhoto(NULL);
                         foreach ($ACCOMMODATIONS as $accommodation) {
                             $ACCOMMODATION_TYPE = new AccommodationType($accommodation['type']);
                             $MEMBER = new Member($accommodation['member']);
+                            $minprice = RoomPrice::getMinPriceByAccommodation($accommodation['id']);
+                            if(empty($minprice['price'])) {
+                                $price = 0;
+                            } else {
+                                $price = $minprice['price'];
+                            }
                             ?>
                             <div class="room">
                                 <a target="blank" href="accommodation-view.php?id=<?php echo $accommodation['id']; ?>" class="">
@@ -88,10 +87,8 @@ $ACCOMMODATION_PHOTO = new AccommodationPhoto(NULL);
                                             <?php
                                         }
                                         ?>
-
                                     </div>
                                     <!--ROOM RATING-->
-
                                     <div class="r2 r-com">
                                         <h4>
                                             <?php echo $ACCOMMODATION_TYPE->name; ?>  
@@ -105,10 +102,6 @@ $ACCOMMODATION_PHOTO = new AccommodationPhoto(NULL);
                                             for ($x = 1; $x <= $starNumber; $x++) {
                                                 echo '<i class="fa fa-star"></i>';
                                             }
-//                                                                            if (strpos($starNumber, '.')) {
-//                                                                                echo '<img src="path/to/half/star.png" />';
-//                                                                                $x++;
-//                                                                            }
                                             while ($x <= 5) {
                                                 echo '<i class="fa fa-star-o"></i>';
                                                 $x++;
@@ -117,20 +110,17 @@ $ACCOMMODATION_PHOTO = new AccommodationPhoto(NULL);
                                             <p class="review-no">(<?php echo $rate_count; ?>Reviews)</p>
                                         </div>
                                         <ul>
-                                            <div class="r2-available">LKR 65546</div>
+                                            <div class="r2-available">USD <?php echo $price; ?></div>
                                             <li></li>
                                             <li></li>
                                         </ul>
                                     </div>
-
                                     <!--ROOM AMINITIES-->
                                     <div class="r3 r-com">
                                         <ul class="accommodation-facilities">
                                             <?php
                                             $ALL_FACILITIES = AccommodationFacilityDetails::getFacilitiesByAccommodationId($accommodation['id']);
-
                                             $FACILITIES = explode(",", $ALL_FACILITIES['facility']);
-
                                             foreach ($FACILITIES as $key => $facility) {
                                                 if ($key == 5) {
                                                     break;
@@ -146,7 +136,6 @@ $ACCOMMODATION_PHOTO = new AccommodationPhoto(NULL);
                                 </a>
                                 <!--ROOM BOOKING BUTTON-->
                                 <div class="r5 r-com">
-
                                     <a target="blank" href="member-view.php?id=<?php echo $MEMBER->id; ?>" class="link">
                                         <?php
                                         if (empty($MEMBER->id)) {
@@ -176,8 +165,6 @@ $ACCOMMODATION_PHOTO = new AccommodationPhoto(NULL);
                                         }
                                         ?>
                                     </a>
-
-                              <!--                                    <p>Price for 1 night</p>-->
                                     <a href="accommodation-booking.php?accommodation=<?php echo $accommodation['id'] ?>"><div class="inn-room-book">Book Now</div></a> </div>
                             </div>
                             <?php
@@ -189,9 +176,6 @@ $ACCOMMODATION_PHOTO = new AccommodationPhoto(NULL);
                     </div>
                 </div>
         </section>
-
-
-
         <!-- Our Resort Values style-->  
         <?php
         include './footer.php';
@@ -202,18 +186,10 @@ $ACCOMMODATION_PHOTO = new AccommodationPhoto(NULL);
         <script src="js/bootstrap-datepicker.js" type="text/javascript"></script>
         <script src="assets/js/helper.js" type="text/javascript"></script>
         <script src="assets/js/template.js" type="text/javascript"></script>
-
         <script type="text/javascript">
-
             $(document).ready(function () {
-
                 $('[data-toggle="tooltip"]').tooltip();
-
             });
-
         </script>
-
-
     </body> 
-
 </html>

@@ -301,3 +301,8 @@ index-textbox-st{
 .index-transport-container a:focus{
     text-decoration: none;
 }
+@media (width: 414px) {
+    .read_more_button {
+        width: 75%;
+    }
+}

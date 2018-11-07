@@ -23,6 +23,11 @@ if (isset($_SESSION['isPhoneVerified'])) {
         <link href="css/visitor-custom.css" rel="stylesheet" type="text/css"/>
         <link href="https://fonts.googleapis.com/css?family=Russo+One|Magra|Ubuntu+Condensed" rel="stylesheet"> 
         <link href="css/loading.css" rel="stylesheet" type="text/css"/>
+        <style>
+            .alert {
+                margin-bottom: 0px;
+            }
+        </style>
     </head>
     <div class="loading" id="loading">Loading&#8230;</div>
     <body style="background-color: #FFF;">

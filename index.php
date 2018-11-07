@@ -3,7 +3,6 @@ include './class/include.php';
 if (!isset($_SESSION)) {
     session_start();
 }
-
 $TRANSPORTSOBJ = new Transports(NULL);
 $TRANSPORTS_PHOTO = new TransportPhoto(NULL);
 $TRANSPORT_RATEOBJ = new TransportRates(NULL);
@@ -11,11 +10,8 @@ $ACCOMMODATION_OBJ = new Accommodation(NULL);
 $ACCOMMODATION_PHOTO = new AccommodationPhoto(NULL);
 $ACCOMMODATION_TYPEOBJ = new AccommodationType(NULL);
 $DISTRICT_OBJ = new District(NULL);
-
-
 $DISTRICT = $DISTRICT_OBJ->all();
 $ACCOMMODATION_TYPE = $ACCOMMODATION_TYPEOBJ->all();
-
 $TOURTYPES = TourType::all();
 $ARTICLETYPES = ArticleType::all();
 ?>
@@ -25,6 +21,8 @@ $ARTICLETYPES = ArticleType::all();
         <meta charset="UTF-8">
         <title>Sri Lanka || Tourism</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="keywords" content="sri lanka tourism, tourism in sri lanka, Sri Lanka, tours in sri lanka, taxi in sri lanka, tourism sri lanka, rent a cars in sri lanka, transports in sri lanka, transport ways in sri lanka, sri lanka transports, vehicles in sri lanka, tour packages in sri lanka, holiday in sri lanka, visit sri lanka, accommodations sri lanka, hotels in sri lanka, Accommodations, Hotels, tour packages offers, taxi offers, transport offers, articles in sri lanka">
+        <meta name="description" content="Tourism in Sri Lanka is growing rapidly. For centuries, Sri Lanka has been a popular place of attraction for foreign travelers. The team Sri Lanka Tourism crew is privileged to show you and to take you around the most beautiful places in Sri Lanka. You can Plan your tour with Sri Lanka Tourism and, tours are judiciously planned and customized to meet your needs. And also, Sri Lanka Tourism features well established taxi service and hotel service. So your trip will be everything you imagined and much more.">
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/font-awesome.min.css" rel="stylesheet">
         <link href="css/owl.carousel.min.css" rel="stylesheet" type="text/css"/>
@@ -45,8 +43,6 @@ $ARTICLETYPES = ArticleType::all();
         }
     </style>
     <body>
-
-
         <!-- Our Resort Values style-->
         <?php
         include './header.php';
@@ -157,7 +153,6 @@ $ARTICLETYPES = ArticleType::all();
                                         </div>
                                     </a>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -182,7 +177,6 @@ $ARTICLETYPES = ArticleType::all();
                                             </div>
                                             <input type="hidden" name="from" value="" id="from-id" />
                                         </div>
-
                                         <div class="col-md-4 col-sm-4 col-xs-12 taxi-title" id="dropping_off">
                                             <span class="span-style">Dropping Off</span>
                                             <input type="text" id="to" autocomplete="off" placeholder="Please Select Drop down city" class="input-text">
@@ -191,10 +185,6 @@ $ARTICLETYPES = ArticleType::all();
                                             </div>
                                             <input type="hidden" name="to" value="" id="to-id" />
                                         </div>
-
-
-
-
                                     </div>
                                     <div class="row taxi-body">
                                         <div class="col-md-4 col-sm-6">
@@ -251,21 +241,14 @@ $ARTICLETYPES = ArticleType::all();
                                                             $rate_count = $result['rate_count'];
                                                             $starNumber = round($result['rate_avg']);
 
-
                                                             for ($x = 1; $x <= $starNumber; $x++) {
                                                                 echo '<i class="fa fa-star"></i>';
                                                             }
-//                                                                            if (strpos($starNumber, '.')) {
-//                                                                                echo '<img src="path/to/half/star.png" />';
-//                                                                                $x++;
-//                                                                            }
-
                                                             while ($x <= 5) {
                                                                 echo '<i class="fa fa-star-o"></i>';
                                                                 $x++;
                                                             }
                                                             ?>
-
                                                         </span>
                                                         <img src="upload/transport/thumb/<?php echo $transport_photo['image_name'] ?>" alt=""/>
                                                     </a>
@@ -274,7 +257,6 @@ $ARTICLETYPES = ArticleType::all();
                                                 }
                                             }
                                             ?>
-                                            <!--                                        <div class="transport-heading"></div>-->
                                             <div class="transport-bot-container">  
                                                 <a href="transportation-view.php?id=<?php echo $transport['id']; ?>">
                                                     <div class="transport-bot-title"> <?php
@@ -282,17 +264,15 @@ $ARTICLETYPES = ArticleType::all();
                                                         if (strlen($transport['title']) > 23) {
                                                             echo '...';
                                                         }
-                                                        ?></div>
+                                                        ?>
+                                                    </div>
                                                     <div class="vehicle-options-container">
-
                                                         <div class="col-md-12">
                                                             <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4">
                                                                 <img class="index-transport-ico" src="images/transport/passenges.png"><div>
                                                                     <span class="transport-ico-txt"><?php echo $transport['no_of_passangers'] ?></span>
                                                                 </div>
                                                             </div>
-
-
                                                             <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4">
                                                                 <img class="index-transport-ico" src="images/transport/001-suitcase.png"><div>
                                                                     <span class="transport-ico-txt"><?php echo $transport['no_of_baggages'] ?></span>
@@ -342,16 +322,12 @@ $ARTICLETYPES = ArticleType::all();
                                         <?php
                                     }
                                     ?>
-
                                 </div>
-
                                 <div class="row">
                                     <div class="col-md-12 col-sm-12 col-xs-12 btn-search">
                                         <a href="transports.php"><button class="btn-style">View All</button></a> 
                                     </div>
                                 </div>
-
-
                             </div>
                             <div id="tour" class="tab-pane fade">
                                 <h3 class="select-op-header text-center">Tour</h3>
@@ -368,7 +344,6 @@ $ARTICLETYPES = ArticleType::all();
                                             </div>
                                         </div>
                                         <div class="row taxi-body">
-
                                             <div class="col-md-6 col-sm-6 col-xs-12 taxi-title">
                                                 <span class="span-style">Tour Type</span>
                                                 <select name="type" class="form-control taxi-combo" id="tourtypes">
@@ -396,7 +371,6 @@ $ARTICLETYPES = ArticleType::all();
                                         </div>
                                     </div>
                                 </form>
-
                                 <div class="owl-carousel tour-slider" id="tour-slider">
                                     <?php
                                     foreach ($TOURTYPES as $TOURTYPE) {
@@ -404,7 +378,6 @@ $ARTICLETYPES = ArticleType::all();
                                         <div>
                                             <a href="view-tour-packages.php?type=<?php echo $TOURTYPE['id']; ?>">
                                                 <img src="upload/tour-type/<?php echo $TOURTYPE['picture_name']; ?>" alt=""/>
-                                                <!--<div class="tour-heading pull-left"><?php echo strtoupper($TOURTYPE['name']); ?></div>-->
                                                 <?php
                                                 if (strlen($TOURTYPE['name']) > 12) {
                                                     ?>
@@ -412,11 +385,11 @@ $ARTICLETYPES = ArticleType::all();
                                                     <?php
                                                 } else {
                                                     ?>
-                                                    <div class="tour-heading pull-left" title="<?php echo strtoupper($TOURTYPE['name']); ?>"><?php echo strtoupper($TOURTYPE['name']); ?></div>
+                                                    <div class="tour-heading tour-heading1 pull-left" title="<?php echo strtoupper($TOURTYPE['name']); ?>"><?php echo strtoupper($TOURTYPE['name']); ?></div>
                                                     <?php
                                                 }
                                                 ?>
-                                                <div class="tour-arrow white pull-right"><img src="images/icon/arrow2.png" alt=""/></div>
+                                                <div class="tour-arrow tour-arrow1 white pull-right"><img src="images/icon/arrow2.png" alt=""/></div>
                                             </a>
                                         </div>
                                         <?php
@@ -428,7 +401,6 @@ $ARTICLETYPES = ArticleType::all();
                                         <a href="view-alltour.php"><button class="btn-style">View All</button></a> 
                                     </div>
                                 </div>
-
                             </div>
                             <div id="hotel" class="tab-pane fade">
                                 <h3 class="select-op-header text-center">Hotel</h3>
@@ -505,7 +477,6 @@ $ARTICLETYPES = ArticleType::all();
                                                             }
                                                         }
                                                         ?>
-
                                                     </div>
                                                 </a>
                                                 <div class="feature-detail">
@@ -515,9 +486,10 @@ $ARTICLETYPES = ArticleType::all();
                                                                 if (strlen($accommodation['name']) > 40) {
                                                                     echo '...';
                                                                 }
-                                                                ?></a></h4>
+                                                                ?>
+                                                            </a>
+                                                        </h4>
                                                     </div>
-
                                                     <div class="rating-star">
                                                         <ul>
                                                             <?php
@@ -528,10 +500,6 @@ $ARTICLETYPES = ArticleType::all();
                                                             for ($x = 1; $x <= $starNumber; $x++) {
                                                                 echo '<li><i class="fa fa-star" aria-hidden="true"></i></li>';
                                                             }
-//                                                                            if (strpos($starNumber, '.')) {
-//                                                                                echo '<img src="path/to/half/star.png" />';
-//                                                                                $x++;
-//                                                                            }
                                                             while ($x <= 5) {
                                                                 echo '<li><i class="fa fa-star-o" aria-hidden="true"></i></li>';
                                                                 $x++;
@@ -578,12 +546,7 @@ $ARTICLETYPES = ArticleType::all();
                                         <?php
                                     }
                                     ?>
-
-
-
-
                                 </div>
-
                                 <div class="row">
                                     <div class="col-md-12 col-sm-12 col-xs-12 btn-search">
                                         <a href="accommodation.php"><button class="btn-style">View All</button></a> 
@@ -595,20 +558,20 @@ $ARTICLETYPES = ArticleType::all();
                                 <a href="view-offer.php?id=1"><div class="col-md-4 col-lg-4">
                                         <img src="images/offers/kdh.jpg" alt="" width="100%"/>
                                         <div class="offer-heading pull-left" title="TAXI"><b>TAXI</b></div>
-                                        <div class="tour-arrow white pull-right"><img src="images/icon/arrow2.png" alt=""/></div>
+                                        <div class="tour-arrow offer-arrow white pull-right"><img src="images/icon/arrow2.png" alt=""/></div>
                                     </div>
                                 </a>
                                 <a href="view-offer.php?id=2"> <div class="col-md-4 col-lg-4">
                                         <img src="images/offers/BACKPACKERS-ARE-WELCOME-TO-YATOURS-IN-SRI-LANKA-new.jpg" alt="" width="100%"/>
                                         <div class="offer-heading pull-left" title="TOURS"><b>TOURS</b></div>
-                                        <div class="tour-arrow white pull-right"><img src="images/icon/arrow2.png" alt=""/></div>
+                                        <div class="tour-arrow offer-arrow white pull-right"><img src="images/icon/arrow2.png" alt=""/></div>
                                     </div>
                                 </a>
                                 <a href="view-offer.php?id=3">
                                     <div class="col-md-4 col-lg-4">
                                         <img src="images/offers/017_thaprobaneNight.jpg" alt="" width="100%"/>
                                         <div class="offer-heading pull-left" title="TRAVEL"><b>HOTEL</b></div>
-                                        <div class="tour-arrow white pull-right"><img src="images/icon/arrow2.png" alt=""/></div>
+                                        <div class="tour-arrow offer-arrow white pull-right"><img src="images/icon/arrow2.png" alt=""/></div>
                                     </div>
                                 </a>
 
@@ -659,12 +622,12 @@ $ARTICLETYPES = ArticleType::all();
                                     foreach ($ARTICLETYPES as $ARTICLETYPE) {
                                         ?>
                                         <div>
-                                            <a href="view-articles.php?type=<?php echo $ARTICLETYPE['id']; ?>">
+                                            <a href="view-articles.php?type=<?php echo $ARTICLETYPE['id']; ?>" title="<?php echo $ARTICLETYPE['name']; ?>">
                                                 <img src="upload/article-type/<?php echo $ARTICLETYPE['picture_name']; ?>" alt=""/>
                                                 <?php
-                                                if (strlen($ARTICLETYPE['name']) > 12) {
+                                                if (strlen($ARTICLETYPE['name']) > 10) {
                                                     ?>
-                                                    <div class="article-heading pull-left" title="<?php echo strtoupper($ARTICLETYPE['name']); ?>"><?php echo substr(strtoupper($ARTICLETYPE['name']), 0, 10) . '...'; ?></div>
+                                                    <div class="article-heading pull-left" title="<?php echo strtoupper($ARTICLETYPE['name']); ?>"><?php echo substr(strtoupper($ARTICLETYPE['name']), 0, 9) . '...'; ?></div>
                                                     <?php
                                                 } else {
                                                     ?>
@@ -714,16 +677,12 @@ $ARTICLETYPES = ArticleType::all();
                                         </div>
                                     </div>
                                 </form>
-
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
-
-
         <!-- Our Resort Values style-->  
         <?php include './footer.php'; ?>
         <script src="js/jquery-2.2.4.min.js"></script>
@@ -925,7 +884,6 @@ $ARTICLETYPES = ArticleType::all();
                 });
             });
         </script>
-
         <script type="text/javascript">
             $(function () {
                 $("#driver").change(function () {
@@ -937,7 +895,5 @@ $ARTICLETYPES = ArticleType::all();
                 });
             });
         </script>
-
     </body> 
-
 </html>

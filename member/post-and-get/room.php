@@ -23,7 +23,7 @@ if (isset($_POST['create'])) {
     ]);
 
     if ($VALID->passed()) {
-        $ACCOMODATION_ROOM->create();
+        $RESULT = $ACCOMODATION_ROOM->create();
 
         foreach ($_POST["room-images"] as $key => $photos) {
 
@@ -48,7 +48,7 @@ if (isset($_POST['create'])) {
         $_SESSION['ERRORS'] = $VALID->errors();
 
 //        header('Location: ' . $_SERVER['HTTP_REFERER']);
-        header("location: ../manage-room-price-seasons.php?id=" . $ACCOMODATION_ROOM->accommodation);
+        header("location: ../manage-room-price-seasons.php?id=" . $RESULT->id);
     } else {
 
         if (!isset($_SESSION)) {

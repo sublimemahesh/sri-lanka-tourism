@@ -204,5 +204,20 @@ class RoomPrice {
         }
         return $row;
     }
+    
+    public function getMinPriceByAccommodation($accommodation) {
+        
+        date_default_timezone_set('Asia/Colombo');
+        $date = date("Y-m-d");
+        $db = new Database();
+
+        $query = "SELECT min(`price`) AS `price` FROM `room_price` WHERE `room` in(SELECT `id` FROM `rooms` WHERE `accommodation` = " . $accommodation . ") AND ('" . $date . "' between `start` and `end`)";
+
+        $result = $db->readQuery($query);
+
+        $row = mysql_fetch_assoc($result);
+
+        return $row;
+    }
 
 }

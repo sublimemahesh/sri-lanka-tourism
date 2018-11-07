@@ -105,7 +105,7 @@ $types = $TOURTYPES->all();
 
                                                         <div class="">
                                                             <div class="bottom-top">
-                                                                <label for="price">Price</label>
+                                                                <label for="price">Price(USD)</label>
                                                             </div>
                                                             <div class="">
                                                                 <input type="text" id="price" name="price" class="form-control" placeholder="Please Enter Price" value="<?php echo $TOUR_PACKAGE->price; ?>" >

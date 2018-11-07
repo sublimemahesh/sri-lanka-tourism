@@ -3,7 +3,7 @@ include_once(dirname(__FILE__) . '/../class/include.php');
 include_once(dirname(__FILE__) . '/auth.php');
 $MEMBER = new Member($_SESSION['id']);
 
-if(isset($_SESSION['isPhoneVerified'])) {
+if (isset($_SESSION['isPhoneVerified'])) {
     $isPhoneVerified = $_SESSION['isPhoneVerified'];
 }
 if (empty($MEMBER->licence_front) || empty($MEMBER->licence_back)) {
@@ -30,16 +30,20 @@ if (empty($MEMBER->licence_front) || empty($MEMBER->licence_back)) {
         <link href="assets/css/style.css" rel="stylesheet">
         <link href="assets/css/style-responsive.css" rel="stylesheet">
         <link href="assets/css/custom.css" rel="stylesheet" type="text/css"/>
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+        <link href="plugins/Preloader/jm.spinner.css" rel="stylesheet" type="text/css"/>
+        <link href="assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css"/>
         <style>
             .img-thumbnail {
                 max-width: 50% !important;
             }
         </style>
 
-        <link href="assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css"/>
+        
     </head> 
     <body> 
-        <div class="loading" id="loading">Loading&#8230;</div>
+        
+        <div class="box"></div>  
         <section id="container" > 
             <?php
             include './header-nav.php';
@@ -517,7 +521,7 @@ if (empty($MEMBER->licence_front) || empty($MEMBER->licence_back)) {
 
                                                                                             <input type="hidden" id="member" name="member" value="<?php echo $_SESSION['id']; ?>"/>
                                                                                             <button id="create" name="add-transports" type="submit" class="btn btn-info tab-next-create">Save All Details</button>
-                                                                                        <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" >
+                                                                                            <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" >
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -549,26 +553,21 @@ if (empty($MEMBER->licence_front) || empty($MEMBER->licence_back)) {
         <script src="assets/js/jquery.scrollTo.min.js"></script>
         <script src="assets/js/jquery.nicescroll.js" type="text/javascript"></script>
         <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
-
-
         <!--common script for all pages-->
         <script src="assets/js/common-scripts.js"></script>
-
         <!--script for this page-->
         <script src="assets/js/jquery-ui-1.9.2.custom.min.js"></script>
-
         <!--custom switch-->
         <script src="assets/js/bootstrap-switch.js"></script>
-
         <!--custom tagsinput-->
         <script src="assets/js/jquery.tagsinput.js"></script>
-
         <!--custom checkbox & radio--> 
         <script src="assets/plugins/jquery-steps/jquery.steps.js" type="text/javascript"></script>
         <script type="text/javascript" src="assets/js/bootstrap-inputmask/bootstrap-inputmask.min.js"></script>
         <script src="js/post-transport-image.js" type="text/javascript"></script>
         <script src="assets/js/form-component.js"></script>    
-<script src="js/display-contact-number-verification-alert.js" type="text/javascript"></script>
+        <script src="js/display-contact-number-verification-alert.js" type="text/javascript"></script>
+        <script src="plugins/Preloader/jm.spinner.js" type="text/javascript"></script>
         <script src="assets/tinymce/js/tinymce/tinymce.min.js"></script>
         <script>
             tinymce.init({
@@ -594,8 +593,6 @@ if (empty($MEMBER->licence_front) || empty($MEMBER->licence_back)) {
                 relative_urls: false
 
             });
-
-
         </script>
         <script src="js/add-new-transport.js" type="text/javascript"></script>
         <script src="assets/plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>

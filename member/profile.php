@@ -36,10 +36,11 @@ $MEMBER = new Member($_SESSION['id']);
         <link href="assets/css/style.css" rel="stylesheet">
         <link href="assets/css/style-responsive.css" rel="stylesheet">
         <link href="assets/css/custom.css" rel="stylesheet" type="text/css"/>
+        <link href="plugins/Preloader/jm.spinner.css" rel="stylesheet" type="text/css"/>
     </head>
 
     <body>
-        <div class="loading" id="loading">Loading&#8230;</div>
+        <div class="box"></div>  
         <section id="container" >
             <?php
             include './header-nav.php';
@@ -164,6 +165,7 @@ $MEMBER = new Member($_SESSION['id']);
         <script src="assets/js/form-component.js"></script>    
         <script src="js/profile.js" type="text/javascript"></script>
         <script src="js/display-contact-number-verification-alert.js" type="text/javascript"></script>
+        <script src="plugins/Preloader/jm.spinner.js" type="text/javascript"></script>
         <script>
             //custom select box
 

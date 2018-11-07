@@ -9,7 +9,6 @@ $ARTICLEPHOTOS = new ArticlePhoto(NULL);
 $TYPE = new ArticleType($ARTICLES->article_type);
 $CITY = new City($ARTICLES->city);
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -22,7 +21,6 @@ $CITY = new City($ARTICLES->city);
         <link rel="stylesheet" href="css/responsive.css">
         <link href="css/search.css" rel="stylesheet" type="text/css"/>
         <link href="css/datepicker.css" rel="stylesheet" type="text/css"/>
-        <!--<link href="css/style.css" rel="stylesheet" type="text/css"/>-->
         <link href="css/responsive-table.css" rel="stylesheet" type="text/css"/>
         <link href="visitor-feedback/validation-styles.css" rel="stylesheet" type="text/css"/>
         <link href="css/comments-style.css" rel="stylesheet" type="text/css"/>
@@ -56,7 +54,6 @@ $CITY = new City($ARTICLES->city);
                             for ($x = 1; $x <= $starNumber; $x++) {
                                 echo '<i class="fa fa-star"></i>';
                             }
-
                             while ($x <= 5) {
                                 echo '<i class="fa fa-star-o"></i>';
                                 $x++;
@@ -83,17 +80,159 @@ $CITY = new City($ARTICLES->city);
                         ?>
                     </div> 
                 </div>
+
                 <div class="col-md-4">
                     <div class="sidebar">
-                        <div class="widget-member map">
-                            <?php
-                            echo $ARTICLES->location;
-                            ?>
+                        <div class="widget">
+                            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                                <h2 class="t-comment">Customer Reviews</h2>
+                                <!-- Wrapper for carousel items -->
+                                <div class="carousel-inner">
+                                    <?php
+                                    $FEEDBACK = new Feedback(NULL);
+                                    $ARTICLE_FEEDBACKS = $FEEDBACK->getFeedbackByArticleID($id);
+                                    $li = '';
+                                    if (!$ARTICLE_FEEDBACKS) {
+                                        ?>
+                                        <div class="no-reviews">
+                                            <p>No Reviews yet</p>
+                                        </div>
+                                        <?php
+                                    } else {
+                                        foreach ($ARTICLE_FEEDBACKS as $key => $article_feedback) {
+                                            $VISITOR = new Visitor($article_feedback['visitor']);
+                                            if ($key === 0) {
+                                                $li .= ' <li data-target="#myCarousel" data-slide-to="' . $key . '" class="active">'
+                                                        . '</li>';
+                                                ?>  
+                                                <div class="item carousel-item active">
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <div class="testimonial">
+                                                                <p><?php echo $article_feedback['description']; ?></p>
+                                                            </div>
+                                                            <div class="media">
+                                                                <div class="media-left d-flex mr-3">
+                                                                    <?php
+                                                                    if (empty($VISITOR->image_name)) {
+                                                                        ?>
+                                                                        <img src="upload/visitor/member.png"/>
+                                                                        <?php
+                                                                    } else {
+
+                                                                        if ($VISITOR->facebookID && substr($VISITOR->image_name, 0, 5) === "https") {
+                                                                            ?>
+                                                                            <img src="<?php echo $VISITOR->image_name; ?>"/>
+                                                                        <?php } else {
+                                                                            ?>
+                                                                            <img src="upload/visitor/<?php echo $VISITOR->image_name; ?>"/>
+                                                                            <?php
+                                                                        }
+                                                                    }
+                                                                    ?>									
+                                                                </div>
+                                                                <div class="media-body">
+                                                                    <div class="overview">
+                                                                        <div class="name"><b><?php echo $VISITOR->first_name . ' ' . $VISITOR->second_name ?></b></div>
+                                                                        <div class="details"><?php echo $article_feedback['title']; ?></div>
+                                                                        <div class="star-rating-t">
+                                                                            <ul class="list-inline">
+                                                                                <?php
+                                                                                $starNumber = $article_feedback['rate'];
+                                                                                for ($x = 1; $x <= $starNumber; $x++) {
+                                                                                    echo '<li class = "list-inline-item"><i class = "fa fa-star"></i></li>';
+                                                                                }
+                                                                                while ($x <= 5) {
+                                                                                    echo '<li class = "list-inline-item"><i class = "fa fa-star-o"></i></li>';
+                                                                                    $x++;
+                                                                                }
+                                                                                ?>
+                                                                            </ul>
+                                                                        </div>
+                                                                    </div>										
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>			
+                                                </div>
+                                                <?php
+                                            } else {
+                                                $li .= ' <li data-target="#myCarousel" data-slide-to="' . $key . '">'
+                                                        . '</li>';
+                                                ?>
+                                                <div class="item carousel-item">
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <div class="testimonial">
+                                                                <p><?php echo $article_feedback['description']; ?></p>
+                                                            </div>
+                                                            <div class="media">
+                                                                <div class="media-left d-flex mr-3">
+                                                                    <?php
+                                                                    if (empty($VISITOR->image_name)) {
+                                                                        ?>
+                                                                        <img src="upload/visitor/member.png"/>
+                                                                        <?php
+                                                                    } else {
+                                                                        if ($VISITOR->facebookID && substr($VISITOR->image_name, 0, 5) === "https") {
+                                                                            ?>
+                                                                            <img src="<?php echo $VISITOR->image_name; ?>"/>
+                                                                        <?php } else {
+                                                                            ?>
+                                                                            <img src="upload/visitor/<?php echo $VISITOR->image_name; ?>"/>
+                                                                            <?php
+                                                                        }
+                                                                    }
+                                                                    ?>
+                                                                </div>
+                                                                <div class="media-body">
+                                                                    <div class="overview">
+                                                                        <div class="name"><b><?php echo $VISITOR->first_name . ' ' . $VISITOR->second_name ?></b></div>
+                                                                        <div class="details"><?php echo $article_feedback['title']; ?>
+                                                                            <div class="star-rating-t">
+                                                                                <ul class="list-inline">
+                                                                                    <?php
+                                                                                    $starNumber = $article_feedback['rate'];
+                                                                                    for ($x = 1; $x <= $starNumber; $x++) {
+                                                                                        echo '<li class = "list-inline-item"><i class = "fa fa-star"></i></li>';
+                                                                                    }
+                                                                                    while ($x <= 5) {
+                                                                                        echo '<li class = "list-inline-item"><i class = "fa fa-star-o"></i></li>';
+                                                                                        $x++;
+                                                                                    }
+                                                                                    ?>
+                                                                                </ul>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>										
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>		
+                                                </div>
+                                                <?php
+                                            }
+                                        }
+                                    }
+                                    ?>
+                                </div>
+                                <!-- Carousel controls -->
+                                <a class="carousel-control left carousel-control-prev" href="#myCarousel" data-slide="prev">
+                                    <i class="fa fa-chevron-left"></i>
+                                </a>
+                                <a class="carousel-control right carousel-control-next" href="#myCarousel" data-slide="next">
+                                    <i class="fa fa-chevron-right"></i>
+                                </a>
+                                <div class="add-comment-button">
+                                    <a href="all-reviews.php?article=<?php echo $id; ?>" class="btn btn-info btn-position-rel">
+                                        <i class="fa fa-arrow-right"></i>  View All Reviews
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-
             <div class="row">
                 <div class="col-md-8">
                     <div class="row about-article">
@@ -109,21 +248,6 @@ $CITY = new City($ARTICLES->city);
                             <div class="col-md-2">City: </div>
                             <div class="col-md-10"><?php echo $CITY->name; ?></div>
                         </div>
-
-                        <!--                        <div class="col-md-3 rate-star pull-right">
-                        <?php
-                        $starNumber = Feedback::getRatingByArticle($id);
-
-                        for ($x = 1; $x <= $starNumber; $x++) {
-                            echo '<i class="fa fa-star"></i>';
-                        }
-
-                        while ($x <= 5) {
-                            echo '<i class="fa fa-star-o"></i>';
-                            $x++;
-                        }
-                        ?>
-                                                </div>-->
                     </div>
                     <div class="transport-description">
                         <span>
@@ -131,172 +255,11 @@ $CITY = new City($ARTICLES->city);
                         </span>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="sidebar">
-                        <div class="widget">
-                            <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                                <h2 class="t-comment">Customer Testimonials</h2>
-                                <!-- Carousel indicators -->
-
-                                <!--                                <ol class="carousel-indicators">
-                                                                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                                                                    <li data-target="#myCarousel" data-slide-to="1"></li>
-                                                                    <li data-target="#myCarousel" data-slide-to="2"></li>
-                                                                </ol>   -->
-
-
-                                <!-- Wrapper for carousel items -->
-                                <div class="carousel-inner">
-                                    <?php
-                                    $FEEDBACK = new Feedback(NULL);
-                                    $ARTICLE_FEEDBACKS = $FEEDBACK->getFeedbackByArticleID($id);
-                                    $li = '';
-                                    foreach ($ARTICLE_FEEDBACKS as $key => $article_feedback) {
-                                        $VISITOR = new Visitor($article_feedback['visitor']);
-                                        if ($key === 0) {
-                                            $li .= ' <li data-target="#myCarousel" data-slide-to="' . $key . '" class="active">'
-                                                    . '</li>';
-                                            ?>  
-                                            <div class="item carousel-item active">
-                                                <div class="row">
-                                                    <div class="col-sm-12">
-                                                        <div class="testimonial">
-                                                            <p><?php echo $article_feedback['description']; ?></p>
-                                                        </div>
-                                                        <div class="media">
-                                                            <div class="media-left d-flex mr-3">
-                                                                <?php
-                                                                if (empty($VISITOR->image_name)) {
-                                                                    ?>
-                                                                    <img src="upload/visitor/member.png"/>
-                                                                    <?php
-                                                                } else {
-
-                                                                    if ($VISITOR->facebookID && substr($VISITOR->image_name, 0, 5) === "https") {
-                                                                        ?>
-                                                                        <img src="<?php echo $VISITOR->image_name; ?>"/>
-                                                                    <?php } else {
-                                                                        ?>
-                                                                        <img src="upload/visitor/<?php echo $VISITOR->image_name; ?>"/>
-                                                                        <?php
-                                                                    }
-                                                                }
-                                                                ?>										
-                                                            </div>
-                                                            <div class="media-body">
-                                                                <div class="overview">
-                                                                    <div class="name"><b><?php echo $VISITOR->first_name . ' ' . $VISITOR->second_name ?></b></div>
-                                                                    <div class="details"><?php echo $article_feedback['title']; ?></div>
-                                                                    <div class="star-rating-t">
-                                                                        <ul class="list-inline">
-                                                                            <?php
-                                                                            $starNumber = $article_feedback['rate'];
-                                                                            for ($x = 1; $x <= $starNumber; $x++) {
-                                                                                echo '<li class = "list-inline-item"><i class = "fa fa-star"></i></li>';
-                                                                            }
-
-                                                                            while ($x <= 5) {
-                                                                                echo '<li class = "list-inline-item"><i class = "fa fa-star-o"></i></li>';
-                                                                                $x++;
-                                                                            }
-                                                                            ?>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>										
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                </div>			
-                                            </div>
-                                            <?php
-                                        } else {
-                                            $li .= ' <li data-target="#myCarousel" data-slide-to="' . $key . '">'
-                                                    . '</li>';
-                                            ?>
-                                            <div class="item carousel-item">
-                                                <div class="row">
-                                                    <div class="col-sm-12">
-                                                        <div class="testimonial">
-                                                            <p><?php echo $article_feedback['description']; ?></p>
-                                                        </div>
-                                                        <div class="media">
-                                                            <div class="media-left d-flex mr-3">
-                                                                <?php
-                                                                if (empty($VISITOR->image_name)) {
-                                                                    ?>
-                                                                    <img src="upload/visitor/member.png"/>
-                                                                    <?php
-                                                                } else {
-
-                                                                    if ($VISITOR->facebookID && substr($VISITOR->image_name, 0, 5) === "https") {
-                                                                        ?>
-                                                                        <img src="<?php echo $VISITOR->image_name; ?>"/>
-                                                                    <?php } else {
-                                                                        ?>
-                                                                        <img src="upload/visitor/<?php echo $VISITOR->image_name; ?>"/>
-                                                                        <?php
-                                                                    }
-                                                                }
-                                                                ?>										
-                                                            </div>
-                                                            <div class="media-body">
-                                                                <div class="overview">
-                                                                    <div class="name"><b><?php echo $VISITOR->first_name . ' ' . $VISITOR->second_name ?></b></div>
-                                                                    <div class="details"><?php echo $article_feedback['title']; ?></div>
-                                                                    <div class="star-rating-t">
-                                                                        <ul class="list-inline">
-                                                                            <?php
-                                                                            $starNumber = $article_feedback['rate'];
-                                                                            for ($x = 1; $x <= $starNumber; $x++) {
-                                                                                echo '<li class = "list-inline-item"><i class = "fa fa-star"></i></li>';
-                                                                            }
-
-                                                                            while ($x <= 5) {
-                                                                                echo '<li class = "list-inline-item"><i class = "fa fa-star-o"></i></li>';
-                                                                                $x++;
-                                                                            }
-                                                                            ?>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>										
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                </div>			
-                                            </div>
-                                            <?php
-                                        }
-                                    }
-                                    ?>
-                                </div>
-                                <!-- Carousel controls -->
-                                <a class="carousel-control left carousel-control-prev" href="#myCarousel" data-slide="prev">
-                                    <i class="fa fa-chevron-left"></i>
-                                </a>
-                                <a class="carousel-control right carousel-control-next" href="#myCarousel" data-slide="next">
-                                    <i class="fa fa-chevron-right"></i>
-                                </a>
-                                <div class="text-center">
-                                    <button type="submit" id="btn-add-comment" class="btn btn-info btn-position-rel">
-                                        <i class="fa fa-plus"></i>  Add Your Comment
-                                    </button>
-                                </div>
-                                <?php
-                                include './add-feedback.php';
-                                ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
-
             <div class="row top-margin-30">
                 <hr>
                 <div class="col-md-12">
                     <p class="subtitle-more more-t"><span>More Articles</span></p>
-
                     <div class="owl-carousel tour-slider" id="transport-carousel">
                         <?php
                         $ARTICLE = Article::all();
@@ -308,8 +271,6 @@ $CITY = new City($ARTICLES->city);
                             <div  class="index-transport-container" style="background-color: #ececec;">
                                 <?php
                                 foreach ($article_photos as $key => $article_photo) {
-
-
                                     if ($key == 0) {
                                         ?>
                                         <a href="article-view.php?id=<?php echo $article['id']; ?>">
@@ -329,12 +290,10 @@ $CITY = new City($ARTICLES->city);
                                             </span>
                                             <img src="upload/article/thumb/<?php echo $article_photo['image_name'] ?>" alt=""/>
                                         </a>
-
                                         <?php
                                     }
                                 }
                                 ?>
-                                <!--                                        <div class="transport-heading"></div>-->
                                 <div class="transport-bot-container">  
                                     <a href="article-view.php?id=<?php echo $article['id']; ?>">
                                         <div class="transport-bot-title"> <?php
@@ -356,18 +315,13 @@ $CITY = new City($ARTICLES->city);
                                     </div>
                                 </div>
                             </div>
-
-
                             <?php
                         }
                         ?>
-
                     </div>
                 </div>
             </div>
-
         </div>
-
         <?php
         include './footer.php';
         ?>
@@ -384,9 +338,7 @@ $CITY = new City($ARTICLES->city);
                 height: 500,
                 autoplay: 7000,
                 lightbox: true,
-                showInfo: true,
-
-                //                imageCrop: true,
+                showInfo: true
             });
         </script>
         <script>
@@ -394,16 +346,10 @@ $CITY = new City($ARTICLES->city);
                 jQuery('#btn-add-comment').click(function () {
                     jQuery("#myModalarticle").modal('show');
                 });
-
             });
-
-
             jQuery('#create').click(function (event) {
-
                 event.preventDefault();
-
                 var captchacode = jQuery('#captchacode').val();
-
                 jQuery.ajax({
                     url: "visitor-feedback/captchacode.php",
                     cache: false,
@@ -411,19 +357,15 @@ $CITY = new City($ARTICLES->city);
                     type: "POST",
                     data: {
                         captchacode: captchacode
-
                     },
                     success: function (html) {
                         var status = html.status;
                         var msg = html.msg;
-
                         if (status == "incorrect") {
-
                             jQuery("#capspan").addClass("notvalidated");
                             jQuery("#capspan").html(msg);
                             jQuery("#capspan").show();
                             jQuery("#capspan").fadeOut(2000);
-
                         } else if (status == "correct") {
                             jQuery('#client-comment').submit();
                         }
@@ -431,11 +373,9 @@ $CITY = new City($ARTICLES->city);
                 });
             });
         </script>
-
         <script>
             $(document).ready(function () {
                 $('#transport-carousel').owlCarousel({
-
                     loop: true,
                     margin: 10,
                     responsiveClass: true,
@@ -461,5 +401,4 @@ $CITY = new City($ARTICLES->city);
             });
         </script>
     </body> 
-
 </html>

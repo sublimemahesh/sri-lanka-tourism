@@ -30,6 +30,7 @@ if (isset($_SESSION['isPhoneVerified'])) {
         <link href="assets/css/style-responsive.css" rel="stylesheet">
         <link href="assets/css/custom.css" rel="stylesheet" type="text/css"/>
         <link href="assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css"/>
+        <link href="plugins/Preloader/jm.spinner.css" rel="stylesheet" type="text/css"/>
         <style>
             .img-thumbnail {
                 max-width: 50% !important;
@@ -37,7 +38,7 @@ if (isset($_SESSION['isPhoneVerified'])) {
         </style>
     </head> 
     <body> 
-        <div class="loading" id="loading">Loading&#8230;</div>
+        <div class="box"></div> 
         <section id="container" > 
             <?php
             include './header-nav.php';
@@ -48,6 +49,10 @@ if (isset($_SESSION['isPhoneVerified'])) {
                 <div class="wrapper">
                     <div class="container-fluid">
                         <div class="row  top-bott20">
+                            <?php
+                            $vali = new Validator();
+                            $vali->show_message();
+                            ?>
                             <div class="panel panel-default">
                                 <div class="panel-heading"><i class="fa fa-pencil"></i>Create Accommodation</div>
                                 <div class="panel-body">
@@ -326,6 +331,7 @@ if (isset($_SESSION['isPhoneVerified'])) {
         <script src="js/post-accommodation-image.js" type="text/javascript"></script>
         <script src="assets/js/form-component.js"></script>    
         <script src="js/add-new-accommodation.js" type="text/javascript"></script>
+        <script src="plugins/Preloader/jm.spinner.js" type="text/javascript"></script>
         <script>
             //custom select box
             $(function () {

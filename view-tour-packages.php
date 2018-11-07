@@ -18,8 +18,6 @@ $noofdates = NULL;
 $type = NULL;
 $pricefrom = NULL;
 $priceto = NULL;
-
-
 /* set page numbers */
 if (isset($_GET["page"])) {
     $page = (int) $_GET["page"];
@@ -49,16 +47,16 @@ if (isset($_GET['priceto'])) {
 } else {
     $priceto = $max;
 }
-
 $TOURS = $SEARCH->GetToursByKeywords($keyword, $noofdates, $type, $pricefrom, $priceto, $pageLimit, $setLimit);
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Sri Lanka || Tourism</title>
+        <title>Tour Packages || Sri Lanka || Tourism</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="keywords" content="sri lanka tourism, tourism in sri lanka, Sri Lanka, tours in sri lanka, taxi in sri lanka, tourism sri lanka, rent a cars in sri lanka, tour packages in sri lanka, holiday in sri lanka, visit sri lanka, tour packages offers, offers in tour packages, articles in sri lanka, destination in sri lanka, tour plans for sri lanka, sri lanka tour plans, round tours in sri lanka, one day tour in sri lanka, wild life in sri lanka, scenic places in sri lanka, thills in sri lanka, heritage places in sri lanka, day tours, classic tours, wild tours, packages, packages in sri lanka, economic tour packages in sri lanka">
+        <meta name="description" content="The team Sri Lanka Tourism crew is privileged to show you and to take you around the most beautiful places in Sri Lanka. You can Plan your tour with Sri Lanka Tourism and, tours are judiciously planned and customized to meet your needs. And also, Sri Lanka Tourism features well established taxi service and hotel service. So your trip will be everything you imagined and much more.">
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/font-awesome.min.css" rel="stylesheet">
         <link href="assets/css/styles.css" rel="stylesheet" type="text/css"/>
@@ -75,7 +73,6 @@ $TOURS = $SEARCH->GetToursByKeywords($keyword, $noofdates, $type, $pricefrom, $p
         <?php
         include './header.php';
         ?>
-
         <div class="background-image" style="background-image: url('images/hotel/sea.jpg');">
             <section>
                 <div class="container inner-container1 inner-tour-pack">
@@ -92,7 +89,7 @@ $TOURS = $SEARCH->GetToursByKeywords($keyword, $noofdates, $type, $pricefrom, $p
                         <div class="col-md-3 col-sm-6 col-xs-12">
                             <div class="listing-box">
                                 <div class="listing-box-thumb">
-                                    <span class="price-list">LKR <?php echo $TOUR['price']; ?></span>
+                                    <span class="price-list">USD <?php echo $TOUR['price']; ?></span>
                                     <img src="upload/tour-package/thumb/<?php echo $TOUR['picture_name']; ?>" alt="">
                                 </div>
                                 <div class="listing-rate-share">
@@ -157,18 +154,13 @@ $TOURS = $SEARCH->GetToursByKeywords($keyword, $noofdates, $type, $pricefrom, $p
                                                 ?>
                                             </span>
                                         </div>
-
                                     </div>
-
-
                                     <div class="col-md-6 col-sm-6 col-xs-6">
-
                                         <div class="rated-list">
                                             <?php
                                             $star_result = Feedback::getRatingByTour1($id);
                                             $rate_count = $star_result['rate_count'];
                                             $starNumber = round($star_result['rate_avg']);
-
                                             for ($x = 1; $x <= $starNumber; $x++) {
                                                 echo '<b class="fa fa-star"></b>';
                                             }
@@ -180,7 +172,6 @@ $TOURS = $SEARCH->GetToursByKeywords($keyword, $noofdates, $type, $pricefrom, $p
                                             <div>
                                                 (<?php echo $rate_count; ?> Reviews)
                                             </div>
-
                                         </div> 
                                     </div>
                                     <div class="col-md-6 col-sm-6 col-xs-6"><a href="tour-package-view.php?id=<?php echo $TOUR['id']; ?>">
@@ -188,20 +179,13 @@ $TOURS = $SEARCH->GetToursByKeywords($keyword, $noofdates, $type, $pricefrom, $p
                                                 View More
                                             </div>
                                         </a>
-
                                     </div>
-
-
                                 </div>
-
-
                             </div>
                         </div>
-
                         <?php
                     }
                     ?>
-
                     <div class="row"></div>
                     <div class="row col-md-offset-3">
                         <?php Search::showPaginationTour($keyword, $noofdates, $type, $pricefrom, $priceto, $setLimit, $page); ?>
@@ -209,8 +193,6 @@ $TOURS = $SEARCH->GetToursByKeywords($keyword, $noofdates, $type, $pricefrom, $p
                 </div>
             </section>  
         </div>
-
-
         <!-- Our Resort Values style-->  
         <?php
         include './footer.php';
@@ -222,5 +204,4 @@ $TOURS = $SEARCH->GetToursByKeywords($keyword, $noofdates, $type, $pricefrom, $p
         <script src="assets/js/helper.js" type="text/javascript"></script>
         <script src="assets/js/template.js" type="text/javascript"></script>
     </body> 
-
 </html>

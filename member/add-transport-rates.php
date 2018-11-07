@@ -142,7 +142,7 @@ if (isset($_SESSION['isPhoneVerified'])) {
                                                                             </div>
                                                                             <div class="col-md-6">
                                                                                 <div class="bottom-top">
-                                                                                    <label for="price">Price(LKR)</label>
+                                                                                    <label for="price">Price(USD)</label>
                                                                                     <div class="formrow">
                                                                                         <input type="text" id="price" class="form-control" placeholder="Enter Price" autocomplete="off" name="price" required="true">
                                                                                     </div>
@@ -215,7 +215,7 @@ if (isset($_SESSION['isPhoneVerified'])) {
                                                                                             ?>
                                                                                         </td>
                                                                                         <td><?php echo $transport_rates['distance']; ?> Km</td>
-                                                                                        <td class="text-right"> LKR. <?php echo $transport_rates['price']; ?>.00</td>
+                                                                                        <td class="text-right"> USD. <?php echo $transport_rates['price']; ?>.00</td>
                                                                                         <td> 
                                                                                             <a href="#"> 
                                                                                                 <button class="btn btn-danger btn-sm all-icon fa fa-trash-o delete-transport-rates" data-id="<?php echo $transport_rates['id']; ?>"></button>
@@ -246,7 +246,7 @@ if (isset($_SESSION['isPhoneVerified'])) {
                                                         <form class="form-horizontal"  method="post" action="post-and-get/rent-a-car.php"> 
                                                             <div class="col-md-12">
                                                                 <div class="bottom-top">
-                                                                    <label for="distance">Price per day</label>
+                                                                    <label for="distance">Price per day(USD)</label>
                                                                     <div class="formrow">
                                                                         <input type="text" id="price_p_day" value="<?php echo $PRICE_P_DAY; ?>"  class="form-control" placeholder="Enter price" autocomplete="off" name="price_p_day" required="true">
                                                                     </div>
@@ -254,7 +254,7 @@ if (isset($_SESSION['isPhoneVerified'])) {
                                                             </div>
                                                             <div class="col-md-12">
                                                                 <div class="bottom-top">
-                                                                    <label for="distance">Price per excess mileage</label>
+                                                                    <label for="distance">Price per excess mileage(USD)</label>
                                                                     <div class="formrow">
                                                                         <input type="text" id="price_p_extra" value="<?php echo $PRICE_P_EX; ?>" class="form-control" placeholder="Enter price" autocomplete="off" name="price_p_extra" required="true">
                                                                     </div>
