@@ -19,17 +19,13 @@ if (isset($_SESSION['isPhoneVerified'])) {
 if (isset($_SESSION['member'])) {
     $member = 'member';
 }
-
 $VISITOR = new Visitor($VISITOR);
-
 $TOURPACKAGE = new TourPackage($TOUR);
 $TYPE = new TourType($TOURPACKAGE->tourtype);
 $MEMBER = new Member($TOURPACKAGE->member);
-
 $result = TourSubSection::CountDaysInTour($TOUR);
 $days = $result['days'];
 $nights = (int) $days - 1;
-
 $today = date("Y-m-d", time());
 date_default_timezone_set('Asia/Colombo');
 $now = date('Y-m-d H:i:s');
@@ -37,8 +33,10 @@ $now = date('Y-m-d H:i:s');
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Sri Lanka || Tourism</title>
+        <title><?php echo $TOURPACK->name; ?> || Tour Packages || Sri Lanka || Tourism</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="keywords" content="sri lanka tourism, tourism in sri lanka, Sri Lanka, tours in sri lanka, <?php echo $TOURPACK->name; ?>, tour package booking, booking tour packages, book tours, book packages, book tour packages, tour packages inquries, book tour packages in sri lanka, book tours in sri lanka, book packages in sri lanka, taxi in sri lanka, tourism sri lanka, rent a cars in sri lanka, tour packages in sri lanka, holiday in sri lanka, visit sri lanka, tour plans for sri lanka, sri lanka tour plans, round tours in sri lanka, one day tour in sri lanka, wild life in sri lanka, scenic places in sri lanka, thills in sri lanka, heritage places in sri lanka, day tours, classic tours, wild tours, packages, packages in sri lanka, economic tour packages in sri lanka">
+        <meta name="description" content="The team Sri Lanka Tourism crew is privileged to show you and to take you around the most beautiful places in Sri Lanka. You can Plan your tour with Sri Lanka Tourism and, tours are judiciously planned and customized to meet your needs. And also, Sri Lanka Tourism features well established taxi service and hotel service. So your trip will be everything you imagined and much more.">
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href="css/font-awesome.min.css" rel="stylesheet">
         <link rel="stylesheet" href="css/style.css">
@@ -64,17 +62,13 @@ $now = date('Y-m-d H:i:s');
         <div class="container">
             <div class="row top-bott20">
                 <div class="col-sm-9">
-
                     <div class="body">
-
                         <div class="transport-booking-box margin-panel">
                             <?php
                             $vali = new Validator();
                             $vali->show_message();
                             ?>
-
                             <form method="post" action="post-and-get/tour-package-booking.php" enctype="multipart/form-data">
-
                                 <h4 class="booking-transports-title text-center">Your Details</h4>
                                 <div class="row panel panel-default booking-panel-default">
                                     <div class="col-sm-12 col-md-12">
@@ -107,15 +101,11 @@ $now = date('Y-m-d H:i:s');
                                                 <br />
                                             </div>
                                         </div>
-
                                     </div>
-
                                 </div>
-
                                 <h4 class="booking-transports-title text-center">Tour Package Booking Details</h4>
                                 <div class="row panel panel-default booking-panel-default">
                                     <div class="col-sm-12 col-md-12">
-
                                         <div class="col-md-6">
                                             <div class="bottom-top">Number of Adults</div>
                                             <div class="formrow">
@@ -136,7 +126,6 @@ $now = date('Y-m-d H:i:s');
                                                 <br>
                                             </div>
                                         </div>
-
                                         <div class="col-md-6">
                                             <div class="bottom-top">End Date</div>
                                             <div class="formrow">
@@ -144,7 +133,6 @@ $now = date('Y-m-d H:i:s');
                                                 <br>
                                             </div>
                                         </div>
-
                                         <div class="col-md-12">
                                             <div class="bottom-top">Message</div>
                                             <div class="formrow">
@@ -153,7 +141,6 @@ $now = date('Y-m-d H:i:s');
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
                                 <div class="row">
                                     <div class="top-bott50">
@@ -169,22 +156,17 @@ $now = date('Y-m-d H:i:s');
                                 </div>
                             </form>
                         </div>
-
                     </div>
-
                 </div>
-
                 <div class="col-sm-3">
                     <div class="row top-bott20">
                         <div class="panel panel-info margin-panel panel-responsive">
                             <div class="panel-heading">SELECTED TOUR PACKAGE</div>
                             <div class="panel-body">
                                 <h4 class="booking-transports-title text-center"><?php echo $TOURPACKAGE->name; ?></h4>
-<!--                                <p class="text-center"><?php echo $CONDITION->name; ?></p>-->
                                 <div class="transport-booking-img">
                                     <img src="upload/tour-package/thumb/<?php echo $TOURPACKAGE->picture_name; ?>" class="img img-responsive img-thumbnail" id="profil_pic"/>
                                 </div>
-
                                 <ul class="list-group visitor-list-color">
                                     <li class="list-group-item"><b>Tour Type</b> : <?php echo $TYPE->name; ?></li> 
                                     <li class="list-group-item"><b>No of Days</b> : 
@@ -205,9 +187,9 @@ $now = date('Y-m-d H:i:s');
                                         }
                                         ?>
                                     </li> 
-                                    <li class="list-group-item"><b>Price Per Person</b> : <?php echo 'LKR:' . $TOURPACKAGE->price . '/='; ?></li>
+                                    <li class="list-group-item"><b>Price Per Person</b> : <?php echo 'USD:' . $TOURPACKAGE->price; ?></li>
                                     <li class="list-group-item"><b>Member</b> : <?php echo $MEMBER->name; ?></li>
-                                    <li class="list-group-item"><b>Description</b> : <?php echo $TOURPACKAGE->description; ?></li>
+                                    <li class="list-group-item"><b>Description</b> : <?php echo substr($TOURPACKAGE->description, 0,350) . '...'; ?></li>
                                 </ul>
                             </div>
                         </div>
@@ -215,7 +197,6 @@ $now = date('Y-m-d H:i:s');
                 </div>
             </div>
         </div>
-
         <!-- Our Resort Values style-->  
         <?php include './footer.php' ?>
 
@@ -231,11 +212,8 @@ $now = date('Y-m-d H:i:s');
                     dateFormat: 'yy-mm-dd',
                     minDate: dateToday
                 };
-
                 $(".datepicker").datepicker($.extend(datepickersOpt));
-
             });
-
             $(function () {
                 $('input[type="time"][value="now"]').each(function () {
                     var d = new Date(),
@@ -250,11 +228,6 @@ $now = date('Y-m-d H:i:s');
                     });
                 });
             });
-
-
         </script>
     </body> 
 </html>
-
-
-

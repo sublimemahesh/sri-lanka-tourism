@@ -1,6 +1,5 @@
 <?php
 include './class/include.php';
-//include './auth.php';
 if (!isset($_SESSION)) {
     session_start();
 }
@@ -18,8 +17,6 @@ if (!isset($_SESSION["vislogin"])) {
 } else {
     $visitorid = $_SESSION['id'];
 }
-
-
 $VISITOR = new Visitor($visitorid);
 $MEM = new Member($memberid);
 $DISTINCTMEMBERS = MemberAndVisitorMessages::getDistinctMembersByVisitorId($visitorid);
@@ -28,7 +25,7 @@ $DISTINCTMEMBERS = MemberAndVisitorMessages::getDistinctMembersByVisitorId($visi
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Sri Lanka || Tourism</title>
+        <title>Chat with Driver || Sri Lanka || Tourism</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/font-awesome.min.css" rel="stylesheet">
@@ -94,21 +91,19 @@ $DISTINCTMEMBERS = MemberAndVisitorMessages::getDistinctMembersByVisitorId($visi
                                         </ul>
                                     </div>
                                     <div id="expanded">
-                                        <label for="twitter"><i class="fa fa-facebook fa-fw" aria-hidden="true"></i></label>
-                                        <input name="twitter" type="text" value="mikeross" />
-                                        <label for="twitter"><i class="fa fa-twitter fa-fw" aria-hidden="true"></i></label>
-                                        <input name="twitter" type="text" value="ross81" />
-                                        <label for="twitter"><i class="fa fa-instagram fa-fw" aria-hidden="true"></i></label>
-                                        <input name="twitter" type="text" value="mike.ross" />
+                                        <label for="twitter"><i class="fa fa-envelope fa-fw" aria-hidden="true"></i></label>
+                                        <input name="twitter" type="text" value="<?php echo $VISITOR->email; ?>" />
+                                        <label for="twitter"><i class="fa fa-phone fa-fw" aria-hidden="true"></i></label>
+                                        <input name="twitter" type="text" value="<?php echo $VISITOR->contact_number; ?>" />
                                     </div>
                                 </div>
                             </div>
-                            <div id="search">
+<!--                            <div id="search">
                                 <label for="">
                                     <i class="fa fa-search" aria-hidden="true"></i>
                                 </label>
                                 <input type="text" placeholder="Search contacts..." />
-                            </div>
+                            </div>-->
                             <div id="contacts">
                                 <ul>
                                     <?php
@@ -181,7 +176,7 @@ $DISTINCTMEMBERS = MemberAndVisitorMessages::getDistinctMembersByVisitorId($visi
 
                                 </ul>
                             </div>
-                            <div id="bottom-bar">
+<!--                            <div id="bottom-bar">
                                 <button id="addcontact">
                                     <i class="fa fa-user-plus fa-fw" aria-hidden="true"></i>
                                     <span>Add contact</span>
@@ -190,7 +185,7 @@ $DISTINCTMEMBERS = MemberAndVisitorMessages::getDistinctMembersByVisitorId($visi
                                     <i class="fa fa-cog fa-fw" aria-hidden="true"></i> 
                                     <span>Settings</span>
                                 </button>
-                            </div>
+                            </div>-->
                         </div>
                         <div class="content">
                             <?php

@@ -24,8 +24,14 @@ if (isset($_SESSION['isPhoneVerified'])) {
         <link href="css/visitor-custom.css" rel="stylesheet" type="text/css"/>
         <link href="https://fonts.googleapis.com/css?family=Russo+One|Magra|Ubuntu+Condensed" rel="stylesheet"> 
         <link href="css/loading.css" rel="stylesheet" type="text/css"/>
+        <link href="plugins/Preloader/jm.spinner.css" rel="stylesheet" type="text/css"/>
+        <style>
+            .alert {
+                margin-bottom: 0px;
+            }
+        </style>
     </head>
-    <div class="loading" id="loading">Loading&#8230;</div>
+    <div class="box hidden"></div>  
     <body style="background-color: #FFF;">
         <!-- Our Resort Values style-->
         <?php include './header.php' ?>
@@ -119,5 +125,6 @@ if (isset($_SESSION['isPhoneVerified'])) {
         <script src="js/bootstrap-datepicker.js" type="text/javascript"></script>
         <script src="post-and-get/js/visitor-profile.js" type="text/javascript"></script>
         <script src="js/display-contact-number-verification-alert.js" type="text/javascript"></script>
+        <script src="plugins/Preloader/jm.spinner.js" type="text/javascript"></script>
     </body> 
 </html>

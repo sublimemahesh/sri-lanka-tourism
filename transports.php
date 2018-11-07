@@ -1,20 +1,16 @@
 <?php
 include_once(dirname(__FILE__) . '/class/include.php');
-
 if (!isset($_SESSION)) {
     session_start();
 }
-
 $SEARCH = new Search(NULL);
 $TRANSPORTS_PHOTO = new TransportPhoto(NULL);
-
 $from = NULL;
 $to = NULL;
 $type = NULL;
 $condition = NULL;
 $passengers = NULL;
 $driver = NULL;
-
 /* set page numbers */
 if (isset($_GET["page"])) {
     $page = (int) $_GET["page"];
@@ -23,7 +19,6 @@ if (isset($_GET["page"])) {
 }
 $setLimit = 10;
 $pageLimit = ($page * $setLimit) - $setLimit;
-
 /* search */
 if (isset($_GET['from'])) {
     $from = $_GET['from'];
@@ -53,8 +48,10 @@ if ($driver == 'self_driver') {
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Sri Lanka || Tourism</title>
+        <title>Transports || Sri Lanka || Tourism</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="keywords" content="sri lanka tourism, tourism in sri lanka, Sri Lanka, tours in sri lanka, taxi in sri lanka, tourism sri lanka, rent a cars in sri lanka, transports in sri lanka, transport ways in sri lanka, sri lanka transports, vehicles in sri lanka, self driving vehicles, vehicle with chauffeur diver, luxuary vehicles, economy vehicles, hiring vehicles, hiring taxi">
+        <meta name="description" content="The team Sri Lanka Tourism crew is privileged to show you and to take you around the most beautiful places in Sri Lanka. You can Plan your tour with Sri Lanka Tourism and, tours are judiciously planned and customized to meet your needs. And also, Sri Lanka Tourism features well established taxi service and hotel service. So your trip will be everything you imagined and much more.">
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/font-awesome.min.css" rel="stylesheet">
         <link rel="stylesheet" href="css/style.css">
@@ -63,7 +60,6 @@ if ($driver == 'self_driver') {
         <link href="css/datepicker.css" rel="stylesheet" type="text/css"/>
         <link href="assets/css/styles.css" rel="stylesheet" type="text/css"/>
         <link href="https://fonts.googleapis.com/css?family=Russo+One|Magra|Ubuntu+Condensed" rel="stylesheet"> 
-
     </head>
     <body>
         <!-- Our Resort Values style-->
@@ -79,7 +75,6 @@ if ($driver == 'self_driver') {
                                 <?php
                                 foreach ($TRANSPORTS as $transport) {
                                     $FUEL_TYPE = new FuelType($transport['fuel_type']);
-
                                     $VEHICLE_TYPE = new VehicleType($transport['vehicle_type']);
                                     $MEMBER = new Member($transport['member']);
                                     $result = Feedback::getRatingByTransport($transport['id']);
@@ -112,19 +107,13 @@ if ($driver == 'self_driver') {
                                                                 for ($x = 1; $x <= $starNumber; $x++) {
                                                                     echo '<i class="fa fa-star"></i>';
                                                                 }
-//                                                                            if (strpos($starNumber, '.')) {
-//                                                                                echo '<img src="path/to/half/star.png" />';
-//                                                                                $x++;
-//                                                                            }
                                                                 while ($x <= 5) {
                                                                     echo '<i class="fa fa-star-o"></i>';
                                                                     $x++;
                                                                 }
                                                                 ?>
-
                                                             </span> (<?php echo $rate_count; ?> Reviews)
                                                         </div>
-    <!--                                                        <span class="brackets">(Based on 17 reviews)</span>-->
                                                     </div>
                                                 </div>
                                                 <div class="amenities">
@@ -157,7 +146,6 @@ if ($driver == 'self_driver') {
                                                     </ul>
                                                 </div>
                                             </div>
-
                                             <?php
                                             if ($driver == 'self_driver') {
                                                 ?>
@@ -192,7 +180,6 @@ if ($driver == 'self_driver') {
                                                                     }
                                                                 }
                                                                 ?>
-
                                                             </a>
                                                         </div>
                                                         <div class="driver-name col-md-7 col-xs-8 col-sm-8"><div class="driver-name-posted">Posted by </div>
@@ -203,20 +190,17 @@ if ($driver == 'self_driver') {
                                                                     echo '...';
                                                                 }
                                                                 ?>
-
                                                             </span>
                                                         </div>
                                                     </div>
-
                                                     <div class="bottom-sec m-sec">
                                                         Price Per Day
-                                                        <div class="pointer"><strong class="price">LKR <?php echo $transport['price']; ?></strong></div>
+                                                        <div class="pointer"><strong class="price">USD <?php echo $transport['price']; ?></strong></div>
                                                         <div class="btn-padding">
                                                             <a href="rent-a-car-booking.php?transport=<?php echo $transport['id']; ?>" class="more-info">Book Now</a>
                                                         </div>
                                                     </div>
                                                 </div>
-
                                                 <?php
                                             } else {
                                                 $TRANSPORT_RATE = new TransportRates($transport['transport_rate']);
@@ -252,7 +236,6 @@ if ($driver == 'self_driver') {
                                                                     }
                                                                 }
                                                                 ?>
-
                                                             </a>
                                                         </div>
                                                         <div class="driver-name col-md-7 col-xs-8 col-sm-8"><div class="driver-name-posted">Posted by </div>
@@ -263,14 +246,9 @@ if ($driver == 'self_driver') {
                                                                     echo '...';
                                                                 }
                                                                 ?>
-
                                                             </span>
-
                                                         </div>
-
-
                                                     </div>
-
                                                     <div class="col-md-12  icon-bottom" >
                                                         <img src="images/get in.png" alt="" width="30px"/>&nbsp;:<b><?php
                                                             $cityfrom = new city($TRANSPORT_RATE->location_from);
@@ -282,24 +260,17 @@ if ($driver == 'self_driver') {
                                                             echo substr($cityto->name, 0, 10);
                                                             echo'..';
                                                             ?></b>
-
                                                     </div>
-
                                                     <div class="bottom-sec2 m-sec col-md-12">
-                                                        <div class="pointer"><strong class="price">LKR <?php echo $transport['transport_price']; ?></strong></div>
+                                                        <div class="pointer"><strong class="price">USD <?php echo $transport['transport_price']; ?></strong></div>
                                                         <div class="btn-padding">
                                                             <a href="transport-booking.php?rate=<?php echo $transport['transport_rate']; ?>" class="more-info2">Book Now</a> 
                                                         </div>
                                                     </div>
-
-
                                                 </div>
                                                 <?php
                                             }
                                             ?>
-
-
-
                                         </div>
                                     </div>
                                     <?php
@@ -315,13 +286,11 @@ if ($driver == 'self_driver') {
                                     ?>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
         <!-- Our Resort Values style-->  
         <?php
         include './footer.php';
@@ -332,7 +301,5 @@ if ($driver == 'self_driver') {
         <script src="js/bootstrap-datepicker.js" type="text/javascript"></script>
         <script src="assets/js/helper.js" type="text/javascript"></script>
         <script src="assets/js/template.js" type="text/javascript"></script>
-
     </body> 
-
 </html>

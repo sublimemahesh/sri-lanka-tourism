@@ -74,7 +74,7 @@ if (isset($_SESSION['isPhoneVerified'])) {
                                                             <thead>
                                                                 <tr>
                                                                     <th>Basis</th>
-                                                                    <th>Price</th>
+                                                                    <th>Price(USD)</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>

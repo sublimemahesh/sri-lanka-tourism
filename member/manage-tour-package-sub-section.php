@@ -37,6 +37,7 @@ if (isset($_SESSION['isPhoneVerified'])) {
         <link href="assets/multiselect/multi-select.css" rel="stylesheet" type="text/css"/>
         <link href="assets/css/tagging.css" rel="stylesheet" type="text/css"/>
         <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+        <link href="plugins/Preloader/jm.spinner.css" rel="stylesheet" type="text/css"/>
         <style>
             .img-thumbnail {
                 max-width: 50% !important;
@@ -47,7 +48,7 @@ if (isset($_SESSION['isPhoneVerified'])) {
         </style>
     </head> 
     <body> 
-        <div class="loading" id="loading">Loading&#8230;</div>
+        <div class="box"></div>  
         <section id="container" > 
             <?php
             include './header-nav.php';
@@ -71,7 +72,6 @@ if (isset($_SESSION['isPhoneVerified'])) {
                                     <div class="body">
                                         <div class="userccount">
                                             <div class="formpanel"> 
-                                                <!--                                                <form class="form-horizontal"  method="post" action="#" enctype="multipart/form-data" id="form-tours">-->
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> 
                                                     <div class="body">
                                                         <div class="row clearfix">
@@ -194,7 +194,6 @@ if (isset($_SESSION['isPhoneVerified'])) {
                                                         </div>
                                                     </div> 
                                                 </div> 
-                                                <!--</form>-->
                                             </div>  
                                         </div>
                                     </div>
@@ -238,6 +237,7 @@ if (isset($_SESSION['isPhoneVerified'])) {
         <script src="js/post-tour-package-images.js" type="text/javascript"></script>
         <script src="js/tour-subsection.js" type="text/javascript"></script>
         <script src="js/tagging.js" type="text/javascript"></script>
+        <script src="plugins/Preloader/jm.spinner.js" type="text/javascript"></script>
         <script>
             //custom select box
 

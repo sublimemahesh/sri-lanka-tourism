@@ -34,6 +34,7 @@ $TOUR_SUB_PHOTO = new TourSubSectionPhoto(NULL);
         <link href="assets/css/style-responsive.css" rel="stylesheet">
         <link href="assets/css/custom.css" rel="stylesheet" type="text/css"/>
         <link href="assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css"/>
+        <link href="plugins/Preloader/jm.spinner.css" rel="stylesheet" type="text/css"/>
         <style>
             .img-thumbnail {
                 max-width: 50% !important;
@@ -41,7 +42,7 @@ $TOUR_SUB_PHOTO = new TourSubSectionPhoto(NULL);
         </style>
     </head> 
     <body> 
-        <div class="loading" id="loading">Loading&#8230;</div>
+        <div class="box"></div> 
         <section id="container" > 
             <?php
             include './header-nav.php';
@@ -151,6 +152,7 @@ $TOUR_SUB_PHOTO = new TourSubSectionPhoto(NULL);
         <script src="delete/js/tour-sub-section.js" type="text/javascript"></script>
         <script src="js/post-tour-package-images.js" type="text/javascript"></script>
         <script src="js/display-contact-number-verification-alert.js" type="text/javascript"></script>
+        <script src="plugins/Preloader/jm.spinner.js" type="text/javascript"></script>
         <script>
             //custom select box
             $(function () {

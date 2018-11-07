@@ -97,7 +97,10 @@ $(document).ready(function (e) {
 
         var sort = $(this).attr('sort');
         var subid = $('#toursubsection').val();
-        $('#loading').show();
+        
+        $('.box').jmspinner('large');
+        $('.box').addClass('well');
+        $('.box').css('z-index','9999');
         var formData = new FormData($('#form-tours-' + sort)[0]);
         $.ajax({
             type: "POST",
@@ -116,7 +119,9 @@ $(document).ready(function (e) {
                 html += '<i class="img-tour-package-delete delete-icon btn btn-danger btn-md fa fa-trash-o"  id="' + mess.id + '"></i>';
                 html += '</div>';
                 $('#image-list-' + mess.toursubsection).prepend(html);
-                $('#loading').hide();
+                $('.box').jmspinner(false);
+                $('.box').removeClass('well');
+                $('.box').css('z-index','-1111');
                 $.ajax({
                     type: 'POST',
                     url: 'post-and-get/ajax/post-tour-package-images.php',

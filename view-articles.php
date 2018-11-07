@@ -1,16 +1,12 @@
 <?php
 include_once(dirname(__FILE__) . '/class/include.php');
-
 if (!isset($_SESSION)) {
     session_start();
 }
-
 $SEARCH = new Search(NULL);
 $keyword = NULL;
 $type = NULL;
 $city = NULL;
-
-
 /* set page numbers */
 if (isset($_GET["page"])) {
     $page = (int) $_GET["page"];
@@ -19,7 +15,6 @@ if (isset($_GET["page"])) {
 }
 $setLimit = 12;
 $pageLimit = ($page * $setLimit) - $setLimit;
-
 /* search */
 if (isset($_GET['keyword'])) {
     $keyword = $_GET['keyword'];
@@ -30,16 +25,16 @@ if (isset($_GET['type'])) {
 if (isset($_GET['article-city'])) {
     $city = $_GET['article-city'];
 }
-
 $ARTICLES = $SEARCH->GetArticlesByKeywords($keyword, $type, $city, $pageLimit, $setLimit);
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Sri Lanka || Tourism</title>
+        <title>Article || Sri Lanka || Tourism</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="keywords" content="sri lanka tourism, tourism in sri lanka, Sri Lanka, articles in sri lanka, destinations in sri lanka, visiting places in sri lanka, places in sri lanka, attractions in sri lanka, beautiful places in sri lanka, tours in sri lanka, taxi in sri lanka, tourism sri lanka, rent a cars in sri lanka, tour packages in sri lanka, holiday in sri lanka, visit sri lanka, ">
+        <meta name="description" content="The team Sri Lanka Tourism crew is privileged to show you and to take you around the most beautiful places in Sri Lanka. You can Plan your tour with Sri Lanka Tourism and, tours are judiciously planned and customized to meet your needs. And also, Sri Lanka Tourism features well established taxi service and hotel service. So your trip will be everything you imagined and much more.">
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/font-awesome.min.css" rel="stylesheet">
         <link rel="stylesheet" href="css/style.css">
@@ -49,7 +44,6 @@ $ARTICLES = $SEARCH->GetArticlesByKeywords($keyword, $type, $city, $pageLimit, $
         <link href="assets/css/styles.css" rel="stylesheet" type="text/css"/>
         <link href="admin/plugins/jquery-ui/jquery-ui.css" rel="stylesheet" type="text/css"/>
         <link href="https://fonts.googleapis.com/css?family=Russo+One|Magra|Ubuntu+Condensed" rel="stylesheet">
-
         <style>
             @media (max-width: 480px) {
                 .carousel .testimonial {
@@ -63,7 +57,6 @@ $ARTICLES = $SEARCH->GetArticlesByKeywords($keyword, $type, $city, $pageLimit, $
         <?php
         include './header.php';
         ?>
-
         <div class="row background-image" style="background-image: url('images/hotel/sea.jpg');">
             <section>
                 <div class="container inner-container1 inner-tour-pack">
@@ -71,12 +64,9 @@ $ARTICLES = $SEARCH->GetArticlesByKeywords($keyword, $type, $city, $pageLimit, $
                         <?php
                         foreach ($ARTICLES as $ARTICLE) {
                             $id = $ARTICLE['id'];
-
                             $MEMBER = new Member($ARTICLE['member']);
                             $TYPE = new ArticleType($ARTICLE['article_type']);
                             $CITY = new City($ARTICLE['city']);
-
-
                             $ARTICLE_PHOTO = new ArticlePhoto(NULL);
                             $article_photos = $ARTICLE_PHOTO->getArticlePhotosById($id);
                             ?>
@@ -175,7 +165,6 @@ $ARTICLES = $SEARCH->GetArticlesByKeywords($keyword, $type, $city, $pageLimit, $
                                             </div>
                                             <a href="article-view.php?id=<?php echo $ARTICLE['id']; ?>"><div class="tour-btn pull-right btn btn-sm blue">Read More<span class="glyphicon glyphicon-eye-open"></span></div></a>
                                         </div> 
-
                                     </div>
                                 </div>
                             </div>
@@ -183,15 +172,12 @@ $ARTICLES = $SEARCH->GetArticlesByKeywords($keyword, $type, $city, $pageLimit, $
                         }
                         ?>
                     </div>
-
                     <div class="row col-md-offset-3">
                         <?php Search::showPaginationArticle($keyword, $type, $city, $setLimit, $page); ?>
                     </div>
                 </div>
             </section>  
         </div>
-
-
         <!-- Our Resort Values style-->  
         <?php
         include './footer.php';
@@ -203,5 +189,4 @@ $ARTICLES = $SEARCH->GetArticlesByKeywords($keyword, $type, $city, $pageLimit, $
         <script src="assets/js/helper.js" type="text/javascript"></script>
         <script src="assets/js/template.js" type="text/javascript"></script>
     </body> 
-
 </html>

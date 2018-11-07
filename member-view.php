@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <?php
 include './class/include.php';
-
 $id = $_GET["id"];
 $MEMBER = new Member($id);
 $CITY = new City($MEMBER->city);
@@ -9,8 +8,10 @@ $CITY = new City($MEMBER->city);
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Sri Lanka || Tourism</title>
+        <title>Member View || Sri Lanka || Tourism</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="keywords" content="sri lanka tourism, tourism in sri lanka, Sri Lanka, members of sri lanka tourism, tours in sri lanka, taxi in sri lanka, tourism sri lanka, rent a cars in sri lanka, transports in sri lanka, transport ways in sri lanka, sri lanka transports, vehicles in sri lanka, tour packages in sri lanka, holiday in sri lanka, visit sri lanka, accommodations sri lanka, hotels in sri lanka, Accommodations, Hotels, tour packages offers, taxi offers, transport offers, articles in sri lanka">
+        <meta name="description" content="The team Sri Lanka Tourism crew is privileged to show you and to take you around the most beautiful places in Sri Lanka. You can Plan your tour with Sri Lanka Tourism and, tours are judiciously planned and customized to meet your needs. And also, Sri Lanka Tourism features well established taxi service and hotel service. So your trip will be everything you imagined and much more.">
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/font-awesome.min.css" rel="stylesheet">
         <link rel="stylesheet" href="css/style.css">
@@ -24,10 +25,8 @@ $CITY = new City($MEMBER->city);
     <body style="background-color: #FFF !important;">
         <!-- Our Resort Values style-->
         <?php include './header.php' ?>
-
         <div class="container">
             <div class="row top-bott20">
-
                 <div class="col-md-12">
                     <div class="public-member-box margin-panel">
                         <h4 class="public-member-title">Member Details</h4>
@@ -48,7 +47,6 @@ $CITY = new City($MEMBER->city);
                                                     ?>
                                                 </li>
                                                 <li class="list-group-item"> <b>Speak Languages</b> :
-
                                                     <?php
                                                     if (!empty($MEMBER->languages)) {
                                                         $current_languages = explode(",", $MEMBER->languages);
@@ -65,12 +63,9 @@ $CITY = new City($MEMBER->city);
                                                     ?>
                                                 </li>
                                                 <li class="list-group-item"> <b>About Member</b> : <?php echo $MEMBER->about_me; ?></li>
-                                                <!--<li class="list-group-item"> <b>Last Login</b> : </li>--> 
                                             </ul>
                                         </div>
-
                                         <div class="col-sm-3 col-md-3 margin-top-40">  
-
                                             <?php
                                             if (empty($MEMBER->id)) {
                                                 ?>
@@ -98,25 +93,17 @@ $CITY = new City($MEMBER->city);
                                                 }
                                             }
                                             ?>
-
                                         </div>
-
                                     </div>
                                 </div>   	
                             </div>
                         </div> 
                     </div>
-
                 </div>
-
-
             </div>
         </div>
-
-
         <!-- Our Resort Values style-->  
         <?php include './footer.php' ?>
-
         <script src="js/jquery-2.2.4.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/bootstrap-datepicker.js" type="text/javascript"></script>

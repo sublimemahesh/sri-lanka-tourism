@@ -1,15 +1,11 @@
 <?php
 include_once(dirname(__FILE__) . '/class/include.php');
-
 if (!isset($_SESSION)) {
     session_start();
 }
-
 $SEARCH = new Search(NULL);
 $keyword = NULL;
 $type = NULL;
-
-
 /* search */
 if (isset($_GET['keyword'])) {
     $keyword = $_GET['keyword'];
@@ -17,7 +13,6 @@ if (isset($_GET['keyword'])) {
 if (isset($_GET['type'])) {
     $type = $_GET['type'];
 }
-
 $TRANSPORTS_PHOTO = new TransportPhoto(NULL);
 if ($type == 'all') {
     
@@ -25,7 +20,6 @@ if ($type == 'all') {
     $SEARCHDETAILS = $SEARCH->searchByKeywordAndType($keyword, $type);
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -51,14 +45,9 @@ if ($type == 'all') {
         <?php
         include './header.php';
         ?>
-
         <div>
-            <!--        <div class="background-image" style="background-image: url('images/hotel/sea.jpg');">-->
-
             <section>
-
                 <div id="rooms-section" class="row-view">
-
                     <div class="inner-container container">
                         <div class="room-container clearfix">
                             <div class="col-md-10 col-md-offset-1">
@@ -86,7 +75,6 @@ if ($type == 'all') {
                                                 </li>
                                             </ul>
                                         </div>
-
                                         <!-- Tab panes {Fade}  -->
                                         <div class="tab-content">
                                             <div class="tab-pane fade in active" id="taxi" name="taxi" role="tabpanel">
@@ -127,19 +115,13 @@ if ($type == 'all') {
                                                                                     for ($x = 1; $x <= $starNumber; $x++) {
                                                                                         echo '<i class="fa fa-star"></i>';
                                                                                     }
-//                                                                            if (strpos($starNumber, '.')) {
-//                                                                                echo '<img src="path/to/half/star.png" />';
-//                                                                                $x++;
-//                                                                            }
                                                                                     while ($x <= 5) {
                                                                                         echo '<i class="fa fa-star-o"></i>';
                                                                                         $x++;
                                                                                     }
                                                                                     ?>
-
                                                                                 </span> (<?php echo $rate_count; ?> Reviews)
                                                                             </div>
-                                    <!--                                                        <span class="brackets">(Based on 17 reviews)</span>-->
                                                                         </div>
                                                                     </div>
                                                                     <div class="amenities">
@@ -172,7 +154,6 @@ if ($type == 'all') {
                                                                         </ul>
                                                                     </div>
                                                                 </div>
-
                                                                 <?php
                                                                 $TRANSPORT_RATE = new TransportRates($transport['transport_rate']);
                                                                 ?>
@@ -207,7 +188,6 @@ if ($type == 'all') {
                                                                                     }
                                                                                 }
                                                                                 ?>
-
                                                                             </a>
                                                                         </div>
                                                                         <div class="driver-name col-md-7 col-xs-8 col-sm-8"><div class="driver-name-posted">Posted by </div>
@@ -218,14 +198,9 @@ if ($type == 'all') {
                                                                                     echo '...';
                                                                                 }
                                                                                 ?>
-
                                                                             </span>
-
                                                                         </div>
-
-
                                                                     </div>
-
                                                                     <div class="col-md-12  icon-bottom" >
                                                                         <img src="images/get in.png" alt="" width="30px"/>&nbsp;:<b><?php
                                                                             $cityfrom = new city($TRANSPORT_RATE->location_from);
@@ -237,19 +212,14 @@ if ($type == 'all') {
                                                                             echo substr($cityto->name, 0, 10);
                                                                             echo'..';
                                                                             ?></b>
-
                                                                     </div>
-
                                                                     <div class="bottom-sec2 m-sec col-md-12">
-                                                                        <div class="pointer"><strong class="price">LKR <?php echo $transport['transport_price']; ?></strong></div>
+                                                                        <div class="pointer"><strong class="price">USD <?php echo $transport['transport_price']; ?></strong></div>
                                                                         <div class="btn-padding">
                                                                             <a href="transport-booking.php?rate=<?php echo $transport['transport_rate']; ?>" class="more-info2">Book Now</a> 
                                                                         </div>
                                                                     </div>
-
-
                                                                 </div>
-
                                                             </div>
                                                         </div>
                                                         <?php
@@ -263,9 +233,7 @@ if ($type == 'all') {
                                                 }
                                                 ?>
                                             </div>
-
                                             <div class="tab-pane fade" id="tours" name="tours" role="tabpanel">
-                                                <!--<div class="col-md-12">-->
                                                     <?php
                                                     $SEARCHDETAILS = $SEARCH->searchByKeywordAndType($keyword, 'tour');
                                                     if ($SEARCHDETAILS) {
@@ -281,7 +249,7 @@ if ($type == 'all') {
                                                             <div class="col-md-4 col-sm-6 col-xs-12">
                                                                 <div class="listing-box">
                                                                     <div class="listing-box-thumb">
-                                                                        <span class="price-list">LKR <?php echo $searchdetail['price']; ?></span>
+                                                                        <span class="price-list">USD <?php echo $searchdetail['price']; ?></span>
                                                                         <img src="upload/tour-package/thumb/<?php echo $searchdetail['picture_name']; ?>" alt="">
                                                                     </div>
                                                                     <div class="listing-rate-share">
@@ -346,12 +314,8 @@ if ($type == 'all') {
                                                                                     ?>
                                                                                 </span>
                                                                             </div>
-
                                                                         </div>
-
-
                                                                         <div class="col-md-6 col-sm-6 col-xs-6">
-
                                                                             <div class="rated-list">
                                                                                 <?php
                                                                                 $star_result = Feedback::getRatingByTour1($id);
@@ -369,7 +333,6 @@ if ($type == 'all') {
                                                                                 <div>
                                                                                     (<?php echo $rate_count; ?> Reviews)
                                                                                 </div>
-
                                                                             </div> 
                                                                         </div>
                                                                         <div class="col-md-6 col-sm-6 col-xs-6"><a href="tour-package-view.php?id=<?php echo $searchdetail['id']; ?>">
@@ -377,16 +340,10 @@ if ($type == 'all') {
                                                                                     View More
                                                                                 </div>
                                                                             </a>
-
                                                                         </div>
-
-
                                                                     </div>
-
-
                                                                 </div>
                                                             </div>
-
                                                             <?php
                                                         }
                                                     } else {
@@ -397,9 +354,7 @@ if ($type == 'all') {
                                                         <?php
                                                     }
                                                     ?>
-                                                <!--</div>-->
                                             </div>
-
                                             <div class="tab-pane fade" id="hotels" name="hotels" role="tabpanel">
                                                 <?php
                                                 $SEARCHDETAILS = $SEARCH->searchByKeywordAndType($keyword, 'hotel');
@@ -425,10 +380,8 @@ if ($type == 'all') {
                                                                         <?php
                                                                     }
                                                                     ?>
-
                                                                 </div>
                                                                 <!--ROOM RATING-->
-
                                                                 <div class="r2 r-com">
                                                                     <h4>
                                                                         <?php echo $ACCOMMODATION_TYPE->name; ?>  
@@ -442,10 +395,6 @@ if ($type == 'all') {
                                                                         for ($x = 1; $x <= $starNumber; $x++) {
                                                                             echo '<i class="fa fa-star"></i>';
                                                                         }
-//                                                                            if (strpos($starNumber, '.')) {
-//                                                                                echo '<img src="path/to/half/star.png" />';
-//                                                                                $x++;
-//                                                                            }
                                                                         while ($x <= 5) {
                                                                             echo '<i class="fa fa-star-o"></i>';
                                                                             $x++;
@@ -454,20 +403,17 @@ if ($type == 'all') {
                                                                         <p class="review-no">(<?php echo $rate_count; ?>Reviews)</p>
                                                                     </div>
                                                                     <ul>
-                                                                        <div class="r2-available">LKR 65546</div>
+                                                                        <div class="r2-available">USD 65546</div>
                                                                         <li></li>
                                                                         <li></li>
                                                                     </ul>
                                                                 </div>
-
                                                                 <!--ROOM AMINITIES-->
                                                                 <div class="r3 r-com">
                                                                     <ul class="accommodation-facilities">
                                                                         <?php
                                                                         $ALL_FACILITIES = AccommodationFacilityDetails::getFacilitiesByAccommodationId($accommodation['id']);
-
                                                                         $FACILITIES = explode(",", $ALL_FACILITIES['facility']);
-
                                                                         foreach ($FACILITIES as $key => $facility) {
                                                                             if ($key == 5) {
                                                                                 break;
@@ -513,8 +459,6 @@ if ($type == 'all') {
                                                                     }
                                                                     ?>
                                                                 </a>
-
-                                                                                                                              <!--                                    <p>Price for 1 night</p>-->
                                                                 <a href="accommodation-booking.php?accommodation=<?php echo $accommodation['id'] ?>"><div class="inn-room-book">Book Now</div></a> </div>
                                                         </div>
                                                         <?php
@@ -528,7 +472,6 @@ if ($type == 'all') {
                                                 }
                                                 ?>
                                             </div>
-
                                             <div class="tab-pane fade" id="offers" name="offers" role="tabpanel">
                                                 <?php
                                                 $SEARCHDETAILS = $SEARCH->searchByKeywordAndType($keyword, 'offer');
@@ -540,7 +483,6 @@ if ($type == 'all') {
                                                         $MEMBER = new Member($offer['member']);
                                                         ?>
                                                         <div class="hotel-item hotel-item1">
-
                                                             <div class="ribbon"><span><?php echo $offer['discount'] ?>% off</span></div>
                                                             <!-- hotel Image-->
                                                             <div class="hotel-image">
@@ -558,7 +500,6 @@ if ($type == 'all') {
                                                             <div class="hotel-right"> 
                                                                 <div>
                                                                     <a target="blank" href="member-view.php?id=<?php echo $MEMBER->id; ?>" class="link">
-
                                                                         <?php
                                                                         if (empty($MEMBER->id)) {
                                                                             ?>
@@ -588,10 +529,8 @@ if ($type == 'all') {
                                                                         ?>
                                                                     </a>
                                                                 </div>
-
-                                                                <div class="hotel-person"><span class="color-blue">LKR <?php echo $new_price; ?>.00</span><strike class="old-discount-price">LKR <?php echo $offer['price'] ?>.00</strike> </div>
+                                                                <div class="hotel-person"><span class="color-blue">USD <?php echo $new_price; ?>.00</span><strike class="old-discount-price">USD <?php echo $offer['price'] ?>.00</strike> </div>
                                                                 <a class="thm-btn" href="offer-booking.php?offer=<?php echo $offer['id']; ?>">Get your offer</a>
-
                                                                 <a href="visitor-message.php?id=<?php echo $MEMBER->id; ?>" class="thm-btn thm-msg" title="Send Message">
                                                                     <i class="fa fa-comment-o"></i>
                                                                 </a>
@@ -614,12 +553,9 @@ if ($type == 'all') {
                                                 if ($SEARCHDETAILS) {
                                                     foreach ($SEARCHDETAILS as $ARTICLE) {
                                                         $id = $ARTICLE['id'];
-
                                                         $MEMBER = new Member($ARTICLE['member']);
                                                         $TYPE = new ArticleType($ARTICLE['article_type']);
                                                         $CITY = new City($ARTICLE['city']);
-
-
                                                         $ARTICLE_PHOTO = new ArticlePhoto(NULL);
                                                         $article_photos = $ARTICLE_PHOTO->getArticlePhotosById($id);
                                                         ?>
@@ -639,11 +575,9 @@ if ($type == 'all') {
                                                                 <div class="article-rate pull-right">
                                                                     <?php
                                                                     $starNumber = Feedback::getRatingByArticle($id);
-
                                                                     for ($x = 1; $x <= $starNumber; $x++) {
                                                                         echo '<i class="fa fa-star"></i>';
                                                                     }
-
                                                                     while ($x <= 5) {
                                                                         echo '<i class="fa fa-star-o"></i>';
                                                                         $x++;
@@ -671,7 +605,6 @@ if ($type == 'all') {
                                                                                     <img src="upload/member/member.png" class="img img-responsive img-thumbnail pull-right" id="profil_pic"/>
                                                                                     <?php
                                                                                 } else {
-
                                                                                     if ($MEMBER->facebookID && substr($MEMBER->profile_picture, 0, 5) === "https") {
                                                                                         ?>
                                                                                         <img src="<?php echo $MEMBER->profile_picture; ?>" class="img-responsive thumbnail pull-right">
@@ -695,7 +628,6 @@ if ($type == 'all') {
                                                                         }
                                                                         ?>
                                                                     </div>
-
                                                                     <div class="row tour-desc"><?php echo substr($ARTICLE['description'], 0, 90) . '...'; ?></div>
                                                                     <div class="row">
                                                                         <div class="tour-type pull-left hidden-md hidden-sm visible-lg visible-xs" title="<?php echo $TYPE->name; ?>"><i class="fa fa-certificate"></i> 
@@ -718,7 +650,6 @@ if ($type == 'all') {
                                                                         </div>
                                                                         <a href="article-view.php?id=<?php echo $ARTICLE['id']; ?>"><div class="tour-btn pull-right btn btn-sm blue">Read More<span class="glyphicon glyphicon-eye-open"></span></div></a>
                                                                     </div> 
-
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -771,19 +702,13 @@ if ($type == 'all') {
                                                                             for ($x = 1; $x <= $starNumber; $x++) {
                                                                                 echo '<i class="fa fa-star"></i>';
                                                                             }
-//                                                                            if (strpos($starNumber, '.')) {
-//                                                                                echo '<img src="path/to/half/star.png" />';
-//                                                                                $x++;
-//                                                                            }
                                                                             while ($x <= 5) {
                                                                                 echo '<i class="fa fa-star-o"></i>';
                                                                                 $x++;
                                                                             }
                                                                             ?>
-
                                                                         </span> (<?php echo $rate_count; ?> Reviews)
                                                                     </div>
-                            <!--                                                        <span class="brackets">(Based on 17 reviews)</span>-->
                                                                 </div>
                                                             </div>
                                                             <div class="amenities">
@@ -816,7 +741,6 @@ if ($type == 'all') {
                                                                 </ul>
                                                             </div>
                                                         </div>
-
                                                         <?php
                                                         $TRANSPORT_RATE = new TransportRates($transport['transport_rate']);
                                                         ?>
@@ -862,14 +786,9 @@ if ($type == 'all') {
                                                                             echo '...';
                                                                         }
                                                                         ?>
-
                                                                     </span>
-
                                                                 </div>
-
-
                                                             </div>
-
                                                             <div class="col-md-12  icon-bottom" >
                                                                 <img src="images/get in.png" alt="" width="30px"/>&nbsp;:<b><?php
                                                                     $cityfrom = new city($TRANSPORT_RATE->location_from);
@@ -881,19 +800,14 @@ if ($type == 'all') {
                                                                     echo substr($cityto->name, 0, 10);
                                                                     echo'..';
                                                                     ?></b>
-
                                                             </div>
-
                                                             <div class="bottom-sec2 m-sec col-md-12">
-                                                                <div class="pointer"><strong class="price">LKR <?php echo $transport['transport_price']; ?></strong></div>
+                                                                <div class="pointer"><strong class="price">USD <?php echo $transport['transport_price']; ?></strong></div>
                                                                 <div class="btn-padding">
                                                                     <a href="transport-booking.php?rate=<?php echo $transport['transport_rate']; ?>" class="more-info2">Book Now</a> 
                                                                 </div>
                                                             </div>
-
-
                                                         </div>
-
                                                     </div>
                                                 </div>
                                                 <?php
@@ -912,14 +826,13 @@ if ($type == 'all') {
                                                 $result = TourSubSection::CountDaysInTour($id);
                                                 $days = $result['days'];
                                                 $night = (int) $days - 1;
-
                                                 $MEMBER = new Member($searchdetail['member']);
                                                 $TYPE = new TourType($searchdetail['tour_type']);
                                                 ?>
                                                 <div class="col-md-4 col-sm-6 col-xs-12">
                                                     <div class="listing-box">
                                                         <div class="listing-box-thumb">
-                                                            <span class="price-list">LKR <?php echo $searchdetail['price']; ?></span>
+                                                            <span class="price-list">USD <?php echo $searchdetail['price']; ?></span>
                                                             <img src="upload/tour-package/thumb/<?php echo $searchdetail['picture_name']; ?>" alt="">
                                                         </div>
                                                         <div class="listing-rate-share">
@@ -984,18 +897,13 @@ if ($type == 'all') {
                                                                         ?>
                                                                     </span>
                                                                 </div>
-
                                                             </div>
-
-
                                                             <div class="col-md-6 col-sm-6 col-xs-6">
-
                                                                 <div class="rated-list">
                                                                     <?php
                                                                     $star_result = Feedback::getRatingByTour1($id);
                                                                     $rate_count = $star_result['rate_count'];
                                                                     $starNumber = round($star_result['rate_avg']);
-
                                                                     for ($x = 1; $x <= $starNumber; $x++) {
                                                                         echo '<b class="fa fa-star"></b>';
                                                                     }
@@ -1007,7 +915,6 @@ if ($type == 'all') {
                                                                     <div>
                                                                         (<?php echo $rate_count; ?> Reviews)
                                                                     </div>
-
                                                                 </div> 
                                                             </div>
                                                             <div class="col-md-6 col-sm-6 col-xs-6"><a href="tour-package-view.php?id=<?php echo $searchdetail['id']; ?>">
@@ -1015,16 +922,10 @@ if ($type == 'all') {
                                                                         View More
                                                                     </div>
                                                                 </a>
-
                                                             </div>
-
-
                                                         </div>
-
-
                                                     </div>
                                                 </div>
-
                                                 <?php
                                             }
                                         } else {
@@ -1057,10 +958,8 @@ if ($type == 'all') {
                                                                 <?php
                                                             }
                                                             ?>
-
                                                         </div>
                                                         <!--ROOM RATING-->
-
                                                         <div class="r2 r-com">
                                                             <h4>
                                                                 <?php echo $ACCOMMODATION_TYPE->name; ?>  
@@ -1074,10 +973,6 @@ if ($type == 'all') {
                                                                 for ($x = 1; $x <= $starNumber; $x++) {
                                                                     echo '<i class="fa fa-star"></i>';
                                                                 }
-//                                                                            if (strpos($starNumber, '.')) {
-//                                                                                echo '<img src="path/to/half/star.png" />';
-//                                                                                $x++;
-//                                                                            }
                                                                 while ($x <= 5) {
                                                                     echo '<i class="fa fa-star-o"></i>';
                                                                     $x++;
@@ -1086,20 +981,17 @@ if ($type == 'all') {
                                                                 <p class="review-no">(<?php echo $rate_count; ?>Reviews)</p>
                                                             </div>
                                                             <ul>
-                                                                <div class="r2-available">LKR 65546</div>
+                                                                <div class="r2-available">USD 65546</div>
                                                                 <li></li>
                                                                 <li></li>
                                                             </ul>
                                                         </div>
-
                                                         <!--ROOM AMINITIES-->
                                                         <div class="r3 r-com">
                                                             <ul class="accommodation-facilities">
                                                                 <?php
                                                                 $ALL_FACILITIES = AccommodationFacilityDetails::getFacilitiesByAccommodationId($accommodation['id']);
-
                                                                 $FACILITIES = explode(",", $ALL_FACILITIES['facility']);
-
                                                                 foreach ($FACILITIES as $key => $facility) {
                                                                     if ($key == 5) {
                                                                         break;
@@ -1115,7 +1007,6 @@ if ($type == 'all') {
                                                     </a>
                                                     <!--ROOM BOOKING BUTTON-->
                                                     <div class="r5 r-com">
-
                                                         <a target="blank" href="member-view.php?id=<?php echo $MEMBER->id; ?>" class="link">
                                                             <?php
                                                             if (empty($MEMBER->id)) {
@@ -1145,8 +1036,6 @@ if ($type == 'all') {
                                                             }
                                                             ?>
                                                         </a>
-
-                                                                                                                              <!--                                    <p>Price for 1 night</p>-->
                                                         <a href="accommodation-booking.php?accommodation=<?php echo $accommodation['id'] ?>"><div class="inn-room-book">Book Now</div></a> </div>
                                                 </div>
                                                 <?php
@@ -1167,7 +1056,6 @@ if ($type == 'all') {
                                                 $MEMBER = new Member($offer['member']);
                                                 ?>
                                                 <div class="hotel-item">
-
                                                     <div class="ribbon"><span><?php echo $offer['discount'] ?>% off</span></div>
                                                     <!-- hotel Image-->
                                                     <div class="hotel-image">
@@ -1185,7 +1073,6 @@ if ($type == 'all') {
                                                     <div class="hotel-right"> 
                                                         <div>
                                                             <a target="blank" href="member-view.php?id=<?php echo $MEMBER->id; ?>" class="link">
-
                                                                 <?php
                                                                 if (empty($MEMBER->id)) {
                                                                     ?>
@@ -1215,10 +1102,8 @@ if ($type == 'all') {
                                                                 ?>
                                                             </a>
                                                         </div>
-
-                                                        <div class="hotel-person"><span class="color-blue">LKR <?php echo $new_price; ?>.00</span><strike class="old-discount-price">LKR <?php echo $offer['price'] ?>.00</strike> </div>
+                                                        <div class="hotel-person"><span class="color-blue">USD <?php echo $new_price; ?>.00</span><strike class="old-discount-price">USD <?php echo $offer['price'] ?>.00</strike> </div>
                                                         <a class="thm-btn" href="offer-booking.php?offer=<?php echo $offer['id']; ?>">Get your offer</a>
-
                                                         <a href="visitor-message.php?id=<?php echo $MEMBER->id; ?>" class="thm-btn thm-msg" title="Send Message">
                                                             <i class="fa fa-comment-o"></i>
                                                         </a>
@@ -1237,12 +1122,9 @@ if ($type == 'all') {
                                         if ($SEARCHDETAILS) {
                                             foreach ($SEARCHDETAILS as $ARTICLE) {
                                                 $id = $ARTICLE['id'];
-
                                                 $MEMBER = new Member($ARTICLE['member']);
                                                 $TYPE = new ArticleType($ARTICLE['article_type']);
                                                 $CITY = new City($ARTICLE['city']);
-
-
                                                 $ARTICLE_PHOTO = new ArticlePhoto(NULL);
                                                 $article_photos = $ARTICLE_PHOTO->getArticlePhotosById($id);
                                                 ?>
@@ -1266,7 +1148,6 @@ if ($type == 'all') {
                                                             for ($x = 1; $x <= $starNumber; $x++) {
                                                                 echo '<i class="fa fa-star"></i>';
                                                             }
-
                                                             while ($x <= 5) {
                                                                 echo '<i class="fa fa-star-o"></i>';
                                                                 $x++;
@@ -1318,7 +1199,6 @@ if ($type == 'all') {
                                                                 }
                                                                 ?>
                                                             </div>
-
                                                             <div class="row tour-desc"><?php echo substr($ARTICLE['description'], 0, 90) . '...'; ?></div>
                                                             <div class="row">
                                                                 <div class="tour-type pull-left hidden-md hidden-sm visible-lg visible-xs" title="<?php echo $TYPE->name; ?>"><i class="fa fa-certificate"></i> 
@@ -1341,7 +1221,6 @@ if ($type == 'all') {
                                                                 </div>
                                                                 <a href="article-view.php?id=<?php echo $ARTICLE['id']; ?>"><div class="tour-btn pull-right btn btn-sm blue">Read More<span class="glyphicon glyphicon-eye-open"></span></div></a>
                                                             </div> 
-
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1360,16 +1239,11 @@ if ($type == 'all') {
                                 </div>
                             </div>
                         </div>
-
-
                         <div class="row"></div>
-
                     </div>
                 </div>
             </section>  
         </div>
-
-
         <!-- Our Resort Values style-->  
         <?php
         include './footer.php';
@@ -1388,11 +1262,7 @@ if ($type == 'all') {
                 $('.navbtn').click(function () {
                     $('#navtaxi').removeClass('active');
                 });
-                
-                
-                
             });
         </script>
-    </body> 
-
+    </body>
 </html>

@@ -73,11 +73,11 @@ if (isset($_SESSION['isPhoneVerified'])) {
                                                             <div class="panel-body">
                                                                 <div class="col-md-6">
                                                                     Date From
-                                                                    <input id="start" name="start" class="form-control datepicker" type="text" required="true"/>
+                                                                    <input id="start" name="start" class="form-control datepicker" type="text" required="true" autocomplete="off"/>
                                                                 </div>
                                                                 <div class="col-md-6">
                                                                     Date To
-                                                                    <input id="end" name="end" class="form-control datepicker" type="text" required="true"/>
+                                                                    <input id="end" name="end" class="form-control datepicker" type="text" required="true" autocomplete="off"/>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -89,7 +89,7 @@ if (isset($_SESSION['isPhoneVerified'])) {
 
                                                                         <div class="col-md-12">
                                                                             <div class="bottom-top">
-                                                                                <label for="Name"><?php echo $roombasis['name']; ?></label>
+                                                                                <label for="Name"><?php echo $roombasis['name']; ?>(USD)</label>
                                                                             </div>
                                                                             <div class="formrow col-md-6">
                                                                                 <input min="0" type="number" style="width: 100%" class="form-control"  name="basis[<?php echo $roombasis['id']; ?>]" id="price">

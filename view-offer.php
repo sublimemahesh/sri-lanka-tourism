@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <?php
 include_once(dirname(__FILE__) . '/class/include.php');
 if (isset($_GET['id'])) {
@@ -8,8 +9,10 @@ $OFFER_OBJ = New Offer(null);
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Sri Lanka || Tourism</title>
+        <title>Offers || Sri Lanka || Tourism</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="keywords" content="sri lanka tourism, tourism in sri lanka, Sri Lanka, offers, tour packages offers, tour offers, tour offers in sri lanka, pakage offers, package offers in sri lanka, trip offers in sri lanka, taxi offers, taxi offers in sri lanka, vehicle offers, transport offers, transport offers in sri lanka, hotel offers, hotel offers in sri lanka, accommodation offers in sri lanka, accommodation offers, villa offers, apartment offers, villa offers in sri lanka, tours in sri lanka, taxi in sri lanka, tourism sri lanka, Accommodations, Hotels, articles in sri lanka">
+        <meta name="description" content="The team Sri Lanka Tourism crew is privileged to show you and to take you around the most beautiful places in Sri Lanka. You can Plan your tour with Sri Lanka Tourism and, tours are judiciously planned and customized to meet your needs. And also, Sri Lanka Tourism features well established taxi service and hotel service. So your trip will be everything you imagined and much more.">
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/font-awesome.min.css" rel="stylesheet">
         <link rel="stylesheet" href="css/style.css">
@@ -43,7 +46,6 @@ $OFFER_OBJ = New Offer(null);
                                 $MEMBER = new Member($offer['member']);
                                 ?>
                                 <div class="hotel-item">
-
                                     <div class="ribbon"><span><?php echo $offer['discount'] ?>% off</span></div>
                                     <!-- hotel Image-->
                                     <div class="hotel-image">
@@ -61,7 +63,6 @@ $OFFER_OBJ = New Offer(null);
                                     <div class="hotel-right"> 
                                         <div>
                                             <a target="blank" href="member-view.php?id=<?php echo $MEMBER->id; ?>" class="link">
-
                                                 <?php
                                                 if (empty($MEMBER->id)) {
                                                     ?>
@@ -91,10 +92,8 @@ $OFFER_OBJ = New Offer(null);
                                                 ?>
                                             </a>
                                         </div>
-
-                                        <div class="hotel-person"><span class="color-blue">LKR <?php echo $new_price; ?>.00</span><strike class="old-discount-price">LKR <?php echo $offer['price'] ?>.00</strike> </div>
+                                        <div class="hotel-person"><span class="color-blue">USD <?php echo $new_price; ?>.00</span><strike class="old-discount-price">USD <?php echo $offer['price'] ?>.00</strike> </div>
                                         <a class="thm-btn" href="offer-booking.php?offer=<?php echo $offer['id']; ?>">Get your offer</a>
-
                                         <a href="visitor-message.php?id=<?php echo $MEMBER->id; ?>" class="thm-btn thm-msg" title="Send Message">
                                             <i class="fa fa-comment-o"></i>
                                         </a>
@@ -102,7 +101,6 @@ $OFFER_OBJ = New Offer(null);
                                 </div>
                             <?php } ?>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -117,7 +115,5 @@ $OFFER_OBJ = New Offer(null);
         <script src="js/bootstrap-datepicker.js" type="text/javascript"></script>
         <script src="assets/js/helper.js" type="text/javascript"></script>
         <script src="assets/js/template.js" type="text/javascript"></script>
-
     </body> 
-
 </html>

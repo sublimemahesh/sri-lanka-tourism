@@ -3,19 +3,14 @@
     .custom-bar-chart {
         margin-bottom: 40px;
     }
-
 }
 
 @media (min-width: 768px) and (max-width: 979px) {
-
     /*-----*/
     .custom-bar-chart {
         margin-bottom: 40px;
     }
-
     /*chat room*/
-
-
 }
 
 @media (max-width: 768px) {
@@ -264,12 +259,10 @@
 
 }
 
-
-
 @media (max-width: 480px) {
 
     .notify-row, .search, .dont-show , .inbox-head .sr-input, .inbox-head .sr-btn{
-      
+
     }
 
     #top_menu .nav > li, ul.top-menu > li {
@@ -296,7 +289,7 @@
     }
 
     .notify-row, .search, .dont-show, .inbox-head .sr-input, .inbox-head .sr-btn {
-/*        display: none;*/
+        /*        display: none;*/
     }
 
     #top_menu .nav > li, ul.top-menu > li {
@@ -323,7 +316,44 @@
         display: inline-block;
         width: 75%;
     }
+    .intl-tel-input .country-list {
+        width: 154px;
+    }
 
+}
+
+@media (min-width: 320px) and (max-width: 640px) {
+    .view-number {
+        margin: 0px 0px 20px;
+    }
+    .resend-contact-title {
+        text-align: center;
+    }
+    .resend-contact-no {
+        margin-top: 15px;
+        text-align: center;
+    }
+    .margin-panel {
+        padding: 20px 15px;
+
+    }
+}
+
+@media (min-width: 640px) and (max-width: 799px) {
+    .view-number {
+        margin: 0px 96px 20px;
+    }
+    .intl-tel-input .country-list {
+        width: 340px;
+    }
+}
+@media (min-width: 800px) and (max-width: 1000px) {
+    .view-number {
+        margin: 0px 0px 20px;
+    }
+    .intl-tel-input .country-list {
+        width: 300px;
+    }
 }
 
 

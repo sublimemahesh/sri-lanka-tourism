@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <?php
 include './class/include.php';
-
 if (isset($_GET['accommodation'])) {
     $id = $_GET['accommodation'];
 }
@@ -14,22 +13,15 @@ if (!isset($_SESSION["vislogin"])) {
 } else {
     $VISITOR = $_SESSION["id"];
 }
-
 $ACCOMMODATION = new Accommodation($id);
 $VISITOR = new Visitor($VISITOR);
-
 $ROOM_OBJ = new Room(NULL);
 $ROOMS = $ROOM_OBJ->getAccommodationRoomsById($id);
-
 $ACCOMMODATION_PHOTO = new AccommodationPhoto(NULL);
-
 $ROOM_PRICE_OBJ = new RoomPrice(NULL);
-
 $ROOM_BASIS_OBJ = new RoomBasis(NULL);
 $ROOM_BASIS = $ROOM_BASIS_OBJ->all();
-
 $ROOM_AVILABILITY = new RoomAvailability(NULL);
-
 $today = date("Y-m-d", time());
 date_default_timezone_set('Asia/Colombo');
 $now = date('Y-m-d H:i:s');
@@ -37,8 +29,10 @@ $now = date('Y-m-d H:i:s');
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Sri Lanka || Tourism</title>
+        <title><?php echo $ACCOMMODATION->name; ?> || Hotels || Sri Lanka || Tourism</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="keywords" content="sri lanka tourism, tourism in sri lanka, Sri Lanka, <?php echo $ACCOMMODATIONS->name; ?>, hotel booking, accommodation booking, villa booking, booking hotels, booking accommodations, booking villas, book hotel, book accommodation, book villa, hotels inquries, book hotels in sri lanka, book accommodations in sri lanka, book villas in sri lanka, hotels in sri lanka, holiday in sri lanka, visit sri lanka, accommodations, hotels, villas, apartments, accommodations in sri lanka, hotels in sri lanka, villas in sri lanka, apartments in sri lanka, budget hotels in sri lanka, economy in sri lanka, budget accommodations in sri lanka, economy accommodations in sri lanka">
+        <meta name="description" content="The team Sri Lanka Tourism crew is privileged to show you and to take you around the most beautiful places in Sri Lanka. You can Plan your tour with Sri Lanka Tourism and, tours are judiciously planned and customized to meet your needs. And also, Sri Lanka Tourism features well established taxi service and hotel service. So your trip will be everything you imagined and much more.">
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href="css/font-awesome.min.css" rel="stylesheet">
         <link rel="stylesheet" href="css/style.css">
@@ -64,18 +58,13 @@ $now = date('Y-m-d H:i:s');
         <div class="container">
             <div class="row top-bott20">
                 <div class="col-md-9">
-
                     <div class="body">
-
                         <div class="transport-booking-box margin-panel">
                             <?php
                             $vali = new Validator();
                             $vali->show_message();
                             ?>
-
                             <form method="post" action="post-and-get/accommodation-booking.php" enctype="multipart/form-data">
-
-
                                 <h4 class="booking-transports-title text-center">Your Details</h4>
                                 <div class="row panel panel-default booking-panel-default">
                                     <div class="col-sm-12 col-md-12">
@@ -108,9 +97,7 @@ $now = date('Y-m-d H:i:s');
                                                 <input type="text" readonly="true" id="contact_number" name="contact_number" class="form-control input-type-bottom" placeholder="-" value="<?php echo $VISITOR->contact_number; ?>">
                                             </div>
                                         </div> 
-
                                     </div>
-
                                 </div>
                                 <h4 class="booking-transports-title text-center">Hotel Booking Details</h4>
                                 <div class="row panel panel-default booking-panel-default">
@@ -177,18 +164,12 @@ $now = date('Y-m-d H:i:s');
                                                 ?>
                                             </div>
                                         </div>
-
-
-
                                         <?php
                                     }
                                     ?>
-
                                 </div>
-
                                 <div class = "row panel panel-default booking-panel-default">
                                     <div class = "col-sm-12 col-md-12">
-
                                         <div class = "col-md-6">
                                             <div class = "bottom-top">Number of Adults</div>
                                             <div class = "formrow">
@@ -201,7 +182,6 @@ $now = date('Y-m-d H:i:s');
                                                 <input type="number" min="0" name="no_of_children" id="no_of_children" class="form-control input-type-bottom" placeholder="Maximum Number of children" required ="TRUE">
                                             </div>
                                         </div>
-
                                         <div class = "col-md-12">
                                             <div class = "bottom-top">Message</div>
                                             <div class = "formrow">
@@ -210,7 +190,6 @@ $now = date('Y-m-d H:i:s');
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
                                 <div class = "row">
                                     <div class = "top-bott50">
@@ -226,9 +205,7 @@ $now = date('Y-m-d H:i:s');
                                 </div>
                             </form>
                         </div>
-
                     </div>
-
                 </div>
                 <div class = "col-md-3">
                     <div class = "row top-bott20">
@@ -237,7 +214,6 @@ $now = date('Y-m-d H:i:s');
                             <div class = "panel-body">
                                 <h4 class = "booking-transports-title text-center"><?php echo $ACCOMMODATION->name;
                                     ?></h4>
-<!--                                <p class="text-center"><?php echo $CONDITION->name; ?></p>-->
                                 <div class="transport-booking-img">
                                     <?php
                                     foreach ($ACCOMMODATION_PHOTO->getAccommodationPhotosById($ACCOMMODATION->id) as $key => $ACCOMMODATION_P) {
@@ -257,7 +233,7 @@ $now = date('Y-m-d H:i:s');
                                 <h4 class="booking-transports-title text-center">Your Price Summary</h4>
                                 <ul class="list-group visitor-list-color">
                                     <li class="list-group-item">Number of Rooms <b><span id="selected-rooms">0</span></b> </li>
-                                    <li class="list-group-item"><b>Total Amount: </b>LKR <span><span id="total-price">0</span>.00</span>  </li>
+                                    <li class="list-group-item"><b>Total Amount: </b>USD <span><span id="total-price">0</span>.00</span>  </li>
                                 </ul>
                             </div>
                         </div>
@@ -265,10 +241,8 @@ $now = date('Y-m-d H:i:s');
                 </div>
             </div>
         </div>
-
         <!-- Our Resort Values style-->  
         <?php include './footer.php' ?>
-
         <script src="js/jquery-2.2.4.min.js"></script>
         <script src="assets/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
         <script src="js/bootstrap.min.js"></script>
@@ -278,19 +252,15 @@ $now = date('Y-m-d H:i:s');
             $("#checkin").click(function () {
                 $('#checkin').focus();
             });
-
             $("#checkout").click(function () {
                 $('#checkout').focus();
             });
-
             $(function () {
-
                 /* global setting */
                 var datepickersOpt = {
                     dateFormat: 'yy-mm-dd',
                     minDate: 0
                 };
-
                 $("#checkin").datepicker($.extend({
                     onSelect: function () {
                         var minDate = $(this).datepicker('getDate');
@@ -300,7 +270,6 @@ $now = date('Y-m-d H:i:s');
                     },
                     dateFormat: 'yy-mm-dd'
                 }, datepickersOpt));
-
                 $("#checkout").datepicker($.extend({
                     onSelect: function () {
                         setRooms();
@@ -308,16 +277,8 @@ $now = date('Y-m-d H:i:s');
                     dateFormat: 'yy-mm-dd'
                 }, datepickersOpt));
             });
-
         </script>
-
-
-
-
-
-
         <script>
-
             $(function () {
                 $('input[type="time"][value="now"]').each(function () {
                     var d = new Date(),
@@ -332,8 +293,6 @@ $now = date('Y-m-d H:i:s');
                     });
                 });
             });
-
-
         </script>
     </body> 
 </html>

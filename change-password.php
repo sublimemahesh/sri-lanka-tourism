@@ -25,6 +25,15 @@ if (isset($_SESSION['member'])) {
         <link href="css/datepicker.css" rel="stylesheet" type="text/css"/>
         <link href="css/visitor-custom.css" rel="stylesheet" type="text/css"/>
         <link href="https://fonts.googleapis.com/css?family=Russo+One|Magra|Ubuntu+Condensed" rel="stylesheet"> 
+        <style>
+            .alert {
+                margin-bottom: 0px;
+            }
+            .alert-success {
+                margin-left: 15px;
+                margin-right: 15px;
+            }
+        </style>
     </head>
     <body style="background-color: #FFF;">
         <!-- Our Resort Values style-->
@@ -34,7 +43,6 @@ if (isset($_SESSION['member'])) {
             <div class="row top-bott20">
                 <?php
                 if (isset($_GET['message'])) {
-
                     $MESSAGE = New Message($_GET['message']);
                     ?>
                     <div class="alert alert-<?php echo $MESSAGE->status; ?>" role = "alert">

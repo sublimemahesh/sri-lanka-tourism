@@ -12,20 +12,20 @@ $RENT_A_CAR_OBJ = new RentACar(NULL);
 $RENT_A_CAR = $RENT_A_CAR_OBJ->TransportExsist($id);
 $MEMBER = new Member($TRANSPORTS->member);
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Sri Lanka || Tourism</title>
+        <title><?php echo $TRANSPORT->title; ?> || Transports || Sri Lanka || Tourism</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="keywords" content="sri lanka tourism, tourism in sri lanka, Sri Lanka, <?php echo $TRANSPORT->title; ?>, tours in sri lanka, taxi in sri lanka, tourism sri lanka, rent a cars in sri lanka, transports in sri lanka, transport ways in sri lanka, sri lanka transports, vehicles in sri lanka, self driving vehicles, vehicle with chauffeur diver, luxuary vehicles, economy vehicles, hiring vehicles, hiring taxi">
+        <meta name="description" content="The team Sri Lanka Tourism crew is privileged to show you and to take you around the most beautiful places in Sri Lanka. You can Plan your tour with Sri Lanka Tourism and, tours are judiciously planned and customized to meet your needs. And also, Sri Lanka Tourism features well established taxi service and hotel service. So your trip will be everything you imagined and much more.">
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href="css/font-awesome.min.css" rel="stylesheet">
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/responsive.css">
         <link href="css/search.css" rel="stylesheet" type="text/css"/>
         <link href="css/datepicker.css" rel="stylesheet" type="text/css"/>
-        <!--<link href="css/style.css" rel="stylesheet" type="text/css"/>-->
         <link href="css/responsive-table.css" rel="stylesheet" type="text/css"/>
         <link href="visitor-feedback/validation-styles.css" rel="stylesheet" type="text/css"/>
         <link href="css/comments-style.css" rel="stylesheet" type="text/css"/>
@@ -54,9 +54,6 @@ $MEMBER = new Member($TRANSPORTS->member);
                 </div>
             </div> 
         </div>
-
-
-
         <div class="container transport-container">
             <div class="col-md-12">
                 <?php
@@ -89,7 +86,6 @@ $MEMBER = new Member($TRANSPORTS->member);
                             </div>
                             <div class="row">
                                 <div class="col-md-4 col-sm-4 col-xs-4">
-
                                     <a href="member-view.php?id=<?php echo $MEMBER->id; ?>" class="link">
                                         <?php
                                         if (empty($MEMBER->id)) {
@@ -118,7 +114,6 @@ $MEMBER = new Member($TRANSPORTS->member);
                                             }
                                         }
                                         ?>
-
                                     </a>
                                 </div>
                                 <div class="col-md-8 col-sm-8 col-xs-8">
@@ -127,8 +122,6 @@ $MEMBER = new Member($TRANSPORTS->member);
                             </div>
                         </div>
                     </div>
-
-
                     <div class="jbside">
                         <h3>About This Vehicle</h3>
                         <ul class="jbdetail">
@@ -145,17 +138,12 @@ $MEMBER = new Member($TRANSPORTS->member);
                                     for ($x = 1; $x <= $starNumber; $x++) {
                                         echo '<i class="fa fa-star"></i>';
                                     }
-//                                                                            if (strpos($starNumber, '.')) {
-//                                                                                echo '<img src="path/to/half/star.png" />';
-//                                                                                $x++;
-//                                                                            }
                                     while ($x <= 5) {
                                         echo '<i class="fa fa-star-o"></i>';
                                         $x++;
                                     }
                                     ?> (<?php echo $rate_count; ?> Reviews)
                                 </div>
-
                             </li>
                             <li class="row">
                                 <div class="col-md-6 col-xs-6">Condition</div>
@@ -191,14 +179,10 @@ $MEMBER = new Member($TRANSPORTS->member);
                                     }
                                     ?></div>
                             </li>
-
-
                         </ul>
                     </div>
                 </div>
             </div>
-
-
             <div class="row">
                 <div class="col-md-8">
                     <div class="transport-description">
@@ -217,8 +201,8 @@ $MEMBER = new Member($TRANSPORTS->member);
                                     <th class="n-font" >Price Per Excess Mileage</th>
                             <tbody>
                                 <tr>
-                                    <td data-column="Price Per Day" class="n-font"><b>LKR <?Php echo $RENT_A_CAR['price_per_day']; ?></b></td>
-                                    <td data-column="Price Per Excess Mileage" class="n-font"><b>LKR <?Php echo $RENT_A_CAR['price_per_excess_mileage']; ?></b></td>
+                                    <td data-column="Price Per Day" class="n-font"><b>USD <?Php echo $RENT_A_CAR['price_per_day']; ?></b></td>
+                                    <td data-column="Price Per Excess Mileage" class="n-font"><b>USD <?Php echo $RENT_A_CAR['price_per_excess_mileage']; ?></b></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -232,7 +216,7 @@ $MEMBER = new Member($TRANSPORTS->member);
                                 <th class="n-font" >Picking Up</th>
                                 <th class="n-font" >Dropping Off</th>
                                 <th class="n-font" >Distance(KM)</th>
-                                <th class="n-font" >Price(LKR)</th>
+                                <th class="n-font" >Price(USD)</th>
                                 <th class="n-font" >Option</th>
                         <tbody>
                             <?php
@@ -245,7 +229,7 @@ $MEMBER = new Member($TRANSPORTS->member);
                                     <td data-column="Picking Up" class="n-font"><b><?Php echo $CITYFROM->name; ?></b></td>
                                     <td data-column="Dropping Off" class="n-font"><b><?Php echo $CITYTO->name; ?></b></td>
                                     <td data-column="Distance(KM)" class="n-font"><b><?Php echo $transport_rate['distance'] . ' KM'; ?></b></td>
-                                    <td data-column="Price(LKR)" class="n-font"><b><?Php echo 'LKR ' . $transport_rate['price']; ?></b></td>
+                                    <td data-column="Price(USD)" class="n-font"><b><?Php echo 'USD ' . $transport_rate['price']; ?></b></td>
                                     <td> 
                                         <a href="transport-booking.php?rate=<?php echo $transport_rate['id']; ?>" class="transport-book-button">
                                             Book Now
@@ -257,22 +241,12 @@ $MEMBER = new Member($TRANSPORTS->member);
                             ?>
                         </tbody>
                     </table>
-
                 </div>
                 <div class="col-md-4">
                     <div class="sidebar">
                         <div class="widget">
                             <div id="myCarousel" class="carousel slide" data-ride="carousel">
                                 <h2 class="t-comment">Customer Reviews</h2>
-                                <!-- Carousel indicators -->
-
-                                <!--                                <ol class="carousel-indicators">
-                                                                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                                                                    <li data-target="#myCarousel" data-slide-to="1"></li>
-                                                                    <li data-target="#myCarousel" data-slide-to="2"></li>
-                                                                </ol>   -->
-
-
                                 <!-- Wrapper for carousel items -->
                                 <div class="carousel-inner">
                                     <?php
@@ -284,11 +258,9 @@ $MEMBER = new Member($TRANSPORTS->member);
                                         <div class="no-reviews">
                                             <p>No Reviews yet</p>
                                         </div>
-
                                         <?php
                                     } else {
                                         foreach ($TRANSPORT_FEEDBACKS as $key => $transport_feedback) {
-
                                             $VISITOR = new Visitor($transport_feedback['visitor']);
                                             if ($key === 0) {
                                                 $li .= ' <li data-target="#myCarousel" data-slide-to="' . $key . '" class="active">'
@@ -331,26 +303,17 @@ $MEMBER = new Member($TRANSPORTS->member);
                                                                                 for ($x = 1; $x <= $starNumber; $x++) {
                                                                                     echo '<li class = "list-inline-item"><i class = "fa fa-star"></i></li>';
                                                                                 }
-//                                                                            if (strpos($starNumber, '.')) {
-//                                                                                echo '<img src="path/to/half/star.png" />';
-//                                                                                $x++;
-//                                                                            }
                                                                                 while ($x <= 5) {
                                                                                     echo '<li class = "list-inline-item"><i class = "fa fa-star-o"></i></li>';
                                                                                     $x++;
                                                                                 }
                                                                                 ?>
-
-
-
-
                                                                             </ul>
                                                                         </div>
                                                                     </div>										
                                                                 </div>
                                                             </div>
                                                         </div>
-
                                                     </div>			
                                                 </div>
                                                 <?php
@@ -394,29 +357,19 @@ $MEMBER = new Member($TRANSPORTS->member);
                                                                                     for ($x = 1; $x <= $starNumber; $x++) {
                                                                                         echo '<li class = "list-inline-item"><i class = "fa fa-star"></i></li>';
                                                                                     }
-//                                                                            if (strpos($starNumber, '.')) {
-//                                                                                echo '<img src="path/to/half/star.png" />';
-//                                                                                $x++;
-//                                                                            }
                                                                                     while ($x <= 5) {
                                                                                         echo '<li class = "list-inline-item"><i class = "fa fa-star-o"></i></li>';
                                                                                         $x++;
                                                                                     }
                                                                                     ?>
-
-
-
-
                                                                                 </ul>
                                                                             </div>
                                                                         </div>
-
                                                                     </div>										
                                                                 </div>
                                                             </div>
                                                         </div>
-
-                                                    </div>			
+                                                    </div>		
                                                 </div>
                                                 <?php
                                             }
@@ -440,27 +393,6 @@ $MEMBER = new Member($TRANSPORTS->member);
                         </div>
                     </div>
                 </div>
-
-<!--                <div class="col-md-4">
-                    <div class="sidebar">
-                        <div class="widget">
-                            <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                                <h2 class="t-comment">Send a Message</h2>
-                                <form id="send-message" method="post" enctype="multipart/form-data" action="post-and-get/visitor-messages.php">
-                                    <textarea name="message" row="5" required="TRUE" id="message"></textarea>
-                                    <div class="add-comment-button">
-                                        <input type="hidden" name="member" value="<?php echo $TRANSPORTS->member; ?>">
-                                        <input type="hidden" name="visitor" value="<?php echo $_SESSION['id']; ?>">
-                                        <input type="hidden" name="sender" value="visitor">
-                                        <button type="submit" name="visitor-message" class="btn btn-info btn-position-rel">
-                                            <i class="fa fa-arrow-right"></i>  Send Message
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>-->
             </div>
             
             <div class="row top-margin-30">
@@ -470,12 +402,10 @@ $MEMBER = new Member($TRANSPORTS->member);
                     </a>
                 </div>
             </div>
-            
             <div class="row top-margin-30">
                 <hr>
                 <div class="col-md-12">
                     <p class="subtitle-more more-t"><span>More Transports</span></p>
-
                     <div class="owl-carousel tour-slider" id="transport-carousel">
                         <?php
                         $TRANSPORT = $TRANSPORTS->all();
@@ -500,10 +430,6 @@ $MEMBER = new Member($TRANSPORTS->member);
                                                 for ($x = 1; $x <= $starNumber; $x++) {
                                                     echo '<i class="fa fa-star"></i>';
                                                 }
-//                                                                            if (strpos($starNumber, '.')) {
-//                                                                                echo '<img src="path/to/half/star.png" />';
-//                                                                                $x++;
-//                                                                            }
                                                 while ($x <= 5) {
                                                     echo '<i class="fa fa-star-o"></i>';
                                                     $x++;
@@ -512,12 +438,10 @@ $MEMBER = new Member($TRANSPORTS->member);
                                             </span>
                                             <img src="upload/transport/thumb/<?php echo $transport_photo['image_name'] ?>" alt=""/>
                                         </a>
-
                                         <?php
                                     }
                                 }
                                 ?>
-                                <!--                                        <div class="transport-heading"></div>-->
                                 <div class="transport-bot-container">  
                                     <a href="transportation-view.php?id=<?php echo $transport['id']; ?>">
                                         <div class="transport-bot-title"> <?php
@@ -527,15 +451,12 @@ $MEMBER = new Member($TRANSPORTS->member);
                                             }
                                             ?></div>
                                         <div class="vehicle-options-container">
-
                                             <div class="col-md-12">
                                                 <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4">
                                                     <img class="index-transport-ico" src="images/transport/passenges.png"><div>
                                                         <span class="transport-ico-txt"><?php echo $transport['no_of_passangers'] ?></span>
                                                     </div>
                                                 </div>
-
-
                                                 <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4">
                                                     <img class="index-transport-ico" src="images/transport/001-suitcase.png"><div>
                                                         <span class="transport-ico-txt"><?php echo $transport['no_of_baggages'] ?></span>
@@ -573,31 +494,21 @@ $MEMBER = new Member($TRANSPORTS->member);
                                                 ?>
                                             </div>
                                         </div>
-
                                     </a>
-
                                     <div class="read_more">
-
                                         <a href="transportation-view.php?id=<?php echo $transport['id']; ?>" class="read_more_button">View More
                                             <i class="fa fa-long-arrow-right"></i></a>
                                         <div class="clear"></div>
                                     </div>
                                 </div>
                             </div>
-
-
                             <?php
                         }
                         ?>
-
                     </div>
                 </div>
             </div>
-
         </div>
-
-
-
         <?php
         include './footer.php';
         ?>
@@ -614,9 +525,7 @@ $MEMBER = new Member($TRANSPORTS->member);
                 height: 500,
                 autoplay: 7000,
                 lightbox: true,
-                showInfo: true,
-
-                //                imageCrop: true,
+                showInfo: true
             });
         </script>
         <script>
@@ -626,10 +535,8 @@ $MEMBER = new Member($TRANSPORTS->member);
                 });
             });
             jQuery('#create').click(function (event) {
-
                 event.preventDefault();
                 var captchacode = jQuery('#captchacode').val();
-
                 jQuery.ajax({
                     url: "visitor-feedback/captchacode.php",
                     cache: false,
@@ -637,19 +544,16 @@ $MEMBER = new Member($TRANSPORTS->member);
                     type: "POST",
                     data: {
                         captchacode: captchacode
-
                     },
                     success: function (html) {
                         var status = html.status;
                         var msg = html.msg;
-
+                        
                         if (status == "incorrect") {
-
                             jQuery("#capspan").addClass("notvalidated");
                             jQuery("#capspan").html(msg);
                             jQuery("#capspan").show();
                             jQuery("#capspan").fadeOut(2000);
-
                         } else if (status == "correct") {
                             jQuery('#client-comment').submit();
                         }
@@ -657,11 +561,9 @@ $MEMBER = new Member($TRANSPORTS->member);
                 });
             });
         </script>
-
         <script>
             $(document).ready(function () {
                 $('#transport-carousel').owlCarousel({
-
                     loop: true,
                     margin: 10,
                     responsiveClass: true,
@@ -694,5 +596,4 @@ $MEMBER = new Member($TRANSPORTS->member);
             });
         </script>
     </body> 
-
 </html>

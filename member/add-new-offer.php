@@ -19,7 +19,7 @@ $types = $TOURTYPES->all();
         <meta name="author" content="Dashboard">
         <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
-        <title>Add New Tour Package|| My Account || www.srilankatourism.travel</title>
+        <title>Add New Offer|| My Account || www.srilankatourism.travel</title>
 
         <link href="assets/css/bootstrap.css" rel="stylesheet">
 
@@ -100,7 +100,7 @@ $types = $TOURTYPES->all();
                                                         </div>
                                                         <div class="">
                                                             <div class="bottom-top">
-                                                                <label for="price">Price</label>
+                                                                <label for="price">Price(USD)</label>
                                                             </div>
                                                             <div class="">
                                                                 <input type="text" id="price" class="form-control" placeholder="Please enter price" autocomplete="off" name="price">
@@ -108,7 +108,7 @@ $types = $TOURTYPES->all();
                                                         </div>
                                                         <div class="">
                                                             <div class="bottom-top">
-                                                                <label for="discount">Discount</label>
+                                                                <label for="discount">Discount(%)</label>
                                                             </div>
                                                             <div class="">
                                                                 <input type="text" id="discount" class="form-control" placeholder="Please enter discount" autocomplete="off" name="discount">

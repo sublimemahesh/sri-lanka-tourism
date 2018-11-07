@@ -33,7 +33,7 @@ $ACCOMMODATION = new Accommodation($id);
         <link href="assets/css/style.css" rel="stylesheet">
         <link href="assets/css/style-responsive.css" rel="stylesheet">
         <link href="assets/css/custom.css" rel="stylesheet" type="text/css"/>
-
+<link href="plugins/Preloader/jm.spinner.css" rel="stylesheet" type="text/css"/>
         <style>
             .img-thumbnail {
                 max-width: 50% !important;
@@ -48,7 +48,7 @@ $ACCOMMODATION = new Accommodation($id);
             <!--main content start-->
             <section id="main-content">
                 <div class="col-md-12 verified-alert"></div> 
-                <div class="loading" id="loading">Loading&#8230;</div>
+                <div class="box"></div> 
                 <div class="wrapper">
                     <div class="container-fluid">
                         <div class="row  top-bott20"> 
@@ -128,6 +128,7 @@ $ACCOMMODATION = new Accommodation($id);
         <script src="assets/plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>
         <script src="js/add-accommodation-photo.js" type="text/javascript"></script>
         <script src="delete/js/accommodation-photo.js" type="text/javascript"></script>
+        <script src="plugins/Preloader/jm.spinner.js" type="text/javascript"></script>
         <script>
             //custom select box
 

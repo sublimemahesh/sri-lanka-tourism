@@ -2,7 +2,10 @@ $(document).ready(function () {
 
     $('#transport-picture').change(function () {
 
-        $('#loading').show();
+        $('.box').jmspinner('large');
+        $('.box').addClass('well');
+        $('.box').css('z-index','9999');
+        
         var formData = new FormData($('#form-transport')[0]);
 
         $.ajax({
@@ -22,7 +25,9 @@ $(document).ready(function () {
                 html += '<i class="img-transport-delete delete-icon btn btn-danger btn-md fa fa-trash-o"  id="' + arr[0] + '"></i>';
                 html += '</div>';
                 $('#image-list').prepend(html);
-                $('#loading').hide();
+                $('.box').jmspinner(false);
+                $('.box').removeClass('well');
+                $('.box').css('z-index','-1111');
             },
             cache: false,
             contentType: false,

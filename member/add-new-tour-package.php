@@ -86,7 +86,7 @@ $types = $TOURTYPES->all();
 
                                                         <div class="">
                                                             <div class="bottom-top">
-                                                                <label for="price">Price</label>
+                                                                <label for="price">Price(USD)</label>
                                                             </div>
                                                             <div class="">
                                                                 <input type="text" id="price" class="form-control" placeholder="Please Enter Price" autocomplete="off" name="price">

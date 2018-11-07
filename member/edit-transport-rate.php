@@ -105,7 +105,7 @@ if (isset($_SESSION['isPhoneVerified'])) {
                                                             </div>
                                                             <div class="col-md-6">
                                                                 <div class="bottom-top">
-                                                                    <label for="price">Price</label>
+                                                                    <label for="price">Price(USD)</label>
                                                                     <div class="formrow">
                                                                         <input type="text" id="price" value="<?php echo $TRANSPORT_RATES->price; ?>" class="form-control" placeholder="Enter Price" autocomplete="off" name="price" required="true">
                                                                     </div>

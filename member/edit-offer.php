@@ -21,7 +21,7 @@ if (isset($_SESSION['isPhoneVerified'])) {
         <meta name="author" content="Dashboard">
         <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
-        <title>Edit Tour Package - www.srilankatourism.travel</title>
+        <title>Edit Offer - www.srilankatourism.travel</title>
 
         <!-- Bootstrap core CSS -->
         <link href="assets/css/bootstrap.css" rel="stylesheet">
@@ -116,7 +116,7 @@ if (isset($_SESSION['isPhoneVerified'])) {
                                                             </div>
                                                             <div class="">
                                                                 <div class="bottom-top">
-                                                                    <label for="price">Price</label>
+                                                                    <label for="price">Price(USD)</label>
                                                                 </div>
                                                                 <div class="">
                                                                     <input type="text" id="price" value="<?php echo $OFFER->price; ?>" class="form-control" placeholder="Please enter price" autocomplete="off" name="price">
@@ -124,7 +124,7 @@ if (isset($_SESSION['isPhoneVerified'])) {
                                                             </div>
                                                             <div class="">
                                                                 <div class="bottom-top">
-                                                                    <label for="discount">Discount</label>
+                                                                    <label for="discount">Discount(%)</label>
                                                                 </div>
                                                                 <div class="">
                                                                     <input type="text" id="discount" value="<?php echo $OFFER->discount; ?>" class="form-control" placeholder="Please enter discount" autocomplete="off" name="discount">

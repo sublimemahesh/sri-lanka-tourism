@@ -48,7 +48,7 @@ function setRooms() {
                                 if (i === 1) {
                                     letterS = '';
                                 }
-                                html += '<option value="' + i + 'XXX'+ thisPrice +'" each-price="' + thisPrice + '">' + i + ' Room' + letterS + ' - LKR ' + ((parseInt(thisPrice)) + (0 * i)) * value.days + '</option>';
+                                html += '<option value="' + i + 'XXX'+ thisPrice +'" each-price="' + thisPrice + '">' + i + ' Room' + letterS + ' - USD ' + ((parseInt(thisPrice)) + (0 * i)) * value.days + '</option>';
                             }
 
 
