@@ -23,7 +23,7 @@ jQuery(document).ready(function () {
                         window.location = result.back;
                     }
                 } else if (result.status === 'registered') {
-                    window.location.replace('forget-password.php?message=26');
+                    window.location.replace('forgot-password.php?message=26');
                 }
             }
         });
