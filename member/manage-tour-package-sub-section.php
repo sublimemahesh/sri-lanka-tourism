@@ -179,7 +179,7 @@ if ($_SESSION['id'] <> $TOUR_PACKAGE->member) {
                                                                                                 <input type="hidden" id="tour" name="tour" value="<?php echo $id; ?>"/>
                                                                                                 <input type="hidden" id="toursubsection" name="toursubsection" value="<?php echo $date['id']; ?>"/>
                                                                                                 <input type="hidden" id="tourdates" name="tourdates" value="<?php echo count($tour_dates); ?>"/>
-                                                                                                <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" >
+                                                                                                <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" contactnumber="<?php echo $MEMBER->contact_number; ?>">
                                                                                                 <button id="create" name="add-transports" type="submit" class="btn btn-info tab-next-create" sort="<?php echo $date['sort']; ?>">Save All Details</button>
                                                                                             </div>
                                                                                         </div>

@@ -10,7 +10,7 @@ if (isset($_GET['id'])) {
     $id = $_GET['id'];
 }
 $ACCOMMODATION = new Accommodation($id);
-if ($_SESSION['id'] <> $ACCOMODATION->member) {
+if ($_SESSION['id'] <> $ACCOMMODATION->member) {
     if (Member::logOut()) {
         header('Location: login.php');
     } else {
@@ -106,7 +106,7 @@ if ($_SESSION['id'] <> $ACCOMODATION->member) {
                                             <div class="text-right">
                                                 <a href="manage-accommodation.php"><button type="button" class="btn btn-round btn-info">Manage Accommodation</button></a>
                                             </div>
-                                            <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" >
+                                            <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" contactnumber="<?php echo $MEMBER->contact_number; ?>">
                                         </div>
                                     </div>
                                 </div>

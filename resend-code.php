@@ -5,6 +5,10 @@ include './class/include.php';
 if (!isset($_SESSION)) {
     session_start();
 }
+$status = '';
+if(isset($_GET['ncn'])) {
+    $status = 'true';
+}
 if (!Visitor::authenticate()) {
     redirect('visitor-login.php');
 }
@@ -72,7 +76,6 @@ $VISITOR = new Visitor($_SESSION['id']);
                                             <h5>* Is this contact number incorrect? <a href="#" class="update_number">Update number</a></h5>
                                         </div>
                                     </div>
-
                                     <div class="row verification-page-details update-contact-number hidden">
                                         <h2 class="verification-page-title">Update Contact Number & Resend Verification Code</h2>
                                         <hr class="verification-page-hr">
@@ -87,6 +90,24 @@ $VISITOR = new Visitor($_SESSION['id']);
                                                     <input type="hidden" name="id" id="id" class="" value="<?php echo $_SESSION['id']; ?>">
                                                     <input type="hidden" name="existno" id="existno" class="" value="<?php echo $VISITOR->contact_number; ?>">
                                                     <input type="submit" name="updatenumber" id="updatenumber" class="btn btn-danger" value="Update & Resend Code">
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row verification-page-details add-contact-number hidden">
+                                        <h2 class="verification-page-title">Add New Contact Number & Send Verification Code</h2>
+                                        <hr class="verification-page-hr">
+
+                                        <div class="col-md-12">
+                                            <div class="row view-number">
+                                                <form action="post-and-get/visitor.php" method="post">
+                                                    <lable>Add Your Contact Number</lable>
+
+                                                    <input type="text" name="newcontactno" id="newcontactno" class="form-control" placeholder="+94xxxxxxxxx" autocomplete="off">
+                                                    <input type="hidden" name="id" id="id" class="" value="<?php echo $_SESSION['id']; ?>">
+                                                    <input type="hidden" name="existno" id="existno" class="" value="<?php echo $MEMBER->contact_number; ?>">
+                                                    <input type="submit" name="addnumber" id="addnumber" class="btn btn-danger" value="Add New Contact Number">
+                                                    <input type="hidden" id="status" value="<?php echo $status; ?>" />
                                                 </form>
                                             </div>
                                         </div>
@@ -112,6 +133,10 @@ $VISITOR = new Visitor($_SESSION['id']);
         <script src="plugins/tel-input/build/js/intlTelInput.js" type="text/javascript"></script>
         <script>
             $("#contactno").intlTelInput({
+                autoFormat: false,
+                autoHideDialCode: false
+            });
+            $("#newcontactno").intlTelInput({
                 autoFormat: false,
                 autoHideDialCode: false
             });

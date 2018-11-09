@@ -110,7 +110,7 @@ if (isset($_SESSION['isPhoneVerified'])) {
                                                                                                     </div>-->
                                                     <div class="text-left">
                                                         <button type="submit" name="save" class="btn btn-round btn-info">Save</button>
-                                                        <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" >
+                                                        <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" contactnumber="<?php echo $MEMBER->contact_number; ?>">
                                                     </div>
                                                 </div>
                                             </form>

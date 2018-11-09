@@ -150,7 +150,7 @@ if ($_SESSION['id'] <> $OFFER->member) {
                                                                 <div class="bottom-top">
                                                                     <input type="hidden" id="id" value="<?php echo $OFFER->id; ?>" name="id"/>
                                                                     <input type="hidden" id="member" name="member" value="<?php echo $_SESSION['id']; ?>"/>
-                                                                    <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" >
+                                                                    <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" contactnumber="<?php echo $MEMBER->contact_number; ?>">
                                                                     <input type="submit" id="add-offer" name="edit-offer" class="btn btn-info center-block" value="Edit offer"/>
                                                                 </div>
                                                             </div> 

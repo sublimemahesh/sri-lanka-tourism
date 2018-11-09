@@ -93,7 +93,7 @@ $MEMBER = new Member($_SESSION['id']);
                                                                 <input type="hidden" id="memeberId" name="memeberId" value="fds"/>
                                                                 <button name="changePassword" type="submit" class="btn btn-info center-block">Change Password</button>
                                                                 <input type="hidden" id="id" value="<?php echo $MEMBER->id; ?>" name="id"> 
-                                                                <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" >
+                                                                <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" contactnumber="<?php echo $MEMBER->contact_number; ?>">
                                                             </div>
                                                         </div> 
                                                     </div>  

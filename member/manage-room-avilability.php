@@ -113,7 +113,7 @@ if ($_SESSION['id'] <> $ACCOMODATION->member) {
                                                         <a class="arrows" id="right-arrow" href="manage-room-avilability.php?<?php echo $para; ?>">
                                                             <i class="fa fa-angle-right"></i>
                                                         </a>
-                                                        <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" >
+                                                        <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" contactnumber="<?php echo $MEMBER->contact_number; ?>">
                                                     </div>
                                                 </div>
                                             </div><!-- /col-md-12 -->

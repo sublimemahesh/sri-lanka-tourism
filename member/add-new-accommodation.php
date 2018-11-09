@@ -273,7 +273,7 @@ if (isset($_SESSION['isPhoneVerified'])) {
                                                                                                 <div class="">
                                                                                                     <input type="hidden" id="member" name="member" value="<?php echo $_SESSION['id']; ?>"/>
                                                                                                     <button name="create" id="create" type="submit" class="btn btn-info tab-next-create">Save All Details</button>
-                                                                                                    <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" >
+                                                                                                    <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" contactnumber="<?php echo $MEMBER->contact_number; ?>">
                                                                                                 </div>
                                                                                             </div> 
                                                                                         </div>

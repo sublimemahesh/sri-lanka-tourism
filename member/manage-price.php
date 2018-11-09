@@ -98,7 +98,7 @@ if (isset($_SESSION['isPhoneVerified'])) {
                                                         echo 'No Results in the Database';
                                                     }
                                                     ?>
-                                                    <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" >
+                                                    <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" contactnumber="<?php echo $MEMBER->contact_number; ?>">
                                                 </div><!-- /content-panel -->
                                             </div><!-- /col-md-12 -->
                                             <div class="col-md-2"></div>

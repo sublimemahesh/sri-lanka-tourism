@@ -126,7 +126,7 @@ $types = $TOURTYPES->all();
                                                             <div class="bottom-top">
                                                                 <input type="hidden" id="member" name="member" value="<?php echo $_SESSION['id']; ?>"/>
                                                                 <input type="submit" id="add-offer" name="create-offer" class="btn btn-info center-block" value="Create offer"/>
-                                                            <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" >
+                                                            <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" contactnumber="<?php echo $MEMBER->contact_number; ?>">
                                                             </div>
                                                         </div> 
                                                     </div>  

@@ -88,7 +88,7 @@ $TOUR = new TourPackage($TOUR_SUB->tour);
                                                                 <div class="bottom-top">
                                                                     <input type="hidden" id="id" value="<?php echo $TOUR_SUB->id; ?>" name="id"/>
                                                                     <input type="hidden" id="authToken" value="<?php echo $_SESSION["id"]; ?>" name="memeber"/>
-                                                                    <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" >
+                                                                    <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" contactnumber="<?php echo $MEMBER->contact_number; ?>">
                                                                     <button name="edit-tour-sub-section" type="submit" class="btn btn-info center-block">Change</button>
                                                                 </div>
                                                             </div> 

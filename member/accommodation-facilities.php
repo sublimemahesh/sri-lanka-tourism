@@ -112,7 +112,7 @@ if ($_SESSION['id'] <> $ACCOMODATION->member) {
                                                             <div class="text-center">
                                                                 <input type="hidden" id="accommodation_id" value="<?php echo $ACCOMODATION->id; ?>" name="accommodation_id"/>
                                                                 <input type="submit" name="save-changes" class="btn btn-round btn-info" value="Save Changes">
-                                                                <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" >
+                                                                <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" contactnumber="<?php echo $MEMBER->contact_number; ?>">
                                                             </div>
                                                         </form>
                                                     </div>

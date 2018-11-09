@@ -359,7 +359,7 @@ $DISTINCTMEMBERS = MemberAndVisitorMessages::getDistinctMembersByVisitorId($visi
                                 </div>
                             </div>
                         </div>
-                        <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" >
+                        <!--<input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" contactnumber="<?php echo $VISITOR->contact_number; ?>">-->
                     </div>
 
                 </div>
