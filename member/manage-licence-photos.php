@@ -128,7 +128,7 @@ if (isset($_SESSION['isPhoneVerified'])) {
                                                 <div class="col-md-12 text-right">
                                                     <a href="<?= $previous ?>"><div name="create" class="btn btn-info">Continue > ></div> </a>
                                                 </div>
-                                                <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" >
+                                                <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" contactnumber="<?php echo $MEMBER->contact_number; ?>">
                                             </div>
                                         </div>
                                     </div>

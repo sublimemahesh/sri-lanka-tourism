@@ -2,9 +2,14 @@
 <?php
 include_once(dirname(__FILE__) . '/../class/include.php');
 
+$status = '';
+if(isset($_GET['ncn'])) {
+    $status = 'true';
+}
 if (!isset($_SESSION)) {
     session_start();
 }
+
 if (!Member::authenticate()) {
     redirect('login.php');
 }
@@ -105,6 +110,25 @@ $MEMBER = new Member($_SESSION['id']);
                                             </div>
                                         </div>
                                     </div>
+                                    
+                                    <div class="row verification-page-details add-contact-number hidden">
+                                        <h2 class="verification-page-title">Add New Contact Number & Send Verification Code</h2>
+                                        <hr class="verification-page-hr">
+
+                                        <div class="col-md-12">
+                                            <div class="row view-number">
+                                                <form action="post-and-get/member.php" method="post">
+                                                    <lable>Add Your Contact Number</lable>
+
+                                                    <input type="text" name="newcontactno" id="newcontactno" class="form-control" placeholder="+94xxxxxxxxx" autocomplete="off">
+                                                    <input type="hidden" name="id" id="id" class="" value="<?php echo $_SESSION['id']; ?>">
+                                                    <input type="hidden" name="existno" id="existno" class="" value="<?php echo $MEMBER->contact_number; ?>">
+                                                    <input type="submit" name="addnumber" id="addnumber" class="btn btn-danger" value="Add New Contact Number">
+                                                    <input type="hidden" id="status" value="<?php echo $status; ?>" />
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -146,6 +170,10 @@ $MEMBER = new Member($_SESSION['id']);
         <script src="../plugins/tel-input/build/js/intlTelInput.js" type="text/javascript"></script>
         <script>
             $("#contactno").intlTelInput({
+                autoFormat: false,
+                autoHideDialCode: false
+            });
+            $("#newcontactno").intlTelInput({
                 autoFormat: false,
                 autoHideDialCode: false
             });

@@ -132,7 +132,7 @@ if ($_SESSION['id'] <> $ACCOMODATION->member) {
                                                         <div class="top-bott50">
                                                             <div class="bottom-top">
                                                                 <input type="hidden" value="<?php echo $id ?>" name="id" />
-                                                                <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" >
+                                                                <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" contactnumber="<?php echo $MEMBER->contact_number; ?>">
                                                                 <button name="update" type="submit" class="btn btn-info center-block">Save</button>
                                                             </div>
                                                         </div> 

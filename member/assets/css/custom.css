@@ -579,7 +579,7 @@ and open the template in the editor.
     margin: 0px 200px 20px;
     border-radius: 10px;
 }
-#updatenumber {
+#updatenumber, #addnumber {
     margin-top: 20px;
 }
 .p-hidden {

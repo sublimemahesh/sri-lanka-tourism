@@ -521,7 +521,7 @@ if (empty($MEMBER->licence_front) || empty($MEMBER->licence_back)) {
 
                                                                                             <input type="hidden" id="member" name="member" value="<?php echo $_SESSION['id']; ?>"/>
                                                                                             <button id="create" name="add-transports" type="submit" class="btn btn-info tab-next-create">Save All Details</button>
-                                                                                            <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" >
+                                                                                            <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" contactnumber="<?php echo $MEMBER->contact_number; ?>">
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>

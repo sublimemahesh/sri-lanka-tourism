@@ -114,7 +114,7 @@ if ($_SESSION['id'] <> $ACCOMODATION->member) {
                                                                 </tbody>
                                                             </table>
                                                             <div class="text-center"> 
-                                                                <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" >
+                                                                <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" contactnumber="<?php echo $MEMBER->contact_number; ?>">
                                                                 <input type="hidden" id="room_id" value="<?php echo $ROOM->id; ?>" name="room_id"/>
                                                                 <input type="submit" name="save-changes" class="btn btn-primary m-t-15 waves-effect" value="Save Changes"/>
                                                             </div>

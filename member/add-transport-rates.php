@@ -272,7 +272,7 @@ if ($_SESSION['id'] <> $TRANSPORTS->member) {
                                                                     <div class="bottom-top">
                                                                         <input type="hidden" id="id" value="<?php echo $TRANSPORTS->id; ?>" name="id"/>
                                                                         <button name="update" type="submit" class="btn btn-info">Update</button>
-                                                                        <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" >
+                                                                        <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" contactnumber="<?php echo $MEMBER->contact_number; ?>">
                                                                     </div>
                                                                 </div>   
                                                             </div>

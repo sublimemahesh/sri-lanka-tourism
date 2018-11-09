@@ -368,7 +368,7 @@ $DISTINCTVISITORS = MemberAndVisitorMessages::getDistinctVisitorsByMemberId($mem
                                         <input type="hidden" name="member" value="<?php echo $_SESSION['id']; ?>">
                                         <input type="hidden" name="visitor" id="visitor" value="<?php echo $visitorid; ?>">
                                         <input type="hidden" name="sender" value="member">
-                                        <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" >
+                                        <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" contactnumber="<?php echo $MEMBER->contact_number; ?>">
                                         <button type="submit" name="member-message" id="member-message" class="btn btn-info btn-position-rel">
                                             <i class="fa fa-paper-plane" aria-hidden="true"></i>
                                         </button>

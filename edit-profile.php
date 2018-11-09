@@ -5,6 +5,7 @@ include './auth.php';
 if (!isset($_SESSION)) {
     session_start();
 }
+$VISITOR = new Visitor($_SESSION['id']);
 if (isset($_SESSION['isPhoneVerified'])) {
     $isPhoneVerified = $_SESSION['isPhoneVerified'];
 }
@@ -121,7 +122,7 @@ if (isset($_SESSION['isPhoneVerified'])) {
                                                     <div class="top-bott50">
                                                         <div class="bottom-top">
                                                             <input type="hidden" id="id" value="<?php echo $VISITOR->id; ?>" name="id"/>
-                                                            <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" >
+                                                            <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" contactnumber="<?php echo $VISITOR->contact_number; ?>">
                                                             <button type="submit" name="update" class="btn btn-info center-block">Save Changes</button>
                                                         </div>
                                                     </div> 

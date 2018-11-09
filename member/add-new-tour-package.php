@@ -123,7 +123,7 @@ $types = $TOURTYPES->all();
                                                             <div class="bottom-top">
                                                                 <input type="hidden" id="member" name="member" value="<?php echo $_SESSION['id']; ?>"/>
                                                                 <input type="submit" id="create" name="add-tour-package" class="btn btn-info center-block" value="Add tour package"/>
-                                                            <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" >
+                                                            <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" contactnumber="<?php echo $MEMBER->contact_number; ?>">
                                                             </div>
                                                         </div> 
                                                     </div>  

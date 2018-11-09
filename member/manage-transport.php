@@ -107,7 +107,7 @@ $TRANSPORTS_PHOTO = new TransportPhoto(NULL);
                                                                     <?php
                                                                 }
                                                                 ?>  
-                                                                <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" >
+                                                                <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" contactnumber="<?php echo $MEMBER->contact_number; ?>">
                                                             </div>
                                                         </div>  
                                                     </div>  

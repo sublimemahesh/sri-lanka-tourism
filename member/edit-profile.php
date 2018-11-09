@@ -246,7 +246,7 @@ $MEMBER = new Member($_SESSION['id']);
                                                                 <input type="file" name="pro-picture" id="pro-picture" />
                                                                 <input type="hidden" name="upload-profile-image" id="upload-profile-image"/>
                                                                 <input type="hidden" name="member" id="member" value="<?php echo $MEMBER->id; ?>"/>
-                                                                <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" >
+                                                                <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" contactnumber="<?php echo $MEMBER->contact_number; ?>">
                                                             </form>
                                                         </div>
                                                     </div>

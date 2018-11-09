@@ -6,6 +6,7 @@ include './auth.php';
 if (!isset($_SESSION)) {
     session_start();
 }
+$VISITOR = new Visitor($_SESSION['id']);
 if (isset($_SESSION['isPhoneVerified'])) {
     $isPhoneVerified = $_SESSION['isPhoneVerified'];
 }
@@ -111,7 +112,7 @@ if (isset($_SESSION['isPhoneVerified'])) {
                         <li><a href="post-and-get/logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
                     </ul>
                 </div>
-                <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" >
+                <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" contactnumber="<?php echo $VISITOR->contact_number; ?>">
             </div>
         </div>
 

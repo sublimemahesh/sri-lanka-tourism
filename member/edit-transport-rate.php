@@ -126,7 +126,7 @@ if ($_SESSION['id'] <> $TRANSPORTS->member) {
                                                             <div class="bottom-top">
                                                                 <input type="hidden" id="id" value="<?php echo $TRANSPORT_RATES->id; ?>" name="id"/>
                                                                 <input type="hidden" id="authToken" value="<?php echo $_SESSION["id"]; ?>" name="memeber"/>
-                                                                <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" >
+                                                                <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" contactnumber="<?php echo $MEMBER->contact_number; ?>">
                                                                 <button name="update-transport-rate" type="submit" class="btn btn-info center-block">Change</button>
                                                             </div>
                                                         </div> 

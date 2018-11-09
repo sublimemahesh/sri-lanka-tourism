@@ -102,7 +102,7 @@ if ($_SESSION['id'] <> $TRANSPORTS->member) {
                                         <div class="text-right">
                                             <a href="manage-transport.php"><button type="button" class="btn btn-round btn-info">Manage Transport</button></a>
                                         </div>
-                                        <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" >
+                                        <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" contactnumber="<?php echo $MEMBER->contact_number; ?>">
                                     </div>
                                 </div>
                             </div>

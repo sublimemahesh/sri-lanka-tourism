@@ -195,3 +195,24 @@ if (isset($_POST['updatenumber'])) {
         }
     }
 };
+
+if (isset($_POST['addnumber'])) {
+    $VISITOR = new Visitor($_POST['id']);
+
+    $VISITOR->contact_number = $_POST['newcontactno'];
+
+    $RESULT = $VISITOR->updateContactNumber();
+    if ($RESULT) {
+        $contct_number =  $VISITOR->contact_number;
+        $code = Visitor::generatePhoneNoVerifyCode($VISITOR->id);
+        $messge = "Your Sri Lanka Tourism Verification code is " . $code;
+
+        $sendmsg = Helper::sendSMS($contct_number, $messge);
+
+        if ($sendmsg) {
+            header('Location: ../phone-verification-page.php?message=31');
+        } else {
+            header('Location: ' . $_SERVER['HTTP_REFERER'] . '?message=14');
+        }
+    }
+};
