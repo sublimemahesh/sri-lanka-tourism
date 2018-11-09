@@ -35,6 +35,7 @@ if (isset($_SESSION['isPhoneVerified'])) {
         <link href="assets/css/style.css" rel="stylesheet">
         <link href="assets/css/style-responsive.css" rel="stylesheet">
         <link href="assets/css/custom.css" rel="stylesheet" type="text/css"/>
+        <link href="assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css"/>
         <link href="plugins/Preloader/jm.spinner.css" rel="stylesheet" type="text/css"/>
         <style>
             .img-thumbnail {
@@ -44,7 +45,7 @@ if (isset($_SESSION['isPhoneVerified'])) {
     </head>
 
     <body>
-         <div class="box"></div>
+        <div class="box"></div>
         <section id="container" >
 
             <?php
@@ -158,6 +159,7 @@ if (isset($_SESSION['isPhoneVerified'])) {
         <script src="js/licence.js" type="text/javascript"></script>
         <script src="js/display-contact-number-verification-alert.js" type="text/javascript"></script>
         <script src="plugins/Preloader/jm.spinner.js" type="text/javascript"></script>
+        <script src="assets/plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>
     </body>
 
 </html>

@@ -140,15 +140,6 @@ class Member {
             $member = $this->__construct($this->id);
             $this->setUserSession($member);
 
-            if (!isset($_SESSION)) {
-                session_start();
-                session_unset($_SESSION);
-            }
-
-            $_SESSION["login"] = TRUE;
-
-            $_SESSION["id"] = $member->id;
-
             return TRUE;
         }
     }

@@ -66,7 +66,7 @@ $types = $TOURTYPES->all();
                                                                 <label for="type">Type</label>
                                                             </div>
                                                             <div class="">
-                                                                <select class="form-control" name="type">
+                                                                <select class="form-control" id="offertype" name="type">
                                                                     <option value="">-- Please select --</option>
                                                                     <option value="1">Taxi</option>
                                                                     <option value="2">Tours</option>
@@ -152,7 +152,7 @@ $types = $TOURTYPES->all();
         <script src="assets/js/jquery.scrollTo.min.js"></script>
         <script src="assets/js/jquery.nicescroll.js" type="text/javascript"></script>
 
-        <script src="js/add-new-tour-package.js" type="text/javascript"></script>
+        <script src="js/add-new-offer.js" type="text/javascript"></script>
         <script src="assets/plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>
 
         <!--common script for all pages-->

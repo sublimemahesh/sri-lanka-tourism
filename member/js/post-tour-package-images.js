@@ -1,6 +1,8 @@
 $(document).ready(function (e) {
 
     var tourid = $('#tour').val();
+
+
     $.ajax({
         type: 'POST',
         url: 'post-and-get/ajax/post-tour-package-images.php',
@@ -94,13 +96,22 @@ $(document).ready(function (e) {
 
     $('.tour-sub-picture').change(function () {
 
+        if (Math.round((this.files[0].size / 1024)) > 10000) {
+            swal({
+                title: "Error!",
+                text: "Image is too large and please upload a image size less than 10MB",
+                type: 'error',
+                timer: 2000,
+                showConfirmButton: false
+            });
+            return false;
+        }
 
         var sort = $(this).attr('sort');
-        var subid = $('#toursubsection').val();
-        
+
         $('.box').jmspinner('large');
         $('.box').addClass('well');
-        $('.box').css('z-index','9999');
+        $('.box').css('z-index', '9999');
         var formData = new FormData($('#form-tours-' + sort)[0]);
         $.ajax({
             type: "POST",
@@ -109,8 +120,6 @@ $(document).ready(function (e) {
             data: formData,
             async: false,
             success: function (mess) {
-
-//                var arr = mess.filename.split('.');
 
                 var html = '';
                 html += '<div class="col-md-2 bottom-top" id="col_' + mess.id + '" style="padding-bottom: 3px;">';
@@ -121,7 +130,7 @@ $(document).ready(function (e) {
                 $('#image-list-' + mess.toursubsection).prepend(html);
                 $('.box').jmspinner(false);
                 $('.box').removeClass('well');
-                $('.box').css('z-index','-1111');
+                $('.box').css('z-index', '-1111');
                 $.ajax({
                     type: 'POST',
                     url: 'post-and-get/ajax/post-tour-package-images.php',
