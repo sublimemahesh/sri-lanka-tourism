@@ -34,7 +34,7 @@ class Member {
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`,`name`,`email`,`nic_number`,`date_of_birthday`,`contact_number`,`driving_licence_number`,`licence_front`,`licence_back`,`home_address`,`city`,`profile_picture`,`languages`,`facebookID`,`googleID`,`resetcode`,`authToken`,`about_me`,`status`,`rank`,`phone_verification_code`,`isPhoneVerified` FROM `member` WHERE `id`=" . $id;
+            $query = "SELECT `id`,`name`,`email`,`nic_number`,`date_of_birthday`,`contact_number`,`driving_licence_number`,`licence_front`,`licence_back`,`home_address`,`city`,`profile_picture`,`languages`,`facebookID`,`googleID`,`resetcode`,`authToken`,`about_me`,`status`,`rank`,`phone_verification_code`,`isPhoneVerified` FROM `member` WHERE `id`= '" . $id . "'";
 
             $db = new Database();
 
@@ -135,9 +135,8 @@ class Member {
         if (!$result) {
             return FALSE;
         } else {
-            $this->id = $result['id'];
             $this->setAuthToken($result['id']);
-            $member = $this->__construct($this->id);
+            $member = $this->__construct($result['id']);
             $this->setUserSession($member);
 
             return TRUE;
@@ -188,6 +187,13 @@ class Member {
             session_start();
             session_unset($_SESSION);
         }
+        unset($_SESSION["id"]);
+        unset($_SESSION["name"]);
+        unset($_SESSION["email"]);
+        unset($_SESSION["profile_picture"]);
+        unset($_SESSION["authToken"]);
+        unset($_SESSION["login"]);
+        unset($_SESSION["isPhoneVerified"]);
 
         $_SESSION["login"] = TRUE;
         $_SESSION["id"] = $member->id;
@@ -265,18 +271,18 @@ class Member {
         unset($_SESSION["id"]);
         unset($_SESSION["name"]);
         unset($_SESSION["email"]);
-        unset($_SESSION["nic_number"]);
-        unset($_SESSION["date_of_birthday"]);
-        unset($_SESSION["contact_number"]);
-        unset($_SESSION["driving_licence_number"]);
-        unset($_SESSION["home_address"]);
-        unset($_SESSION["city"]);
+//        unset($_SESSION["nic_number"]);
+//        unset($_SESSION["date_of_birthday"]);
+//        unset($_SESSION["contact_number"]);
+//        unset($_SESSION["driving_licence_number"]);
+//        unset($_SESSION["home_address"]);
+//        unset($_SESSION["city"]);
         unset($_SESSION["profile_picture"]);
-        unset($_SESSION["username"]);
-        unset($_SESSION["password"]);
-        unset($_SESSION["status"]);
+//        unset($_SESSION["username"]);
+//        unset($_SESSION["password"]);
+//        unset($_SESSION["status"]);
         unset($_SESSION["authToken"]);
-        unset($_SESSION["rank"]);
+//        unset($_SESSION["rank"]);
         unset($_SESSION["login"]);
         unset($_SESSION["isPhoneVerified"]);
         return TRUE;
@@ -629,7 +635,7 @@ class Member {
             return FALSE;
         }
     }
-    
+
     public function updateContactNumber() {
 
         $query = "UPDATE  `member` SET "
@@ -639,7 +645,7 @@ class Member {
         $db = new Database();
 
         $result = $db->readQuery($query);
-        
+
         if ($result) {
             return TRUE;
         } else {

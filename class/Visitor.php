@@ -186,10 +186,12 @@ class Visitor {
 
         unset($_SESSION["id"]);
         unset($_SESSION["first_name"]);
-        unset($_SESSION["second_name"]);
+        unset($_SESSION["image_name"]);
         unset($_SESSION["email"]);
         unset($_SESSION["vislogin"]);
         unset($_SESSION["authToken"]);
+        unset($_SESSION["isPhoneVerified"]);
+
         return TRUE;
     }
 
@@ -380,10 +382,9 @@ class Visitor {
 
         if (!$result) {
             return FALSE;
-        } else {
-            $this->id = $result['id'];
+        } else { 
             $this->setAuthToken($result['id']);
-            $visitor = $this->__construct($this->id);
+            $visitor = $this->__construct($result['id']);
             $this->setUserSession($visitor);
 
             if (!isset($_SESSION)) {
@@ -421,6 +422,13 @@ class Visitor {
             session_start();
             session_unset($_SESSION);
         }
+        unset($_SESSION["id"]);
+        unset($_SESSION["first_name"]);
+        unset($_SESSION["image_name"]);
+        unset($_SESSION["email"]);
+        unset($_SESSION["vislogin"]);
+        unset($_SESSION["authToken"]);
+        unset($_SESSION["isPhoneVerified"]);
 
         $_SESSION["vislogin"] = TRUE;
         $_SESSION["id"] = $visitor->id;
@@ -537,7 +545,7 @@ class Visitor {
             return FALSE;
         }
     }
-    
+
     public function updateContactNumber() {
 
         $query = "UPDATE  `visitor` SET "
@@ -547,7 +555,7 @@ class Visitor {
         $db = new Database();
 
         $result = $db->readQuery($query);
-        
+
         if ($result) {
             return TRUE;
         } else {
