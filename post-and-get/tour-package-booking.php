@@ -346,11 +346,22 @@ if (isset($_POST['book'])) {
 
             if (mail($visitor_email, $subject, $html, $headers) &&
                     mail($comEmail, $subject, $html, $headers)) {
-                
+
                 $TOUR = new TourPackage($RESULT->tour_package);
                 $MEMBER = new Member($TOUR->member);
                 $phoneno = $MEMBER->contact_number;
-                $message = "Your have a new tour booking in Sri Lanka Tourism";
+
+//count number of days
+
+                $start_date = strtotime($RESULT->start_date);
+                $end_date = strtotime($RESULT->end_date);
+                $datediff = $end_date - $start_date;
+                $noofdates = round($datediff / (60 * 60 * 24)) + 1;
+
+                //count number of tourists
+                $nooftourists = (int)($RESULT->no_of_adults) + (int)($RESULT->no_of_children);
+
+                $message = "You have a new tour package booking in Sri Lanaka Tourism - " . $TOUR->name . ", Date - " . $RESULT->start_date . ", Number of dates - " . $noofdates . ", Number of tourists - " . $nooftourists . ". LOGIN TO VIEW DETAILS - https://www.srilankatourism.travel/member";
                 $sendmsg = Helper::sendSMS($phoneno, $message);
 
                 $VALID->addError("Booking was completed successfully.please check your email", 'success');
