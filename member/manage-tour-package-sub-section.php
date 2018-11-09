@@ -13,18 +13,22 @@ $tour_dates = TourSubSection::GetTourSubSectionByTourPackage($id);
 if (isset($_SESSION['isPhoneVerified'])) {
     $isPhoneVerified = $_SESSION['isPhoneVerified'];
 }
+if ($_SESSION['id'] <> $TOUR_PACKAGE->member) {
+    if (Member::logOut()) {
+        header('Location: login.php');
+    } else {
+        header('Location: ?error=2');
+    }
+}
 ?> 
 <html lang="en">
-
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="Dashboard">
         <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-
         <title>Tour Package Images || My Account || www.srilankatourism.travel</title>
-
         <!-- Bootstrap core CSS -->
         <link href="assets/css/bootstrap.css" rel="stylesheet">
         <!--external css-->
@@ -53,6 +57,7 @@ if (isset($_SESSION['isPhoneVerified'])) {
             <?php
             include './header-nav.php';
             ?>
+
             <!--main content start-->
             <section id="main-content">
                 <div class="col-md-12 verified-alert"></div> 
@@ -95,7 +100,6 @@ if (isset($_SESSION['isPhoneVerified'])) {
                                                                                 }
                                                                                 ?>" role="tabpanel" aria-labelledby="heading-<?php echo $date['sort']; ?>" subid="<?php echo $date['id']; ?>" sort="<?php echo $date['sort']; ?>">
                                                                                     <div class="panel-body">
-
                                                                                         <div class="col-md-12">
                                                                                             <div class="bottom-top">
                                                                                                 <label for="title">Title</label>
@@ -138,12 +142,9 @@ if (isset($_SESSION['isPhoneVerified'])) {
                                                                                                         </label>
                                                                                                     </div>
                                                                                                 </div>
-
-
                                                                                             </div>
                                                                                             <div id="image-list-<?php echo $date['id']; ?>" class="image-list"></div>
                                                                                         </div>
-
                                                                                         <div class="col-md-6 col-xs-6 col-sm-6 text-left">
                                                                                             <a role="button" id="step-prev-<?php echo $date['sort'] - 1; ?>" class="btn btn-info tab-prev-button <?php
                                                                                             if ($key === 0) {
@@ -203,6 +204,7 @@ if (isset($_SESSION['isPhoneVerified'])) {
                     </div>
                 </div>
             </section>
+
             <?php
             include './footer.php';
             ?>
@@ -213,22 +215,15 @@ if (isset($_SESSION['isPhoneVerified'])) {
         <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
         <script src="assets/js/jquery.scrollTo.min.js"></script>
         <script src="assets/js/jquery.nicescroll.js" type="text/javascript"></script>
-
-
         <!--common script for all pages-->
         <script src="assets/js/common-scripts.js"></script>
-
         <!--script for this page-->
         <script src="assets/js/jquery-ui-1.9.2.custom.min.js"></script>
-
         <!--custom switch-->
         <script src="assets/js/bootstrap-switch.js"></script>
-
         <!--custom tagsinput-->
         <script src="assets/js/jquery.tagsinput.js"></script>
-
         <!--custom checkbox & radio-->
-
         <script src="assets/plugins/jquery-steps/jquery.steps.js" type="text/javascript"></script>
         <script type="text/javascript" src="assets/js/bootstrap-inputmask/bootstrap-inputmask.min.js"></script>
         <script src="assets/js/form-component.js"></script>    
@@ -238,14 +233,6 @@ if (isset($_SESSION['isPhoneVerified'])) {
         <script src="js/tour-subsection.js" type="text/javascript"></script>
         <script src="js/tagging.js" type="text/javascript"></script>
         <script src="plugins/Preloader/jm.spinner.js" type="text/javascript"></script>
-        <script>
-            //custom select box
-
-//            $(function () {
-//                $('select.styled').customSelect();
-//            });
-
-        </script>
         <script src="assets/tinymce/js/tinymce/tinymce.min.js"></script>
         <script>
             $(document).ready(function () {
@@ -275,9 +262,6 @@ if (isset($_SESSION['isPhoneVerified'])) {
                     });
                 }
             });
-
-
         </script>
-
     </body>
 </html>

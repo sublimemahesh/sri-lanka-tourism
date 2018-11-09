@@ -8,8 +8,16 @@ if (isset($_GET['id'])) {
 }
 $Aid = $_GET['aid'];
 $ROOM = new Room($id);
+$ACCOMMODATION = new Accommodation($ROOM->accommodation);
 if (isset($_SESSION['isPhoneVerified'])) {
     $isPhoneVerified = $_SESSION['isPhoneVerified'];
+}
+if ($_SESSION['id'] <> $ACCOMODATION->member) {
+    if (Member::logOut()) {
+        header('Location: login.php');
+    } else {
+        header('Location: ?error=2');
+    }
 }
 ?> 
 

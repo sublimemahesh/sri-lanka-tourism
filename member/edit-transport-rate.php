@@ -6,10 +6,18 @@ if (isset($_GET['id'])) {
     $id = $_GET['id'];
 }
 $TRANSPORT_RATES = new TransportRates($id);
+$TRANSPORTS = new Transports($TRANSPORT_RATES->transport_id);
 $CITYFROM = new City($TRANSPORT_RATES->location_from);
 $CITYTO = new City($TRANSPORT_RATES->location_to);
 if (isset($_SESSION['isPhoneVerified'])) {
     $isPhoneVerified = $_SESSION['isPhoneVerified'];
+}
+if ($_SESSION['id'] <> $TRANSPORTS->member) {
+    if (Member::logOut()) {
+        header('Location: login.php');
+    } else {
+        header('Location: ?error=2');
+    }
 }
 ?>
 
