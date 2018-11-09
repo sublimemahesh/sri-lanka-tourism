@@ -359,7 +359,9 @@ if (isset($_POST['book'])) {
                 $TRANSPORT = new Transports($RATE->transport_id);
                 $MEMBER = new Member($TRANSPORT->member);
                 $phoneno = $MEMBER->contact_number;
-                $message = "Your have a new transport booking in Sri Lanka Tourism";
+                $from = new City($RATE->location_from);
+                $to = new City($RATE->location_to);
+                $message = "You hae a new transport booking in Sri Lanaka Tourism - " . $TRANSPORT->title . ", From - " . $from->name. ", To - " . $to->name . ", Date - " . $RESULT->date . ", Booking Price - USD " . $RATE->price . ", Number of passengers - " . $RESULT->no_of_passengers . ". LOGIN TO VIEW DETAILS - https://www.srilankatourism.travel/member ";
                 $sendmsg = Helper::sendSMS($phoneno, $message);
                 
                 $VALID->addError("Booking was completed successfully.please check your email", 'success');

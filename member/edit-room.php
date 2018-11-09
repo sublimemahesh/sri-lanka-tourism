@@ -12,7 +12,7 @@ $ACCOMMODATION = new Accommodation($ROOM->accommodation);
 if (isset($_SESSION['isPhoneVerified'])) {
     $isPhoneVerified = $_SESSION['isPhoneVerified'];
 }
-if ($_SESSION['id'] <> $ACCOMODATION->member) {
+if ($_SESSION['id'] <> $ACCOMMODATION->member) {
     if (Member::logOut()) {
         header('Location: login.php');
     } else {
