@@ -1,13 +1,18 @@
 <?php
+
 include_once(dirname(__FILE__) . '/../class/include.php');
-include_once(dirname(__FILE__) . './auth.php');
-$TRANSPORT_BOOKINGS = new TransportBooking(NULL);
+include_once(dirname(__FILE__) . '/auth.php');
 if (!isset($_SESSION)) {
     session_start();
 }
+$TRANSPORT_BOOKINGS = new TransportBooking(NULL);
 if (isset($_SESSION['isPhoneVerified'])) {
     $isPhoneVerified = $_SESSION['isPhoneVerified'];
 }
+$memberid = $_SESSION['id'];
+$MEMBER = new Member($memberid);
+$DISTINCTVISITORS = MemberAndVisitorMessages::getDistinctVisitorsByMemberId($memberid);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -143,66 +148,136 @@ if (isset($_SESSION['isPhoneVerified'])) {
                             <h3>NOTIFICATIONS</h3>
 
                             <!-- First Action -->
-                            <div class="desc">
-                                <div class="thumb">
-                                    <span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
-                                </div>
-                                <div class="details">
-                                    <p><muted>2 Minutes Ago</muted><br/>
-                                    <a href="#">James Brown</a> subscribed to your newsletter.<br/>
-                                    </p>
-                                </div>
-                            </div>
-                            <!-- Second Action -->
-                            <div class="desc">
-                                <div class="thumb">
-                                    <span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
-                                </div>
-                                <div class="details">
-                                    <p><muted>3 Hours Ago</muted><br/>
-                                    <a href="#">Diana Kennedy</a> purchased a year subscription.<br/>
-                                    </p>
-                                </div>
-                            </div>
-                            <!-- Third Action -->
-                            <div class="desc">
-                                <div class="thumb">
-                                    <span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
-                                </div>
-                                <div class="details">
-                                    <p><muted>7 Hours Ago</muted><br/>
-                                    <a href="#">Brandon Page</a> purchased a year subscription.<br/>
-                                    </p>
-                                </div>
-                            </div>
-                            <!-- Fourth Action -->
-                            <div class="desc">
-                                <div class="thumb">
-                                    <span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
-                                </div>
-                                <div class="details">
-                                    <p><muted>11 Hours Ago</muted><br/>
-                                    <a href="#">Mark Twain</a> commented your post.<br/>
-                                    </p>
-                                </div>
-                            </div>
-                            <!-- Fifth Action -->
-                            <div class="desc">
-                                <div class="thumb">
-                                    <span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
-                                </div>
-                                <div class="details">
-                                    <p><muted>18 Hours Ago</muted><br/>
-                                    <a href="#">Daniel Pratt</a> purchased a wallet in your store.<br/>
-                                    </p>
-                                </div>
-                            </div>
+                            <?php
+                            $maxids = array();
+                            foreach ($DISTINCTVISITORS as $distinctvisitor) {
+                                $max = MemberAndVisitorMessages::getMaxIDOfDistinctVisitor($distinctvisitor['visitor']);
+                                array_push($maxids, $max['max']);
+//                                        return $maxids;
+                            }
+                            rsort($maxids);
+                            foreach ($maxids as $key => $maxid) {
+                                if ($key < 7) {
+                                    $MESSAGE = new MemberAndVisitorMessages($maxid);
+                                    $VISI = new Visitor($MESSAGE->visitor);
+                                    $result = getMessagedTime($MESSAGE->date_and_time);
+                                    ?>
+                                    <div class="desc">
+                                        <a href="member-message.php?id=<?php echo $VISI->id; ?>">
+
+                                            <div class="thumb">
+                                                <span class="">
+                                                    <?php
+                                                    if (empty($VISI->image_name)) {
+                                                        ?> 
+                                                        <img src="../upload/visitor/member.png" class="img-circle img-thumbnail" width="60">
+                                                        <?php
+                                                    } else {
+
+                                                        if ($VISI->facebookID && substr($VISI->image_name, 0, 5) === "https") {
+                                                            ?>
+                                                            <img src="<?php echo $VISI->image_name; ?>" class="img-circle img-thumbnail" width="60">
+                                                            <?php
+                                                        } elseif ($VISI->googleID && substr($VISI->image_name, 0, 5) === "https") {
+                                                            ?>
+                                                            <img src="<?php echo $VISI->image_name; ?>" class="img-circle img-thumbnail" width="60">
+                                                            <?php
+                                                        } else {
+                                                            ?>
+                                                            <img src="../upload/visitor/<?php echo $VISI->image_name; ?>" class="img-circle img-thumbnail" width="60">
+                                                            <?php
+                                                        }
+                                                    }
+                                                    ?>
+                                                </span>
+                                            </div>
+                                        </a>
+                                        <div class="details">
+                                            <p><muted><?php echo $result; ?></muted><br/>
+                                            <a href="member-message.php?id=<?php echo $VISI->id; ?>">
+                                                <?php echo $VISI->first_name . ' ' . $VISI->second_name; ?>
+                                            </a>
+                                            <br/>
+                                            <?php
+                                            if (strlen($MESSAGE->messages) > 30) {
+                                                echo substr($MESSAGE->messages,0,28) . '...';
+                                            } else {
+                                                echo $MESSAGE->messages;
+                                            }
+                                            ?>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <?php
+                                }
+                            }
+                            ?>
                             <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" >
                         </div>
                     </div>
                 </section>
             </section>
             <!--main content end-->
+
+            <?php
+
+            function getMessagedTime($datetime) {
+                date_default_timezone_set('Asia/Colombo');
+                $today = new DateTime(date("Y-m-d"));
+                $todaytime = new DateTime(date("H:i:s"));
+
+                $arr = explode(' ', $datetime);
+                $date1 = new DateTime(date($arr[0]));
+                $time1 = new DateTime(date($arr[1]));
+
+                $date = $today->diff($date1);
+                $datediff = $date->format('%a');
+
+                if ($datediff == 0) {
+
+                    $time = $todaytime->diff($time1);
+                    $timediff = $time->format('%h:%i:%s');
+                    $arr1 = explode(':', $timediff);
+                    if ($arr1[0] == 0) {
+                        $diff = $arr1[1] . ' min ago';
+                    } else {
+                        if ($arr1[0] == 1) {
+                            $diff = $arr1[0] . ' hour ago';
+                        } else {
+                            $diff = $arr1[0] . ' hours ago';
+                        }
+                    }
+                } elseif ($datediff == 1 && $time1 > $todaytime) {
+
+                    $t = $todaytime->diff($time1);
+                    $timediff1 = $t->format('%h:%i:%s');
+                    $time3 = new DateTime('24:00:00');
+                    $time = $time3->diff($timediff1);
+                    $timediff = $time->format('%h:%i:%s');
+                    $arr1 = explode(':', $timediff);
+                    $diff = $arr1[0] . ' hours ago';
+                } elseif ($datediff == 1 && $time1 < $todaytime) {
+                    $diff = $datediff . ' day ago';
+                } elseif ($datediff > 30) {
+                    $month = round($datediff / 30);
+
+                    if ($month >= 12) {
+
+                        $year = round($month / 12);
+                        if ($year == 1) {
+                            $diff = $year . ' year ago';
+                        } else {
+                            $diff = $year . ' years ago';
+                        }
+                    } elseif ($month == 1) {
+                        $diff = $month . ' month ago';
+                    } else {
+                        $diff = $month . ' months ago';
+                    }
+                }
+                return $diff;
+            }
+            ?>
             <?php
             include './footer.php';
             ?>

@@ -1,6 +1,6 @@
 <?php
 include_once(dirname(__FILE__) . '/../class/include.php');
-include_once(dirname(__FILE__) . './auth.php');
+include_once(dirname(__FILE__) . '/auth.php');
 if (!isset($_SESSION)) {
     session_start();
 }
@@ -108,21 +108,19 @@ $DISTINCTVISITORS = MemberAndVisitorMessages::getDistinctVisitorsByMemberId($mem
                                         </ul>
                                     </div>
                                     <div id="expanded">
-                                        <label for="twitter"><i class="fa fa-facebook fa-fw" aria-hidden="true"></i></label>
-                                        <input name="twitter" type="text" value="mikeross" />
-                                        <label for="twitter"><i class="fa fa-twitter fa-fw" aria-hidden="true"></i></label>
-                                        <input name="twitter" type="text" value="ross81" />
-                                        <label for="twitter"><i class="fa fa-instagram fa-fw" aria-hidden="true"></i></label>
-                                        <input name="twitter" type="text" value="mike.ross" />
+                                        <label for="twitter"><i class="fa fa-envelope fa-fw" aria-hidden="true"></i></label>
+                                        <input name="twitter" type="text" value="<?php echo $MEMBER->email; ?>" />
+                                        <label for="twitter"><i class="fa fa-phone fa-fw" aria-hidden="true"></i></label>
+                                        <input name="twitter" type="text" value="<?php echo $MEMBER->contact_number; ?>" />
                                     </div>
                                 </div>
                             </div>
-                            <div id="search">
+<!--                            <div id="search">
                                 <label for="">
                                     <i class="fa fa-search" aria-hidden="true"></i>
                                 </label>
                                 <input type="text" placeholder="Search contacts..." />
-                            </div>
+                            </div>-->
                             <div id="contacts">
                                 <ul>
                                     <?php
@@ -144,7 +142,6 @@ $DISTINCTVISITORS = MemberAndVisitorMessages::getDistinctVisitorsByMemberId($mem
                                             }
                                             ?>">
                                                 <div class="wrap">
-    <!--//                                                    <span class="contact-status online"></span>-->
                                                     <?php
                                                     if (empty($VISI->image_name)) {
                                                         ?> 
@@ -195,7 +192,7 @@ $DISTINCTVISITORS = MemberAndVisitorMessages::getDistinctVisitorsByMemberId($mem
 
                                 </ul>
                             </div>
-                            <div id="bottom-bar">
+<!--                            <div id="bottom-bar">
                                 <button id="addcontact">
                                     <i class="fa fa-user-plus fa-fw" aria-hidden="true"></i>
                                     <span>Add contact</span>
@@ -204,7 +201,7 @@ $DISTINCTVISITORS = MemberAndVisitorMessages::getDistinctVisitorsByMemberId($mem
                                     <i class="fa fa-cog fa-fw" aria-hidden="true"></i> 
                                     <span>Settings</span>
                                 </button>
-                            </div>
+                            </div>-->
                         </div>
                         <div class="content">
                             <?php

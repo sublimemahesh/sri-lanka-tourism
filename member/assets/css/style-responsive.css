@@ -99,17 +99,29 @@
         font-size: 21px !important;
         border: none !important;
         padding: 8px 8px 8px 8px;
-        margin-right: 10px;
+        margin-right: 7px;
     }
 
     .sub-menu > a > .fa-bed {
         font-size: 21px !important;
         border: none !important;
         padding: 8px 8px 8px 8px;
-        margin-right: 10px;
+        margin-right: 9px;
     }
 
     .sub-menu > a > .fa-suitcase {
+        font-size: 21px !important;
+        border: none !important;
+        padding: 8px 8px 8px 8px;
+        margin-right: 10px;
+    }
+    .sub-menu > a > .fa-gift {
+        font-size: 21px !important;
+        border: none !important;
+        padding: 8px 8px 8px 8px;
+        margin-right: 13px;
+    }
+    .sub-menu > a > .fa-comment-o {
         font-size: 21px !important;
         border: none !important;
         padding: 8px 8px 8px 8px;

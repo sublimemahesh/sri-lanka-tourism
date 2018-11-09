@@ -117,8 +117,6 @@ class MemberAndVisitorMessages {
     }
 
     public function getDistinctVisitorsByMemberId($member) {
-        
-
         $query = "SELECT distinct(visitor) FROM `member_visitor_messages` WHERE `member`= $member";
 
         $db = new Database();
