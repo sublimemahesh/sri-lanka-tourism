@@ -23,7 +23,7 @@ $(document).ready(function () {
 
             swal({
                 title: "Error!",
-                text: "please enter tour subsection description",
+                text: "Please enter tour subsection description",
                 type: 'error',
                 timer: 2000,
                 showConfirmButton: false
@@ -33,7 +33,7 @@ $(document).ready(function () {
 
             swal({
                 title: "Error!",
-                text: "please select a location",
+                text: "Please select a location",
                 type: 'error',
                 timer: 2000,
                 showConfirmButton: false
@@ -80,7 +80,7 @@ $(document).ready(function () {
 
             swal({
                 title: "Error!",
-                text: "please enter tour subsection description",
+                text: "Please enter tour subsection description",
                 type: 'error',
                 timer: 2000,
                 showConfirmButton: false
@@ -90,7 +90,7 @@ $(document).ready(function () {
 
             swal({
                 title: "Error!",
-                text: "please select a location",
+                text: "Please select a location",
                 type: 'error',
                 timer: 2000,
                 showConfirmButton: false

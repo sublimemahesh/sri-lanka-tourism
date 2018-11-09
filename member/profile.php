@@ -31,7 +31,7 @@ $MEMBER = new Member($_SESSION['id']);
 
         <!-- Fonts -->
         <link href="http://fonts.googleapis.com/css?family=Ruda:400,700,900" type="text/css">
-
+  <link href="assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css"/>
         <!-- Custom styles for this template --> 
         <link href="assets/css/style.css" rel="stylesheet">
         <link href="assets/css/style-responsive.css" rel="stylesheet">
@@ -166,6 +166,8 @@ $MEMBER = new Member($_SESSION['id']);
         <script src="js/profile.js" type="text/javascript"></script>
         <script src="js/display-contact-number-verification-alert.js" type="text/javascript"></script>
         <script src="plugins/Preloader/jm.spinner.js" type="text/javascript"></script>
+         <script src="assets/plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>
+
         <script>
             //custom select box
 

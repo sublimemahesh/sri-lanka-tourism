@@ -8,7 +8,7 @@ if (isset($_POST['upload-transport-photo'])) {
     $imgName = Helper::randamId();
 
     $handle = new Upload($_FILES['transport-picture']);
-
+  
     if ($handle->uploaded) {
 
         $handle->image_resize = true;

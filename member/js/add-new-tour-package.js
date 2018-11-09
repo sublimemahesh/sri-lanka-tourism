@@ -13,7 +13,7 @@ $(document).ready(function () {
                 timer: 2000,
                 showConfirmButton: false
             });
-            return false
+            return false;
         } else if (!$('#name').val() || $('#name').val().length === 0) {
             swal({
                 title: "Error!",
@@ -22,7 +22,7 @@ $(document).ready(function () {
                 timer: 2000,
                 showConfirmButton: false
             });
-            return false
+            return false;
         } else if (!$('#price').val() || $('#price').val().length === 0) {
             swal({
                 title: "Error!",
@@ -31,7 +31,7 @@ $(document).ready(function () {
                 timer: 2000,
                 showConfirmButton: false
             });
-            return false
+            return false;
         } else if (!$('#picture_name').val() || $('#picture_name').val().length === 0) {
             swal({
                 title: "Error!",
@@ -40,8 +40,25 @@ $(document).ready(function () {
                 timer: 2000,
                 showConfirmButton: false
             });
-            return false
-        } else {
+            return false;
+        } else if ($('#picture_name').val()) {
+            var fi = document.getElementById('picture_name'); // GET THE FILE INPUT.
+        if (fi.files.length > 0) {
+            for (var i = 0; i <= fi.files.length - 1; i++) {
+                var fsize = fi.files.item(i).size;      // THE SIZE OF THE FILE.
+                if (Math.round((fsize / 1024)) > 10000) {
+                    swal({
+                        title: "Error!",
+                        text: "Image is too large and please upload a image size less than 10MB",
+                        type: 'error',
+                        timer: 2000,
+                        showConfirmButton: false
+                    });
+                    return false;
+                }
+            }
+        }
+        }else {
             return true;
         }
 

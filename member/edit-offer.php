@@ -34,6 +34,7 @@ if (isset($_SESSION['isPhoneVerified'])) {
         <link href="assets/css/style.css" rel="stylesheet">
         <link href="assets/css/style-responsive.css" rel="stylesheet">
         <link href="assets/css/custom.css" rel="stylesheet" type="text/css"/>
+        <link href="assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css"/>
         <style>
             .img-thumbnail {
                 max-width: 50% !important;
@@ -70,7 +71,7 @@ if (isset($_SESSION['isPhoneVerified'])) {
                                                                 <label for="type">Type</label>
                                                             </div>
                                                             <div class="">
-                                                                <select class="form-control" name="type">
+                                                                <select class="form-control" id="offertype" name="type">
                                                                     <option <?php
                                                                     if ($OFFER->type == 1) {
                                                                         echo "selected";
@@ -143,7 +144,7 @@ if (isset($_SESSION['isPhoneVerified'])) {
                                                                     <input type="hidden" id="id" value="<?php echo $OFFER->id; ?>" name="id"/>
                                                                     <input type="hidden" id="member" name="member" value="<?php echo $_SESSION['id']; ?>"/>
                                                                     <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" >
-                                                                    <input type="submit" id="edit-offer" name="edit-offer" class="btn btn-info center-block" value="Edit offer"/>
+                                                                    <input type="submit" id="add-offer" name="edit-offer" class="btn btn-info center-block" value="Edit offer"/>
                                                                 </div>
                                                             </div> 
                                                         </div> 
@@ -185,7 +186,8 @@ if (isset($_SESSION['isPhoneVerified'])) {
         <script src="assets/js/jquery.tagsinput.js"></script>
 
         <!--custom checkbox & radio-->
-
+        <script src="js/edit-offer.js" type="text/javascript"></script>
+        <script src="assets/plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>
         <script type="text/javascript" src="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-datepicker/js/bootstrap-datepicker.html"></script>
         <script type="text/javascript" src="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-daterangepicker/date.html"></script>
         <script type="text/javascript" src="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-daterangepicker/daterangepicker-2.html"></script>

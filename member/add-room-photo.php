@@ -34,6 +34,7 @@ if (isset($_SESSION['isPhoneVerified'])) {
         <link href="assets/css/style.css" rel="stylesheet">
         <link href="assets/css/style-responsive.css" rel="stylesheet">
         <link href="assets/css/custom.css" rel="stylesheet" type="text/css"/>
+        <link href="plugins/Preloader/jm.spinner.css" rel="stylesheet" type="text/css"/>
 
         <style>
             .img-thumbnail {
@@ -42,7 +43,7 @@ if (isset($_SESSION['isPhoneVerified'])) {
         </style>
     </head> 
     <body> 
-        <div class="loading" id="loading">Loading&#8230;</div>
+        <div class="box"></div>  
         <section id="container" > 
             <?php
             include './header-nav.php';
@@ -129,6 +130,8 @@ if (isset($_SESSION['isPhoneVerified'])) {
         <script src="delete/js/room-photo.js" type="text/javascript"></script>
         <script src="js/add-room-photo.js" type="text/javascript"></script>
         <script src="js/display-contact-number-verification-alert.js" type="text/javascript"></script>
+        <script src="plugins/Preloader/jm.spinner.js" type="text/javascript"></script>
+
         <script>
             //custom select box
             $(function () {

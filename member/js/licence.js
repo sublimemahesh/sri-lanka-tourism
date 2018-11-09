@@ -1,9 +1,27 @@
 $(document).ready(function () {
 
     $('#front-picture').change(function () {
+
+        var fi = document.getElementById('front-picture'); // GET THE FILE INPUT.
+        if (fi.files.length > 0) {
+            for (var i = 0; i <= fi.files.length - 1; i++) {
+                var fsize = fi.files.item(i).size;      // THE SIZE OF THE FILE.
+                if (Math.round((fsize / 1024)) > 10000) {
+                    swal({
+                        title: "Error!",
+                        text: "Image is too large and please upload a image size less than 10MB",
+                        type: 'error',
+                        timer: 2000,
+                        showConfirmButton: false
+                    });
+                    return false;
+                }
+            }
+        }
+
         $('.box').jmspinner('large');
         $('.box').addClass('well');
-        $('.box').css('z-index','9999');
+        $('.box').css('z-index', '9999');
         var formData = new FormData($('#frontForm')[0]);
 
         $.ajax({
@@ -17,7 +35,7 @@ $(document).ready(function () {
                 $("#front_pic").attr("src", "../upload/transport/licence/" + mess.filename);
                 $('.box').jmspinner(false);
                 $('.box').removeClass('well');
-                $('.box').css('z-index','-1111');
+                $('.box').css('z-index', '-1111');
                 location.reload()
             },
             cache: false,
@@ -28,9 +46,26 @@ $(document).ready(function () {
     });
 
     $('#back-picture').change(function () {
+
+        var fi = document.getElementById('back-picture'); // GET THE FILE INPUT.
+        if (fi.files.length > 0) {
+            for (var i = 0; i <= fi.files.length - 1; i++) {
+                var fsize = fi.files.item(i).size;      // THE SIZE OF THE FILE.
+                if (Math.round((fsize / 1024)) > 10000) {
+                    swal({
+                        title: "Error!",
+                        text: "Image is too large and please upload a image size less than 10MB",
+                        type: 'error',
+                        timer: 2000,
+                        showConfirmButton: false
+                    });
+                    return false;
+                }
+            }
+        }
         $('.box').jmspinner('large');
         $('.box').addClass('well');
-        $('.box').css('z-index','9999');
+        $('.box').css('z-index', '9999');
         var formData = new FormData($('#backForm')[0]);
 
         $.ajax({
@@ -44,7 +79,7 @@ $(document).ready(function () {
                 $("#back_pic").attr("src", "../upload/transport/licence/" + mess.filename);
                 $('.box').jmspinner(false);
                 $('.box').removeClass('well');
-                $('.box').css('z-index','-1111');
+                $('.box').css('z-index', '-1111');
                 location.reload()
             },
             cache: false,
