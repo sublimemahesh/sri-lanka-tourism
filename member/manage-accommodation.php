@@ -9,6 +9,7 @@ $ACCOMODATION_PHOTO = new AccommodationPhoto(NULL);
 if (isset($_SESSION['isPhoneVerified'])) {
     $isPhoneVerified = $_SESSION['isPhoneVerified'];
 }
+
 ?> 
 <!DOCTYPE html>
 <html lang="en">

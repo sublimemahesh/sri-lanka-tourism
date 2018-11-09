@@ -2,7 +2,7 @@
 include_once(dirname(__FILE__) . '/../class/include.php');
 include_once(dirname(__FILE__) . '/auth.php');
 
-if(isset($_SESSION['isPhoneVerified'])) {
+if (isset($_SESSION['isPhoneVerified'])) {
     $isPhoneVerified = $_SESSION['isPhoneVerified'];
 }
 $id = '';
@@ -12,27 +12,30 @@ if (isset($_GET['id'])) {
 $ACCOMODATION = new Accommodation($id);
 $ACCOMODATION_GENERAL_FACILITY = new AccommodationGeneralFacilities(NULL);
 $ACCOMODATION_FACILITY_DETAILS = new AccommodationFacilityDetails(NULL);
-?>
 
+if ($_SESSION['id'] <> $ACCOMODATION->member) {
+    if (Member::logOut()) {
+        header('Location: login.php');
+    } else {
+        header('Location: ?error=2');
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
-
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="Dashboard">
         <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-
         <title>Accommodation Facilities - www.srilankatourism.travel</title>
-
         <!-- Bootstrap core CSS -->
         <link href="assets/css/bootstrap.css" rel="stylesheet">
         <!--external css-->
         <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
         <link rel="stylesheet" type="text/css" href="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-datepicker/css/datepicker.html" />
         <link rel="stylesheet" type="text/css" href="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-daterangepicker/daterangepicker.html" />
-
         <!-- Custom styles for this template -->
         <link href="assets/css/style.css" rel="stylesheet">
         <link href="assets/css/style-responsive.css" rel="stylesheet">
@@ -56,7 +59,6 @@ $ACCOMODATION_FACILITY_DETAILS = new AccommodationFacilityDetails(NULL);
                         <div class="row  top-bott20"> 
                             <?php
                             $vali = new Validator();
-
                             $vali->show_message();
                             ?>
                             <div class="panel panel-default">
@@ -110,7 +112,7 @@ $ACCOMODATION_FACILITY_DETAILS = new AccommodationFacilityDetails(NULL);
                                                             <div class="text-center">
                                                                 <input type="hidden" id="accommodation_id" value="<?php echo $ACCOMODATION->id; ?>" name="accommodation_id"/>
                                                                 <input type="submit" name="save-changes" class="btn btn-round btn-info" value="Save Changes">
-                                                            <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" >
+                                                                <input type="hidden" id="isVerifiedContactNumber" value="<?php echo $isPhoneVerified; ?>" >
                                                             </div>
                                                         </form>
                                                     </div>
@@ -120,41 +122,28 @@ $ACCOMODATION_FACILITY_DETAILS = new AccommodationFacilityDetails(NULL);
                                     </div>
                                 </div>
                             </div> 
-
-
                         </div>
                     </div>
                 </div>
             </section>
-
-
-
-
             <?php
             include './footer.php';
             ?>
         </section>
-
         <!-- js placed at the end of the document so the pages load faster -->
         <script src="assets/js/jquery.js"></script>
         <script src="assets/js/bootstrap.min.js"></script>
         <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
         <script src="assets/js/jquery.scrollTo.min.js"></script>
         <script src="assets/js/jquery.nicescroll.js" type="text/javascript"></script>
-
-
         <!--common script for all pages-->
         <script src="assets/js/common-scripts.js"></script>
-
         <!--script for this page-->
         <script src="assets/js/jquery-ui-1.9.2.custom.min.js"></script>
-
         <!--custom switch-->
         <script src="assets/js/bootstrap-switch.js"></script>
-
         <!--custom tagsinput-->
         <script src="assets/js/jquery.tagsinput.js"></script>
-
         <!--custom checkbox & radio-->
         <script type="text/javascript" src="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-datepicker/js/bootstrap-datepicker.html"></script>
         <script type="text/javascript" src="../../../blacktie.co/demo/dashgum/assets/js/bootstrap-daterangepicker/date.html"></script>
@@ -164,13 +153,9 @@ $ACCOMODATION_FACILITY_DETAILS = new AccommodationFacilityDetails(NULL);
         <script src="js/display-contact-number-verification-alert.js" type="text/javascript"></script>
         <script>
             //custom select box
-
             $(function () {
                 $('select.styled').customSelect();
             });
-
         </script>
-
     </body>
-
 </html>

@@ -13,6 +13,13 @@ $TOUR_PACKAGE = new TourPackage($id);
 
 $TOURTYPES = new TourType(NULL);
 $types = $TOURTYPES->all();
+if ($_SESSION['id'] <> $TOUR_PACKAGE->member) {
+    if (Member::logOut()) {
+        header('Location: login.php');
+    } else {
+        header('Location: ?error=2');
+    }
+}
 ?> 
 <!DOCTYPE html>
 <html lang="en">

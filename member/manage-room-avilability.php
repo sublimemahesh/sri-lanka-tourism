@@ -15,6 +15,14 @@ $ROOM = new Room($id);
 if (isset($_SESSION['isPhoneVerified'])) {
     $isPhoneVerified = $_SESSION['isPhoneVerified'];
 }
+$ACCOMMODATION = new Accommodation($ROOM->accommodation);
+if ($_SESSION['id'] <> $ACCOMODATION->member) {
+    if (Member::logOut()) {
+        header('Location: login.php');
+    } else {
+        header('Location: ?error=2');
+    }
+}
 ?> 
 
 <html lang="en">
