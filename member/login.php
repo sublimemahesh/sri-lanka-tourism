@@ -59,7 +59,6 @@ include_once(dirname(__FILE__) . '/../class/include.php');
                             <div class="member-login-btn-container">
                                 <input class="btn btn-sm member-login-btn" name="login" value="Login"type="submit">
                             </div>
-
                         </div>
 
                     </form>
