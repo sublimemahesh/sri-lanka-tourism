@@ -67,7 +67,7 @@ $MEMBER = new Member(NULL)
                             <div class="body">
                                 <!-- <div class="table-responsive">-->
                                 <div>
-                                    <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                                    <table class="table table-bordered table-striped table-hover js-basic-example dataTable" id="manageMembers">
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
@@ -100,7 +100,13 @@ $MEMBER = new Member(NULL)
                                                     <td><?php echo substr($member['name'], 0, 20); ?></td> 
                                                     <td><?php echo substr($member['email'], 0, 30); ?></td> 
                                                     <td><?php echo $member['contact_number']; ?></td> 
-                                                    <td><?php echo substr($member['username'], 0, 30); ?></td> 
+                                                    <td><?php 
+                                                        if($member['status'] == 1) {
+                                                            echo 'Active';
+                                                        } else {
+                                                            echo 'Inactive';
+                                                        }
+                                                    ?></td> 
                                                     <td><?php echo $member['rank']; ?></td> 
                                                     <td> 
                                                         <a href="edit-member.php?id=<?php echo $member['id']; ?>" class="op-link btn btn-sm btn-default"><i class="glyphicon glyphicon-pencil"></i></a>

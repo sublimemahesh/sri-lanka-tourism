@@ -6,7 +6,9 @@ include_once(dirname(__FILE__) . '/../../auth.php');
 
 if ($_POST['option'] == 'delete') {
     $MEMBER = new Member($_POST['id']);
-    unlink(Helper::getSitePath() . "upload/member/" . $MEMBER->profile_picture);
+    if(empty($MEMBER->facebookID) && empty($MEMBER->googleID)) {
+        unlink(Helper::getSitePath() . "upload/member/" . $MEMBER->profile_picture);
+    }
     $result = $MEMBER->delete();
 
     if ($result) {

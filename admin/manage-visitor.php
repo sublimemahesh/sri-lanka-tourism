@@ -67,7 +67,7 @@ $VISITOR = new Visitor(NULL)
                             <div class="body">
                                 <!-- <div class="table-responsive">-->
                                 <div>
-                                    <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                                    <table class="table table-bordered table-striped table-hover js-basic-example dataTable" id="manageVisitors">
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
@@ -95,16 +95,10 @@ $VISITOR = new Visitor(NULL)
                                                 ?>
                                                 <tr id="row_<?php echo $visitor['id']; ?>">
                                                     <td><?php echo $visitor['id']; ?></td> 
-                                                    <td><?php echo substr($visitor['name'], 0, 20); ?></td> 
+                                                    <td><?php echo substr($visitor['first_name'], 0, 20); ?></td> 
                                                     <td><?php echo substr($visitor['email'], 0, 30); ?></td> 
                                                     <td><?php echo $visitor['contact_number']; ?></td> 
-
-                                                    <td>
-                                                        <?php
-                                                        $CITY = new City($visitor['city']);
-                                                        echo $CITY->name;
-                                                        ?>
-                                                    </td>
+                                                    <td><?php echo $visitor['city']; ?></td>
 
                                                     <td>  
 

@@ -176,24 +176,35 @@ $MEMBER = new Member($id);
                                             <div class="form-group">
                                                 <div class="form-line">
                                                     <input type="file" id="image" class="form-control" name="image" value="<?php echo $MEMBER->profile_picture; ?>">
-                                                    <img src="../upload/member/<?php echo $MEMBER->profile_picture; ?>" id="image" class="view-edit-img img img-responsive img-thumbnail" name="image" alt="old image">
+
+                                                    <?php
+                                                    if (empty($MEMBER->profile_picture)) {
+                                                        ?>
+                                                        <img src="../upload/member/member.png" id="image" class="view-edit-img img img-responsive img-thumbnail" name="image" alt="old image"/>
+                                                        <?php
+                                                    } else {
+
+                                                        if ($MEMBER->facebookID && substr($MEMBER->profile_picture, 0, 5) === "https") {
+                                                            ?>
+                                                            <img src="<?php echo $MEMBER->profile_picture; ?>" id="image" class="view-edit-img img img-responsive img-thumbnail" name="image" alt="old image"/>
+                                                            <?php
+                                                        } elseif ($MEMBER->googleID && substr($MEMBER->profile_picture, 0, 5) === "https") {
+                                                            ?>
+                                                            <img src="<?php echo $MEMBER->profile_picture; ?>" id="image" class="view-edit-img img img-responsive img-thumbnail" name="image" alt="old image"/>
+                                                            <?php
+                                                        } else {
+                                                            ?>
+                                                            <img src="../upload/member/<?php echo $MEMBER->profile_picture; ?>" id="image" class="view-edit-img img img-responsive img-thumbnail" name="image" alt="old image"/>
+                                                            <?php
+                                                        }
+                                                    }
+                                                    ?>
+
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <!--Username-->
-                                    <div class="row clearfix">
-                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                            <label for="name">Username</label>
-                                        </div>
-                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                                            <div class="form-group">
-                                                <div class="form-line">
-                                                    <input type="text" id="username" class="form-control" placeholder="Enter username" autocomplete="off" name="username" required="TRUE" value="<?php echo $MEMBER->username; ?>">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div> 
 
                                     <div class="col-md-12">
                                         <div class="col-md-2"></div>  

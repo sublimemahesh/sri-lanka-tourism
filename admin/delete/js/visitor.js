@@ -1,6 +1,5 @@
 $(document).ready(function () {
-    $('.delete-visitor').click(function () {
-
+        $('#manageVisitors').on('click', ".delete-visitor", function(event){
         var id = $(this).attr("data-id");
 
         swal({
