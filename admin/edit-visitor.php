@@ -36,6 +36,11 @@ $VISITOR = new Visitor($id);
 
         <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
         <link href="css/themes/all-themes.css" rel="stylesheet" />
+        <style>
+            .view-edit-img {
+                width: 300px;
+            }
+        </style>
     </head>
 
     <body class="theme-red">
@@ -69,7 +74,7 @@ $VISITOR = new Visitor($id);
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <input type="text" id="name" class="form-control" placeholder="Enter Visitor name" autocomplete="off" name="name" required="TRUE" value="<?php echo $VISITOR->name; ?>">
+                                                    <input type="text" id="name" class="form-control" placeholder="Enter Visitor name" autocomplete="off" name="name" required="TRUE" value="<?php echo $VISITOR->first_name; ?>">
                                                 </div>
                                             </div>
                                         </div>
@@ -105,8 +110,32 @@ $VISITOR = new Visitor($id);
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <input type="file" id="image" class="form-control" name="image" value="<?php echo $VISITOR->profile_picture; ?>">
-                                                    <img src="../upload/visitor/<?php echo $VISITOR->profile_picture; ?>" id="image" class="view-edit-img img img-responsive img-thumbnail" name="image" alt="old image">
+                                                    <input type="file" id="image" class="form-control" name="image" value="<?php echo $VISITOR->image_name; ?>">
+
+                                                    <?php
+                                                    if (empty($VISITOR->image_name)) {
+                                                        ?>
+                                                    <img src="../upload/visitor/member.png" id="image" class="view-edit-img img img-responsive img-thumbnail" name="image" alt="old image"/>
+                                                        <?php
+                                                    } else {
+
+                                                        if ($VISITOR->facebookID && substr($VISITOR->image_name, 0, 5) === "https") {
+                                                            ?>
+                                                            <img src="<?php echo $VISITOR->image_name; ?>" id="image" class="view-edit-img img img-responsive img-thumbnail" name="image" alt="old image"/>
+                                                            <?php
+                                                        } elseif ($VISITOR->googleID && substr($VISITOR->image_name, 0, 5) === "https") {
+                                                            ?>
+                                                            <img src="<?php echo $VISITOR->image_name; ?>" id="image" class="view-edit-img img img-responsive img-thumbnail" name="image" alt="old image"/>
+                                                            <?php
+                                                        } else {
+                                                            ?>
+                                                            <img src="../upload/visitor/<?php echo $VISITOR->image_name; ?>" id="image" class="view-edit-img img img-responsive img-thumbnail" name="image" alt="old image"/>
+                                                            <?php
+                                                        }
+                                                    }
+                                                    ?>
+
+
                                                 </div>
                                             </div>
                                         </div>
@@ -118,20 +147,7 @@ $VISITOR = new Visitor($id);
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group place-select">
                                                 <div class="form-line">
-                                                    <select class="form-control show-tick place-select1" type="text" id="city" autocomplete="off" name="city">
-                                                        <option value="<?php $VISITOR->id ?>" class="active light-c">
-                                                            <?php
-                                                            $CITY = new City($VISITOR->city);
-                                                            echo $CITY->name;
-                                                            ?>
-                                                        </option>
-                                                        <?php foreach (City::all() as $key => $cit) {
-                                                            ?>
-                                                            <option value="<?php echo $cit['id']; ?>"><?php echo $cit['name']; ?></option>
-                                                            <?php
-                                                        }
-                                                        ?>
-                                                    </select>
+                                                    <input type="text" id="city" name="city"  class="form-control" placeholder="Enter city" autocomplete="off" required="TRUE" value="<?php echo $VISITOR->city; ?>" />
                                                 </div>
                                             </div>
                                         </div>
@@ -141,7 +157,7 @@ $VISITOR = new Visitor($id);
 
                                         <div class="row clearfix">
                                             <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
-                                                <input type="hidden" id="oldImageName" value="<?php echo $VISITOR->profile_picture; ?>" name="oldImageName"/>
+                                                <input type="hidden" id="oldImageName" value="<?php echo $VISITOR->image_name; ?>" name="oldImageName"/>
                                                 <input type="hidden" id="id" value="<?php echo $VISITOR->id; ?>" name="id"/>
         <!--                                            <input type="hidden" id="authToken" value="<?php echo $_SESSION["authToken"]; ?>" name="authToken"/>-->
                                                 <button type="submit" class="btn btn-primary m-t-15 waves-effect" name="update-visitor" value="update">Save Changes</button>

@@ -1,6 +1,5 @@
 $(document).ready(function () {
-    $('.delete-member').click(function () {
-
+    $('#manageMembers').on('click', ".delete-member", function (event) {
         var id = $(this).attr("data-id");
 
         swal({

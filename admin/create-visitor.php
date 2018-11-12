@@ -96,14 +96,7 @@ include_once(dirname(__FILE__) . './auth.php');
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group place-select">
                                                 <div class="form-line">
-                                                    <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="city" autocomplete="off" name="city" required="TRUE">
-                                                        <option value=""> -- Please Select -- </option>
-                                                        <?php foreach (City::all() as $key => $city) {
-                                                            ?>
-                                                            <option value="<?php echo $city['id']; ?>"><?php echo $city['name']; ?></option><?php
-                                                        }
-                                                        ?>
-                                                    </select>
+                                                    <input type="text" id="city" class="form-control" placeholder="Enter city" autocomplete="off" name="city" required="TRUE">
                                                 </div>
                                             </div>
                                         </div>
