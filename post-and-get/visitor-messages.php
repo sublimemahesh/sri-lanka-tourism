@@ -11,13 +11,10 @@ if (isset($_POST['visitor-message'])) {
     $MEMBERVISITORMESSAGE->messages = $_POST['message'];
     $MEMBERVISITORMESSAGE->sender = $_POST['sender'];
 
-
-
     $VALID->check($MEMBERVISITORMESSAGE, [
         'messages' => ['required' => TRUE],
         'sender' => ['required' => TRUE]
     ]);
-
 
     if ($VALID->passed()) {
         $RESULT = $MEMBERVISITORMESSAGE->create();

@@ -1,5 +1,4 @@
 <?php
-
 include_once(dirname(__FILE__) . '/../class/include.php');
 include_once(dirname(__FILE__) . '/auth.php');
 
@@ -10,7 +9,6 @@ if (isset($_SESSION['isPhoneVerified'])) {
 $memberid = $_SESSION['id'];
 $MEMBER = new Member($memberid);
 $DISTINCTVISITORS = MemberAndVisitorMessages::getDistinctVisitorsByMemberId($memberid);
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -149,7 +147,7 @@ $DISTINCTVISITORS = MemberAndVisitorMessages::getDistinctVisitorsByMemberId($mem
                             <?php
                             $maxids = array();
                             foreach ($DISTINCTVISITORS as $distinctvisitor) {
-                                $max = MemberAndVisitorMessages::getMaxIDOfDistinctVisitor($distinctvisitor['visitor']);
+                                $max = MemberAndVisitorMessages::getMaxIDOfDistinctVisitor($distinctvisitor['visitor'], $memberid);
                                 array_push($maxids, $max['max']);
 //                                        return $maxids;
                             }
@@ -158,7 +156,7 @@ $DISTINCTVISITORS = MemberAndVisitorMessages::getDistinctVisitorsByMemberId($mem
                                 if ($key < 7) {
                                     $MESSAGE = new MemberAndVisitorMessages($maxid);
                                     $VISI = new Visitor($MESSAGE->visitor);
-                                    $result = getMessagedTime($MESSAGE->date_and_time);
+                                    $result = getMessagedTime1($MESSAGE->date_and_time);
                                     ?>
                                     <div class="desc">
                                         <a href="member-message.php?id=<?php echo $VISI->id; ?>">
@@ -198,7 +196,7 @@ $DISTINCTVISITORS = MemberAndVisitorMessages::getDistinctVisitorsByMemberId($mem
                                             <br/>
                                             <?php
                                             if (strlen($MESSAGE->messages) > 30) {
-                                                echo substr($MESSAGE->messages,0,28) . '...';
+                                                echo substr($MESSAGE->messages, 0, 28) . '...';
                                             } else {
                                                 echo $MESSAGE->messages;
                                             }
@@ -219,7 +217,7 @@ $DISTINCTVISITORS = MemberAndVisitorMessages::getDistinctVisitorsByMemberId($mem
 
             <?php
 
-            function getMessagedTime($datetime) {
+            function getMessagedTime1($datetime) {
                 date_default_timezone_set('Asia/Colombo');
                 $today = new DateTime(date("Y-m-d"));
                 $todaytime = new DateTime(date("H:i:s"));

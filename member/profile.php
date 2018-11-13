@@ -31,7 +31,7 @@ $MEMBER = new Member($_SESSION['id']);
 
         <!-- Fonts -->
         <link href="http://fonts.googleapis.com/css?family=Ruda:400,700,900" type="text/css">
-  <link href="assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css"/>
+        <link href="assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css"/>
         <!-- Custom styles for this template --> 
         <link href="assets/css/style.css" rel="stylesheet">
         <link href="assets/css/style-responsive.css" rel="stylesheet">
@@ -60,7 +60,7 @@ $MEMBER = new Member($_SESSION['id']);
                                 <?php
                             }
                             ?>
-                            
+
                             <div class="panel panel-default">
                                 <div class="panel-heading"><i class="fa fa-user"></i>   My Profile</div>
                                 <div class="panel-body">  <div class="body">
@@ -132,6 +132,65 @@ $MEMBER = new Member($_SESSION['id']);
                 </div>
             </section> 
             <?php
+
+//            function getMessagedTime($datetime) {
+//                date_default_timezone_set('Asia/Colombo');
+//                $today = new DateTime(date("Y-m-d"));
+//                $todaytime = new DateTime(date("H:i:s"));
+//
+//                $arr = explode(' ', $datetime);
+//                $date1 = new DateTime(date($arr[0]));
+//                $time1 = new DateTime(date($arr[1]));
+//
+//                $date = $today->diff($date1);
+//                $datediff = $date->format('%a');
+//
+//                if ($datediff == 0) {
+//
+//                    $time = $todaytime->diff($time1);
+//                    $timediff = $time->format('%h:%i:%s');
+//                    $arr1 = explode(':', $timediff);
+//                    if ($arr1[0] == 0) {
+//                        $diff = $arr1[1] . ' min ago';
+//                    } else {
+//                        if ($arr1[0] == 1) {
+//                            $diff = $arr1[0] . ' hour ago';
+//                        } else {
+//                            $diff = $arr1[0] . ' hours ago';
+//                        }
+//                    }
+//                } elseif ($datediff == 1 && $time1 > $todaytime) {
+//
+//                    $t = $todaytime->diff($time1);
+//                    $timediff1 = $t->format('%h:%i:%s');
+//                    $time3 = new DateTime('24:00:00');
+//                    $time = $time3->diff($timediff1);
+//                    $timediff = $time->format('%h:%i:%s');
+//                    $arr1 = explode(':', $timediff);
+//                    $diff = $arr1[0] . ' hours ago';
+//                } elseif ($datediff == 1 && $time1 < $todaytime) {
+//                    $diff = $datediff . ' day ago';
+//                } elseif ($datediff > 30) {
+//                    $month = round($datediff / 30);
+//
+//                    if ($month >= 12) {
+//
+//                        $year = round($month / 12);
+//                        if ($year == 1) {
+//                            $diff = $year . ' year ago';
+//                        } else {
+//                            $diff = $year . ' years ago';
+//                        }
+//                    } elseif ($month == 1) {
+//                        $diff = $month . ' month ago';
+//                    } else {
+//                        $diff = $month . ' months ago';
+//                    }
+//                }
+//                return $diff;
+//            }
+            ?>
+            <?php
             include './footer.php';
             ?>
         </section>
@@ -166,7 +225,7 @@ $MEMBER = new Member($_SESSION['id']);
         <script src="js/profile.js" type="text/javascript"></script>
         <script src="js/display-contact-number-verification-alert.js" type="text/javascript"></script>
         <script src="plugins/Preloader/jm.spinner.js" type="text/javascript"></script>
-         <script src="assets/plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>
+        <script src="assets/plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>
 
         <script>
             //custom select box

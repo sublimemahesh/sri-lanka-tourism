@@ -18,7 +18,6 @@ $memberid = $_SESSION['id'];
 $MEMBER = new Member($memberid);
 $VISITOR = new Visitor($visitorid);
 $DISTINCTVISITORS = MemberAndVisitorMessages::getDistinctVisitorsByMemberId($memberid);
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -115,18 +114,18 @@ $DISTINCTVISITORS = MemberAndVisitorMessages::getDistinctVisitorsByMemberId($mem
                                     </div>
                                 </div>
                             </div>
-<!--                            <div id="search">
-                                <label for="">
-                                    <i class="fa fa-search" aria-hidden="true"></i>
-                                </label>
-                                <input type="text" placeholder="Search contacts..." />
-                            </div>-->
+                            <!--                            <div id="search">
+                                                            <label for="">
+                                                                <i class="fa fa-search" aria-hidden="true"></i>
+                                                            </label>
+                                                            <input type="text" placeholder="Search contacts..." />
+                                                        </div>-->
                             <div id="contacts">
                                 <ul>
                                     <?php
                                     $maxids = array();
                                     foreach ($DISTINCTVISITORS as $distinctvisitor) {
-                                        $max = MemberAndVisitorMessages::getMaxIDOfDistinctVisitor($distinctvisitor['visitor']);
+                                        $max = MemberAndVisitorMessages::getMaxIDOfDistinctVisitor($distinctvisitor['visitor'], $memberid);
                                         array_push($maxids, $max['max']);
 //                                        return $maxids;
                                     }
@@ -137,10 +136,10 @@ $DISTINCTVISITORS = MemberAndVisitorMessages::getDistinctVisitorsByMemberId($mem
                                         ?>
                                         <a href="member-message.php?id=<?php echo $MESSAGE->visitor; ?>">
                                             <li class="contact <?php
-                                            if ($MESSAGE->visitor == $visitorid) {
-                                                echo 'active';
-                                            }
-                                            ?>">
+                                    if ($MESSAGE->visitor == $visitorid) {
+                                        echo 'active';
+                                    }
+                                        ?>">
                                                 <div class="wrap">
                                                     <?php
                                                     if (empty($VISI->image_name)) {
@@ -192,16 +191,16 @@ $DISTINCTVISITORS = MemberAndVisitorMessages::getDistinctVisitorsByMemberId($mem
 
                                 </ul>
                             </div>
-<!--                            <div id="bottom-bar">
-                                <button id="addcontact">
-                                    <i class="fa fa-user-plus fa-fw" aria-hidden="true"></i>
-                                    <span>Add contact</span>
-                                </button>
-                                <button id="settings">
-                                    <i class="fa fa-cog fa-fw" aria-hidden="true"></i> 
-                                    <span>Settings</span>
-                                </button>
-                            </div>-->
+                            <!--                            <div id="bottom-bar">
+                                                            <button id="addcontact">
+                                                                <i class="fa fa-user-plus fa-fw" aria-hidden="true"></i>
+                                                                <span>Add contact</span>
+                                                            </button>
+                                                            <button id="settings">
+                                                                <i class="fa fa-cog fa-fw" aria-hidden="true"></i> 
+                                                                <span>Settings</span>
+                                                            </button>
+                                                        </div>-->
                         </div>
                         <div class="content">
                             <?php
@@ -293,6 +292,7 @@ $DISTINCTVISITORS = MemberAndVisitorMessages::getDistinctVisitorsByMemberId($mem
                                                 </li>
                                                 <?php
                                             } else if ($msg['sender'] == 'visitor') {
+                                                $viewmessage = MemberAndVisitorMessages::updateViewingStatus($msg['id']);
                                                 ?>
                                                 <li class="replies">
                                                     <?php
@@ -410,6 +410,7 @@ $DISTINCTVISITORS = MemberAndVisitorMessages::getDistinctVisitorsByMemberId($mem
                 return $new_hour . ":" . $mins . " " . $part;
             }
             ?>
+
             <!--main content end-->
             <?php
             include './footer.php';

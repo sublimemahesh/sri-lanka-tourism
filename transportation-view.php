@@ -1,4 +1,5 @@
 <?php
+  ini_set('display_errors', 1);
 include './class/include.php';
 if (!isset($_SESSION)) {
     session_start();
@@ -16,7 +17,7 @@ $MEMBER = new Member($TRANSPORTS->member);
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title><?php echo $TRANSPORT->title; ?> || Transports || Sri Lanka || Tourism</title>
+        <title><?php echo $TRANSPORTS->title; ?> || Transports || Sri Lanka || Tourism</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="keywords" content="sri lanka tourism, tourism in sri lanka, Sri Lanka, <?php echo $TRANSPORT->title; ?>, tours in sri lanka, taxi in sri lanka, tourism sri lanka, rent a cars in sri lanka, transports in sri lanka, transport ways in sri lanka, sri lanka transports, vehicles in sri lanka, self driving vehicles, vehicle with chauffeur diver, luxuary vehicles, economy vehicles, hiring vehicles, hiring taxi">
         <meta name="description" content="The team Sri Lanka Tourism crew is privileged to show you and to take you around the most beautiful places in Sri Lanka. You can Plan your tour with Sri Lanka Tourism and, tours are judiciously planned and customized to meet your needs. And also, Sri Lanka Tourism features well established taxi service and hotel service. So your trip will be everything you imagined and much more.">
