@@ -13,11 +13,12 @@ class MemberAndVisitorMessages {
     public $visitor;
     public $messages;
     public $sender;
+    public $is_viewed;
 
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`,`date_and_time`,`member`,`visitor`,`messages`,`sender` FROM `member_visitor_messages` WHERE `id`=" . $id;
+            $query = "SELECT `id`,`date_and_time`,`member`,`visitor`,`messages`,`sender`,`is_viewed` FROM `member_visitor_messages` WHERE `id`=" . $id;
 
             $db = new Database();
 
@@ -29,6 +30,7 @@ class MemberAndVisitorMessages {
             $this->visitor = $result['visitor'];
             $this->messages = $result['messages'];
             $this->sender = $result['sender'];
+            $this->is_viewed = $result['is_viewed'];
 
             return $this;
         }
@@ -117,7 +119,21 @@ class MemberAndVisitorMessages {
     }
 
     public function getDistinctVisitorsByMemberId($member) {
-        $query = "SELECT distinct(visitor) FROM `member_visitor_messages` WHERE `member`= $member";
+        $query = "SELECT distinct(visitor) FROM `member_visitor_messages` WHERE `member`= $member ";
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+        return $array_res;
+    }
+    
+    public function getDistinctVisitorsOfUnReadMessagesByMemberId($member) {
+        $query = "SELECT distinct(visitor) FROM `member_visitor_messages` WHERE `member`= $member AND `sender` LIKE 'visitor' AND `is_viewed` = 0;";
 
         $db = new Database();
 
@@ -130,9 +146,9 @@ class MemberAndVisitorMessages {
         return $array_res;
     }
 
-    public function getMaxIDOfDistinctMember($member) {
+    public function getMaxIDOfDistinctMember($member, $visitor) {
 
-        $query = "SELECT max(id) AS `max` FROM `member_visitor_messages` WHERE `member`= $member";
+        $query = "SELECT max(id) AS `max` FROM `member_visitor_messages` WHERE `member`= $member and `visitor` = $visitor";
 
         $db = new Database();
 
@@ -140,9 +156,19 @@ class MemberAndVisitorMessages {
         return $result;
     }
 
-    public function getMaxIDOfDistinctVisitor($visitor) {
+    public function getMaxIDOfDistinctVisitor($visitor, $member) {
 
-        $query = "SELECT max(id) AS `max` FROM `member_visitor_messages` WHERE `visitor`= $visitor";
+        $query = "SELECT max(id) AS `max` FROM `member_visitor_messages` WHERE `visitor`= $visitor and `member`= $member";
+
+        $db = new Database();
+
+        $result = mysql_fetch_array($db->readQuery($query));
+        return $result;
+    }
+    
+    public function getUnReadMaxIDOfDistinctVisitor($visitor, $member) {
+
+        $query = "SELECT max(id) AS `max` FROM `member_visitor_messages` WHERE `visitor`= $visitor AND `member`= $member AND `is_viewed` = 0";
 
         $db = new Database();
 
@@ -187,6 +213,57 @@ class MemberAndVisitorMessages {
 
         $db = new Database();
 
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+        return $array_res;
+    }
+
+    public function updateViewingStatus($id) {
+
+        $query = "UPDATE  `member_visitor_messages` SET "
+                . "`is_viewed` = 1 "
+                . "WHERE `id` = '" . $id . "'";
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+
+        if ($result) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
+
+    public function getCountOfUnReadMessagesByMember($member) {
+
+        $query = "SELECT count(`id`) AS `count` FROM `member_visitor_messages` WHERE `member`= $member AND `sender` LIKE 'visitor' AND `is_viewed`=0";
+
+        $db = new Database();
+
+        $result = mysql_fetch_array($db->readQuery($query));
+        return $result['count'];
+    }
+    
+    public function getCountUnreadMessagesByVisitor($visitor, $member) {
+
+        $query = "SELECT count(`id`) AS `count` FROM `member_visitor_messages` WHERE `visitor` = $visitor AND `member`= $member AND `is_viewed`=0";
+
+        $db = new Database();
+
+        $result = mysql_fetch_array($db->readQuery($query));
+        return $result['count'];
+    }
+
+    public function getUnReadMessagesByMember($member) {
+
+        $query = "SELECT * FROM `member_visitor_messages` WHERE `member`= $member AND `sender` LIKE 'visitor' AND `is_viewed`=0";
+
+        $db = new Database();
         $result = $db->readQuery($query);
         $array_res = array();
 
