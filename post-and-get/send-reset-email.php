@@ -16,8 +16,9 @@ if ($VISITOR->checkEmail($email)) {
     if ($VISITOR->GenarateCode($email)) {
         $res = $VISITOR->SelectForgetMember($email);
 
-        $email = $VISITOR->email;
-        $resetcode = $VISITOR->resetcode;
+        $email = $res['email'];
+        $resetcode = $res['resetcode'];
+        
 
         date_default_timezone_set('Asia/Colombo');
 
@@ -45,7 +46,8 @@ if ($VISITOR->checkEmail($email)) {
         $html .= "<tr><td colspan='3' style='font-size: 14px; background-color: #FAFAFA; padding: 25px; color: #333; font-weight: 300; text-align: justify; '>Thank you</td></tr>";
 
         $html .= "</table>";
-
+        
+   
         if (mail($email, $subject, $html, $headers)) {
             header('Location: ../reset-password.php?message=12');
         } else {
