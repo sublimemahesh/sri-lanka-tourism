@@ -6,8 +6,8 @@ $(document).ready(function () {
         var next = parseInt(sort) + 1;
 
 
-        var description = tinyMCE.get('description-' + sort).getContent(), patt;
-        patt = /^<p>(&nbsp;\s)+(&nbsp;)+<\/p>$/g;
+        var description = tinyMCE.get('description-' + sort).getContent();
+//        patt = /^<p>(&nbsp;\s)+(&nbsp;)+<\/p>$/g;
 
         if (!$('#title-' + sort).val() || $('#title-' + sort).val().length === 0) {
 
@@ -19,7 +19,7 @@ $(document).ready(function () {
                 showConfirmButton: false
             });
             return false;
-        } else if (description === '' || patt.test(content)) {
+        } else if (description === '') {
 
             swal({
                 title: "Error!",
@@ -50,6 +50,7 @@ $(document).ready(function () {
     });
 
     $('.tab-prev-button').click(function () {
+        
         var sort = $(this).attr('sort');
         var prev = parseInt(sort) - 1;
 
@@ -63,8 +64,8 @@ $(document).ready(function () {
         e.preventDefault();
         var sort = $(this).attr('sort');
 
-        var description = tinyMCE.get('description-' + sort).getContent(), patt;
-        patt = /^<p>(&nbsp;\s)+(&nbsp;)+<\/p>$/g;
+        var description = tinyMCE.get('description-' + sort).getContent();
+//        patt = /^<p>(&nbsp;\s)+(&nbsp;)+<\/p>$/g;
 
         if (!$('#title-' + sort).val() || $('#title-' + sort).val().length === 0) {
 
@@ -76,7 +77,7 @@ $(document).ready(function () {
                 showConfirmButton: false
             });
             return false;
-        } else if (description === '' || patt.test(content)) {
+        } else if (description === '') {
 
             swal({
                 title: "Error!",
@@ -107,8 +108,8 @@ $(document).ready(function () {
                 sort = $(this).attr('sort');
                 subid = $(this).attr('subid');
                 title = $(this).find('.title').val();
-                description = tinyMCE.get('description-' + sort).getContent(), patt;
-                patt = /^<p>(&nbsp;\s)+(&nbsp;)+<\/p>$/g;
+                description = tinyMCE.get('description-' + sort).getContent();
+//                patt = /^<p>(&nbsp;\s)+(&nbsp;)+<\/p>$/g;
 
                 $("#tags-" + sort + " .addedTag.saveValue").each(function (index) {
                     tag = $(this).find('.h-tags').val();

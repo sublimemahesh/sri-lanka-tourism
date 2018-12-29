@@ -260,7 +260,7 @@ if (isset($_GET["article"])) {
                                     </div>
                                     <div class="all-rw-detail-container col-md-6">
                                         <div class="review-more-detail">
-                                            <span><?php echo $TOUR->description; ?></span>
+                                            <span><?php echo substr($TOUR->description, 0, 300) . '...'; ?></span>
                                         </div>
                                     </div>
                                     <div class="col-md-6">

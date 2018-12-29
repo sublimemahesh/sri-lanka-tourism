@@ -1,8 +1,6 @@
 $(document).ready(function (e) {
-
+ 
     var tourid = $('#tour').val();
-
-
     $.ajax({
         type: 'POST',
         url: 'post-and-get/ajax/post-tour-package-images.php',
@@ -39,11 +37,8 @@ $(document).ready(function (e) {
                                 $('#tag-list-' + subsection.sort).append(html);
                             }
                         }
-
                     });
                 });
-
-
 
                 var subid = subsection.id;
                 $.ajax({
@@ -85,14 +80,9 @@ $(document).ready(function (e) {
                         }
                     }
                 });
-
-
             });
         }
     });
-
-
-
 
     $('.tour-sub-picture').change(function () {
 
@@ -112,6 +102,7 @@ $(document).ready(function (e) {
         $('.box').jmspinner('large');
         $('.box').addClass('well');
         $('.box').css('z-index', '9999');
+            
         var formData = new FormData($('#form-tours-' + sort)[0]);
         $.ajax({
             type: "POST",
@@ -148,18 +139,12 @@ $(document).ready(function (e) {
                         }
                     }
                 });
-
             },
             cache: false,
             contentType: false,
             processData: false
         });
-
-
     });
-
-
-
 
     $('.image-list').on('click', '.img-tour-package-delete', function () {
 
@@ -201,11 +186,7 @@ $(document).ready(function (e) {
                         }
                     });
                 }
-
             }
         });
-
-
-
     });
 });

@@ -37,7 +37,7 @@ $DISTINCTVISITORS1 = MemberAndVisitorMessages::getDistinctVisitorsOfUnReadMessag
                             $MESSAGE1 = new MemberAndVisitorMessages($maxid1);
                             $countunreadmsgs = MemberAndVisitorMessages::getCountUnreadMessagesByVisitor($MESSAGE1->visitor, $MEMBER->id);
                             $VISI1 = new Visitor($MESSAGE1->visitor);
-                            $result1 = getMessagedTime('2018-11-05');
+                            $result1 = getMessagedTime($MESSAGE1->date_and_time);
                             ?>
                             <li>
                                 <a href="member-message.php?id=<?php echo $VISI1->id; ?>">
@@ -243,7 +243,7 @@ function getMessagedTime($datetime) {
         
         $t = $todaytime->diff($time1);
         $timediff1 = $t->format('%h:%i:%s'); 
-        $timediff1format = new DateTime($timediff2);
+        $timediff1format = new DateTime($timediff1);
         $time3 = new DateTime('24:00:00');
         $time = $time3->diff($timediff1format);
         $timediff = $time->format('%h:%i:%s');

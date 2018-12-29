@@ -1,7 +1,6 @@
 $(document).ready(function () {
 
     $('#transport-picture').change(function () {
-
         var fi = document.getElementById('transport-picture'); // GET THE FILE INPUT.
         if (fi.files.length > 0) {
             for (var i = 0; i <= fi.files.length - 1; i++) {

@@ -5,7 +5,7 @@ include_once(dirname(__FILE__) . '/../auth.php');
 
 
 if (isset($_POST['create-tour-sub-section'])) {
-
+    dd(111);
     $TOURSUBSECTION = New TourSubSection(NULL);
     $VALID = new Validator();
 
@@ -88,6 +88,7 @@ if (isset($_POST['edit-tour-sub-section'])) {
         header('Location: ' . $_SERVER['HTTP_REFERER']);
     }
 }
+
 if (isset($_POST['save-data'])) {
 
     foreach ($_POST['sort'] as $key => $img) {
